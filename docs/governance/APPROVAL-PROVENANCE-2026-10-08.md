@@ -20,7 +20,7 @@ sources:
 
 # Approval provenance review — 8 October 2026
 
-**Evidence class: conversation-derived reconstruction, not an independently archived full transcript.**
+**Evidence class: secondary reconstruction of the earlier conversation, plus a directly verifiable new GitHub owner-approval comment.**
 **Scope: knowledge-governance decisions only.**
 This document is an explicit disclosure of the evidence gap and what the reviewer could and could not verify. It does **not** manufacture a source permalink, convert a planning discussion into a new technical decision, or independently authenticate a complete transcript.
 
@@ -67,6 +67,7 @@ The reviewer considered:
 3. The existing `Ben-001-sys/Vellistry` repository and owner direction to continue building an evidence-based project knowledge baseline.
 4. The explicit **earlier user constraint not to choose application architecture or prescribe a file/folder tree**, which overrides over-specific examples of future source directories.
 5. The missing canonical conversation URL and missing complete archived transcript **as an outstanding provenance gap**, not as evidence that approval was never given.
+6. The owner's separate [direct approval on PR #1](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790), which is now adequate evidence of ADR-0001's current accepted status.
 
 **Current review conclusion:**
 - ADR-0002's metadata direction has clear user-authored support.
@@ -80,4 +81,4 @@ The reviewer considered:
 - **Still open — original conversation archiving:** Obtain a durable permalink or access-controlled archive of the earlier decision discussion if historical precision is needed; the new comment does not recreate that transcript.
 - Keep the earlier retrieved question and any later verified quotations distinct. If the historical claim is found to be inaccurate, preserve the original event and add a traceable correction, rather than rewriting the past.
 
-**This note is a secondary, auditable review record, not a replacement for primary approval evidence.**
+**This is an auditable review record, not the approval itself. The linked GitHub owner comment supplies direct current approval evidence; the older planning-chat transcript remains unavailable.**
