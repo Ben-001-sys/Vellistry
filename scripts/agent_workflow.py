@@ -130,7 +130,7 @@ def source_snapshot(commit: str, item: dict) -> tuple[dict, str]:
 def snapshot_block(info: dict, content: str) -> str:
     # The immutable blob SHA pins the complete raw bytes; this rendering is readable.
     # A long tilde fence avoids collisions with ordinary triple-backtick code blocks.
-    return f"### \`{info['path']}\` @ \`{info['git_blob_sha']}\`\n\n~~~~~~markdown\n{content.rstrip(chr(10))}\n~~~~~~\n"
+    return f"### `{info['path']}` @ `{info['git_blob_sha']}`\n\n~~~~~~markdown\n{content.rstrip(chr(10))}\n~~~~~~\n"
 
 
 def render_pack(task: dict, commit: str, prepared_by: str = "agent_workflow.py") -> str:
@@ -181,7 +181,7 @@ def render_pack(task: dict, commit: str, prepared_by: str = "agent_workflow.py")
         *(f"- {a}" for a in task["deliverables"]),
         "",
         "## Pinned source snapshots",
-        f"Git commit: \`{commit}\`. Read source statuses independently from task intent.",
+        f"Git commit: `{commit}`. Read source statuses independently from task intent.",
         "",
         *blocks,
         "## Execution reporting",
