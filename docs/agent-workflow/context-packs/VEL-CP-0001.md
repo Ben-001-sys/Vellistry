@@ -7,6 +7,7 @@ created_at: '2026-10-08'
 version: 0.1.0
 task_id: VEL-TASK-0001
 base_commit: d14261ce6bab2aea6550454f089c48859eb0a3ee
+task_blob_sha: 3c2bd7001ea96a36909e36731b96911348de2e71
 inputs:
 - path: PROJECT-CONSTITUTION.md
   role: governing-policy
