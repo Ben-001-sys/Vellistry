@@ -76,6 +76,57 @@ class HandoffWorkflowTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "accepted bundle without approved"):
                 wf.check_bundle(path, {self.task["id"]: self.task}, {self.pack["id"]: self.pack})
 
+    def test_permission_scope_approval_and_criteria_mutations_fail(self):
+        original = self.pack_path.read_text(encoding="utf-8")
+        substitutions = [
+            ("**Allowed:** read, analyze, propose", "**Allowed:** read, analyze, propose, deploy"),
+            ("**In:** INT-09 through INT-12", "**In:** ALL WRITING DATA"),
+            ("**Out:** Approving a product MVP", "**Out:** None; Approving a product MVP"),
+            ("**Owner approval required:** Changing", "**Owner approval required:** Nothing; Changing"),
+            ("- Identify four intent IDs INT-09", "- Ignore four intent IDs INT-09"),
+            ("- ExecutionBundle with exact Git references", "- Deploy a production bundle with exact Git references"),
+        ]
+        for before, after in substitutions:
+            with self.subTest(section=before):
+                self.assertIn(before, original)
+                with tempfile.TemporaryDirectory() as d:
+                    path = Path(d) / "VEL-CP-0001.md"
+                    path.write_text(original.replace(before, after, 1), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "task contract differs"):
+                        wf.check_pack(path, {self.task["id"]: self.task})
+
+    def test_changed_current_task_does_not_invalidate_pinned_historical_pack(self):
+        # The archived handoff's contract is taken from its pinned Git commit.
+        revised = dict(self.task)
+        revised["allowed_actions"] = ["read", "analyze", "propose", "deploy"]
+        revised["status"] = "completed"
+        wf.check_pack(self.pack_path, {self.task["id"]: revised})
+
+    def test_tampered_pinned_task_blob_fails(self):
+        original = self.pack_path.read_text(encoding="utf-8")
+        self.assertIn("task_blob_sha:", original)
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "VEL-CP-0001.md"
+            path.write_text(original.replace(self.pack["task_blob_sha"], "f" * 40, 1), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "task blob does not belong"):
+                wf.check_pack(path, {self.task["id"]: self.task})
+
+    def test_bundle_approval_requires_owner_and_evidence(self):
+        meta, body = wf.frontmatter(self.bundle_path)
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "VEL-EB-0001.md"
+            for reviewer, evidence, error in [
+                ("unrecognized_agent", "https://github.com/Ben-001-sys/Vellistry/pull/5", "reviewer does not match"),
+                ("project_owner", None, "requires linked owner evidence"),
+            ]:
+                with self.subTest(reviewer=reviewer, evidence=evidence):
+                    changed = dict(meta)
+                    changed["status"] = "accepted"
+                    changed["review"] = {"status": "approved", "approved_by": reviewer, "evidence": evidence}
+                    path.write_text("---\\n".replace("\\n", "\n") + yaml.safe_dump(changed, sort_keys=False) + "---\n" + body, encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, error):
+                        wf.check_bundle(path, {self.task["id"]: self.task}, {self.pack["id"]: self.pack})
+
     def test_unsafe_paths_rejected(self):
         for path in ("../README.md", "/etc/passwd", "docs/../.env", ".git/config", "secrets/token.txt"):
             with self.subTest(path=path):
