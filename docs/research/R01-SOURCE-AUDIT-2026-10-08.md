@@ -139,3 +139,11 @@ These were **not present among files currently accessible in this session**:
 **Not verified:** factual accuracy of external citations and licensing, full semantic alignment of 130 lenses, completeness of historical ZIP artifacts, actual file presence outside this workspace, author approval of any one of the competing AR definitions, full extraction of original requirements, commercial viability, or technical architecture.
 
 **Review boundary:** Draft research on a documentation branch only; not merged, not a product/architecture decision. No original source bytes changed.
+
+## Addendum — semantic recheck after the title-only first pass
+
+Follow-up detailed review recorded in [R01-AR-SEMANTIC-RECONCILIATION-2026-10-08.md](R01-AR-SEMANTIC-RECONCILIATION-2026-10-08.md) changes the **interpretation**, not the original title-count evidence. For AR-01 through AR-10: **3 equivalent in core guidance, 4 overlapping but not equivalent, 3 distinct**. In particular AR-04, AR-06 and AR-09 must not be conflated across editions.
+
+**Correction to the earlier risk characterization of PV-10:** Its short-list content is about secrets or plot-important information reaching characters without any acquisition channel, while its expanded content is about characters reacting as if they know *future plot structure* (metafictional/authorial foreknowledge). This is **substantive conceptual drift**, not a mere wording variation; it needs its own approval/mapping review. PV-05 also spans overlapping but not identical knowledge/voice concerns. The original title-only count of 13 remains valid.
+
+This addendum does not choose a canonical taxonomy or modify source documents. The Git research branch and Google Doc retain the original index unchanged.
