@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.3
+version: 0.1.4
 ---
 
 # Vellistry — Current State
@@ -79,3 +79,9 @@ No application code, product architecture, or live research workflow has been va
 - **ADR-0001 owner approval verified:** `Ben-001-sys` explicitly reconfirmed repository co-location in [PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). The accepted decision's owner approval is now directly retrievable and no longer requires owner reconfirmation. The original earlier conversation itself remains without a durable permalink; this separate historical provenance gap is not falsely marked solved.
 - **Linked records:** [ADR-0001](docs/decisions/ADR-0001-co-locate-engineering-knowledge-with-application.md), [the provenance review](docs/governance/APPROVAL-PROVENANCE-2026-10-08.md), and the additive [HIS-20261008-003 event](docs/history/2026-10-08-adr-0001-owner-reconfirmation.md) document the evidence. The original HIS-20261008-001 is retained and cross-referenced rather than silently replaced.
 - **Merge boundary:** Confirm green metadata CI and reviewer assessment on the resulting **exact PR head**. PR remains open/draft until the owner decides whether to mark ready and merge; this recorded approval is approval of ADR-0001, **not** authorization to merge the PR.
+
+## R05 editor licensing feasibility scan — 2026-10-08
+- The [R05 manuscript editor study](docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md) reviews primary license/features documentation for ProseMirror, Tiptap, Lexical, Slate, Plate, CKEditor 5 and TinyMCE 8. It separates editor engine capability from Word round trips, EPUB export and professional print PDF generation.
+- Twelve author-workflow evaluation cases define a common basis for future hands-on editor comparisons; none has been executed. The [R05 ExecutionBundle](docs/research/R05-EDITOR-RESEARCH-EXECUTION-BUNDLE-2026-10-08.md) distinguishes documentary findings from proposals.
+- **Not approved:** framework, document converter, purchase, license arrangement, application stack or MVP. No prototype, EPUBCheck or print-PDF validation has been run.
+- The independent R06 rule-control research continues in draft PR #3; that work is not automatically merged into this R05 branch. Review/merge R05 and R06 evidence through separate PRs to avoid converting proposals to decisions.
