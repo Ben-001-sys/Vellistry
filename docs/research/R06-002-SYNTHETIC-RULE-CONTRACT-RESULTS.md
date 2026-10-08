@@ -1,7 +1,7 @@
 ---
 id: VEL-EXP-R06-002
 type: research-experiment-report
-status: validated-synthetic-only
+status: CI-validated-synthetic-only
 created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research
@@ -52,7 +52,7 @@ The purpose is to isolate what can be tested without purchasing API calls or bui
 
 ## Initial local outcome
 
-The initial equivalent two-module local experiment completed **12/12 passing assertions** on 2026-10-08 (Python `unittest`). The committed script is written as a self-contained reproduction of that same test design and will be re-verified by the linked GitHub Actions workflow [R06 synthetic research contract](../../.github/workflows/r06-synthetic-research.yml) on PR #3. **CI outcome must be checked on the exact PR head**; no claim of that outcome is made until the workflow finishes.
+The first local experiment completed **12/12 passing assertions** on 2026-10-08. The committed script subsequently passed **12/12 tests in GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630)** (job 113526955085; `unittest` log confirms `Ran 12 tests` and `OK`). That workflow ran on the code/workflow commit `1593c60455d63fbf78560a3f1efd70b1e6437b95` associated with PR #3. Later documentation-only commits do not affect the tested script. A new executable change requires a fresh exact-commit check.
 
 ## What is NOT proven
 
