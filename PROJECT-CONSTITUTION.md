@@ -5,7 +5,7 @@ status: accepted
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 evidence:
   - "User approval of the Git-plus-app knowledge approach, 2026-10-08; conversation reference pending archival."
 related_adrs:
@@ -30,6 +30,9 @@ related_adrs:
 
 ## Status hierarchy
 Accepted and effective decisions take precedence over proposals. Superseding decisions must explicitly reference what they replace. Research notes are evidence, not approval.
+
+## Solo-maintainer review policy
+Vellistry currently has one human contributor: the project owner. The owner may review and merge their own pull requests after appropriate inspection and required automated checks. A separate human reviewer is **not** a standing requirement during this phase. AI-agent review may provide independent analysis but is advisory, not another human approval. For consequential architecture, security, or production changes, the owner's explicit approval remains required. Revisit the policy when collaborators join. See HIS-20261008-002.
 
 ## Change control
 Propose amendments in version control with rationale and evidence. Material changes require owner approval, an updated changelog/history event, and a corresponding CURRENT-STATE update.
