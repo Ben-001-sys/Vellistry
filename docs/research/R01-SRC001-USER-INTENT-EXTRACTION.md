@@ -48,7 +48,7 @@ related_research:
 | INT-24 | Research Canva + MCP as a possible workflow, subject to terms and capability verification. | “using Canva with, yes, MCP” | Integration exploration |
 | INT-25 | Avoid generic, interchangeable-looking book covers, particularly for web fiction. | “You don't want any generic” | Design quality |
 | INT-26 | Study physical manuscript printing and finished print-book production requirements. | “the printability of the book after it's written” | Printing |
-| INT-27 | Propose useful non-obvious features rather than accumulating generic extras. | “great or good ideas... don't let them be generic” | Innovation discipline |
+| INT-27 | Propose useful non-obvious features rather than accumulating generic extras. | “don't let them be generic ideas” | Innovation discipline |
 | INT-28 | Do not omit ordinary features when they are necessary for a credible writing product. | “if it's normal that is vital” | Baseline essentials |
 
 ## Scope ambiguities that must remain open
