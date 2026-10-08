@@ -14,6 +14,7 @@ sources:
   - "Getting Better With Agentic Coding - Copy.zip"
 evidence:
   - "Owner explicitly agreed to keep Vellistry's engineering knowledge base in the same GitHub repository as its future application on 2026-10-08."
+  - "Secondary review: docs/governance/APPROVAL-PROVENANCE-2026-10-08.md (recovered conversational wording; original approval exchange still requires primary verification)"
 related_requirements: []
 related_features: []
 related_contracts: []
@@ -32,7 +33,7 @@ implementation_refs:
 Vellistry has substantial research inside conversations and uploaded materials. Without a durable project-owned record, coding/research agents would need to reconstruct previous choices from incomplete chat context.
 
 ## Decision
-Use a single GitHub repository for Vellistry's application source code and its engineering knowledge base, with clearly separated paths such as `apps/`, `packages/`, `docs/`, and root-level governance files, as they become necessary.
+Use a single GitHub repository for Vellistry's application source code and its engineering knowledge base. This decision does **not** mandate an application folder layout, monorepo package split, source tree, or deployment structure; those choices remain open for research and later owner approval.
 
 This is a repository ownership decision, **not** a selection of the application implementation stack.
 
@@ -51,7 +52,7 @@ Co-location supports traceability across implementation, decisions, requirements
 - The documentation tree can evolve as research and app needs become clearer.
 
 ## Evidence and verification limits
-User approval was given in the 2026-10-08 conversation; a persistent transcript reference must be added to the source register when available.
+The earlier conversation recorded this as an owner-accepted co-location decision. A targeted follow-up review recovered the user's 2026-10-08T11:00:03Z confirming **question** and the assistant's response, but not the full explicit acceptance exchange. [The approval-provenance review](../governance/APPROVAL-PROVENANCE-2026-10-08.md) documents exactly what is corroborated, what remains unverified, and the reviewer basis for retaining the prior status pending a primary transcript link or owner reconfirmation. **Do not mistake the retrieved question alone for definitive approval proof.**
 
 ## Implementation status
 **In progress:** README.md initialized on main; supporting documentation is being drafted on a dedicated branch. No application code is selected or implemented.
