@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.7
+version: 0.1.8
 ---
 
 # Vellistry — Current State
@@ -100,6 +100,14 @@ No application code, product architecture, or live research workflow has been va
 - GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
 - The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
 - Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
+
+## Stage 3 context handoff review remediation — 2026-10-08
+- [Stage 3 PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5) remains **draft and unmerged** during owner review. [Original review #5462675990](https://github.com/Ben-001-sys/Vellistry/pull/5#pullrequestreview-5462675990) identified permission-contract tampering and a merge conflict with `main`.
+- Pilot artifacts: `VEL-TASK-0001` (verification), `VEL-CP-0001` (pinned revision) and `VEL-EB-0001` (proposed for owner review). The pinned pack records the historical task Git blob, while its current task status may progress independently.
+- Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
+- This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
+- Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
+
 
 ## R04 first-usable-release research checkpoint — 2026-10-08
 - [R04 A/B/C scope options](docs/research/R04-FIRST-USABLE-RELEASE-SCOPE-OPTIONS-2026-10-08.md): proposed **A** editor-first internal reliability milestone, **B** editor + author-controlled AI/rules integrated pilot, **C** broad book studio with covers/publishing/canon. Suggested ordering **A → B**, with C long-term; this is **analyst guidance, NOT an approved MVP or cut of covers/publishing**.
