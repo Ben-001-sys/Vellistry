@@ -322,4 +322,5 @@ Source-pass extraction should replace this compact seed with individual, traceab
 ~~~~~~
 
 ## Execution reporting
-Return an ExecutionBundle with FACT / INTERPRETATION / PROPOSAL sections, tests actually performed, changes, evidence gaps, and pending owner approval.
+Return an ExecutionBundle with FACT / INTERPRETATION / PROPOSAL sections,
+tests actually performed, changes, evidence gaps, and pending owner approval.
