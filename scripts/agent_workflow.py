@@ -218,6 +218,12 @@ def check_pack(path: Path, task_by_id: dict[str, dict]):
         if git("rev-parse", f"{meta['base_commit']}:{name}").decode().strip() != blob:
             raise ValueError(f"{path}: source blob does not belong to pinned commit: {name}")
         raw = git("show", f"{meta['base_commit']}:{name}").decode("utf-8")
+        match = re.match(r"\\A---\\n(.*?)\\n---\\n", raw, re.DOTALL)
+        doc_meta = yaml.safe_load(match.group(1)) if match else {}
+        expected_status = str((doc_meta or {}).get("status", "unrecorded"))
+        declared = next(item for item in task["inputs"] if item["path"] == name)
+        if source.get("role") != declared["role"] or source.get("source_status") != expected_status:
+            raise ValueError(f"{path}: declared source authority/status mismatch for {name}")
         if snapshot_block(source, raw).strip() not in body:
             raise ValueError(f"{path}: missing or modified embedded snapshot {name}")
     if seen != {s["path"] for s in task["inputs"]}:
