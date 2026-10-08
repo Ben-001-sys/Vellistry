@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.6
+version: 0.1.7
 ---
 
 # Vellistry — Current State
@@ -100,3 +100,11 @@ No application code, product architecture, or live research workflow has been va
 - GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
 - The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
 - Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
+
+## R04 first-usable-release research checkpoint — 2026-10-08
+- [R04 A/B/C scope options](docs/research/R04-FIRST-USABLE-RELEASE-SCOPE-OPTIONS-2026-10-08.md): proposed **A** editor-first internal reliability milestone, **B** editor + author-controlled AI/rules integrated pilot, **C** broad book studio with covers/publishing/canon. Suggested ordering **A → B**, with C long-term; this is **analyst guidance, NOT an approved MVP or cut of covers/publishing**.
+- [R04 trial and acceptance protocol](docs/research/R04-FIRST-PILOT-AUTHOR-TRIAL-AND-ACCEPTANCE-PLAN-2026-10-08.md) proposes 12 realistic author tasks, 6–9 exploratory participants, author-control and data-loss safety gates, and explicit decision points for Word export, cover timing, privacy and provider costs. **NO external interviews, user studies or pilot acceptances have been executed.**
+- [R04 ExecutionBundle](docs/research/R04-SCOPE-RESEARCH-EXECUTION-BUNDLE-2026-10-08.md) separates owner-confirmed goals, research findings, analyst interpretation and proposals. The research register's R04 questions remain **open, with partial documentation progress**.
+- **Decisions preserved:** Tiptap 3 / ProseMirror selected by owner for editing ([ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6)); frozen source guidance remains default-on and author-controllable once certified; no other architecture, public MVP, model, storage, publishing/cover engine or release timeline selected.
+- **Next critical gates:** finish R01 authentic default-pack provenance; collect R02 author data; run actual R05 browser author tasks; identify minimal R15 trial manuscript protection; test R06 true model adherence only under approved API/consent/cost conditions.
+- **Status of this batch:** research PR branch `research/r04-mvp-boundaries-validation-v0.1` pending owner review; don't translate recommended pilot sequence into accepted requirements before owner approval.
