@@ -32,7 +32,7 @@ TASK_KEYS = {
     "source_gaps", "deliverables", "acceptance_criteria", "allowed_actions",
     "approval_required_for",
 }
-PACK_KEYS = {"id", "title", "type", "status", "created_at", "version", "task_id", "base_commit", "inputs", "source_gaps", "prepared_by"}
+PACK_KEYS = {"id", "title", "type", "status", "created_at", "version", "task_id", "base_commit", "task_blob_sha", "inputs", "source_gaps", "prepared_by"}
 BUNDLE_KEYS = {"id", "title", "type", "status", "created_at", "version", "task_id", "context_pack_id", "base_commit", "agent", "sources", "evidence", "review"}
 
 
@@ -133,6 +133,33 @@ def snapshot_block(info: dict, content: str) -> str:
     return f"### `{info['path']}` @ `{info['git_blob_sha']}`\n\n~~~~~~markdown\n{content.rstrip(chr(10))}\n~~~~~~\n"
 
 
+def render_task_contract(task: dict) -> str:
+    """Deterministic instructions; any changed scope/permissions must invalidate the pack."""
+    lines = [
+        "## Objective",
+        str(task["objective"]).strip(), "",
+        "## Scope",
+        "**In:** " + "; ".join(task["in_scope"]),
+        "**Out:** " + "; ".join(task["out_of_scope"]), "",
+        "## Evidence and authority constraints",
+        "The text below is a readable rendering of pinned Git blobs; exact raw bytes remain recoverable from the recorded commit/blob SHAs. Recorded source statuses remain in force: draft research is not accepted requirements. Original unarchived uploads are not independently verified merely by being mentioned.",
+        "",
+        "**Known source gaps:**",
+        *(f"- {g['id']}: {g['limitation']}" for g in task["source_gaps"]),
+        "",
+        "## Permissions and acceptance",
+        "**Allowed:** " + ", ".join(task["allowed_actions"]),
+        "**Owner approval required:** " + "; ".join(task["approval_required_for"]),
+        "**Acceptance criteria:**",
+        *(f"- {a}" for a in task["acceptance_criteria"]),
+        "",
+        "## Deliverables",
+        *(f"- {a}" for a in task["deliverables"]),
+        "", "",
+    ]
+    return "\n".join(lines)
+
+
 def render_pack(task: dict, commit: str, prepared_by: str = "agent_workflow.py") -> str:
     sources = []
     blocks = []
@@ -153,33 +180,14 @@ def render_pack(task: dict, commit: str, prepared_by: str = "agent_workflow.py")
         "version": "0.1.0",
         "task_id": task["id"],
         "base_commit": commit,
+        "task_blob_sha": git("rev-parse", f"{commit}:docs/agent-workflow/tasks/{task['id']}.yaml").decode().strip(),
         "inputs": sources,
         "source_gaps": task["source_gaps"],
         "prepared_by": prepared_by,
     }
     instructions = [
-        f"# {header['id']} — {task['title']}",
-        "",
-        "## Objective", str(task["objective"]).strip(), "",
-        "## Scope", "**In:** " + "; ".join(task["in_scope"]),
-        "**Out:** " + "; ".join(task["out_of_scope"]), "",
-        "## Evidence and authority constraints",
-        "The text below is a readable rendering of pinned Git blobs; their raw bytes",
-        "are recoverable from the recorded commit/blob SHAs. Recorded source statuses",
-        "remain in force: draft research is not accepted requirements. Original",
-        "unarchived uploads are not independently verified merely by being mentioned.",
-        "",
-        "**Known source gaps:**",
-        *(f"- {g['id']}: {g['limitation']}" for g in task["source_gaps"]),
-        "",
-        "## Permissions and acceptance",
-        "**Allowed:** " + ", ".join(task["allowed_actions"]),
-        "**Owner approval required:** " + "; ".join(task["approval_required_for"]),
-        "**Acceptance criteria:**",
-        *(f"- {a}" for a in task["acceptance_criteria"]),
-        "",
-        "## Deliverables",
-        *(f"- {a}" for a in task["deliverables"]),
+        f"# {header['id']} — {task['title']}", "",
+        render_task_contract(task).rstrip("\n"),
         "",
         "## Pinned source snapshots",
         f"Git commit: `{commit}`. Read source statuses independently from task intent.",
@@ -200,9 +208,24 @@ def check_pack(path: Path, task_by_id: dict[str, dict]):
         raise ValueError(f"{path}: invalid type/status")
     if path.stem != meta["id"] or not re.fullmatch(r"VEL-CP-\d{4}", str(meta["id"])):
         raise ValueError(f"{path}: invalid context pack ID/name")
-    task = task_by_id.get(meta["task_id"])
-    if not task or task["context_pack_id"] != meta["id"]:
+    live_task = task_by_id.get(meta["task_id"])
+    if not live_task or live_task["context_pack_id"] != meta["id"]:
         raise ValueError(f"{path}: task mapping mismatch")
+    # The task may move from ready to verification later; read its historical
+    # bytes at this pack's pinned commit instead of trusting the current YAML.
+    if not re.fullmatch(r"[0-9a-f]{40}", str(meta.get("task_blob_sha", ""))):
+        raise ValueError(f"{path}: invalid task blob SHA")
+    task_path = f"docs/agent-workflow/tasks/{meta['task_id']}.yaml"
+    actual_task_blob = git("rev-parse", f"{meta['base_commit']}:{task_path}").decode().strip()
+    if actual_task_blob != meta["task_blob_sha"]:
+        raise ValueError(f"{path}: task blob does not belong to pinned commit")
+    task = yaml.safe_load(git("show", f"{meta['base_commit']}:{task_path}"))
+    if not isinstance(task, dict) or task.get("context_pack_id") != meta["id"]:
+        raise ValueError(f"{path}: pinned task relationship mismatch")
+    first = body.find("## Objective\n")
+    last = body.find("## Pinned source snapshots\n")
+    if first < 0 or last <= first or body[first:last] != render_task_contract(task):
+        raise ValueError(f"{path}: task contract differs from pinned objective/scope/permissions/approval/criteria/deliverables")
     if not re.fullmatch(r"[0-9a-f]{40}", str(meta["base_commit"])):
         raise ValueError(f"{path}: invalid pinned commit")
     if not isinstance(meta["inputs"], list) or len(meta["inputs"]) != len(task["inputs"]):
@@ -249,6 +272,16 @@ def check_bundle(path: Path, task_by_id: dict[str, dict], pack_by_id: dict[str, 
         raise ValueError(f"{path}: cannot claim approval without approver")
     if meta["status"] == "accepted" and meta["review"]["status"] != "approved":
         raise ValueError(f"{path}: accepted bundle without approved disposition")
+    if meta["review"]["status"] == "approved":
+        # Structural checks are NOT authentication. Owner must verify the
+        # linked PR/comment outside this schema validator.
+        if meta["review"].get("approved_by") != task["owner"]:
+            raise ValueError(f"{path}: reviewer does not match task owner")
+        evidence = meta["review"].get("evidence")
+        if not isinstance(evidence, str) or not evidence.startswith("https://github.com/"):
+            raise ValueError(f"{path}: approved bundle requires linked owner evidence")
+    if not isinstance(meta["sources"], list) or any(s not in {x["path"] for x in pack["inputs"]} for s in meta["sources"]):
+        raise ValueError(f"{path}: bundle sources must be pinned ContextPack inputs")
     for heading in ("## Work performed", "## Facts and evidence", "## Interpretations", "## Proposals", "## Tests", "## Artifacts", "## Risks", "## Reviewer disposition"):
         if heading not in body:
             raise ValueError(f"{path}: missing section {heading}")
