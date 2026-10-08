@@ -6,7 +6,7 @@ created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "SRC-001 — AI Writing App Blueprint.md"
   - "SRC-002 — Research AI Writing Problems.md"
@@ -18,6 +18,7 @@ sources:
   - "Fiction Writing App master Google Doc, Part VI §§28–38 and subsequent research Parts XIII–XVIII"
   - "https://github.com/Ben-001-sys/Vellistry/pull/6 — owner-selected editor ADR-0003, merge state independently checked"
   - "https://github.com/Ben-001-sys/Vellistry/pull/8 — R04 candidate first-release boundaries"
+  - "Project owner message, 2026-10-08: continuous, visible character/storyline profiles during human writing and AI generation; original conversation permalink not archived"
 related_research:
   - R01
   - R02
@@ -51,7 +52,7 @@ related_adrs:
 
 ## Inventory scope and counting
 
-- **18 feature areas**, **368 individually tracked feature entries**, and **15 separately tracked cross-cutting differentiator concepts** (total **383 inventory rows**).
+- **18 feature areas**, **381 individually tracked feature entries**, and **15 separately tracked cross-cutting differentiator concepts** (total **396 inventory rows**).
 - Every entry has an ID, title, operational description, source/evidence family, status, research dependency and **UNASSIGNED** release priority.
 - The feature list originated in the latest consolidated conversation inventory and was cross-checked against the source-backed R01 user-intent extraction, the master Google Doc's functional specification, the research register and the R04 options.
 - **Counts are inventory-item counts, not implementation effort estimates or deduplicated user-story counts.** Some capabilities intentionally overlap (for example word count in editing and workflow metrics; Story Bible canon and continuity; cover export and publishing). Cross-cutting differentiators deliberately reference ordinary capabilities rather than proving distinct modules are needed.
@@ -296,6 +297,13 @@ related_adrs:
 | `VEL-FEAT-08-018` | Imported Story Bible review | Preview and verify external notes before establishing authority. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
 | `VEL-FEAT-08-019` | Canon contradictions | Surface potential conflicts without silently deciding truth. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
 | `VEL-FEAT-08-020` | Retcon approval | Deliberately revise established facts and preserve prior versions. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-021` | Live character profiles | Maintain evolving character profiles as the book develops rather than only static character cards. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | DIRECTED | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-022` | Live storyline and arc profiles | Maintain evolving records of main plots, subplots and chapter/scene developments. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | DIRECTED | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-023` | Author-built profiles | Let the writer create and revise character and storyline profiles manually without AI. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | DIRECTED | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-024` | Profiles visible during writing | Display relevant character and storyline profiles within or alongside the manuscript interface. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | DIRECTED | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-025` | Profile history and change snapshots | Show how traits, goals, relationships or storyline state differed across story time and manuscript revisions. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | CANDIDATE | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-026` | AI-assisted profile drafting | Offer proposed profile entries based on new prose while keeping author-approved records authoritative. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | DIRECTED | R02, R04, R07, R10, R15 | UNASSIGNED |
+| `VEL-FEAT-08-027` | Profile detail and source links | Link profile details to supporting passages, relevant story time and their approval status. | Owner's live-profile request (2026-10-08); BP Part V §§17–20; R07 | CANDIDATE | R02, R04, R07, R10, R15 | UNASSIGNED |
 
 ## 9. Continuity, Memory & Story-State Tracking
 
@@ -327,6 +335,12 @@ related_adrs:
 | `VEL-FEAT-09-022` | Retcon impact analysis | Show story state that an approved correction would affect. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
 | `VEL-FEAT-09-023` | Series continuity isolation | Allow common series canon without leaking unrelated books. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
 | `VEL-FEAT-09-024` | Provenance for state changes | Link each accepted state transition to supporting text or author approval. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-025` | Extract changes during human drafting | Detect candidate character, plot and world-state developments as a person writes new passages. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | DIRECTED | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
+| `VEL-FEAT-09-026` | Extract changes from AI-generated prose | Detect candidate profile and storyline changes when a model generates a new passage. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | DIRECTED | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
+| `VEL-FEAT-09-027` | Propose, approve and dismiss profile updates | Review detected changes before they alter approved canon; generated draft text alone is not authoritative. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | DIRECTED | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
+| `VEL-FEAT-09-028` | Revise profiles after manuscript edits | Reassess previously inferred information when source passages are edited, rejected or deliberately retconned. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | CANDIDATE | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
+| `VEL-FEAT-09-029` | Approved profile context for AI | Use relevant accepted character and storyline state when constructing future model context; exclude unapproved possibilities from canon. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | CANDIDATE | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
+| `VEL-FEAT-09-030` | Visible pending-change activity | Show proposed, accepted, rejected and superseded profile updates clearly in the authoring UI. | Owner's live-profile request (2026-10-08); BP Part V §§18–22; R07 | DIRECTED | R05, R06, R07, R10, R15, R19 | UNASSIGNED |
 
 ## 10. Writing Quality, Editing Audits & Literary Intelligence
 
@@ -600,8 +614,8 @@ These fifteen named opportunities also appear as facets of features above. Track
 | 05. AI Writing Studio | 22 | INT-03–04; BP §32; R03, R08, R10 |
 | 06. AI Providers, Model Selection & BYOK | 19 | INT-03, INT-13, INT-17; BP §32; R08 |
 | 07. MCP & External AI Assistant Integration | 17 | INT-14, INT-24; BP §33; R09 |
-| 08. Story Bible & Worldbuilding | 20 | BP Part V §17 and Part VI §34; INT-07; R07 |
-| 09. Continuity, Memory & Story-State Tracking | 24 | BP Part V §§18–20 and Part VI §34; R07 |
+| 08. Story Bible & Worldbuilding | 27 | BP Part V §17 and Part VI §34; INT-07; R07 |
+| 09. Continuity, Memory & Story-State Tracking | 30 | BP Part V §§18–20 and Part VI §34; R07 |
 | 10. Writing Quality, Editing Audits & Literary Intelligence | 27 | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 |
 | 11. AI Suggestions, Revision Control & Provenance | 19 | BP §35; R10 |
 | 12. Native Cover Design Studio | 22 | INT-20–25; BP §36; R13 |
@@ -612,9 +626,19 @@ These fifteen named opportunities also appear as facets of features above. Track
 | 17. Accounts, Privacy, Ownership & Security | 19 | INT-13–14; BP §§32–33; R14, R15 |
 | 18. Pricing, Usage & Commercial Operations | 14 | INT-17; BP §32; R21 |
 | Cross-cutting differentiators | 15 | BP §38; R22 |
-| **Total inventory entries** | **383** | 18 groups + 15 differentiators |
+| **Total inventory entries** | **396** | 18 groups + 15 differentiators |
 
-**Main-group status distribution:** 13 `DIRECTED`, 16 `OWNER-INTENT`, 1 `TECH-SELECTED`, 338 `CANDIDATE`. The 15 differentiated candidates are in addition to the main-group candidate total.
+**Main-group status distribution:** 22 `DIRECTED`, 16 `OWNER-INTENT`, 1 `TECH-SELECTED`, 342 `CANDIDATE`. The 15 differentiated candidates are in addition to the main-group candidate total.
+
+## User-requested live profile evolution — 2026-10-08
+
+The owner added a distinct requirement to the inventory: **as either the writer or the AI produces passages, Vellistry should be able to build and evolve character, storyline and other relevant story profiles continuously and display them in the authoring UI.** The existing character baselines, relationships, plot records and state ledgers remain the underlying concepts; this enhancement defines *when and how they surface during writing* without selecting data architecture or prescribing permanent automated extraction.
+
+A proposed interaction illustrates the request without presuming a final UI: when the writer describes a character injuring their left hand, Vellistry can present a pending update against that character profile, with the relevant source passage. If the author accepts the event into the manuscript and approves the profile update, the character's current state changes and becomes available to subsequent scene planning. If the text is merely an unaccepted AI alternative, the profile remains unchanged. The writer can open the profile panel, manually update an entry, and view its earlier states. Likewise, new plot revelations, resolved mysteries and relationship turning points can appear as proposed storyline updates.
+
+**Source and authority boundary:** This is new **owner-requested product behavior**, not a feature found verbatim in the initial SRC-001 source. The author did not select a UI component, background analysis interval, LLM extraction model, storage schema, notification behavior, processing cost, release priority or autonomous canon mutation. **Continuous** means keeping track as the story evolves; whether extraction happens per passage, save, scene completion or explicitly requested analysis requires R02/R07 evaluation. Avoid sending private manuscript text to a model without an authorized provider and consent; allow manual profile maintenance with AI fully disabled. Do not silently treat AI-suggested new facts as accepted canon.
+
+**Cross-reference IDs:** `VEL-FEAT-08-021..027` and `VEL-FEAT-09-025..030`; related original profile/state entries in `VEL-FEAT-08-004..020` and `VEL-FEAT-09-001..024`.
 
 ## Approval gates, not decisions made by this catalog
 
