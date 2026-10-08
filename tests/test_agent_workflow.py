@@ -26,7 +26,7 @@ class HandoffWorkflowTests(unittest.TestCase):
         wf.validate_all()
 
     def test_task_preserves_source_gap_and_draft_status(self):
-        self.assertEqual(self.task["status"], "ready")
+        self.assertEqual(self.task["status"], "verification")
         self.assertEqual(self.task["source_gaps"][0]["id"], "SRC-001")
         statuses = {item["path"]: item["source_status"] for item in self.pack["inputs"]}
         self.assertEqual(statuses["docs/research/R01-SRC001-USER-INTENT-EXTRACTION.md"], "draft")
