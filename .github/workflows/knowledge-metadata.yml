@@ -7,6 +7,7 @@ on:
       - 'docs/governance/**'
       - 'scripts/check_knowledge_metadata.py'
       - 'tests/test_knowledge_metadata.py'
+      - 'CURRENT-STATE.md'
       - '.github/workflows/knowledge-metadata.yml'
   push:
     branches: [main]
@@ -16,6 +17,7 @@ on:
       - 'docs/governance/**'
       - 'scripts/check_knowledge_metadata.py'
       - 'tests/test_knowledge_metadata.py'
+      - 'CURRENT-STATE.md'
       - '.github/workflows/knowledge-metadata.yml'
 permissions:
   contents: read
