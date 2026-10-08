@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.6
+version: 0.1.7
 ---
 
 # Vellistry — Current State
@@ -100,3 +100,11 @@ No application code, product architecture, or live research workflow has been va
 - GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
 - The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
 - Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
+
+## Tiptap 3 manuscript-workspace spike — 2026-10-08
+- **Owner decision:** Tiptap major version 3 / ProseMirror accepted as the manuscript editor foundation. Decision docs are on [draft PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6) pending independent merge into `main`; the choice does not authorize any other technology or paid extensions.
+- **Technical research:** [R05-B Tiptap manuscript workspace study](docs/research/R05-TIPTAP3-MANUSCRIPT-WORKSPACE-VALIDATION-2026-10-08.md) documents official supported editor APIs, user-first writing actions, pending structural questions, schema/format loss risks, and seven independent smoke criteria.
+- **Isolated actual-package spike:** [Node/jsdom test fixture](docs/research/spikes/tiptap3-headless/spike.test.mjs) on [draft PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) exercises real Tiptap 3 dependencies: headings/marks, JSON save/restore, author accept/reject, stale AI proposal rejection, undo/redo, and 100k+ synthetic words. No language model is called and no real manuscript is used.
+- **Environment limit:** Local npm registry could not be reached (`EAI_AGAIN`), so package verification is through GitHub Actions. The first CI run [#37843277680](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843277680) passed six tests but failed one prototype-equality assertion because ProseMirror JSON attributes may have null prototypes. The comparison was corrected to check serialized JSON values; check the latest CI before claiming all tests pass.
+- **Scope guard:** Node/jsdom stress numbers are not evidence of real browser typing performance. No production application shell, page layout, format conversion, persistence store, model provider, Rules Studio implementation or frontend framework selected in this branch.
+- **Next:** verify the corrected CI, then test real browser editing/selection/IME/paste and debate chapter-vs-whole-manuscript storage boundaries through owner-reviewed acceptance evidence. Continue book publishing, import/export and AI rule evaluation as distinct research tracks.
