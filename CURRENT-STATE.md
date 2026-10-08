@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.6
+version: 0.1.7
 ---
 
 # Vellistry — Current State
@@ -16,6 +16,7 @@ Research and discovery; engineering knowledge foundation initialization.
 ## Accepted direction
 - Future application code and engineering knowledge will share one GitHub repository (ADR-0001).
 - ADR and historical records require structured, traceable metadata (ADR-0002).
+- **Tiptap 3 on ProseMirror is the owner-selected manuscript editor foundation** (ADR-0003; explicitly approved 2026-10-08). This is not yet installed or implemented.
 - Use Git/Markdown first, preserving separate runtime storage for future author data.
 - Apply research governance and lightweight ContextPack/ExecutionBundle handoffs before building complex orchestration.
 
@@ -40,7 +41,7 @@ These sources have been identified but **not yet fully migrated or individually 
 ## Undecided
 - Feature prioritization and MVP boundary.
 - Detailed PRD and acceptance criteria.
-- Editor framework and page-layout approach.
+- Manuscript editor technology: **Tiptap 3 / ProseMirror selected**; exact extensions, integration, page layout/pagination, import/export and print formatting remain undecided.
 - AI provider integration, MCP capabilities, context architecture, story state model.
 - Backend/database/framework/deployment technology.
 - Runtime author-data privacy and security architecture.
@@ -50,7 +51,7 @@ These sources have been identified but **not yet fully migrated or individually 
 2. Extract individual requirements without losing details; distinguish evidence from suggestions.
 3. Audit consistency across research and record ambiguities or conflicts.
 4. Prepare a research-only Rules Studio/default-guidance fixture and perform measured rule-application evaluations with author-controlled exceptions, without altering frozen source.
-5. Continue the professional editor technology/licensing trials as an independent research workstream; do not preselect a stack.
+5. Validate the **selected** Tiptap 3 editor foundation with long-form writing, formatting, selection-preserving AI rewrites and accessibility trials; separately research DOCX/EPUB/print-PDF workflows and licensing.
 
 ## Verification note
 No application code, product architecture, or live research workflow has been validated by this documentation bootstrap. Do not imply otherwise.
@@ -100,3 +101,11 @@ No application code, product architecture, or live research workflow has been va
 - GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
 - The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
 - Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
+
+## Owner-approved manuscript editor decision — 2026-10-08
+- The owner explicitly accepted **Tiptap major version 3, built on ProseMirror**, as the writing editor after a specific recommendation and explanation. [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) is the accepted technology decision; [HIS-20261008-004](docs/history/2026-10-08-tiptap-3-editor-approved.md) records its provenance and exact owner's reply.
+- This **supersedes the earlier 'editor not selected' project status only**. Other editor candidates remain historical research; related R05 draft PR #4 predates the selection and must not be silently rewritten to claim it was selected during the scan.
+- Tiptap 3's open-source editor core was chosen; **no** Tiptap Pro/Pages/Conversion subscription, final framework, data store, model provider, runtime architecture or publication engine was chosen.
+- **Implementation not started:** no Tiptap install, writing UI, long-manuscript trial, output conversion or editor-performance benchmark has been verified. Next engineering validation should test those boundaries before claiming readiness.
+- Approval source is this project's conversation on 2026-10-08; exact permalink is not yet archived. Do not fabricate GitHub approval evidence.
+- Decision documentation changes are isolated on `docs/adr-0003-tiptap3-manuscript-editor` for owner review; no automatic merge is implied.
