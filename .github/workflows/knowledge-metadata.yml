@@ -1,0 +1,38 @@
+name: Knowledge metadata
+on:
+  pull_request:
+    paths:
+      - 'docs/decisions/**'
+      - 'docs/history/**'
+      - 'docs/governance/**'
+      - 'scripts/check_knowledge_metadata.py'
+      - 'tests/test_knowledge_metadata.py'
+      - 'CURRENT-STATE.md'
+      - '.github/workflows/knowledge-metadata.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/decisions/**'
+      - 'docs/history/**'
+      - 'docs/governance/**'
+      - 'scripts/check_knowledge_metadata.py'
+      - 'tests/test_knowledge_metadata.py'
+      - 'CURRENT-STATE.md'
+      - '.github/workflows/knowledge-metadata.yml'
+permissions:
+  contents: read
+jobs:
+  metadata:
+    name: Validate ADR and history metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install YAML parser
+        run: python -m pip install 'PyYAML>=6.0,<7'
+      - name: Run positive and negative regression tests
+        run: python -m unittest discover -s tests -p 'test_knowledge_metadata.py' -v
+      - name: Validate metadata
+        run: python scripts/check_knowledge_metadata.py
