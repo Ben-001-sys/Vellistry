@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.7
+version: 0.1.8
 ---
 
 # Vellistry — Current State
@@ -107,3 +107,10 @@ No application code, product architecture, or live research workflow has been va
 - Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
 - This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
 - Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
+
+## Canonical feature inventory checkpoint — 2026-10-08
+- [`docs/features/FEATURE-INVENTORY.md`](docs/features/FEATURE-INVENTORY.md) now consolidates the **18 discussed product feature areas** into **368 individually ID-tagged capabilities**, plus **15 cross-cutting differentiated concepts** (**383 inventory rows**). It includes descriptions, source/evidence families, authority/status classification, research dependencies and **UNASSIGNED release priorities**.
+- **Scope/status:** Inventory is a **draft pending owner review** on `docs/complete-feature-inventory-v0.1`. No release schedule, MVP, implementation or feature priority was approved by producing the catalog. An entry being present is not a commitment to implement it.
+- **Preserved decisions:** The 13-domain frozen guidance remains unchanged and author-controllable; Tiptap 3/ProseMirror is the selected editor foundation (ADR-0003 in its separate decision PR), but the broader application stack and paid editor features are unselected. This catalog neither reconciles AR source variants nor invents missing original archives.
+- **Research gap:** The separately referenced historical 20-section/42-requirement research artifact remains unverified. The inventory covers the recovered/discussed source set rather than guaranteeing no facts exist in missing source material.
+- **Next action:** Owner reviews catalog fidelity and IDs, then performs R04 evidence-based per-feature release-horizon decisions. Keep the [R04 scope PR #8](https://github.com/Ben-001-sys/Vellistry/pull/8) separate until owner explicitly approves scope.
