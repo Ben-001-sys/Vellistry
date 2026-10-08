@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.3
+version: 0.1.4
 ---
 
 # Vellistry — Current State
@@ -26,8 +26,8 @@ Research and discovery; engineering knowledge foundation initialization.
 
 ## Repository
 Private repository: `Ben-001-sys/Vellistry`.
-Documentation bootstrap branch: `docs/research-knowledge-baseline-v0.1`.
-The branch is work in progress until reviewed and merged. README.md has been created on main.
+Knowledge-baseline PR #1 is closed; its governance and initial research documents are now present on `main`.
+Current proposed research branch: `research/r06-rule-application-benchmark-v0.1`. A separate owner review/merge is required for this research batch.
 
 ## Available research sources
 - AI Writing App Blueprint.md
@@ -49,8 +49,8 @@ These sources have been identified but **not yet fully migrated or individually 
 1. Complete source snapshot and stable provenance links for existing research documents.
 2. Extract individual requirements without losing details; distinguish evidence from suggestions.
 3. Audit consistency across research and record ambiguities or conflicts.
-4. Run a trial editor-technology investigation using ContextPack → ExecutionBundle.
-5. Review and merge the baseline branch only after metadata and provenance checks.
+4. Prepare a research-only Rules Studio/default-guidance fixture and perform measured rule-application evaluations with author-controlled exceptions, without altering frozen source.
+5. Continue the professional editor technology/licensing trials as an independent research workstream; do not preselect a stack.
 
 ## Verification note
 No application code, product architecture, or live research workflow has been validated by this documentation bootstrap. Do not imply otherwise.
@@ -79,3 +79,11 @@ No application code, product architecture, or live research workflow has been va
 - **ADR-0001 owner approval verified:** `Ben-001-sys` explicitly reconfirmed repository co-location in [PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). The accepted decision's owner approval is now directly retrievable and no longer requires owner reconfirmation. The original earlier conversation itself remains without a durable permalink; this separate historical provenance gap is not falsely marked solved.
 - **Linked records:** [ADR-0001](docs/decisions/ADR-0001-co-locate-engineering-knowledge-with-application.md), [the provenance review](docs/governance/APPROVAL-PROVENANCE-2026-10-08.md), and the additive [HIS-20261008-003 event](docs/history/2026-10-08-adr-0001-owner-reconfirmation.md) document the evidence. The original HIS-20261008-001 is retained and cross-referenced rather than silently replaced.
 - **Merge boundary:** Confirm green metadata CI and reviewer assessment on the resulting **exact PR head**. PR remains open/draft until the owner decides whether to mark ready and merge; this recorded approval is approval of ADR-0001, **not** authorization to merge the PR.
+
+## R06 rule-application research — 2026-10-08
+- Initial [Rules Studio application research](docs/research/R06-RULES-STUDIO-APPLICATION-RESEARCH-2026-10-08.md) checked primary vendor documentation for Novelcrafter, Plotdrive, NovelAI, AI Dungeon and provider instruction/context behavior. Findings about vendor features are documentation-grounded, not verified by running paid competitor accounts.
+- The companion [evaluation protocol](docs/research/R06-RULE-APPLICATION-EVALUATION-PROTOCOL.md) defines **6 synthetic fiction cases and 18 proposed tests**, covering default-on, disable/re-enable, custom instructions, author exceptions, scope isolation, context omissions, stale caches, costs, version changes and quality scoring.
+- A [research ExecutionBundle](docs/research/R06-EXECUTION-BUNDLE-2026-10-08.md) separates verified documentation, interpretation, proposals and non-executed tests.
+- **Measured product results: NONE YET.** No model was called, no API credentials were used, no editor/UI prototype implemented and no confirmed improvement in generated fiction quality is claimed.
+- The 13-domain frozen source remains unchanged; deployable default-pack packaging and AR conflicts remain explicitly unresolved pending author/source review.
+- Research artifacts are proposed on `research/r06-rule-application-benchmark-v0.1`; owner self-review/merge required. This does not alter accepted product direction or settle application architecture.
