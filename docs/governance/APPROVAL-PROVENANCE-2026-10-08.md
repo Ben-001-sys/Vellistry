@@ -1,19 +1,21 @@
 ---
 id: VEL-GOV-PROVENANCE-20261008-001
 type: approval-evidence-review
-status: needs-primary-link
+status: owner-reconfirmation-verified
 created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research-review
-version: 0.1.0
+version: 0.2.0
 related_adrs:
   - ADR-0001
   - ADR-0002
 related_history:
   - HIS-20261008-001
+  - HIS-20261008-003
 sources:
   - "Original Vellistry project conversation on 2026-10-08; permanent conversation URL unavailable"
   - "Retrospective retrieval of earlier user messages on 2026-10-08"
+  - "https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790"
 ---
 
 # Approval provenance review — 8 October 2026
@@ -32,6 +34,19 @@ This document is an explicit disclosure of the evidence gap and what the reviewe
 - **Recorded historical outcome:** This exchange was later summarized in the same project as an owner-accepted *co-location* decision; see ADR-0001 and the dated history record.
 - **Strength and limitation:** The recoverable user sentence is a confirming **question**, not by itself a verbatim approval statement. The earlier discussion and recorded outcome support keeping the existing accepted classification for review, but the **full exchange and any explicit final owner assent still require verification against the original chat**. Do not describe the quoted question alone as an unambiguous signed-off acceptance.
 - **Exact approved scope to preserve if verified:** One GitHub repository may contain both engineering knowledge and future app code. No monorepo package split, `apps/` or `packages/` directories, service boundaries, deployment layout, application framework or database was approved. The user explicitly rejected premature prescribed repository structure earlier on 2026-10-08.
+
+## Direct owner reconfirmation of ADR-0001 (verifiable new evidence)
+
+On 2026-10-08, the `Ben-001-sys` GitHub account, owner of this repository, posted an unambiguous [approval comment on PR #1](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). It reads:
+
+> I confirm and approve ADR-0001: Vellistry's engineering knowledge base and future application source code will be maintained in the same GitHub repository, Ben-001-sys/Vellistry.
+>
+> This approval concerns repository and knowledge management only. It does not approve any application architecture, technology stack, database, framework, or final directory structure.
+
+- **Evidence status:** DIRECT PRIMARY APPROVAL FOR THE CURRENT DECISION; confirmed against a retrievable GitHub comment from the owner account.
+- **Date precision:** 2026-10-08 only. No exact creation timestamp inferred from the connector.
+- **Related historical event:** [HIS-20261008-003](../history/2026-10-08-adr-0001-owner-reconfirmation.md), recorded additively rather than replacing the initial event.
+- **What is not established:** The exact original approval wording in the older conversation, whose permalink/full transcript remain unavailable. The new GitHub comment is a separate, later **reconfirmation**; it does not authenticate the old transcript.
 
 ## ADR-0002 — ADR and history records must have metadata
 
@@ -55,14 +70,14 @@ The reviewer considered:
 
 **Current review conclusion:**
 - ADR-0002's metadata direction has clear user-authored support.
-- ADR-0001's *co-location direction* is the recorded owner-accepted governance outcome but is less strongly evidenced by the recoverable sentence alone. Preserve its recorded `accepted` status for continuity **with this verification caveat**; an independent reviewer should inspect the original chat or request owner reconfirmation before treating the provenance issue as fully closed.
+- ADR-0001's co-location direction is now explicitly confirmed by the owner at the linked GitHub PR comment. **Approval evidence for the present accepted decision is verified.** The earlier conversation's exact wording and provenance remain incompletely archived and must not be retrospectively treated as confirmed.
 - The dated history record is a record of what the project earlier classified as accepted; it should not claim a fully archived primary-source transcript exists.
 - Neither ADR authorizes a specific application architecture, source tree or technical stack.
 
-## To close the evidence gap
+## Evidence resolution and continuing archival task
 
-- Obtain and record a durable permalink or immutable, access-controlled archive of the **original decision exchange** and its complete immediately relevant context, including the exact approval for ADR-0001.
-- Recheck the quotations and timestamps against the primary conversation; if the approval narrative is overstated, issue a correction/supersession record rather than silently rewriting historical evidence.
-- Until then, use the present reviewer-verification statement and references in ADRs, retaining the flag `primary transcript link pending`.
+- **Resolved — current ADR-0001 approval:** Direct owner reconfirmation is verifiable through [PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). The related ADR and new historical event cite it.
+- **Still open — original conversation archiving:** Obtain a durable permalink or access-controlled archive of the earlier decision discussion if historical precision is needed; the new comment does not recreate that transcript.
+- Keep the earlier retrieved question and any later verified quotations distinct. If the historical claim is found to be inaccurate, preserve the original event and add a traceable correction, rather than rewriting the past.
 
 **This note is a secondary, auditable review record, not a replacement for primary approval evidence.**
