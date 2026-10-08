@@ -80,6 +80,9 @@ This records **questions to research**, not results, implemented features, final
 
 **Expected research output:** Validated opportunity map, scope options and measurable product acceptance gates.
 
+**Research checkpoint — 2026-10-08 (PARTIAL, NOT APPROVED):** [R04 candidate A/B/C scope comparison](docs/research/R04-FIRST-USABLE-RELEASE-SCOPE-OPTIONS-2026-10-08.md) and [R04 author-trial/acceptance protocol](docs/research/R04-FIRST-PILOT-AUTHOR-TRIAL-AND-ACCEPTANCE-PLAN-2026-10-08.md) have been drafted from source-derived owner intent, existing editor/rules research and clearly marked analyst hypotheses. Twelve proposed author tasks and a provisional editor-only → controlled-AI-pilot sequence are documented; **no user trials occurred and no MVP/feature sequence has been approved**. Preserve all eight R04 questions as open until owner decision and actual acceptance evidence.
+
+
 ## R05 — Professional manuscript editor and authoring UX
 
 **Research gate:** G0 — Before committing to product scope or architecture  
