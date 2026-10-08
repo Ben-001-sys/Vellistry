@@ -5,7 +5,7 @@ status: draft
 created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "Owner decision, 2026-10-08: Tiptap 3 / ProseMirror manuscript editor"
   - "ADR-0003 (pending merge in PR #6 at research time)"
@@ -89,7 +89,15 @@ The branch contains a **self-contained Node + jsdom research harness** under [`d
 
 **Guardrail:** The proposal uses a full-document JSON snapshot to detect staleness **only as a correctness demonstration**. That would be too conservative and potentially wasteful for production; future trials should compare ProseMirror transaction mapping, durable range references, and versioned suggestions. Do not adopt the snapshot algorithm as final without measured evidence.
 
-**Status before CI:** No test is reported as successful until the workflow result and exact commit are verified. The initial local environment cannot reach npm registry (DNS EAI_AGAIN), so a local actual-Tiptap execution cannot be claimed. JS source formatting alone is not a passing experiment.
+### Execution evidence — actual packages, GitHub CI
+
+- **First workflow attempt:** [run 37843277680](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843277680), **6 passed / 1 failed**. The JSON-restore assertion compared plain-object versus null-prototype ProseMirror attribute objects with strict deep equality. Inspecting CI showed semantically identical JSON values, but different JavaScript attribute prototypes. This was an **overly strict test assertion**, not independently proven data loss.
+- **Correction:** the round-trip test now compares `JSON.stringify(editor.getJSON())` values before and after restore; this is the appropriate serialized-value comparison for this particular claim, but does **not** validate schema migrations or all import/export situations.
+- **Passing workflow:** [run 37843380823](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843380823) on commit `2276d12f6729740308bbe038a4fbb8f8f465be2a`: **7 passed, 0 failed**. Dependency versions logged: `@tiptap/core@3.31.4`, `@tiptap/pm@3.31.4`, `@tiptap/starter-kit@3.31.4`, `jsdom@26.1.0`.
+- **Synthetic long-input observation:** 893 paragraphs, **101,802 whitespace-delimited words**, ~**62.1 ms** editor initialization and **0.5 ms** `getJSON()` serialization in the CI/jsdom run. These specific figures are **environmental observations**, with no end-user performance guarantee or known variance. They measure neither keyboard events nor actual page layout and should not be advertised as editor performance for novels.
+- **Evidence status:** these tests exercise real Tiptap libraries under simulated DOM; they do **not** validate complete book UI, browser caret behavior, persistence, provider-side writing, tracked changes, imports, commercial features, EPUB/PDF or the Rules Studio.
+
+The local runtime cannot reach npm registry (`EAI_AGAIN`), so the evidence above comes from the quoted GitHub Actions logs. Pin exact dependency versions and test real browsers before an actual application implementation PR; `^3` in this research spike intentionally allowed the current major version.
 
 ## Acceptance and follow-up gates
 
