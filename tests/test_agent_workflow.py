@@ -47,7 +47,7 @@ class HandoffWorkflowTests(unittest.TestCase):
         blob = self.pack["inputs"][0]["git_blob_sha"]
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "VEL-CP-0001.md"
-            path.write_text(original.replace(blob, "0" * 40, 1), encoding="utf-8")
+            path.write_text(original.replace(blob, "f" * 40, 1), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "source blob does not belong"):
                 wf.check_pack(path, {self.task["id"]: self.task})
 
