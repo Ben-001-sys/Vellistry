@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.8
+version: 0.1.9
 ---
 
 # Vellistry — Current State
@@ -109,8 +109,15 @@ No application code, product architecture, or live research workflow has been va
 - Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
 
 ## Canonical feature inventory checkpoint — 2026-10-08
-- [`docs/features/FEATURE-INVENTORY.md`](docs/features/FEATURE-INVENTORY.md) now consolidates the **18 discussed product feature areas** into **368 individually ID-tagged capabilities**, plus **15 cross-cutting differentiated concepts** (**383 inventory rows**). It includes descriptions, source/evidence families, authority/status classification, research dependencies and **UNASSIGNED release priorities**.
+- [`docs/features/FEATURE-INVENTORY.md`](docs/features/FEATURE-INVENTORY.md) now consolidates the **18 discussed product feature areas** into **381 individually ID-tagged capabilities**, plus **15 cross-cutting differentiated concepts** (**396 inventory rows**). It includes descriptions, source/evidence families, authority/status classification, research dependencies and **UNASSIGNED release priorities**.
 - **Scope/status:** Inventory is a **draft pending owner review** on `docs/complete-feature-inventory-v0.1`. No release schedule, MVP, implementation or feature priority was approved by producing the catalog. An entry being present is not a commitment to implement it.
 - **Preserved decisions:** The 13-domain frozen guidance remains unchanged and author-controllable; Tiptap 3/ProseMirror is the selected editor foundation (ADR-0003 in its separate decision PR), but the broader application stack and paid editor features are unselected. This catalog neither reconciles AR source variants nor invents missing original archives.
 - **Research gap:** The separately referenced historical 20-section/42-requirement research artifact remains unverified. The inventory covers the recovered/discussed source set rather than guaranteeing no facts exist in missing source material.
 - **Next action:** Owner reviews catalog fidelity and IDs, then performs R04 evidence-based per-feature release-horizon decisions. Keep the [R04 scope PR #8](https://github.com/Ben-001-sys/Vellistry/pull/8) separate until owner explicitly approves scope.
+
+## Owner-requested live story profiles — 2026-10-08
+- The owner requested **continuously evolving, UI-visible character and storyline profiles while either an author writes or an AI generates fiction**, with manual profile construction/editing available.
+- [Direct owner-request record](docs/requirements/PRODUCT-DIRECTION-LIVE-STORY-PROFILES-2026-10-08.md) preserves the original wording and boundaries. [Feature inventory](docs/features/FEATURE-INVENTORY.md) now includes **13 stable new feature IDs** across Story Bible `VEL-FEAT-08-021..027` and Continuity `VEL-FEAT-09-025..030`; no previous IDs were renumbered.
+- Inventory totals now: **18 areas, 381 main feature entries, 15 differentiators, 396 feature rows**, all with **UNASSIGNED** release priority.
+- **Authority boundary:** Proposed profile changes discovered during human writing or AI text generation are not automatically accepted canon. The author can inspect and edit profiles directly; accepted story truth, provisional alternatives and extracted inferences remain separate.
+- **No implementation claims:** Real-time analysis frequency, background processing, extractors/models, saved entity schema and UI location are still research decisions; no working profile editor or AI pipeline has been delivered.
