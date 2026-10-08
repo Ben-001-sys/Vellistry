@@ -14,6 +14,7 @@ sources:
   - "Getting Better With Agentic Coding - Copy.zip"
 evidence:
   - "Owner explicitly required ADR and history metadata on 2026-10-08."
+  - "Recovered user messages: 'remember, the adr, history are suppose to have meta data' and 'okay I agree'; reviewed in docs/governance/APPROVAL-PROVENANCE-2026-10-08.md"
 related_requirements: []
 related_features: []
 related_contracts: []
@@ -49,7 +50,7 @@ The source agentic-coding research explicitly calls for ID, status, evidence, da
 - Corrections and supersession must preserve history.
 
 ## Evidence and verification limits
-The metadata requirement was explicitly affirmed by the project owner. A persistent conversation permalink remains to be added.
+The project-context review recovered the owner's explicit 2026-10-08 statement that ADR and history records should have metadata, followed by agreement. The [approval-provenance record](../governance/APPROVAL-PROVENANCE-2026-10-08.md) preserves the recovered wording, timestamps, review basis and outstanding primary-conversation permalink. This supports the direction, but does **not** imply that the owner approved every individual schema field.
 
 ## Implementation status
-**Partially implemented:** Markdown schemas and initial records created; automated validation and PR enforcement are pending and not claimed.
+**In progress:** Markdown schemas, initial records and a GitHub Actions metadata check exist. The PR now contains expanded file-discovery validation and negative regression tests, but their final-commit CI outcome and required branch protection must be verified separately. Passing checks do not establish complete semantic provenance.
