@@ -13,7 +13,7 @@ sources:
   - "Fiction Writing Project owner confirmation on 2026-10-08: 'okay, we are using it', replying to the specific Tiptap 3 / ProseMirror recommendation; permalink pending archival"
   - "https://tiptap.dev/docs/editor/getting-started/overview"
   - "https://tiptap.dev/docs/editor/getting-started/install/react"
-  - "docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md (draft R05 research branch; owner decision supersedes its historical 'not selected' timing)"
+  - "https://github.com/Ben-001-sys/Vellistry/blob/research/r05-editor-license-capability-scan-v0.1/docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md (research branch; drafted before the owner selected the editor)"
 evidence:
   - "Owner explicitly accepted Tiptap 3 built on ProseMirror as Vellistry's manuscript editor foundation in the 2026-10-08 Fiction Writing Project conversation."
   - "The preceding recommendation limited acceptance to the open-source editor core, excluding paid conversion/pagination features and all remaining application-stack decisions."
@@ -73,7 +73,7 @@ These research alternatives remain documented, not banned from use in other unre
 - The documented open-source editor core uses MIT licensing; third-party extension and paid product licenses must be individually checked.
 - The choice reuses mature editing primitives while preserving room to evaluate long-form performance, author-specific interface controls and manuscript import/export separately.
 
-See the [official overview](https://tiptap.dev/docs/editor/getting-started/overview), [ProseMirror dependency description](https://tiptap.dev/docs/editor/getting-started/install/react) and independent [R05 research report](../research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md) once its draft research branch is merged.
+See the [official overview](https://tiptap.dev/docs/editor/getting-started/overview), [ProseMirror dependency description](https://tiptap.dev/docs/editor/getting-started/install/react) and independent [R05 research report](https://github.com/Ben-001-sys/Vellistry/blob/research/r05-editor-license-capability-scan-v0.1/docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md) on its separate draft research branch.
 
 ## Consequences and trade-offs
 
