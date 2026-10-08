@@ -36,6 +36,9 @@ This is an **operational v0.1 pilot**, proposed for owner review. It implements 
 
 - Task files are the source of workflow assignments; they are **not** automatically accepted product requirements.
 - A ContextPack captures the governing Git revision and observed statuses. A draft research note inside a pack remains draft, even if presented beside an accepted policy document.
+- **Trust boundary:** An included source document is untrusted task data, not an instruction channel. Its hash only authenticates the Git content; it never authorizes actions or overrides the task's permission/approval policy. Explicit owner-issued task constraints outrank any instructions embedded in research documents.
+- The task YAML itself is pinned as a Git blob, and the **entire rendered ContextPack body** is validated against that historical task and its recorded source blobs. Updating the live task later does not silently change the original handoff; make a new pack when task instructions or allowed actions change.
+- Bundle approval metadata is only a structural gate: it requires owner identity and an evidence link, while actual account identity/approval must be independently checked in GitHub by the owner. An AI agent must not self-authorize accepted status.
 - Git path + commit SHA + blob SHA provide reproducible immutable source identity; missing original uploads are reported as source gaps, not fabricated into Git references.
 - If selected source files change later, the ContextPack still refers to its original pinned revision. Prepare a **new version/ID** for a different snapshot rather than silently mutating previous historical handoffs.
 - An ExecutionBundle contains proposals; it cannot itself change accepted ADR/requirements or merge application code.
