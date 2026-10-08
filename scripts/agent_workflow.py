@@ -61,6 +61,16 @@ def frontmatter(path: Path):
     return data, raw[m.end():]
 
 
+def frontmatter_from_text(raw: str) -> tuple[dict, str]:
+    match = re.match(r"\A---\n(.*?)\n---\n", raw, re.DOTALL)
+    if not match:
+        raise ValueError("generated ContextPack is missing YAML metadata")
+    data = yaml.safe_load(match.group(1))
+    if not isinstance(data, dict):
+        raise ValueError("generated ContextPack metadata must be a mapping")
+    return data, raw[match.end():]
+
+
 def require_fields(data: dict, fields: set[str], path: Path):
     missing = sorted(fields - set(data))
     if missing:
@@ -254,6 +264,13 @@ def check_pack(path: Path, task_by_id: dict[str, dict]):
         raise ValueError(f"{path}: context input set differs from task")
     if meta["source_gaps"] != task["source_gaps"]:
         raise ValueError(f"{path}: known gaps changed unexpectedly")
+    # Fail closed on any extra, missing or altered agent-facing instructions,
+    # including text outside the explicitly rendered permissions section.
+    _, expected_body = frontmatter_from_text(
+        render_pack(task, meta["base_commit"], prepared_by=meta["prepared_by"])
+    )
+    if body.strip() != expected_body.strip():
+        raise ValueError(f"{path}: complete ContextPack body differs from pinned task and sources")
 
 
 def check_bundle(path: Path, task_by_id: dict[str, dict], pack_by_id: dict[str, dict]):
