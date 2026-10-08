@@ -19,6 +19,7 @@ sources:
   - "https://github.com/Ben-001-sys/Vellistry/pull/6 — owner-selected editor ADR-0003, merge state independently checked"
   - "https://github.com/Ben-001-sys/Vellistry/pull/8 — R04 candidate first-release boundaries"
   - "Project owner message, 2026-10-08: continuous, visible character/storyline profiles during human writing and AI generation; original conversation permalink not archived"
+  - "docs/requirements/PRODUCT-DIRECTION-LIVE-STORY-PROFILES-2026-10-08.md — exact new owner request, scope and authority distinctions"
 related_research:
   - R01
   - R02
@@ -638,7 +639,7 @@ A proposed interaction illustrates the request without presuming a final UI: whe
 
 **Source and authority boundary:** This is new **owner-requested product behavior**, not a feature found verbatim in the initial SRC-001 source. The author did not select a UI component, background analysis interval, LLM extraction model, storage schema, notification behavior, processing cost, release priority or autonomous canon mutation. **Continuous** means keeping track as the story evolves; whether extraction happens per passage, save, scene completion or explicitly requested analysis requires R02/R07 evaluation. Avoid sending private manuscript text to a model without an authorized provider and consent; allow manual profile maintenance with AI fully disabled. Do not silently treat AI-suggested new facts as accepted canon.
 
-**Cross-reference IDs:** `VEL-FEAT-08-021..027` and `VEL-FEAT-09-025..030`; related original profile/state entries in `VEL-FEAT-08-004..020` and `VEL-FEAT-09-001..024`.
+**Owner-request record:** [Live and visible evolving story profiles](../requirements/PRODUCT-DIRECTION-LIVE-STORY-PROFILES-2026-10-08.md).\n\n**Cross-reference IDs:** `VEL-FEAT-08-021..027` and `VEL-FEAT-09-025..030`; related original profile/state entries in `VEL-FEAT-08-004..020` and `VEL-FEAT-09-001..024`.
 
 ## Approval gates, not decisions made by this catalog
 
