@@ -1,5 +1,6 @@
 name: Agent workflow
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - 'docs/agent-workflow/**'
@@ -7,7 +8,7 @@ on:
       - 'tests/test_agent_workflow.py'
       - '.github/workflows/agent-workflow.yml'
   push:
-    branches: [main]
+    branches: [main, 'feat/agent-workflow-*']
     paths:
       - 'docs/agent-workflow/**'
       - 'scripts/agent_workflow.py'
