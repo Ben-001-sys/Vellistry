@@ -60,6 +60,8 @@ Required ADR body sections:
 
 Accepted status requires the approving role/person and dated decision evidence. **Acceptance does not imply implementation.**
 
+When a primary decision conversation or approval artifact is unavailable, record the precise evidence gap and the reviewer-verification basis in a versioned provenance note; link the note from the ADR/history evidence fields. Do not manufacture a URL or infer explicit assent from a question. A secondary review can explain an existing decision status but does not close the primary-evidence gap. If an independent reviewer cannot confirm the approval, seek owner reconfirmation or correct the decision's status transparently.
+
 ## Historical event front matter — required
 ```yaml
 ---
