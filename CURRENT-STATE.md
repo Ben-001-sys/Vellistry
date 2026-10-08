@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.3
+version: 0.1.6
 ---
 
 # Vellistry — Current State
@@ -26,8 +26,8 @@ Research and discovery; engineering knowledge foundation initialization.
 
 ## Repository
 Private repository: `Ben-001-sys/Vellistry`.
-Documentation bootstrap branch: `docs/research-knowledge-baseline-v0.1`.
-The branch is work in progress until reviewed and merged. README.md has been created on main.
+Knowledge-baseline PR #1 is closed; its governance and initial research documents are now present on `main`.
+Current proposed research branch: `research/r06-rule-application-benchmark-v0.1`. A separate owner review/merge is required for this research batch.
 
 ## Available research sources
 - AI Writing App Blueprint.md
@@ -49,8 +49,8 @@ These sources have been identified but **not yet fully migrated or individually 
 1. Complete source snapshot and stable provenance links for existing research documents.
 2. Extract individual requirements without losing details; distinguish evidence from suggestions.
 3. Audit consistency across research and record ambiguities or conflicts.
-4. Run a trial editor-technology investigation using ContextPack → ExecutionBundle.
-5. Review and merge the baseline branch only after metadata and provenance checks.
+4. Prepare a research-only Rules Studio/default-guidance fixture and perform measured rule-application evaluations with author-controlled exceptions, without altering frozen source.
+5. Continue the professional editor technology/licensing trials as an independent research workstream; do not preselect a stack.
 
 ## Verification note
 No application code, product architecture, or live research workflow has been validated by this documentation bootstrap. Do not imply otherwise.
@@ -86,3 +86,17 @@ No application code, product architecture, or live research workflow has been va
 - New R02 branch `docs/research-migration-r02` contains [the first SRC-002 navigation index](docs/research/R02-SRC002-READER-PROBLEM-SOURCE-INDEX-2026-10-08.md) and [a phased archival and migration plan](docs/research/R02-RESEARCH-MIGRATION-PLAN-2026-10-08.md).
 - R02 is **partial/draft**: original full research bytes still require stable archiving in Git or another immutable referenced location. The initial headings index is not a verified external fact-check, approved writing ruleset, or an architecture decision.
 - Immediate next steps: archive original files with SHA-256 verification; reconcile source paths and update SRC-001–004 register; expand source-to-requirement references without changing frozen guidance or losing variants.
+
+## R06 rule-application research — 2026-10-08
+- Initial [Rules Studio application research](docs/research/R06-RULES-STUDIO-APPLICATION-RESEARCH-2026-10-08.md) checked primary vendor documentation for Novelcrafter, Plotdrive, NovelAI, AI Dungeon and provider instruction/context behavior. Findings about vendor features are documentation-grounded, not verified by running paid competitor accounts.
+- The companion [evaluation protocol](docs/research/R06-RULE-APPLICATION-EVALUATION-PROTOCOL.md) defines **6 synthetic fiction cases and 18 proposed tests**, covering default-on, disable/re-enable, custom instructions, author exceptions, scope isolation, context omissions, stale caches, costs, version changes and quality scoring.
+- A [research ExecutionBundle](docs/research/R06-EXECUTION-BUNDLE-2026-10-08.md) separates verified documentation, interpretation, proposals and non-executed tests.
+- **Measured product results: NONE YET.** No model was called, no API credentials were used, no editor/UI prototype implemented and no confirmed improvement in generated fiction quality is claimed.
+- The 13-domain frozen source remains unchanged; deployable default-pack packaging and AR conflicts remain explicitly unresolved pending author/source review.
+- Research artifacts are proposed on `research/r06-rule-application-benchmark-v0.1`; owner self-review/merge required. This does not alter accepted product direction or settle application architecture.
+
+## R06-002 executable synthetic experiment — 2026-10-08
+- A non-production [synthetic request resolver and 12 tests](docs/research/experiments/r06_synthetic_request_simulator.py) were added to this draft research branch. Its three defaults are invented **SIMULATED GUIDANCE** and deliberately not the frozen 130-lens source.
+- GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
+- The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
+- Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
