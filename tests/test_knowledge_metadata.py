@@ -31,23 +31,32 @@ class KnowledgeMetadataValidationTests(unittest.TestCase):
     def audit(self):
         return validator.audit_records(self.root)
 
+    def expected_record_count(self) -> int:
+        """Record count is derived from fixtures, not frozen to the original seed."""
+        return sum(
+            1
+            for group in ("decisions", "history")
+            for path in (self.root / "docs" / group).glob("*.md")
+            if path.name != "README.md"
+        )
+
     def test_real_records_pass_when_unmodified(self):
         count, errors = self.audit()
-        self.assertEqual(count, 3)
+        self.assertEqual(count, self.expected_record_count())
         self.assertEqual(errors, [])
 
     def test_malformed_adr_filename_is_not_skipped(self):
         original = next((self.root / "docs/decisions").glob("ADR-0001-*.md"))
         original.rename(original.parent / "misc-decision.md")
         count, errors = self.audit()
-        self.assertEqual(count, 3)
+        self.assertEqual(count, self.expected_record_count())
         self.assertTrue(any("invalid adr filename" in e for e in errors), errors)
 
     def test_malformed_history_filename_is_not_skipped(self):
         original = next((self.root / "docs/history").glob("2026-*.md"))
         original.rename(original.parent / "history_notes.md")
         count, errors = self.audit()
-        self.assertEqual(count, 3)
+        self.assertEqual(count, self.expected_record_count())
         self.assertTrue(any("invalid history filename" in e for e in errors), errors)
 
     def test_invalid_frontmatter_is_rejected(self):
@@ -72,7 +81,7 @@ class KnowledgeMetadataValidationTests(unittest.TestCase):
         self.assertTrue(any("accepted ADR requires approved_by" in e for e in errors), errors)
 
     def test_mismatched_history_id_date_is_rejected(self):
-        path = next((self.root / "docs/history").glob("2026-*.md"))
+        path = next((self.root / "docs/history").glob("2026-10-08-knowledge-foundation-approved.md"))
         body = path.read_text(encoding="utf-8").replace(
             "id: HIS-20261008-001", "id: HIS-20261007-001"
         )
