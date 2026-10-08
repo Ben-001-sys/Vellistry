@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.3
+version: 0.1.4
 ---
 
 # Vellistry — Current State
@@ -79,3 +79,10 @@ No application code, product architecture, or live research workflow has been va
 - **ADR-0001 owner approval verified:** `Ben-001-sys` explicitly reconfirmed repository co-location in [PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). The accepted decision's owner approval is now directly retrievable and no longer requires owner reconfirmation. The original earlier conversation itself remains without a durable permalink; this separate historical provenance gap is not falsely marked solved.
 - **Linked records:** [ADR-0001](docs/decisions/ADR-0001-co-locate-engineering-knowledge-with-application.md), [the provenance review](docs/governance/APPROVAL-PROVENANCE-2026-10-08.md), and the additive [HIS-20261008-003 event](docs/history/2026-10-08-adr-0001-owner-reconfirmation.md) document the evidence. The original HIS-20261008-001 is retained and cross-referenced rather than silently replaced.
 - **Merge boundary:** Confirm green metadata CI and reviewer assessment on the resulting **exact PR head**. PR remains open/draft until the owner decides whether to mark ready and merge; this recorded approval is approval of ADR-0001, **not** authorization to merge the PR.
+
+## Stage 3 agent handoff pilot — 2026-10-08 (proposed, on separate branch)
+- Created branch `feat/agent-workflow-stage3-v0.1` from `main`, separate from the open draft R02 research migration [PR #2](https://github.com/Ben-001-sys/Vellistry/pull/2).
+- Added `docs/agent-workflow/README.md`, a source-scoped YAML research task `VEL-TASK-0001`, a Git-commit/blob-pinned `VEL-CP-0001`, and a fact/interpretation/proposal-separated `VEL-EB-0001` pending owner review.
+- Added `scripts/agent_workflow.py` for ContextPack generation and contract validation, together with regression tests and GitHub Actions validation. Automated CI outcomes are **not yet recorded as passed** in this status entry.
+- Pilot checks **repository record traceability** for existing `INT-09`–`INT-12` and proposed `VEL-REQ-002` only. The original SRC-001 blueprint is still unarchived in Git, editor technology remains undecided, and no independent second-agent resumption has yet been validated.
+- Next: verify exact-head CI, review v0.1 draft PR, preserve original research sources in parallel through R02, and run an independent-agent handoff test before claiming the full Stage 3 objective is complete.
