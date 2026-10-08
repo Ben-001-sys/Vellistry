@@ -8,13 +8,16 @@ updated_at: 2026-10-08
 decided_at: 2026-10-08
 author: project_owner
 approved_by: project_owner
-version: 1.0.0
+version: 1.0.1
 sources:
   - "Vellistry planning conversation, 2026-10-08; permalink pending archival"
   - "Getting Better With Agentic Coding - Copy.zip"
+  - "https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790"
 evidence:
   - "Owner explicitly agreed to keep Vellistry's engineering knowledge base in the same GitHub repository as its future application on 2026-10-08."
-  - "Secondary review: docs/governance/APPROVAL-PROVENANCE-2026-10-08.md (recovered conversational wording; original approval exchange still requires primary verification)"
+  - "Secondary review: docs/governance/APPROVAL-PROVENANCE-2026-10-08.md (earlier conversation reviewed separately; original historical transcript remains unarchived)"
+  - "Primary confirmation: owner Ben-001-sys directly approved ADR-0001 in GitHub PR #1 comment 6068029790 on 2026-10-08"
+  - "Historical follow-up: docs/history/2026-10-08-adr-0001-owner-reconfirmation.md"
 related_requirements: []
 related_features: []
 related_contracts: []
@@ -52,7 +55,9 @@ Co-location supports traceability across implementation, decisions, requirements
 - The documentation tree can evolve as research and app needs become clearer.
 
 ## Evidence and verification limits
-The earlier conversation recorded this as an owner-accepted co-location decision. A targeted follow-up review recovered the user's 2026-10-08T11:00:03Z confirming **question** and the assistant's response, but not the full explicit acceptance exchange. [The approval-provenance review](../governance/APPROVAL-PROVENANCE-2026-10-08.md) documents exactly what is corroborated, what remains unverified, and the reviewer basis for retaining the prior status pending a primary transcript link or owner reconfirmation. **Do not mistake the retrieved question alone for definitive approval proof.**
+**Explicit owner reconfirmation is now directly evidenced.** On 2026-10-08 the repository owner `Ben-001-sys` explicitly approved this decision in [GitHub PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790), limiting it to a shared repository for engineering knowledge and future app code. This current approval is a primary, independently retrievable GitHub record; see [the new historical event](../history/2026-10-08-adr-0001-owner-reconfirmation.md).
+
+**Historical limitation remains:** The earlier planning conversation had only a recoverable owner *question* and an assistant confirmation, not a verified permalink to an explicit earlier approval. [The evidence review](../governance/APPROVAL-PROVENANCE-2026-10-08.md) preserves that distinction. The new GitHub confirmation does **not** reconstruct or authenticate the missing original transcript. The decision does **not** approve an application framework, database, directory tree, deployment or model provider.
 
 ## Implementation status
 **In progress:** README.md initialized on main; supporting documentation is being drafted on a dedicated branch. No application code is selected or implemented.
