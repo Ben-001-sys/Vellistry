@@ -5,7 +5,7 @@ status: accepted
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -37,6 +37,9 @@ Future authors' manuscripts, story canon, application settings, credentials, and
 3. Review source fidelity and factual verification independently.
 4. Promote material changes only after owner approval; update linked records and current state.
 5. When superseding an ADR, preserve the older file and connect both sides of the lineage.
+
+## PR review and sole owner authority
+At present the project has a single human contributor. The owner performs self-review and makes the final merge/acceptance decision. A distinct human PR approval is not required. Automated CI and optional AI-agent reviews provide evidence and feedback; agents do not have approval authority. For significant changes, document the owner's review and decision in the PR or associated provenance record. GitHub does not count self-review as a separate approving reviewer; this workflow must not assume otherwise. If branch-protection settings require other human approvals, review the protection policy rather than fabricate reviewers. See HIS-20261008-002.
 
 ## Metadata and history
 See [docs/governance/RECORD-SCHEMAS.md](docs/governance/RECORD-SCHEMAS.md). All ADR and historical-event records require YAML front matter and meaningful content.
