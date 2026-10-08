@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 ---
 
 # Vellistry — Current State
@@ -18,6 +18,11 @@ Research and discovery; engineering knowledge foundation initialization.
 - ADR and historical records require structured, traceable metadata (ADR-0002).
 - Use Git/Markdown first, preserving separate runtime storage for future author data.
 - Apply research governance and lightweight ContextPack/ExecutionBundle handoffs before building complex orchestration.
+
+## Solo-maintainer collaboration policy (2026-10-08)
+- The project owner is the only human contributor for now. Owner self-review and successful required checks are sufficient under the working PR process; no second human reviewer is expected or required.
+- AI review may be requested as an independent diagnostic pass, but does not constitute a formal independent human approval.
+- Material architecture/security/production actions still require deliberate owner sign-off. This clarification is recorded in HIS-20261008-002 and should be revisited if human collaborators join.
 
 ## Repository
 Private repository: `Ben-001-sys/Vellistry`.
