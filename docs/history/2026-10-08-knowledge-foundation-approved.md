@@ -16,6 +16,7 @@ sources:
 evidence:
   - "Owner agreement to co-locate project knowledge and application source."
   - "Owner instruction that ADRs and history must contain metadata."
+  - "Secondary reconstructed conversation excerpts and verification limits: docs/governance/APPROVAL-PROVENANCE-2026-10-08.md"
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -35,7 +36,7 @@ On 2026-10-08, the project owner approved keeping Vellistry's engineering knowle
 Previously this arrangement was a recommendation. After approval, co-location and record metadata became accepted project-governance decisions.
 
 ## Evidence and provenance
-The approval appears in the project planning conversation. A durable permalink or archived transcript identifier has not yet been committed; this limitation is recorded deliberately.
+The [approval-provenance review](../governance/APPROVAL-PROVENANCE-2026-10-08.md) records original user wording retrieved from the earlier project conversation, separates the owner's co-location **question** from subsequent assistant confirmation, and notes clearer assent for the metadata requirement. This historical record describes the decision status previously entered by the project; it is **not** proof of an archived primary transcript or an independent authentication of ADR-0001 approval. A primary conversation link or explicit owner reconfirmation is still pending.
 
 ## Interpretation
 The project should bootstrap a Git/Markdown knowledge layer before relying on autonomous multi-agent workflows. This interpretation does not establish that the entire knowledge migration or software implementation is complete.
