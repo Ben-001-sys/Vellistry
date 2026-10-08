@@ -43,7 +43,7 @@ Audit the existing first-pass extraction of author intent for non-AI editor valu
 **Out:** Approving a product MVP, architecture, or editor selection; Independent checking of an unarchived original source; Verifying current vendor licensing or external product details
 
 ## Evidence and authority constraints
-Source contents below are verbatim Git snapshots. Their recorded statuses remain in force: draft research is not accepted requirements. Original unarchived uploads are not independently verified merely by being mentioned.
+The text below is a readable rendering of pinned Git blobs; exact raw bytes remain recoverable from the recorded commit/blob SHAs. Recorded source statuses remain in force: draft research is not accepted requirements. Original unarchived uploads are not independently verified merely by being mentioned.
 
 **Known source gaps:**
 - SRC-001: Original uploaded blueprint bytes not yet archived/retrievable inside the Git repo.
