@@ -62,6 +62,7 @@ related_adrs:
 
 - `DIRECTED` — owner explicitly specified behavior or product principle. **Does not automatically mean a particular UI, architecture, implementation or release date was approved.** Especially applies to the frozen fiction guidance and author control.
 - `OWNER-INTENT` — original owner expressly requested a capability **or its investigation** (e.g. rich editing, covers, model choice, MCP, export), but the mechanics/launch sequencing remain undecided.
+- `TECH-SELECTED` — the owner explicitly chose a technical foundation; this status does **not** approve every product feature associated with it, its paid extensions, or the wider architecture.
 - `CANDIDATE` — proposed in the research synthesis, competitor scan or functional blueprint; **not author-approved as a commitment**. Covers individual implementation-level operations that go beyond the owner's high-level intent.
 - `UNASSIGNED` — release priority intentionally blank: do **not** silently convert this into `MVP` or `LATER`.
 - `BP §N` — section number of the **master Fiction Writing App Google Doc's synthesized blueprint, Part VI unless another part is stated**. It is a research synthesis, not raw owner speech. `INT-XX` is the precise owner-intent extraction in `R01-SRC001`; `DIR` is the separate 2026-10-08 owner-directed frozen-guidance record; `RXX` denotes corresponding questions/evidence in the 22-area research register.
@@ -128,7 +129,7 @@ related_adrs:
 | `VEL-FEAT-02-023` | Editor annotations | Attach notes, comments or highlights to relevant passages. | INT-09–12, INT-28; BP §29; ADR-0003; R05 | CANDIDATE | R05, R11, R15, R16 | UNASSIGNED |
 | `VEL-FEAT-02-024` | Tracked edits | Review proposed editing changes without silently mutating text. | INT-09–12, INT-28; BP §29; ADR-0003; R05 | CANDIDATE | R05, R11, R15, R16 | UNASSIGNED |
 | `VEL-FEAT-02-025` | Reading or proofing view | Present comfortable and accessible text for reading. | INT-09–12, INT-28; BP §29; ADR-0003; R05 | CANDIDATE | R05, R11, R15, R16 | UNASSIGNED |
-| `VEL-FEAT-02-026` | Tiptap 3 / ProseMirror foundation | Use the owner-selected editing technology, without assuming premium features are included. | INT-09–12, INT-28; BP §29; ADR-0003; R05 | OWNER-INTENT | R05, R11, R15, R16 | UNASSIGNED |
+| `VEL-FEAT-02-026` | Tiptap 3 / ProseMirror foundation | Use the owner-selected editing technology, without assuming premium features are included. | INT-09–12, INT-28; BP §29; ADR-0003; R05 | TECH-SELECTED | R05, R11, R15, R16 | UNASSIGNED |
 
 ## 3. Story Planning & Outlining
 
@@ -271,95 +272,95 @@ related_adrs:
 
 ## 8. Story Bible & Worldbuilding
 
-**Area source:** BP §§17, 34; INT-07; R07. **Research dependencies:** R01, R02, R07, R11, R15. **Related draft requirement(s):** VEL-REQ-005. This section is a feature inventory, not a complete UI or data-model specification.
+**Area source:** BP Part V §17 and Part VI §34; INT-07; R07. **Research dependencies:** R01, R02, R07, R11, R15. **Related draft requirement(s):** VEL-REQ-005. This section is a feature inventory, not a complete UI or data-model specification.
 
 | ID | Feature | Meaning | Evidence/source | Status | Research dependencies | Release priority |
 |---|---|---|---|---|---|---|
-| `VEL-FEAT-08-001` | Book profile | Record title, status, central premise and story question. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-002` | Genre and audience | Track genre, subgenre and intended readership. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-003` | Narrative identity | Record POV style, tense, distance, voice and structure. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-004` | Character identities | Store biographies, appearance and stable traits. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-005` | Character psychology | Record motivations, values, fears, beliefs and contradictions. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-006` | Character competencies | Track skills, limitations and knowledge baselines. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-007` | Character relationships | Organize loyalties, antagonisms and networks. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-008` | Locations and geography | Record sites and spatial relationships. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-009` | Cultures and institutions | Store society, institutions, history and customs. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-010` | Magic and technology systems | Capture world laws, mechanics and hard limitations. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-011` | Factions | Record groups, goals, alliances and conflicts. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-012` | Plot architecture | Store major arcs, subplots, mysteries and timing. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-013` | Themes and artistic identity | Capture motifs, voice preferences and chosen omissions. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-014` | Canon classification | Distinguish locked, approved, working, possible and obsolete information. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-015` | Canon evidence links | Link accepted facts to chapters or author decisions. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-016` | Genre-specific optional templates | Offer useful fields without forcing genre templates. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-017` | Cross-book story references | Reuse shared canon only among explicitly related books. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-018` | Imported Story Bible review | Preview and verify external notes before establishing authority. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-019` | Canon contradictions | Surface potential conflicts without silently deciding truth. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
-| `VEL-FEAT-08-020` | Retcon approval | Deliberately revise established facts and preserve prior versions. | BP §§17, 34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-001` | Book profile | Record title, status, central premise and story question. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-002` | Genre and audience | Track genre, subgenre and intended readership. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-003` | Narrative identity | Record POV style, tense, distance, voice and structure. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-004` | Character identities | Store biographies, appearance and stable traits. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-005` | Character psychology | Record motivations, values, fears, beliefs and contradictions. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-006` | Character competencies | Track skills, limitations and knowledge baselines. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-007` | Character relationships | Organize loyalties, antagonisms and networks. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-008` | Locations and geography | Record sites and spatial relationships. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-009` | Cultures and institutions | Store society, institutions, history and customs. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-010` | Magic and technology systems | Capture world laws, mechanics and hard limitations. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-011` | Factions | Record groups, goals, alliances and conflicts. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-012` | Plot architecture | Store major arcs, subplots, mysteries and timing. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-013` | Themes and artistic identity | Capture motifs, voice preferences and chosen omissions. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-014` | Canon classification | Distinguish locked, approved, working, possible and obsolete information. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-015` | Canon evidence links | Link accepted facts to chapters or author decisions. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-016` | Genre-specific optional templates | Offer useful fields without forcing genre templates. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-017` | Cross-book story references | Reuse shared canon only among explicitly related books. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-018` | Imported Story Bible review | Preview and verify external notes before establishing authority. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-019` | Canon contradictions | Surface potential conflicts without silently deciding truth. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
+| `VEL-FEAT-08-020` | Retcon approval | Deliberately revise established facts and preserve prior versions. | BP Part V §17 and Part VI §34; INT-07; R07 | CANDIDATE | R01, R02, R07, R11, R15 | UNASSIGNED |
 
 ## 9. Continuity, Memory & Story-State Tracking
 
-**Area source:** BP §§18–20, 34; R07. **Research dependencies:** R07, R10, R15, R18, R19. **Related draft requirement(s):** VEL-REQ-005. This section is a feature inventory, not a complete UI or data-model specification.
+**Area source:** BP Part V §§18–20 and Part VI §34; R07. **Research dependencies:** R07, R10, R15, R18, R19. **Related draft requirement(s):** VEL-REQ-005. This section is a feature inventory, not a complete UI or data-model specification.
 
 | ID | Feature | Meaning | Evidence/source | Status | Research dependencies | Release priority |
 |---|---|---|---|---|---|---|
-| `VEL-FEAT-09-001` | Event timeline | Track story time, order, durations and deadlines. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-002` | Location state | Track where actors and relevant entities are. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-003` | Movement and geography | Validate travel, exits, entrances and location plausibility. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-004` | Object and resource state | Track ownership, possession, condition and inventory. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-005` | Physical condition | Track injuries, fatigue, limits and recovery. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-006` | Knowledge events | Record facts learned by whom, when and from which source. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-007` | Secret boundaries | Distinguish narrator knowledge from character knowledge. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-008` | Relationship changes | Track trust, obligations, status and turning points. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-009` | World-state changes | Track law, institutions, factions and social consequences. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-010` | Open plot threads | Track mysteries, conflicts and narrative promises. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-011` | Setup/payoff status | Track open, dormant and resolved obligations. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-012` | Scene entry and exit state | Preserve causal conditions before and after scenes. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-013` | Chapter state summary | Carry accepted changes to following chapters. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-014` | Character baseline/current-state distinction | Keep stable traits distinct from temporary pressures. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-015` | Chronological contradiction warnings | Identify plausible timing inconsistencies. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-016` | Spatial continuity warnings | Flag impossible positioning or movement. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-017` | Inventory continuity warnings | Flag missing/duplicated objects or ownership changes. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-018` | Injury continuity warnings | Identify improbable physical recovery or use. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-019` | Character knowledge firewall | Detect potential unsupported information disclosure. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-020` | Relationship-reset warnings | Flag abrupt unjustified social/psychological resets. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-021` | Canon proposal gate | Do not make an inferred AI fact authoritative automatically. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-022` | Retcon impact analysis | Show story state that an approved correction would affect. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-023` | Series continuity isolation | Allow common series canon without leaking unrelated books. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
-| `VEL-FEAT-09-024` | Provenance for state changes | Link each accepted state transition to supporting text or author approval. | BP §§18–20, 34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-001` | Event timeline | Track story time, order, durations and deadlines. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-002` | Location state | Track where actors and relevant entities are. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-003` | Movement and geography | Validate travel, exits, entrances and location plausibility. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-004` | Object and resource state | Track ownership, possession, condition and inventory. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-005` | Physical condition | Track injuries, fatigue, limits and recovery. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-006` | Knowledge events | Record facts learned by whom, when and from which source. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-007` | Secret boundaries | Distinguish narrator knowledge from character knowledge. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-008` | Relationship changes | Track trust, obligations, status and turning points. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-009` | World-state changes | Track law, institutions, factions and social consequences. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-010` | Open plot threads | Track mysteries, conflicts and narrative promises. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-011` | Setup/payoff status | Track open, dormant and resolved obligations. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-012` | Scene entry and exit state | Preserve causal conditions before and after scenes. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-013` | Chapter state summary | Carry accepted changes to following chapters. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-014` | Character baseline/current-state distinction | Keep stable traits distinct from temporary pressures. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-015` | Chronological contradiction warnings | Identify plausible timing inconsistencies. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-016` | Spatial continuity warnings | Flag impossible positioning or movement. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-017` | Inventory continuity warnings | Flag missing/duplicated objects or ownership changes. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-018` | Injury continuity warnings | Identify improbable physical recovery or use. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-019` | Character knowledge firewall | Detect potential unsupported information disclosure. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-020` | Relationship-reset warnings | Flag abrupt unjustified social/psychological resets. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-021` | Canon proposal gate | Do not make an inferred AI fact authoritative automatically. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-022` | Retcon impact analysis | Show story state that an approved correction would affect. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-023` | Series continuity isolation | Allow common series canon without leaking unrelated books. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
+| `VEL-FEAT-09-024` | Provenance for state changes | Link each accepted state transition to supporting text or author approval. | BP Part V §§18–20 and Part VI §34; R07 | CANDIDATE | R07, R10, R15, R18, R19 | UNASSIGNED |
 
 ## 10. Writing Quality, Editing Audits & Literary Intelligence
 
-**Area source:** SRC-002, SRC-003; BP §§21–26; R01, R07, R19. **Research dependencies:** R01, R06, R07, R08, R19. **Related draft requirement(s):** VEL-REQ-006. This section is a feature inventory, not a complete UI or data-model specification.
+**Area source:** SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19. **Research dependencies:** R01, R06, R07, R08, R19. **Related draft requirement(s):** VEL-REQ-006. This section is a feature inventory, not a complete UI or data-model specification.
 
 | ID | Feature | Meaning | Evidence/source | Status | Research dependencies | Release priority |
 |---|---|---|---|---|---|---|
-| `VEL-FEAT-10-001` | 13-domain guidance availability | Preserve the source's thirteen craft domains without silent rewriting. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-002` | 130-lens guidance availability | Expose the historically identified lenses when canonical packaging is certified. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-003` | 40 constitutional principles | Keep the governing craft philosophy retrievable as source material. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-004` | Light prewriting check | Apply small-task, immediate-context preparation when requested. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-005` | Standard prewriting check | Evaluate normal scene prerequisites. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-006` | Deep prewriting check | Evaluate major chronology and long-range consequences. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-007` | Draft-time craft guidance | Offer relevant guidance without dictating fixed prose patterns. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-008` | Local post-draft audit | Review recent text proportionately. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-009` | Chapter-level craft review | Review progression and local errors in a chapter. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-010` | Cross-chapter pattern audit | Compare recurring constructions and scene behavior. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-011` | Whole-manuscript review | Investigate large-scale plot and narrative change. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-012` | Prose/rhythm pattern checks | Flag repetitive syntax and mechanical phrasing in context. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-013` | Repeated gesture checks | Detect density of generic repeated physical beats. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-014` | Description and sensory analysis | Assess selected image/detail relevance. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-015` | Dialogue analysis | Investigate conversational purpose and character distinctiveness. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-016` | Emotion and subtext review | Diagnose excessive explanation or unearned feeling. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-017` | Character motivation review | Check plausible agency and consequences. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-018` | POV and knowledge review | Check narrator/character information boundaries. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-019` | Scene purpose analysis | Distinguish dramatic functions, pressure and turn. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-020` | Pacing and escalation review | Diagnose stagnation, premature closure and tension monotony. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-021` | Plot causality review | Examine links between decisions and consequences. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-022` | Open promise/payoff audit | Check whether clues and obligations move or resolve. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-023` | Subplot independence review | Check secondary character and story movement. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-024` | Physical/world coherence audit | Check active world laws and embodied constraints. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-025` | Authorial voice preservation | Detect unrequested smoothing and genre-inappropriate flattening. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-026` | Intentional exception handling | Avoid automatically condemning legitimate repetition and stylistic choices. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
-| `VEL-FEAT-10-027` | Explainable edit suggestion | Show evidence and minimal, reversible proposed correction. | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-001` | 13-domain guidance availability | Preserve the source's thirteen craft domains without silent rewriting. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-002` | 130-lens guidance availability | Expose the historically identified lenses when canonical packaging is certified. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-003` | 40 constitutional principles | Keep the governing craft philosophy retrievable as source material. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-004` | Light prewriting check | Apply small-task, immediate-context preparation when requested. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-005` | Standard prewriting check | Evaluate normal scene prerequisites. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-006` | Deep prewriting check | Evaluate major chronology and long-range consequences. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-007` | Draft-time craft guidance | Offer relevant guidance without dictating fixed prose patterns. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-008` | Local post-draft audit | Review recent text proportionately. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-009` | Chapter-level craft review | Review progression and local errors in a chapter. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-010` | Cross-chapter pattern audit | Compare recurring constructions and scene behavior. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-011` | Whole-manuscript review | Investigate large-scale plot and narrative change. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-012` | Prose/rhythm pattern checks | Flag repetitive syntax and mechanical phrasing in context. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-013` | Repeated gesture checks | Detect density of generic repeated physical beats. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-014` | Description and sensory analysis | Assess selected image/detail relevance. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-015` | Dialogue analysis | Investigate conversational purpose and character distinctiveness. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-016` | Emotion and subtext review | Diagnose excessive explanation or unearned feeling. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-017` | Character motivation review | Check plausible agency and consequences. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-018` | POV and knowledge review | Check narrator/character information boundaries. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-019` | Scene purpose analysis | Distinguish dramatic functions, pressure and turn. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-020` | Pacing and escalation review | Diagnose stagnation, premature closure and tension monotony. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-021` | Plot causality review | Examine links between decisions and consequences. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-022` | Open promise/payoff audit | Check whether clues and obligations move or resolve. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-023` | Subplot independence review | Check secondary character and story movement. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-024` | Physical/world coherence audit | Check active world laws and embodied constraints. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-025` | Authorial voice preservation | Detect unrequested smoothing and genre-inappropriate flattening. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-026` | Intentional exception handling | Avoid automatically condemning legitimate repetition and stylistic choices. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
+| `VEL-FEAT-10-027` | Explainable edit suggestion | Show evidence and minimal, reversible proposed correction. | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 | CANDIDATE | R01, R06, R07, R08, R19 | UNASSIGNED |
 
 ## 11. AI Suggestions, Revision Control & Provenance
 
@@ -599,9 +600,9 @@ These fifteen named opportunities also appear as facets of features above. Track
 | 05. AI Writing Studio | 22 | INT-03–04; BP §32; R03, R08, R10 |
 | 06. AI Providers, Model Selection & BYOK | 19 | INT-03, INT-13, INT-17; BP §32; R08 |
 | 07. MCP & External AI Assistant Integration | 17 | INT-14, INT-24; BP §33; R09 |
-| 08. Story Bible & Worldbuilding | 20 | BP §§17, 34; INT-07; R07 |
-| 09. Continuity, Memory & Story-State Tracking | 24 | BP §§18–20, 34; R07 |
-| 10. Writing Quality, Editing Audits & Literary Intelligence | 27 | SRC-002, SRC-003; BP §§21–26; R01, R07, R19 |
+| 08. Story Bible & Worldbuilding | 20 | BP Part V §17 and Part VI §34; INT-07; R07 |
+| 09. Continuity, Memory & Story-State Tracking | 24 | BP Part V §§18–20 and Part VI §34; R07 |
+| 10. Writing Quality, Editing Audits & Literary Intelligence | 27 | SRC-002, SRC-003; BP Part V §§21–26; R01, R07, R19 |
 | 11. AI Suggestions, Revision Control & Provenance | 19 | BP §35; R10 |
 | 12. Native Cover Design Studio | 22 | INT-20–25; BP §36; R13 |
 | 13. Book Layout, Formatting & Publishing Studio | 26 | INT-16, INT-18–19, INT-26; BP §37; R11, R12 |
@@ -613,7 +614,7 @@ These fifteen named opportunities also appear as facets of features above. Track
 | Cross-cutting differentiators | 15 | BP §38; R22 |
 | **Total inventory entries** | **383** | 18 groups + 15 differentiators |
 
-**Main-group status distribution:** 13 `DIRECTED`, 17 `OWNER-INTENT`, 338 `CANDIDATE`. The 15 differentiated candidates are in addition to the main-group candidate total.
+**Main-group status distribution:** 13 `DIRECTED`, 16 `OWNER-INTENT`, 1 `TECH-SELECTED`, 338 `CANDIDATE`. The 15 differentiated candidates are in addition to the main-group candidate total.
 
 ## Approval gates, not decisions made by this catalog
 
