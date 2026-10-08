@@ -5,7 +5,7 @@ status: completed-documentation-draft
 created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "docs/features/FEATURE-INVENTORY.md"
   - "docs/research/R01-SRC001-USER-INTENT-EXTRACTION.md"
@@ -28,7 +28,7 @@ Create one durable, reviewable, ID-backed index for the complete **currently ret
 
 ## Work performed (FACT)
 
-- Wrote [FEATURE-INVENTORY.md](FEATURE-INVENTORY.md) with 18 feature areas, 368 individual capabilities and 15 cross-cutting differentiator concepts (383 rows total).
+- Wrote [FEATURE-INVENTORY.md](FEATURE-INVENTORY.md) with 18 feature areas, 381 individual capabilities and 15 cross-cutting differentiator concepts (396 rows total).
 - Assigned stable `VEL-FEAT-XX-NNN` IDs to features and `VEL-DIFF-NNN` IDs to differentiator proposals.
 - Captured a practical scope sentence, source reference family, approval classification, research dependencies, and `UNASSIGNED` priority in each row.
 - Used `DIRECTED`, `OWNER-INTENT`, `CANDIDATE`, and `TECH-SELECTED` to keep the selected Tiptap 3 editing foundation distinct from unapproved feature mechanics.
@@ -38,9 +38,9 @@ Create one durable, reviewable, ID-backed index for the complete **currently ret
 
 ## Verified structure (re-read from GitHub and Google Docs)
 
-- **383 feature IDs in 383 data rows, all unique**.
+- **396 feature IDs in 396 data rows, all unique**.
 - **18 numbered main feature sections**.
-- **368 primary feature records + 15 differentiator records**.
+- **381 primary feature records + 15 differentiator records**.
 - **Every row ends with `UNASSIGNED` release priority**, with no MVP/public milestone silently chosen.
 - Status counts across all 383 rows: `DIRECTED` 13, `OWNER-INTENT` 16, `TECH-SELECTED` 1, `CANDIDATE` 353.
 - `CURRENT-STATE.md` and `SOURCE-OF-TRUTH.md` both link to the inventory.
@@ -67,3 +67,11 @@ A complete cross-referenceable feature index reduces the risk of losing long-ter
 3. Merge the candidate inventory only after owner review, whereupon it becomes the canonical **feature index**, not an approved backlog.
 4. Return to R04 and assign per-feature release horizons only after explicit owner scoping and relevant source/author evidence.
 5. Promote chosen implementation requirements as distinct approved records; do not infer approval from an index entry alone.
+
+## Subsequent owner-requested feature addition — 2026-10-08
+
+After the original 383-row inventory was created, the owner requested continuous, UI-visible character and storyline profiles during both human writing and AI generation. [The direct requirement record](../requirements/PRODUCT-DIRECTION-LIVE-STORY-PROFILES-2026-10-08.md) retains their exact text and non-decisions. Thirteen new capabilities were appended under existing Story Bible (`VEL-FEAT-08-021..027`) and Continuity (`VEL-FEAT-09-025..030`) groups **without renumbering earlier features**.
+
+The feature inventory now contains **381 main capabilities plus 15 differentiated concepts, 396 entries total**. All release horizons remain **UNASSIGNED**. This is a recorded owner-requested capability, not evidence of an implemented AI extraction service or UI.
+
+**Chronology:** The initial validation counted 383 unique entries before this user amendment. The updated catalog's unique-ID/priority check is recorded separately in the PR status. Do not erase that earlier count from the task history or claim the inventory was always 396 entries.
