@@ -40,7 +40,7 @@ class HandoffWorkflowTests(unittest.TestCase):
             path.write_text(rendered, encoding="utf-8")
             wf.check_pack(path, {self.task["id"]: self.task})
             self.assertIn("INT-09", rendered)
-            self.assertIn("Source contents below are verbatim Git snapshots", rendered)
+            self.assertIn("readable rendering of pinned Git blobs", rendered)
 
     def test_source_blob_tampering_fails(self):
         original = self.pack_path.read_text(encoding="utf-8")
