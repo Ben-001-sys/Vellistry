@@ -4,7 +4,7 @@ type: agent-instructions
 status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
-version: 0.1.0
+version: 0.1.1
 ---
 
 # Instructions for Vellistry Research and Development Agents
@@ -23,7 +23,7 @@ version: 0.1.0
 - Use stable IDs and YAML metadata for ADRs, history events, research and reports where schemas apply.
 - Keep original reasoning and options visible when an ADR becomes superseded.
 - Produce ExecutionBundles with work completed, evidence, limitations, changed files, tests, and proposed knowledge updates.
-- Before merging consequential changes, request human review; do not modify accepted decisions silently.
+- The project currently has **one human contributor**, the owner. Before consequential changes are merged, present evidence, risks, and a review checklist for the **owner's self-review and explicit approval**. Do not request a second human review as a hard requirement; optional AI review is advisory, not human approval. Do not modify accepted decisions silently.
 - Never place API keys, passwords, manuscript personal data, or secrets in the repository.
 - Avoid overengineering. Do not create code, services, or new architecture merely because an archived research document mentioned them.
 - When revising user-authored creative material, prioritize writer intent and context over a mechanical set of anti-AI rules.
