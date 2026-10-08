@@ -115,7 +115,8 @@ test('Tiptap JSON survives save-and-restore without losing formatting', () => {
   first.close()
   const second = createEditor(saved)
   try {
-    assert.deepEqual(second.editor.getJSON(), saved)
+    // Compare JSON values, not JS object prototypes (ProseMirror attributes may use null prototypes).
+    assert.equal(JSON.stringify(second.editor.getJSON()), JSON.stringify(saved))
   } finally { second.close() }
 })
 
