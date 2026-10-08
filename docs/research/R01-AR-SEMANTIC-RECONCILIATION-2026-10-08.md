@@ -193,8 +193,8 @@ The expanded manual carries a number of short-list concerns **outside the corres
 
 | Original short-list concern | Source locations that retain or elaborate that concern | Why this matters |
 |---|---|---|
-| AR-02 thematic restraint / no repeated announcement | Expanded AR-01 (18179–18288); cross-lens “Theme announcement” (around 19260) | Expanded AR-02 is thematic multiplicity, not the same anti-announcement test. |
-| AR-04 moral complexity / moral non-tidiness | Expanded AR-02 (18289–18372); cross-lens “Moral tidiness” (around 19280) | Moral complexity remains a distinct diagnostic and must not be discarded. |
+| AR-02 thematic restraint / no repeated announcement | Expanded AR-01 (18179–18288); cross-lens “Theme announcement” (19252 onward) | Expanded AR-02 is thematic multiplicity, not the same anti-announcement test. |
+| AR-04 moral complexity / moral non-tidiness | Expanded AR-02 (18289–18372); cross-lens “Moral tidiness” (19272 onward) | Moral complexity remains a distinct diagnostic and must not be discarded. |
 | AR-06 work-specific obsessions | Expanded AR-07 (18718–18820); expanded AR-10 (19008–19173); project-level identity test (around 19654) | The expanded AR-06 is instead familiar-convention specificity. |
 | AR-07 authorial attention | Expanded AR-07 and AR-10; project-level identity test | Observational selection is part of an aesthetic identity but is narrower. |
 | AR-09 homogenization resistance | Expanded AR-08; explicit “Anti-Homogenization Test” (around 19604–19653) | The risk of generic polishing is not captured by expanded AR-09 alone. |
