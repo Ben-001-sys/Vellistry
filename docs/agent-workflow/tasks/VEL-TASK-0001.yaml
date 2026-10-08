@@ -1,0 +1,50 @@
+id: VEL-TASK-0001
+title: Verify initial manuscript-editor research requirement traceability
+type: research-task
+status: ready
+created_at: '2026-10-08'
+updated_at: '2026-10-08'
+owner: project_owner
+context_pack_id: VEL-CP-0001
+objective: >
+  Audit the existing first-pass extraction of author intent for non-AI
+  editor value, rich-text needs, reuse of an open-source engine, and
+  commercial licensing checks. Identify what is and is not evidenced
+  in current repository records without selecting an editor framework.
+in_scope:
+  - INT-09 through INT-12 as listed in SRC-001's draft extraction
+  - Current proposed requirements register and original-source availability
+  - Separate owner-authored intent from assistant-proposed technology advice
+out_of_scope:
+  - Approving a product MVP, architecture, or editor selection
+  - Independent checking of an unarchived original source
+  - Verifying current vendor licensing or external product details
+inputs:
+  - path: PROJECT-CONSTITUTION.md
+    role: governing-policy
+  - path: SOURCE-OF-TRUTH.md
+    role: governing-policy
+  - path: docs/research/SOURCE-REGISTER.md
+    role: source-inventory
+  - path: docs/research/R01-SRC001-USER-INTENT-EXTRACTION.md
+    role: draft-research
+  - path: docs/requirements/REQUIREMENTS.md
+    role: proposed-requirements
+source_gaps:
+  - id: SRC-001
+    limitation: Original uploaded blueprint bytes not yet archived/retrievable inside the Git repo.
+deliverables:
+  - Evidence and gap assessment, preserving draft/accepted status
+  - ExecutionBundle with exact Git references and proposals for follow-up
+acceptance_criteria:
+  - Identify four intent IDs INT-09 through INT-12 and their relationship to candidate VEL-REQ-002
+  - Separate first-pass extraction from independently verified original author wording
+  - Do not select a framework, elevate a proposed requirement, or claim external source verification
+allowed_actions:
+  - read
+  - analyze
+  - propose
+approval_required_for:
+  - Changing accepted product requirements or ADRs
+  - Merging pull requests
+  - Any production or secrets operations
