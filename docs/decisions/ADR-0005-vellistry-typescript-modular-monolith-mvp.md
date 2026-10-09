@@ -1,6 +1,6 @@
 ---
 id: ADR-0005
-title: Adopt a self-hosted TypeScript modular monolith for Vellistry MVP
+title: Earlier proposed self-hosted TypeScript modular monolith for Vellistry MVP
 type: architecture-decision
 status: proposed
 created_at: 2026-10-09
@@ -44,13 +44,15 @@ implementation_refs: []
 
 The owner-approved eight-area MVP includes a serious **AI-optional fiction editor**; books, chapters and reliable drafts; TXT/DOCX exchange and full backup; author-approved Character/Storyline profiles; source-frozen, editable Rules Studio; safe reviewable AI proposals; privacy and accessibility. Full professional EPUB/print and native Cover Studio are post-MVP. The owner expressly prohibited **paid services** for the current project/MVP. Earlier R18 research held full-stack selection pending; the owner then explicitly requested a decision on 2026-10-09.
 
-## Proposed decision — not yet accepted
+## Proposed decision — not accepted
+
+**Current governance note (2026-10-09):** This Next.js-only/Better Auth/Graphile design remains historical research. The owner subsequently selected **Next.js + NestJS + Supabase** for initial implementation under accepted ADR-0006 (on a separate draft PR). The selected stack is not inferred from this proposal. The owner's later two-track research and design-first process gates must be met before resuming feature implementation.
 
 The owner requested that a stack be chosen, but did not separately approve the named technologies. After asking whether sufficient research and an AI memory design preceded the choice, the project requires deeper comparison. This proposal must not be presented as a fully researched or owner-approved architecture. See [R18 fiction memory study](../research/R18-FICTION-MEMORY-AND-STACK-REASSESSMENT-2026-10-09.md) and its pending experiments.
 
 **Leading candidate:** Adopt **one self-hostable TypeScript modular monolith** (one web/API process plus one standalone background worker process) and **one PostgreSQL database**. Use the preselected open-source Tiptap 3 editor and Calibre converter; no required paid SaaS, vendor-specific hosted database, paid auth or conversion API.
 
-| Concern | Selected technology / rule |
+| Concern | Proposed candidate / design rule |
 |---|---|
 | Language and runtime | TypeScript, Node.js 24 LTS; pnpm workspaces; pin exact versions before first runnable integration |
 | Web and API | Next.js 16 App Router with React 19; authenticated Node-runtime Route Handlers; self-hosted, not Vercel-dependent |

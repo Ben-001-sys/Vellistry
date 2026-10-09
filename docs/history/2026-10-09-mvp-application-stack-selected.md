@@ -29,7 +29,7 @@ corrected_by:
 commit_refs: []
 ---
 
-# Historical event — Vellistry MVP stack selected
+# Historical event — earlier MVP stack recommendation (corrected)
 
 ## Event
 On 2026-10-09 the owner instructed: **'before continue lets decide on our stack we are going to be using'**. In direct response, the assistant selected the TypeScript, Next.js/React, PostgreSQL/Drizzle, Better Auth, Graphile Worker, Tiptap 3, Calibre/JSON+ZIP, Dexie, optional local Ollama and Docker Compose architecture recorded in [ADR-0005](../decisions/ADR-0005-vellistry-typescript-modular-monolith-mvp.md).
@@ -41,7 +41,7 @@ Before the event, R18 preserved several viable architecture alternatives and did
 The quoted owner message is the exact request, but it is **not a verbatim individual-library approval**; the technical selection was made by the assistant under the delegated decision request. Original conversation permalink pending; no GitHub owner comment, invented timing or benchmark is claimed.
 
 ## Interpretation
-This establishes a binding initial technology direction, not a production acceptance or license/security sign-off. The owner may supersede it explicitly if validation finds material problems.
+This was an assistant-proposed initial direction, **not a binding owner-accepted stack**. The same-day correction below rescinded the premature accepted label. The later owner-approved Next.js + NestJS + Supabase architecture is recorded separately in ADR-0006; this historical event must not override it.
 
 ## Follow-up or correction links
 Review the exact-head PR and metadata CI; run the R18 compatibility/durability/security gates and preserve their observed evidence before claiming readiness.

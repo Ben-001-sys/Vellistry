@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.17
+version: 0.1.19
 ---
 
 # Vellistry — Current State
@@ -156,3 +156,22 @@ No application code, product architecture, or live research workflow has been va
 - Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner supplied screenshots showing Cursor Agent **Grok 4.7**, effort **High**, context **256K**, plus a `level-b-test-packet` Explorer visibly containing only `PROMPT.md` and `VEL-CP-0001.md`, alongside the instruction `follow PROMPT.md guidelines`. This strengthens workspace-isolation evidence but is not proof that the agent chat was new or devoid of inherited context; full independence and owner acceptance remain unverified.
 - This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
 - [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
+
+## ADR-0003 Tiptap v3 owner decision branch reconciled — 2026-10-09
+- **Owner decision:** Tiptap **major version 3 on ProseMirror** is the approved manuscript editing foundation, confirmed 2026-10-08 and recorded in [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) and [HIS-20261008-005](docs/history/2026-10-08-tiptap-3-editor-approved.md). The editor decision predates the later Next/Nest/Supabase implementation approval; formal ADR documentation remains pending this PR's merge.
+- **Later research:** [PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) contains seven passing Tiptap 3 headless smoke tests. [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12) independently includes seven passing limited Chromium browser tests. Neither is a production editor, a storage architecture or a professional publishing converter.
+- **Separate later decision:** no paid Tiptap Pages/Conversion; the Next.js + NestJS + Supabase implementation direction is separately owner-selected in draft PR #28, while AI provider and publishing platform remain undecided. [MVP scope PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) separately records the owner's accepted eight-area product target. Do not infer architecture from this ADR.
+- **Integration:** This PR branch now preserves current merged `main` R02, R06 and Stage 3/PR #5 history. Earlier status paragraphs retain their original research chronology; later merged-state and present approval here are authoritative for current status.
+
+## PR #6 conflict reconciliation and traceability correction — 2026-10-09
+- This branch incorporates the newer merged `main` at `fb8e98bfc24cffce25a9a3df66353a7ff4857648`, including R01/R15 source/trust research and PR #9's accepted-scope feature inventory. Existing historical research sections and approved editor-choice record are preserved.
+- Reviewer-requested linkage correction completed: both ADR-0003 and the Tiptap approval event reference `VEL-REQ-002` (**conventional manuscript editing**), rather than `VEL-REQ-001` (**scoped AI guidance**). Tiptap 3/ProseMirror remains selected but not implemented; no paid Tiptap extensions or unrelated technology approved.
+- Historical decision identifier remains `HIS-20261008-005`. Formal owner merge review remains a separate action; this conflict resolution does not merge the PR.
+
+## Stage 4 — chapter specification and agent task PR #26 reconciled (2026-10-09; proposed)
+- [PR #26](https://github.com/Ben-001-sys/Vellistry/pull/26) proposes [VEL-SPEC-001](docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md): eight source-traced, framework-neutral create/edit/save/reopen scenarios scoped to the **accepted** M1/M2/M3/M8 product areas. The detailed acceptance contract remains **proposed and not product-tested**.
+- [VEL-TASK-0002](docs/agent-workflow/tasks/VEL-TASK-0002.yaml) defines the task scope, missing G03/G08 evidence and owner approval boundaries. [Stage 4 workflow](docs/agent-workflow/STAGE4-SPEC-TO-TASK.md), traceability validator, negative tests and CI generate an immutable `VEL-CP-0002`; the associated ContextPack artifact is an agent input, not proof of a working editor or durable database.
+- The previous PR #26 head passed its Stage 4 CI checks and produced [Agent workflow run #37985564366](https://github.com/Ben-001-sys/Vellistry/actions/runs/37985564366); the **reconciled head must receive its own CI pass** before merging.
+- This branch retains **all newer merged main entries** including the accepted Tiptap 3/ProseMirror ADR and the already merged [Cursor evaluation PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24); historic 9/10 handoff contents do not constitute a fully confirmed session-independence assessment.
+- A Next.js + NestJS + Supabase direction is separately described as owner-selected in [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28); its branch's own review and merge are distinct from this synthetic task contract. Stage 4 neither selects nor reverses application architecture.
+- Product acceptance tests, real-browser editing, production authorization/durability, separate agent ExecutionBundle and owner review of this specification remain pending. This conflict resolution **does not merge PR #26 or promote the specification to accepted**.
