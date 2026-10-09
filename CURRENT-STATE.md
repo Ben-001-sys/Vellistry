@@ -5,21 +5,21 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.15
+version: 0.1.18
 ---
 
 # Vellistry — Current State
 
 ## Phase
-**2026-10-09 current checkpoint:** Implementation foundation **started** in draft PR #28 with owner-approved Next.js + NestJS + Supabase baseline (ADR-0006). The first workspace and two application builds/typechecks and metadata validator passed; **not deployed; no real Supabase Auth/RLS tested yet**. Earlier research-only statements further down preserve their historical original meaning. See [kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
+**2026-10-09 current checkpoint:** Implementation foundation **started** in draft PR #28 with owner-approved Next.js + NestJS + Supabase baseline (ADR-0006). The first workspace and two application builds/typechecks and metadata validator passed; **not deployed; real Auth/RLS tests reside in unmerged stacked PR #29 (not this branch)**. Earlier research-only statements further down preserve their historical original meaning. See [kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
 
 ### Current engineering actions
 - K0: decision and bounded roadmap recorded in draft PR #28.
 - K1: pnpm monorepo, Next web/auth/books shell, Nest authenticated API, Supabase migration and CI **built**.
-- **Next K2:** local Supabase Auth with two users; real access-token verification, session refresh/revocation and positive/negative book RLS tests. No external model, secrets or hosted deployment needed.
+- **K2 status:** two-account local Auth and RLS were exercised in stacked **draft PR #29** (17/17 passing synthetic local integration groups), but that change is not in PR #28 and session refresh/revocation still needs work. No external model, secrets or hosted deployment needed.
 - **Later K3/K4:** transactionally versioned chapter save, then complete Tiptap writing/recovery UI.
 
-### Previous research bootstrap snapshot (preserved)
+### Earlier research baseline
 Research and discovery; engineering knowledge foundation initialization.
 
 ## Accepted direction
@@ -159,3 +159,9 @@ No application code, product architecture, or live research workflow has been va
 - Proposed CI tests verify minimal contents, byte identity, reproducible packaging, and rejection of a tampered permission contract; an Actions artifact makes the packet available without manually assembling context.
 - Original SRC-001 remains unavailable in the historical Git pack. The historical editor-audit task does **not** reopen the later owner-selected Tiptap 3/ProseMirror or accepted MVP decisions.
 - Owner review/merge of the export workflow and actual isolated second-agent run are **distinct acceptance gates**; neither is completed by this entry.
+
+## Stage 3 — first Cursor Level B response (2026-10-09; provisional)
+- The owner supplied a response attributed to **Cursor**; exact submitted text and source fingerprint are preserved in [VEL-HO-0002](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md) and its [verbatim attachment](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md).
+- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner supplied screenshots showing Cursor Agent **Grok 4.7**, effort **High**, context **256K**, plus a `level-b-test-packet` Explorer visibly containing only `PROMPT.md` and `VEL-CP-0001.md`, alongside the instruction `follow PROMPT.md guidelines`. This strengthens workspace-isolation evidence but is not proof that the agent chat was new or devoid of inherited context; full independence and owner acceptance remain unverified.
+- This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
+- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
