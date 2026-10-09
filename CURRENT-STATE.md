@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.8
+version: 0.1.9
 ---
 
 # Vellistry — Current State
@@ -113,5 +113,13 @@ No application code, product architecture, or live research workflow has been va
 - This evolves existing **A → B** research into a more concrete **A internal editor milestone → B+ integrated author pilot with a small R07 live-profile slice → production-quality public MVP**. A, B+, and public release are delivery stages of the same proposed product, not three simultaneous public editions.
 - Deliberately defer full layered Cover Studio, professional EPUB/print PDF/pagination, MCP/external tools, multi-provider routing, full graph continuity, collaboration and subscriptions **without dropping them from the full vision**.
 - Required source/validation gates remain unresolved: original frozen guidance pack conflict (R01); external author workflows (R02); real-browser editor and DOCX fidelity (R05/R11); true model behavior/provider cost and privacy (R06/R08/R15); observed live profile extraction accuracy and false alarms (R07); production acceptance (R19).
-- [ExecutionBundle](docs/research/R04-SPECIFIC-MVP-EXECUTION-BUNDLE-2026-10-09.md) separates source facts and analyst recommendations. **NO MVP scope, individual feature release priorities, app stack or provider is approved** by this analysis. Canonical feature inventory PR #9 retains its 396 rows with **UNASSIGNED** priority.
-- **Next decision:** owner reviews the concrete proposed included/deferred scope, and approves or revises it before feature IDs are promoted into accepted requirements or architecture selection begins.
+- [ExecutionBundle](docs/research/R04-SPECIFIC-MVP-EXECUTION-BUNDLE-2026-10-09.md) remains the **pre-approval research record**. On 2026-10-09, the owner explicitly agreed to the eight-area MVP and deferral trade-off. The accepted scope is [VEL-PRODUCT-SCOPE-20261009-001](docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md), with [HIS-20261009-001](docs/history/2026-10-09-mvp-product-scope-approved.md) recording provenance and a [396-ID feature map](docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md) distinguishing bounded MVP features from post-MVP-unscheduled concepts. This approval selects **product scope, not app stack, provider, specific UI, readiness or launch date**. PR #9 must be updated to reflect approved horizons without changing source-authority statuses.
+- **Next action:** verify PR #9 source-feature ID mapping, reconcile the scope and feature docs, then derive acceptance criteria and R01/R02/R05/R06/R07/R08/R11/R15/R19 validation plans. Research gates are still open; no production architecture authorization follows automatically.
+
+## Owner approved initial Vellistry MVP scope — 2026-10-09
+- **Accepted** eight-area Vellistry product target: author-first book/chapter writing, Tiptap 3 editor, durable saving and basic DOCX/TXT portability, author-visible manual and approved live character/storyline profiles, preserved default-on/toggleable Rules Studio (after source-pack certification), limited BYOK AI Continue/Rewrite, safe author accept/reject/undo, and privacy/accessibility baseline.
+- Owner also **accepted delaying** the full native Cover Studio and professional EPUB/print-ready publication system until after the initial writing-focused MVP; these remain strategically important to Vellistry and are not canceled.
+- Precise evidence: owner replied **“I agree”** to the preceding comprehensive recommendation on **2026-10-09**. Original transcript URL not archived; do not invent a GitHub approval comment. Decision: [MVP scope](docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md). History: [HIS-20261009-001](docs/history/2026-10-09-mvp-product-scope-approved.md).
+- The [396-ID scope map](docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md) distinguishes **149 MVP/MVP-LIMITED entries** from **247 POST-MVP-UNSCHEDULED** ideas (including all Cover Studio, full print, MCP and collaboration items). These are catalog entries, not 149 independent development tickets. Detailed technical acceptance criteria remain to be written.
+- **Approval ≠ implementation:** no author interview, app integration, authentic frozen-rule pack, live profile extractor, production persistence, verified provider or export engine is ready solely from this decision. The platform framework, database, API provider and release schedule remain undecided.
+- Documentation PR remains separate from the actual owner in-chat approval; owner review/merge remains pending.
