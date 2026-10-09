@@ -6,7 +6,7 @@ status: proposed
 created_at: 2026-10-09
 updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -37,6 +37,22 @@ The recovery tool does **not** verify Git hashes, user approval, real source acc
 ```bash
 python scripts/agent_workflow.py validate
 ```
+
+### Level B operator package (CI-exportable)
+
+For this exact historical fixture, the independent agent should receive **only** `VEL-CP-0001.md` and the minimal `PROMPT.md` from a validated Level B ZIP export. No completed ExecutionBundle, scoring rubric, original conversation, or general repository index belongs in the target agent's context.
+
+To produce the package in a full-history checkout:
+
+```bash
+python scripts/export_level_b_handoff.py --output /tmp/vellistry-level-b.zip
+```
+
+Alternatively, download the `vellistry-level-b-cold-start` artifact from the successful **Agent workflow** GitHub Actions run for this PR's exact head. The artifact is an outer archive containing the two-file ZIP. Unzip it and supply *only those two inner Markdown files* to a new, isolated Cursor/Codex/other-agent session.
+
+The exporter runs `agent_workflow.check_pack` before writing the ZIP, rejects tampered permission language, and prints SHA-256 fingerprints for the ContextPack, prompt and exported ZIP. Keep those fingerprints in the **operator's separate evaluation record**. They are not third files to supply to the agent. The ZIP contains exactly two members, no repository or evaluation report.
+
+Only record Level B PASS after capturing an actual independent agent response, its model/session and the scoring results. An exported ZIP or passing export unit tests do not count as an independent agent execution.
 
 ### Level B: Genuine independent-agent continuation — **pending**
 A separate AI agent or fresh-session model with **no access to the conversation that produced the original bundle** receives only the exact committed ContextPack `VEL-CP-0001.md` (plus the below reporting instructions). The agent must reconstruct the bounded task and produce its own report. Store the verbatim response as a separately attributed draft artifact and compare it against the acceptance rubric.
