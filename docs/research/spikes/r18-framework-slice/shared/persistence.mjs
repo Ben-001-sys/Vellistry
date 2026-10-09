@@ -96,7 +96,7 @@ export async function handleRequest(method,params,headers,body){
     return {status:404,body:{error:"not_found"}};
   if(method==="GET"){
     const c=await getChapter(user,bookId,chapterId);
-    return c?{status:200,body:{revision:c.revision,document:c.document}}:
+    return c?{status:200,body:{ownerId:user,revision:c.revision,document:c.document}}:
       {status:404,body:{error:"not_found"}};
   }
   if(method==="PUT"){
