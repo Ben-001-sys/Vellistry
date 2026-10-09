@@ -1,0 +1,19 @@
+{
+  "name": "vellistry-r05-browser-experiment",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Disposable Vite+Tiptap 3+Playwright browser research fixture, not Vellistry architecture",
+  "scripts": {
+    "dev": "vite",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "vite": "^7.0.0"
+  }
+}
