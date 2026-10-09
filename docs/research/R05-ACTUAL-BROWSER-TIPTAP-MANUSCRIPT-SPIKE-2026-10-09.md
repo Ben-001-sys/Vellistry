@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-R05-20261009-003
 type: browser-editor-experiment
-status: tests-pending-ci
+status: seven-browser-tests-passed-bounded
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "docs/research/spikes/tiptap3-browser/main.js"
   - "docs/research/spikes/tiptap3-browser/browser.spec.js"
@@ -53,9 +53,27 @@ Previous [PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) ran seven head
 
 **Measurement policy:** Print real Chromium + Linux CI setup, actual fixture word count, setup/render duration and test-visible edit latency only as **single-run observations**. No hard performance thresholds or guarantees from a virtual CI runner; browser versions and package versions are printed in logs.
 
-## Verification status
+## Verification evidence — actual GitHub Actions browser runs
 
-**Before workflow completion:** No BR-01..07 are marked passed. Once the exact-head GitHub Actions workflow finishes, record its success/failure, exact commit, package versions and errors honestly. If failures come from the harness rather than Tiptap, fix then rerun; retain original failed run for chronology. This GitHub test does **not** select a frontend framework.
+**First run:** [workflow 37903972056](https://github.com/Ben-001-sys/Vellistry/actions/runs/37903972056) on commit `1958fa462b41acda60f802c76fba454cd4276ec3`, **5 passed / 2 failed**. The failures were browser-input fixture assertions: using a Tiptap focus command inside `page.evaluate()` allowed the JavaScript call to return before the physical editable caret was reliably active. Two tests then inserted no text. This is not evidence of a ProseMirror data-loss error, but it is an important **focus/caret race in the research harness**. The event remains recorded.
+
+**Correction:** Test `typeAtEnd` clicks the **actual browser paragraph**, then uses the browser's `ControlOrMeta+End` and `keyboard.insertText` to establish a real editable selection before each insertion. The change is in commit `b94ecec6e48c586318d07ff3018031e3d25a0674`.
+
+**Passing run:** [workflow 37904237109](https://github.com/Ben-001-sys/Vellistry/actions/runs/37904237109) on **exact commit `b94ecec6e48c586318d07ff3018031e3d25a0674`**, **7/7 tests passed (3.3 seconds)**. Resolved versions logged: `@tiptap/core@3.31.4`, `@tiptap/starter-kit@3.31.4`, `@playwright/test@1.64.0`, `vite@7.3.7`; Chrome-for-Testing artifact `156.0.8078.4` (Playwright Chromium v1248), Linux GitHub runner. These are **test versions** and do not select production dependencies.
+
+**Synthetic long-chapter observation:** 150 paragraphs / **19,201 whitespace-separated words**, one `setContent` run **~10.2ms** and one end-text insertion **46ms** in CI. Values are only **one machine/run observation** (not measured percentile keyboard-to-paint, not sustained author typing, no RAM profile, not a 100k-word real-browser proof). Browser consistency, actual performance budgets and editor save strategy remain unverified.
+
+| Browser scenario | Corrected CI result | Remaining caveat |
+|---|---|---|
+| BR-01 actual contenteditable insertion | PASS | Focus race in first test confirms focus must be explicitly addressed |
+| BR-02 switch 2 in-memory chapters | PASS | Not durable storage; reload erases edits |
+| BR-03 targeted edit and undo/redo/italic mark | PASS | Not real AI, no multi-range selection conflict |
+| BR-04 refuse stale proposal after typing | PASS | Coarse whole-document guard, not production mapping |
+| BR-05 actual browser JSON headings/marks | PASS | No DOCX/HTML paste or import |
+| BR-06 Unicode insertion | PASS | Does **not** simulate actual IME composition |
+| BR-07 19,201-word chapter and tail insertion | PASS | Single Chromium CI environment, no long-duration 100k-word test |
+
+**R05 finding:** Tiptap 3 now has limited positive evidence from **actual Chromium**, not only jsdom. **No production author workspace, safe autosave, reliable recovery, security layer, cross-browser accessibility, real model or conversion stack has been implemented by this spike.**
 
 ## Next research after browser smoke
 
