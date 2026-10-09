@@ -49,3 +49,16 @@ Missing: measurable natural-language candidate extraction accuracy on labeled sy
 | Real-author trial | Actual observed acceptance, clarity and accessibility | NOT RUN |
 
 Evidence from [Pair 03 CI](../../.github/workflows/pair03-r11-r07-research.yml) must be inspected at exact tested commit, and any failed acceptance must be called FAIL. A passing unit test means only the narrow synthetic invariant passed. No paid services, real manuscripts, production migration, final owner architecture selection, merge or deployment are authorized.
+
+
+## Exact-head runtime evidence — 2026-10-09
+
+On research commit 9e4df8de0e426978132176802d382ef12343a194, [GitHub Actions #38004035995](https://github.com/Ben-001-sys/Vellistry/actions/runs/38004035995) executed both local synthetic research jobs:
+
+- R11/R07 Python unit job: **SUCCESS**. Ten new portable ZIP/TXT tests and eight connected-scene profile tests passed (**18/18**); the pre-existing R07 contract passed independently (**20/20**).
+- Real Calibre fidelity job: **SUCCESS as a measurement experiment**, using the Ubuntu-packaged Calibre **7.6.0** and python-docx. Three headings and three full synthetic prose sentences all survived the DOCX → EPUB → DOCX conversion **as text**.
+- **Measured formatting loss:** original input had **3 Heading-style paragraphs**; the DOCX returned from Calibre contained **0 Heading-style paragraphs**. The result is **NOT acceptable as proof of style-preserving DOCX round trip** despite script exit success.
+
+This observed style loss is a concrete R11 gap to carry forward. Examine an alternative or a postprocessing DOCX output route (e.g., a style-aware DOCX writer with independent render/reimport checks) **as additional research only**; do not silently revise accepted ADR-0004 or claim DOCX fidelity already solved. The experiment did not score italic/bold run retention or verify an independent Word render and must not be extrapolated.
+
+**Do not conflated workflow SUCCESS with DOCX product fidelity PASS.** Only text survival for this small synthetic three-chapter example, measured background, and source-preservation backup invariants are verified.
