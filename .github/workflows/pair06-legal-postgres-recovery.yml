@@ -1,0 +1,62 @@
+name: Pair 06 license governance and real PostgreSQL recovery research
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/pair06_*"
+      - "docs/research/experiments/test_pair06_*"
+      - "docs/research/PAIR-06-LEGAL-OPERATING-RISK-REGISTER.json"
+      - ".github/workflows/pair06-legal-postgres-recovery.yml"
+  push:
+    paths:
+      - "docs/research/experiments/pair06_*"
+      - "docs/research/experiments/test_pair06_*"
+      - "docs/research/PAIR-06-LEGAL-OPERATING-RISK-REGISTER.json"
+      - ".github/workflows/pair06-legal-postgres-recovery.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  license-privacy-evidence-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate unresolved legal/rights/privacy/operating risk inventory
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair06_legal_registry.py' -v
+
+  postgres-cas-backup-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: pair06synthetic
+          POSTGRES_DB: pair06db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d pair06db"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      PGPASSWORD: pair06synthetic
+      PAIR06_DATABASE_URL: postgresql://postgres:pair06synthetic@127.0.0.1:5432/pair06db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PostgreSQL client binaries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y postgresql-client
+      - name: Live PostgreSQL atomicity retry and clean-restore tests (synthetic only)
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v
