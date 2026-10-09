@@ -47,3 +47,12 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_handoff_recovery.py' -v
       - name: Test Level B packet export and tamper rejection
         run: python -m unittest discover -s tests -p 'test_level_b_export.py' -v
+      - name: Export validated Level B agent packet
+        run: python scripts/export_level_b_handoff.py --output level-b-test-packet.zip
+      - name: Upload Level B agent packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-level-b-cold-start
+          path: level-b-test-packet.zip
+          retention-days: 14
+          if-no-files-found: error
