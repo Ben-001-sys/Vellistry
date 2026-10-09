@@ -57,3 +57,7 @@ GitHub workflow: .github/workflows/r18-framework-comparison.yml, Node 24, Postgr
 ## Decision status
 
 Passing this spike would establish a **working shared versioned manuscript contract in both Next and Nest adapters**. It would not establish either framework as uniquely better. ADR-0005 remains PROPOSED, no full-stack approval/merge is implied.
+
+## Verified synthetic CI checkpoint — 2026-10-09
+
+[GitHub Actions run #37982170918](https://github.com/Ben-001-sys/Vellistry/actions/runs/37982170918) **SUCCEEDED** at implementation commit `62fbf26cf83116bc02cc86e7248ecf4adf9ea030`: 15/15 identical HTTP contracts on each framework and successful Vite and Next Tiptap frontend builds. Resolved packages: Next 16.4.0, React 19.3.0, Nest 11.2.7, Vite 7.3.7, Tiptap 3.31.4, Node 24, Postgres 17. Both platforms are technically feasible for this constrained authoring flow. No release-readiness, real login, full rich-text fidelity, real-browser recoverability or performance superiority follows from the suite. The full comparison report records two earlier runner assertion/reporting failures and their corrections.
