@@ -11,3 +11,5 @@ Initial decisions:
 - [ADR-0004 — Use free Calibre conversion and independent portable backups](ADR-0004-free-calibre-document-conversion-and-portable-recovery.md)
 
 - [ADR-0007 — P1 source-preserving dual fiction guidance records](ADR-0007-immutable-compact-expanded-guidance-sources.md)
+
+- [ADR-0005 — Earlier TypeScript modular-monolith stack candidate (proposed; not owner-accepted)](ADR-0005-vellistry-typescript-modular-monolith-mvp.md)
