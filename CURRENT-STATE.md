@@ -3,9 +3,9 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-08
+updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.9
+version: 0.1.10
 ---
 
 # Vellistry — Current State
@@ -122,3 +122,10 @@ No application code, product architecture, or live research workflow has been va
 - **Editor choice:** The owner selected Tiptap major version 3 / ProseMirror and the accepted decision remains recorded in draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6). No other app framework, document store, provider or paid Tiptap package was selected by these tests.
 - **Later scope approval:** The eight-area MVP target was approved separately after this original experiment ([PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10)). Do not retrospectively treat the headless experiment as an accepted full MVP.
 - **Merged history preserved:** Reconciliation retains the R02 study, merged R06 PR #3 and merged Stage 3 PR #5 from current `main`. Earlier pending-status entries remain historical, not current statements. This research PR remains open/unmerged until owner review and exact-head checks.
+
+## Stage 3 — detached handoff reproducibility extension (2026-10-09; draft)
+- PR #5 **merged** and provides the operational task/ContextPack/ExecutionBundle contract. Stage 3's **independent second-agent** acceptance test is still unperformed; do not equate source integrity with reasoning fidelity.
+- Branch `feat/agent-handoff-cold-start-v0.1` adds `scripts/handoff_recovery.py`, detached-directory regression tests and `docs/agent-workflow/HANDOFF-REPRODUCIBILITY-PROTOCOL.md`. These demonstrate what a process can reconstruct using only a historical ContextPack, without the original Git checkout or conversation.
+- Detached reconstruction **does not** independently authenticate pinned Git blobs or source content. Retain `scripts/agent_workflow.py validate` as the full-repository integrity gate. Agent-model independence remains a separate, owner-reviewed evaluation.
+- `VEL-CP-0001` is a historical fixture from before the owner selected Tiptap 3 / ProseMirror and approved the eight-area MVP. Later product direction takes precedence for new real tasks.
+- Next acceptance boundary: pass exact-head CI, owner review, then conduct a genuinely fresh Cursor/Codex/other-agent run on only the pinned handoff and record its verbatim evidence plus rubric before marking Stage 3's cross-agent continuity proven.
