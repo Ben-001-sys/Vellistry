@@ -20,7 +20,7 @@ evidence:
   - "Tiptap's official documentation identifies its headless editor as ProseMirror-based and its open-source editor as MIT-licensed."
   - "Primary original conversation URL not yet archived; record exact owner reply and the preceding technology referent without inventing a permalink."
 related_requirements:
-  - VEL-REQ-001
+  - VEL-REQ-002
 related_features: []
 related_contracts: []
 related_adrs: []
