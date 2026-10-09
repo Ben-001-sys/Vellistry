@@ -52,7 +52,7 @@ jobs:
           node -p "'react '+require('react/package.json').version"
           node -p "'nest '+require('@nestjs/core/package.json').version"
           node -p "'vite '+require('vite/package.json').version"
-          node -p "'tiptap '+require('@tiptap/react/package.json').version"
+          node -p "'tiptap '+JSON.parse(require('node:fs').readFileSync('node_modules/@tiptap/react/package.json','utf8')).version"
       - name: Seed isolated two-author PostgreSQL data
         env:
           DATABASE_URL: postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks
