@@ -1,0 +1,56 @@
+name: R18 PostgreSQL temporal story memory
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/spikes/r18-postgres-memory/**"
+      - ".github/workflows/r18-postgres-memory.yml"
+  push:
+    paths:
+      - "docs/research/spikes/r18-postgres-memory/**"
+      - ".github/workflows/r18-postgres-memory.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  postgres-memory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: vellistry_memory
+          POSTGRES_USER: vellistry
+          POSTGRES_PASSWORD: synthetic-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vellistry -d vellistry_memory"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 15
+
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+      - name: Ensure PostgreSQL client
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y postgresql-client
+          fi
+          psql --version
+      - name: Run schema and 12 fail-fast assertion groups
+        env:
+          PGPASSWORD: synthetic-only
+          PGHOST: localhost
+          PGPORT: "5432"
+          PGUSER: vellistry
+          PGDATABASE: vellistry_memory
+        run: |
+          psql -X -v ON_ERROR_STOP=1 \
+            -f docs/research/spikes/r18-postgres-memory/schema.sql \
+            -f docs/research/spikes/r18-postgres-memory/assertions.sql
