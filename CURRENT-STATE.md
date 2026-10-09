@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.11
+version: 0.1.12
 ---
 
 # Vellistry — Current State
@@ -135,3 +135,10 @@ No application code, product architecture, or live research workflow has been va
 - [R01/R15 ExecutionBundle](docs/reports/R01-R15-EVIDENCE-BUNDLE-2026-10-09.md) preserves exact verification scope and evidence gaps.
 - **Next gates:** R01 owner reviews non-destructive packaging of code/title variants and archival location; R15 compares real application access policy, secrets/consent data flows, backup/deletion design after owner-approved architecture. Protect source/user data and do not infer a model, backend or paid service.
 - These source/trust studies complement approved eight-area MVP scope in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) and preparation [PR #11](https://github.com/Ben-001-sys/Vellistry/pull/11); no release gate closed.
+
+## Stage 3 — cold-start evidence synced after feature inventory (2026-10-09)
+- [PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is a **draft**, unmerged Level A ContextPack reproducibility addition. It does not establish independent second-agent success.
+- CI on earlier head `ff2ac4c6c9f29c8e6c6e75d1b5f8171df9a78a78`: [agent workflow run #37939723962](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723962) passed 15 existing tests plus 5 detached tests; [knowledge metadata run #37939723897](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723897) passed. Exact-head checks after this integration remain separately required.
+- Detached recovery reads only an exported **historical** `VEL-CP-0001` to reconstruct its task boundaries; it cannot authenticate Git, verify original SRC-001, authorize operations, or replace the currently accepted MVP and editor decisions.
+- [VEL-HO-0001](docs/agent-workflow/handoff-evaluations/VEL-HO-0001.md) records the bounded automated test and the explicit **Level B second-agent evaluation gap**. The rubric and result template are versioned for later real evaluation.
+- This integration retains `main`'s merged R02, R06, R07, R01/R15 and feature-inventory knowledge. The most recent feature-inventory [PR #9](https://github.com/Ben-001-sys/Vellistry/pull/9) is merged; earlier status paragraphs elsewhere are historical snapshots.
