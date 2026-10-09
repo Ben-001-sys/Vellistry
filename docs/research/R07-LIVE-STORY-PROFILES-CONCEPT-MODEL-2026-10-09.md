@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-R07-20261009-001
 type: research-finding
-status: candidate-concept-and-protocol-not-approved-implementation
+status: deterministic-contract-verified-extraction-unvalidated
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "PRE-DEVELOPMENT-RESEARCH-REGISTER.md — R07.01–R07.10"
   - "docs/requirements/PRODUCT-DIRECTION-LIVE-STORY-PROFILES-2026-10-08.md — owner's exact live-profile direction, PR #9"
@@ -179,6 +179,16 @@ Observe several authors performing AI-off profile creation, scene review, reject
 ### D. Release-level trust tests (future)
 
 Verify authorization, durable source revisions, autosave races, provider consent, backup/recovery, model context previews and no cross-book leakage in the eventual real product. Any **silent canon promotion, false accepted-prose edit, cross-book source disclosure or future-state injection in test fixtures** is a blocking defect for initial MVP.
+
+## 10A. Executed synthetic verification — 2026-10-09
+
+The separate [Python stdlib research contract](experiments/r07_story_state_contract.py) and [20 scenario tests](experiments/test_r07_story_state_contract.py) ran on GitHub Actions **workflow 37919046053**, exact commit `248f0560f792eee79a45a141941dc80843ca95d3`: **20/20 PASS**; see [actual CI evidence](https://github.com/Ben-001-sys/Vellistry/actions/runs/37919046053). All 20 cases completed in the runner; log states `Ran 20 tests in 0.002s` and `OK`. They exercise the **deterministic approval and state-at-checkpoint contract only**.
+
+Verified as a *simulation*: direct manual profile edits with AI off, human text that raises only pending candidates, unaccepted AI prose blocked from canon, separate acceptance of AI prose and profile facts, dismiss/revise, source-revision invalidation with historical audit, later knowledge excluded at earlier story checkpoints, flashback separate from discourse order, subjective claims/uncertainty segregated, source quote checks, idempotent approval, cross-book separation, plot-thread review, and abstention when story order is unknown.
+
+**Absolutely not tested:** automatic character/plot extraction from natural-language prose, accuracy/recall or false-positive burden, user interface, Tiptap integration, authenticated isolation, real database transactions, concurrent manuscript edits, provider consent, model costs, real author studies, model compliance, actual long-fiction retrieval or scenario-derived literary quality. The proposed in-memory synthetic state contract is **not chosen production storage/architecture**.
+
+A later historical change to this report does not change which code commit was tested; any code change requires another exact-head run. Reconcile real writer expectations before making the simple abstention/revalidation rules permanent acceptance conditions.
 
 ## 11. Unresolved decisions for owner/engineering review
 
