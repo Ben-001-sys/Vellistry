@@ -5,7 +5,7 @@ status: completed-documentation-draft
 created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research
-version: 0.1.1
+version: 0.1.2
 sources:
   - "docs/features/FEATURE-INVENTORY.md"
   - "docs/research/R01-SRC001-USER-INTENT-EXTRACTION.md"
@@ -75,3 +75,13 @@ After the original 383-row inventory was created, the owner requested continuous
 The feature inventory now contains **381 main capabilities plus 15 differentiated concepts, 396 entries total**. All release horizons remain **UNASSIGNED**. This is a recorded owner-requested capability, not evidence of an implemented AI extraction service or UI.
 
 **Chronology:** The initial validation counted 383 unique entries before this user amendment. The updated catalog's unique-ID/priority check is recorded separately in the PR status. Do not erase that earlier count from the task history or claim the inventory was always 396 entries.
+
+## Owner-approved MVP horizon application — 2026-10-09
+
+The owner replied “I agree” to the specific eight-area MVP and the explicit deferral of complete native covers and professional EPUB/print production. The signed-off **grouped user-facing scope** is recorded in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10); its owner decision is [VEL-PRODUCT-SCOPE-20261009-001](https://github.com/Ben-001-sys/Vellistry/blob/research/r04-specific-mvp-proposal-v0.1/docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md).
+
+The [396-ID scope map](https://github.com/Ben-001-sys/Vellistry/blob/research/r04-specific-mvp-proposal-v0.1/docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md) was reviewed against the current catalog by exact **ID, name and original source-status**. All 396 IDs matched, with no missing or duplicate rows. The inventoried release horizon field now reads **78 `MVP`**, **71 `MVP-LIMITED`**, **247 `POST-MVP-UNSCHEDULED`**. The original source statuses remain unchanged.
+
+**Evidence limit:** The owner accepted eight groups of functionality, not a separately reviewed 396-checkbox inventory. ID-level classifications express the recommended narrow implementation boundary; especially `MVP-LIMITED` entries are subject to later owner correction and acceptance specifications. `POST-MVP-UNSCHEDULED` neither cancels nor guarantees later shipping. This is a documentation/scope test, not code implementation or author usability testing.
+
+**Chronology:** Earlier passages saying priorities were entirely UNASSIGNED were true before the 2026-10-09 owner approval. Retain them as historical checkpoints rather than retroactively erasing that sequence.
