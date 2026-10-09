@@ -1,11 +1,11 @@
 ---
 id: VEL-RPT-R18-RETRIEVAL-20261009-001
 type: experiment-report
-status: experiment-committed-results-await-ci
+status: initial-experiment-passed-extended-controls-await-ci
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 related_research:
   - R07
   - R08
@@ -19,7 +19,7 @@ related_adrs:
 
 ## Evidence status
 
-**Executable synthetic benchmark committed; exact-head CI not yet verified.** Do not claim numerical scores before reading the actual run log and result JSON. This study uses no paid inference or real author manuscripts.
+**Initial exact-head CI PASSED**, using BAAI local inference and PostgreSQL 17.11 / pgvector 0.8.6 on [run 37977706332](https://github.com/Ben-001-sys/Vellistry/actions/runs/37977706332), commit 7a9b88702e920b26b9c3eb32f9074cc1912cdcaa. The initial naive all-terms lexical baseline reached 2/10 Recall@5; exact local-vector retrieval reached 9/10, as did strict-keyword/vector RRF. Query data remained synthetic and all returned citation IDs passed the eligibility filters. **The follow-up term-OR lexical and RRF control is added but NOT_YET_RUN at this documentation revision.** This study uses no paid inference or real author manuscripts.
 
 ## Test design
 
@@ -40,3 +40,17 @@ related_adrs:
 ## Interpretation limits
 
 The corpus and labels are invented and repetitive; a high benchmark score is **not** evidence of full-novel continuity, temporal inference by the model, independent author approval, SQL injection resistance or broad genre coverage. The tested filters rely on trusted metadata. No experimental result can justify accepting the complete application stack, model provider or vector indexing without further evidence. This report will be amended with an exact-head workflow run and observed numbers.
+
+## Initial measured data and pending stronger controls
+
+| Run configuration (original first run) | Recall@5 | MRR@5 | Verified |
+|---|---:|---:|---|
+| Strict all-terms FTS | 0.20 (2/10) | 0.20 | YES, original exact-head run |
+| Exact 384d cosine vector, locally embedded | 0.90 (9/10) | 0.90 | YES, original exact-head run |
+| RRF strict FTS + vector | 0.90 (9/10) | 0.90 | YES, original exact-head run |
+| FTS content-term OR | not run | not run | PENDING |
+| RRF OR FTS + vector | not run | not run | PENDING |
+
+The model produced embeddings for 1,974 total passages and 12 questions in 45.41 seconds on the run, with zero external inference API calls. Query latency and actual memory footprint are not summarized here; review the JSON artifact before interpreting operational cost. The original strict FTS query uses AND semantics for unquoted terms, which is not a fair *sole* keyword baseline against paraphrase queries. The follow-up query uses broad OR of content terms without manual synonym construction. This is still not BM25 or tuned full-text relevance search, and the set has only 10 gold-source questions.
+
+**Safety nuance:** the SQL safety checks validate supplied story-time/POV/approval/revision metadata. They do not show that an AI extractor can label those fields correctly in a novel.

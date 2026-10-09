@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass
@@ -183,6 +184,22 @@ def lexical(conn,c):
           ("alice","A",c.checkpoint,c.pov,c.checkpoint,c.prompt,c.prompt,CANDIDATES))
         return [r[0] for r in cur.fetchall()]
 
+def lexical_or(conn,c):
+    # A stronger unweighted lexical baseline: disjunction of content-bearing words.
+    # The query parser still strips stop words and normalizes terms; no handpicked synonyms.
+    stop={"the","a","an","of","at","in","from","with","to","did","when","where",
+          "what","how","she","he","was","were","had","and","that","which","who",
+          "her","his","is","do","does","could","would","for","on","into","again"}
+    terms=[term for term in re.findall(r"[A-Za-z0-9]+",c.prompt.lower()) if term not in stop]
+    query=" OR ".join(terms)
+    with conn.cursor() as cur:
+        cur.execute(f"""SELECT id FROM r18_retrieval.passages WHERE {FILTER}
+          AND lexical @@ websearch_to_tsquery('english',%s)
+          ORDER BY ts_rank_cd(lexical,websearch_to_tsquery('english',%s)) DESC,id
+          LIMIT %s""",
+          ("alice","A",c.checkpoint,c.pov,c.checkpoint,query,query,CANDIDATES))
+        return [r[0] for r in cur.fetchall()]
+
 def dense(conn,c,v):
     with conn.cursor() as cur:
         cur.execute(f"""SELECT id FROM r18_retrieval.passages
@@ -249,8 +266,8 @@ def main():
     start=time.monotonic()
     insert(conn,docs,vectors)
     index_seconds=round(time.monotonic()-start,3)
-    rankings={"lexical":{}}
-    if args.mode=="full":rankings.update({"vector":{},"hybrid_rrf":{}})
+    rankings={"lexical":{},"lexical_or":{}}
+    if args.mode=="full":rankings.update({"vector":{},"hybrid_rrf":{},"hybrid_or_rrf":{}})
     timings={key:[] for key in rankings}
     for case in CASES:
         t=time.monotonic()
@@ -258,6 +275,11 @@ def main():
         timings["lexical"].append(1000*(time.monotonic()-t))
         validate(conn,case,a)
         rankings["lexical"][case.name]=a
+        t=time.monotonic()
+        aor=lexical_or(conn,case)
+        timings["lexical_or"].append(1000*(time.monotonic()-t))
+        validate(conn,case,aor)
+        rankings["lexical_or"][case.name]=aor
         if args.mode=="full":
             t=time.monotonic()
             b=dense(conn,case,qvectors[case.name])
@@ -269,6 +291,11 @@ def main():
             timings["hybrid_rrf"].append(1000*(time.monotonic()-t))
             validate(conn,case,h)
             rankings["hybrid_rrf"][case.name]=h
+            t=time.monotonic()
+            h_or=fuse(aor,b)
+            timings["hybrid_or_rrf"].append(1000*(time.monotonic()-t))
+            validate(conn,case,h_or)
+            rankings["hybrid_or_rrf"][case.name]=h_or
     from statistics import median
     def percentile(vals,p):
         sorted_vals=sorted(vals)

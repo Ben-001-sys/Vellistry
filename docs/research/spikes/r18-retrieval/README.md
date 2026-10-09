@@ -8,9 +8,9 @@ The deterministic Python fixture generates 160 fictional chapters with 12 passag
 
 ## Compared retrieval methods
 
-1. PostgreSQL 17 English full-text search (generated tsvector, GIN, websearch_to_tsquery, ts_rank_cd).
+1. PostgreSQL 17 English full-text search (generated tsvector, GIN, websearch_to_tsquery, ts_rank_cd), in two configurations: strict all-term query and a stronger stop-word-filtered content-term OR query (no author-tuned synonyms).
 2. Real local BAAI/bge-small-en-v1.5 384-dimensional ONNX embeddings via open-source FastEmbed, stored in pgvector 0.8.6. **Exact cosine search**, not HNSW approximate search.
-3. Reciprocal Rank Fusion of lexical and vector top-20 candidate lists with RRF k=60.
+3. Reciprocal Rank Fusion of vector results with either strict or OR lexical top-20 lists (RRF k=60). Both comparisons are reported, to avoid a misleadingly weak lexical baseline.
 
 All three run within *the same* trusted author/book scope, chapter source revision, approved-status, fictional event-time and POV knowledge filters. Each returned citation must pass the safety assertions or the test fails.
 
@@ -47,3 +47,9 @@ Each job logs actual synthetic word count, library/server versions, label hit co
 - https://github.com/pgvector/pgvector#hybrid-search
 - https://qdrant.tech/documentation/fastembed/fastembed-quickstart/
 - https://huggingface.co/BAAI/bge-small-en-v1.5
+
+## Initial exact-head result, prior to stronger lexical control
+
+At commit 7a9b88702e920b26b9c3eb32f9074cc1912cdcaa, [R18 run 37977706332](https://github.com/Ben-001-sys/Vellistry/actions/runs/37977706332) passed both jobs over 140,678 synthetic accepted words and 1,974 total passages. Strict all-term FTS Recall@5 = 2/10; BAAI local-vector Recall@5 = 9/10; strict+vector RRF = 9/10. All returned IDs passed 12-question book/revision/time/POV/approval safety filters. Local model embedding creation = 45.41s on that runner. These are baseline observations, not a selected stack and not measurements of real-novel quality.
+
+The newer **OR-term FTS** and **OR-term+vector RRF** controls must run before interpreting whether semantic indexing adds sufficient benefit. Their metrics are intentionally NOT reported until a new exact-head CI run verifies them.
