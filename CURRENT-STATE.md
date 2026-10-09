@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.13
+version: 0.1.14
 ---
 
 # Vellistry — Current State
@@ -142,3 +142,9 @@ No application code, product architecture, or live research workflow has been va
 - Detached recovery reads only an exported **historical** `VEL-CP-0001` to reconstruct its task boundaries; it cannot authenticate Git, verify original SRC-001, authorize operations, or replace the currently accepted MVP and editor decisions.
 - [VEL-HO-0001](docs/agent-workflow/handoff-evaluations/VEL-HO-0001.md) records the bounded automated test and the explicit **Level B second-agent evaluation gap**. The rubric and result template are versioned for later real evaluation.
 - This integration retains `main`'s merged R02, R06, R07, R01/R15 and feature-inventory knowledge. The most recent feature-inventory [PR #9](https://github.com/Ben-001-sys/Vellistry/pull/9) is merged; earlier status paragraphs elsewhere are historical snapshots.
+
+## Stage 3 Level B — first Cursor response submitted for assessment (2026-10-09; pending owner review)
+- User submitted a response identified as originating from **Cursor**, preserved unchanged at [VEL-HO-0002 raw transcript](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md) with SHA-256 in the associated [assessment](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md).
+- The bounded historical `VEL-CP-0001` task-reconstruction response provisionally satisfies **9/10 rubric checks** with **0 observed content failures**. Independence/session-isolation evidence is **not assessed** because no Cursor model/version, session ID/log or isolated-workspace proof was supplied; owner approval is also pending.
+- This is evidence for one **historical, constrained ContextPack** only. The task's historical lack of approved editor/MVP scope does not supersede later Tiptap 3/ProseMirror and MVP decisions.
+- [Level B Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending independent-session provenance and owner sign-off. [Level B export PR #21](https://github.com/Ben-001-sys/Vellistry/pull/21) is a separate export workflow, not proof of an agent execution.
