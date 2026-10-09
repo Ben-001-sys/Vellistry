@@ -5,7 +5,7 @@ status: draft
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - SRC-001
   - SRC-002
@@ -32,7 +32,7 @@ The application should be useful as a conventional manuscript editor even withou
 ## Scope and boundaries
 Fiction and book-writing workflows are the primary focus. Other writing use cases may be evaluated, but are not automatically in scope.
 
-No implementation framework, database, editor engine, deployment platform, or AI provider is approved yet. Earlier product research contains candidates, not binding architecture decisions.
+**Accepted manuscript editor foundation:** Tiptap 3 built on ProseMirror ([ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md)). The open-source editor core is the selected technology; this approval does not extend to Tiptap's paid pagination/conversion offerings. The broader **Next.js + NestJS + Supabase** implementation baseline was subsequently authorized by the owner and is separately proposed for repository integration in PR #28 (ADR-0006). This editor ADR does not itself approve that stack or its production deployment. Publishing/export platform, AI provider, and paid features remain separate decisions.
 
 ## Governance
 The engineering knowledge base will be versioned in the same Git repository as the future app. The user's manuscript data, credentials, and runtime settings will not automatically be committed to this repository.
