@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-K2B-DATA-API-LOCKDOWN-20261009-001
 type: security-research-report
-status: proposed-test-not-yet-executed
+status: local-grant-experiment-verified-integration-redesign-required
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 sources:
   - "https://supabase.com/docs/guides/api/securing-your-api"
   - "https://supabase.com/docs/guides/database/postgres/row-level-security"
@@ -59,3 +59,20 @@ Test: `apps/api/tests/k2b-data-api-lockdown.integration.mjs`, after the precedin
 - **NOT TESTED** until CI completes; a workflow definition is not result evidence.
 
 **Pair 01 security gate is still open after this experiment:** Next.js SSR cookie refresh, direct Storage policies, revocation across sensitive API paths, browser logout/account switch, local draft erasure and final session-lifetime choice remain mandatory decisions or tests.
+
+## 2026-10-09 — actual exact-head CI outcome
+
+**Commit:** `4f63e7815aa47ee07344b908b3d0c92c30d90f4d`.
+
+[Local real Auth/RLS and Data API security workflow #37995206203](https://github.com/Ben-001-sys/Vellistry/actions/runs/37995206203): **SUCCESS**. Ran original **17/17 K2A groups**, subsequent **9/9 session-observation groups**, then **6/6 new grant-lockdown groups**, all against disposable Supabase Auth, PostgREST, PostgreSQL and running NestJS. The standard [Next/Nest foundation build #37995206102](https://github.com/Ben-001-sys/Vellistry/actions/runs/37995206102) passed independently.
+
+### Measured constraints (not production changes)
+
+1. Before revocation, a signed-in test author could read the synthetic chapter from PostgREST and list own books through Nest.
+2. After revoking `SELECT` on `chapters` and `chapter_revisions` from `authenticated`, **direct Data API manuscript reads returned permission errors**. Existing Nest books listing continued returning 200 and Auth `getUser` worked.
+3. After also revoking author table operations on `books`, **direct book reads were denied** but **existing Nest GET /v1/books returned HTTP 500** because Nest itself uses a bearer-scoped Supabase PostgREST client for the same table. This breakage is an **expected warning**, not a passing future architecture or a security control to copy to production.
+4. Independently signed-in Bob remained isolated and Auth was unaffected; all fixtures were synthetic and locally discarded.
+
+**Conclusion:** Database grants can restrict direct manuscript access, but **full Nest-only books/manuscripts requires a trusted server DB transport and audited least-privilege ownership/session enforcement** before changing grants. **Do not run the research revocations as a production migration**. This bounded result does not validate instant signout across all resources, SSR token refresh, private Storage, or on-device draft erasure.
+
+**K2B remains OPEN** until those separate browser/storage/session gates and a documented owner architecture decision close; this particular grant experiment is **VERIFIED**.
