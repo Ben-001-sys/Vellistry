@@ -175,3 +175,18 @@ No application code, product architecture, or live research workflow has been va
 - This branch retains **all newer merged main entries** including the accepted Tiptap 3/ProseMirror ADR and the already merged [Cursor evaluation PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24); historic 9/10 handoff contents do not constitute a fully confirmed session-independence assessment.
 - A Next.js + NestJS + Supabase direction is separately described as owner-selected in [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28); its branch's own review and merge are distinct from this synthetic task contract. Stage 4 neither selects nor reverses application architecture.
 - Product acceptance tests, real-browser editing, production authorization/durability, separate agent ExecutionBundle and owner review of this specification remain pending. This conflict resolution **does not merge PR #26 or promote the specification to accepted**.
+
+
+## 2026-10-09 — Pair 02 research activation under bounded Pair 01 deferral
+
+Owner instructed: "this is ok for mvp lets deal with the rest of the pairs" after source-variant mapping proposals and actual local session-liveness / restricted-gateway test evidence. Interpret as permission to **advance research sequencing**, not to approve the original 134 proposed rule controls or waive manuscript privacy/release security. See [Pair 02 evidence](docs/research/PAIR-02-ACCELERATED-AUTHOR-EDITOR-EVIDENCE-2026-10-09.md) and [remaining-pairs reuse ledger](docs/research/ACCELERATED-PAIRS-02-TO-06-EVIDENCE-REUSE-2026-10-09.md).
+
+**Currently active research tracks (exactly two):**
+- R02/R03: author workflows, competitor comparisons, real-writer study tasks; no user interviews yet verified.
+- R05/R16: Tiptap/ProseMirror editor and accessibility; reuse previous real-browser evidence, add bounded browser keyboard/formatting/save-state checks, assistive-tech review remains open.
+
+**Queued:** Pairs 03 (R11/R07), 04 (R08/R21 and R19), 05 (R06/R10), 06 (R14/R21 and R18). These are NOT newly active merely because a reuse ledger exists.
+
+**Carry-forward blockers:** Final R01 source-backed rule mapping, authentic defaults; R15/K2B production-integrated secure manuscript access and SSR, storage, client draft isolation, deletion/retention. Research-only local CI findings do not imply production readiness. Existing Next/Nest/Supabase scaffold remains on hold; dedicated Figma/Lovable design and owner-reviewed UI signoff still precede production implementation.
+
+**Evidence classification:** Pair 02 documentation and tests are a draft PR, not automatically accepted. Check exact-head workflow conclusions before treating new browser behavior as verified. Do not retrospectively rewrite older state, tests or decisions.
