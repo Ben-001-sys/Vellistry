@@ -5,7 +5,7 @@ status: proposed-awaiting-owner-approval
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "docs/features/FEATURE-INVENTORY.md on docs/complete-feature-inventory-v0.1 (PR #9; 396 records including owner-requested live story profiles)"
   - "docs/requirements/PRODUCT-DIRECTION-FROZEN-DEFAULT-GUIDANCE-2026-10-08.md"
@@ -41,6 +41,8 @@ related_adrs:
 ---
 
 # R04 — One concrete Vellistry MVP proposal (2026-10-09)
+
+**Historical note:** This document was originally written as a **pre-approval proposal**. The project owner subsequently approved its eight-area MVP target and explicit cover/publishing deferral on **2026-10-09**. The binding scope record is [VEL-PRODUCT-SCOPE-20261009-001](../requirements/MVP-SCOPE-DECISION-2026-10-09.md), and the 396-ID horizon mapping is [here](../requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md). The rest of this research report retains its original *proposed* language as chronology; approval is not implementation, launch clearance or selection of the remaining tech stack.
 
 **Decision state: PROPOSED ONLY; owner approval is required to adopt this scope.** This is a product-release *hypothesis* derived from the now 396-entry feature catalog and source-approved directions, not a tech-stack selection, roadmap commitment, completed implementation or public availability statement. The GitHub inventory itself retains **UNASSIGNED** release priorities until explicit owner approval and per-feature classification.
 
