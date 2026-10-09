@@ -6,6 +6,8 @@ on:
       - 'docs/agent-workflow/**'
       - 'scripts/agent_workflow.py'
       - 'tests/test_agent_workflow.py'
+      - 'tests/test_handoff_recovery.py'
+      - 'scripts/handoff_recovery.py'
       - '.github/workflows/agent-workflow.yml'
   push:
     branches: [main, 'feat/agent-workflow-*']
@@ -13,6 +15,8 @@ on:
       - 'docs/agent-workflow/**'
       - 'scripts/agent_workflow.py'
       - 'tests/test_agent_workflow.py'
+      - 'tests/test_handoff_recovery.py'
+      - 'scripts/handoff_recovery.py'
       - '.github/workflows/agent-workflow.yml'
 permissions:
   contents: read
@@ -33,3 +37,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_agent_workflow.py' -v
       - name: Validate agent task, ContextPack and ExecutionBundle
         run: python scripts/agent_workflow.py validate
+      - name: Test detached cold-start reconstruction
+        run: python -m unittest discover -s tests -p 'test_handoff_recovery.py' -v
