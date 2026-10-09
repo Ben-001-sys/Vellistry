@@ -62,3 +62,15 @@ New live fixture in [pair06_postgres.sql](experiments/pair06_postgres.sql) and [
 | Research-to-design gate | NOT AUTHORIZED YET | Review outstanding Pairs01–06 risks then approve Figma Make/Lovable exploration and canonical editable Figma Design |
 
 This is a research closeout proposal, not approval to merge application features, buy paid products or start the design/implementation phase.
+
+
+## Exact-head runtime evidence — 2026-10-09
+
+**Tested code SHA:** d26750aa6f695c2ebbce352cefb6c3c7979a3fe3. [GitHub Actions #38006268912](https://github.com/Ben-001-sys/Vellistry/actions/runs/38006268912) completed **SUCCESS** in both independent jobs.
+
+- **R14/R21 risk-register integrity: 8/8 passed.** Checks establish that evidence has concrete provenance, release clearance is not assumed, Ghana compliance/counsel decisions remain open, and no free managed-backup/RPO claim is invented. Not legal compliance or an SBOM audit.
+- **R18 disposable PostgreSQL 16: 12/12 passed**, tested with actual SQL transactions and tool-driven dump/restore. Atomic revision/journal, stale conflict, wrong author and book fixture guards, explicit fault-after-update rollback, idempotency key retries and changed-payload denial, concurrent competing revisions, and a clean separate-database pg_dump/pg_restore data comparison passed.
+- Postgres logs show expected injected SQL exceptions. These are successful negative tests, not unexpected CI failures.
+- **Unverified:** application Auth/RLS, interrupted real HTTP acknowledgment, background jobs, browser offline/online, production outage, real RPO/RTO, encrypted remote backup custody, assets/Auth restoration and manuscript load/performance.
+
+**Disposition:** Research experiment evidence produced; not production release authorization. PR #42 remains draft/unmerged. Owner decision is whether to accept bounded research with explicit live-integration/legal/user-study obligations carried to design/implementation, or require additional evidence before design. No automatic approval inferred.
