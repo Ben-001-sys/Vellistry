@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.8
+version: 0.1.9
 ---
 
 # Vellistry — Current State
@@ -115,3 +115,10 @@ No application code, product architecture, or live research workflow has been va
 - **Owner-selected editor:** The owner selected **Tiptap 3 / ProseMirror** after the R05 study. The decision is on still-draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6); it does not approve premium Tiptap Pages/Conversion or choose a separate framework, backend, database, AI provider or publishing engine.
 - **Owner-approved product scope:** The eight-area MVP is recorded on draft [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10). This changes the *present* scope but not the facts or date of the pre-decision R05 source paper. Standalone comprehensive EPUB/print layout is intentionally post-MVP.
 - **PR #4 review remediation:** This branch incorporates current `main` history and reconciles the old `CURRENT-STATE.md` overlap rather than copying the older state over merged R02/R06/Stage 3 sections. Verify exact-head metadata checks, mergeability and reviewer comments before any owner-authorized merge.
+
+## R05 Tiptap 3 headless research reconciled after merged-main changes — 2026-10-09
+- [R05 Tiptap 3 real-package research](docs/research/R05-TIPTAP3-MANUSCRIPT-WORKSPACE-VALIDATION-2026-10-08.md) and [ExecutionBundle](docs/research/R05-TIPTAP3-EXECUTION-BUNDLE-2026-10-08.md) record **7/7** passing isolated Node/jsdom tests, with exact passing run [37843380823](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843380823). Tests cover limited editing mechanics, not real-browser UX, secure autosave, author privacy or a production app.
+- **Further research** has separately progressed to seven limited passing actual Chromium tests on [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12), which is stacked on this branch. That does not change the historical claims of the earlier jsdom report.
+- **Editor choice:** The owner selected Tiptap major version 3 / ProseMirror and the accepted decision remains recorded in draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6). No other app framework, document store, provider or paid Tiptap package was selected by these tests.
+- **Later scope approval:** The eight-area MVP target was approved separately after this original experiment ([PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10)). Do not retrospectively treat the headless experiment as an accepted full MVP.
+- **Merged history preserved:** Reconciliation retains the R02 study, merged R06 PR #3 and merged Stage 3 PR #5 from current `main`. Earlier pending-status entries remain historical, not current statements. This research PR remains open/unmerged until owner review and exact-head checks.
