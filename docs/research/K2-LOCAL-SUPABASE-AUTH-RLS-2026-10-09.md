@@ -1,11 +1,11 @@
 ---
 id: VEL-RSH-K2-AUTH-RLS-20261009-001
 type: research-report
-status: executable-integration-prepared-not-verified
+status: real-auth-run-discovered-grant-gap-fix-awaiting-retest
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 related_adrs:
   - ADR-0006
 related_requirements:
@@ -71,3 +71,11 @@ Expected checks (until observed, **NOT_RUN**):
 - A test-only administrative key is handled only by the fixture script and ephemeral CI environment, never the Next client or Nest implementation module. CI logs and report artifacts must omit all tokens/passwords.
 - No new paid service, remote project, production migration or public hosting is allowed.
 - This research PR is stacked on draft PR #28; it does not merge, replace or silently approve #28.
+
+## Initial actual execution — 2026-10-09 (failure is evidence)
+
+The first real local-stack CI [run #37987539390](https://github.com/Ben-001-sys/Vellistry/actions/runs/37987539390), code commit `4fdac665c4e7d4e24592f65cff49fadbb48a9657`, successfully started disposable Supabase Auth/PostgREST/PostgreSQL, applied migrations and ran genuine NestJS against two password-authenticated test accounts.
+
+**13 of 17 named assertion/diagnostic groups passed, then group K2-14 failed.** Authentication, forged tokens, book ownership and cross-author books, anon access, source chapter and revision *reads* all passed. At group K2-14, the script expected a direct authenticated chapter UPDATE to return a permission error. Instead the request returned no error. This is consistent with a default `authenticated` UPDATE grant remaining on a public table even though there was no matching UPDATE RLS policy. **The initial test checked the error only, not the unchanged row.** No evidence of an actual chapter mutation was demonstrated in that run, and the suite stopped before the remaining cases.
+
+**Correction proposed and committed here:** a second explicit migration revokes all direct privileges on `chapters` and `chapter_revisions` for authenticated (and anon), then restores `authenticated` SELECT only. The test now checks both UPDATE denial **and** unchanged chapter content. The corrected schema must pass genuine two-user integration before declaring K2 complete. This protects against future accidental direct DML grants and makes permission-denied behavior unambiguous. A future transactionally reviewed chapter-write API must not weaken this policy by granting direct table edits.

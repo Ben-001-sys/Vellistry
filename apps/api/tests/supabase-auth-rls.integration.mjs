@@ -163,8 +163,14 @@ try{
  assert.deepEqual(bRevs.data.map(x=>x.chapter_id),[chapterB]);
  record("immutable accepted revision reads isolated across authors");
 
- q=await aliceDirect.from("chapters").update({title:"changed"}).eq("id",chapterA);
- assert.ok(q.error,"author must not directly bypass revision-write gate");
+ const beforeChapter=await aliceDirect.from("chapters").select("title").eq("id",chapterA).single();
+ assert.ifError(beforeChapter.error);
+ q=await aliceDirect.from("chapters").update({title:"changed"}).eq("id",chapterA).select("id");
+ assert.ok(q.error,"authenticated must lack direct chapter UPDATE privilege");
+ const afterChapter=await aliceDirect.from("chapters").select("title").eq("id",chapterA).single();
+ assert.ifError(afterChapter.error);
+ assert.equal(afterChapter.data.title,beforeChapter.data.title,
+   "a denied mutation must not change the accepted chapter");
  q=await aliceDirect.from("chapter_revisions")
    .insert({book_id:aBook,chapter_id:chapterA,revision:2,document:document("fake revision")});
  assert.ok(q.error,"author must not insert unapproved revision record");
