@@ -8,7 +8,8 @@
     "start:next": "next dev apps/next --hostname 127.0.0.1 --port 3100",
     "start:nest": "tsx --tsconfig apps/nest/tsconfig.json apps/nest/api.ts",
     "build:next": "next build apps/next",
-    "build:vite": "vite build --config apps/vite/vite.config.mjs"
+    "build:vite": "vite build --config apps/vite/vite.config.mjs",
+    "test:browser": "playwright test --config tests/playwright.config.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
@@ -21,12 +22,14 @@
     "@nestjs/platform-express": "^11.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.0",
-    "pg": "^8.15.0"
+    "pg": "^8.15.0",
+    "dexie": "^4.0.0"
   },
   "devDependencies": {
     "typescript": "^5.8.0",
     "tsx": "^4.19.0",
     "vite": "^7.0.0",
-    "@vitejs/plugin-react": "^5.0.0"
+    "@vitejs/plugin-react": "^5.0.0",
+    "@playwright/test": "^1.60.0"
   }
 }
