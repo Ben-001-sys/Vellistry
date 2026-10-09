@@ -7,3 +7,4 @@ Architecture decision records reside here. Every file must include YAML front ma
 Initial decisions:
 - [ADR-0001 — Co-locate knowledge and application](ADR-0001-co-locate-engineering-knowledge-with-application.md)
 - [ADR-0002 — Require metadata and lineage](ADR-0002-require-metadata-for-decisions-and-history.md)
+- [ADR-0004 — Use free Calibre conversion and independent portable backups](ADR-0004-free-calibre-document-conversion-and-portable-recovery.md)
