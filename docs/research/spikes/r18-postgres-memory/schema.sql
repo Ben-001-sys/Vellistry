@@ -133,7 +133,7 @@ AS $fn$
    AND e.search_document @@ websearch_to_tsquery('english',p_query)
    AND (p_pov IS NULL OR
        (e.known_by ? p_pov AND (e.known_by ->> p_pov)::integer <= p_at))
- ORDER BY score DESC,e.id ASC
+ ORDER BY ts_rank(e.search_document,websearch_to_tsquery('english',p_query)) DESC,e.id ASC
 $fn$;
 
 REVOKE ALL ON FUNCTION r18.save_chapter_cas(text,text,integer,text) FROM PUBLIC;
