@@ -1,0 +1,19 @@
+{
+  "name": "vellistry",
+  "private": true,
+  "packageManager": "pnpm@10.18.0",
+  "scripts": {
+    "build": "pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build",
+    "check": "pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck",
+    "dev:web": "pnpm --filter @vellistry/web dev",
+    "dev:api": "pnpm --filter @vellistry/api dev",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:reset": "supabase db reset"
+  },
+  "devDependencies": {
+    "supabase": "^2.0.0",
+    "typescript": "^5.8.0"
+  }
+}

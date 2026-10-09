@@ -1,20 +1,45 @@
-# Vellistry
+# Vellistry — initial implementation
 
-Vellistry is a proposed author-controlled fiction writing, editing, design, and publishing application with optional AI assistance.
+Vellistry is an author-controlled fiction writing application with optional AI. This is the **first application foundation**. It is not yet a deployed product and does not claim complete authentication, manuscript recovery, or accepted story memory.
 
-This repository is intended to hold both the future application source code and its engineering knowledge base. The application architecture and implementation stack are not yet decided.
+## Approved direction
 
-## Current stage
+See [ADR-0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md) and the [dated implementation kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
 
-**Research and discovery.** The repository knowledge system is being initialized. Existing research must be inventoried and migrated with citations and provenance before derived requirements are treated as complete.
+- `apps/web`: Next.js 16, React 19, Tailwind 4 and browser/server Supabase session clients.
+- `apps/api`: NestJS 11 health and protected books endpoints.
+- `supabase/migrations`: PostgreSQL books, chapters, immutable revision tables and author/book RLS.
+- Story Memory, Tiptap 3 full editor, revision-save RPC, long-term backup and optional AI will follow as tested vertical slices.
+- All development can use the local Supabase CLI; **no paid services required**.
 
-## Project knowledge
+## Prerequisites
 
-- [`PROJECT.md`](PROJECT.md) — project scope and objectives.
-- [`PROJECT-CONSTITUTION.md`](PROJECT-CONSTITUTION.md) — guiding research and engineering principles.
-- [`SOURCE-OF-TRUTH.md`](SOURCE-OF-TRUTH.md) — authority, evidence, metadata, and approval rules.
-- [`CURRENT-STATE.md`](CURRENT-STATE.md) — progress, decisions, blockers, and next steps.
-- [`AGENTS.md`](AGENTS.md) — instructions for AI research and implementation agents.
-- [`docs/`](docs/) — research, requirements, ADRs, history, experiments, and reports.
+Node 24, pnpm 10, and Docker-compatible container runtime for local Supabase. Local Supabase must remain bound to a trusted local interface.
 
-**Authority:** Product choices are not accepted merely because they appear in earlier AI-generated research. Decisions require explicit review and approval.
+## Local startup
+
+1. Run `corepack enable` (or install pnpm 10 independently) and `pnpm install`.
+2. Run `pnpm supabase:start`. Then inspect local URL and **local-only publishable/anon key** with `pnpm supabase:status`.
+3. Copy `.env.example` to `apps/api/.env`. Set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` from the local status. Keep `API_PORT=4100`.
+4. Copy the `NEXT_PUBLIC_*` and `VELLISTRY_API_BASE_URL` lines into `apps/web/.env.local`. Use the same local project URL and publishable key.
+5. Run `pnpm supabase:reset` to create the sample **schema**. This operation **destroys local database content**; only run on a disposable development instance.
+6. Start `pnpm dev:api` and `pnpm dev:web` in separate terminals.
+7. Open `http://127.0.0.1:3000`; sign up through the local Auth server and create your first book. If email confirmation is enabled, use the local Supabase email inbox or appropriate development settings to confirm before signing in.
+
+API health endpoint: `http://127.0.0.1:4100/v1/health`. All other exposed book endpoints require a verifiable Supabase access token and RLS permissions.
+
+## Security boundaries
+
+- Use only Supabase **publishable/anon** keys in web or author-scoped API paths. Never commit a service-role key or browser token.
+- The NestJS API validates the bearer token against Supabase Auth on each author request. The database sets `owner_id` from `auth.uid()`, not a submitted user ID. The API performs PostgREST queries with the author's bearer token, so RLS filters remain effective.
+- Session retrieval in the Next.js proxy is not relied on as the sole authorization: Nest rechecks identity. Real client cookie refresh, CSRF, proxy boundaries and session revocation must still be verified.
+- Public health does not claim database/identity service availability.
+- Chapter revisions are deliberately **read-only** in this first migration. The next vertical slice introduces a transactional audited revision-save RPC before adding editor write APIs.
+- `apps/web` does not yet integrate shadcn/ui or full Tiptap chapter editor. These are next milestones, not silently completed features.
+- No public deployment, real author manuscript or real credentials were used in bootstrap CI.
+
+## Current checks
+
+The initial CI compiles both apps and runs Git metadata validation. **A passing build is not an authenticated Supabase integration pass**. Multi-account Supabase Auth, RLS and session-revocation tests remain mandatory before treating K2 as complete.
+
+See earlier [research tests](docs/research/spikes/r18-framework-slice/README.md) for synthetic Next/Nest HTTP and Chromium evidence; research fixtures are not production authentication.
