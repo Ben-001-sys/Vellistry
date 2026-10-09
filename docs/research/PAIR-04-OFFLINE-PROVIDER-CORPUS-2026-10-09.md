@@ -57,3 +57,8 @@ Reuse the original **14-case multi-genre** synthetic corpus and **15 reversible-
 - Pair 04 can reach a **bounded research checkpoint** after exact-head CI for the offline protocol and owner-visible provider alternatives, while retaining real provider/privacy/creative-quality decisions as explicit blockers.
 - Pair 05 R06 and R10 remain queued until this checkpoint is documented. Creating its evaluation fixtures does not certify frozen guidance.
 - Design-first requirement and no production feature merge/deploy remain unchanged.
+
+
+## Executed offline verification — 2026-10-09
+
+**Exact tested research commit:** e1582a614f52fd63a2d0abe85cbb18931bdebd58. [GitHub Actions #38005616031](https://github.com/Ben-001-sys/Vellistry/actions/runs/38005616031) reported **SUCCESS**: imported independent fixture validator passed for **14 synthetic fiction cases and 15 reversible-edit specifications**; new R08/R19 tests passed **14/14**. This is an executable *offline policy/structure* pass only. **No** API/network connection, model generation, inferred adherence, human ratings, BYOK key issuance or usage payment occurred. No provider approved.
