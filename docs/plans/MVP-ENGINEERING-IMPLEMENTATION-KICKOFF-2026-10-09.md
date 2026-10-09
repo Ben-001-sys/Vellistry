@@ -6,7 +6,7 @@ created_at: 2026-10-09
 updated_at: 2026-10-09
 owner: project_owner
 author: project-research
-version: 0.1.0
+version: 0.2.0
 related_adrs:
   - ADR-0006
 related_requirements:
@@ -42,8 +42,8 @@ On Friday 2026-10-09 the owner agreed to **Next.js + NestJS + Supabase** and ins
 
 | Milestone | Deliverable | Verification | Status |
 |---|---|---|---|
-| K0 — Plan and approval | ADR-0006, scope boundary, work breakdown, hard stop criteria | Owner agreement recorded and Git validator green | STARTED |
-| K1 — Workspace boot | pnpm workspace, Next web, Nest API, env contract, CI | Each app builds; no secret required in CI | STARTED |
+| K0 — Plan and approval | ADR-0006, scope boundary, work breakdown, hard stop criteria | Owner agreement recorded; knowledge metadata CI passed | **DONE in draft PR #28** |
+| K1 — Workspace boot | pnpm workspace, Next web, Nest API, env contract, CI | Both apps build/typecheck without secrets | **FOUNDATION PASSED in draft PR #28** |
 | K2 — Auth and isolation | Supabase local project, email/password sign-in, verified user through Nest, RLS books | Alice/Bob negative and positive tests; bearer forgery/expiry denied | NEXT |
 | K3 — Core book/chapter workflow | Book create/list, chapter create/list, revision-safe save | Cross-book denied, stale revision 409, revision history intact | NEXT |
 | K4 — Tiptap author workspace | Open/edit/save/chapter nav, dirty and conflict UI, Dexie safety copy | Real browser save/reload/recovery and two-tab test | NEXT |
@@ -76,3 +76,9 @@ Do **not** start from paid model integration, elaborate UI screens, pgvector, de
 ## Planning cut-off
 
 By **22:30 Ghana time on 2026-10-09**, planning for the initial implementation is considered sufficiently scoped to code against this contract. Remaining uncertainties are explicit backlog/release gates, not reasons to restart a broad research round. Implementation may and should begin as soon as K0 and K1 are written and verified.
+
+## 2026-10-09 actual kickoff checkpoint
+
+On draft [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28), the [exact-head implementation CI #37986527730](https://github.com/Ben-001-sys/Vellistry/actions/runs/37986527730) completed **SUCCESS** at commit `4db961f8dc0ee4f20204af26819fd22585b2a40b`: pnpm install, Nest API build/typecheck, Next web build/typecheck. [Knowledge metadata CI #37986527740](https://github.com/Ben-001-sys/Vellistry/actions/runs/37986527740) also passed. This establishes K0 and K1 draft evidence; source has not been merged or deployed.
+
+**K2 remains NOT RUN:** No live Supabase Auth/RLS or two-account test happened. Login/account pages and policies are implementation scaffolding only. The first follow-on PR should run local Supabase, two real test accounts with cross-account negative assertions, expired/revoked token checks, and a test that privileged keys never reach browser/request code. Later implement chapter save RPC transactionally and only then the editable chapter UI. Managed/self-hosted production deployment decision remains open.

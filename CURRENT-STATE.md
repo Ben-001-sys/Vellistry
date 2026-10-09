@@ -3,14 +3,23 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-08
+updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.14
+version: 0.1.15
 ---
 
 # Vellistry — Current State
 
 ## Phase
+**2026-10-09 current checkpoint:** Implementation foundation **started** in draft PR #28 with owner-approved Next.js + NestJS + Supabase baseline (ADR-0006). The first workspace and two application builds/typechecks and metadata validator passed; **not deployed; no real Supabase Auth/RLS tested yet**. Earlier research-only statements further down preserve their historical original meaning. See [kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
+
+### Current engineering actions
+- K0: decision and bounded roadmap recorded in draft PR #28.
+- K1: pnpm monorepo, Next web/auth/books shell, Nest authenticated API, Supabase migration and CI **built**.
+- **Next K2:** local Supabase Auth with two users; real access-token verification, session refresh/revocation and positive/negative book RLS tests. No external model, secrets or hosted deployment needed.
+- **Later K3/K4:** transactionally versioned chapter save, then complete Tiptap writing/recovery UI.
+
+### Previous research bootstrap snapshot (preserved)
 Research and discovery; engineering knowledge foundation initialization.
 
 ## Accepted direction

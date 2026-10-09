@@ -8,3 +8,5 @@ An event describes what occurred and its evidence. Interpretations and proposals
 - [2026-10-08 — Solo-maintainer review policy](2026-10-08-solo-maintainer-review-policy.md)
 - [2026-10-08 — ADR-0001 owner reconfirmed](2026-10-08-adr-0001-owner-reconfirmation.md)
 - [2026-10-09 — R11 no-paid-service format conversion decision](2026-10-09-r11-free-conversion-engine-selected.md)
+
+- [2026-10-09 — Owner authorized Next/Nest/Supabase implementation](2026-10-09-next-nest-supabase-implementation-authorized.md)
