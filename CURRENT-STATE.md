@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.12
+version: 0.1.13
 ---
 
 # Vellistry — Current State
@@ -137,7 +137,7 @@ No application code, product architecture, or live research workflow has been va
 - These source/trust studies complement approved eight-area MVP scope in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) and preparation [PR #11](https://github.com/Ben-001-sys/Vellistry/pull/11); no release gate closed.
 
 ## Stage 3 — cold-start evidence synced after feature inventory (2026-10-09)
-- [PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is a **draft**, unmerged Level A ContextPack reproducibility addition. It does not establish independent second-agent success.
+- [PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is **open and ready for review, but unmerged**; it adds Level A ContextPack reproducibility evidence. It does not establish independent second-agent success.
 - CI on earlier head `ff2ac4c6c9f29c8e6c6e75d1b5f8171df9a78a78`: [agent workflow run #37939723962](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723962) passed 15 existing tests plus 5 detached tests; [knowledge metadata run #37939723897](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723897) passed. Exact-head checks after this integration remain separately required.
 - Detached recovery reads only an exported **historical** `VEL-CP-0001` to reconstruct its task boundaries; it cannot authenticate Git, verify original SRC-001, authorize operations, or replace the currently accepted MVP and editor decisions.
 - [VEL-HO-0001](docs/agent-workflow/handoff-evaluations/VEL-HO-0001.md) records the bounded automated test and the explicit **Level B second-agent evaluation gap**. The rubric and result template are versioned for later real evaluation.
