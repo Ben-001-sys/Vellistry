@@ -36,6 +36,8 @@ related_requirements:
   - VEL-PRODUCT-SCOPE-20261009-001
 ---
 
+**LATER DECISION (2026-10-09):** The owner asked for a definitive choice after the Calibre comparison. [ADR-0004](../decisions/ADR-0004-free-calibre-document-conversion-and-portable-recovery.md) now selects **Calibre as Vellistry's primary free rich-format converter**, native TXT handling, Tiptap JSON manuscript representation and JSZip/JSON independent project backups. Below remains the **historical pre-decision options research**; references to 'no converter selected' are superseded for current technology direction, **not** overwritten or recast as successful tests. All R11 technical/security/licensing gates remain open.
+
 # R11 — Zero-paid-service open-source DOCX, TXT, EPUB and recoverable project research
 
 **Researched 2026-10-09.** This note supersedes the paid-vendor comparison as a **candidate-selection constraint**, while retaining the older comparison as historic research. Findings below rely on primary project documentation/licenses; **no format round-trip, package security test or restore experiment has been executed** in this work. No converter, implementation framework or runtime architecture is accepted.
