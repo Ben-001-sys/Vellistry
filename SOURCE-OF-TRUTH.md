@@ -5,7 +5,7 @@ status: accepted
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.1
+version: 0.1.2
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -18,6 +18,7 @@ related_adrs:
 - **CURRENT-STATE.md:** compact, current working status; not a substitute for full evidence.
 - **ADRs:** accepted or proposed technical and knowledge-governance decisions, with rationale, alternatives, approval and supersession lineage.
 - **Source register:** where original research came from and where an immutable/retrievable copy can be found.
+- **Feature inventory:** [docs/features/FEATURE-INVENTORY.md](docs/features/FEATURE-INVENTORY.md) is the reviewable index of discussed feature candidates and source/status links. **It is not an accepted product backlog, release plan, substitute for original source evidence, or approval of proposed features.**
 - **Git history and pull requests:** revision provenance; do not substitute automatically for semantic record metadata.
 - **ChatGPT and other agents:** analysis and proposal tools, not an independent source of architectural authority.
 

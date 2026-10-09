@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.9
+version: 0.1.11
 ---
 
 # Vellistry — Current State
