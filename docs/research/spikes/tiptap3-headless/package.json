@@ -1,0 +1,16 @@
+{
+  "name": "vellistry-r05-tiptap3-headless-research-spike",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Nonproduction Tiptap 3 editing feasibility tests only; no application framework choice",
+  "scripts": {
+    "test": "node --test spike.test.mjs"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.0.0",
+    "@tiptap/pm": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0",
+    "jsdom": "^26.0.0"
+  }
+}
