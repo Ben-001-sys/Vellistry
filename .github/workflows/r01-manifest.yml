@@ -1,0 +1,29 @@
+name: R01 source-variant manifest validation
+
+on:
+  pull_request:
+    paths:
+      - "scripts/r01_manifest.py"
+      - "tests/test_r01_manifest.py"
+      - "docs/research/R01-PAIR-01-OWNER-RULE-PACK-2026-10-09.md"
+      - ".github/workflows/r01-manifest.yml"
+  push:
+    paths:
+      - "scripts/r01_manifest.py"
+      - "tests/test_r01_manifest.py"
+      - "docs/research/R01-PAIR-01-OWNER-RULE-PACK-2026-10-09.md"
+      - ".github/workflows/r01-manifest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  synthetic-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test version-aware source parser (synthetic-only, no author source upload)
+        run: python -m unittest discover -s tests -p "test_r01_manifest.py" -v
