@@ -1,0 +1,58 @@
+id: VEL-TASK-0002
+title: Validate bounded manuscript chapter save specification and first synthetic contract
+type: research-task
+status: ready
+created_at: '2026-10-09'
+updated_at: '2026-10-09'
+owner: project_owner
+context_pack_id: VEL-CP-0002
+objective: >
+  Trace the author-owned chapter create/edit/save/reopen journey from the
+  accepted eight-area MVP into eight candidate behavior scenarios, review
+  their authority and gaps, and propose an executable synthetic test
+  contract without selecting a production framework, database or auth vendor.
+in_scope:
+  - Owner-approved M1 M2 M3 M8 product boundaries
+  - Proposed VEL-JRN-001 through VEL-JRN-003 and ACC-M1-01, ACC-M2-01, ACC-M3-01 and ACC-M3-02
+  - Engineering behavior SC-001 through SC-008 in proposed VEL-SPEC-001
+  - Synthetic fixtures, negative cases, and evidence reporting
+out_of_scope:
+  - Production application implementation, deployment, customer access or real manuscript ingestion
+  - Approval of a web framework, auth provider, database schema, hosting or paid AI provider
+  - Promotion of proposed acceptance criteria or spec design to owner-accepted status
+  - Revisiting or silently undoing the approved eight-area MVP
+inputs:
+  - path: PROJECT-CONSTITUTION.md
+    role: governing-policy
+  - path: SOURCE-OF-TRUTH.md
+    role: governing-policy
+  - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
+    role: accepted-product-scope
+  - path: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
+    role: proposed-acceptance-plan
+  - path: docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md
+    role: proposed-engineering-spec
+source_gaps:
+  - id: G03
+    limitation: Real-browser Tiptap keyboard, paste, IME and long-writing checks not yet complete for this implementation.
+  - id: G08
+    limitation: Production identity boundary, storage/backup architecture and privacy verification are not yet approved.
+deliverables:
+  - Reviewed source-to-spec trace for eight SC scenarios and identified approved vs proposed clauses
+  - Reproducible synthetic contract proposal with negative cases for false saved status and stale/conflicting edits
+  - ExecutionBundle with actual tests and unknowns, explicit owner approval gates
+acceptance_criteria:
+  - All eight SC identifiers have source citations and an explicit proposed or approved authority boundary
+  - No claim that a synthetic check proves production database durability or authorization
+  - No backend/provider selection or production deployment is made
+  - Report missing author/browser and privacy evidence without inventing test outcomes
+allowed_actions:
+  - read
+  - analyze
+  - propose
+  - execute-synthetic-tests
+approval_required_for:
+  - Promoting the engineering spec or proposed acceptance checks to approved status
+  - Selecting the application storage/auth/framework architecture
+  - Merging pull requests
+  - Any production, user-data or secrets operation
