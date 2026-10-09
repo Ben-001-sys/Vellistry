@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.7
+version: 0.1.8
 ---
 
 # Vellistry — Current State
@@ -16,7 +16,6 @@ Research and discovery; engineering knowledge foundation initialization.
 ## Accepted direction
 - Future application code and engineering knowledge will share one GitHub repository (ADR-0001).
 - ADR and historical records require structured, traceable metadata (ADR-0002).
-- **Tiptap 3 on ProseMirror is the owner-selected manuscript editor foundation** (ADR-0003; explicitly approved 2026-10-08). This is not yet installed or implemented.
 - Use Git/Markdown first, preserving separate runtime storage for future author data.
 - Apply research governance and lightweight ContextPack/ExecutionBundle handoffs before building complex orchestration.
 
@@ -41,7 +40,7 @@ These sources have been identified but **not yet fully migrated or individually 
 ## Undecided
 - Feature prioritization and MVP boundary.
 - Detailed PRD and acceptance criteria.
-- Manuscript editor technology: **Tiptap 3 / ProseMirror selected**; exact extensions, integration, page layout/pagination, import/export and print formatting remain undecided.
+- Editor framework and page-layout approach.
 - AI provider integration, MCP capabilities, context architecture, story state model.
 - Backend/database/framework/deployment technology.
 - Runtime author-data privacy and security architecture.
@@ -51,7 +50,7 @@ These sources have been identified but **not yet fully migrated or individually 
 2. Extract individual requirements without losing details; distinguish evidence from suggestions.
 3. Audit consistency across research and record ambiguities or conflicts.
 4. Prepare a research-only Rules Studio/default-guidance fixture and perform measured rule-application evaluations with author-controlled exceptions, without altering frozen source.
-5. Validate the **selected** Tiptap 3 editor foundation with long-form writing, formatting, selection-preserving AI rewrites and accessibility trials; separately research DOCX/EPUB/print-PDF workflows and licensing.
+5. Continue the professional editor technology/licensing trials as an independent research workstream; do not preselect a stack.
 
 ## Verification note
 No application code, product architecture, or live research workflow has been validated by this documentation bootstrap. Do not imply otherwise.
@@ -102,10 +101,15 @@ No application code, product architecture, or live research workflow has been va
 - The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
 - Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
 
-## Owner-approved manuscript editor decision — 2026-10-08
-- The owner explicitly accepted **Tiptap major version 3, built on ProseMirror**, as the writing editor after a specific recommendation and explanation. [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) is the accepted technology decision; [HIS-20261008-004](docs/history/2026-10-08-tiptap-3-editor-approved.md) records its provenance and exact owner's reply.
-- This **supersedes the earlier 'editor not selected' project status only**. Other editor candidates remain historical research; related R05 draft PR #4 predates the selection and must not be silently rewritten to claim it was selected during the scan.
-- Tiptap 3's open-source editor core was chosen; **no** Tiptap Pro/Pages/Conversion subscription, final framework, data store, model provider, runtime architecture or publication engine was chosen.
-- **Implementation not started:** no Tiptap install, writing UI, long-manuscript trial, output conversion or editor-performance benchmark has been verified. Next engineering validation should test those boundaries before claiming readiness.
-- Approval source is this project's conversation on 2026-10-08; exact permalink is not yet archived. Do not fabricate GitHub approval evidence.
-- Decision documentation changes are isolated on `docs/adr-0003-tiptap3-manuscript-editor` for owner review; no automatic merge is implied.
+## Stage 3 context handoff review remediation — 2026-10-08
+- [Stage 3 PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5) remains **draft and unmerged** during owner review. [Original review #5462675990](https://github.com/Ben-001-sys/Vellistry/pull/5#pullrequestreview-5462675990) identified permission-contract tampering and a merge conflict with `main`.
+- Pilot artifacts: `VEL-TASK-0001` (verification), `VEL-CP-0001` (pinned revision) and `VEL-EB-0001` (proposed for owner review). The pinned pack records the historical task Git blob, while its current task status may progress independently.
+- Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
+- This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
+- Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
+ 
+## ADR-0003 Tiptap v3 owner decision branch reconciled — 2026-10-09
+- **Owner decision:** Tiptap **major version 3 on ProseMirror** is the approved manuscript editing foundation, confirmed 2026-10-08 and recorded in [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) and [HIS-20261008-004](docs/history/2026-10-08-tiptap-3-editor-approved.md). The decision existed before this reconciliation; its **documentation remains in PR #6 awaiting owner merge**.
+- **Later research:** [PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) contains seven passing Tiptap 3 headless smoke tests. [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12) independently includes seven passing limited Chromium browser tests. Neither is a production editor, a storage architecture or a professional publishing converter.
+- **Other decisions still open:** no paid Tiptap Pages/Conversion, full frontend/backend framework, database, security service, model provider or print/EPUB engine. [MVP scope PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) separately records the owner's accepted eight-area product target. Do not infer architecture from this ADR.
+- **Integration:** This PR branch now preserves current merged `main` R02, R06 and Stage 3/PR #5 history. Earlier status paragraphs retain their original research chronology; later merged-state and present approval here are authoritative for current status.
