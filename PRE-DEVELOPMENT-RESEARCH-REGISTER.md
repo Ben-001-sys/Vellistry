@@ -115,6 +115,10 @@ This records **questions to research**, not results, implemented features, final
 
 ## R07 — Story Bible, canon, memory and long-form consistency
 
+**Research checkpoint — 2026-10-09 (PARTIAL, NOT A COMPLETED GATE):** [R07 live Story Profiles concept and source review](docs/research/R07-LIVE-STORY-PROFILES-CONCEPT-MODEL-2026-10-09.md) distinguishes accepted manuscript, planned futures, candidate updates, approved profile state, character claims, story-event chronology, discourse order and source revision. [Synthetic contract](docs/research/experiments/r07_story_state_contract.py) has [20/20 deterministic unit tests passing](https://github.com/Ben-001-sys/Vellistry/actions/runs/37919046053) for approval, revision staleness, book isolation and chapter-safe state filtering. **These tests contain hand-authored candidate facts**, not actual AI extraction. Novel-scale continuity, real writing-panel usability, model precision/recall, security/data persistence, source cost and real provider behavior remain open; do not check off R07.01–R07.10 solely on this research.
+
+
+
 **Research gate:** G0 — Before committing to product scope or architecture  
 **Status:** OPEN / NEEDS RESEARCH
 
