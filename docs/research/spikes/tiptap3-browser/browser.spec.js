@@ -1,26 +1,31 @@
 import {test, expect} from '@playwright/test'
 
+async function typeAtEnd(page, text) {
+  // A browser click creates a real DOM caret. An Editor command issued in
+  // page.evaluate() can schedule focus for the next animation frame instead.
+  await page.locator('.tiptap p').last().click()
+  await page.keyboard.press('ControlOrMeta+End')
+  await page.keyboard.insertText(text)
+}
+
 test.beforeEach(async ({page})=>{
   await page.goto('http://127.0.0.1:4173/')
   await expect(page.locator('.tiptap')).toBeVisible()
 })
 
 test('real Chromium contenteditable supports basic typing with no AI configured',async ({page})=>{
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' The author kept writing.')
+  await typeAtEnd(page,' The author kept writing.')
   await expect(page.locator('.tiptap')).toContainText('The author kept writing.')
   await expect(page.locator('#status')).toContainText('NOT SAVED')
   await expect(page.locator('.tiptap h1')).toHaveText('The First Bell')
 })
 
 test('switching chapters preserves each chapter independently in this in-memory fixture',async ({page})=>{
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' Chapter one only.')
+  await typeAtEnd(page,' Chapter one only.')
   await page.selectOption('#chapter','two')
   await expect(page.locator('.tiptap')).toContainText('The Frost Road')
   await expect(page.locator('.tiptap')).not.toContainText('Chapter one only.')
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' Chapter two only.')
+  await typeAtEnd(page,' Chapter two only.')
   await page.selectOption('#chapter','one')
   await expect(page.locator('.tiptap')).toContainText('Chapter one only.')
   await expect(page.locator('.tiptap')).not.toContainText('Chapter two only.')
@@ -49,8 +54,7 @@ test('original italic mark survives selection-based proposal accept and undo/red
 
 test('stale proposal is refused after author types in the browser',async ({page})=>{
   const p=await page.evaluate(()=>window.__spike.propose('A distant bell rang.','A second bell rang.'))
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' And still the wind blew.')
+  await typeAtEnd(page,' And still the wind blew.')
   const result=await page.evaluate(p=>({applied:window.__spike.accept(p),text:window.__spike.text()}),p)
   expect(result.applied).toBe(false)
   expect(result.text).toContain('A distant bell rang.')
@@ -67,8 +71,7 @@ test('rich-text JSON snapshot preserves semantic marks and heading in actual Chr
 })
 
 test('Unicode typing works in real Chromium without claiming full IME composition coverage',async ({page})=>{
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' 日本語の文章。 Français écrit.')
+  await typeAtEnd(page,' 日本語の文章。 Français écrit.')
   const text=await page.evaluate(()=>window.__spike.text())
   expect(text).toContain('日本語の文章。')
   expect(text).toContain('Français écrit.')
@@ -81,8 +84,7 @@ test('browser renders and permits tail edit on a synthetic multi-thousand-word c
   expect(metrics.words).toBeGreaterThan(10000)
   const before=await page.evaluate(()=>window.__spike.text().length)
   const started=Date.now()
-  await page.evaluate(()=>window.__spike.focus())
-  await page.keyboard.insertText(' End of stress fixture.')
+  await typeAtEnd(page,' End of stress fixture.')
   const keyToTextMs=Date.now()-started
   const after=await page.evaluate(()=>window.__spike.text().length)
   expect(after).toBeGreaterThan(before)
