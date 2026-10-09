@@ -5,7 +5,9 @@ on:
     paths:
       - "scripts/r01_manifest.py"
       - "scripts/r01_review_packet.py"
+      - "scripts/r01_mapping_proposal.py"
       - "tests/test_r01_review_packet.py"
+      - "tests/test_r01_mapping_proposal.py"
       - ".github/workflows/r01-review-packet.yml"
   push:
     paths:
@@ -26,4 +28,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate source variants and explicit mapping boundaries (synthetic only)
-        run: python -m unittest discover -s tests -p "test_r01_review_packet.py" -v
+        run: |
+          python -m unittest discover -s tests -p "test_r01_review_packet.py" -v
+          python -m unittest discover -s tests -p "test_r01_mapping_proposal.py" -v
