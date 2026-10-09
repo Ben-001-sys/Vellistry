@@ -19,6 +19,9 @@ related_adrs:
   - ADR-0003
 ---
 
+
+> **LATER OWNER DIRECTION — ZERO PAID SERVICES (2026-10-09):** Paid conversion alternatives and their proposed paid trials in this historical ExecutionBundle are now **OUT OF SCOPE** for the current project/MVP. The active plan is the [free/open-source format study](../research/R11-ZERO-PAID-OPEN-SOURCE-FORMAT-STACK-2026-10-09.md) under the [owner's recorded constraint](../requirements/PRODUCT-CONSTRAINT-NO-PAID-SERVICES-2026-10-09.md). Any paid trial suggestion below is superseded, not authorized.
+
 # ExecutionBundle — R11 basic DOCX/TXT portability and independent author-backup study
 
 ## Task boundary

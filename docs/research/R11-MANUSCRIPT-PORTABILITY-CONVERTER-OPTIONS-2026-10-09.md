@@ -32,6 +32,9 @@ related_adrs:
   - ADR-0003
 ---
 
+
+> **CURRENT OWNER CONSTRAINT (2026-10-09): NO PAID SERVICES FOR THIS PROJECT/MVP.** The earlier paid Tiptap conversion route below is retained as historical comparative research but is **EXCLUDED**, not a trial candidate or recommendation. For the binding research constraint and zero-paid-service tool comparison, use [the owner direction](../requirements/PRODUCT-CONSTRAINT-NO-PAID-SERVICES-2026-10-09.md) and [the updated R11 open-source research](R11-ZERO-PAID-OPEN-SOURCE-FORMAT-STACK-2026-10-09.md). No paid service trials are authorized by the older text.
+
 # R11 — Manuscript portability: DOCX/TXT options, fidelity boundaries and proposed synthetic trials
 
 **As of 2026-10-09. Classification: source-checked feasibility research, NOT implementation, import/export benchmark, procurement or conversion-library selection.**
