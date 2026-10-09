@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.15
+version: 0.1.18
 ---
 
 # Vellistry — Current State
@@ -151,9 +151,15 @@ No application code, product architecture, or live research workflow has been va
 - Original SRC-001 remains unavailable in the historical Git pack. The historical editor-audit task does **not** reopen the later owner-selected Tiptap 3/ProseMirror or accepted MVP decisions.
 - Owner review/merge of the export workflow and actual isolated second-agent run are **distinct acceptance gates**; neither is completed by this entry.
 
+## Stage 3 — first Cursor Level B response (2026-10-09; provisional)
+- The owner supplied a response attributed to **Cursor**; exact submitted text and source fingerprint are preserved in [VEL-HO-0002](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md) and its [verbatim attachment](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md).
+- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner supplied screenshots showing Cursor Agent **Grok 4.7**, effort **High**, context **256K**, plus a `level-b-test-packet` Explorer visibly containing only `PROMPT.md` and `VEL-CP-0001.md`, alongside the instruction `follow PROMPT.md guidelines`. This strengthens workspace-isolation evidence but is not proof that the agent chat was new or devoid of inherited context; full independence and owner acceptance remain unverified.
+- This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
+- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
+
 ## Stage 4 — spec-driven agent workflow initiated (2026-10-09; proposal)
 - Following the owner instruction to move on, the Stage 3 Level B cursor response remains provisionally evaluated (9/10 content/independence unverified) in unmerged draft [PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24) and open [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18). We are not blocked on obtaining additional screenshots.
 - A new isolated branch proposes [VEL-SPEC-001](docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md): an **eight-scenario technology-neutral** create/edit/save/reopen contract for accepted M1/M2/M3/M8 MVP behavior, derived from the still-proposed author-journey/acceptance plan. All product acceptance scenarios remain **not tested**.
 - [VEL-TASK-0002](docs/agent-workflow/tasks/VEL-TASK-0002.yaml) and [Stage 4 workflow instructions](docs/agent-workflow/STAGE4-SPEC-TO-TASK.md) define permissions, traceability and an immutable current-scope ContextPack to be emitted by CI. Proposed `spec_traceability.py` tests source-status integrity, MVP feature horizon, acceptance references and negative cases. An Actions artifact should contain only the newly generated `VEL-CP-0002.md`.
 - This work does **not** choose application framework/database/auth vendor or claim working editor/product code. R18 framework and other research spikes remain engineering evidence; approved technology scope is limited to the established editor foundation pending the accepted ADR and subsequent decision process.
-- Stage 4 milestone remains open pending exact-head CI, owner review, new agent ExecutionBundle and later actual product tests. Earlier Stage 3/Level B entries remain historical, not converted to acceptance.
+- Stage 4 milestone remains open until independently reviewed and accepted; previous branch CI evidence is historical, owner review, new agent ExecutionBundle and later actual product tests. Earlier Stage 3/Level B entries remain historical, not converted to acceptance.
