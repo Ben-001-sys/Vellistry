@@ -5,7 +5,7 @@ status: verified-source-structure-packaging-unresolved
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.1.1
 sources:
   - "SRC-001 — AI Writing App Blueprint.md, directly uploaded local copy"
   - "SRC-002 — Research AI Writing Problems.md, directly uploaded local copy"
@@ -74,6 +74,25 @@ The AR short headings are in the compact taxonomy immediately after the `# DOMAI
 | DS-09 | `Generic-body-language awareness` — L2010 | `GENERIC BODY-LANGUAGE AWARENESS` — L5076 | Lettercase, not proven conceptual conflict |
 | PV-05 | `Narrator-character separation` — L2134 | `NARRATOR–CHARACTER SEPARATION` — L10086 | Punctuation/hyphen vs en dash |
 | PV-10 | `Metafictional leakage awareness` — L2149 | `METAFICTIONAL KNOWLEDGE LEAKAGE` — L10482 | Wording change potentially semantically relevant; requires content-based comparison |
+
+## 3A. First-pass AR body comparison (additional evidence, not reconciliation)
+
+After comparing the **short guidance sentences** following each compact AR heading with the **Core principle** text under the expanded heading, the source differences cannot all be dismissed as simple title styling:
+
+| ID group | Compact/expanded relationship visible in source | Preliminary classification |
+|---|---|---|
+| AR-01 | “Emergent theme” and “Theme through embodiment” both discuss theme emerging from choices/consequences. | Strong topical overlap; textual identity still different |
+| AR-02 | Compact is thematic *restraint* against explaining morals; expanded centers on *multiplicity* and contradictory perspectives. | Related theme domain but distinct emphasis |
+| AR-03 | Both discuss symbolism gaining force through context/recurrence without compulsory explanation. | Strong topical overlap; not literal equivalence |
+| **AR-04** | Compact “Moral complexity” cautions against neat moral interpretation, while expanded “Motif evolution” discusses repeated objects/images changing meaning. | **Substantively different primary topics** |
+| AR-05 | Both discuss the intelligent use of genre conventions/expectations. | Related but not identical emphasis |
+| AR-06 | Compact stresses each book's specific obsessions; expanded stresses specific execution of conventions/archetypes. | Related artistic specificity, different mechanism |
+| AR-07 | Compact details what a narrative notices and ignores; expanded concerns coherent recurring aesthetic priorities. | Related but not interchangeable by title |
+| AR-08 | Both warn against smoothing away productive eccentricity/idiosyncrasy. | Strong topical overlap |
+| **AR-09** | Compact resists universal stylistic *homogenization*; expanded addresses *intentional omission and unresolved space*. | **Substantively different primary topics** |
+| AR-10 | Both concern a work's cohesive, recognizable artistic identity. | Strong topical overlap |
+
+**Source method:** Compact guidance sentences at L2326–2354 (title followed by a one-line explanation); expanded `Core principle` paragraphs under L18179, 18289, 18373, 18455, 18539, 18630, 18718, 18821, 18915 and 19008. Observations above compare **emphasis and primary subject**, not every sentence in the detailed bodies. These two obvious topical switches (**AR-04 and AR-09**) are especially strong reasons **not to bind operational rules by bare printed code before owner review**. This finding does **not** select one version, merge their meanings or authorize a new taxonomy. No original source text was edited.
 
 ## 4. Non-destructive packaging alternatives for owner review
 
