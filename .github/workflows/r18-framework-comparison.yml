@@ -1,0 +1,100 @@
+name: R18 framework authoring contract comparison
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/spikes/r18-framework-slice/**"
+      - ".github/workflows/r18-framework-comparison.yml"
+      - "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
+  push:
+    paths:
+      - "docs/research/spikes/r18-framework-slice/**"
+      - ".github/workflows/r18-framework-comparison.yml"
+      - "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authoring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: vellistry_frameworks
+          POSTGRES_USER: vellistry
+          POSTGRES_PASSWORD: synthetic-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vellistry -d vellistry_frameworks"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    defaults:
+      run:
+        working-directory: docs/research/spikes/r18-framework-slice
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install community open-source dependencies
+        run: npm install --no-audit --no-fund
+      - name: Record actually resolved framework versions
+        run: |
+          node -p "'next '+require('next/package.json').version"
+          node -p "'react '+require('react/package.json').version"
+          node -p "'nest '+require('@nestjs/core/package.json').version"
+          node -p "'vite '+require('vite/package.json').version"
+          node -p "'tiptap '+require('@tiptap/react/package.json').version"
+      - name: Seed isolated two-author PostgreSQL data
+        env:
+          DATABASE_URL: postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks
+        run: npm run seed
+      - name: Run both API adapters under the same HTTP contract
+        env:
+          DATABASE_URL: postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: |
+          ./node_modules/.bin/next dev apps/next --hostname 127.0.0.1 --port 3100 > next.log 2>&1 &
+          NEXT_PID=$!
+          ./node_modules/.bin/tsx --tsconfig apps/nest/tsconfig.json apps/nest/api.ts > nest.log 2>&1 &
+          NEST_PID=$!
+          cleanup() {
+            echo '--- NEXT LOG ---'; tail -80 next.log || true
+            echo '--- NEST LOG ---'; tail -80 nest.log || true
+            kill "$NEXT_PID" "$NEST_PID" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+          for port in 3100 3101; do
+            ok=0
+            for attempt in $(seq 1 90); do
+              if [ "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:$port/api/books/book-a/chapters/chapter-1" || true)" = "401" ]; then
+                ok=1
+                break
+              fi
+              sleep 1
+            done
+            if [ "$ok" != 1 ]; then echo "API $port did not become ready"; exit 1; fi
+          done
+          npm run test:http
+      - name: Build Vite/Tiptap frontend
+        run: npm run build:vite
+      - name: Build Next/Tiptap application
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          DATABASE_URL: postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks
+        run: npm run build:next
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r18-http-contract-evidence
+          path: |
+            docs/research/spikes/r18-framework-slice/http-contract-results.json
+          retention-days: 7

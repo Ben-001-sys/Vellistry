@@ -1,0 +1,32 @@
+{
+  "name": "vellistry-r18-two-architecture-slice",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node fixtures/seed.mjs",
+    "test:http": "node tests/contract.mjs",
+    "start:next": "next dev apps/next --hostname 127.0.0.1 --port 3100",
+    "start:nest": "tsx --tsconfig apps/nest/tsconfig.json apps/nest/api.ts",
+    "build:next": "next build apps/next",
+    "build:vite": "vite build --config apps/vite/vite.config.mjs"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@tiptap/react": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0",
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.0",
+    "pg": "^8.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "tsx": "^4.19.0",
+    "vite": "^7.0.0",
+    "@vitejs/plugin-react": "^5.0.0"
+  }
+}
