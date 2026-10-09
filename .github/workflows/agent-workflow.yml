@@ -1,0 +1,35 @@
+name: Agent workflow
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'docs/agent-workflow/**'
+      - 'scripts/agent_workflow.py'
+      - 'tests/test_agent_workflow.py'
+      - '.github/workflows/agent-workflow.yml'
+  push:
+    branches: [main, 'feat/agent-workflow-*']
+    paths:
+      - 'docs/agent-workflow/**'
+      - 'scripts/agent_workflow.py'
+      - 'tests/test_agent_workflow.py'
+      - '.github/workflows/agent-workflow.yml'
+permissions:
+  contents: read
+jobs:
+  validate-handoffs:
+    name: Validate pinned agent handoffs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install metadata dependency
+        run: python -m pip install 'PyYAML>=6.0,<7'
+      - name: Test agent handoff generation and validation
+        run: python -m unittest discover -s tests -p 'test_agent_workflow.py' -v
+      - name: Validate agent task, ContextPack and ExecutionBundle
+        run: python scripts/agent_workflow.py validate
