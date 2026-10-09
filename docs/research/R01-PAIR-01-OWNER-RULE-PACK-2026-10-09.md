@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-R01-SOURCE-PAIRS-20261009-001
 type: source-variant-research-report
-status: verified-source-structure-decision-pending
+status: source-verified-p1-approved-active-mapping-pending
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 sources:
   - "Original uploaded Branch · Research AI Writing Problems.md — SHA-256 fda917550811ccf44fe2fa7993d14a0f4f64d6dde5299d0c5b078865c4f0f965"
   - "docs/research/R01-SOURCE-INTEGRITY-AND-AR-VARIANT-AUDIT-2026-10-09.md"
@@ -59,16 +59,16 @@ Do not key storage or toggles with \`AR-04\` alone before choosing the canonical
 
 Use immutable source records with composite identity \`source_sha256 + section_variant + code\` and exact source title/body/line position. Preserve both compact and expanded original wording for author inspection. Keep editable author preferences in separate tables and user-selected active rules in a **versioned mapping** to approved canonical IDs. An AI request snapshot must record the exact selected source revision and effective enabled/disabled rules. Neither the parser nor model may infer which disagreeing meaning "wins".
 
-## Owner decision required — not yet made
+## Owner approved P1 preservation; active-rule mappings remain open
 
 | Option | Meaning | Consequences |
 |---|---|---|
-| **P1 (recommended for evidence preservation)** | Archive compact and expanded text separately and require explicit owner choice for the active/default meaning of every conflicting ID. No automatic rewrite. | Faithful and reversible; R01 deployment gate stays blocked until conflicts resolved. |
+| **P1 — APPROVED 2026-10-09 for preservation only** | Archive compact and expanded text separately and require explicit owner choice for the active/default meaning of every conflicting ID. No automatic rewrite. | Faithful and reversible; R01 deployment gate stays blocked until conflicts resolved. |
 | **P2** | Owner explicitly selects **compact** as active default for each conflict; expanded content remains a separately labeled archived alternate. | Preserves 130 compact entries but may omit substantial long-form expanded instruction content. |
 | **P3** | Owner explicitly selects **expanded** as active default for each conflict; compact remains archived. | Preserves long-form detail but alters the compact code's expected subject (most visible for AR-04/AR-09). |
 | **P4** | Owner commissions a **new reviewed mapping** with unique additional IDs, no deletion or silent rewriting of originals. | More capable but a *new author-owned creative decision*, not recoverable mechanically from original source. |
 
-P1 is a safety-oriented **proposal**, not user approval. The owner must choose the deployable mapping and decide what to do with truly divergent code semantics. Claim **R01 SOURCE AUDIT PASSED; DEFAULT PACK CERTIFICATION BLOCKED ON OWNER**. No default rules or provenance can be silently published.
+The owner replied **yes** on 2026-10-09 to the explicit P1 preservation-policy question. [ADR-0007](../decisions/ADR-0007-immutable-compact-expanded-guidance-sources.md) records that approval. **This does not select the active/default meaning of any code**, including materially different AR-04 and AR-09. The active mapping must be owner-reviewed separately. No default source pack is certified or deployable.
 
 ## Other unresolved source provenance
 
@@ -76,4 +76,10 @@ The raw historical 20-section/42-requirement standalone artifact and certain ori
 
 ## Gate to next research pair
 
-R01 structural inventory: **PASS** based on exact uploaded source. R01 canonical default packaging: **BLOCKED** pending explicit owner decision and final source-preserving pack test. Paired track R15/K2B progresses independently; Batch 01 does not close until both complete.
+R01 structural inventory: **PASS** based on exact uploaded source. P1 source preservation: **APPROVED**. R01 active default mapping and deployable default-pack certification: **BLOCKED** pending separate per-conflict decisions and complete exact-source packaging tests. Paired track R15/K2B progresses independently; Batch 01 does not close until both complete.
+
+## P1 source identity — approved policy, limited research tooling
+
+The research parser now gives every compact and expanded record a distinct `record_id` in the form `source_sha256:compact|expanded:lens_code`. It records `active_default_mapping: null` for **all 130 codes** and refuses duplicate source variant identities. Its CI fixture checks **260 unique identities**, including 117 codes whose titles match under case folding.
+
+**Limit:** This parser currently indexes headings and source lines, not the full rule body. The original body text remains in the unmodified uploaded source. A future source package must also preserve complete original body bytes, attach versioned active mapping records only after owner approval, and separately test serialization/restore. R01 is not complete merely because P1 is accepted.

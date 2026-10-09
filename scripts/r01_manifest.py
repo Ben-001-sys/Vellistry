@@ -22,17 +22,28 @@ def audit(path):
     ids={f"{prefix}-{number:02d}" for prefix in DOMAINS for number in range(1,11)}
     if set(rows)!=ids or any(len(x)!=2 for x in rows.values()):
         raise ValueError("Source index or version counts differ from frozen source; inspect changes")
-    variants=[{
-        "code":code,"compact":rows[code][0],"expanded":rows[code][1],
-        "case_insensitive_title_diff":rows[code][0]["title"].casefold()!=rows[code][1]["title"].casefold()
-    } for code in sorted(ids)]
+    fingerprint=hashlib.sha256(data).hexdigest()
+    variants=[]
+    for code in sorted(ids):
+        compact=dict(rows[code][0], variant="compact", record_id=f"{fingerprint}:compact:{code}")
+        expanded=dict(rows[code][1], variant="expanded", record_id=f"{fingerprint}:expanded:{code}")
+        variants.append({
+            "code":code, "compact":compact, "expanded":expanded,
+            "case_insensitive_title_diff":compact["title"].casefold()!=expanded["title"].casefold(),
+            "active_default_mapping":None,
+        })
+    record_ids=[v[k]["record_id"] for v in variants for k in ("compact","expanded")]
+    if len(set(record_ids))!=260:
+        raise ValueError("Source-variant identity collision")
     differences=[x for x in variants if x["case_insensitive_title_diff"]]
     expected={"DS-09","PV-05","PV-10",*(f"AR-{n:02d}" for n in range(1,11))}
     if {x["code"] for x in differences}!=expected:
         raise ValueError("Mismatch with audited 13 source divergences; manual review required")
-    return {"status":"source verified, author packaging choice unresolved",
-        "file_name":Path(path).name,"raw_sha256":hashlib.sha256(data).hexdigest(),
-        "raw_byte_length":len(data),"unique_codes":len(ids),"heading_count":len(variants)*2,
+    return {"status":"P1 preservation approved; active defaults unresolved",
+        "file_name":Path(path).name,"raw_sha256":fingerprint,
+        "raw_byte_length":len(data),"unique_codes":len(ids),"heading_count":len(record_ids),
+        "source_preservation_policy":"P1 owner-approved 2026-10-09 (ADR-0007)",
+        "active_default_mapping_status":"not approved",
         "domain_counts":{d:sum(x.startswith(d+"-") for x in rows) for d in DOMAINS},
         "divergent_titles":len(differences),"divergences":differences,
         "all_source_variants":variants,

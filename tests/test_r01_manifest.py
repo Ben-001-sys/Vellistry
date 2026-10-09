@@ -30,6 +30,14 @@ class ManifestTests(unittest.TestCase):
             self.assertEqual((out["unique_codes"],out["heading_count"],out["divergent_titles"]),(130,260,13))
             self.assertEqual(out["all_source_variants"][0]["code"],"AR-01")
             self.assertIn("unresolved",out["status"])
+            self.assertIn("P1",out["status"])
+            self.assertEqual(out["active_default_mapping_status"],"not approved")
+            entries=out["all_source_variants"]
+            keys=[entry[v]["record_id"] for entry in entries for v in ("compact","expanded")]
+            self.assertEqual(len(keys),260)
+            self.assertEqual(len(set(keys)),260)
+            self.assertTrue(all(entry["active_default_mapping"] is None for entry in entries))
+            self.assertNotEqual(entries[0]["compact"]["record_id"],entries[0]["expanded"]["record_id"])
         finally:path.unlink(missing_ok=True)
     def test_missing_headings_are_not_silently_accepted(self):
         with tempfile.TemporaryDirectory() as d:
