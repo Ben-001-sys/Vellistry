@@ -1,5 +1,5 @@
 ---
-id: HIS-20261008-004
+id: HIS-20261008-005
 title: Owner selected Tiptap 3 and ProseMirror for Vellistry manuscript editor
 type: historical-event
 status: recorded
@@ -10,7 +10,7 @@ created_at: 2026-10-08
 updated_at: 2026-10-08
 author: project-research
 actor: project_owner
-version: 1.0.0
+version: 1.0.1
 sources:
   - "Fiction Writing Project conversation, 2026-10-08; direct reply to editor recommendation; durable conversation URL pending"
 evidence:
@@ -55,3 +55,5 @@ The choice is authoritative **as a decision**, not evidence of built functionali
 - Use ADR-0003 and CURRENT-STATE.md as the current decision and status references.
 - Preserve independent feature/license/long-form performance trials and publish their results before claiming the editor is production-ready.
 - If the selected foundation changes, preserve this event and create a separate, dated superseding decision.
+
+**Record ID reconciliation (2026-10-09):** This draft originally reused `HIS-20261008-004`, but that stable ID already identifies the separately merged Stage 3 agent handoff record. The Tiptap owner-decision event now uses unique `HIS-20261008-005`; the original date, actor, decision substance and source evidence remain unchanged. No pre-existing Stage 3 history entry was renumbered.
