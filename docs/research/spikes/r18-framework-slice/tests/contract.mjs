@@ -40,7 +40,7 @@ async function examine(name,base){
    const r=await call("GET","book-a");
    assert.equal(r.status,200);assert.equal(r.body.revision,1);
    assert.equal(r.body.document.content[0].content[0].text,"Initial alice story");
-   assert.match(r.cache??"","no-store");
+   assert.match(r.cache??"",/no-store/);
  });
  await check("03 foreign book masked as not-found",async()=>{
    const r=await call("GET","book-b");assert.equal(r.status,404);
