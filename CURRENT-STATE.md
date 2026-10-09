@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.9
+version: 0.1.10
 ---
 
 # Vellistry — Current State
@@ -128,3 +128,10 @@ No application code, product architecture, or live research workflow has been va
 - [R07 deterministic story-state experiment](docs/research/experiments/r07_story_state_contract.py) and [20 test cases](docs/research/experiments/test_r07_story_state_contract.py) are pure Python standard library using **invented scenes and hand-authored candidate changes**, no real extractor, private author data or provider. [GitHub Actions #37919046053](https://github.com/Ben-001-sys/Vellistry/actions/runs/37919046053) **PASSED 20/20** on exact code/workflow commit `248f0560f792eee79a45a141941dc80843ca95d3`, including stale evidence, subjective claims, flashbacks, approvals and book separation.
 - [R07 ExecutionBundle](docs/reports/R07-LIVE-PROFILES-EXECUTION-BUNDLE-2026-10-09.md) defines FACT/INTERPRETATION/PROPOSAL and remaining research gates. **R07 remains partial**: actual model precision/recall, trustworthy extraction of beliefs vs objective events, author UI reviews, storage/backups, account security and long-form context accuracy have **not** been verified. The ten R07 research-register checkboxes remain open.
 - This is branch-local **draft research**, not a new approved database, event-sourcing requirement, provider, Tiptap implementation, automatic per-keystroke LLM processing or wider MVP feature addition. Current `main` has not gained those new technologies; the latest separate MVP product decision is on draft PR #10.
+
+## Stage 3 cold-start verification — 2026-10-09
+- Draft PR #15 adds a detached ContextPack reader, isolated tests, an independent-agent test protocol, and a result record.
+- Initial CI on commit ad3601c04daeab7158b5c613fb25605209e5c752 passed 15 workflow tests, 5 detached tests, and 8 metadata tests. A later commit must be rechecked.
+- This is Level A automated reconstruction. Level B independent AI-agent continuation remains pending.
+- The historical VEL-CP-0001 fixture does not supersede later product decisions about Tiptap or MVP scope.
+- R02, R06, and R07 entries above are retained from merged main.
