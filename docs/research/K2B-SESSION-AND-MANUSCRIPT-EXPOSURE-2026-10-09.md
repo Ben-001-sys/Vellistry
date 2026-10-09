@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-K2B-SESSION-PROBE-20261009-001
 type: security-research-report
-status: executable-probe-awaiting-CI
+status: real-local-session-probe-passed-decision-pending
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 sources:
   - "https://supabase.com/docs/guides/auth/signout"
   - "https://supabase.com/docs/guides/auth/sessions"
@@ -53,3 +53,18 @@ S3 and S2 can be combined in a later approved design; neither is a no-cost autom
 ## Pair 01 gate
 
 K2A identity/RLS: **PASSED** on disposable local runtime. K2B access-token expiry, direct data exposure, SSR refresh, and logout scope: **PARTIAL until all probes are actually observed**. This record must not be promoted to complete simply because a synthetic test or application build passes. No hosted Supabase project or actual author data required.
+
+## Actual CI evidence — 2026-10-09
+
+**Tested code:** `f9448df3e619614d9d6956247b985cf15313b187`. [Real local Supabase workflow #37993494329](https://github.com/Ben-001-sys/Vellistry/actions/runs/37993494329) completed **SUCCESS**. The existing K2A **17/17 groups** ran first, followed by **K2B 9/9 test/observation groups**, using two genuine Alice sessions, one Bob session, generated test accounts, actual NestJS, local Auth and real PostgREST/PostgreSQL. The [foundation build regression #37993494393](https://github.com/Ben-001-sys/Vellistry/actions/runs/37993494393) also succeeded.
+
+**Exact critical log observation:**
+```text
+OBSERVED K2B local signout: old JWT PostgREST rows 1 Nest status 401 old access JWT reads own book true
+```
+
+This **proves** that the previously signed access JWT could read Alice's synthetic book after local signout through direct PostgREST, even while Nest `getUser` refused that JWT. This is **not** another-author leakage: Bob was correctly denied Alice's data. It is **same-user revoked-session residual bearer access**, significant for stolen or retained tokens and author expectations about logout. The revoked primary refresh token could not obtain a replacement; the separate Alice session continued working; Bob's valid session was unaffected by Alice signout; global signout revoked the then-current session's refresh token. Verification of actual JWT expiry and the contents returned after global logout beyond the logged local-signout probe remains for a subsequent targeted experiment; the test artifact records additional diagnostic booleans and row counts.
+
+**Risk/decision status:** R15/K2B real session token exposure **CONFIRMED**, not remediated. Do **not** promise immediate manuscript access termination on logout while PostgREST exposes author tables with valid signed JWTs. The three previously documented S1/S2/S3 options require an owner decision, deeper SSR/storage/grant tests and an explicit security acceptance contract. Avoid emergency privilege changes that would break existing Nest author-scoped PostgREST operations without a reviewed substitute.
+
+**Still NOT RUN:** Actual Next.js 16 SSR Proxy cookie refresh in a real browser, cookies/CSRF/response caching, file Storage RLS, full session expiry clock test, account switching on a shared device and local IndexedDB data erasure, account/data deletion and restore. Pair 01 cannot close on this run alone.
