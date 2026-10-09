@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.9
+version: 0.1.10
 ---
 
 # Vellistry — Current State
@@ -122,3 +122,10 @@ No application code, product architecture, or live research workflow has been va
 - **Editor choice:** The owner selected Tiptap major version 3 / ProseMirror and the accepted decision remains recorded in draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6). No other app framework, document store, provider or paid Tiptap package was selected by these tests.
 - **Later scope approval:** The eight-area MVP target was approved separately after this original experiment ([PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10)). Do not retrospectively treat the headless experiment as an accepted full MVP.
 - **Merged history preserved:** Reconciliation retains the R02 study, merged R06 PR #3 and merged Stage 3 PR #5 from current `main`. Earlier pending-status entries remain historical, not current statements. This research PR remains open/unmerged until owner review and exact-head checks.
+
+## R05 actual-Chromium manuscript editor evidence — 2026-10-09
+- [R05 real-browser research report](docs/research/R05-ACTUAL-BROWSER-TIPTAP-MANUSCRIPT-SPIKE-2026-10-09.md) documents a disposable two-chapter Tiptap 3 page and seven Playwright Chromium cases, including physical typing, chapter navigation, formatting and undo, stale proposal rejection, Unicode insertion and synthetic large-text editing.
+- First CI [run #37903972056](https://github.com/Ben-001-sys/Vellistry/actions/runs/37903972056) was **5/7** because browser caret focus was not reliably established by the test. The harness was corrected to click editable paragraphs before inserting text. [Run #37904237109](https://github.com/Ben-001-sys/Vellistry/actions/runs/37904237109) **PASSED 7/7** on exact commit `b94ecec6e48c586318d07ff3018031e3d25a0674`; Tiptap core/starter-kit v3.31.4 and Chromium on GitHub Actions.
+- One synthetic **19,201-word** chapter rendered and accepted an appended browser text operation. Single-run 10.2ms setContent and 46ms end-insertion observations **are not real-world performance guarantees**.
+- The fixture explicitly says **NOT SAVED**. No author accounts, durable recovery, production architecture, BYOK AI, rules, actual profile tracking, full IME/clipboard or accessibility tests have been implemented.
+- [R05 browser ExecutionBundle](docs/reports/R05-BROWSER-EXECUTION-BUNDLE-2026-10-09.md) preserves failures, corrections, actual evidence and limits. This research branch is stacked on [parent PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7). Owner self-review/merge remains required; no new selected app framework or data store.

@@ -1,0 +1,34 @@
+name: R05 actual-browser Tiptap manuscript spike
+on:
+  pull_request:
+    paths:
+      - 'docs/research/spikes/tiptap3-browser/**'
+      - '.github/workflows/r05-tiptap3-browser-spike.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/research/spikes/tiptap3-browser/**'
+      - '.github/workflows/r05-tiptap3-browser-spike.yml'
+permissions:
+  contents: read
+jobs:
+  chromium-editor:
+    name: Real Chromium editing behavior (nonproduction)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: docs/research/spikes/tiptap3-browser
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated research-only dependencies
+        run: npm install --no-audit --no-fund
+      - name: Print exact resolved test versions
+        run: npm ls @tiptap/core @tiptap/starter-kit @playwright/test vite --depth=0
+      - name: Install real Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run seven research-only browser scenarios
+        run: npm run test:browser
