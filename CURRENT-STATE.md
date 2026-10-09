@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.9
+version: 0.1.11
 ---
 
 # Vellistry — Current State
@@ -129,8 +129,20 @@ No application code, product architecture, or live research workflow has been va
 - [R07 ExecutionBundle](docs/reports/R07-LIVE-PROFILES-EXECUTION-BUNDLE-2026-10-09.md) defines FACT/INTERPRETATION/PROPOSAL and remaining research gates. **R07 remains partial**: actual model precision/recall, trustworthy extraction of beliefs vs objective events, author UI reviews, storage/backups, account security and long-form context accuracy have **not** been verified. The ten R07 research-register checkboxes remain open.
 - This is branch-local **draft research**, not a new approved database, event-sourcing requirement, provider, Tiptap implementation, automatic per-keystroke LLM processing or wider MVP feature addition. Current `main` has not gained those new technologies; the latest separate MVP product decision is on draft PR #10.
 
+## R01 and R15 source/trust research checkpoint — 2026-10-09
+- [R01 original source integrity audit](docs/research/R01-SOURCE-INTEGRITY-AND-AR-VARIANT-AUDIT-2026-10-09.md) verified the three standalone directly uploaded Markdown files **exactly match** their three ZIP members; SHA-256 of SRC-003 matches the already recorded fingerprint. It found **130 compact and 130 expanded lens codes**, 13 domains × 10 each, with **13 nonmatching heading titles**: 10 AR plus DS-09/PV-05/PV-10. Preserve both forms; no AR or source contents were rewritten. **The default deployable pack remains uncertified and owner packaging decision is required.**
+- [R15 private manuscript and BYOK threat model](docs/research/R15-MANUSCRIPT-PRIVACY-AND-BYOK-THREAT-MODEL-2026-10-09.md) maps owner-approved MVP assets to **17 candidate threats and negative verification scenarios** under OWASP ASVS 5.0, authorization and secrets guidance and OWASP LLM risk guidance. This is *paper research only*: no implemented auth, storage, encryption, AI key service, law compliance or penetration test.
+- [R01/R15 ExecutionBundle](docs/reports/R01-R15-EVIDENCE-BUNDLE-2026-10-09.md) preserves exact verification scope and evidence gaps.
+- **Next gates:** R01 owner reviews non-destructive packaging of code/title variants and archival location; R15 compares real application access policy, secrets/consent data flows, backup/deletion design after owner-approved architecture. Protect source/user data and do not infer a model, backend or paid service.
+- These source/trust studies complement approved eight-area MVP scope in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) and preparation [PR #11](https://github.com/Ben-001-sys/Vellistry/pull/11); no release gate closed.
+
 ## ADR-0003 Tiptap v3 owner decision branch reconciled — 2026-10-09
 - **Owner decision:** Tiptap **major version 3 on ProseMirror** is the approved manuscript editing foundation, confirmed 2026-10-08 and recorded in [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) and [HIS-20261008-005](docs/history/2026-10-08-tiptap-3-editor-approved.md). The decision existed before this reconciliation; its **documentation remains in PR #6 awaiting owner merge**.
 - **Later research:** [PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) contains seven passing Tiptap 3 headless smoke tests. [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12) independently includes seven passing limited Chromium browser tests. Neither is a production editor, a storage architecture or a professional publishing converter.
 - **Other decisions still open:** no paid Tiptap Pages/Conversion, full frontend/backend framework, database, security service, model provider or print/EPUB engine. [MVP scope PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) separately records the owner's accepted eight-area product target. Do not infer architecture from this ADR.
 - **Integration:** This PR branch now preserves current merged `main` R02, R06 and Stage 3/PR #5 history. Earlier status paragraphs retain their original research chronology; later merged-state and present approval here are authoritative for current status.
+
+## PR #6 conflict reconciliation and traceability correction — 2026-10-09
+- This branch incorporates the newer merged `main` at `fb8e98bfc24cffce25a9a3df66353a7ff4857648`, including R01/R15 source/trust research and PR #9's accepted-scope feature inventory. Existing historical research sections and approved editor-choice record are preserved.
+- Reviewer-requested linkage correction completed: both ADR-0003 and the Tiptap approval event reference `VEL-REQ-002` (**conventional manuscript editing**), rather than `VEL-REQ-001` (**scoped AI guidance**). Tiptap 3/ProseMirror remains selected but not implemented; no paid Tiptap extensions or unrelated technology approved.
+- Historical decision identifier remains `HIS-20261008-005`. Exact-head CI validation and final owner merge decision remain outstanding until verified.
