@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.14
+version: 0.1.15
 ---
 
 # Vellistry — Current State
@@ -150,3 +150,10 @@ No application code, product architecture, or live research workflow has been va
 - Proposed CI tests verify minimal contents, byte identity, reproducible packaging, and rejection of a tampered permission contract; an Actions artifact makes the packet available without manually assembling context.
 - Original SRC-001 remains unavailable in the historical Git pack. The historical editor-audit task does **not** reopen the later owner-selected Tiptap 3/ProseMirror or accepted MVP decisions.
 - Owner review/merge of the export workflow and actual isolated second-agent run are **distinct acceptance gates**; neither is completed by this entry.
+
+## Stage 4 — spec-driven agent workflow initiated (2026-10-09; proposal)
+- Following the owner instruction to move on, the Stage 3 Level B cursor response remains provisionally evaluated (9/10 content/independence unverified) in unmerged draft [PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24) and open [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18). We are not blocked on obtaining additional screenshots.
+- A new isolated branch proposes [VEL-SPEC-001](docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md): an **eight-scenario technology-neutral** create/edit/save/reopen contract for accepted M1/M2/M3/M8 MVP behavior, derived from the still-proposed author-journey/acceptance plan. All product acceptance scenarios remain **not tested**.
+- [VEL-TASK-0002](docs/agent-workflow/tasks/VEL-TASK-0002.yaml) and [Stage 4 workflow instructions](docs/agent-workflow/STAGE4-SPEC-TO-TASK.md) define permissions, traceability and an immutable current-scope ContextPack to be emitted by CI. Proposed `spec_traceability.py` tests source-status integrity, MVP feature horizon, acceptance references and negative cases. An Actions artifact should contain only the newly generated `VEL-CP-0002.md`.
+- This work does **not** choose application framework/database/auth vendor or claim working editor/product code. R18 framework and other research spikes remain engineering evidence; approved technology scope is limited to the established editor foundation pending the accepted ADR and subsequent decision process.
+- Stage 4 milestone remains open pending exact-head CI, owner review, new agent ExecutionBundle and later actual product tests. Earlier Stage 3/Level B entries remain historical, not converted to acceptance.
