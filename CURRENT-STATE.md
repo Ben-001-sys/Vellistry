@@ -183,6 +183,15 @@ No application code, product architecture, or live research workflow has been va
 - The fixture does **not** authenticate real users, test production RLS, persist documents across restarts, prove database commit guarantees or provide a browser Tiptap editor. It does not select or override the owner's separate app-stack decisions.
 - Remaining Stage 4 gates: owner reviews experimental scope, independent agent consumes current `VEL-CP-0002` and produces an evidence-bound actual ExecutionBundle, and then the agreed real-stack adapter/browser/security tests are executed with synthetic data.
 
+
+## 2026-10-09 — Owner-directed Pair 02 / Pair 03 research extension
+
+Owner asked: "continue pair 2 and 3". Pair 02 evidence remains on [draft PR #37](https://github.com/Ben-001-sys/Vellistry/pull/37); Pair 03 bounded synthetic studies are on [draft PR #38](https://github.com/Ben-001-sys/Vellistry/pull/38). This is NOT an authorization to open all later pairs or a claim that Pairs 01–03 met public launch readiness.
+
+**Latest bounded research:** Pair 02 — R02/R03 original eleven author tasks and prior vendor evidence mapped; no actual novelist interviews or accessibility assistive-technology sessions. R05/R16 test harness expanded with Tiptap heading/bold keyboard format persistence; early CI showed 10/12 and a server JSON schema gap. Research-only schema/negative tests improved; exact-head Chromium pass must be checked. Pair 03 — R11 synthetic portable two-book ZIP/TXT restore, real Calibre DOCX→EPUB→DOCX experiment, and R07 temporal approval scenarios. Exact research CI #38004035995 passed 18 new tests plus 20 existing R07 tests; Calibre 7.6.0 preserved three synthetic chapter titles/sentences but **lost heading styles (3 input → 0 output)**.
+
+**Unresolved release-critical gates:** R01 134-control proposal source/enablement owner review; actual Nest-only manuscript security integration, Next SSR and client copies; real author research, accessibility and supported rich-text edit/save; DOCX style fidelity and secure clean-project backup restore; R07 extraction accuracy and UI. Full Figma Make/Lovable alternatives and owner-approved canonical Figma design remain before product feature implementation. Synthetic fixtures are not shipping product paths.
+
 ## 2026-10-09 — Pair 02 research activation under bounded Pair 01 deferral
 
 Owner instructed: "this is ok for mvp lets deal with the rest of the pairs" after source-variant mapping proposals and actual local session-liveness / restricted-gateway test evidence. Interpret as permission to **advance research sequencing**, not to approve the original 134 proposed rule controls or waive manuscript privacy/release security. See [Pair 02 evidence](docs/research/PAIR-02-ACCELERATED-AUTHOR-EDITOR-EVIDENCE-2026-10-09.md) and [remaining-pairs reuse ledger](docs/research/ACCELERATED-PAIRS-02-TO-06-EVIDENCE-REUSE-2026-10-09.md).
