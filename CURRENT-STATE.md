@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.9
+version: 0.1.10
 ---
 
 # Vellistry — Current State
@@ -121,3 +121,11 @@ No application code, product architecture, or live research workflow has been va
 - Inventory totals now: **18 areas, 381 main feature entries, 15 differentiators, 396 feature rows**, all with **UNASSIGNED** release priority.
 - **Authority boundary:** Proposed profile changes discovered during human writing or AI text generation are not automatically accepted canon. The author can inspect and edit profiles directly; accepted story truth, provisional alternatives and extracted inferences remain separate.
 - **No implementation claims:** Real-time analysis frequency, background processing, extractors/models, saved entity schema and UI location are still research decisions; no working profile editor or AI pipeline has been delivered.
+
+## Owner-approved MVP scope and feature horizons — 2026-10-09
+- The owner replied **“I agree”** to the eight-area writing-focused MVP: book/chapter organization; serious Tiptap editing without AI; safe saving and basic TXT/DOCX portability; visible manually editable and author-reviewed AI-assisted character/storyline profiles; source-preserved, initially-on Rules Studio after R01 certification; bounded BYOK Continue/Rewrite; author-controlled accept/reject/undo; privacy/accessibility.
+- This explicitly postpones the full layered Cover Studio and professional EPUB/print publishing from the initial MVP **without cancelling the broader product vision**.
+- [Accepted scope decision in PR #10](https://github.com/Ben-001-sys/Vellistry/blob/research/r04-specific-mvp-proposal-v0.1/docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md) documents the approval source and gates. [Horizon map in PR #10](https://github.com/Ben-001-sys/Vellistry/blob/research/r04-specific-mvp-proposal-v0.1/docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md) documents each exact feature's classification and limitations.
+- This branch's [396-ID inventory](docs/features/FEATURE-INVENTORY.md) now mirrors the approved grouped scope: **78 MVP**, **71 MVP-LIMITED** and **247 POST-MVP-UNSCHEDULED** items, with original `DIRECTED`/`OWNER-INTENT`/`TECH-SELECTED`/`CANDIDATE` source classifications unchanged. These IDs are not 149 independent engineering tasks.
+- The owner approved **eight groups**, not an individual 396-item classification review: the per-ID mapping, especially `MVP-LIMITED`, remains subject to correction. No additional framework, provider, storage, paid editor service, cost, date or release acceptance is approved. R01/R02/R05/R06/R07/R08/R11/R15/R19 evidence gates remain open.
+- **Current governance:** PR #9 (inventory) and PR #10 (scope decision) remain separate and must be owner-reviewed/merged. Update obsolete earlier notes that described a pre-decision state by relying on this dated newest checkpoint.
