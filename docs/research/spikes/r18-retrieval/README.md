@@ -53,3 +53,23 @@ Each job logs actual synthetic word count, library/server versions, label hit co
 At commit 7a9b88702e920b26b9c3eb32f9074cc1912cdcaa, [R18 run 37977706332](https://github.com/Ben-001-sys/Vellistry/actions/runs/37977706332) passed both jobs over 140,678 synthetic accepted words and 1,974 total passages. Strict all-term FTS Recall@5 = 2/10; BAAI local-vector Recall@5 = 9/10; strict+vector RRF = 9/10. All returned IDs passed 12-question book/revision/time/POV/approval safety filters. Local model embedding creation = 45.41s on that runner. These are baseline observations, not a selected stack and not measurements of real-novel quality.
 
 The newer **OR-term FTS** and **OR-term+vector RRF** controls must run before interpreting whether semantic indexing adds sufficient benefit. Their metrics are intentionally NOT reported until a new exact-head CI run verifies them.
+
+## Verified stronger-control results — 2026-10-09
+
+**Exact code/initial docs head:** db76d0072b46f0ef7489b1a7829951cf2dae12d2. [GitHub Actions run 37978034404](https://github.com/Ben-001-sys/Vellistry/actions/runs/37978034404) completed **SUCCESS** on both jobs.
+
+Dataset: **140,678 synthetic accepted words**, 1,974 total passages including adversarial decoys. Twelve queries; ten positive labeled-source questions.
+
+| Retrieval method | Recall@5 | MRR@5 | Source found in top five |
+|---|---:|---:|---:|
+| Strict AND full-text search | 0.20 | 0.20 | 2/10 |
+| Content-word OR full-text search | **0.90** | **0.90** | **9/10** |
+| Locally embedded pgvector exact cosine | **0.90** | **0.90** | **9/10** |
+| RRF strict FTS + vector | **0.90** | **0.90** | **9/10** |
+| RRF OR FTS + vector | **0.90** | **0.90** | **9/10** |
+
+**All citations passed** source revision, author/book, approved status, story time and explicit POV acquisition validation across 12 queries and 5 methods. The full job reported 101.55 seconds for public model acquisition/initialization plus embedding the corpus and queries on the runner (first run 45.41 seconds). These timings are environment-sensitive and do not measure steady-state embedding API latency separately. Actual query latency and machine resources remain in the retained JSON job artifacts, not established as production benchmarks.
+
+### Interim architecture assessment
+
+A properly configured FTS OR baseline matched the semantic-only and hybrid retrieval results on this limited fixture. Consequently **pgvector and model embeddings are not justified as required MVP dependencies by this experiment**. PostgreSQL FTS plus the author-approved event ledger is the leading *minimal* memory implementation hypothesis. Revisit embeddings on harder paraphrase/multi-hop, diverse-genre, human-labeled manuscript benchmarks and after measuring ranking quality, retrieval latency, storage, indexing cost and model lifecycle. Do not infer that embeddings never help from a synthetic ten-target experiment. No full application-stack approval follows.
