@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.8
+version: 0.1.9
 ---
 
 # Vellistry — Current State
@@ -107,6 +107,14 @@ No application code, product architecture, or live research workflow has been va
 - Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
 - This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
 - Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
+
+## R05 editor license research branch reconciled after formal PR #4 review — 2026-10-09
+- [Original R05 comparative editor study](docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md) and [ExecutionBundle](docs/research/R05-EDITOR-RESEARCH-EXECUTION-BUNDLE-2026-10-08.md) remain **historical pre-selection research** across seven editor toolkits and 12 **proposed, unexecuted** evaluation cases. Their written research time precedes the owner's Tiptap selection and MVP approval; do not rewrite the original research retroactively.
+- **Current R06 status:** [PR #3](https://github.com/Ben-001-sys/Vellistry/pull/3) has **MERGED** into `main`, including synthetic request-assembly evidence. The original R05 branch's statement that R06 remained open was outdated and has been superseded here. No claim of real AI fiction quality is implied.
+- **Current Stage 3 status:** [agent handoff PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5) also has **MERGED** into `main`. Existing earlier 'pending review' passages remain a historical audit trail; the merge status here is later and current at this checkpoint. Preserve all R02/R06/Stage 3 sections and evidence.
+- **Owner-selected editor:** The owner selected **Tiptap 3 / ProseMirror** after the R05 study. The decision is on still-draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6); it does not approve premium Tiptap Pages/Conversion or choose a separate framework, backend, database, AI provider or publishing engine.
+- **Owner-approved product scope:** The eight-area MVP is recorded on draft [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10). This changes the *present* scope but not the facts or date of the pre-decision R05 source paper. Standalone comprehensive EPUB/print layout is intentionally post-MVP.
+- **PR #4 review remediation:** This branch incorporates current `main` history and reconciles the old `CURRENT-STATE.md` overlap rather than copying the older state over merged R02/R06/Stage 3 sections. Verify exact-head metadata checks, mergeability and reviewer comments before any owner-authorized merge.
 
 ## R01 and R15 source/trust research checkpoint — 2026-10-09
 - [R01 original source integrity audit](docs/research/R01-SOURCE-INTEGRITY-AND-AR-VARIANT-AUDIT-2026-10-09.md) verified the three standalone directly uploaded Markdown files **exactly match** their three ZIP members; SHA-256 of SRC-003 matches the already recorded fingerprint. It found **130 compact and 130 expanded lens codes**, 13 domains × 10 each, with **13 nonmatching heading titles**: 10 AR plus DS-09/PV-05/PV-10. Preserve both forms; no AR or source contents were rewritten. **The default deployable pack remains uncertified and owner packaging decision is required.**
