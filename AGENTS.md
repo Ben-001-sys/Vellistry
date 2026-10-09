@@ -4,7 +4,7 @@ type: agent-instructions
 status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
-version: 0.1.1
+version: 0.1.2
 ---
 
 # Instructions for Vellistry Research and Development Agents
@@ -15,6 +15,9 @@ version: 0.1.1
 3. Relevant accepted ADRs and requirements.
 4. Task-specific ContextPack and original sources.
 5. Related history, experiments, and execution reports if relevant.
+
+## Operational task handoff (Stage 3 pilot)
+Use [docs/agent-workflow/README.md](docs/agent-workflow/README.md) for task lifecycle, pinned ContextPack generation, ExecutionBundle reporting, and solo-maintainer review. This workflow remains a v0.1 proposal until owner-reviewed and merged. Do not confuse proposed task status with an accepted product decision.
 
 ## Duties
 - Report what is **FACT**, what is **INTERPRETATION**, and what is **PROPOSAL**.
