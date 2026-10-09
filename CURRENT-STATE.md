@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.11
+version: 0.1.17
 ---
 
 # Vellistry — Current State
@@ -135,3 +135,24 @@ No application code, product architecture, or live research workflow has been va
 - [R01/R15 ExecutionBundle](docs/reports/R01-R15-EVIDENCE-BUNDLE-2026-10-09.md) preserves exact verification scope and evidence gaps.
 - **Next gates:** R01 owner reviews non-destructive packaging of code/title variants and archival location; R15 compares real application access policy, secrets/consent data flows, backup/deletion design after owner-approved architecture. Protect source/user data and do not infer a model, backend or paid service.
 - These source/trust studies complement approved eight-area MVP scope in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) and preparation [PR #11](https://github.com/Ben-001-sys/Vellistry/pull/11); no release gate closed.
+
+## Stage 3 — cold-start evidence synced after feature inventory (2026-10-09)
+- [PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is **open and ready for review, but unmerged**; it adds Level A ContextPack reproducibility evidence. It does not establish independent second-agent success.
+- CI on earlier head `ff2ac4c6c9f29c8e6c6e75d1b5f8171df9a78a78`: [agent workflow run #37939723962](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723962) passed 15 existing tests plus 5 detached tests; [knowledge metadata run #37939723897](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723897) passed. Exact-head checks after this integration remain separately required.
+- Detached recovery reads only an exported **historical** `VEL-CP-0001` to reconstruct its task boundaries; it cannot authenticate Git, verify original SRC-001, authorize operations, or replace the currently accepted MVP and editor decisions.
+- [VEL-HO-0001](docs/agent-workflow/handoff-evaluations/VEL-HO-0001.md) records the bounded automated test and the explicit **Level B second-agent evaluation gap**. The rubric and result template are versioned for later real evaluation.
+- This integration retains `main`'s merged R02, R06, R07, R01/R15 and feature-inventory knowledge. The most recent feature-inventory [PR #9](https://github.com/Ben-001-sys/Vellistry/pull/9) is merged; earlier status paragraphs elsewhere are historical snapshots.
+
+## Stage 3 Level B clean-room dispatch preparation — 2026-10-09 (proposed)
+- [Stage 3 PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is **MERGED** as a Level A detached reconstruction implementation; earlier text saying it was unmerged is a historical snapshot superseded by this section.
+- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) is open, with no independent agent response when last checked. No Level B result or owner acceptance is claimed.
+- Proposed new exporter `scripts/export_level_b_handoff.py` validates the historical ContextPack against the full Git repository before writing exactly two files (`VEL-CP-0001.md` and `PROMPT.md`) into a reproducible ZIP. An isolated fresh agent may receive only these contents.
+- Proposed CI tests verify minimal contents, byte identity, reproducible packaging, and rejection of a tampered permission contract; an Actions artifact makes the packet available without manually assembling context.
+- Original SRC-001 remains unavailable in the historical Git pack. The historical editor-audit task does **not** reopen the later owner-selected Tiptap 3/ProseMirror or accepted MVP decisions.
+- Owner review/merge of the export workflow and actual isolated second-agent run are **distinct acceptance gates**; neither is completed by this entry.
+
+## Stage 3 — first Cursor Level B response (2026-10-09; provisional)
+- The owner supplied a response attributed to **Cursor**; exact submitted text and source fingerprint are preserved in [VEL-HO-0002](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md) and its [verbatim attachment](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md).
+- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner supplied screenshots showing Cursor Agent **Grok 4.7**, effort **High**, context **256K**, plus a `level-b-test-packet` Explorer visibly containing only `PROMPT.md` and `VEL-CP-0001.md`, alongside the instruction `follow PROMPT.md guidelines`. This strengthens workspace-isolation evidence but is not proof that the agent chat was new or devoid of inherited context; full independence and owner acceptance remain unverified.
+- This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
+- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
