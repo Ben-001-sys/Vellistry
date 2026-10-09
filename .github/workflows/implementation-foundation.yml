@@ -1,0 +1,54 @@
+name: Vellistry implementation foundation
+
+on:
+  pull_request:
+    paths:
+      - "apps/**"
+      - "package.json"
+      - "pnpm-workspace.yaml"
+      - "supabase/**"
+      - ".github/workflows/implementation-foundation.yml"
+      - "docs/decisions/ADR-0006-*"
+      - "docs/history/2026-10-09-next-nest-supabase-*"
+      - "docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md"
+      - "README.md"
+  push:
+    paths:
+      - "apps/**"
+      - "package.json"
+      - "pnpm-workspace.yaml"
+      - "supabase/**"
+      - ".github/workflows/implementation-foundation.yml"
+      - "docs/decisions/ADR-0006-*"
+      - "docs/history/2026-10-09-next-nest-supabase-*"
+      - "docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install without hosted secrets or paid APIs
+        run: pnpm install --no-frozen-lockfile
+      - name: Compile NestJS backend
+        run: pnpm --filter @vellistry/api build
+      - name: Type-check NestJS backend
+        run: pnpm --filter @vellistry/api typecheck
+      - name: Build Next.js frontend
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: pnpm --filter @vellistry/web build
+      - name: Type-check Next.js frontend
+        run: pnpm --filter @vellistry/web typecheck
