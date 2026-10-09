@@ -1,0 +1,24 @@
+name: R06 synthetic research contract
+on:
+  pull_request:
+    paths:
+      - 'docs/research/experiments/r06_synthetic_request_simulator.py'
+      - '.github/workflows/r06-synthetic-research.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/research/experiments/r06_synthetic_request_simulator.py'
+      - '.github/workflows/r06-synthetic-research.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-contract:
+    name: Validate simulated request inclusion and isolation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run R06 synthetic contract tests — not model quality tests
+        run: python docs/research/experiments/r06_synthetic_request_simulator.py
