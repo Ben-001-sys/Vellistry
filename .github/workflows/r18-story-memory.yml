@@ -1,0 +1,29 @@
+name: R18 synthetic story memory
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/spikes/r18-fiction-memory/**"
+      - ".github/workflows/r18-story-memory.yml"
+  push:
+    paths:
+      - "docs/research/spikes/r18-fiction-memory/**"
+      - ".github/workflows/r18-story-memory.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  memory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run synthetic no-dependency memory tests
+        run: node --test docs/research/spikes/r18-fiction-memory/memory.test.mjs
