@@ -1,0 +1,94 @@
+name: R18 long-manuscript retrieval benchmark
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/spikes/r18-retrieval/**"
+      - ".github/workflows/r18-retrieval-benchmark.yml"
+      - "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
+  push:
+    paths:
+      - "docs/research/spikes/r18-retrieval/**"
+      - ".github/workflows/r18-retrieval-benchmark.yml"
+      - "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lexical:
+    name: PostgreSQL FTS baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.6-pg17
+        env:
+          POSTGRES_USER: vellistry
+          POSTGRES_DB: vellistry_retrieval
+          POSTGRES_PASSWORD: synthetic-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vellistry -d vellistry_retrieval"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install open-source PostgreSQL client
+        run: python -m pip install "psycopg[binary]>=3.2,<4"
+      - name: Run 100k-word indexed lexical benchmark
+        env:
+          DATABASE_URL: postgresql://vellistry:synthetic-only@localhost:5432/vellistry_retrieval
+        run: |
+          python docs/research/spikes/r18-retrieval/benchmark.py \
+            --mode lexical --output retrieval-lexical.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r18-lexical-results
+          path: retrieval-lexical.json
+          retention-days: 7
+
+  semantic:
+    name: PostgreSQL vector and hybrid CPU-only
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.6-pg17
+        env:
+          POSTGRES_USER: vellistry
+          POSTGRES_DB: vellistry_retrieval
+          POSTGRES_PASSWORD: synthetic-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vellistry -d vellistry_retrieval"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install open-source CPU embedding and PostgreSQL clients
+        run: python -m pip install "psycopg[binary]>=3.2,<4" "fastembed==0.8.1"
+      - name: Generate local 384d embeddings and compare ranked retrieval
+        env:
+          DATABASE_URL: postgresql://vellistry:synthetic-only@localhost:5432/vellistry_retrieval
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          OMP_NUM_THREADS: "2"
+        run: |
+          python docs/research/spikes/r18-retrieval/benchmark.py \
+            --mode full --output retrieval-full.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r18-hybrid-results
+          path: retrieval-full.json
+          retention-days: 7

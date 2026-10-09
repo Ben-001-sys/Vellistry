@@ -4,9 +4,9 @@ title: Stage 3 agent task handoff contract
 type: process
 status: proposed
 created_at: 2026-10-08
-updated_at: 2026-10-08
+updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.0
+version: 0.1.2
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -31,6 +31,25 @@ This is an **operational v0.1 pilot**, proposed for owner review. It implements 
 - [First research task](tasks/VEL-TASK-0001.yaml): check traceability between first-pass author-intent extraction and proposed editor requirements; **do not select an editor**.
 - [Example ContextPack](context-packs/VEL-CP-0001.md): task-scoped immutable Git inputs; records SRC-001 as a known missing original Git archive.
 - [Example ExecutionBundle](execution-bundles/VEL-EB-0001.md): actual assessment of currently committed records; not independent source verification or completion of full migration.
+
+## Stage 3 follow-up — cold-start verification (2026-10-09)
+
+The owner merged the initial operational handoff implementation in [PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5). The current follow-up is the [detached reconstruction and independent-agent protocol](HANDOFF-REPRODUCIBILITY-PROTOCOL.md).
+
+- A CI-tested detached reader extracts objective, scope, permissions, approval gates, source authority, and disclosed gaps from **only** a copied ContextPack.
+- This is a machine-readable *readability* test; it does not authenticate Git pins or prove that a second AI agent can reason from the material. Those are separate acceptance requirements.
+- The original ContextPack VEL-CP-0001 is a **historical test fixture**. Later owner decisions, including the editor selection, must not be overwritten by its older task constraints. Prepare a new ContextPack for current work.
+- The protocol specifies what a truly independent Cursor/Codex/other-agent run must receive, produce, and pass before being called successful.
+
+## Level B handoff dispatch (2026-10-09)
+
+The merged cold-start check establishes Level A **structural readability**. A genuine Level B run needs a separate AI agent and must not inherit the originating chat or previous ExecutionBundle. Use the CI-validated two-file export instead of handing over a full repository. See [the reproducibility protocol](HANDOFF-REPRODUCIBILITY-PROTOCOL.md) and [the minimal agent prompt](LEVEL-B-AGENT-PROMPT.md).
+
+```bash
+python scripts/export_level_b_handoff.py --output /tmp/vellistry-level-b.zip
+```
+
+GitHub Actions also publishes a short-lived `vellistry-level-b-cold-start` artifact after passing the exporter tests. The agent receives the two inner Markdown files only; the operator retains the CI URL, SHA-256 hashes, unedited response and review rubric separately. Export success **does not** mean Level B was executed.
 
 ## Artifact rules
 
