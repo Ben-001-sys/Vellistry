@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.10
+version: 0.1.11
 ---
 
 # Vellistry — Current State
@@ -138,3 +138,11 @@ No application code, product architecture, or live research workflow has been va
 - The [396-ID scope map](docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md) distinguishes **149 MVP/MVP-LIMITED entries** from **247 POST-MVP-UNSCHEDULED** ideas (including all Cover Studio, full print, MCP and collaboration items). These are catalog entries, not 149 independent development tickets. Detailed technical acceptance criteria remain to be written.
 - **Approval ≠ implementation:** no author interview, app integration, authentic frozen-rule pack, live profile extractor, production persistence, verified provider or export engine is ready solely from this decision. The platform framework, database, API provider and release schedule remain undecided.
 - Documentation PR remains separate from the actual owner in-chat approval; owner review/merge remains pending.
+
+## MVP author journeys and implementation-readiness research — 2026-10-09
+- The owner-approved product scope from [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) remains **eight areas**; the 396 feature inventory and source statuses are preserved separately in [PR #9](https://github.com/Ben-001-sys/Vellistry/pull/9). The selected editor foundation is still Tiptap 3 / ProseMirror; no other app architecture decision has been approved.
+- [MVP author journeys and acceptance v0.1](docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md) specifies **11 proposed end-to-end writing journeys, 37 proposed acceptance scenarios and 10 negative scenarios**; none is implemented or marked PASS.
+- [Readiness gates and architecture questions](docs/research/MVP-READINESS-GATES-AND-ARCHITECTURE-DECISION-QUESTIONS-2026-10-09.md) inventories **10 open evidence gates** (R01/R02/R05/R06/R07/R08/R11/R14/R15/R18/R19) and **12 unresolved architecture questions**. Candidate research order: frozen guidance provenance and private-manuscript threat model; isolated Tiptap real-browser and manual profile tests; DOCX fixtures/author interviews; bounded model evaluations and explicit architectural ADRs.
+- [MVP readiness ExecutionBundle](docs/reports/MVP-READINESS-EXECUTION-BUNDLE-2026-10-09.md) separates current evidence from proposals and tests not performed.
+- **This is a stacked draft branch based on PR #10**, intended for review against `research/r04-specific-mvp-proposal-v0.1` until the parent is merged to `main`. Do not merge a child ahead of its parent or treat the child planning docs as owner-approved acceptance thresholds.
+- **Next bounded work recommendation:** RDY-01 non-destructive frozen guidance source inventory and RDY-04 private manuscript trust model, in parallel with RDY-02 real-browser Tiptap testing. No actual author manuscripts, production credentials, new stack decisions or paid provider calls have been used in this planning work.
