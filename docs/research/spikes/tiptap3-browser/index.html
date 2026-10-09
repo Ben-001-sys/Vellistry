@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>R05 — Disposable Tiptap Browser Test</title>
+  <style>
+    body {font: 16px/1.6 system-ui,sans-serif;max-width:800px;margin:24px auto;padding:0 20px;}
+    header {display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .tiptap {border:1px solid #888;min-height:220px;padding:20px;outline-offset:3px}
+    .tiptap:focus {outline:2px solid #555}
+    .tiptap h1 {font-size:1.7rem}
+    button,select {font:inherit}
+    output {display:block;margin:12px 0}
+    .note {font-size:.9rem}
+  </style>
+</head>
+<body>
+  <h1>R05 Browser Manuscript Research — NOT an application</h1>
+  <p class="note">Synthetic writing only. Memory is volatile; closing/reloading the page discards edits. No account, AI, storage, or autosave.</p>
+  <header>
+    <label for="chapter">Chapter:</label>
+    <select id="chapter" aria-label="Select chapter">
+      <option value="one">Chapter One</option>
+      <option value="two">Chapter Two</option>
+    </select>
+    <button id="bold" type="button">Toggle bold</button>
+    <button id="undo" type="button">Undo</button>
+    <button id="redo" type="button">Redo</button>
+  </header>
+  <output id="status" role="status">Loading editor…</output>
+  <div id="editor"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
