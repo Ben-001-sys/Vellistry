@@ -1,0 +1,28 @@
+name: R07 synthetic author-approved story state contract
+on:
+  pull_request:
+    paths:
+      - 'docs/research/experiments/r07_story_state_contract.py'
+      - 'docs/research/experiments/test_r07_story_state_contract.py'
+      - '.github/workflows/r07-story-state-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/research/experiments/r07_story_state_contract.py'
+      - 'docs/research/experiments/test_r07_story_state_contract.py'
+      - '.github/workflows/r07-story-state-contract.yml'
+permissions:
+  contents: read
+jobs:
+  story-state:
+    name: Verify synthetic story approval contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run no-network stdlib-only tests
+        working-directory: docs/research/experiments
+        run: python -m unittest -v test_r07_story_state_contract
