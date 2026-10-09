@@ -20,7 +20,7 @@ evidence:
 related_adrs:
   - ADR-0003
 related_requirements:
-  - VEL-REQ-001
+  - VEL-REQ-002
 related_events: []
 corrects: []
 corrected_by: []
