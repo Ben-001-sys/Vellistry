@@ -119,12 +119,12 @@ def validate_spec(path: Path, root: Path = ROOT):
 
     mapping = (root / "docs/requirements/MVP-FEATURE-HORIZON-MAP-2026-10-09.md").read_text(encoding="utf-8")
     for feature in meta["feature_refs"]:
-        line = next((ln for ln in mapping.splitlines() if ln.startswith(f"| \`{feature}\` |")), None)
+        line = next((ln for ln in mapping.splitlines() if ln.startswith(f"| `{feature}` |")), None)
         if not line:
             raise ValueError(f"feature ID absent from scope map: {feature}")
         # The mapped row must explicitly include MVP or MVP-LIMITED, never post-MVP.
         cells = [cell.strip() for cell in line.strip().split("|")[1:-1]]
-        if len(cells) < 4 or cells[2].strip("\`") not in {"MVP", "MVP-LIMITED"}:
+        if len(cells) < 4 or cells[2].strip("`") not in {"MVP", "MVP-LIMITED"}:
             raise ValueError(f"feature is not in approved MVP: {feature}")
     headings = re.findall(r"(?m)^### (SC-\d{3})\b", body)
     if set(headings) != set(meta["criteria"]) or len(headings) != len(meta["criteria"]):
