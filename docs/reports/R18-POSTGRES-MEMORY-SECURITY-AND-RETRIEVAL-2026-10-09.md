@@ -1,11 +1,11 @@
 ---
 id: VEL-RPT-R18-PG-20261009-001
 type: experiment-report
-status: sql-synthetic-ci-awaiting-verification
+status: synthetic-postgresql-ci-passed
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 related_research:
   - R07
   - R15
@@ -18,9 +18,9 @@ related_adrs:
 
 ## Experiment and evidence status
 
-This is an **unverified initial SQL research report pending exact-head PostgreSQL 17 CI**, not a claim that 12 tests have passed. Only synthetic invented author/books and manuscript prose are used.
+**Verified synthetic PostgreSQL 17 CI: 12 of 12 named assertion groups passed on the tested code commit b7eb6d91f4a8cb68c566c22954c3457e234161e3**, with zero SQL errors. The initial code run failed while creating the search function because an ORDER BY expression used an undefined score output alias; the next commit explicitly sorted by ts_rank and passed. Neither run involved a real account/session or a large manuscript. See [the exact-head passing GitHub Actions run](https://github.com/Ben-001-sys/Vellistry/actions/runs/37976536671). Only synthetic invented author/books and manuscript prose are used.
 
-The SQL fixture contains books, current chapter prose/revision, canonical and rejected events, source-linked evidence chunks and writing rules. The execution script contains 12 fail-fast assertion groups. GitHub Actions runs the schema and assertions against fresh PostgreSQL 17. At authoring time, this local container did not have a PostgreSQL server or psql binary; treat actual execution outcome as UNKNOWN until the workflow is checked.
+The SQL fixture contains books, current chapter prose/revision, canonical and rejected events, source-linked evidence chunks and writing rules. The execution script contains 12 fail-fast assertion groups. GitHub Actions runs the schema and assertions against fresh PostgreSQL 17. At initial drafting, the local container had no PostgreSQL server or psql binary. Execution was subsequently verified in the isolated GitHub Actions PostgreSQL 17.11 service, with psql 16.15 as the client. The run logs contain all 12 success markers and the final suite-complete marker. This report commit contains only documentation/workflow-trigger changes; confirm the new PR exact-head workflow independently before merge.
 
 ## Intended gates
 

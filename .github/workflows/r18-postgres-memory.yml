@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - "docs/research/spikes/r18-postgres-memory/**"
+      - "docs/reports/R18-POSTGRES-MEMORY-SECURITY-AND-RETRIEVAL-2026-10-09.md"
       - ".github/workflows/r18-postgres-memory.yml"
   push:
     paths:
       - "docs/research/spikes/r18-postgres-memory/**"
+      - "docs/reports/R18-POSTGRES-MEMORY-SECURITY-AND-RETRIEVAL-2026-10-09.md"
       - ".github/workflows/r18-postgres-memory.yml"
   workflow_dispatch:
 
