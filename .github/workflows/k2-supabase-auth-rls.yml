@@ -70,6 +70,8 @@ jobs:
           if [ "$ready" != "1" ]; then echo "Nest API unavailable"; exit 1; fi
           node apps/api/tests/supabase-auth-rls.integration.mjs
           node apps/api/tests/k2b-session-exposure.integration.mjs
+          # Observe auth.sessions row removal under local/global logout, separately from JWT validity.
+          node apps/api/tests/k2b-active-session-row.integration.mjs
           # This final experiment REVOKES grants and intentionally breaks Nest's
           # existing PostgREST book transport; run it last in disposable CI.
           node apps/api/tests/k2b-data-api-lockdown.integration.mjs
@@ -81,6 +83,7 @@ jobs:
           path: |
             k2-auth-rls-results.json
             k2b-session-observations.json
+            k2b-live-session-row-observations.json
             k2b-lockdown-observations.json
           if-no-files-found: ignore
           retention-days: 7
