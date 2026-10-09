@@ -97,6 +97,14 @@ The isolated R18 Playwright fixture adds the **same two cases** for Next.js and 
 
 Tests are in [browser.spec.mjs](../research/spikes/r18-framework-slice/tests/browser.spec.mjs), extending existing eight cases. **Record exact GitHub CI before claiming pass.** This is not a substitute for actual accessibility assessment.
 
+### Measured first Pair 02 Chromium result — important integration gap
+
+[GitHub Actions #38003083601](https://github.com/Ben-001-sys/Vellistry/actions/runs/38003083601) ran 12 actual Chromium cases on the first Pair 02 test commit 8ac4ba6906e216e265ef6dd43fa405f3ecffcb3a: **10 PASSED, 2 FAILED**. All previous eight real-browser recovery cases still passed; both new keyboard-only Save / aria-live status cases passed. The two new tests demonstrated Tiptap formatting in the browser but failed at the server revision-save step: the server returned **"unsaved: invalid_document"** for a structured heading and bold text in both Next and Vite/Nest frontend variants.
+
+**Interpretation:** This is a genuine mismatch between the existing R18 test-only backend's restrictive plain-paragraph JSON validation and MVP expectations for rich formatting. It is NOT proof of corruption or an untested assumption about Word imports. Don't silently call browser editing "rich-text persistent" or fix the result by stripping heading/bold markup. The previous eight simple text tests remain valid and do not cover this format.
+
+**Follow-up:** The test was changed to assert explicit server rejection, no false "saved" status or revision bump, plus successful Dexie recovery of the formatted unsaved content after reload (research-fixture scope only). Exact-head rerun result must be recorded; expected failure recovery does not make the full rich-text server-save requirement pass. Full schema-compatible server save and round-trip remains **OPEN** for MVP, to be designed after source, accessibility and product architecture gates.
+
 ### R05/R16 still open
 
 1. Full marks/blocks/import preservation (underline, lists, special characters, paragraphs and large copied Word/DOCX text) with honest schema and formatter policies; don't silently strip unsupported formatting.
