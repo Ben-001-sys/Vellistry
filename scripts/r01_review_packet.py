@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from r01_manifest import audit
@@ -117,6 +118,30 @@ def check_candidate(packet: dict, proposal: dict, *, require_approval: bool = Fa
             "original_codes_reviewed": len(decisions), "distinct_operational_aliases": total}
 
 
+def write_private_research_json(source: Path, destination: Path, payload: dict) -> None:
+    """Create output once, without following a symlink or replacing frozen source.
+
+    Exclusive create also refuses pre-existing result files. This safety boundary
+    is for local single-user research, not an authorization to publish source data.
+    """
+    if not source.is_file():
+        raise ReviewValidationError("Original source does not exist")
+    if destination.is_symlink() or source.resolve(strict=True) == destination.resolve(strict=False):
+        raise ReviewValidationError("Output aliases or follows the immutable original source")
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        fd = os.open(destination, flags, 0o600)
+    except FileExistsError as exc:
+        raise ReviewValidationError("Output already exists; refusing overwrite") from exc
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+    except BaseException:
+        destination.unlink(missing_ok=True)
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", help="Path to original immutable owner source (not committed)")
@@ -125,11 +150,14 @@ def main():
     parser.add_argument("--require-approval", action="store_true")
     args = parser.parse_args()
     packet = review_packet(audit(Path(args.source)))
-    Path(args.out).write_text(json.dumps(packet, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("Review packet: 130 unresolved codes, 260 preserved source references; ZERO mappings selected")
+    result = None
     if args.check:
         proposal = json.loads(Path(args.check).read_text(encoding="utf-8"))
-        print(json.dumps(check_candidate(packet, proposal, require_approval=args.require_approval)))
+        result = check_candidate(packet, proposal, require_approval=args.require_approval)
+    write_private_research_json(Path(args.source), Path(args.out), packet)
+    print("Review packet: 130 unresolved codes, 260 preserved source references; ZERO mappings selected")
+    if result is not None:
+        print(json.dumps(result))
 
 
 if __name__ == "__main__":

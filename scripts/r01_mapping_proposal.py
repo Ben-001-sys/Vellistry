@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 
 from r01_manifest import audit
-from r01_review_packet import review_packet, ReviewValidationError
+from r01_review_packet import review_packet, ReviewValidationError, write_private_research_json
 
 # These four pairs describe separately valuable concerns in the *original* source;
 # labels below are researcher interpretations, not newly approved original IDs.
@@ -108,7 +108,7 @@ def main() -> None:
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
     report = mapping_proposal(audit(Path(args.source)))
-    Path(args.out).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf8")
+    write_private_research_json(Path(args.source), Path(args.out), report)
     print(json.dumps({k: report[k] for k in
                       ("artifact", "printed_code_count", "preserved_source_record_count",
                        "proposed_control_count", "active_mapping")}, indent=2))

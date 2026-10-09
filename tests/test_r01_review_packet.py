@@ -1,11 +1,13 @@
 """Synthetic review-packet tests; no full private fiction source stored in repo."""
 import sys
 import unittest
+import tempfile
+from unittest.mock import patch
 from copy import deepcopy
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from r01_review_packet import review_packet, check_candidate, ReviewValidationError
+from r01_review_packet import review_packet, check_candidate, ReviewValidationError, write_private_research_json, main
 
 DOMAINS = ("NI", "PR", "DS", "EM", "DG", "CH", "PV", "RS", "SC", "PC", "PL", "CT", "AR")
 
@@ -78,5 +80,48 @@ class ReviewPacketTests(unittest.TestCase):
         candidate["approval"] = {"status": "owner-approved", "approved_by": "project_owner", "decided_at": "2026-10-09", "evidence_ref": "owner-review-record"}
         self.assertEqual(check_candidate(self.packet, candidate, require_approval=True)["original_codes_reviewed"], 130)
 
+    def test_original_never_overwritten_even_when_out_equals_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "immutable-source.md"
+            source.write_text("original immutable author source", encoding="utf-8")
+            with self.assertRaises(ReviewValidationError):
+                write_private_research_json(source, source, self.packet)
+            self.assertEqual(source.read_text(encoding="utf-8"), "original immutable author source")
+
+    def test_symlink_destination_does_not_follow_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "immutable-source.md"
+            alias = Path(temp) / "review.json"
+            source.write_text("original immutable author source", encoding="utf-8")
+            alias.symlink_to(source)
+            with self.assertRaises(ReviewValidationError):
+                write_private_research_json(source, alias, self.packet)
+            self.assertEqual(source.read_text(encoding="utf-8"), "original immutable author source")
+
+    def test_existing_destination_cannot_be_clobbered(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "immutable-source.md"
+            output = Path(temp) / "review.json"
+            source.write_text("original immutable author source", encoding="utf-8")
+            output.write_text("prior reviewer packet", encoding="utf-8")
+            with self.assertRaises(ReviewValidationError):
+                write_private_research_json(source, output, self.packet)
+            self.assertEqual(output.read_text(encoding="utf-8"), "prior reviewer packet")
+
+    def test_check_failure_does_not_create_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "immutable-source.md"
+            output = Path(temp) / "review.json"
+            candidate = Path(temp) / "invalid-candidate.json"
+            source.write_text("original immutable author source", encoding="utf-8")
+            candidate.write_text('{"decisions": []}', encoding="utf-8")
+            with patch("r01_review_packet.audit", return_value=self.manifest), \
+                 patch.object(sys, "argv", ["r01_review_packet.py", str(source), "--out", str(output), "--check", str(candidate)]):
+                with self.assertRaises(ReviewValidationError):
+                    main()
+            self.assertFalse(output.exists())
+            self.assertEqual(source.read_text(encoding="utf-8"), "original immutable author source")
+
 
 if __name__ == "__main__": unittest.main()
+

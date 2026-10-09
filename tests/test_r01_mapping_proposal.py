@@ -1,10 +1,12 @@
 """Synthetic R01 mapping proposal contract tests; never assert owner approval."""
 import sys
 import unittest
+import tempfile
+from unittest.mock import patch
 from copy import deepcopy
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from r01_mapping_proposal import mapping_proposal, SPLITS
+from r01_mapping_proposal import mapping_proposal, SPLITS, main
 from r01_review_packet import ReviewValidationError
 from test_r01_review_packet import synthetic_manifest
 
@@ -56,6 +58,16 @@ class ProposedMappingTests(unittest.TestCase):
         m = deepcopy(self.manifest)
         m["all_source_variants"][0]["case_insensitive_title_diff"] = not m["all_source_variants"][0]["case_insensitive_title_diff"]
         with self.assertRaises(ReviewValidationError): mapping_proposal(m)
+
+    def test_mapping_cli_refuses_original_as_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "original.md"
+            source.write_text("immutable fiction source", encoding="utf-8")
+            with patch("r01_mapping_proposal.audit", return_value=self.manifest), \
+                 patch.object(sys, "argv", ["r01_mapping_proposal.py", str(source), "--out", str(source)]):
+                with self.assertRaises(ReviewValidationError):
+                    main()
+            self.assertEqual(source.read_text(encoding="utf-8"), "immutable fiction source")
 
 
 if __name__ == "__main__":
