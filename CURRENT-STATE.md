@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.20
+version: 0.1.21
 ---
 
 # Vellistry — Current State
@@ -24,7 +24,6 @@ version: 0.1.20
 
 ### Earlier historical research baseline
 Research and discovery; engineering knowledge foundation initialization.
-
 
 ## Accepted direction
 - Future application code and engineering knowledge will share one GitHub repository (ADR-0001).
@@ -188,3 +187,10 @@ No application code, product architecture, or live research workflow has been va
 - This branch retains **all newer merged main entries** including the accepted Tiptap 3/ProseMirror ADR and the already merged [Cursor evaluation PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24); historic 9/10 handoff contents do not constitute a fully confirmed session-independence assessment.
 - A Next.js + NestJS + Supabase direction is separately described as owner-selected in [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28); its branch's own review and merge are distinct from this synthetic task contract. Stage 4 neither selects nor reverses application architecture.
 - Product acceptance tests, real-browser editing, production authorization/durability, separate agent ExecutionBundle and owner review of this specification remain pending. This conflict resolution **does not merge PR #26 or promote the specification to accepted**.
+
+## Stage 4 — synthetic chapter contract execution (2026-10-09; PR #35 pending owner review)
+- [PR #26](https://github.com/Ben-001-sys/Vellistry/pull/26) was verified **merged** before starting. Current task [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remains open because a separate Cursor/Codex handoff/ExecutionBundle and real application validation have not been accepted.
+- [PR #35](https://github.com/Ben-001-sys/Vellistry/pull/35) adds a **single-process Python in-memory research fixture**, 13 synthetic contract tests, a bounded CI workflow and an [execution-style report](docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md). Initial run [#38002511826](https://github.com/Ben-001-sys/Vellistry/actions/runs/38002511826) passed **13/13 tests** at initial PR head `24f81eb1ce57f36b886851e46e96d9fdba46b4a8`. Later heads require renewed CI.
+- SC-001/003/004/005/006/007 have **passing synthetic behavior probes**; SC-002 covers a **formatted JSON proxy only**, not real editor interaction; SC-008 is an **untested owner/governance rule**. Actual product acceptance for all eight SCs remains **NOT TESTED**.
+- The fixture does **not** authenticate real users, test production RLS, persist documents across restarts, prove database commit guarantees or provide a browser Tiptap editor. It does not select or override the owner's separate app-stack decisions.
+- Remaining Stage 4 gates: owner reviews experimental scope, independent agent consumes current `VEL-CP-0002` and produces an evidence-bound actual ExecutionBundle, and then the agreed real-stack adapter/browser/security tests are executed with synthetic data.

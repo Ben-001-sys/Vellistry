@@ -12,4 +12,6 @@ Initial decisions:
 
 - [ADR-0007 — P1 source-preserving dual fiction guidance records](ADR-0007-immutable-compact-expanded-guidance-sources.md)
 
+- [ADR-0005 — Earlier TypeScript modular-monolith stack candidate (proposed; not owner-accepted)](ADR-0005-vellistry-typescript-modular-monolith-mvp.md)
+
 - [ADR-0006 — Next.js + NestJS + Supabase implementation baseline](ADR-0006-next-nest-supabase-implementation-foundation.md)
