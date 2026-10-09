@@ -1,0 +1,30 @@
+name: Stage 4 synthetic chapter contract
+on:
+  pull_request:
+    paths:
+      - 'docs/research/spikes/stage4-synthetic-chapter-contract/**'
+      - 'tests/test_stage4_chapter_contract.py'
+      - 'docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md'
+      - '.github/workflows/stage4-synthetic-chapter-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/research/spikes/stage4-synthetic-chapter-contract/**'
+      - 'tests/test_stage4_chapter_contract.py'
+      - 'docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md'
+      - '.github/workflows/stage4-synthetic-chapter-contract.yml'
+permissions:
+  contents: read
+jobs:
+  chapter-contract:
+    name: Run invented-author chapter contract scenarios
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all synthetic contract and negative cases
+        run: python -m unittest discover -s tests -p 'test_stage4_chapter_contract.py' -v
+      - name: Confirm no runtime third-party dependencies
+        run: python -m compileall -q docs/research/spikes/stage4-synthetic-chapter-contract
