@@ -118,3 +118,16 @@ Tests are in [browser.spec.mjs](../research/spikes/r18-framework-slice/tests/bro
 This document and a passed Chromium test are sufficient to **prepare requirements for UI research**, not enough to call Pair 02 fully validated. If the owner later elects another bounded deferral, document which exact user validation/accessibility risks remain and keep them as design/public release gates; don't turn untested tasks into evidence. Dedicated editable Figma design still follows project research closeout.
 
 **No paid services, externally shared manuscripts, production feature changes, or third research track introduced.**
+
+
+### Verified Pair 02 follow-up — 2026-10-09 (supersedes first run failure for tested research code only)
+
+**Exact tested code commit:** 529f7985369c2fe329709eb51ca3f4ef4c023736.
+
+- [Chromium CI #38004073900](https://github.com/Ben-001-sys/Vellistry/actions/runs/38004073900): **SUCCESS, all 12/12 Playwright cases passed**. This includes the original eight R18 synthetic editing/recovery scenarios and four Pair 02 tests across both Next.js and Vite/NestJS. For each adapter, a keyboard-created Heading 1 and bold marked text now survives an authorized save, database JSON and browser reload. Live-region save status and keyboard-only Save succeeded for both.
+- [HTTP contract CI #38004073953](https://github.com/Ben-001-sys/Vellistry/actions/runs/38004073953): **SUCCESS: Next 17/17, Nest 17/17**. Newly added cases prove heading/bold structured JSON survives server accepted revision storage verbatim and explicitly unsupported mark types return 400 rather than being discarded or rewritten.
+- Existing first-run failure CI #38003083601 (10/12) remains meaningful source history: it exposed an incompatibility in the research-only server JSON validator. Fixing the fixture does **not** demonstrate all Tiptap 3 schema nodes, Word paste, IME, accessibility assistive tech or final production manuscript storage.
+
+**Mechanism:** Whitelist only basic heading (level 1–3), paragraph, and bold/italic/strike/code marks, including valid empty paragraph blocks. The JSON is preserved without lossy fallback; unknown attributes or marks are rejected. This remains a **narrow research schema**, not an approved production validator or complete professional word-processing feature.
+
+**Pair 02 disposition:** Research fixture's simple structured save/keyboard-safety gap is measured and resolved. Author usability interviews, independent paid/free competitor walkthroughs, WCAG/screen-reader sessions, RTL/IME and full rich manuscript/paste conversion are still **NOT RUN or PARTIAL**. Prepare for UI/UX discovery, but do **not** certify Pair 02 as fully validated or authorize shipping feature implementation.
