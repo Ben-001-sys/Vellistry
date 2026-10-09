@@ -77,7 +77,10 @@ def inspect(path: Path):
     allowed = [x.strip() for x in field(perms, "**Allowed:**").split(",") if x.strip()]
     approved = [x.strip() for x in field(perms, "**Owner approval required:**").split(";") if x.strip()]
     criteria = bullets(perms, "**Acceptance criteria:**")
-    deliverables = bullets("xx\n" + delivery, "xx\n")
+    delivered_lines = [line.strip() for line in delivery.splitlines() if line.strip()]
+    if not delivered_lines or any(not line.startswith("- ") for line in delivered_lines):
+        fail("Invalid deliverables section")
+    deliverables = [line[2:] for line in delivered_lines]
     if not allowed or not approved:
         fail("Permissions or approval requirements missing")
     if not isinstance(meta["inputs"], list) or not isinstance(meta["source_gaps"], list):
