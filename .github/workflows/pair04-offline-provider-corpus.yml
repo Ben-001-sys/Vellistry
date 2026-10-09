@@ -1,0 +1,32 @@
+name: Pair 04 offline provider and corpus research
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/pair04_*"
+      - "docs/research/experiments/test_pair04_*"
+      - "docs/research/independent-alternatives/pairs-04-05/**"
+      - ".github/workflows/pair04-offline-provider-corpus.yml"
+  push:
+    paths:
+      - "docs/research/experiments/pair04_*"
+      - "docs/research/experiments/test_pair04_*"
+      - "docs/research/independent-alternatives/pairs-04-05/**"
+      - ".github/workflows/pair04-offline-provider-corpus.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  no-network-research-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate imported independent corpus structures only
+        run: python docs/research/independent-alternatives/pairs-04-05/validate_fixtures.py
+      - name: Check offline consent, privacy, limits, failure and corpus rules
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair04_offline_provider.py' -v
