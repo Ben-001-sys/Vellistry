@@ -5,6 +5,9 @@ on:
     paths:
       - "scripts/r01_manifest.py"
       - "tests/test_r01_manifest.py"
+      - "tests/test_r01_mapping_gate.py"
+      - "scripts/r01_mapping_gate.py"
+      - "docs/research/R01-CONFLICT-MAPPING-REVIEW-2026-10-09.md"
       - "docs/research/R01-PAIR-01-OWNER-RULE-PACK-2026-10-09.md"
       - ".github/workflows/r01-manifest.yml"
   push:
@@ -26,4 +29,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Test version-aware source parser (synthetic-only, no author source upload)
-        run: python -m unittest discover -s tests -p "test_r01_manifest.py" -v
+        run: python -m unittest discover -s tests -p "test_r01_*.py" -v
