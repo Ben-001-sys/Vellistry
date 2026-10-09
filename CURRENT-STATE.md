@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.15
+version: 0.1.16
 ---
 
 # Vellistry — Current State
@@ -153,6 +153,6 @@ No application code, product architecture, or live research workflow has been va
 
 ## Stage 3 — first Cursor Level B response (2026-10-09; provisional)
 - The owner supplied a response attributed to **Cursor**; exact submitted text and source fingerprint are preserved in [VEL-HO-0002](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md) and its [verbatim attachment](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md).
-- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. Cursor model/version, fresh-session/workspace isolation evidence, original inputs as sent, and owner acceptance have not been verified.
+- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner subsequently supplied a screenshot showing Cursor Agent configured with **Grok 4.7**, effort **High**, context **256K**. The screenshot is not a session execution log; fresh-session/workspace isolation, exact inputs as sent, and owner acceptance remain unverified.
 - This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
 - [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
