@@ -11,3 +11,11 @@ CI workflow: `.github/workflows/k2-supabase-auth-rls.yml`. Real workflow success
 Official sources and threat boundaries are in `docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md`. Local Supabase is not hardened for public deployment.
 
 The next implementation gates are a proper Next.js SSR refresh Proxy, an explicit expired/revoked-session acceptance policy, a transactionally safe chapter-save RPC and full browser tests with real Auth.
+
+## Real Supabase CI outcome
+
+**Verified 2026-10-09:** [run #37987927967](https://github.com/Ben-001-sys/Vellistry/actions/runs/37987927967), code commit `29a09d17b8f9e5c35d5a06089b456bfd19d1c375`, **17/17 groups PASSED** using genuine Supabase Auth and PostgREST, plus NestJS; [build regression #37987927975](https://github.com/Ben-001-sys/Vellistry/actions/runs/37987927975) passed.
+
+An initial test attempt exposed default authenticated table DML grants that had not been explicitly revoked. A separate migration restricts `chapters` and `chapter_revisions` to SELECT for author tokens until a controlled revision-save RPC is implemented. The new test verifies both permission-denied response and unchanged chapter content.
+
+**Critical diagnostic:** A previously issued JWT was rejected by Nest after sign-out (401), but a direct PostgREST request was still accepted (no error). This follows the documented concern that signed access tokens can survive refresh-token revocation until `exp`; the suite did not count post-signout returned rows. Production logout/session handling across both data paths must be a separate reviewed security gate. Do not claim full K2 or immediate revocation from the bounded pass.

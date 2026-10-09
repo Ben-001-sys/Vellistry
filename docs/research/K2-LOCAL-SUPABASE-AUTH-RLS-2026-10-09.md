@@ -1,11 +1,11 @@
 ---
 id: VEL-RSH-K2-AUTH-RLS-20261009-001
 type: research-report
-status: real-auth-run-discovered-grant-gap-fix-awaiting-retest
+status: local-real-auth-and-rls-ci-passed
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.2.0
+version: 0.3.0
 related_adrs:
   - ADR-0006
 related_requirements:
@@ -79,3 +79,37 @@ The first real local-stack CI [run #37987539390](https://github.com/Ben-001-sys/
 **13 of 17 named assertion/diagnostic groups passed, then group K2-14 failed.** Authentication, forged tokens, book ownership and cross-author books, anon access, source chapter and revision *reads* all passed. At group K2-14, the script expected a direct authenticated chapter UPDATE to return a permission error. Instead the request returned no error. This is consistent with a default `authenticated` UPDATE grant remaining on a public table even though there was no matching UPDATE RLS policy. **The initial test checked the error only, not the unchanged row.** No evidence of an actual chapter mutation was demonstrated in that run, and the suite stopped before the remaining cases.
 
 **Correction proposed and committed here:** a second explicit migration revokes all direct privileges on `chapters` and `chapter_revisions` for authenticated (and anon), then restores `authenticated` SELECT only. The test now checks both UPDATE denial **and** unchanged chapter content. The corrected schema must pass genuine two-user integration before declaring K2 complete. This protects against future accidental direct DML grants and makes permission-denied behavior unambiguous. A future transactionally reviewed chapter-write API must not weaken this policy by granting direct table edits.
+
+## Corrected actual execution — VERIFIED 2026-10-09
+
+**PASS:** [exact-head GitHub Actions run #37987927967](https://github.com/Ben-001-sys/Vellistry/actions/runs/37987927967), code commit `29a09d17b8f9e5c35d5a06089b456bfd19d1c375`, final outcome **SUCCESS**. The runner launched real local Supabase Auth, PostgreSQL and PostgREST, compiled and started NestJS, registered and signed in two authentic synthetic users, applied both migrations, and completed **all 17 named test groups / 0 failures**. The independent [implementation-build regression #37987927975](https://github.com/Ben-001-sys/Vellistry/actions/runs/37987927975) also passed. Test output contains no author credentials or private manuscripts; privileged service key was used in the test fixture only.
+
+**Exactly what passed:**
+- Genuine Auth signups/sign-ins, distinct valid JWTs and Nest validation;
+- Missing, invalid and tampered JWT denial;
+- Server author ownership, book list isolation, forged `x-user-id` / `owner_id` ignored or denied;
+- Authenticated PostgREST cross-book SELECT/INSERT/UPDATE/DELETE denial and unauthenticated access denial;
+- Authenticated chapter and immutable revision reads for own book, and zero foreign book leakage;
+- **After explicitly revoking pre-existing default DML grants**, direct authenticated chapter UPDATE and chapter_revision INSERT returned errors; accepted chapter content remained unchanged;
+- Invalid title refusal; test account cleanup in fixture code;
+- Post-signout behavior **measured**, not asserted as immediate global revocation.
+
+### Actual sign-out mismatch: a privacy/security design gate
+
+The exact passing log records:
+
+```text
+OBSERVED K2 logout old JWT: Nest HTTP 401 direct Data API accepted true
+```
+
+This means **the same previously issued token was refused by Nest's `supabase.auth.getUser(jwt)` path after local sign-out, while the direct Supabase PostgREST request did not return an error** in this test. The test does *not* record how many rows the post-signout Data API returned, nor prove the token works beyond its expiration. It demonstrates inconsistent immediate-revocation behavior and prevents claiming that signing out instantly terminates access via all paths.
+
+Supabase documents that access JWTs can remain valid until `exp` after sign-out; revoking refresh tokens does not retroactively alter an already-issued signed token. Vellistry's *future production* policy must explicitly choose and test its logout semantics. For stronger guarantees across all routes, consider **server-enforced session-id validity** with reviewed least-privilege database functions and controls, or removing sensitive manuscript tables from public Data API access while supplying a separately secured Nest data channel. Merely making the UI call Nest **does not block direct PostgREST** while tables remain exposed and grants permit access.
+
+Do not implement a `security definer` bypass or move schemas in this research PR without independent threat modeling and verified negative tests.
+
+### Status boundaries
+
+**K2A—local real Supabase Auth, Nest identity, and per-author book/chapter/revision RLS: PASSED in draft stacked PR #29.**
+
+**Still open:** Next.js Proxy cookie refresh and real browser session lifecycle; immediate sign-out expiry policy; session revocation across all data access paths; long-running auth expiry during writing; storage object RLS; rate limits/CSRF; privileged DB connection design; production hardening and key rotation. The completed test is evidence of one disposable local setup, not finished authentication for public authors.
