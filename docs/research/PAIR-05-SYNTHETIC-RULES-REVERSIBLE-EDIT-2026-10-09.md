@@ -55,3 +55,14 @@ Source fidelity constraint: frozen guidance has 130 printed codes, 260 immutable
 | Author comprehension | Actual novelists using prototype Rules Studio/rewrite cards | NOT RUN |
 
 Pair 06 and dedicated Figma Design gate stay sequenced, not auto-started. No paid service, real author data, original source rewrite, merge of app scaffold, live provider call or deployment.
+
+
+## Executed fixture verification — 2026-10-09
+
+**Exact tested research commit:** 182dc994265762cb155cdd6c42d88114aef5a5c5.
+
+- [Pair 05 GitHub Actions #38005776932](https://github.com/Ben-001-sys/Vellistry/actions/runs/38005776932) **SUCCESS**. Research-only R06 simulated source/override tests **12/12**, R10 actual Tiptap 3/ProseMirror+jsdom proposal tests **10/10**. The tests never activate R01 authentic sources or generate AI text.
+- [Existing Tiptap headless CI #38005776861](https://github.com/Ben-001-sys/Vellistry/actions/runs/38005776861) **SUCCESS**, **7/7** historical smoke regressions, including formatting and synthetic undo.
+- The original 15 RE10-* records in the independent PR #39 handoff are research test **specifications**, not automatically 15 executed passes. Count **ten** new executable R10 cases, not complete production control coverage.
+
+**Actual still NOT RUN:** server-transactional acceptance and idempotency, browser tab conflicts, full rich text selection anchoring, full source-certified rules, provider-led literary quality evaluation, independent authors and UI acceptance. Pair 06 and dedicated owner-reviewed Figma design remain separate workflow gates.
