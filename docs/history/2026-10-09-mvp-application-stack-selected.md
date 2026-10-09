@@ -25,7 +25,7 @@ related_requirements:
 related_events: []
 corrects: []
 corrected_by:
-  - HIS-20261009-004
+  - HIS-20261009-006
 commit_refs: []
 ---
 
