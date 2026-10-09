@@ -6,7 +6,7 @@ status: proposed
 created_at: 2026-10-09
 updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 related_specs:
   - VEL-SPEC-001
 related_tasks:
@@ -45,7 +45,7 @@ On the candidate PR, the Agent workflow action exports `vellistry-stage4-chapter
 
 - **Tested by this CI:** metadata/source status, source path, feature-release-horizon and journey/acceptance ID references; eight declared scenarios; missing sections and out-of-scope feature rejection; Git-pinned ContextPack generation and validation.
 - **Not yet tested:** real product UI, production authorization, post-crash draft recovery, browser Tiptap usage, end-user usability, real database durability, R01 source certification, or third-party AI behavior.
-- **Still undecided:** implementation framework, auth provider, database/schema, deployment and provider/model selection. R18 framework comparisons are research evidence, not the owner's production choice.
+- **Decision boundary:** this Stage 4 pilot does not choose or change frameworks, authentication, persistence, deployment or AI provider. Subsequent project records identify an owner-selected Next.js + NestJS + Supabase direction in separate [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28), which remains subject to its own merge/review state. The synthetic chapter contract deliberately remains adapter-neutral and is not authority to reverse that direction. Provider/model and other implementation details still require their own decisions.
 - **Owner approval needed:** promote `VEL-SPEC-001` from `proposed`, authorize an implementation plan beyond synthetic fixtures, and merge a consequential PR.
 
 ## Stage 4 milestone acceptance
