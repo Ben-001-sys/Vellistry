@@ -22,14 +22,15 @@ export function normalizePayload(p) {
   for(const node of doc.content){
     if(!node || typeof node!=="object" || Array.isArray(node) ||
       !["paragraph","heading"].includes(node.type) ||
-      !Array.isArray(node.content) || node.content.length>100)return null;
+      (node.content!==undefined && !Array.isArray(node.content)) ||
+      (node.content?.length??0)>100)return null;
     if(node.type==="heading"){
       if(!node.attrs || !Number.isInteger(node.attrs.level) ||
         node.attrs.level<1 || node.attrs.level>3 ||
         Object.keys(node.attrs).some(k=>k!=="level"))return null;
     }else if(Object.hasOwn(node,"attrs"))return null;
     if(Object.keys(node).some(k=>!["type","content","attrs"].includes(k)))return null;
-    for(const part of node.content){
+    for(const part of (node.content??[])){
       if(!part || part.type!=="text" || typeof part.text!=="string" ||
         !part.text.length || part.text.length>30000)return null;
       if(Object.keys(part).some(k=>!["type","text","marks"].includes(k)))return null;
