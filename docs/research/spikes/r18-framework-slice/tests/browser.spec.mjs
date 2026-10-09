@@ -135,7 +135,7 @@ for(const variant of variants){
 // already verified isolated R18 editor fixture. No user screen-reader testing.
 for(const variant of variants){
  test.describe(variant.name+" Pair 02 editor input and access",()=>{
-  test("keyboard creates semantic heading and bold text that persist on save",async({browser})=>{
+  test("keyboard formatting rejected by simple API retains unsaved structured draft safely",async({browser})=>{
    const {page,context}=await open(browser,variant.origin);
    try{
     const editable=await loaded(page);
@@ -153,9 +153,15 @@ for(const variant of variants){
     await page.keyboard.press("ControlOrMeta+b");
     await expect(editable.locator("strong")).toContainText("remembered");
     await waitDraft(page);
-    await save(page,2);
+    await page.getByRole("button",{name:"Save revision"}).click();
+    // Research finding, NOT a passing rich-text save: the existing R18
+    // server validator deliberately supports only plain paragraph docs.
+    await expect(page.getByTestId("save-status")).toHaveText("unsaved: invalid_document");
+    const q=await pool.query("select revision from r18_http.chapters where book_id='book-a'");
+    expect(q.rows[0].revision).toBe(1);
     await page.reload();
-    const restored=await loaded(page);
+    await expect(page.getByTestId("save-status")).toHaveText("recovered unsaved draft");
+    const restored=page.locator(".ProseMirror[contenteditable=true]");
     await expect(restored.locator("h1")).toHaveText("Chapter title");
     await expect(restored.locator("strong")).toContainText("remembered");
    }finally{await context.close();}
