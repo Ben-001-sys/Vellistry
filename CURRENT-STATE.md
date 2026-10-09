@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.7
+version: 0.1.8
 ---
 
 # Vellistry — Current State
@@ -107,3 +107,11 @@ No application code, product architecture, or live research workflow has been va
 - Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
 - This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
 - Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
+
+## One specific author-facing MVP recommendation — 2026-10-09
+- [R04 scoped MVP proposal](docs/research/R04-SPECIFIC-MVP-RECOMMENDATION-2026-10-09.md) recommends **one coherent first product**: normal Tiptap 3 chapter writing (AI optional); dependable saving, basic DOCX/TXT interchange and backup; a simple default-on Rules Studio after R01 source validation; Continue and Rewrite selected via one evaluated BYOK provider; explicit suggestion accept/reject/undo; **live UI-visible character and storyline profiles** with manual updates and author-approved AI-assisted change proposals; basic security/privacy/accessible workflows.
+- This evolves existing **A → B** research into a more concrete **A internal editor milestone → B+ integrated author pilot with a small R07 live-profile slice → production-quality public MVP**. A, B+, and public release are delivery stages of the same proposed product, not three simultaneous public editions.
+- Deliberately defer full layered Cover Studio, professional EPUB/print PDF/pagination, MCP/external tools, multi-provider routing, full graph continuity, collaboration and subscriptions **without dropping them from the full vision**.
+- Required source/validation gates remain unresolved: original frozen guidance pack conflict (R01); external author workflows (R02); real-browser editor and DOCX fidelity (R05/R11); true model behavior/provider cost and privacy (R06/R08/R15); observed live profile extraction accuracy and false alarms (R07); production acceptance (R19).
+- [ExecutionBundle](docs/research/R04-SPECIFIC-MVP-EXECUTION-BUNDLE-2026-10-09.md) separates source facts and analyst recommendations. **NO MVP scope, individual feature release priorities, app stack or provider is approved** by this analysis. Canonical feature inventory PR #9 retains its 396 rows with **UNASSIGNED** priority.
+- **Next decision:** owner reviews the concrete proposed included/deferred scope, and approves or revises it before feature IDs are promoted into accepted requirements or architecture selection begins.
