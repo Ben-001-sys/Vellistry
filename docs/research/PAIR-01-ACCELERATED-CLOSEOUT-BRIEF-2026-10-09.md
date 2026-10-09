@@ -43,7 +43,7 @@ related_adrs:
 ### Already approved
 P1: preserve every compact and expanded record independently, without silently merging, renaming, overwriting or deleting either one. Keep author toggles separate from frozen source records. Never infer active meaning from a bare printed code.
 
-### Proposed owner decision R01-D1 (NOT APPROVED)
+### R01-D1 — Research direction APPROVED; final mapping NOT APPROVED
 **Recommend a distinct-meaning, versioned mapping policy** that retains both immutable records and lets the owner select exactly which source-backed instructions form the operational defaults. In particular, AR-04 compact (moral complexity) vs expanded (motif evolution) and AR-09 compact (homogenization resistance) vs expanded (intentional omission/unresolved space) should be treated as **different possible creative controls**, not aliases. AR-02 and AR-06 also differ in emphasis.
 
 The mapping policy should explicitly provide:
@@ -67,7 +67,7 @@ The mapping policy should explicitly provide:
 ### Measured risk
 A previously issued valid JWT retained access to its owner's book through direct PostgREST after local signout. This is **same-author revoked-session residual access**, not observed cross-author leakage. Nest's fresh Auth check denied the request. Blind SQL revocation breaks the current Nest books route and must **not** be used as a production patch.
 
-### Proposed owner decision K2B-D1 (NOT APPROVED)
+### K2B-D1 — Research/testing direction APPROVED; final security policy NOT APPROVED
 **Recommend evaluating S3 (server-mediated access to private manuscript tables through Nest) together with a high-sensitivity active-session check (S2 semantics) on manuscript reads/writes.** This is a security target, not evidence of a working implementation.
 
 Target user promise, subject to test: signout revokes access to unpublished manuscript content across **all** supported paths, including stale browser tokens. That requires server-only, least-privilege database transport with audited author scoping, and removal of any direct author Data API path to private manuscript rows. Storage permissions, export and cached/local copies remain separate boundaries.
@@ -100,4 +100,17 @@ After Pair 01, start Pair 02 under the same two-track limit. Requirements and UI
 - **R01-D1:** Prefer the recommended distinct-meaning/versioned mapping policy, or explicitly choose a compact-first or expanded-first operational mapping. **Preservation P1 is already approved and is not being reopened.**
 - **K2B-D1:** Prefer tested strict post-logout manuscript denial via Nest-only private access and session checks, or permit bounded old-JWT validity (S1) with explicit disclosure.
 
-**As of this document both choices remain proposed, not approved.** No deployments, migrations, model calls, paid services, or manuscript content transfers are authorized by this brief.
+**Owner approval of the two research directions is recorded below.** Final guidance mappings, actual server security architecture, migrations and deployment remain unapproved. No deployments, paid services, model calls, or manuscript content transfers are authorized by this brief.
+
+
+## 6. Owner-approved accelerated research directions — 2026-10-09
+
+Owner explicitly instructed (direct Fiction Writing Project conversation, permalink not archived): "For Vellistry Research Pair 1: R01 direction: Approve developing the distinct-meaning, versioned mapping proposal, with final active mappings reserved for separate owner approval. Security direction: Approve researching and testing strict logout protection with Nest-only private manuscript access and session validation, without authorizing deployment. Continue the approved research only, in the existing repository."
+
+**Scope of this approval:** Proceed with an R01 proposal/review tool and bounded K2B security design/experiments on a research branch. Not authorization to activate even one final mapping, approve a production security architecture, change production DB grants, merge application code, or deploy.
+
+Research deliverables:
+- [Metadata-only R01 review generator](../../scripts/r01_review_packet.py), with [synthetic mapping boundary tests](../../tests/test_r01_review_packet.py). It parses the original privately held source via the established R01 manifest audit and emits 130 unresolved decisions, preserving 260 independently identified source records. The local raw-source run and seven unit tests passed; the original source text and generated review packet are **not committed**.
+- [K2B strict-logout live-test contract](K2B-STRICT-LOGOUT-RESEARCH-CONTRACT-2026-10-09.md). This documents a staged test plan and measured baseline, not a completed Nest-only implementation or passing new runtime test.
+
+Parallel comparison work in another conversation/branch is independent; do not import its conclusions without reviewing the actual evidence and any owner decisions.
