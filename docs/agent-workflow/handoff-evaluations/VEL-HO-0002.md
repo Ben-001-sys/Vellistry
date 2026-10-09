@@ -6,7 +6,7 @@ status: partial
 created_at: 2026-10-09
 updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.1
+version: 0.1.2
 task_id: VEL-TASK-0001
 context_pack_id: VEL-CP-0001
 evaluated_commit: d14261ce6bab2aea6550454f089c48859eb0a3ee
@@ -20,6 +20,8 @@ agent:
   separate_tool_reported_by_owner: true
   fresh_session_verified: false
   isolation_verified: false
+  visible_workspace_files_verified: true
+  visible_workspace_label: level-b-test-packet
 input_refs:
   - "VEL-CP-0001.md (agent-reported input, historical pinned file)"
   - "PROMPT.md (agent-reported input; specific supplied bytes not independently authenticated)"
@@ -50,10 +52,12 @@ evidence:
   - "docs/agent-workflow/context-packs/VEL-CP-0001.md"
   - "docs/agent-workflow/HANDOFF-REPRODUCIBILITY-PROTOCOL.md"
   - "https://github.com/Ben-001-sys/Vellistry/issues/18"
+  - "User-uploaded Cursor workspace screenshot image(3).png, 2026-10-09; SHA-256 88a0432fd6da6a0878775f0c239a3709c97133584ab7325b9dbdabea8bee6db8 (attachment remains in conversation, not stored in Git)"
 limitations:
   - "Cursor attribution is based on the user's statement, not a checked session log"
   - "Model selector screenshot supplied (Grok 4.7 / High / 256K), but not an authenticated run trace or session URL"
-  - "Claim that only PROMPT.md and VEL-CP-0001.md were provided is self-reported in the output"
+  - "Workspace screenshot shows only PROMPT.md and VEL-CP-0001.md in the visible explorer; not an inventory of hidden or external agent context"
+  - "Fresh chat, disabled external retrieval, and absence of earlier agent context not independently established"
   - "The original source SRC-001 was not independently verified"
   - "The assessment applies only to the historical VEL-CP-0001 fixture"
 approved_by: null
@@ -64,7 +68,7 @@ approval_evidence: null
 
 ## Method and evidence
 
-On 2026-10-09, the owner submitted an approximately 10 KB text response with the message **“this is cursor.”** The owner subsequently supplied a Cursor Agent settings screenshot showing **Grok 4.7**, effort **High**, and context label **256K**. The screenshot identifies the displayed configuration but does not itself prove which model generated the earlier response or whether the session was isolated. The uploaded response was preserved as the exact UTF-8 text in [the raw Cursor response](raw/VEL-HO-0002-CURSOR-RESPONSE.md). A readback from GitHub matched the uploaded text character-for-character. The uploaded original was 10,140 bytes, SHA-256 `5ae353ed264ae23b4eea1fa0967e4617ee7636c97b464fb1871cfd4318ce7e97`. The raw text has not been corrected, shortened, or rewritten.
+On 2026-10-09, the owner submitted an approximately 10 KB text response with the message **“this is cursor.”** The owner subsequently supplied a Cursor Agent settings screenshot showing **Grok 4.7**, effort **High**, and context label **256K**. The screenshot identifies the displayed configuration but does not itself prove which model generated the earlier response or whether the session was isolated. **A further owner-uploaded screenshot** shows Cursor in a folder labeled `level-b-test-packet` with only `PROMPT.md` and `VEL-CP-0001.md` visible in the Explorer, the entered request `follow PROMPT.md guidelines`, an agent answer, and the Grok 4.7 High selector. The 1363 × 722 PNG was 89,232 bytes (SHA-256 `88a0432fd6da6a0878775f0c239a3709c97133584ab7325b9dbdabea8bee6db8`). This attachment is currently present in the conversation, not archived as binary image evidence in the Git repository. It supports **visible workspace scoping**, but it cannot authenticate new-chat status or undisclosed available context. The uploaded response was preserved as the exact UTF-8 text in [the raw Cursor response](raw/VEL-HO-0002-CURSOR-RESPONSE.md). A readback from GitHub matched the uploaded text character-for-character. The uploaded original was 10,140 bytes, SHA-256 `5ae353ed264ae23b4eea1fa0967e4617ee7636c97b464fb1871cfd4318ce7e97`. The raw text has not been corrected, shortened, or rewritten.
 
 The response was scored against the ten explicit criteria in [HANDOFF-REPRODUCIBILITY-PROTOCOL.md](../HANDOFF-REPRODUCIBILITY-PROTOCOL.md). Its claims were compared to the historical [VEL-CP-0001.md](../context-packs/VEL-CP-0001.md), not to newer architecture or MVP decisions. The output says it used only `PROMPT.md` and `VEL-CP-0001.md`, but that is an **agent-side statement**, not independent evidence about which tools, files, workspace state or past conversations were available.
 
@@ -81,9 +85,17 @@ The response was scored against the ten explicit criteria in [HANDOFF-REPRODUCIB
 | 7. Provenance | **PASS** | L17, L31–L34, L50 and L73–L79 retain the unresolved original SRC-001 archive gap and do not present draft quotations as independently authenticated. |
 | 8. Evidence honesty | **PASS** | L31–L34 and L81–L85 state the actions claimed and explicitly deny external browsing, Git/hash checks, code tests and primary-source verification. These are self-reported execution claims, not independently audited session telemetry. |
 | 9. Reproducibility | **PASS** | L3 and L21–L27 provide the task commit and exact source blob references; L33–L34 distinguishes cited hashes from actual hash verification. |
-| 10. Independence | **NOT ASSESSED** | The user identifies Cursor as the originating tool and L31 says only two files were read. A subsequently supplied screenshot displays Grok 4.7 (effort High; context label 256K). It does **not** include session identifier, new/empty-workspace evidence, original attachment delivery, or logs establishing exclusion of the prior conversation and other project context. |
+| 10. Independence | **NOT ASSESSED** | The user identifies Cursor as the originating tool and L31 says only two files were read. Screenshots show Grok 4.7 (effort High; context label 256K) and an Explorer with exactly those two Markdown files visible in `level-b-test-packet`, plus the instruction to follow `PROMPT.md`. This is stronger evidence of **workspace-level isolation**. It still does **not** demonstrate that the chat session was newly started or rule out hidden prior conversation context, connected tools, or workspace settings. |
 
 **Content score: 9 PASS / 0 FAIL / 1 NOT ASSESSED.** This is a strong **bounded historical task-reconstruction result**, not yet fully verified independent-session compliance and not owner acceptance of Stage 3 Level B.
+
+## User-supplied workspace screenshot assessment
+
+**FACT (visible screenshot):** Cursor displays `level-b-test-packet` in the Explorer with `PROMPT.md` and `VEL-CP-0001.md`, a chat instruction to follow `PROMPT.md`, a visible agent reply, and Grok 4.7 High / 256K settings. No other repository files appear in the displayed explorer.
+
+**INFERENCE (bounded):** The screenshot is consistent with the intended isolated two-file exercise and strengthens the claim that a separate Cursor workspace was used. It is not a definitive audit of chat history or all files/tools an agent could access. **Independence remains NOT ASSESSED** under the strict ten-point rubric until the owner confirms a new agent chat and no inherited project context.
+
+**PROVENANCE:** Screenshot was user-attached as `image(3).png` in this conversation; SHA-256 `88a0432fd6da6a0878775f0c239a3709c97133584ab7325b9dbdabea8bee6db8`. This Git report records the observed contents and hash, but does not assert that the PNG itself was uploaded into Git.
 
 ## Substantive findings from the response
 
@@ -97,8 +109,8 @@ The original ContextPack is an **archived historical fixture**. Cursor's stateme
 
 ## What is still needed for full Level B evidence
 
-1. Record the Cursor session/conversation identifier or export and whether the session was new or used an empty workspace. The settings screenshot supplies the displayed model label (Grok 4.7), effort (High), and context-window label (256K), but not a session-specific execution trace.
-2. Confirm the exact input files supplied were only `VEL-CP-0001.md` and `PROMPT.md`, with no previous ExecutionBundle, project rules, old conversation history or unreported retrieval access.
+1. Confirm whether this was a new Cursor agent chat/session. The screenshot demonstrates the `level-b-test-packet` workspace with only `PROMPT.md` and `VEL-CP-0001.md` visible; model selector shows Grok 4.7, effort High and context label 256K. It does not include session identity or a transcript of earlier context.
+2. Confirm that the visible two-file workspace was the **entire context available to Cursor** at the time, without a previous ExecutionBundle, imported project rules, old conversation history, or unreported retrieval access. The two Markdown files shown support but do not alone prove this.
 3. Preserve any session link/log or owner statement explaining the isolation method. The user-provided response is preserved, but the attached response itself is **not proof of session isolation**.
 4. Request explicit owner acceptance or rejection of this bounded handoff after reviewing the evidence; only then update the issue and record any final history/status change.
 
