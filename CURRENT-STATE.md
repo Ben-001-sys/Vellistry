@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-08
 owner: project_owner
-version: 0.1.8
+version: 0.1.9
 ---
 
 # Vellistry — Current State
@@ -108,3 +108,10 @@ No application code, product architecture, or live research workflow has been va
 - **CI results:** First [workflow run #37843277680](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843277680) passed 6/7 tests; a false failure compared plain vs null-prototype attribute objects in an otherwise semantically equal JSON round trip. After changing the assertion to compare serialized JSON, [run #37843380823](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843380823) passed **7/7 tests** with `@tiptap/core`, `@tiptap/pm`, and `@tiptap/starter-kit` all at version **3.31.4**. The 101,802-word fixture loaded and serialized under CI/jsdom (62.1ms initialization, 0.5ms getJSON), which is **not browser typing/performance evidence**. Local npm registry remained unavailable (`EAI_AGAIN`).
 - **Scope guard:** Node/jsdom stress numbers are not evidence of real browser typing performance. No production application shell, page layout, format conversion, persistence store, model provider, Rules Studio implementation or frontend framework selected in this branch.
 - **Next:** verify the corrected CI, then test real browser editing/selection/IME/paste and debate chapter-vs-whole-manuscript storage boundaries through owner-reviewed acceptance evidence. Continue book publishing, import/export and AI rule evaluation as distinct research tracks.
+
+## R05 actual-Chromium manuscript editor evidence — 2026-10-09
+- [R05 real-browser research report](docs/research/R05-ACTUAL-BROWSER-TIPTAP-MANUSCRIPT-SPIKE-2026-10-09.md) documents a disposable two-chapter Tiptap 3 page and seven Playwright Chromium cases, including physical typing, chapter navigation, formatting and undo, stale proposal rejection, Unicode insertion and synthetic large-text editing.
+- First CI [run #37903972056](https://github.com/Ben-001-sys/Vellistry/actions/runs/37903972056) was **5/7** because browser caret focus was not reliably established by the test. The harness was corrected to click editable paragraphs before inserting text. [Run #37904237109](https://github.com/Ben-001-sys/Vellistry/actions/runs/37904237109) **PASSED 7/7** on exact commit `b94ecec6e48c586318d07ff3018031e3d25a0674`; Tiptap core/starter-kit v3.31.4 and Chromium on GitHub Actions.
+- One synthetic **19,201-word** chapter rendered and accepted an appended browser text operation. Single-run 10.2ms setContent and 46ms end-insertion observations **are not real-world performance guarantees**.
+- The fixture explicitly says **NOT SAVED**. No author accounts, durable recovery, production architecture, BYOK AI, rules, actual profile tracking, full IME/clipboard or accessibility tests have been implemented.
+- [R05 browser ExecutionBundle](docs/reports/R05-BROWSER-EXECUTION-BUNDLE-2026-10-09.md) preserves failures, corrections, actual evidence and limits. This research branch is stacked on [parent PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7). Owner self-review/merge remains required; no new selected app framework or data store.
