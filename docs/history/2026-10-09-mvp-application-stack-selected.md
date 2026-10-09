@@ -2,7 +2,7 @@
 id: HIS-20261009-003
 title: Owner requested an initial Vellistry MVP application-stack decision
 type: historical-event
-status: recorded
+status: corrected
 occurred_on: 2026-10-09
 recorded_on: 2026-10-09
 time_precision: day
@@ -10,7 +10,7 @@ created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
 actor: project_owner
-version: 1.0.0
+version: 1.1.0
 sources:
   - "Fiction Writing Project user message 2026-10-09: 'before continue lets decide on our stack we are going to be using'; original permalink pending"
   - "Owner's accepted MVP and no-paid-services direction documented on PRs #10 and #16"
@@ -24,7 +24,8 @@ related_requirements:
   - VEL-PRODUCT-CONSTRAINT-20261009-001
 related_events: []
 corrects: []
-corrected_by: []
+corrected_by:
+  - HIS-20261009-004
 commit_refs: []
 ---
 
@@ -44,3 +45,7 @@ This establishes a binding initial technology direction, not a production accept
 
 ## Follow-up or correction links
 Review the exact-head PR and metadata CI; run the R18 compatibility/durability/security gates and preserve their observed evidence before claiming readiness.
+
+## Correction — later same-day architecture research challenge
+
+The prior stack recommendation lacked a dedicated fiction-memory comparative study and explicit owner approval of the named tools. It is not evidence of a binding accepted stack. ADR-0005 is now **proposed**; see [correction](2026-10-09-mvp-stack-research-correction.md). The historical fact that the owner requested a decision is retained.

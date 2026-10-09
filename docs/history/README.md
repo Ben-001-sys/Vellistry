@@ -8,3 +8,4 @@ An event describes what occurred and its evidence. Interpretations and proposals
 - [2026-10-08 — Solo-maintainer review policy](2026-10-08-solo-maintainer-review-policy.md)
 - [2026-10-08 — ADR-0001 owner reconfirmed](2026-10-08-adr-0001-owner-reconfirmation.md)
 - [2026-10-09 — Initial Vellistry MVP stack selected](2026-10-09-mvp-application-stack-selected.md)
+- [2026-10-09 — Correct premature full-stack acceptance](2026-10-09-mvp-stack-research-correction.md)

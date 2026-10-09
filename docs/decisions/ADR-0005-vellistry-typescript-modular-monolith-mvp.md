@@ -2,13 +2,13 @@
 id: ADR-0005
 title: Adopt a self-hosted TypeScript modular monolith for Vellistry MVP
 type: architecture-decision
-status: accepted
+status: proposed
 created_at: 2026-10-09
 updated_at: 2026-10-09
-decided_at: 2026-10-09
+decided_at: null
 author: project-research
-approved_by: project_owner
-version: 1.0.0
+approved_by: null
+version: 0.2.0
 sources:
   - "Fiction Writing Project owner request 2026-10-09: 'before continue lets decide on our stack we are going to be using'; permalink pending"
   - "Owner's 2026-10-09 no-paid-services instruction, recorded on PR #16"
@@ -38,15 +38,17 @@ superseded_by: []
 implementation_refs: []
 ---
 
-# ADR-0005 — Vellistry MVP full application stack
+# ADR-0005 — Proposed Vellistry MVP full application stack
 
 ## Context and problem statement
 
 The owner-approved eight-area MVP includes a serious **AI-optional fiction editor**; books, chapters and reliable drafts; TXT/DOCX exchange and full backup; author-approved Character/Storyline profiles; source-frozen, editable Rules Studio; safe reviewable AI proposals; privacy and accessibility. Full professional EPUB/print and native Cover Studio are post-MVP. The owner expressly prohibited **paid services** for the current project/MVP. Earlier R18 research held full-stack selection pending; the owner then explicitly requested a decision on 2026-10-09.
 
-## Decision
+## Proposed decision — not yet accepted
 
-Adopt **one self-hostable TypeScript modular monolith** (one web/API process plus one standalone background worker process) and **one PostgreSQL database**. Use the preselected open-source Tiptap 3 editor and Calibre converter; no required paid SaaS, vendor-specific hosted database, paid auth or conversion API.
+The owner requested that a stack be chosen, but did not separately approve the named technologies. After asking whether sufficient research and an AI memory design preceded the choice, the project requires deeper comparison. This proposal must not be presented as a fully researched or owner-approved architecture. See [R18 fiction memory study](../research/R18-FICTION-MEMORY-AND-STACK-REASSESSMENT-2026-10-09.md) and its pending experiments.
+
+**Leading candidate:** Adopt **one self-hostable TypeScript modular monolith** (one web/API process plus one standalone background worker process) and **one PostgreSQL database**. Use the preselected open-source Tiptap 3 editor and Calibre converter; no required paid SaaS, vendor-specific hosted database, paid auth or conversion API.
 
 | Concern | Selected technology / rule |
 |---|---|
@@ -147,4 +149,4 @@ Verified documentation:
 
 ## Implementation status
 
-**Initial architecture SELECTED. Implementation NOT STARTED by this record. Public release NOT READY.** Immediately implement only bounded synthetic/invite-only vertical slices after separate work authorization; verify A18-01..04 before expanding to full stack features. Record any material reversal in a later ADR, not by rewriting evidence.
+**Initial architecture PROPOSED, not yet approved. Implementation NOT STARTED by this record. Public release NOT READY.** Immediately implement only bounded synthetic/invite-only vertical slices after separate work authorization; verify A18-01..04 before expanding to full stack features. Record any material reversal in a later ADR, not by rewriting evidence.

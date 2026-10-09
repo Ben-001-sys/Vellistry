@@ -1,11 +1,11 @@
 ---
 id: VEL-RES-R18-20261009-001
 type: architecture-comparison
-status: decision-recorded-validation-pending
+status: proposed-after-memory-review
 created_at: 2026-10-09
 updated_at: 2026-10-09
 author: project-research
-version: 0.1.0
+version: 0.2.0
 sources:
   - "PRE-DEVELOPMENT-RESEARCH-REGISTER.md — R18.01–R18.09"
   - "https://github.com/Ben-001-sys/Vellistry/pull/10 — approved MVP"
@@ -30,7 +30,7 @@ related_adrs:
 
 # R18 — Application-stack comparison and validation map
 
-**Status: owner-directed architecture selected in ADR-0005; interoperability, durability and production safety NOT TESTED.**
+**Correction:** ADR-0005 is now PROPOSED, not accepted. The owner questioned the evidence and requested a fiction-specific AI memory explanation. See [dedicated R18 memory study](R18-FICTION-MEMORY-AND-STACK-REASSESSMENT-2026-10-09.md). No comparative memory implementation or load test has been executed.
 
 ## Decision criteria
 Highest priority: accepted manuscript safety and recovery, author-canon authority, cross-account isolation, no paid service dependency and reliable DOCX/TXT portability. Second: small-team maintenance, coherent non-AI writing UX, clear module boundaries and a later replaceable AI adapter. Third: long-term scale, publishing extensions and vendor migration. Do not manufacture weighted numerical scores when no measured prototype data exists.
@@ -39,7 +39,7 @@ Highest priority: accepted manuscript safety and recovery, author-canon authorit
 
 | Candidate | Advantages | Tradeoffs | Outcome |
 |---|---|---|---|
-| Next.js/React/TypeScript + Postgres/Drizzle/Better Auth, Graphile Worker | One web/API deployment plus worker, shared TS contracts, documented auth/data/queue integrations | Self-hosting and disciplined client/editor boundaries | **Selected** |
+| Next.js/React/TypeScript + Postgres/Drizzle/Better Auth, Graphile Worker | One web/API deployment plus worker, shared TS contracts, documented auth/data/queue integrations | Self-hosting and disciplined client/editor boundaries | **Leading proposal, not approved** |
 | Vite/React + NestJS API + PostgreSQL | Dedicated API, familiar modular controllers | Two separately deployed app layers, additional auth/CORS and typed contracts | Revisit if separate API justified |
 | Next.js frontend + NestJS API + Redis/BullMQ | Independent API/queue services | Extra runtime/process/store burden before evidence of need | Not MVP |
 | Managed Supabase/Firebase/auth/conversion SaaS | Fast setup | External free-tier caps, private-text processing and possible future paid dependence | Not MVP |
