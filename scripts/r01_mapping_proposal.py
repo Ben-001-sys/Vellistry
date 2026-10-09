@@ -95,7 +95,7 @@ def mapping_proposal(manifest: dict) -> dict:
         "active_mapping": None,
         "owner_approval": None,
         "all_full_body_semantic_checks": "not certified",
-        "recommendation": ("126 expanded primary suggestions and four additional compact controls "
+        "recommendation": ("130 expanded-source candidates plus four additional compact controls "
                            "for AR-02/04/06/09; compact + expanded original records remain separate "
                            "for all 130 codes. No defaults activated."),
         "rows": all_rows,
