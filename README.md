@@ -4,7 +4,7 @@ Vellistry is an author-controlled fiction writing application with optional AI. 
 
 ## Current development gate — updated 2026-10-10
 
-The initial application scaffold from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) and bounded research from all six paired investigations are now merged into `main`. The project is **not deployed** and is **not authorized to bypass its research/design-first instruction** merely because research and scaffold PRs were merged.
+The initial application scaffold from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) is merged. All six research pairs have merged PR records, but research file-integrity checks found missing Pair 04/05 and K2 files in the checked `main`; restoration is proposed in [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and must pass CI and merge before they are considered fully integrated. The project is **not deployed** and is **not authorized to bypass its research/design-first instruction** merely because research and scaffold PRs were merged.
 
 - [CURRENT-STATE.md](CURRENT-STATE.md) contains the newest authoritative integration snapshot; older sections document their historical PR states.
 - [Six-pair research/design checkpoint](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md) separates experiments from pending rule mapping, auth/session, DOCX, provider, usability and legal gates.
