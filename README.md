@@ -4,7 +4,7 @@ Vellistry is an author-controlled fiction writing application with optional AI. 
 
 ## Current development gate — updated 2026-10-10
 
-The initial application scaffold from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) is merged. All six research pairs have merged PR records, but research file-integrity checks found missing Pair 04/05 and K2 files in the checked `main`; restoration is proposed in [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and must pass CI and merge before they are considered fully integrated. The project is **not deployed** and is **not authorized to bypass its research/design-first instruction** merely because research and scaffold PRs were merged.
+The initial Next.js/NestJS/Supabase foundation from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) and research from all six pairs have merged. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**, restoring **21 missing K2 and Pair 04/05 research files** to `main` (merge `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`). The [exact PR #43 head](https://github.com/Ben-001-sys/Vellistry/commit/a20b6cd54aff4e80408a1fdd194a782709bf6134) passed seven relevant workflows, including the combined application/research baseline and real disposable Supabase K2 tests. This establishes research/source integration **not production security, user validation, design approval or deployment**; no separate merged-main rerun is claimed.
 
 - [CURRENT-STATE.md](CURRENT-STATE.md) contains the newest authoritative integration snapshot; older sections document their historical PR states.
 - [Six-pair research/design checkpoint](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md) separates experiments from pending rule mapping, auth/session, DOCX, provider, usability and legal gates.
@@ -50,6 +50,6 @@ API health endpoint: `http://127.0.0.1:4100/v1/health`. All other exposed book e
 
 ## Current checks
 
-The initial CI compiles both apps and runs Git metadata validation. **A passing build is not an authenticated Supabase integration pass**. Multi-account Supabase Auth, RLS and session-revocation tests remain mandatory before treating K2 as complete.
+The integrated PR #43 research checkout passed app builds, metadata/governance checks, local Supabase Auth/RLS/session research tests, and PostgreSQL recovery fixtures. These are **disposable local research results**. Production-facing K2 requires integrated Nest-only private manuscript authorization, browser SSR/session and account-switch checks, Storage and export protections, and deployment-level security review before release.
 
 See earlier [research tests](docs/research/spikes/r18-framework-slice/README.md) for synthetic Next/Nest HTTP and Chromium evidence; research fixtures are not production authentication.
