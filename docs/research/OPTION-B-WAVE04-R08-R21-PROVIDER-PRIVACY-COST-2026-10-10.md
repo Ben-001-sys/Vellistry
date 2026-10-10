@@ -26,6 +26,15 @@ related_research: [R08, R21, R19]
 
 **Authority:** One consolidated research pass requested by the owner. Research outcome **not** permission to use unapproved real manuscripts, obtain API keys, conduct paid inference, enable AI by default or select a vendor on behalf of all authors. Official public policy review performed on **2026-10-10**, where available; API service access, local model throughput, actual Ghana account enrollment, provider data-retention controls and model-quality claims are **NOT RUN**. Exact terms, quotas and region rules must be rechecked for deployment, not treated as fixed contractual rights.
 
+## Subsequent binding owner clarification — selectable models with user-owned free OR paid BYOK
+
+The owner subsequently instructed on 2026-10-10: **“And also remember we are providing the AI models, we are providing a place where they place the AI API key so we don't care whether the API key they was a paid or free.”** See [HIS-20261010-003](../history/2026-10-10-owner-byok-free-or-paid-clarification.md). This **supersedes any free-provider-only or local-only product recommendation** in this historical research report. It does **not** invalidate the source-verified differences in data practices between provider tiers.
+
+**Accepted product requirement:** Vellistry offers a curated selector of supported providers/models plus a place for an author to supply their **own provider API key**. Supported valid credentials may belong to either **free or paid provider plans**, without Vellistry policing the key's billing tier. The user's direct provider account bears its usage charges. The platform does not promise to fund those charges or provide unlimited free AI. The core manual/AI-OFF writing experience must remain accessible with **no API key**.
+
+**Technical implications:** Model availability and feature flags are based on provider APIs and actual account entitlements, not an assumed free-plan filter. Users can connect, verify, change and disconnect provider credentials. A model call always requires author initiation and appropriate consent/context preview, regardless of whether a key is free or paid. Avoid secret leakage, unsolicited fallback and nonconsensual transmission. Optional user-configured usage warnings/budgets may help authors avoid surprise provider charges, but the earlier 'zero spending cap' restriction is for **Vellistry-funded spending**, not a forced zero-charge policy on author-owned paid API keys.
+
+**Status:** This is a product policy acceptance, not an authorized integration, paid purchase, enabled inference feature or legal/privacy sign-off. Existing provider comparisons below are historical research findings; their free-tier emphasis must not be read as excluding paid BYOK.
 ## Evaluated candidates and exact provider-policy distinctions
 
 | Option | Official-source finding | Confidential manuscript suitability | Real-world cost and availability | Recommendation/status |
