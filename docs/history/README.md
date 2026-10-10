@@ -21,3 +21,4 @@ An event describes what occurred and its evidence. Interpretations and proposals
 - [2026-10-10 — Owner clarified free-or-paid user BYOK and model selection](2026-10-10-owner-byok-free-or-paid-clarification.md)
 - [2026-10-10 — Owner-delegated Wave 6 final MVP design-entry choice](2026-10-10-owner-delegated-mvp-design-entry.md)
 - [2026-10-10 — Owner accepted Stage 4 independent synthetic agent handoff](2026-10-10-stage4-independent-handoff-owner-accepted.md)
+- [2026-10-10 — Owner explicitly approves Vellistry MVP direction](2026-10-10-owner-mvp-direction-approved.md)

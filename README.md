@@ -4,6 +4,8 @@ Vellistry is an author-controlled fiction writing application with optional AI. 
 
 ## Current development gate — updated 2026-10-10
 
+**Latest owner MVP decision (2026-10-10):** “I approve this for mvp.” The integrated eight-area author-first scope and narrow optional Continue/Rewrite BYOK AI direction are **owner-approved for the MVP target**; see the [dated event](docs/history/2026-10-10-owner-mvp-direction-approved.md). Synthetic-only UI concept design and planning may proceed under the earlier bounded Wave 6 delegation. Final editable Figma design approval, feature-engineering go-ahead and live/pilot/public release must be recorded separately; synthetic research is not production security, model quality or author validation.
+
 The initial Next.js/NestJS/Supabase foundation from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) and research from all six pairs have merged. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**, restoring **21 missing K2 and Pair 04/05 research files** to `main` (merge `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`). The [exact PR #43 head](https://github.com/Ben-001-sys/Vellistry/commit/a20b6cd54aff4e80408a1fdd194a782709bf6134) passed seven relevant workflows, including the combined application/research baseline and real disposable Supabase K2 tests. This establishes research/source integration **not production security, user validation, design approval or deployment**; no separate merged-main rerun is claimed.
 
 - [CURRENT-STATE.md](CURRENT-STATE.md) contains the newest authoritative integration snapshot; older sections document their historical PR states.

@@ -5,10 +5,16 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.33
+version: 0.1.34
 ---
 
 # Vellistry — Current State
+
+## Owner-confirmed MVP direction — 2026-10-10 (latest decision)
+
+The project owner explicitly stated **“I approve this for mvp”** after integration of Option B Waves 1–6 and the Stage 4 research/governance reconciliation. This **approves the integrated eight-area, manual-first Vellistry MVP direction**, including two optional user-BYOK AI actions (Continue Writing and Rewrite Selection), review/accept/reject and revision-safe undo, Rules Studio and author-controlled Story Profiles. Exact contemporaneous approval and boundaries are recorded in [HIS-20261010-046](docs/history/2026-10-10-owner-mvp-direction-approved.md). The baseline `main` research merges and approved product direction must not be confused with a finished/shipping application.
+
+**Stage:** MVP scope and bounded research direction approved; continue the previously delegated **synthetic-only concept design, final Figma UI review and engineering planning**. No finished design has been signed off, and this short owner statement is **not explicit authorization for unrestricted product-feature implementation, paid platform services, transfer of real unpublished manuscripts, or public deployment**. Author trials, full security/session/Storage, actual CAS/restore, accessibility/IME, DOCX fidelity and real provider quality/terms remain evidence gates. Earlier section headers and chronology are retained below as historical snapshots.
 
 ## Latest combined project status — 2026-10-10
 
