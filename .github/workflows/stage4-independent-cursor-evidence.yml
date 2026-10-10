@@ -1,0 +1,46 @@
+name: Stage 4 independent Cursor evidence reproduction
+
+on:
+  pull_request:
+    paths:
+      - 'docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/**'
+      - 'docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md'
+      - 'docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md'
+      - '.github/workflows/stage4-independent-cursor-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/**'
+      - 'docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md'
+      - '.github/workflows/stage4-independent-cursor-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independently-reproduce:
+    name: Verify archived Cursor artifacts and rerun original synthetic tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify exact SHA-256 for original unedited agent files
+        working-directory: docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003
+        run: |
+          printf '%s  %s\n' '4365f4ff676e5e272409ed913a2b2c003e69451a75a331aad176243c5eb36578' 'VEL-EB-0002-INDEPENDENT.md' \
+            '74705667484e5a9f0969f9ca37760da252fb11e76f3b3cb98c3b8a0fcc410c15' 'synthetic_chapter_contract.py' \
+            '9790507cc129abc01ee4cabba063ee20cc038564d3ffa77c19c31668726d2194' 'test_synthetic_chapter_contract.py' | sha256sum -c -
+      - name: Compile both original Python modules
+        working-directory: docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003
+        run: python -I -S -m py_compile synthetic_chapter_contract.py test_synthetic_chapter_contract.py
+      - name: Independently execute all 17 original synthetic tests
+        working-directory: docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003
+        run: python -m unittest -v
