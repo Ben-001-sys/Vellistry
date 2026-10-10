@@ -1,0 +1,115 @@
+{
+  "artifact": "PAIR06-R14-R21-RESEARCH-RISK-REGISTER",
+  "as_of": "2026-10-09",
+  "status": "research-evidence-not-compliance-attestation",
+  "release_approved": false,
+  "counsel_reviewed": false,
+  "free_services_guaranteed": false,
+  "entries": [
+    {
+      "id": "LIC-01",
+      "topic": "Calibre GPL-3 redistribution",
+      "status": "legal-review-needed",
+      "required_action": "Distribution/container packaging, corresponding source/notices and LGPL/GPL bundled components need counsel before shipping binaries",
+      "source": "https://github.com/kovidgoyal/calibre/blob/master/COPYRIGHT"
+    },
+    {
+      "id": "LIC-02",
+      "topic": "Next.js MIT",
+      "status": "source-verified",
+      "required_action": "Preserve required notices and exact dependency/version lock",
+      "source": "https://github.com/vercel/next.js/blob/canary/license.md"
+    },
+    {
+      "id": "LIC-03",
+      "topic": "NestJS MIT",
+      "status": "source-verified",
+      "required_action": "Preserve required copyright/license notices for distributed copies",
+      "source": "https://github.com/nestjs/nest/blob/master/LICENSE"
+    },
+    {
+      "id": "LIC-04",
+      "topic": "JSZip MIT or GPLv3",
+      "status": "source-verified",
+      "required_action": "Explicitly document selected license branch and notices in shipped SBOM",
+      "source": "https://github.com/Stuk/jszip/blob/main/LICENSE.markdown"
+    },
+    {
+      "id": "LIC-05",
+      "topic": "Tiptap 3 core/paid extensions",
+      "status": "needs-locked-dependency-audit",
+      "required_action": "Core license and exact extensions to be confirmed from lockfile; no Pro Cloud/DOCX paid dependency assumed",
+      "source": "https://github.com/ueberdosis/tiptap"
+    },
+    {
+      "id": "PRIV-01",
+      "topic": "Manuscript ownership and processing agreement",
+      "status": "owner-policy-required",
+      "required_action": "Terms should affirm author retains rights; Vellistry limited processing rights; no model-training assumption; export/deletion policy",
+      "source": "docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md"
+    },
+    {
+      "id": "PRIV-02",
+      "topic": "Ghana DPC applicability and registration",
+      "status": "counsel-and-registration-review",
+      "required_action": "Determine entity registration duties, data-controller/processor roles, Ghana-specific Act 843 and international-user obligations",
+      "source": "https://dpc.gov.gh/for-organisations/"
+    },
+    {
+      "id": "PRIV-03",
+      "topic": "Data categories and retention",
+      "status": "owner-policy-required",
+      "required_action": "Define chapter, note, derived canon, logs, account, backup retention, accessible deletion/restore grace period",
+      "source": "https://dpc.gov.gh/compliance/"
+    },
+    {
+      "id": "PRIV-04",
+      "topic": "Third-party BYOK consent and provider terms",
+      "status": "provider-choice-blocked",
+      "required_action": "No unpublished text transfers on unreviewed free tiers; explain what text/rules/canon is sent; check log and training policies",
+      "source": "docs/research/R06-RULE-APPLICATION-EVALUATION-PROTOCOL.md"
+    },
+    {
+      "id": "SEC-01",
+      "topic": "Authenticated deletion and draft switching",
+      "status": "runtime-unverified",
+      "required_action": "Pair01 SSR/logout/Storage/session revocation and browser local drafts not end-to-end implemented",
+      "source": "https://github.com/Ben-001-sys/Vellistry/pull/36"
+    },
+    {
+      "id": "OPS-01",
+      "topic": "Supabase Free managed backup missing",
+      "status": "official-docs-verified-operational-gap",
+      "required_action": "Free plan must make owner-operated offsite dump+restore; don't rely on paid PITR",
+      "source": "https://supabase.com/docs/guides/platform/backups"
+    },
+    {
+      "id": "OPS-02",
+      "topic": "Supabase free quota and inactivity pause",
+      "status": "source-verified-variable",
+      "required_action": "Free 500 MB DB/project, 1 GB storage and 5 GB uncached egress; inactivity pause; check terms/usage before launch",
+      "source": "https://supabase.com/pricing"
+    },
+    {
+      "id": "OPS-03",
+      "topic": "Disaster-recovery RPO and RTO",
+      "status": "owner-decision-needed",
+      "required_action": "Approve loss window, restoration time, offsite encrypted backup custody, rehearsal frequency",
+      "source": "https://supabase.com/docs/guides/deployment/going-into-prod"
+    },
+    {
+      "id": "OPS-04",
+      "topic": "Email, monitoring and incidents",
+      "status": "operations-not-test-proven",
+      "required_action": "Custom SMTP/alerts and failure notifications cannot be assumed free or configured; incident response and coverage pending",
+      "source": "https://supabase.com/docs/guides/deployment/going-into-prod"
+    },
+    {
+      "id": "IP-01",
+      "topic": "Original manuscript and third-party source rights",
+      "status": "policy-and-legal-review",
+      "required_action": "Original writer-owned unpublished fiction; do not import copyrighted novels without license; fiction guidance provenance preserved",
+      "source": "docs/decisions/ADR-0007-immutable-compact-expanded-guidance-sources.md"
+    }
+  ]
+}
