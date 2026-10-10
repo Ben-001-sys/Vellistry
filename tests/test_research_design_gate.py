@@ -75,6 +75,30 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("design-first feature-implementation hold continues", body)
         self.assertIn("maximum two", body)
 
+    def test_merged_research_artifacts_are_really_in_this_checkout(self):
+        # PR state alone is insufficient: this exact omission was observed after
+        # merging #29/#32/#34/#36 and #40/#41 on 2026-10-10.
+        expected = (
+            ".github/workflows/k2-supabase-auth-rls.yml",
+            "apps/api/tests/supabase-auth-rls.integration.mjs",
+            "apps/api/tests/k2b-session-exposure.integration.mjs",
+            "apps/api/tests/k2b-data-api-lockdown.integration.mjs",
+            "apps/api/tests/k2b-active-session-row.integration.mjs",
+            "apps/api/tests/k2b-private-nest-gateway.integration.mjs",
+            "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql",
+            ".github/workflows/pair04-offline-provider-corpus.yml",
+            "docs/research/PAIR-04-OFFLINE-PROVIDER-CORPUS-2026-10-09.md",
+            "docs/research/experiments/pair04_offline_provider_protocol.py",
+            "docs/research/experiments/test_pair04_offline_provider.py",
+            ".github/workflows/pair05-synthetic-rules-tiptap.yml",
+            "docs/research/PAIR-05-SYNTHETIC-RULES-REVERSIBLE-EDIT-2026-10-09.md",
+            "docs/research/experiments/pair05_synthetic_rules.py",
+            "docs/research/experiments/test_pair05_synthetic_rules.py",
+            "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs",
+        )
+        missing = [p for p in expected if not (ROOT / p).is_file()]
+        self.assertEqual(missing, [], f"Previously merged research files missing: {missing}")
+
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
         self.assertEqual(meta["status"], "accepted")
