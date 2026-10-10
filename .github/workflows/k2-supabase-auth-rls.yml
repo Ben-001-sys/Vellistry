@@ -15,6 +15,11 @@ on:
       - "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
   workflow_dispatch:
 
+# Avoid overlapping disposable Supabase stacks on repeated PR updates.
+concurrency:
+  group: vellistry-k2-supabase-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -30,6 +35,26 @@ jobs:
           node-version: "24"
       - name: Install no-paid-service project dependencies
         run: pnpm install --no-frozen-lockfile
+      - name: Pick free, temporary CI-only Supabase API/DB ports
+        run: |
+          python3 - <<'PY'
+          import socket
+          from pathlib import Path
+          ports = []
+          for _ in range(2):
+              with socket.socket() as sock:
+                  sock.bind(("127.0.0.1", 0))
+                  ports.append(sock.getsockname()[1])
+          cfg = Path("supabase/config.toml")
+          raw = cfg.read_text(encoding="utf-8")
+          for old, new in zip((54321, 54322), ports):
+              marker = f"port = {old}"
+              if marker not in raw:
+                  raise SystemExit(f"Local Supabase CI port marker missing: {marker}")
+              raw = raw.replace(marker, f"port = {new}", 1)
+          cfg.write_text(raw, encoding="utf-8")
+          print(f"Disposable local Supabase API/DB CI ports selected: {ports}")
+          PY
       - name: Start real disposable local Supabase services
         run: |
           # Retain database, Auth, PostgREST, API gateway. Exclude unrelated services.
