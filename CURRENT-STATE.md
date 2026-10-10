@@ -5,10 +5,38 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.32
+version: 0.1.33
 ---
 
 # Vellistry — Current State
+
+## Latest combined project status — 2026-10-10
+
+- **Author research and design:** Option B research Waves 1–6 completed their explicitly bounded secondary/synthetic passes. The later owner-delegated Wave 6 decision permits **two invented-data UI concept directions and an editable Figma Design only**, superseding the earlier no-prototype hold only to that extent. Actual author interviews, live literary-model quality, integrated manuscript security, and tested recovery remain open; production features, private data and deployment are **NOT AUTHORIZED**.
+- **Agent workflow, separate from product validation:** The owner accepted the independently reproduced **Stage 4 ContextPack/Cursor synthetic handoff pilot** (PRs #45/#48/#49; Issue #27 closed for that bounded workflow). Issue #18 and real feature-agent/product acceptance remain open.
+- **History reconciliation:** Stage 4 and later Option B research governance are both retained below. Older statements about PR #43, Issue #27, prototypes and active waves are historical snapshots, not current authorization.
+
+## Stage 4 bounded independent-agent workflow — owner-accepted and closed (2026-10-10)
+
+**Current `main` verified at:** `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`. This is the accepted **agentic-coding Stage 4 synthetic handoff pilot**, **not** an accepted production chapter implementation. This new section supersedes older, historically preserved text below saying PR #45/48 are pending or Issue #27 is open.
+
+- [PR #45](https://github.com/Ben-001-sys/Vellistry/pull/45) **merged**, commit `d27569ba87fa1738c9940b06ba3eeea5ee92a333`: a reproducible, two-file, current-head ContextPack dispatch mechanism, pinned task inputs and tamper/overwrite checks.
+- [PR #48](https://github.com/Ben-001-sys/Vellistry/pull/48) **merged**, commit `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`: independently reproduced **17/17** synthetic Cursor tests (0 failures) under Python 3.10 and 3.13 in GitHub CI, all 3 original unedited Cursor files preserved byte-for-byte under [raw/VEL-HO-0003](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/), and owner [acceptance event](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md). The [VEL-HO-0003 evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md) version 0.3.0 records the exact hashes, technical evidence and limitations.
+- [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) **closed as completed**, specifically for this bounded independent-agent ContextPack → synthetic execution → raw evidence → independent rerun → owner-review workflow.
+- **Session boundary:** initial two-file fresh Cursor chat is reported by owner and agent, supported by screenshot; hidden session context has **not** been forensically certified. Do not claim stronger proof.
+- **Remaining separate work:** historical Stage 3 [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open; multi-agent cross-tool recovery, automatic context synchronization and orchestration remain future work. Proposed `VEL-SPEC-001` and real G03/G08, browser Tiptap, auth/RLS, persistence/recovery and every actual product acceptance case remain **NOT TESTED/NOT APPROVED**; Stage 4 does not override the owner-directed research → UI design → approval → feature implementation gate.
+- **Owner design-entry decision:** [design-entry proposal](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains pending; acceptance here is an agentic-coding workflow pilot, not a UI-design or release authorization.
+
+## Historical preceding 2026-10-10 state snapshot (superseded where noted)
+
+## Post-reconciliation agentic coding checkpoint — 2026-10-10
+
+**Verified `main` revision:** `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**; all 21 missing K2 and Pair 04/05 research artifacts were independently verified present in `main`. Seven workflows passed on PR #43's exact source head, including combined app/research checks, real disposable PostgreSQL restore, and local Supabase security experiments. A distinct **post-merge** combined-`main` green run has **not** been established by the PR-head checks alone. Older references below to PR #43 "awaiting merge" are retained only as historical pre-merge statements and are superseded here.
+
+- **Current phase:** research integration completed at the file/CI-baseline level; [design-entry decision](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains `proposed-owner-review`, with no design approval. The original research → Figma design → explicit owner-approved feature implementation sequencing remains operative.
+- **Agentic coding MVP:** Git governance, YAML task, Git-pinned ContextPack generation and tamper-checked Stage 3/4 metadata, and synthetic chapter tests exist. [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending independent agent/session evidence and owner acceptance; [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remains open pending **a separate agent execution**, raw test results, a reproducible ExecutionBundle and owner review.
+- **Pending PR on separate branch (NOT in `main` yet):** `feat/stage4-independent-execution-packet-20261010` proposes a CI-exported **two-file current ContextPack + minimal agent prompt** and deterministic pack validation for a clean-room Cursor/Codex Stage 4 trial. Dispatch/reproducibility is documented in [Stage 4 independent operator guide](docs/agent-workflow/STAGE4-INDEPENDENT-DISPATCH.md). Creating a packet is **not** proof an external agent was run or that the workflow is complete.
+- **Security boundary retained:** a signed-out but unexpired token could still access private rows through the *direct* Data API in a disposable Supabase research test. The restricted Nest transport is an experiment; production-integrated private manuscript access/revocation is **not approved**.
 
 ## Current authoritative checkpoint — 2026-10-10 (after PR #43 merged)
 
