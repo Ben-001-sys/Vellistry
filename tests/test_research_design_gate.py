@@ -50,19 +50,23 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("## Historical phase and branch snapshots", body)
         self.assertLess(body.index(marker), body.index("## Historical phase and branch snapshots"))
         snap = body.split("## Historical phase and branch snapshots")[0]
-        self.assertIn("b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7", snap)
+        self.assertIn("e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523", snap)
+        self.assertIn("PR #43", snap)
+        self.assertIn("21 original missing research source files", snap)
         self.assertIn("PR #28", snap)
-        self.assertIn("RESEARCH INTEGRATION", snap)
+        self.assertIn("OPTION B ACCEPTED", snap)
+        self.assertNotIn("NOT yet in `main` until PR #43 merges", snap)
         self.assertIn("Issue #18", snap)
         self.assertIn("Issue #27", snap)
         self.assertNotIn("PR #28 remains unmerged", snap)
 
-    def test_design_entry_does_not_infer_owner_approval(self):
+    def test_owner_option_b_recorded_without_design_authorization(self):
         meta, body = read_doc(DECISION)
-        self.assertEqual(meta["status"], "proposed-owner-review")
-        self.assertIsNone(meta.get("approved_by"))
-        self.assertIsNone(meta.get("decision_at"))
-        self.assertIn("**Selected option:** PENDING", body)
+        self.assertEqual(meta["status"], "accepted")
+        self.assertEqual(meta.get("approved_by"), "project_owner")
+        self.assertEqual(str(meta.get("decision_at")), "2026-10-10")
+        self.assertIn("**Selected option:** B", body)
+        self.assertIn("**Design authorization:** NOT GIVEN", body)
         self.assertIn("**Implementation authorization:** NOT GIVEN", body)
         self.assertIn("invented story excerpts", body)
         self.assertIn("two different UI explorations", body)
@@ -108,6 +112,224 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("[auth.email]", supabase_config, "K2 disposable Auth testing configuration missing")
         self.assertIn("enable_confirmations = false", supabase_config)
 
+    def test_post_merge_status_is_authoritative_without_design_approval(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        recovery_meta, recovery_text = read_doc(
+            ROOT / "docs/reports/REPOSITORY-INTEGRITY-RECOVERY-2026-10-10.md"
+        )
+        gate_meta, gate = read_doc(GATE)
+        decision_meta, decision = read_doc(DECISION)
+        state_meta, state = read_doc(STATE)
+
+        self.assertIn("PR #43", readme)
+        self.assertIn("**merged on 2026-10-10**", readme)
+        self.assertNotIn("restoration is proposed", readme)
+        self.assertIn("e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523", gate)
+        self.assertIn("previously missing **21**", gate)
+        self.assertIn("seven", gate.lower())
+        self.assertEqual(recovery_meta["status"], "restoration-merged-and-research-ci-verified")
+        self.assertIn("## Post-merge outcome", recovery_text)
+        self.assertIn("seven GitHub Actions workflows", recovery_text)
+        self.assertEqual(gate_meta["status"], "proposed-owner-review")
+        self.assertEqual(decision_meta["status"], "accepted")
+        self.assertEqual(decision_meta["approved_by"], "project_owner")
+        self.assertEqual(str(decision_meta["decision_at"]), "2026-10-10")
+        self.assertIn("**Selected option:** B", decision)
+        self.assertIn("**Design authorization:** NOT GIVEN", decision)
+        self.assertIn("**Implementation authorization:** NOT GIVEN", decision)
+        self.assertIn("OPTION B ACCEPTED", state)
+        self.assertEqual(state_meta["status"], "active")
+
+    def test_exact_owner_option_b_decision_and_two_track_research_plan(self):
+        record_path = ROOT / "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
+        plan_path = ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md"
+        record, decision = read_doc(record_path)
+        plan, instructions = read_doc(plan_path)
+        self.assertEqual(record["status"], "recorded")
+        self.assertEqual(record["actor"], "project_owner")
+        self.assertEqual(str(record["occurred_on"]), "2026-10-10")
+        self.assertIn(
+            "I choose Vellistry design-entry Option B: complete outstanding "
+            "pre-design research and owner-critical decisions before prototypes.",
+            decision,
+        )
+        self.assertEqual(plan["status"], "owner-directed")
+        self.assertIn("Maximum two concurrent tracks", instructions)
+        self.assertIn("1 — COMPLETE", instructions)
+        self.assertIn("2 — COMPLETE", instructions)
+        self.assertIn("3 — COMPLETE", instructions)
+        self.assertIn("4 — COMPLETE", instructions)
+        self.assertIn("5 — COMPLETE", instructions)
+        self.assertIn("6 — COMPLETE", instructions)
+        self.assertIn("Wave 5 one-pass MVP final decision", instructions)
+        self.assertIn("Wave 3 one-pass bounded closeout", instructions)
+        self.assertIn("Wave 2 one-pass closeout", instructions)
+        self.assertIn("R15/K2B", instructions)
+        self.assertIn("R07", instructions)
+        self.assertIn("Wave 1 bounded one-pass closeout", instructions)
+        self.assertIn("NOT RUN", instructions)
+        self.assertIn("OWNER DECISION NEEDED", instructions)
+        self.assertIn("R02/R03", instructions)
+        self.assertIn("R01", instructions)
+        self.assertIn("No UI exploration", instructions)
+        self.assertIn("new explicit owner instruction", decision)
+        self.assertNotIn("Option A accepted", decision)
+
+    def test_wave_one_public_author_research_is_not_mislabeled_interviews(self):
+        path = ROOT / "docs/research/OPTION-B-WAVE01-R02-R03-ONE-PASS-AUTHOR-EVIDENCE-2026-10-10.md"
+        meta, body = read_doc(path)
+        self.assertEqual(meta["status"], "completed-secondary-research-real-participants-not-run")
+        for id in range(1, 12):
+            self.assertIn(f"VEL-JRN-{id:03}", body)
+        self.assertIn("no real users were recruited", body)
+        self.assertIn("12-signal", body)
+        self.assertIn("ten-vendor", body)
+        self.assertIn("without retroactively certifying missing author results", body)
+
+    def test_wave_one_mapping_proposal_preserves_source_and_owner_gate(self):
+        path = ROOT / "docs/research/OPTION-B-WAVE01-R01-260-SOURCE-MAPPING-REVIEW-2026-10-10.md"
+        meta, body = read_doc(path)
+        self.assertEqual(meta["status"], "review-packet-prepared-owner-activation-not-approved")
+        self.assertIn("fda917550811ccf44fe2fa7993d14a0f4f64d6dde5299d0c5b078865c4f0f965", body)
+        for code in ("AR-02", "AR-04", "AR-06", "AR-09"):
+            self.assertIn(code, body)
+        self.assertIn("260", body)
+        self.assertIn("134", body)
+        self.assertIn("OWNER DECISION NEEDED", body)
+        self.assertIn("no operational pack is activated".lower(), body.lower())
+        self.assertIn("AI usage itself opt-in", body)
+
+    def test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx(self):
+        p=ROOT / "docs/research/OPTION-B-WAVE02-R05-R16-EDITOR-ACCESSIBILITY-2026-10-10.md"
+        d=ROOT / "docs/research/OPTION-B-WAVE02-R11-DOCX-AND-PORTABLE-RESTORE-2026-10-10.md"
+        ed,eb=read_doc(p)
+        dd,db=read_doc(d)
+        self.assertIn("real-at-not-run",ed["status"])
+        self.assertIn("role=textbox",eb)
+        self.assertIn("aria-label",eb)
+        self.assertIn("NOT RUN",eb)
+        self.assertIn("12/12",db)
+        self.assertIn("10/10",db)
+        self.assertIn("5 original paragraphs became 4",db)
+        self.assertIn("NOT RUN",db)
+        self.assertIn("Wave 3",db)
+
+    def test_wave_three_privacy_and_canon_research_keep_live_gaps_open(self):
+        privacy=ROOT / "docs/research/OPTION-B-WAVE03-R15-K2B-MANUSCRIPT-PRIVACY-2026-10-10.md"
+        temporal=ROOT / "docs/research/OPTION-B-WAVE03-R07-TEMPORAL-PROFILES-EXTRACTION-2026-10-10.md"
+        pm, pt=read_doc(privacy)
+        rm, rt=read_doc(temporal)
+        self.assertIn("privacy-session-storage",pm["type"])
+        self.assertIn("one-pass",pt.lower())
+        self.assertIn("JWT",pt)
+        self.assertIn("NOT RUN",pt)
+        self.assertIn("session",pt.lower())
+        self.assertIn("24 labeled",rt)
+        self.assertIn("pending_unapproved",rt)
+        self.assertIn("NO",rt.upper())
+        self.assertIn("NOT RUN",rt)
+        self.assertIn("Wave 4",rt)
+
+    def test_subsequent_owner_waves_01_03_approval_not_technical_certification(self):
+        history_path = ROOT / "docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md"
+        decision, body = read_doc(history_path)
+        self.assertEqual(decision["id"], "HIS-20261010-002")
+        self.assertEqual(decision["type"], "historical-event")
+        self.assertEqual(decision["status"], "recorded")
+        self.assertEqual(decision["actor"], "project_owner")
+        self.assertEqual(str(decision["occurred_on"]), "2026-10-10")
+        self.assertIn("I agree to all this wave 1 to 3.", body)
+        self.assertIn("130 expanded-primary catalog entries ON", body)
+        self.assertIn("four independent compact extra entries OFF", body)
+        self.assertIn("AI use itself remains OFF", body)
+        self.assertIn("not technically enabled", body)
+        self.assertIn("Story Profiles", body)
+        self.assertIn("no test certification", body)
+        self.assertIn("Option B still controls sequencing", body)
+        self.assertIn("NOT RUN", body)
+        idx = (ROOT / "docs/history/README.md").read_text(encoding="utf-8")
+        self.assertIn(history_path.name, idx)
+        state = (ROOT / "CURRENT-STATE.md").read_text(encoding="utf-8")
+        plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("owner-waves-01-03-recommendations-accepted.md", state)
+        self.assertIn("Wave 6 is now bounded COMPLETE", plan)
+        self.assertIn("bounded concept-design selection", plan)
+    def test_owner_free_or_paid_byok_clarification_has_priority(self):
+        decision_path = ROOT / "docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md"
+        metadata, body = read_doc(decision_path)
+        self.assertEqual(metadata["id"], "HIS-20261010-003")
+        self.assertEqual(metadata["type"], "historical-event")
+        self.assertEqual(metadata["status"], "recorded")
+        self.assertEqual(metadata["actor"], "project_owner")
+        self.assertIn("Each writer supplies a credential", body)
+        self.assertIn("free or paid billing", body)
+        self.assertIn("The user", body)
+        self.assertIn("without any AI API credential", body)
+        self.assertIn("Option B", body)
+        provider = (ROOT / "docs/research/OPTION-B-WAVE04-R08-R21-PROVIDER-PRIVACY-COST-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("Subsequent binding owner clarification", provider)
+        self.assertIn("free OR paid", provider)
+        current = STATE.read_text(encoding="utf-8")
+        self.assertIn("HIS-20261010-003", current)
+        index = (ROOT / "docs/history/README.md").read_text(encoding="utf-8")
+        self.assertIn(decision_path.name, index)
+        plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("Writer-owned provider billing", plan)
+        self.assertIn("Option B prototype", plan)
+    def test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit(self):
+        quality = ROOT / "docs/research/OPTION-B-WAVE05-R19-R06-AI-QUALITY-AND-RULES-2026-10-10.md"
+        editing = ROOT / "docs/research/OPTION-B-WAVE05-R10-REVERSIBLE-AUTHOR-EDIT-2026-10-10.md"
+        decision = ROOT / "docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md"
+        qm, qb = read_doc(quality)
+        em, eb = read_doc(editing)
+        dm, db = read_doc(decision)
+        self.assertEqual(qm["status"], "bounded-synthetic-protocol-executed-live-model-blocked")
+        self.assertEqual(em["status"], "bounded-local-state-tests-passed-real-server-not-run")
+        self.assertEqual(dm["status"], "selected-for-mvp-design-specification-not-implemented")
+        for item in ("12/12", "false accepts", "BLOCKED", "NOT RUN", "free OR paid"):
+            self.assertIn(item, qb)
+        for item in ("18 of 18", "NOT", "undo", "not a live server"):
+            self.assertIn(item.lower(), eb.lower())
+        for item in ("OpenRouter", "Continue", "Rewrite", "free OR paid", "CAS", "Undo"):
+            self.assertIn(item, db)
+        self.assertIn("Option B restriction", db)
+        plan=(ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("6 — COMPLETE", plan)
+        self.assertIn("No real model test", plan)
+    def test_wave_six_recovery_g10_and_delegated_design_stage_boundaries(self):
+        r18 = ROOT / "docs/research/OPTION-B-WAVE06-R18-RELIABILITY-RECOVERY-2026-10-10.md"
+        g10 = ROOT / "docs/research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md"
+        event = ROOT / "docs/history/2026-10-10-owner-delegated-mvp-design-entry.md"
+        rm,rb = read_doc(r18)
+        gm,gb = read_doc(g10)
+        em,eb = read_doc(event)
+        self.assertEqual(rm["id"], "VEL-RES-OPTIONB-WAVE06-R18-20261010-001")
+        self.assertEqual(gm["id"], "VEL-RES-OPTIONB-WAVE06-G10-20261010-001")
+        self.assertEqual(em["id"], "HIS-20261010-004")
+        self.assertEqual(em["type"], "historical-event")
+        self.assertEqual(em["status"], "recorded")
+        self.assertEqual(em["actor"], "project_owner")
+        self.assertIn("represented as a verbatim quote", gb.lower())
+        self.assertIn("the owner did not specifically write", eb.lower())
+        self.assertIn("20-case", rb)
+        self.assertIn("24 hours", rb)
+        self.assertIn("48 hours", rb)
+        self.assertIn("not", rb.lower())
+        for n in range(1,11):
+            self.assertIn(f"G{n:02}",gb)
+        self.assertIn("BOUNDED DESIGN ENTRY", gb)
+        self.assertIn("NOT APPROVED", gb)
+        self.assertIn("Figma Design", gb)
+        self.assertIn("production", eb)
+        self.assertIn("NOT GIVEN", eb)
+        index=(ROOT / "docs/history/README.md").read_text(encoding="utf-8")
+        self.assertIn(event.name,index)
+        state=STATE.read_text(encoding="utf-8")
+        self.assertIn(event.name,state)
+        plan=(ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("All six waves have completed one bounded research pass",plan)
+        self.assertIn("two distinct synthetic-data UI directions", plan)
+        self.assertIn("6 — COMPLETE",plan)
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
         self.assertEqual(meta["status"], "accepted")

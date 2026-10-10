@@ -6,7 +6,7 @@ status: proposed-owner-review
 created_at: 2026-10-09
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.2.0
+version: 0.2.2
 source_refs:
   - docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
@@ -17,17 +17,19 @@ source_refs:
   - docs/research/PAIR-04-OFFLINE-PROVIDER-CORPUS-2026-10-09.md
   - docs/research/PAIR-05-SYNTHETIC-RULES-REVERSIBLE-EDIT-2026-10-09.md
   - docs/research/PAIR-06-LEGAL-OPS-RESTORE-2026-10-09.md
+  - docs/history/2026-10-10-owner-option-b-predesign-selected.md
+  - docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md
 ---
 
 # Vellistry — Six-pair research integration and design-entry review
 
-**Checked against `main` at `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` on 2026-10-10.**
+**Verified post-recovery `main` at `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523` on 2026-10-10** ([PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged). The preceding `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` was the earlier, pre-repair checkout on which the missing-files diagnosis was made.
 
-**Decision state: PROPOSED — OWNER APPROVAL REQUIRED.** All six pairs have merged pull-request records, but the initial `main` tree was **missing** merged #40/#41 Pair 04/05 research files and #29/#32/#34/#36 K2 security fixtures/workflow. Restoration is proposed in [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43), with original PR-head blob provenance. Do **not** consider missing files integrated until #43 merges and combined checks pass. This is **not** the same as completing every research acceptance criterion or granting permission to start production feature work, use real author manuscripts in external tools, spend money, or release the product. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
+**Research closeout: OPEN. Owner design-entry decision: OPTION B ACCEPTED (strict pre-design research before prototypes).** All six research pairs have merged pull-request records. The previously missing **21** K2 and Pair 04/05 research files were recovered from original stacked branch source in [merged PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and are now verified present on `main`. **Seven exact-head PR #43 workflows passed**, including the combined checkout and local Supabase K2 test. These findings do **not** mean completing every research acceptance criterion, certify production manuscript security, waive owner decisions, or authorize feature implementation, paid services, real manuscript upload, design production, or public release. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
 
 ## Integration facts and still-unresolved findings
 
-| Pair | Merged PR evidence (some restored in PR #43) | Verified narrow outcome | Important unresolved evidence / decision |
+| Pair | Merged PR evidence (restored where necessary by PR #43) | Verified narrow outcome | Important unresolved evidence / decision |
 |---|---|---|---|
 | **01 — Source guidance and privacy** | [#31](https://github.com/Ben-001-sys/Vellistry/pull/31), [#33](https://github.com/Ben-001-sys/Vellistry/pull/33), [#29](https://github.com/Ben-001-sys/Vellistry/pull/29), [#32](https://github.com/Ben-001-sys/Vellistry/pull/32), [#34](https://github.com/Ben-001-sys/Vellistry/pull/34), [#36](https://github.com/Ben-001-sys/Vellistry/pull/36) merged | **260 immutable source variants**, R01 P1 preservation approved; disposable Supabase Auth/RLS and restricted Nest/session tests run | **134-control mapping is only proposed**; active defaults not approved; Next SSR, storage, browser account-switch/local drafts, deletion/backup and production-integrated restricted manuscript routes remain incomplete |
 | **02 — Writer workflows and editor accessibility** | [#37](https://github.com/Ben-001-sys/Vellistry/pull/37) merged | Chromium **12/12**, Next HTTP **17/17** and Nest HTTP **17/17** on cited research heads, with rich-format save/keyboard checks | No actual author interviews or full assistive technology/IME/large-manuscript usability trial; research fixture is not the shipping editor |
@@ -36,7 +38,7 @@ source_refs:
 | **05 — Rules and reversible AI edits** | [#41](https://github.com/Ben-001-sys/Vellistry/pull/41) merged | **12/12** synthetic rule-scope/exclusion tests and **10/10** actual Tiptap headless proposal tests | No certified active R01 pack, live literary adherence or model eval, persistent revision-safe acceptance/undo or author usability evidence |
 | **06 — Legal, operations and durable save** | [#42](https://github.com/Ben-001-sys/Vellistry/pull/42) merged | **8/8** risk-register assertions; **12/12** disposable PostgreSQL 16 CAS/idempotency/clean-restore tests | No legal clearance, production auth binding, encrypted/off-site backup or selected RPO/RTO, hosting budget, retention, terms/consent or real app recovery evidence |
 
-**Evidence boundary:** The successful CI results above belong to the specific PR heads and their reports; they are not a newly run, complete combined-`main` production test. The #43 restored missing source files and integration workflow must be reviewed and merged before describing all research as present in `main`. Sources: the individual Pair reports and linked GitHub PR checks. Tests that inspect a policy schema or simulate an AI response do **not** prove policy compliance or model behavior.
+**Evidence boundary:** Original pair-specific successes belong to their cited historical PR heads. The repaired **PR #43 exact head** passed [combined baseline #38009740500](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740500), [local Supabase K2 #38009740468](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740468), and five other workflows. Source presence is now verified on merged `main`; these tests do **not** establish a production-integrated application, separate post-merge-main rerun, actual writer usability, law compliance, or real model behavior.
 
 ## Gate classification: design versus implementation versus release
 
@@ -56,23 +58,29 @@ source_refs:
 
 The original owner-directed design-first plan prohibited merging/promoting implementation-only code until research and design gates passed. Nevertheless, on **2026-10-10** [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) (initial Next.js/NestJS/Supabase scaffold) and K2 research descendants were merged into `main` before a canonical Figma design had been accepted. This is a **process variance**, not evidence that a design gate passed or that an owner rescinded it. Preserve the merged source and commit history, do not forcibly revert useful research, but **hold new feature implementation and deployments** pending explicit owner design approval or separately documented change in sequencing.
 
-## Proposed narrow research-to-design disposition (not a decision)
+## Previous design-only recommendation (superseded by Option B)
 
-**Recommendation for owner consideration:** Authorize a **design-only** phase for synthetic manuscripts, after reviewing the above research gaps and explicitly recording which incomplete *research-for-design* evidence is accepted as a risk for exploratory prototyping. This would permit low-fidelity IA, two visibly different prototype directions (Figma Make and/or Lovable), editable Figma Design components and measured author walkthroughs. It would **not**:
+**Historical recommendation, NOT selected:** Authorize a **design-only** phase for synthetic manuscripts, after reviewing the above research gaps and explicitly recording which incomplete *research-for-design* evidence is accepted as a risk for exploratory prototyping. This would permit low-fidelity IA, two visibly different prototype directions (Figma Make and/or Lovable), editable Figma Design components and measured author walkthroughs. It would **not**:
 - certify the 134 proposed R01 controls or switch on authentic active rules;
 - grant product implementation or production deployment permission;
 - waive real manuscript access controls, provider privacy, DOCX fidelity, license review or author-data backup/recovery;
 - imply research interviews or usability trials already happened;
 - approve paid plans, confidential source uploads or using actual unpublished author text.
 
-## Owner decision checklist — all currently pending
+## Owner decision checklist — Option B recorded; remaining approvals pending
 
-- [ ] **Design-entry decision:** approve a bounded design-only phase, request more pre-design evidence, or decline. Record exact scope and caveats; **do not infer approval from merge**.
-- [ ] **Writer evidence:** decide whether first-hand discovery must precede concept prototypes, or approve a scoped exploratory mockup phase with usability studies still mandatory before design acceptance.
+- [x] **Design-entry decision:** **Option B selected** directly by the owner on 2026-10-10: complete outstanding pre-design research and owner-critical decisions **before prototypes**. [Accepted decision](../history/2026-10-10-owner-option-b-predesign-selected.md). **No design or implementation authorization**.
+- [ ] **Writer evidence:** collect actual, consented author discovery and no-prototype workflow observations before any Figma/Lovable prototyping; do not fabricate trials or replace them with vendor claims.
 - [ ] **Rule mapping:** approve/revise/reject an exact owner-reviewed operational source mapping; never equate approving P1 with approving 134 active controls.
 - [ ] **Security posture:** agree on required live logout/session semantics for private manuscript operations and whether experimental Nest-only tests warrant implementation-stage design.
 - [ ] **M3 portability:** choose a non-silent formatting-loss strategy for DOCX handling.
 - [ ] **AI provider/evaluation:** decide allowed real-provider tests, data-use/retention and zero-expense limits before any live author-text transfer.
 - [ ] **Operations/legal:** review rights, licenses, cross-border/privacy, backup custody/retention, hosting costs and initial recovery targets before release.
 
-**No checkbox above is checked by this PR.** Next approved activity should follow the owner's explicit design-entry decision. See [the owner-ready design decision record](../plans/DESIGN-ENTRY-DECISION-2026-10-10.md) for options and safe boundaries.
+**Only the Option B selection is checked.** The other owner decisions remain open; the active research plan is [Option B pre-design closeout](../plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md). Complete its evidence/decision packet, then request a **new** owner design-entry approval. CI success or PR merge does not open the design gate.
+
+## Subsequent owner approval of Wave 1–3 directions — 2026-10-10
+
+The owner explicitly stated: **“I agree to all this wave 1 to 3.”** This [source-traced historical decision](../history/2026-10-10-owner-waves-01-03-recommendations-accepted.md) **supersedes this checkpoint's earlier *owner-decision-pending* language for those specific product recommendations**. It approves the prospective 134-alias operational rule mapping and library defaults (**130 expanded ON; 4 compact split extras OFF; AI use OFF unless author opt-in**), manual-first authoring requirements, accessible/loss-aware editor and DOCX vs EPUB workflows, live-session/private-manuscript security direction, author-control of local draft retention, and explicit temporal Story Profile canon approval. This is **policy acceptance, not activation/deployment or verified acceptance-test results**.
+
+Still **NOT RUN/NOT APPROVED** by this agreement: real recruited author interviews, native IME/screen-reader observation, complete arbitrary DOCX fidelity, actual integrated session/RLS/Storage/export/delete end-to-end tests, real AI extraction quality, encrypted offsite backup and legal compliance signoff. Optional provider and operational choices remain in Wave 4; model quality and reversible editing are later research. **The Option B design-entry block remains in force**—no Figma Make/Lovable/Figma Design prototype, feature implementation or production deployment until separately explicitly authorized.
