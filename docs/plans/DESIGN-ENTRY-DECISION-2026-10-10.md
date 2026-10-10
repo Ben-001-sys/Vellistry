@@ -78,3 +78,11 @@ Continue pre-design work using the [six-wave maximum-two-track closeout plan](OP
 - **Implementation authorization:** NOT GIVEN; production migration, deployment, external manuscript transfer and paid services not authorized
 
 This document is accepted **because of the explicit owner Option B statement**, not because CI passed or a PR merged. The separate [accepted decision](../history/2026-10-10-owner-option-b-predesign-selected.md) and [two-track pre-design plan](OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md) are the governing sources. A later design approval must be a NEW owner decision.
+
+## Later superseding owner-delegated Wave 6 stage choice — 2026-10-10
+
+The **original Option B selection recorded above remains historically true**. On 2026-10-10, after directing a single-pass Wave 6 closeout, the owner expressly delegated: **“continue to the next stage and land on a final decision in one response, choose this is just an MVP for now.”** The assistant's subsequent bounded choice was recorded as [HIS-20261010-004](../history/2026-10-10-owner-delegated-mvp-design-entry.md), supported by [G10 closeout](../research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md). **The owner did not literally write the specific phrase 'I approve Option A'; the owner delegated selecting the next MVP stage**. Do not misquote this as verbatim owner Figma authorization.
+
+**Current permitted stage following six-wave bounded closeout:** synthetic-only **two distinct UI/UX concept directions** using invented fiction and fake accounts, ultimately consolidated into **editable Figma Design**; real consenting author observation after prototypes and before final design signoff. This is a **bounded reopening of the formerly unselected Option A design scope** under the later delegated decision. It does not require rerunning Waves 1–6 or falsely marking missing real-user/real-model/production checks PASS.
+
+**Implementation, live beta and release remain NOT AUTHORIZED.** Owner must separately approve the actual final design and later engineering plan. Real private manuscripts, original private rule bodies, live model API keys, paid provider/design services and customer identity are prohibited in exploratory design tools. The previous Option B hold survives for production feature code, deployment and privacy/legal/recovery release gates.
