@@ -1,0 +1,29 @@
+name: Option B Wave 6 recovery contract research
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/wave06_*"
+      - "docs/research/experiments/test_wave06_*"
+      - "docs/research/OPTION-B-WAVE06-*"
+      - ".github/workflows/option-b-wave06-recovery.yml"
+  push:
+    paths:
+      - "docs/research/experiments/wave06_*"
+      - "docs/research/experiments/test_wave06_*"
+      - ".github/workflows/option-b-wave06-recovery.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-failure-and-recovery-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run twenty deterministic recovery failure cases
+        run: python -m unittest discover -s docs/research/experiments -p 'test_wave06_recovery_contract.py' -v
+      - name: Regress ten supported portable project backup cases
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair03_portability.py' -v
