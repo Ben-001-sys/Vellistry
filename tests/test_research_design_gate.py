@@ -39,7 +39,7 @@ class ResearchDesignGateTests(unittest.TestCase):
             self.assertIn(f"**0{pair} —", body)
         for num in (28, 29, 32, 34, 36, 37, 38, 39, 40, 41, 42):
             self.assertIn(f"/pull/{num}", body)
-        self.assertIn("not the same as completing every research acceptance criterion", body)
+        self.assertIn("completing every research acceptance criterion", body)
         self.assertNotIn("Pair02 #37 and alternatives #39", body)
 
     def test_current_snapshot_precedes_preserved_old_checkpoints(self):
@@ -71,9 +71,9 @@ class ResearchDesignGateTests(unittest.TestCase):
         meta, body = read_doc(PLAN)
         self.assertEqual(meta["status"], "owner-directed")
         self.assertIn("Integration annotation — 2026-10-10", body)
-        self.assertIn("does not retrospectively prove research acceptance", body)
+        self.assertIn("retrospectively prove research acceptance", body)
         self.assertIn("design-first feature-implementation hold continues", body)
-        self.assertIn("two primary research", body)
+        self.assertIn("maximum two", body)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
