@@ -16,3 +16,4 @@ An event describes what occurred and its evidence. Interpretations and proposals
 - [2026-10-09 — Correct premature Next-only stack acceptance](2026-10-09-mvp-stack-research-correction.md)
 
 - [2026-10-09 — Owner authorized Next/Nest/Supabase implementation](2026-10-09-next-nest-supabase-implementation-authorized.md)
+- [2026-10-10 — Owner selected strict pre-design research (Option B)](2026-10-10-owner-option-b-predesign-selected.md)
