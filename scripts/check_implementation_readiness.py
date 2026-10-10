@@ -16,6 +16,26 @@ DAG = ROOT / "docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml"
 REQUIRED_GATES = {"G_DESIGN", "G_CODE", "G_PRIVATE_PILOT", "G_RELEASE"}
 REQUIRED_PHASES = {"preparation", "design", "implementation", "validation", "release"}
 TASK_RE = re.compile(r"VEL-(PREP|DES|IMP|VAL|PILOT|RELEASE)-\d{3}\Z")
+# The preparation graph is static policy, NOT an executing dispatcher.
+PHASE_BY_KIND = {
+    "PREP": "preparation",
+    "DES": "design",
+    "IMP": "implementation",
+    "VAL": "validation",
+    "PILOT": "release",
+    "RELEASE": "release",
+}
+ALLOWED_ACTIONS_BY_PHASE = {
+    "preparation": frozenset({"read", "analyze", "propose", "document", "validate"}),
+    "design": frozenset({"read", "analyze", "propose", "document", "validate", "design-synthetic"}),
+    "implementation": frozenset({"read", "analyze", "propose", "document", "validate", "code", "test"}),
+    "validation": frozenset({"read", "analyze", "propose", "document", "validate", "test", "review"}),
+    "release": frozenset({"read", "analyze", "document", "validate", "review"}),
+}
+RELEASE_GATE_BY_KIND = {
+    "PILOT": "G_PRIVATE_PILOT",
+    "RELEASE": "G_RELEASE",
+}
 
 
 def validate(data: dict, root: Path = ROOT) -> list[str]:
@@ -53,8 +73,12 @@ def validate(data: dict, root: Path = ROOT) -> list[str]:
         ident = task.get("id")
         if not isinstance(ident, str) or not TASK_RE.fullmatch(ident) or ident in by_id:
             raise ValueError("invalid or duplicate task id")
-        if task.get("phase") not in REQUIRED_PHASES:
+        phase = task.get("phase")
+        if phase not in REQUIRED_PHASES:
             raise ValueError(f"{ident}: invalid phase")
+        kind = TASK_RE.fullmatch(ident).group(1)
+        if PHASE_BY_KIND[kind] != phase:
+            raise ValueError(f"{ident}: task ID kind {kind} cannot use phase {phase}")
         if not task.get("owner_role") or not task.get("title") or not task.get("output"):
             raise ValueError(f"{ident}: insufficient task ownership/output")
         deps = task.get("dependencies")
@@ -66,14 +90,22 @@ def validate(data: dict, root: Path = ROOT) -> list[str]:
             raise ValueError(f"{ident}: duplicated dependency or gate")
         if not set(req).issubset(REQUIRED_GATES):
             raise ValueError(f"{ident}: unrecognized gate")
-        if not actions or any(action in ("deploy", "paid-inference", "production-migration", "merge") for action in actions):
-            raise ValueError(f"{ident}: forbidden autonomous action")
+        allowed_actions = ALLOWED_ACTIONS_BY_PHASE[phase]
+        if not actions or any(not isinstance(a, str) or a not in allowed_actions for a in actions):
+            raise ValueError(f"{ident}: forbidden autonomous action for {phase} phase")
+        if len(actions) != len(set(actions)):
+            raise ValueError(f"{ident}: duplicate permitted action")
         if task["phase"] in ("implementation", "validation"):
             if task.get("status") != "blocked" or not {"G_DESIGN", "G_CODE"}.issubset(req):
                 raise ValueError(f"{ident}: product work must be blocked behind design and coding authorization")
-        if task["phase"] == "release":
+        if phase == "release":
             if task.get("status") != "blocked" or not req or "project-owner" != task.get("owner_role"):
                 raise ValueError(f"{ident}: release requires owner gate and blocked state")
+            # Applies to ALL future VEL-PILOT-* and VEL-RELEASE-* IDs,
+            # not only those in the current MVP graph.
+            required = RELEASE_GATE_BY_KIND[kind]
+            if required not in req:
+                raise ValueError(f"{ident}: {kind.lower()} release must require {required}")
         if task["phase"] in ("design", "preparation") and set(req) & {"G_CODE", "G_PRIVATE_PILOT", "G_RELEASE"}:
             raise ValueError(f"{ident}: incorrect preparation/design gate")
         by_id[ident] = task
@@ -110,10 +142,8 @@ def validate(data: dict, root: Path = ROOT) -> list[str]:
     for task in tasks:
         if task["phase"] in ("implementation", "validation", "release") and "VEL-DES-002" not in ancestors(task["id"]):
             raise ValueError(f"{task['id']}: missing canonical design signoff dependency")
-    if "G_PRIVATE_PILOT" not in by_id["VEL-PILOT-001"]["required_gates"]:
-        raise ValueError("private pilot not owner/security gated")
-    if "G_RELEASE" not in by_id["VEL-RELEASE-001"]["required_gates"]:
-        raise ValueError("public release not owner/release gated")
+    # Gate transition is a separate, evidence-backed owner decision; this
+    # preparation-only policy deliberately rejects non-pending states.
     return order
 
 
