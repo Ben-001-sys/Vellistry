@@ -3,10 +3,10 @@ id: VEL-PLAN-RESEARCH-DESIGN-FIRST-20261009-001
 type: delivery-sequencing-plan
 status: owner-directed
 created_at: 2026-10-09
-updated_at: 2026-10-09
+updated_at: 2026-10-10
 owner: project_owner
 author: project-research
-version: 1.0.0
+version: 1.0.1
 sources:
   - "Fiction Writing Project, 2026-10-09. Owner: 'we are going to be doing the research in two at a time we have to finishes the neccessary reseaches before we begin and also before we beginnwe are going to have design UI usign figma make, lovable, etc'. Original chat permalink not archived."
   - "PRE-DEVELOPMENT-RESEARCH-REGISTER.md (R01–R22)"
@@ -40,13 +40,19 @@ related_requirements:
 
 # Vellistry — Two research tracks at a time, UI design before implementation
 
+## Integration annotation — 2026-10-10
+
+**Original policy remains owner-directed.** Six research-pair PRs have been merged into `main`, together with implementation scaffold [#28](https://github.com/Ben-001-sys/Vellistry/pull/28) and the stacked experimental security PRs [#29](https://github.com/Ben-001-sys/Vellistry/pull/29), [#32](https://github.com/Ben-001-sys/Vellistry/pull/32), [#34](https://github.com/Ben-001-sys/Vellistry/pull/34) and [#36](https://github.com/Ben-001-sys/Vellistry/pull/36). This **does not** retrospectively prove research acceptance, authorize implementation, or imply a Figma design was approved. The scaffold merges diverged from the earlier no-implementation-merge hold; record the variance without rewriting history.
+
+**The six-pair table below is the historical starting sequence, not current PR state.** Latest merge facts, open research questions, design-vs-implementation-vs-release classification and the owner-ready proposal are in [Six-pair design gate](../research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md) and [Design-entry decision brief](DESIGN-ENTRY-DECISION-2026-10-10.md). Until a new owner decision is recorded, the **design-first feature-implementation hold continues**. No concept design, live model use, deployment or research-deferral approval is inferred from this annotation.
+
 ## Latest owner instruction and precedence
 
 The owner directed research to proceed **two workstreams at a time**, completion of **necessary** preimplementation research **before proceeding**, and a **separate UI/UX design phase using Figma Make, Lovable and related tools before implementing the full application**.
 
 This **supersedes the earlier instruction to move directly from initial planning into feature implementation by 22:30 on 2026-10-09**. The prior deadline is historical and does **not** authorize overriding the newly required research and design gates. Do not invent a new completion date. The owner's previously selected **Next.js + NestJS + Supabase** stack and the approved eight-area MVP remain in force; only execution order changes.
 
-**No new product feature implementation, production data migration, merge/promotion of implementation-only code, or deployment until the research gate and owner-reviewed design gate pass.** Documentation, test-fixture experiments, mock UI/UX prototypes, technical feasibility demonstrations and CI corrections remain permitted as research evidence. Existing app scaffold PR #28 and K2 experiment PR #29 are retained as unmerged work; their code builds do not count as completion of research or design.
+**No new product feature implementation, production data migration, merge/promotion of implementation-only code, or deployment until the research gate and owner-reviewed design gate pass.** Documentation, test-fixture experiments, mock UI/UX prototypes, technical feasibility demonstrations and CI corrections remain permitted as research evidence. At the time of this 2026-10-09 directive, scaffold PR #28 and K2 experiment PR #29 were unmerged. They were merged 2026-10-10 in a process variance, and their code/builds still do not count as completion of research or design.
 
 ## Exactly two active primary workstreams
 
@@ -108,6 +114,6 @@ If Figma Make or Lovable proposes alternate auth/database/AI infrastructure, **d
 
 This sequencing supersedes the **implementation start timing** in `docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md` in draft PR #28. It does **not** revoke ADR-0006 stack selection or discard existing code. Update that PR's review notes to pause implementation, and treat this document as the current source for project phase ordering after owner approval. No claim is made that Batch 01 or any later batch has passed merely because the plan is written.
 
-## Immediate next action
+## Historical immediate next action (2026-10-09)
 
-**Research Pair 01 — R01 frozen source package and R15/K2B complete Auth/session access model.** Conduct only these two primary research tracks until both have recorded evidence and a reviewable completion decision. Reuse R01 variant audit and PR #29's actual 17/17 K2A tests; do not redo their work without purpose.
+**Research Pair 01 — R01 frozen source package and R15/K2B complete Auth/session access model.** This was the starting instruction at the time of the plan. Its bounded findings and the later five research pairs are now merged; **the present next action** is the review of the [six-pair research/design checkpoint](../research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md), combined-main checks and a *new explicit owner design-entry decision*. Unresolved R01 source mapping and private manuscript security are not waived.

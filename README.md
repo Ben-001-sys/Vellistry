@@ -2,6 +2,16 @@
 
 Vellistry is an author-controlled fiction writing application with optional AI. This is the **first application foundation**. It is not yet a deployed product and does not claim complete authentication, manuscript recovery, or accepted story memory.
 
+## Current development gate — updated 2026-10-10
+
+The initial application scaffold from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) is merged. All six research pairs have merged PR records, but research file-integrity checks found missing Pair 04/05 and K2 files in the checked `main`; restoration is proposed in [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and must pass CI and merge before they are considered fully integrated. The project is **not deployed** and is **not authorized to bypass its research/design-first instruction** merely because research and scaffold PRs were merged.
+
+- [CURRENT-STATE.md](CURRENT-STATE.md) contains the newest authoritative integration snapshot; older sections document their historical PR states.
+- [Six-pair research/design checkpoint](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md) separates experiments from pending rule mapping, auth/session, DOCX, provider, usability and legal gates.
+- [Owner design-entry decision request](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) is **proposed only**. Figma Make/Lovable exploration and canonical editable Figma Design require a recorded owner decision; core flow approval must precede new feature implementation.
+- [Combined research/app baseline CI](.github/workflows/combined-main-baseline.yml) runs testable merged Python contracts, pnpm app builds and disposable PostgreSQL restore assertions. A passing baseline is **not** security certification, usability approval or permission to release.
+- Existing experimental security code must not be promoted as public private-manuscript routes without the appropriate integrated authorization, active-session and browser tests.
+
 ## Approved direction
 
 See [ADR-0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md) and the [dated implementation kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
