@@ -5,10 +5,19 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.22
+version: 0.1.23
 ---
 
 # Vellistry — Current State
+
+## Post-reconciliation agentic coding checkpoint — 2026-10-10
+
+**Verified `main` revision:** `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**; all 21 missing K2 and Pair 04/05 research artifacts were independently verified present in `main`. Seven workflows passed on PR #43's exact source head, including combined app/research checks, real disposable PostgreSQL restore, and local Supabase security experiments. A distinct **post-merge** combined-`main` green run has **not** been established by the PR-head checks alone. Older references below to PR #43 "awaiting merge" are retained only as historical pre-merge statements and are superseded here.
+
+- **Current phase:** research integration completed at the file/CI-baseline level; [design-entry decision](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains `proposed-owner-review`, with no design approval. The original research → Figma design → explicit owner-approved feature implementation sequencing remains operative.
+- **Agentic coding MVP:** Git governance, YAML task, Git-pinned ContextPack generation and tamper-checked Stage 3/4 metadata, and synthetic chapter tests exist. [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending independent agent/session evidence and owner acceptance; [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remains open pending **a separate agent execution**, raw test results, a reproducible ExecutionBundle and owner review.
+- **Pending PR on separate branch (NOT in `main` yet):** `feat/stage4-independent-execution-packet-20261010` proposes a CI-exported **two-file current ContextPack + minimal agent prompt** and deterministic pack validation for a clean-room Cursor/Codex Stage 4 trial. Dispatch/reproducibility is documented in [Stage 4 independent operator guide](docs/agent-workflow/STAGE4-INDEPENDENT-DISPATCH.md). Creating a packet is **not** proof an external agent was run or that the workflow is complete.
+- **Security boundary retained:** a signed-out but unexpired token could still access private rows through the *direct* Data API in a disposable Supabase research test. The restricted Nest transport is an experiment; production-integrated private manuscript access/revocation is **not approved**.
 
 ## Current authoritative checkpoint — 2026-10-10 (after research and scaffold merges)
 
