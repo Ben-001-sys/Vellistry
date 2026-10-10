@@ -1,7 +1,7 @@
 ---
 id: VEL-RES-OPTIONB-WAVE02-R05R16-20261010-001
 type: editor-accessibility-and-scale-research
-status: bounded-test-defined-human-at-not-run
+status: bounded-browser-test-corrected-native-at-not-run
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
@@ -35,7 +35,7 @@ Added four tests per independent frontend (Next.js and Vite/Nest) to existing [r
 1. **Unicode / bidi text persistence:** insert actual Arabic/Hebrew/Chinese/curly quotes using Chromium's text-input path, then save to PostgreSQL and reload. Validates codepoint preservation only, **not** correct physical RTL cursor movement, mixed-direction selection, spoken language, grapheme cluster manipulation or bidi paragraph styles.
 2. **Synthetic composition:** dispatch compositionstart/end DOM events and type Unicode using Playwright insertText; ensure content is not lost after save/reload. **NOT a real Japanese/Chinese/Korean IME**: synthetic JavaScript CompositionEvents and keyboard.insertText cannot reproduce native OS candidate windows, key event ordering or speech-to-text.
 3. **Long chapter:** create a 3,000-word generated passage (roughly 20k characters), save/reload, compare exact text and log elapsed milliseconds. No SLA inferred from a single hosted runner; a 30k/100k/300k-word full-book corpus and browser/OS/performance distributions remain unmeasured.
-4. **Accessible-name negative audit:** explicitly inspect the current contenteditable's role/name and show absence of aria-label and role in the research fixture. This is an **observed missing-semantic affordance**, not a pass. Appropriate authoring label and grouping must be defined in the pre-design interaction requirements. Browser automated assertions alone do not measure what NVDA/JAWS/VoiceOver actually announce.
+4. **Accessible-name negative audit:** explicitly inspect the current contenteditable's role/name and show presence of contenteditable role=textbox but absence of both aria-label and aria-labelledby in the research fixture. This is an **observed missing-semantic affordance**, not a pass. Appropriate authoring label and grouping must be defined in the pre-design interaction requirements. Browser automated assertions alone do not measure what NVDA/JAWS/VoiceOver actually announce.
 
 ## Accessibility standard and input method research
 
@@ -44,7 +44,7 @@ Added four tests per independent frontend (Next.js and Vite/Nest) to existing [r
 | Keyboard operation and no traps | [WCAG 2.2 SC 2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard); [ARIA Authoring keyboard conventions](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/) | Synthetic headings/marks, Tab/Enter Save pass; full menus, panels, dialogs, Undo and references have not been built/tested |
 | Focus visible and location | [WCAG 2.4.7](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible) | Current contenteditable style/focus indicator and high-contrast/reflow under different themes not audited |
 | Save and conflict announcements | [ARIA22 role=status](https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA22) | R18 fixture uses role=status / aria-live polite, automated DOM check passes; actual announcement frequency/timing, repetition and screen-reader speech remain NOT RUN |
-| Editor accessible name | [ARIA APG accessible names](https://www.w3.org/WAI/ARIA/apg/practices/) | Current isolated fixture has neither aria-label nor explicit textbox role; provide a stable concise label tied to book/chapter and instructions without multiple conflicting region headings |
+| Editor accessible name | [ARIA APG accessible names](https://www.w3.org/WAI/ARIA/apg/practices/) | Current isolated fixture already has role=textbox, but no explicit aria-label/aria-labelledby; provide a stable concise editorial label tied to book/chapter, and verify computed accessible name through AT rather than assuming role alone suffices |
 | IME correctness | [MDN compositionstart/end](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event), [keyboard isComposing/229 pitfalls](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event) | Synthetic CompositionEvent + Unicode text tests cover event plumbing only; must defer shortcuts while composing and manually test real Japanese kana/Chinese Pinyin/Korean Hangul input including cancellation |
 | RTL and mixed script | Standard Unicode/Bidi + contenteditable behavior, browser/OS-specific caret movement | Codepoint save proves nothing about correct caret, selection, Undo or direction metadata. Require explicit paragraph dir/language policy and real native RTL/Hebrew/Arabic input tests |
 | Editor architecture | [Tiptap headless/editor styling](https://tiptap.dev/docs/editor/getting-started/style-editor) | Core is unstyled/headless; product team owns semantic toolbar/shortcut discovery, accessible names, outline and focus management |
@@ -58,8 +58,16 @@ Added four tests per independent frontend (Next.js and Vite/Nest) to existing [r
 
 **Reliability and scale:** Editor should permit composing without network, and an accepted save must use authenticated compare-and-swap. Large manuscripts should be chunked into chapters, with predictable restoration and conflict review; access to other author's IndexedDB drafts must not cross account boundaries.
 
-**Research conclusion:** Tiptap 3 is feasible for existing basic keyboard, Unicode, semantic marks and transactional-save fixture, but **not demonstrated accessible**; DOM missing-name issue requires a design requirement, not silent pass. Actual NVDA/JAWS/VoiceOver/IME device tests remain **NOT RUN** with the current available environment. Do not fabricate assistive-tech transcripts.
+**Research conclusion:** Tiptap 3 is feasible for existing basic keyboard, Unicode, semantic marks and transactional-save fixture, but **not demonstrated accessible**; Absent explicit label requires a design requirement, not silent pass. Actual NVDA/JAWS/VoiceOver/IME device tests remain **NOT RUN** with the current available environment. Do not fabricate assistive-tech transcripts.
 
 ## Wave 2 disposition
 
 Tests on PR's exact head determine whether automated coverage passed. Even when CI passes, status of entire R05/R16 is **BOUNDED RESEARCH COMPLETE / REAL HUMAN ASSISTIVE TECH NOT RUN**, with the new explicit missing-name finding recorded as a gap. Owner requested one-pass progression: move to Wave 3 research after this report without treating the missing real-device evidence as completed or opening prototypes/implementation.
+
+## First browser run and correction, with provenance
+
+[First Chromium run #38014068189](https://github.com/Ben-001-sys/Vellistry/actions/runs/38014068189) reported **18/20 passing** on code commit 49eb1813da5f83f5ab571f7dbb59aa79b8eec776. All eight existing adapter legacy checks and six of eight Wave 2 checks succeeded, including both Unicode persistence, synthetic composition and 3,000-word save/reload. The two failed negative assertions incorrectly expected the ProseMirror contenteditable to have no `role`; **the browser exposed role=textbox**. Test expectations were corrected without changing the research editor UI. The real actionable concern is absent **explicit aria-label/aria-labelledby**, not absent role.
+
+Measured single CI-run synthetic 3,000-word chapter: **20,699 characters**, Next.js elapsed **433 ms**, Vite/Nest elapsed **547 ms** for edit/save/reload segment on the hosted runner. These are diagnostic observations, **not p95/p99 latency or mobile performance guarantees**. On identical text fixture size, the times cannot be generalized to larger stories or slower devices.
+
+Rerun exact-head Chromium evidence must be linked here once complete; do not describe 20/20 as passed based on this first run.
