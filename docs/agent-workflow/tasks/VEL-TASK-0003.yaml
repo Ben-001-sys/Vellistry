@@ -1,0 +1,74 @@
+id: VEL-TASK-0003
+title: Prepare the bounded design-to-implementation handoff contract
+type: research-task
+status: proposed
+created_at: '2026-10-10'
+updated_at: '2026-10-10'
+owner: project_owner
+context_pack_id: VEL-CP-0003
+objective: >-
+  Reconstruct Vellistry's accepted eight-area MVP, six-wave research closeout,
+  current design-only permission, implementation architecture boundaries and
+  proposed task dependency graph from pinned Git sources. Produce an
+  owner-reviewable design-to-code handoff checklist and proposed acceptance
+  cases WITHOUT generating a Figma prototype or writing product feature code.
+in_scope:
+  - Accepted M1-M8 author experience and manual AI-OFF route
+  - Two synthetic design directions, future editable Figma design and real author validation gate
+  - Proposed first authenticated book/chapter and save/recovery vertical slices
+  - Owner-approved source preservation, narrow BYOK AI and independent canon review
+  - Source-to-contract evidence, missing real runtime tests and implementation permission gates
+out_of_scope:
+  - Building or deploying Next/Nest/Supabase features, migrations or real database content
+  - Generating UI prototypes, Figma files, paid provider calls or private manuscript uploads
+  - Choosing a new framework, provider, live JWT revocation architecture or release date
+  - Declaring user interviews, real browser/production checks or owner design signoff complete
+inputs:
+  - path: PROJECT-CONSTITUTION.md
+    role: accepted-governance
+  - path: SOURCE-OF-TRUTH.md
+    role: accepted-governance
+  - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
+    role: accepted-product-scope
+  - path: docs/history/2026-10-10-owner-mvp-direction-approved.md
+    role: latest-accepted-mvp-approval
+  - path: docs/history/2026-10-10-owner-delegated-mvp-design-entry.md
+    role: bounded-owner-delegation
+  - path: docs/research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md
+    role: bounded-research-synthesis
+  - path: docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md
+    role: proposed-engineering-contract
+  - path: docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml
+    role: proposed-dependency-graph
+  - path: docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
+    role: proposed-agent-protocol
+source_gaps:
+  - id: DESIGN
+    limitation: Editable canonical Figma, genuine author journey evidence and explicit final design approval do not yet exist.
+  - id: PRODUCT
+    limitation: Real authenticated chapter CAS, draft recovery and production editor runtime are not implemented/tested.
+  - id: SECURITY
+    limitation: Supabase signed-out unexpired JWT residual direct PostgREST access remains a known deferred issue; private release not approved.
+  - id: PROVIDER
+    limitation: No permitted live external fiction-model test, privacy route verification or real author evaluation was performed.
+deliverables:
+  - Documented accepted-versus-proposed contract map and exact source limitations
+  - Owner-ready design-to-code checklist mapping M1-M8 and all planned interfaces to real UX specifications
+  - Proposed first development vertical slice test matrix with positive, negative, rollback and privacy cases
+  - Evidence-bound ExecutionBundle with FACT INTERPRETATION PROPOSAL and list of unapproved decisions
+acceptance_criteria:
+  - Every implementation-ready claim is clearly conditional on G_DESIGN and G_CODE acceptance
+  - All eight MVP areas and both optional AI actions are preserved, with manual writing independent of keys
+  - No synthetic pilot tests are misreported as real product validation
+  - No source guidance texts, real manuscripts, keys, customer accounts or paid services are imported
+  - No features, migrations, UI prototypes, security architecture or production access are changed
+allowed_actions:
+  - read
+  - analyze
+  - propose
+  - validate-documentation
+approval_required_for:
+  - Changing accepted owner decisions or making application architecture choices
+  - Generating actual design prototypes beyond the limited authorized design lane
+  - Executing implementation code, writing database migrations, using secrets or paid APIs
+  - Marking specification or task approved, merging PRs, deploying or accepting real authors
