@@ -54,18 +54,19 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("PR #43", snap)
         self.assertIn("21 original missing research source files", snap)
         self.assertIn("PR #28", snap)
-        self.assertIn("EXPLICIT DESIGN-ENTRY OWNER DECISION PENDING", snap)
+        self.assertIn("OPTION B ACCEPTED", snap)
         self.assertNotIn("NOT yet in `main` until PR #43 merges", snap)
         self.assertIn("Issue #18", snap)
         self.assertIn("Issue #27", snap)
         self.assertNotIn("PR #28 remains unmerged", snap)
 
-    def test_design_entry_does_not_infer_owner_approval(self):
+    def test_owner_option_b_recorded_without_design_authorization(self):
         meta, body = read_doc(DECISION)
-        self.assertEqual(meta["status"], "proposed-owner-review")
-        self.assertIsNone(meta.get("approved_by"))
-        self.assertIsNone(meta.get("decision_at"))
-        self.assertIn("**Selected option:** PENDING", body)
+        self.assertEqual(meta["status"], "accepted")
+        self.assertEqual(meta.get("approved_by"), "project_owner")
+        self.assertEqual(str(meta.get("decision_at")), "2026-10-10")
+        self.assertIn("**Selected option:** B", body)
+        self.assertIn("**Design authorization:** NOT GIVEN", body)
         self.assertIn("**Implementation authorization:** NOT GIVEN", body)
         self.assertIn("invented story excerpts", body)
         self.assertIn("two different UI explorations", body)
@@ -130,13 +131,36 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("## Post-merge outcome", recovery_text)
         self.assertIn("seven GitHub Actions workflows", recovery_text)
         self.assertEqual(gate_meta["status"], "proposed-owner-review")
-        self.assertEqual(decision_meta["status"], "proposed-owner-review")
-        self.assertIsNone(decision_meta["approved_by"])
-        self.assertIsNone(decision_meta["decision_at"])
-        self.assertIn("**Selected option:** PENDING", decision)
+        self.assertEqual(decision_meta["status"], "accepted")
+        self.assertEqual(decision_meta["approved_by"], "project_owner")
+        self.assertEqual(str(decision_meta["decision_at"]), "2026-10-10")
+        self.assertIn("**Selected option:** B", decision)
+        self.assertIn("**Design authorization:** NOT GIVEN", decision)
         self.assertIn("**Implementation authorization:** NOT GIVEN", decision)
-        self.assertIn("No option is selected", state)
+        self.assertIn("OPTION B ACCEPTED", state)
         self.assertEqual(state_meta["status"], "active")
+
+    def test_exact_owner_option_b_decision_and_two_track_research_plan(self):
+        record_path = ROOT / "docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md"
+        plan_path = ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md"
+        record, decision = read_doc(record_path)
+        plan, instructions = read_doc(plan_path)
+        self.assertEqual(record["status"], "accepted")
+        self.assertEqual(record["approved_by"], "project_owner")
+        self.assertEqual(str(record["decided_at"]), "2026-10-10")
+        self.assertIn(
+            "I choose Vellistry design-entry Option B: complete outstanding "
+            "pre-design research and owner-critical decisions before prototypes.",
+            decision,
+        )
+        self.assertEqual(plan["status"], "owner-directed")
+        self.assertIn("Maximum two concurrent tracks", instructions)
+        self.assertIn("1 — ACTIVE", instructions)
+        self.assertIn("R02/R03", instructions)
+        self.assertIn("R01", instructions)
+        self.assertIn("No UI exploration", instructions)
+        self.assertIn("new explicit owner instruction", decision)
+        self.assertNotIn("Option A accepted", decision)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
