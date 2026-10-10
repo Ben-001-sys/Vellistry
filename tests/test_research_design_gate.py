@@ -310,7 +310,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertEqual(em["status"], "recorded")
         self.assertEqual(em["actor"], "project_owner")
         self.assertIn("represented as a verbatim quote", gb.lower())
-        self.assertIn("owner did not literally type", eb.lower())
+        self.assertIn("the owner did not specifically write", eb.lower())
         self.assertIn("20-case", rb)
         self.assertIn("24 hours", rb)
         self.assertIn("48 hours", rb)
