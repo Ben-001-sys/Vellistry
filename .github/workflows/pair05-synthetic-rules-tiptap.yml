@@ -1,0 +1,44 @@
+name: Pair 05 simulated rules and Tiptap patch research
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/pair05_*"
+      - "docs/research/experiments/test_pair05_*"
+      - "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs"
+      - ".github/workflows/pair05-synthetic-rules-tiptap.yml"
+  push:
+    paths:
+      - "docs/research/experiments/pair05_*"
+      - "docs/research/experiments/test_pair05_*"
+      - "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs"
+      - ".github/workflows/pair05-synthetic-rules-tiptap.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-scoped-guidance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Simulated Rule Studio scope/override checks
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair05_synthetic_rules.py' -v
+  tiptap-proposed-edits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: docs/research/spikes/tiptap3-headless
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install real open-source Tiptap 3 and jsdom
+        run: npm install --no-audit --no-fund
+      - name: Test real ProseMirror proposal safety without production server
+        run: node --test pair05_patch.test.mjs
