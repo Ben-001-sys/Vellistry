@@ -5,10 +5,23 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.23
+version: 0.1.24
 ---
 
 # Vellistry — Current State
+
+## Stage 4 bounded independent-agent workflow — owner-accepted and closed (2026-10-10)
+
+**Current `main` verified at:** `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`. This is the accepted **agentic-coding Stage 4 synthetic handoff pilot**, **not** an accepted production chapter implementation. This new section supersedes older, historically preserved text below saying PR #45/48 are pending or Issue #27 is open.
+
+- [PR #45](https://github.com/Ben-001-sys/Vellistry/pull/45) **merged**, commit `d27569ba87fa1738c9940b06ba3eeea5ee92a333`: a reproducible, two-file, current-head ContextPack dispatch mechanism, pinned task inputs and tamper/overwrite checks.
+- [PR #48](https://github.com/Ben-001-sys/Vellistry/pull/48) **merged**, commit `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`: independently reproduced **17/17** synthetic Cursor tests (0 failures) under Python 3.10 and 3.13 in GitHub CI, all 3 original unedited Cursor files preserved byte-for-byte under [raw/VEL-HO-0003](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/), and owner [acceptance event](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md). The [VEL-HO-0003 evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md) version 0.3.0 records the exact hashes, technical evidence and limitations.
+- [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) **closed as completed**, specifically for this bounded independent-agent ContextPack → synthetic execution → raw evidence → independent rerun → owner-review workflow.
+- **Session boundary:** initial two-file fresh Cursor chat is reported by owner and agent, supported by screenshot; hidden session context has **not** been forensically certified. Do not claim stronger proof.
+- **Remaining separate work:** historical Stage 3 [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open; multi-agent cross-tool recovery, automatic context synchronization and orchestration remain future work. Proposed `VEL-SPEC-001` and real G03/G08, browser Tiptap, auth/RLS, persistence/recovery and every actual product acceptance case remain **NOT TESTED/NOT APPROVED**; Stage 4 does not override the owner-directed research → UI design → approval → feature implementation gate.
+- **Owner design-entry decision:** [design-entry proposal](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains pending; acceptance here is an agentic-coding workflow pilot, not a UI-design or release authorization.
+
+## Historical preceding 2026-10-10 state snapshot (superseded where noted)
 
 ## Post-reconciliation agentic coding checkpoint — 2026-10-10
 
