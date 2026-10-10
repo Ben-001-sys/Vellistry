@@ -6,7 +6,7 @@ status: owner-directed
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.3.0
+version: 1.4.0
 sources:
   - "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
   - "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
@@ -24,6 +24,13 @@ On **2026-10-10**, the owner selected **Option B**: **"complete outstanding pre-
 
 Research deliverables may use invented manuscripts, existing official documentation, non-interactive study instruments and **consented** participant feedback. Do not upload real unpublished manuscripts to design/LLM providers, purchase services, change production auth or use actual customer accounts.
 
+## Subsequent owner endorsement — Wave 1–3 policy accepted, 2026-10-10
+
+The owner explicitly stated **“I agree to all this wave 1 to 3.”** This [recorded owner event](../history/2026-10-10-owner-waves-01-03-recommendations-accepted.md) accepts the **recommended product direction** for the three completed bounded research waves: manual-first workflows; **260 immutable source entries**; the **134-control source-preserving policy** (130 expanded-primary catalog ON, four independent AR compact controls OFF) with AI itself optional/OFF; author-scoped rules; accessible manuscript requirements; distinct editable DOCX and EPUB/publication pathways with honest loss disclosure; live-session-sensitive private manuscript protections; author-choice around locally unsaved drafts; and explicit author approval of all source-linked temporal Story Profiles facts.
+
+**Approved policy, not activated software:** Guidance defaults are accepted **for future implementation/design specification**, not deployed or sent to an LLM. Strong privacy and canon choices are product requirements, **not** proof of integrated security or extraction performance. The 2026-10-10 owner decision does **not** make unrun author interviews, real IME/screen-reader sessions, arbitrary DOCX fidelity, native Storage/export/deletion protection, backup recovery or model precision PASS. Detailed legal wording, provider selection, fixed retention durations and production implementation design still require evidence/decisions.
+
+**Supersession note:** Older Wave 1, 2 and 3 entries below show their status *at the time of initial research*. Statements such as **“mapping OWNER DECISION NEEDED”** were correct historically; they are superseded for the **policy choice only** by HIS-20261010-002, while implementation and test requirements remain open. Wave 4 is still the only active research pair. Option B still bars prototypes/new implementation until a separate explicit owner decision.
 ### Maximum two concurrent tracks
 
 Each wave below contains **at most two** active tracks. **Waves 1–3 completed one bounded research pass each; Wave 4 is now the only active research wave**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
