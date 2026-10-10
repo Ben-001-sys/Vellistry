@@ -17,3 +17,6 @@ An event describes what occurred and its evidence. Interpretations and proposals
 
 - [2026-10-09 — Owner authorized Next/Nest/Supabase implementation](2026-10-09-next-nest-supabase-implementation-authorized.md)
 - [2026-10-10 — Owner selected strict pre-design research (Option B)](2026-10-10-owner-option-b-predesign-selected.md)
+- [2026-10-10 — Owner accepted Wave 1–3 product recommendations](2026-10-10-owner-waves-01-03-recommendations-accepted.md)
+- [2026-10-10 — Owner clarified free-or-paid user BYOK and model selection](2026-10-10-owner-byok-free-or-paid-clarification.md)
+- [2026-10-10 — Owner-delegated Wave 6 final MVP design-entry choice](2026-10-10-owner-delegated-mvp-design-entry.md)

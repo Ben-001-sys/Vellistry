@@ -1,0 +1,39 @@
+name: Option B Wave 2 DOCX fidelity and recovery research
+
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/pair_wave02_*"
+      - "docs/research/experiments/test_pair_wave02_*"
+      - ".github/workflows/option-b-wave02-docx-fidelity.yml"
+  push:
+    paths:
+      - "docs/research/experiments/pair_wave02_*"
+      - "docs/research/experiments/test_pair_wave02_*"
+      - ".github/workflows/option-b-wave02-docx-fidelity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  docx-structural-and-portable-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MIT python-docx and no-paid dependencies
+        run: sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-docx
+      - name: Controlled semantic DOCX roundtrip and original backup invariants
+        run: |
+          /usr/bin/python3 -m unittest discover -s docs/research/experiments -p 'test_pair_wave02_docx.py' -v
+          /usr/bin/python3 -m unittest discover -s docs/research/experiments -p 'test_pair03_portability.py' -v
+
+  pandoc-independent-word-style-measurement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install independent free Pandoc + python-docx
+        run: sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pandoc python3-docx
+      - name: Measure DOCX Markdown DOCX paragraph/mark fidelity
+        run: /usr/bin/python3 docs/research/experiments/pair_wave02_pandoc_probe.py
