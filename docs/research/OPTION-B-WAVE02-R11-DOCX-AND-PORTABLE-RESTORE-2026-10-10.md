@@ -1,7 +1,7 @@
 ---
 id: VEL-RES-OPTIONB-WAVE02-R11-20261010-001
 type: document-fidelity-portable-restore-research
-status: runnable-study-defined-verification-pending
+status: bounded-tests-passed-with-measured-format-loss
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
@@ -53,3 +53,14 @@ related_adrs: [ADR-0004]
 The research bridge is not a complete OOXML parser or sanitizer and cannot promise not to lose all unsupported features without a deeper package inspection. Foreign document input must use an explicit loss disclosure/acceptance flow or reject until analyzed. Word formatting semantic tags are not equivalent to page-layout fidelity. Real Word and LibreOffice independent visual rendering on more complex files remains **NOT RUN**. No proprietary or copyrighted author text used.
 
 **One-pass disposition:** Passing CI establishes only this controlled format approach. An owner decision on supported Word fidelity/loss policy and future production integration remains needed. The user's one-pass sequencing advances **Wave 3 R15/K2B security dataflows and R07 canon/extraction** after test evidence, retaining gaps rather than declaring them PASS. No design/prototype or production feature development is authorized under Option B.
+
+## Verified Wave 2 conversion and backup results — 2026-10-10
+
+Original tested research code commit: 49eb1813da5f83f5ab571f7dbb59aa79b8eec776.
+
+- [R11 Wave 2 GitHub Actions #38014068186](https://github.com/Ben-001-sys/Vellistry/actions/runs/38014068186) SUCCESS in both jobs. Direct semantic DOCX 12/12 PASS, existing ZIP/TXT 10/10 PASS; actual Word Heading 1 and 2, bold/italic/strike text, multilingual text, empty paragraph blocks and two-book revision/approval/rule status maintained within the *supported test subset*.
+- **Pandoc 3.1.3:** Heading 1 and 2 preserved, along with bold/italic/strike and all nonempty text. **STRUCTURAL LOSS:** 5 original paragraphs became 4; the sole empty paragraph disappeared in DOCX -> Markdown -> DOCX. This is a measured limitation, not a universal fidelity pass.
+- **Calibre 7.6.0 prior test:** 3 original Heading styles became 0 after DOCX -> EPUB -> DOCX. It remains unsuitable as a guaranteed editable Word round-trip converter on current evidence.
+- **NOT RUN:** independent Microsoft Word/LibreOffice visual rendering, custom styles/lists/footnotes/comments/track changes/media, unknown imported file variants, hostile OOXML sandboxing, actual Tiptap editor integration, Auth/Storage/offsite encrypted archive recovery.
+
+**Bounded result:** PASS for explicit supported semantic subset and previous local ZIP tests. FAIL for Pandoc blank-paragraph retention and Calibre Heading style preservation. UNKNOWN/NOT RUN for arbitrary Word document fidelity and complete operational author-data recovery. Move to Wave 3 research without new iterative Wave 2 loops, while keeping owner loss-policy and engineering integration decisions open.
