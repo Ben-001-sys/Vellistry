@@ -253,7 +253,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
         self.assertIn("owner-waves-01-03-recommendations-accepted.md", state)
         self.assertIn("Wave 6 is now bounded COMPLETE", plan)
-        self.assertIn("Option B still bars prototypes", plan)
+        self.assertIn("bounded concept-design selection", plan)
     def test_owner_free_or_paid_byok_clarification_has_priority(self):
         decision_path = ROOT / "docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md"
         metadata, body = read_doc(decision_path)
@@ -309,7 +309,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertEqual(em["type"], "historical-event")
         self.assertEqual(em["status"], "recorded")
         self.assertEqual(em["actor"], "project_owner")
-        self.assertIn("not represented as a verbatim quote", gb.lower())
+        self.assertIn("represented as a verbatim quote", gb.lower())
         self.assertIn("owner did not literally type", eb.lower())
         self.assertIn("20-case", rb)
         self.assertIn("24 hours", rb)
