@@ -1,0 +1,65 @@
+name: Stage 5 agentic implementation readiness
+
+# Preparation and a proposed ContextPack only; DOES NOT start an agent or product coding.
+on:
+  pull_request:
+    paths:
+      - 'docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md'
+      - 'docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md'
+      - 'docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md'
+      - 'docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml'
+      - 'docs/agent-workflow/tasks/VEL-TASK-0003.yaml'
+      - 'scripts/check_implementation_readiness.py'
+      - 'tests/test_implementation_readiness.py'
+      - '.github/workflows/implementation-readiness.yml'
+      - 'CURRENT-STATE.md'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md'
+      - 'docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md'
+      - 'docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md'
+      - 'docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml'
+      - 'docs/agent-workflow/tasks/VEL-TASK-0003.yaml'
+      - 'scripts/check_implementation_readiness.py'
+      - 'tests/test_implementation_readiness.py'
+      - '.github/workflows/implementation-readiness.yml'
+      - 'CURRENT-STATE.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preparation-guard:
+    name: Gate-safe DAG, task and negative-case tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install metadata parser
+        run: python -m pip install 'PyYAML>=6,<7'
+      - name: Validate DAG and non-waived owner gates
+        run: python scripts/check_implementation_readiness.py
+      - name: Test positive and negative gate scenarios
+        run: python -m unittest discover -s tests -p 'test_implementation_readiness.py' -v
+      - name: Validate all historical agent artifacts and new proposed task
+        run: python scripts/agent_workflow.py validate
+      - name: Validate current source/spec traceability
+        run: python scripts/spec_traceability.py validate
+      - name: Generate NEW pinned Stage 5 preparation ContextPack (not an agent run)
+        run: python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml
+      - name: Validate generated immutable proposed packet
+        run: python scripts/agent_workflow.py validate
+      - name: Upload proposed, non-authorized handoff packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-stage5-preparation-context
+          path: docs/agent-workflow/context-packs/VEL-CP-0003.md
+          if-no-files-found: error
+          retention-days: 14
