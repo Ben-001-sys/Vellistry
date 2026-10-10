@@ -50,6 +50,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Assert immutable packet source is exact event commit
+        env:
+          EXPECTED_PR_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_PR_HEAD"
+          git cat-file -t "$EXPECTED_PR_HEAD" | grep -qx commit
       - name: Install metadata dependency
         run: python -m pip install 'PyYAML>=6.0,<7'
       - name: Test agent handoff generation and validation
