@@ -25,7 +25,7 @@ decision_at: null
 
 ## Decision to make
 
-The six required paired-research PRs are now on `main`, but some substantive user, source-mapping, privacy, import-fidelity and legal/operational questions remain. Does the owner allow **design-only exploratory work** now, while preserving the existing prohibition on new feature implementation and production deployment until design review?
+Six paired-research PRs are marked merged. File integrity checks found missing Pair 04/05 and K2 research artifacts in the checked `main` tree; [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) is restoring them, pending CI and merge. Some substantive user, source-mapping, privacy, import-fidelity and legal/operational questions remain. Does the owner allow **design-only exploratory work** now, while preserving the existing prohibition on new feature implementation and production deployment until design review?
 
 This record documents a **decision request**, not a decision. No checkbox is preselected; no Figma design or third-party account has been created by this document.
 
