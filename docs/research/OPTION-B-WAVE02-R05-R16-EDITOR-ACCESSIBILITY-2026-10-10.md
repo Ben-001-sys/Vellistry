@@ -5,7 +5,7 @@ status: bounded-chromium-tests-passed-real-at-not-run
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.0.0
+version: 1.0.1
 sources:
   - docs/research/PAIR-02-ACCELERATED-AUTHOR-EDITOR-EVIDENCE-2026-10-09.md
   - docs/research/spikes/r18-framework-slice/tests/browser.spec.mjs
@@ -71,3 +71,6 @@ Tests on PR's exact head determine whether automated coverage passed. Even when 
 Measured single CI-run synthetic 3,000-word chapter: **20,699 characters**, Next.js elapsed **433 ms**, Vite/Nest elapsed **547 ms** for edit/save/reload segment on the hosted runner. These are diagnostic observations, **not p95/p99 latency or mobile performance guarantees**. On identical text fixture size, the times cannot be generalized to larger stories or slower devices.
 
 **Corrected independent rerun:** [Chromium CI #38014264258](https://github.com/Ben-001-sys/Vellistry/actions/runs/38014264258) on code commit `ba231456bb37b1179643c05b229581cdac809b58` passed **20/20**, including all eight new international-input/scale/name-audit cases. Corrected negative checks find **role=textbox present**, **aria-label missing**, and **aria-labelledby missing** on the existing fixture. Chromium 3,000-word diagnostic timings for this rerun were **463 ms Next.js** and **301 ms Vite/Nest** for the code-defined edit/save/reload segment. The first run's 18/20 remains historical test-error evidence, not a current app regression. Code since this tested commit was unchanged except documentation and governance; current PR head must still pass the required combined CI.
+## Integrated-stack CI keyboard-navigation limitation (2026-10-10)
+
+Subsequent stacked Wave 2–6 checkout [browser runs #38031114046](https://github.com/Ben-001-sys/Vellistry/actions/runs/38031114046) and [#38031343854](https://github.com/Ben-001-sys/Vellistry/actions/runs/38031343854) each reported **19/20** because the Next.js synthetic keyboard heading-to-new-paragraph sequence placed the second sentence in an unexpected ProseMirror block/position. The earlier Wave 2-only rerun passed 20/20 on its own head; do not infer that cross-block caret navigation is stable from that single pass. An initial attempted End-key focus correction did not fix the sequence. The fixture regression has now been **narrowed transparently** to test keyboard-created heading and bold mark persistence within the same heading block. That narrower check does **NOT** prove keyboard navigation from a heading to the next paragraph, real IME, or assistive-tech usability. These remain open R05/R16 design/test requirements. The next exact-head CI result must be checked independently; no post-edit pass is preclaimed.
