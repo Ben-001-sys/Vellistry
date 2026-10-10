@@ -5,7 +5,7 @@ status: bounded-tests-passed-with-measured-format-loss
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.0.0
+version: 1.0.1
 sources:
   - docs/research/PAIR-03-ACCELERATED-PORTABILITY-PROFILES-2026-10-09.md
   - docs/research/experiments/pair03_calibre_probe.py
@@ -64,3 +64,7 @@ Original tested research code commit: 49eb1813da5f83f5ab571f7dbb59aa79b8eec776.
 - **NOT RUN:** independent Microsoft Word/LibreOffice visual rendering, custom styles/lists/footnotes/comments/track changes/media, unknown imported file variants, hostile OOXML sandboxing, actual Tiptap editor integration, Auth/Storage/offsite encrypted archive recovery.
 
 **Bounded result:** PASS for explicit supported semantic subset and previous local ZIP tests. FAIL for Pandoc blank-paragraph retention and Calibre Heading style preservation. UNKNOWN/NOT RUN for arbitrary Word document fidelity and complete operational author-data recovery. Move to Wave 3 research without new iterative Wave 2 loops, while keeping owner loss-policy and engineering integration decisions open.
+
+## Follow-up safety correction — 2026-10-10
+
+The bounded importer previously traversed `paragraph.runs` without validating the complete Word paragraph XML. Hyperlink text, field-code content and other unsupported structures could therefore be silently omitted. The research fixture now rejects unsupported nested body/paragraph/run structures, page breaks, unsupported run formatting and header/footer references before extraction. Seven new synthetic negative regression cases (tests 13–19) exercise these rejection paths. The original 12 positive/negative tests and independent Pandoc/Calibre findings remain intact. Local targeted validation exercised the structural guard; current-head GitHub CI must be checked separately before asserting the full test suite passed. This remains a strict research subset, **not** a complete OOXML security sanitizer or production manuscript importer.

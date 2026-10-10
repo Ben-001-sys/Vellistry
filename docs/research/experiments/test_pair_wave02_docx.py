@@ -5,6 +5,9 @@ import unittest
 from copy import deepcopy
 from io import BytesIO
 from docx import Document
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.enum.text import WD_BREAK
 from pair_wave02_docx_semantics import (
     docx_export, docx_import, semantic, validate, UnsupportedFormat, fixture
 )
@@ -82,5 +85,57 @@ class DocxRoundtripTests(unittest.TestCase):
         output=BytesIO(); doc.save(output)
         with self.assertRaises(UnsupportedFormat):
             docx_import(output.getvalue())
+
+
+    @staticmethod
+    def _word_bytes(doc):
+        out=BytesIO();doc.save(out);return out.getvalue()
+
+    def test_13_hyperlink_text_must_not_silently_disappear(self):
+        doc=Document();p=doc.add_paragraph("Before ")
+        link=OxmlElement("w:hyperlink");run=OxmlElement("w:r")
+        word=OxmlElement("w:t");word.text="linked secret"
+        run.append(word);link.append(run);p._p.append(link)
+        p.add_run(" after")
+        self.assertEqual("".join(r.text for r in p.runs),"Before  after")
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_14_simple_field_must_not_be_dropped(self):
+        doc=Document();p=doc.add_paragraph("Before ")
+        field=OxmlElement("w:fldSimple");field.set(qn("w:instr"),"DATE")
+        p._p.append(field)
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_15_complex_field_must_not_be_dropped(self):
+        doc=Document();p=doc.add_paragraph("Before ")
+        run=p.add_run()
+        field=OxmlElement("w:fldChar");field.set(qn("w:fldCharType"),"begin")
+        run._r.append(field)
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_16_page_break_must_not_be_dropped(self):
+        doc=Document();doc.add_paragraph("Before").add_run().add_break(WD_BREAK.PAGE)
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_17_unsupported_run_format_must_not_be_lost(self):
+        doc=Document();doc.add_paragraph("Underlined").runs[0].underline=True
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_18_header_text_must_not_be_dropped(self):
+        doc=Document();doc.add_paragraph("Body")
+        doc.sections[0].header.paragraphs[0].text="Secret header"
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
+
+    def test_19_nested_content_control_must_not_be_dropped(self):
+        doc=Document();doc.add_paragraph("Body")
+        doc.element.body.insert(0,OxmlElement("w:sdt"))
+        with self.assertRaises(UnsupportedFormat):
+            docx_import(self._word_bytes(doc))
 
 if __name__=="__main__":unittest.main()

@@ -8,6 +8,7 @@ from __future__ import annotations
 from copy import deepcopy
 from io import BytesIO
 from docx import Document
+from docx.oxml.ns import qn
 
 ALLOWED_MARKS={"bold","italic","strike"}
 MAX_BLOCKS=120
@@ -65,6 +66,38 @@ def docx_export(document):
     out.save(data)
     return data.getvalue()
 
+# A paragraph's .runs omits nested hyperlinks, field results, revision wrappers,
+# and other Word XML. Reject unrepresented structures BEFORE extracting any text.
+# This is deliberately a narrow research subset, not a general OOXML sanitizer.
+_SUPPORTED_RUN_FORMATS={qn("w:b"),qn("w:i"),qn("w:strike")}
+_SUPPORTED_BOOLEAN_VALUES={"0","1","true","false","on","off"}
+
+def _validate_word_structure(source):
+    for element in source.element.body.iterchildren():
+        if element.tag not in (qn("w:p"),qn("w:sectPr")):
+            raise UnsupportedFormat("unsupported Word body element")
+        if element.tag==qn("w:sectPr"):
+            if any(child.tag in (qn("w:headerReference"),qn("w:footerReference"))
+                   for child in element.iterchildren()):
+                raise UnsupportedFormat("Word headers/footers unsupported")
+            continue
+        for child in element.iterchildren():
+            if child.tag==qn("w:pPr"):
+                if any(prop.tag!=qn("w:pStyle") for prop in child.iterchildren()):
+                    raise UnsupportedFormat("unsupported Word paragraph properties")
+            elif child.tag==qn("w:r"):
+                for part in child.iterchildren():
+                    if part.tag==qn("w:rPr"):
+                        for prop in part.iterchildren():
+                            if (prop.tag not in _SUPPORTED_RUN_FORMATS
+                                or set(prop.attrib)-{qn("w:val")}
+                                or prop.get(qn("w:val"),"1") not in _SUPPORTED_BOOLEAN_VALUES):
+                                raise UnsupportedFormat("unsupported Word run formatting")
+                    elif part.tag!=qn("w:t"):
+                        raise UnsupportedFormat("unsupported Word run content")
+            else:
+                raise UnsupportedFormat("unsupported nested Word paragraph content")
+
 def docx_import(data):
     if not isinstance(data,bytes) or len(data)>2_000_000:
         raise UnsupportedFormat("invalid/oversize DOCX")
@@ -72,6 +105,7 @@ def docx_import(data):
         source=Document(BytesIO(data))
     except Exception as exc:
         raise UnsupportedFormat("invalid DOCX package") from exc
+    _validate_word_structure(source)
     blocks=[]
     for p in source.paragraphs:
         style=p.style.name
