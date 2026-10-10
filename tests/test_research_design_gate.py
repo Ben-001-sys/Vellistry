@@ -155,12 +155,40 @@ class ResearchDesignGateTests(unittest.TestCase):
         )
         self.assertEqual(plan["status"], "owner-directed")
         self.assertIn("Maximum two concurrent tracks", instructions)
-        self.assertIn("1 — ACTIVE", instructions)
+        self.assertIn("1 — COMPLETE", instructions)
+        self.assertIn("2 — ACTIVE", instructions)
+        self.assertIn("Wave 1 bounded one-pass closeout", instructions)
+        self.assertIn("NOT RUN", instructions)
+        self.assertIn("OWNER DECISION NEEDED", instructions)
         self.assertIn("R02/R03", instructions)
         self.assertIn("R01", instructions)
         self.assertIn("No UI exploration", instructions)
         self.assertIn("new explicit owner instruction", decision)
         self.assertNotIn("Option A accepted", decision)
+
+    def test_wave_one_public_author_research_is_not_mislabeled_interviews(self):
+        path = ROOT / "docs/research/OPTION-B-WAVE01-R02-R03-ONE-PASS-AUTHOR-EVIDENCE-2026-10-10.md"
+        meta, body = read_doc(path)
+        self.assertEqual(meta["status"], "completed-secondary-research-real-participants-not-run")
+        for id in range(1, 12):
+            self.assertIn(f"VEL-JRN-{id:03}", body)
+        self.assertIn("no real users were recruited", body)
+        self.assertIn("12-signal", body)
+        self.assertIn("ten-vendor", body)
+        self.assertIn("without retroactively certifying missing author results", body)
+
+    def test_wave_one_mapping_proposal_preserves_source_and_owner_gate(self):
+        path = ROOT / "docs/research/OPTION-B-WAVE01-R01-260-SOURCE-MAPPING-REVIEW-2026-10-10.md"
+        meta, body = read_doc(path)
+        self.assertEqual(meta["status"], "review-packet-prepared-owner-activation-not-approved")
+        self.assertIn("fda917550811ccf44fe2fa7993d14a0f4f64d6dde5299d0c5b078865c4f0f965", body)
+        for code in ("AR-02", "AR-04", "AR-06", "AR-09"):
+            self.assertIn(code, body)
+        self.assertIn("260", body)
+        self.assertIn("134", body)
+        self.assertIn("OWNER DECISION NEEDED", body)
+        self.assertIn("no operational pack is activated".lower(), body.lower())
+        self.assertIn("AI usage itself opt-in", body)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
