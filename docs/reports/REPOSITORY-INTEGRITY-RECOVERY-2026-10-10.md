@@ -2,11 +2,11 @@
 id: VEL-RPT-REPO-RECOVERY-20261010-001
 title: Recovery of missing merged research files from Vellistry main
 type: repository-integrity-report
-status: proposed-repair-awaiting-merge-and-ci
+status: restoration-merged-and-research-ci-verified
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 source_prs: [29, 32, 34, 36, 39, 40, 41]
 target_pr: 43
 source_main_sha: b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7
@@ -18,7 +18,7 @@ source_main_sha: b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7
 
 During combined checkout verification on PR #43, `unittest` detected **zero** tests for `test_pair04_offline_provider.py`, despite merged PR #40 reporting 14/14 on its own earlier head. The file and its related research source were **absent** from the current `main` tree. An explicit path-by-path audit found additional missing #41 and K2 research files. A green historical PR check is not proof that a future main tree contains its artifacts.
 
-This report is an **integration/recovery proposal**; it is not a security certification and does not claim merge or production readiness.
+**Historical note:** This report originally documented a proposed integration repair. The following sections preserve that diagnostic history. **Post-merge status is recorded in the outcome appendix below:** PR #43 is merged, original research files are on `main`, and the exact PR head CI passed. This is not production security certification.
 
 ## Evidence of recovery, original source commits
 
@@ -61,3 +61,10 @@ The combined workflow exercises Python provenance, source and chapter tests, app
 - [ ] PR #43 merged; only **then** describe all recovered files as present in `main`.
 
 This report records **source presence and verification**, not a claim that the six pairs have all met their acceptance/release gates or the design phase is approved.
+
+## Post-merge outcome — 2026-10-10
+
+- **Restored and merged:** [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged into `main` at `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. The 21 previously missing unique K2 and Pair 04/05 research files were directly checked on `main` after the merge.
+- **Verified exact PR head:** `a20b6cd54aff4e80408a1fdd194a782709bf6134` passed seven GitHub Actions workflows: [combined three-job baseline](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740500), [real disposable Supabase K2](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740468), Pair 04, Pair 05, isolated editor, application foundation and knowledge metadata. No job failures were reported on those runs. A separate GitHub Actions execution on the resulting merge commit is **not** claimed.
+- **Historical checklist interpretation:** The unchecked acceptance items above were written **before** merge. Combined checkouts and K2 CI were subsequently completed. No direct manuscript access to production was deployed. Formal owner review of restored source provenance and final design-entry authorization are not inferred from CI success or PR merge.
+- **Result:** Source and research baseline are reconciled; product authorization, security hardening, R01 activation, real-user validation, backup operations and design entry remain separately gated.
