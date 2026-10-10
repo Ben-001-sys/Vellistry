@@ -2,7 +2,7 @@
 id: VEL-RES-OPTIONB-WAVE06-R18-20261010-001
 title: One-pass operational save, recovery, deletion and private pilot objectives
 type: research-evidence-and-mvp-operating-policy
-status: bounded-analysis-complete-new-test-awaits-ci
+status: bounded-offline-tests-passed-live-recovery-not-run
 created_at: 2026-10-10
 updated_at: 2026-10-10
 author: project-research
@@ -72,3 +72,9 @@ related_research: [R18, R15, R11, R10]
 **Implementation readiness checks for private pilot:** operator assigned; snapshot schedule that can meet 24h when successful (test observed age rather than mere cron existence); backups encrypted at rest and in transit; separate keys; independent offsite custody; Store metadata and object payload consistency; clean environment restore rehearsal meeting 48h; cross-account RLS and source chronology preserved; observed outcome documented. The exact commercial hosting plan and permanent retention still require the real operator to commit resources.
 
 **Status and handoff:** This one-pass R18 technical research is COMPLETE as a bounded, source-grounded operational contract. Previous real PostgreSQL/ZIP evidence is not production recovery. The newly committed Python suite is research-only and must be reported against its exact CI head. Real incident drills, Auth/storage/key restoration, legal deletion requests and author workloads remain **NOT RUN** and block live release, but not **synthetic-only visual design**. G10 handles the final design-entry scope separately.
+
+## Actual new Wave 6 CI result — 2026-10-10
+
+Independent [Option B Wave 6 recovery workflow #38029701966](https://github.com/Ben-001-sys/Vellistry/actions/runs/38029701966) completed **SUCCESS**. Its exact offline fixture ran **20 of 20** new failure/retry/account/draft/delete/recovery tests **PASS**, and the unchanged Pair03 synthetic archive suite ran **10 of 10 PASS**. These run in Python without cloud credentials or real manuscript content. The evidence is not proof of real browser IndexedDB durability, external HTTP timing, real Supabase service identity, full Storage-object or Auth restore, offsite encrypted backup, deletion purge or an observed RPO/RTO.
+
+**No launch metric is certified:** The 24h/48h values are conditional PRIVATE PILOT **targets only**. The new archive fixture checks that a proposed archive represents both DB-like and object-like data; it **does not itself encrypt or place an archive offsite**. Actual clean-room operator drills and signed-off security/retention remain release blockers.
