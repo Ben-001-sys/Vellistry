@@ -205,7 +205,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("NOT RUN",eb)
         self.assertIn("12/12",db)
         self.assertIn("10/10",db)
-        self.assertIn("five original paragraphs became four",db)
+        self.assertIn("5 original paragraphs became 4",db)
         self.assertIn("NOT RUN",db)
         self.assertIn("Wave 3",db)
 
