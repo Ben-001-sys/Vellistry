@@ -5,10 +5,23 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.34
+version: 0.1.35
 ---
 
 # Vellistry — Current State
+
+## Stage 5 — proposed agentic implementation preparation (2026-10-10; PR review pending)
+
+**Latest verified `main` at preparation refresh:** `42bc285257a6526c5e4c9444dfd373bd963c43e8`, merging [PR #53](https://github.com/Ben-001-sys/Vellistry/pull/53). The owner's exact **“I approve this for mvp”** decision remains authoritative for the *integrated eight-area MVP direction*, recorded in [HIS-20261010-046](docs/history/2026-10-10-owner-mvp-direction-approved.md). It does **not** approve finished design, shipping product features, real manuscripts or public release.
+
+- **This PR prepares, not executes, agentic coding:** [Stage 5 roadmap](docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md), [architecture boundaries](docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md), [agent operating protocol](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md), [gate-checked task DAG](docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml), proposed `VEL-TASK-0003` and CI-generated proposed Git-pinned `VEL-CP-0003`. No new feature code, runtime DB changes, paid calls or deployment are included.
+- **Permission sequence:** permitted two synthetic-only Figma/Lovable concept directions → canonical editable Figma Design and consented real-author walkthroughs → explicit owner design signoff (G_DESIGN) **and separate feature-implementation authorization (G_CODE)** → bounded coding agents. Private pilot and release also remain owner-gated. All graph implementation/release tasks are **BLOCKED**.
+- **Preserved choices:** Next.js 16/NestJS 11/Supabase Auth + RLS/PostgREST, Tiptap 3, AI-OFF manual-first writing, immutable 260 guidance sources / accepted future 134-control catalog, optional Continue and single-paragraph-span Rewrite via author-funded free-or-paid BYOK, explicit author canon and undo.
+- **Known security limitation:** Owner decided to keep the current Supabase Auth/RLS/PostgREST approach **for now**; unexpired signed-out JWT direct Data API access remains a documented risk. This is neither an implemented restricted Nest gateway nor production security signoff. Full Auth/DB/Storage backup, legal/provider policy and real runtime author tests remain unverified.
+- **Agent evidence:** Owner-accepted Stage 4 synthetic Cursor pilot is complete for that bounded test (Issue #27 closed). Stage 3 historical Issue #18 is independently open. Neither is actual product implementation acceptance.
+- **CI:** proposed readiness validator includes negative tests for cycles, gate bypass and lost source paths; CI-generated ContextPack is only a prepared artifact, not agent execution. Validate on exact PR head and check merged `main` after owner review.
+
+## Prior approved MVP and research snapshots (historical)
 
 ## Owner-confirmed MVP direction — 2026-10-10 (latest decision)
 
