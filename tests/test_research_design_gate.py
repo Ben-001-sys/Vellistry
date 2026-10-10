@@ -157,7 +157,9 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("Maximum two concurrent tracks", instructions)
         self.assertIn("1 — COMPLETE", instructions)
         self.assertIn("2 — COMPLETE", instructions)
-        self.assertIn("3 — ACTIVE", instructions)
+        self.assertIn("3 — COMPLETE", instructions)
+        self.assertIn("4 — ACTIVE", instructions)
+        self.assertIn("Wave 3 one-pass bounded closeout", instructions)
         self.assertIn("Wave 2 one-pass closeout", instructions)
         self.assertIn("R15/K2B", instructions)
         self.assertIn("R07", instructions)
@@ -208,6 +210,22 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("5 original paragraphs became 4",db)
         self.assertIn("NOT RUN",db)
         self.assertIn("Wave 3",db)
+
+    def test_wave_three_privacy_and_canon_research_keep_live_gaps_open(self):
+        privacy=ROOT / "docs/research/OPTION-B-WAVE03-R15-K2B-MANUSCRIPT-PRIVACY-2026-10-10.md"
+        temporal=ROOT / "docs/research/OPTION-B-WAVE03-R07-TEMPORAL-PROFILES-EXTRACTION-2026-10-10.md"
+        pm, pt=read_doc(privacy)
+        rm, rt=read_doc(temporal)
+        self.assertIn("privacy-session-storage",pm["type"])
+        self.assertIn("one-pass",pt.lower())
+        self.assertIn("JWT",pt)
+        self.assertIn("NOT RUN",pt)
+        self.assertIn("session",pt.lower())
+        self.assertIn("24 labeled",rt)
+        self.assertIn("pending_unapproved",rt)
+        self.assertIn("NO",rt.upper())
+        self.assertIn("NOT RUN",rt)
+        self.assertIn("Wave 4",rt)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
