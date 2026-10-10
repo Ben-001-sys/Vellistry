@@ -186,3 +186,92 @@ for(const variant of variants){
   });
  });
 }
+
+
+// Option B Wave 2 R05/R16 — real Chromium research fixture checks.
+// Synthetic composition events are NOT real OS-level IME or screen reader output.
+for (const variant of variants){
+ test.describe(variant.name+" Wave 2 international input and editor scale",()=>{
+  test("Unicode Arabic/Hebrew/CJK source survives keyboard insertion, save and reload",async({browser})=>{
+   const {page,context}=await open(browser,variant.origin);
+   try{
+    const editable=await loaded(page);
+    const original="المدينة القديمة — עברית — 漢字 — café “quoted”";
+    await editable.focus();
+    await editable.fill("");
+    await page.keyboard.insertText(original);
+    await expect(editable).toContainText(original);
+    await waitDraft(page);
+    await save(page,2);
+    const p=await pool.query("select revision,document from r18_http.chapters where book_id='book-a'");
+    expect(JSON.stringify(p.rows[0].document)).toContain("المدينة");
+    expect(JSON.stringify(p.rows[0].document)).toContain("漢字");
+    await page.reload();
+    await expect(await loaded(page)).toContainText(original);
+   }finally{await context.close();}
+  });
+
+  test("simulated IME composition boundary does not erase authored text",async({browser})=>{
+   const {page,context}=await open(browser,variant.origin);
+   try{
+    const editable=await loaded(page);
+    await editable.focus();
+    await editable.fill("Mara ");
+    await waitDraft(page);
+    const tracked=await editable.evaluate(node=>{
+      const events=[];
+      for(const kind of ["compositionstart","compositionend"]){
+        node.addEventListener(kind,event=>events.push({type:event.type,data:event.data}),{once:true});
+      }
+      node.dispatchEvent(new CompositionEvent("compositionstart",{bubbles:true,data:"h"}));
+      return events;
+    });
+    expect(tracked[0].type).toBe("compositionstart");
+    await page.keyboard.insertText("漢字");
+    const ended=await editable.evaluate(node=>{
+      const result=[];
+      node.addEventListener("compositionend",event=>result.push(event.data),{once:true});
+      node.dispatchEvent(new CompositionEvent("compositionend",{bubbles:true,data:"漢字"}));
+      return result;
+    });
+    expect(ended).toEqual(["漢字"]);
+    await expect(editable).toContainText("Mara 漢字");
+    await waitDraft(page);
+    await save(page,2);
+    await page.reload();
+    await expect(await loaded(page)).toContainText("Mara 漢字");
+   }finally{await context.close();}
+  });
+
+  test("three-thousand-word synthetic chapter survives editor/DB reload; logs local timing",async({browser})=>{
+   const {page,context}=await open(browser,variant.origin);
+   try{
+    const editable=await loaded(page);
+    const passage=Array.from({length:3000},(_,i)=>"word"+(i%100)).join(" ");
+    const start=Date.now();
+    await editable.fill(passage);
+    await waitDraft(page);
+    await save(page,2);
+    await page.reload();
+    const again=await loaded(page);
+    await expect(again).toContainText("word99");
+    const actual=(await again.innerText()).trim();
+    expect(actual).toBe(passage);
+    console.log(JSON.stringify({research:"wave02-long-chapter",variant:variant.name,words:3000,
+      chars:passage.length,elapsed_ms:Date.now()-start,performance_sla_certified:false}));
+   }finally{await context.close();}
+  });
+
+  test("characterizes missing editor accessible-name requirement (negative research finding)",async({browser})=>{
+    const {page,context}=await open(browser,variant.origin);
+    try{
+      const editable=await loaded(page);
+      await expect(editable).toHaveAttribute("contenteditable","true");
+      // Explicitly prove this *research fixture* has not implemented a
+      // named editorial input; do not pass this as a WCAG/accessibility test.
+      expect(await editable.getAttribute("aria-label")).toBeNull();
+      expect(await editable.getAttribute("role")).toBeNull();
+    }finally{await context.close();}
+  });
+ });
+}
