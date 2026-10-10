@@ -1,0 +1,43 @@
+name: Option B Wave 3 security and Story Profiles research
+on:
+  pull_request:
+    paths:
+      - "docs/research/experiments/wave03_*"
+      - "docs/research/experiments/test_wave03_*"
+      - "docs/research/OPTION-B-WAVE03-*"
+      - ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
+  push:
+    paths:
+      - "docs/research/experiments/wave03_*"
+      - "docs/research/experiments/test_wave03_*"
+      - "docs/research/OPTION-B-WAVE03-*"
+      - ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  scoped-security-threat-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Synthetic session/Storage/deletion boundaries and actual source gap audit
+        run: python -m unittest discover -s docs/research/experiments -p 'test_wave03_security_boundary.py' -v
+
+  temporal-canon-extractor-errors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Actual labeled deterministic extraction misses and StoryContract scenarios
+        run: |
+          python -m unittest discover -s docs/research/experiments -p 'test_wave03_story_profiles.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_pair03_story_profiles.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v
