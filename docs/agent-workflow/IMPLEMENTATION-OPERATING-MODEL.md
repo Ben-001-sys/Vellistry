@@ -6,7 +6,7 @@ status: proposed-owner-review
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 source_refs:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
@@ -77,6 +77,20 @@ Keep Git/Markdown the canonical knowledge store. Do not paste chat summaries int
 | **V — Verification** | Required real repo code checks and negative tests, direct Data API boundaries, multi-tab CAS/retry/recovery, client/durable states; simulated/synthetic evidence labeled |
 | **O — Operations** | Auth+DB+Storage recovery, backup retention/restore and legal/privacy/provider obligations are outstanding; 24h/48h targets are unverified |
 | **H — Human review** | Owner approval on consequential changes; optional independent agent reviewer advisory only |
+
+## Stage 5 gate-state transition procedure — explicit future review, no CI auto-promotion
+
+The `IMPLEMENTATION-TASK-DEPENDENCIES.yaml` gate entries are deliberately all `pending`. The preparation validator rejects any non-pending state **even if an agent inserts an `approved_by` field or a green CI URL**. This prevents a preparatory task file from becoming implicit design/coding/release authorization. It does **not** mean the gates can never be opened.
+
+**When an actual gate is satisfied later, make a separate, reviewed owner decision and upgrade the policy intentionally:**
+
+1. Assemble the exact gate's required **real** evidence (editable Figma + genuine participant observations for G_DESIGN, scope/spec owner signoff for G_CODE, tested Auth/DB/Storage recovery and privacy acceptance for G_PRIVATE_PILOT, or real release validation for G_RELEASE). Record artifacts, Git SHAs, limitations, dates, genuine owner decision and any residual risk; a simulated pass or a prepared ContextPack is insufficient.
+2. Add a dated, source-traced owner decision or ADR with scope, approved by, evidentiary references, and explicit gate ID. **Only the owner may approve.** Self-review is permitted under the Constitution, but CI, ChatGPT or another agent may not manufacture approval.
+3. In a **separate, owner-reviewed governance PR**, revise the DAG's schema/version and validator to accept `approved` only for the explicitly named gate **and only with a verifiable approval record and evidence-linked contract**. Add positive and negative tests for absent/mismatched/stale/forged approval, and update downstream task-specific specs and packet permissions. Do not simply flip `state: pending` to `approved` in this preparation-only DAG.
+4. Verify CI and author-specific acceptance on the PR head; owner reviews/merges; verify actual `main` content and push checks. Only **then** prepare a *new* task/ContextPack pinned to the accepted Git state. Old immutable packs are never rewritten or automatically promoted.
+5. Treat G_DESIGN, G_CODE, G_PRIVATE_PILOT and G_RELEASE as **independent** gates. Passing one does not waive any other. A public release task still needs its own G_RELEASE permission; a private pilot task needs its own G_PRIVATE_PILOT permission. The validator enforces the correct gate across **every future task ID**, and prohibits coding from preparation, design, validation and release phases.
+
+A green preparation CI run confirms that the authorization *boundaries* are preserved, **not** that an owner gate has been accepted or that runtime security/deployment is ready.
 
 ## Default quality conventions (proposed, enforce incrementally)
 
