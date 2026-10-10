@@ -6,7 +6,7 @@ status: proposed-owner-review
 created_at: 2026-10-09
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.2.0
+version: 0.2.1
 source_refs:
   - docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
@@ -21,13 +21,13 @@ source_refs:
 
 # Vellistry — Six-pair research integration and design-entry review
 
-**Checked against `main` at `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` on 2026-10-10.**
+**Verified post-recovery `main` at `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523` on 2026-10-10** ([PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged). The preceding `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` was the earlier, pre-repair checkout on which the missing-files diagnosis was made.
 
-**Decision state: PROPOSED — OWNER APPROVAL REQUIRED.** All six pairs have merged pull-request records, but the initial `main` tree was **missing** merged #40/#41 Pair 04/05 research files and #29/#32/#34/#36 K2 security fixtures/workflow. Restoration is proposed in [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43), with original PR-head blob provenance. Do **not** consider missing files integrated until #43 merges and combined checks pass. This is **not** the same as completing every research acceptance criterion or granting permission to start production feature work, use real author manuscripts in external tools, spend money, or release the product. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
+**Decision state: PROPOSED — OWNER APPROVAL REQUIRED.** All six research pairs have merged pull-request records. The previously missing **21** K2 and Pair 04/05 research files were recovered from original stacked branch source in [merged PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and are now verified present on `main`. **Seven exact-head PR #43 workflows passed**, including the combined checkout and local Supabase K2 test. These findings do **not** mean completing every research acceptance criterion, certify production manuscript security, waive owner decisions, or authorize feature implementation, paid services, real manuscript upload, design production, or public release. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
 
 ## Integration facts and still-unresolved findings
 
-| Pair | Merged PR evidence (some restored in PR #43) | Verified narrow outcome | Important unresolved evidence / decision |
+| Pair | Merged PR evidence (restored where necessary by PR #43) | Verified narrow outcome | Important unresolved evidence / decision |
 |---|---|---|---|
 | **01 — Source guidance and privacy** | [#31](https://github.com/Ben-001-sys/Vellistry/pull/31), [#33](https://github.com/Ben-001-sys/Vellistry/pull/33), [#29](https://github.com/Ben-001-sys/Vellistry/pull/29), [#32](https://github.com/Ben-001-sys/Vellistry/pull/32), [#34](https://github.com/Ben-001-sys/Vellistry/pull/34), [#36](https://github.com/Ben-001-sys/Vellistry/pull/36) merged | **260 immutable source variants**, R01 P1 preservation approved; disposable Supabase Auth/RLS and restricted Nest/session tests run | **134-control mapping is only proposed**; active defaults not approved; Next SSR, storage, browser account-switch/local drafts, deletion/backup and production-integrated restricted manuscript routes remain incomplete |
 | **02 — Writer workflows and editor accessibility** | [#37](https://github.com/Ben-001-sys/Vellistry/pull/37) merged | Chromium **12/12**, Next HTTP **17/17** and Nest HTTP **17/17** on cited research heads, with rich-format save/keyboard checks | No actual author interviews or full assistive technology/IME/large-manuscript usability trial; research fixture is not the shipping editor |
@@ -36,7 +36,7 @@ source_refs:
 | **05 — Rules and reversible AI edits** | [#41](https://github.com/Ben-001-sys/Vellistry/pull/41) merged | **12/12** synthetic rule-scope/exclusion tests and **10/10** actual Tiptap headless proposal tests | No certified active R01 pack, live literary adherence or model eval, persistent revision-safe acceptance/undo or author usability evidence |
 | **06 — Legal, operations and durable save** | [#42](https://github.com/Ben-001-sys/Vellistry/pull/42) merged | **8/8** risk-register assertions; **12/12** disposable PostgreSQL 16 CAS/idempotency/clean-restore tests | No legal clearance, production auth binding, encrypted/off-site backup or selected RPO/RTO, hosting budget, retention, terms/consent or real app recovery evidence |
 
-**Evidence boundary:** The successful CI results above belong to the specific PR heads and their reports; they are not a newly run, complete combined-`main` production test. The #43 restored missing source files and integration workflow must be reviewed and merged before describing all research as present in `main`. Sources: the individual Pair reports and linked GitHub PR checks. Tests that inspect a policy schema or simulate an AI response do **not** prove policy compliance or model behavior.
+**Evidence boundary:** Original pair-specific successes belong to their cited historical PR heads. The repaired **PR #43 exact head** passed [combined baseline #38009740500](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740500), [local Supabase K2 #38009740468](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740468), and five other workflows. Source presence is now verified on merged `main`; these tests do **not** establish a production-integrated application, separate post-merge-main rerun, actual writer usability, law compliance, or real model behavior.
 
 ## Gate classification: design versus implementation versus release
 
