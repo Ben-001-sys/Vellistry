@@ -159,7 +159,9 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("2 — COMPLETE", instructions)
         self.assertIn("3 — COMPLETE", instructions)
         self.assertIn("4 — COMPLETE", instructions)
-        self.assertIn("5 — ACTIVE", instructions)
+        self.assertIn("5 — COMPLETE", instructions)
+        self.assertIn("6 — ACTIVE", instructions)
+        self.assertIn("Wave 5 one-pass MVP final decision", instructions)
         self.assertIn("Wave 3 one-pass bounded closeout", instructions)
         self.assertIn("Wave 2 one-pass closeout", instructions)
         self.assertIn("R15/K2B", instructions)
@@ -274,6 +276,26 @@ class ResearchDesignGateTests(unittest.TestCase):
         plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
         self.assertIn("Writer-owned provider billing", plan)
         self.assertIn("Option B prototype", plan)
+    def test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit(self):
+        quality = ROOT / "docs/research/OPTION-B-WAVE05-R19-R06-AI-QUALITY-AND-RULES-2026-10-10.md"
+        editing = ROOT / "docs/research/OPTION-B-WAVE05-R10-REVERSIBLE-AUTHOR-EDIT-2026-10-10.md"
+        decision = ROOT / "docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md"
+        qm, qb = read_doc(quality)
+        em, eb = read_doc(editing)
+        dm, db = read_doc(decision)
+        self.assertEqual(qm["status"], "bounded-synthetic-protocol-executed-live-model-blocked")
+        self.assertEqual(em["status"], "bounded-local-state-tests-passed-real-server-not-run")
+        self.assertEqual(dm["status"], "selected-for-mvp-design-specification-not-implemented")
+        for item in ("12/12", "false accepts", "BLOCKED", "NOT RUN", "free OR paid"):
+            self.assertIn(item, qb)
+        for item in ("18 of 18", "NOT", "undo", "not a live server"):
+            self.assertIn(item.lower(), eb.lower())
+        for item in ("OpenRouter", "Continue", "Rewrite", "free OR paid", "CAS", "Undo"):
+            self.assertIn(item, db)
+        self.assertIn("Option B restriction", db)
+        plan=(ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
+        self.assertIn("6 — ACTIVE", plan)
+        self.assertIn("No real model test", plan)
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
         self.assertEqual(meta["status"], "accepted")
