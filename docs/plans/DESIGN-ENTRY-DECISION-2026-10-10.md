@@ -6,7 +6,7 @@ status: proposed-owner-review
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 source_refs:
   - docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md
   - docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md
@@ -25,9 +25,12 @@ decision_at: null
 
 ## Decision to make
 
-Six paired-research PRs are marked merged. File integrity checks found missing Pair 04/05 and K2 research artifacts in the checked `main` tree; [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) is restoring them, pending CI and merge. Some substantive user, source-mapping, privacy, import-fidelity and legal/operational questions remain. Does the owner allow **design-only exploratory work** now, while preserving the existing prohibition on new feature implementation and production deployment until design review?
+All six research pairs and the initial app foundation are represented by merged pull requests. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**, restoring 21 previously missing Pair 04/05 and K2 research files to `main`, verified at merge `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. Its exact-head combined app/research and disposable K2 security checks passed. Substantive author research, approved source mapping, production manuscript privacy, DOCX fidelity and operating/legal decisions are still open. **Does the owner authorize design-only exploratory work now** while prohibiting new feature implementation/deployment until design review and later product gates?
 
 This record documents a **decision request**, not a decision. No checkbox is preselected; no Figma design or third-party account has been created by this document.
+
+
+**Post-merge reconciliation (2026-10-10):** Repository integration is no longer a prerequisite to this choice; [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged and its verified research sources are present in `main`. **Owner design-entry choice is still PENDING.** No prior research agreement or the instruction to correct documentation is treated as selection of Option A, B or C.
 
 ## Options and recommendation
 
