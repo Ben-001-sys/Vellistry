@@ -80,7 +80,11 @@ class ResearchDesignGateTests(unittest.TestCase):
         # merging #29/#32/#34/#36 and #40/#41 on 2026-10-10.
         expected = (
             ".github/workflows/k2-supabase-auth-rls.yml",
+            "apps/api/tests/README.md",
             "apps/api/tests/supabase-auth-rls.integration.mjs",
+            "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md",
+            "docs/research/K2B-DATA-API-LOCKDOWN-2026-10-09.md",
+            "docs/research/K2B-SESSION-AND-MANUSCRIPT-EXPOSURE-2026-10-09.md",
             "apps/api/tests/k2b-session-exposure.integration.mjs",
             "apps/api/tests/k2b-data-api-lockdown.integration.mjs",
             "apps/api/tests/k2b-active-session-row.integration.mjs",
@@ -98,6 +102,11 @@ class ResearchDesignGateTests(unittest.TestCase):
         )
         missing = [p for p in expected if not (ROOT / p).is_file()]
         self.assertEqual(missing, [], f"Previously merged research files missing: {missing}")
+        api_package = (ROOT / "apps/api/package.json").read_text(encoding="utf-8")
+        supabase_config = (ROOT / "supabase/config.toml").read_text(encoding="utf-8")
+        self.assertIn('"pg": "^8.16.3"', api_package, "K2 restricted-gateway research dependency missing")
+        self.assertIn("[auth.email]", supabase_config, "K2 disposable Auth testing configuration missing")
+        self.assertIn("enable_confirmations = false", supabase_config)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
