@@ -17,3 +17,8 @@ port = 54323
 enabled = true
 site_url = "http://127.0.0.1:3000"
 additional_redirect_urls = ["http://127.0.0.1:3000/**"]
+
+# Development-only: real email/password test accounts without external mail delivery.
+# Production email-verification/security settings are separate release decisions.
+[auth.email]
+enable_confirmations = false
