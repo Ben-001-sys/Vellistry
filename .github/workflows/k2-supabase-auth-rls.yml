@@ -1,0 +1,82 @@
+name: K2 real local Supabase Auth + author RLS security
+
+on:
+  pull_request:
+    paths:
+      - "apps/api/**"
+      - "supabase/**"
+      - ".github/workflows/k2-supabase-auth-rls.yml"
+      - "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
+  push:
+    paths:
+      - "apps/api/**"
+      - "supabase/**"
+      - ".github/workflows/k2-supabase-auth-rls.yml"
+      - "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-supabase-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install no-paid-service project dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Start real disposable local Supabase services
+        run: |
+          # Retain database, Auth, PostgREST, API gateway. Exclude unrelated services.
+          # Do not use a linked cloud project or production credentials.
+          pnpm exec supabase start --exclude realtime,storage-api,imgproxy,mailpit,studio,edge-runtime,logflare,vector,supavisor,postgres-meta
+      - name: Compile genuine NestJS API
+        run: pnpm --filter @vellistry/api build
+      - name: Validate actual sign-up, RLS, tokens, cross-author data and logout behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          # CLI output is trusted and local; NEVER print its secret values.
+          set -a
+          source <(pnpm exec supabase status -o env)
+          set +a
+          export SUPABASE_URL="${API_URL}"
+          export SUPABASE_PUBLISHABLE_KEY="${PUBLISHABLE_KEY:-${ANON_KEY:-}}"
+          export SUPABASE_TEST_SERVICE_KEY="${SERVICE_ROLE_KEY:-${SECRET_KEY:-}}"
+          export API_PORT=4100
+          export API_HOST=127.0.0.1
+          export VELLISTRY_TEST_API_URL=http://127.0.0.1:4100
+          test -n "${SUPABASE_URL}"
+          test -n "${SUPABASE_PUBLISHABLE_KEY}"
+          test -n "${SUPABASE_TEST_SERVICE_KEY}"
+          node apps/api/dist/main.js >nest-k2.log 2>&1 &
+          SERVER_PID=$!
+          cleanup() {
+            kill "$SERVER_PID" 2>/dev/null || true
+            # Restrict diagnostic output to application startup/error lines.
+            tail -30 nest-k2.log || true
+          }
+          trap cleanup EXIT
+          ready=0
+          for i in $(seq 1 60); do
+            if curl --fail --silent -o /dev/null http://127.0.0.1:4100/v1/health; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" != "1" ]; then echo "Nest API unavailable"; exit 1; fi
+          node apps/api/tests/supabase-auth-rls.integration.mjs
+      - name: Attach synthetic-only results (no token or password)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k2-supabase-auth-rls-results
+          path: k2-auth-rls-results.json
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Shut down disposable local Supabase
+        if: always()
+        run: pnpm exec supabase stop --no-backup || true
