@@ -6,7 +6,7 @@ status: owner-directed
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.2.0
+version: 1.3.0
 sources:
   - "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
   - "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
@@ -26,14 +26,14 @@ Research deliverables may use invented manuscripts, existing official documentat
 
 ### Maximum two concurrent tracks
 
-Each wave below contains **at most two** active tracks. **Wave 1 and Wave 2 each completed one bounded research pass; Wave 3 is the only active research wave**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
+Each wave below contains **at most two** active tracks. **Waves 1–3 completed one bounded research pass each; Wave 4 is now the only active research wave**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
 
 | Wave | Track A | Track B | Required checkpoint to advance |
 |---|---|---|---|
 | **1 — COMPLETE (BOUNDED; REAL-USER/OWNER GATES OPEN)** | **R02/R03:** actual author discovery, no-prototype workflow walk-throughs and evidence-based competitor feature checks | **R01:** compare complete compact/expanded bodies and prepare versioned 134-control proposal for explicit owner approval | Real-author observation log or candid recruitment blocker; separate source-aware operational control list/default choices submitted to owner |
 | **2 — COMPLETE (BOUNDED; NATIVE-AT AND FULL-DOCX GAPS OPEN)** | **R05/R16:** keyboard-only/IME/RTL/assistive tech/large manuscript editor evidence; no new UI designs | **R11:** alternate free DOCX/TXT style-preserving route and backup/restore fidelity, with measured Heading outcomes | Reproducible browser/assistive-tech matrix and DOCX semantic round-trip/explicit loss policy |
-| **3 — ACTIVE** | **R15/K2B:** manuscript privacy and session/SSR/Storage/browser-local-draft/access threat and dataflow model; disposable security tests where necessary | **R07:** living character/storyline temporal truth, canon-source, false-positive extraction and author-review requirement research | Owner-reviewed security design constraints, labeled fiction extraction/refusal results and no auto-canon policy |
-| 4 — QUEUED | **R08/R21:** local vs legitimate free BYOK providers, terms/region/cost/privacy, consent and key lifecycle | **R14/R21:** source-license/package audit, Ghana/international privacy responsibilities and no-mandatory-paid operations envelope | Provider/privacy decision or explicit AI integration deferral; accountable license, retention and cost decisions |
+| **3 — COMPLETE (BOUNDED; LIVE SECURITY AND REAL EXTRACTOR GAPS OPEN)** | **R15/K2B:** manuscript privacy and session/SSR/Storage/browser-local-draft/access threat and dataflow model; disposable security tests where necessary | **R07:** living character/storyline temporal truth, canon-source, false-positive extraction and author-review requirement research | Owner-reviewed security design constraints, labeled fiction extraction/refusal results and no auto-canon policy |
+| **4 — ACTIVE** | **R08/R21:** local vs legitimate free BYOK providers, terms/region/cost/privacy, consent and key lifecycle | **R14/R21:** source-license/package audit, Ghana/international privacy responsibilities and no-mandatory-paid operations envelope | Provider/privacy decision or explicit AI integration deferral; accountable license, retention and cost decisions |
 | 5 — QUEUED | **R19/R06:** real model benchmark against approved or clearly synthetic rules, source-grounded continuity and blind human judgments | **R10:** evidence-based revision-safe proposal acceptance, rejection, persisted-undo expectation and concurrency requirements (research fixtures only) | No false quality claim; safe author approval/change protocol, actual result or explicit blocked status |
 | 6 — QUEUED | **R18:** operational failure, retry, idempotency, full backup/restore and realistic recovery-objective research | **G10 synthesis:** acceptance matrix, product requirement uncertainty, author trial findings, license/security owners and owner-decision packet | Complete **pre-design closeout dossier** with true statuses and explicit owner choices |
 
@@ -110,3 +110,15 @@ Each research record must identify source(s), question, hypothesis, alternative,
 **Full Wave 2 reports:** [R05/R16 editor and accessibility](../research/OPTION-B-WAVE02-R05-R16-EDITOR-ACCESSIBILITY-2026-10-10.md) and [R11 DOCX and backup](../research/OPTION-B-WAVE02-R11-DOCX-AND-PORTABLE-RESTORE-2026-10-10.md). Automated outcomes must be verified on exact final commit before claiming all new browser assertions passed. Genuine screen-reader operation, Japanese/Korean/Chinese OS IME sessions, RTL mixed-direction selection, actual DOCX import/export into the live app, arbitrary Word feature fidelity, independent Word rendering, and secure offsite restore remain **NOT RUN**.
 
 **Transition:** Wave 2 is closed as a *single bounded research pass* rather than falsely deemed accessibility-certified or format-lossless. **Wave 3 becomes active: R15/K2B real private manuscript/auth/logout/storage threat and dataflow research, and R07 temporally correct Story Profiles/extraction evidence.** Exactly two active tracks; Waves 4–6 queued. Owner-critical approval on R01 mappings, R11 format-loss policy, actual writer studies and release operations remains open. No Figma/Lovable prototyping, feature implementation, paid services or deployment is authorized.
+
+## Wave 3 one-pass bounded closeout — 2026-10-10
+
+**Owner instruction:** Investigate R15/K2B privacy and R07 living profiles **once**, without restarting Wave 3 through repeated questions, and advance to the next research stage. This authorizes research sequencing only, **not** production permission or a settled privacy/data-retention or Story Profiles decision.
+
+| Track | One-pass delivered evidence | Strict status / outstanding gate |
+|---|---|---|
+| R15/K2B privacy | [Integrated code review](../research/OPTION-B-WAVE03-R15-K2B-MANUSCRIPT-PRIVACY-2026-10-10.md), official Supabase/OWASP sources, old JWT local-Supabase evidence from prior K2B, and new 18-case local privacy/session/link/draft/deletion model | SOURCE/THREAT MODEL COMPLETE; synthetic tests require exact execution; integrated production Auth/RLS/SSR/Storage/export/deletion, real account-switch tests **NOT RUN**. Immediate logout guarantee versus token/URL expiry is an **OWNER DECISION NEEDED** |
+| R07 temporal canon | [Living Story Profiles synthesis](../research/OPTION-B-WAVE03-R07-TEMPORAL-PROFILES-EXTRACTION-2026-10-10.md), 12 new synthetic chronology and fact approval checks, 24-labeled-example regex error probe; 20 original and 8 Pair03 regressions reused | RESEARCH MODEL COMPLETE subject to actual CI; **real AI model extraction accuracy, human review effort, production source anchoring NOT RUN**; direct author approval and unknown story-time policy proposed, not silently activated |
+| Stage progression | Both reports are committed to a research-only branch, with original tests explicitly segregated from current application code | **WAVE 4 ACTIVE, RESEARCH ONLY** — R08/R21 optional free/local provider terms/privacy/cost and R14/R21 rights/license/legal/operations |
+
+**One-pass stop rule:** Do not re-open Wave 3 without a *new* explicitly owner-authorized requirement or a demonstrable research-test defect. Nor may the untested live auth/export/storage boundaries or actual model error rates be marked PASS. This checkpoint does **not** open Figma, Lovable, app feature implementation or deployment.
