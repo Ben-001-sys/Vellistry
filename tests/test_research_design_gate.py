@@ -199,7 +199,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         d=ROOT / "docs/research/OPTION-B-WAVE02-R11-DOCX-AND-PORTABLE-RESTORE-2026-10-10.md"
         ed,eb=read_doc(p)
         dd,db=read_doc(d)
-        self.assertIn("native-at-not-run",ed["status"])
+        self.assertIn("real-at-not-run",ed["status"])
         self.assertIn("role=textbox",eb)
         self.assertIn("aria-label",eb)
         self.assertIn("NOT RUN",eb)
