@@ -269,8 +269,9 @@ for (const variant of variants){
       await expect(editable).toHaveAttribute("contenteditable","true");
       // Explicitly prove this *research fixture* has not implemented a
       // named editorial input; do not pass this as a WCAG/accessibility test.
+      expect(await editable.getAttribute("role")).toBe("textbox");
       expect(await editable.getAttribute("aria-label")).toBeNull();
-      expect(await editable.getAttribute("role")).toBeNull();
+      expect(await editable.getAttribute("aria-labelledby")).toBeNull();
     }finally{await context.close();}
   });
  });
