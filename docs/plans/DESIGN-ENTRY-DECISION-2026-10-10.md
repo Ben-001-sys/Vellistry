@@ -12,7 +12,7 @@ source_refs:
   - docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
-  - docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md
+  - docs/history/2026-10-10-owner-option-b-predesign-selected.md
 related_adrs:
   - ADR-0003
   - ADR-0004
@@ -28,7 +28,7 @@ decision_at: 2026-10-10
 
 All six research pairs and the initial app foundation are represented by merged pull requests. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**, restoring 21 previously missing Pair 04/05 and K2 research files to `main`, verified at merge `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. Its exact-head combined app/research and disposable K2 security checks passed. Substantive author research, approved source mapping, production manuscript privacy, DOCX fidelity and operating/legal decisions are still open. **Owner selected Option B: finish outstanding pre-design research and owner-critical decisions BEFORE any prototypes.** The design-entry hold and prohibition on new feature implementation/deployment remain in force.
 
-This is an **accepted owner process decision**, independently recorded in [Option B owner decision](../decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md). It authorizes research rather than design or implementation; no Figma design or third-party account has been created by this document.
+This is an **accepted owner process decision**, independently recorded in [Option B owner decision](../history/2026-10-10-owner-option-b-predesign-selected.md). It authorizes research rather than design or implementation; no Figma design or third-party account has been created by this document.
 
 
 **Post-merge reconciliation (2026-10-10):** Repository integration is no longer a prerequisite to this choice; [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged and its verified research sources are present in `main`. **Option B explicitly SELECTED** in the owner's 2026-10-10 instruction. PR #43's merge did not select an option; the subsequent direct owner message did.
@@ -77,4 +77,4 @@ Continue pre-design work using the [six-wave maximum-two-track closeout plan](OP
 - **Design authorization:** NOT GIVEN; prototypes and Figma/Lovable work remain prohibited until separate approval
 - **Implementation authorization:** NOT GIVEN; production migration, deployment, external manuscript transfer and paid services not authorized
 
-This document is accepted **because of the explicit owner Option B statement**, not because CI passed or a PR merged. The separate [accepted decision](../decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md) and [two-track pre-design plan](OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md) are the governing sources. A later design approval must be a NEW owner decision.
+This document is accepted **because of the explicit owner Option B statement**, not because CI passed or a PR merged. The separate [accepted decision](../history/2026-10-10-owner-option-b-predesign-selected.md) and [two-track pre-design plan](OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md) are the governing sources. A later design approval must be a NEW owner decision.
