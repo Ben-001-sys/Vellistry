@@ -1,21 +1,21 @@
 ---
 id: VEL-HO-0003
-title: Cursor Stage 4 independent execution — owner-submitted preliminary assessment
+title: Cursor Stage 4 independent execution — reproduced synthetic evidence
 type: handoff-evaluation
 status: partial
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.0
+version: 0.2.0
 task_id: VEL-TASK-0002
 context_pack_id: VEL-CP-0002
 reported_base_commit: e9516f1b8dcb202319c1060c404536acd3c5190f
 agent:
   name: Cursor
   model: "Grok 4.7"
-  model_evidence: "Screenshot shows Cursor Agent selector 'Grok 4.7 High'; user-pasted report says effort/sampling unknown"
-  fresh_session: owner_and_agent_reported_not_independently_verified
-  independent_execution: reported_not_independently_reproduced
+  model_evidence: "Cursor screenshot shows Grok 4.7 High; report attributes Grok 4.7 to SpaceXAI"
+  fresh_session: owner_and_agent_attested_not_technically_proven
+  independent_execution: original_submitted_files_received_and_tests_reproduced
   reported_python: "3.10.10"
   reported_tests: 17
   reported_failures: 0
@@ -26,17 +26,34 @@ input_evidence:
     - PROMPT.md
     - VEL-CP-0002.md
   packet_expected_sha256: 8b6fe502fc09ff507f2e06863271a03651e6e11e9971389ed4a95f4bc15861df
-  packet_verification: "CI verified exported packet; operator-local two-file bytes and initial workspace not independently rehashed"
+  packet_verification: "CI verified source packet; local original two-file workspace and hidden Cursor context are supported by screenshot and owner/agent testimony, not independently inspected"
 output:
   report_filename: VEL-EB-0002-INDEPENDENT.md
   report_sha256_claimed: 4365f4ff676e5e272409ed913a2b2c003e69451a75a331aad176243c5eb36578
-  report_bytes_received: false
+  report_sha256_verified: true
+  report_bytes_received: true
   raw_report_in_git: false
-  python_files_received: false
-  reproducible_tests_independently_run: false
+  python_files_received: true
+  reproducible_tests_independently_run: true
   source_sha256_claimed:
     synthetic_chapter_contract.py: 74705667484e5a9f0969f9ca37760da252fb11e76f3b3cb98c3b8a0fcc410c15
     test_synthetic_chapter_contract.py: 9790507cc129abc01ee4cabba063ee20cc038564d3ffa77c19c31668726d2194
+verification:
+  date: 2026-10-10
+  runtime: "Python 3.13.5"
+  process_exit_code: 0
+  actual_tests: 17
+  failures: 0
+  errors: 0
+  source_hashes_verified: true
+  reproduction_in_independent_container: true
+  embedded_source_text_matches_uploaded_files: true
+  python_bytecode_compile_passed: true
+  original_report_sha256: 4365f4ff676e5e272409ed913a2b2c003e69451a75a331aad176243c5eb36578
+  synthetic_code_sha256: 74705667484e5a9f0969f9ca37760da252fb11e76f3b3cb98c3b8a0fcc410c15
+  test_code_sha256: 9790507cc129abc01ee4cabba063ee20cc038564d3ffa77c19c31668726d2194
+  evidence_archive: "VEL-STAGE4-INDEPENDENT-VERIFIED-20261010.zip, available as a verified conversation artifact; not yet added to Git"
+  approval_status: pending_owner_decision
 screenshot:
   source: "User-submitted Cursor screenshot in chat, 2026-10-10"
   image_sha256: 6ab0cf0c9797c54ad23f4222e914a30c24180de31e47c75331de4c684c000a6f
@@ -53,66 +70,44 @@ related_issues:
   - 27
 ---
 
-# VEL-HO-0003 — Cursor Stage 4 fresh-agent execution, provisional evidence
+# VEL-HO-0003 — Cursor Stage 4, independently reproduced technical evidence
 
-**Provisional evidence assessment — not a verified or accepted ExecutionBundle.** The user supplied a Cursor screenshot plus a human-readable report/excerpt concerning `VEL-EB-0002-INDEPENDENT.md`. This was **not** a direct upload of the three underlying files or an authenticated, independently re-run terminal transcript. Their exact claimed SHA-256 fingerprints must not be treated as verified hashes of bytes held in this repository. Do not close [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) or certify Stage 4 merely because the supplied narrative reports success.
+**Verification result: PASS for the narrow synthetic test evidence; overall evaluation remains PARTIAL pending formal owner acceptance and full evidence archival into Git.** The operator supplied original, unedited Cursor files after the initial screenshot: `VEL-EB-0002-INDEPENDENT.md`, `synthetic_chapter_contract.py` and `test_synthetic_chapter_contract.py`. All three **actual uploaded byte hashes exactly match** their previously reported SHA-256. This supersedes version 0.1.0's claims that code/test/report files had not been received.
 
-## 1. Input provenance and session boundary
+## Verified facts
 
-- **FACT (GitHub):** [PR #45](https://github.com/Ben-001-sys/Vellistry/pull/45) has a successfully exported Stage 4 cold-start packet; [Actions #38011745483](https://github.com/Ben-001-sys/Vellistry/actions/runs/38011745483) on exact PR head `e9516f1b8dcb202319c1060c404536acd3c5190f` generated a two-file packet. The exported ContextPack's CI-logged `base_commit` matches that PR head. This validates the *source packet in CI*, not the workspace's copy.
-- **FACT (screenshot):** The Cursor Explorer visibly lists `PROMPT.md`, `VEL-CP-0002.md`, `synthetic_chapter_contract.py`, `test_synthetic_chapter_contract.py`, and `VEL-EB-0002-INDEPENDENT.md` **after** the apparent run. The chat displays a request to follow `PROMPT.md`, and the model selector displays `Grok 4.7 High`.
-- **CLAIM (user/agent):** At the start, the workspace contained only `PROMPT.md` and `VEL-CP-0002.md`; this was a new Cursor session with no prior chat, Git repository, external site, memories, other project context or earlier ExecutionBundle. The screenshot does not demonstrate an earlier workspace inventory, hidden Cursor project rules, or the entire session history. Independence is **owner/agent reported but not technically verified**.
-- **UNVERIFIED:** The workspace-local ContextPack and prompt SHA-256, session log, and absence of all alternative context sources. The report itself says the Git blobs were not independently resolved within its isolated workspace, which is **appropriate** for a detached task.
+- **Raw report:** 64,052 bytes, SHA-256 `4365f4ff676e5e272409ed913a2b2c003e69451a75a331aad176243c5eb36578`.
+- **Original code:** 21,701 bytes, SHA-256 `74705667484e5a9f0969f9ca37760da252fb11e76f3b3cb98c3b8a0fcc410c15`.
+- **Original tests:** 23,778 bytes, SHA-256 `9790507cc129abc01ee4cabba063ee20cc038564d3ffa77c19c31668726d2194`.
+- **Source cross-check:** Both fenced Python listings in the original report match the uploaded executable source files **when trailing blank lines are normalized**; no code-body discrepancy found.
+- **Independent reproduction:** Python **3.13.5**, `python -I -S -m py_compile` for both files PASS. `python -I -S -m unittest discover -s /mnt/data -p test_synthetic_chapter_contract.py -v` **exit 0, 17 tests, 0 failures, 0 errors**. All test methods report `ok`. The original Cursor report separately states Python **3.10.10**, 17/17 tests, exit 0. Different runtime version is explicitly documented.
+- **Archival:** A deterministic evidence ZIP `VEL-STAGE4-INDEPENDENT-VERIFIED-20261010.zip` was produced in the conversation with unchanged originals, the independent run log and a JSON hash manifest. The original raw report and source code are **not yet Git blobs**; this evaluation records hashes and results, not a false claim that raw artifacts were committed.
+- **Packet provenance:** [Agent workflow #38011745483](https://github.com/Ben-001-sys/Vellistry/actions/runs/38011745483) verified `VEL-CP-0002` pinned to PR #45 commit `e9516f1b8dcb202319c1060c404536acd3c5190f`. The actual uploaded Cursor report quotes that exact pin and task identity.
 
-## 2. Reported execution evidence
+## Scenario evidence
 
-The user-provided summary reports the command `python --version; python -m unittest -v` exited 0 with Python **3.10.10**, `Ran 17 tests in 0.002s`, `OK`, and zero failures. The report says two runnable standard-library files and the full reproduction section exist in the Cursor workspace; no such actual source bytes or complete terminal log were uploaded to this review. **Result classification: REPORTED 17/17 PASS, NOT INDEPENDENTLY REPRODUCED.**
-
-Reported exact file hashes are recorded in YAML front matter. They are identification targets for a later upload, **not verified independently by this assessment**. `VEL-EB-0002-INDEPENDENT.md` is a reported filename, not yet a checked-in source or a validated formal Vellistry ExecutionBundle.
-
-## 3. Scenario evaluation from submitted text
-
-| Proposed spec | Reported result | Evidence boundary |
-|---|---|---|
-| SC-001 | PASS (synthetic, agent-reported) | One book/two chapters reopen separately; test source and output still missing |
-| SC-002 | PARTIAL (agent-reported) | Inert heading/paragraph/emphasis/bullet document representation; **no actual Tiptap, keyboard, paste, IME, accessibility** |
-| SC-003 | PASS (synthetic, agent-reported) | `saved` follows `write_ack`; reopening returns revision 2; **not real durable storage** |
-| SC-004 | PASS (synthetic, agent-reported) | Both lost-before-commit and lost-after-commit outcomes remain `error/unconfirmed`; later read differentiates them |
-| SC-005 | PASS (synthetic, agent-reported) | Stale conflict preserved newer revision; analyst-proposed extension, not owner-approved behavior |
-| SC-006 | PASS (synthetic, agent-reported) | Forged author and guessed chapter denial; **not real authentication or RLS** |
-| SC-007 | PASS (synthetic, agent-reported) | Same-title chapters stay book-scoped, ID-based |
-| SC-008 | PARTIAL (agent-reported) | Report asserts no unauthorized governance promotion; cannot prove future agent compliance or owner authorization |
-
-**Actual application/product acceptance:** NOT TESTED for all eight. No claim that 17 unit tests correspond to 17 independent acceptance criteria; the test commands and code still require direct inspection.
-
-## 4. Evidence-quality assessment
-
-| Criterion | Provisional finding |
+| Scenario | Verified synthetic behavior and scope |
 |---|---|
-| Correct current ContextPack ID and stable pinned commit | **SUPPORTED BY REPORT + CI**; local file bytes still not checked |
-| Task identity, permission bounds, source authority | **CONTENT MATCHES** current pilot prompt; accepted MVP separated from proposed acceptance/spec |
-| Coverage of SC-001–SC-008 | **CONTENT MATCHES**; SC-002 and SC-008 appropriately partial |
-| Lost acknowledgment and stale revision nuance | **CONTENT MATCHES**; read-back `saved` policy requires owner review |
-| No unsupported production/AI/provider claims | **CONTENT MATCHES**; real data-security and browser gaps remain explicit |
-| Cursor tool/model attribution | **VISUALLY SUPPORTED SELECTOR** (Grok 4.7 High), execution identity self-reported |
-| Exactly two initial files / fresh isolated chat | **OWNER/AGENT ATTESTED ONLY**; screenshot shows five *after* output files were generated |
-| Runnable Python code and file SHA matches | **NOT VERIFIED**; code files not supplied |
-| Test outcomes and reproducibility | **AGENT-REPORTED ONLY**; transcript/independent rerun not supplied |
-| Raw report unedited and formal ExecutionBundle validity | **NOT VERIFIED**; exact `.md` bytes and metadata not supplied |
-| Owner acceptance and issue closeout | **PENDING** |
+| SC-001 | Two authored chapters navigate/reopen with separate documents; synthetic PASS |
+| SC-002 | AI-free, formatted inert document fixture and rejected unsupported shapes; **PARTIAL**, no browser Tiptap or real keyboard/IME/accessibility |
+| SC-003 | Acknowledged in-memory save and reopen preserve revision/document/emphasis; synthetic PASS |
+| SC-004 | Client cannot distinguish lost-before-commit from lost-after-commit until read-back; no false `saved` acknowledgement; synthetic PASS |
+| SC-005 | Stale revision conflicts do not overwrite newer content; synthetic PASS; still analyst-proposed |
+| SC-006 | Forged author claim and guessed chapter deny content in synthetic model; synthetic PASS; not real authentication/RLS |
+| SC-007 | Same-title chapter isolation scoped by book/chapter identifiers; synthetic PASS |
+| SC-008 | Read-only policy declaration remains proposed; **PARTIAL**, cannot prove ongoing governance compliance |
 
-## 5. Next evidence handoff
+**Actual product acceptance for SC-001–SC-008 remains NOT TESTED.** Both model and tests were written by Cursor in one session; passing tests demonstrate internal consistency of that *fake store*, not correctness of a production system.
 
-Request the three **unaltered** workspace files directly, not screenshots or a rewritten summary:
+## Evidence boundary: session isolation vs technical reproduction
 
-1. `VEL-EB-0002-INDEPENDENT.md` (original raw report; compare to declared SHA-256),
-2. `synthetic_chapter_contract.py`,
-3. `test_synthetic_chapter_contract.py`.
+The screenshot shows Cursor Grok 4.7 High with generated report/code and two ContextPack input files; owner and agent attest the workspace initially held only the two inputs and that the agent chat was fresh. The independently executed tests and verified file hashes establish **actual technical reproducibility**. Neither source-code hashes nor the post-execution screenshot technically proves the initial workspace had no hidden rules, loaded memories, connectors or prior chat context. Record independence as **owner/agent attested** rather than claiming a forensic certificate.
 
-Also request the terminal's original test output or a fresh, exact local reproduction log (with Python version, command and exit code), and if available an explicit owner statement that the Cursor session was newly opened with no preexisting project rules/repository context. Avoid telling the agent to regenerate or polish its already-completed report.
+## Scope, decisions and next steps
 
-On receiving bytes, independently hash all files; run the tests in a separate, synthetic-only environment; check the report's assertions and evidence, and archive the raw reply without alteration. Then create a properly validated ExecutionBundle candidate separate from this review, seek owner acceptance, and only then update/close Issue #27. Any acceptance of this run would not retroactively close historical Stage 3 [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18).
+- No app architecture, provider, database or production private-manuscript authorization was selected by the Python experiment. The owner-approved MVP M1/M2/M3/M8 boundaries were distinguished from the proposed acceptance checks and `VEL-SPEC-001`.
+- The **read-back-as-saved** and writer-facing conflict handling are proposals that require owner review before implementation.
+- This evaluation's **technical evidence gate is now verified**. Remaining administrative gates: copy the evidence ZIP or original three raw files into permanent project archival storage, review the proposed spec/result, explicitly record owner acceptance or rejection, and decide whether Issue #27 can close.
+- Do not infer owner design-entry approval, production implementation permission, G03/G08 closure, acceptance of Stage 3 historical [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18), or automatic promotion of `VEL-SPEC-001`.
 
-## 6. Disposition
-
-**Positive first independent-agent *attempt* with a source-consistent report, but no reproducible acceptance yet.** Keep the evaluation `partial`; preserve the distinct evidentiary categories **observed screenshot, owner/agent testimony, CI-generated packet, and unreceived test files**. No independent-agent acceptance, Stage 4 completion, production authorization, app architecture change, or spec promotion is inferred.
+**Disposition:** Stage 4 external-agent synthetic execution **independently reproduced and hash-verified**; fresh-session separation **owner/agent-attested**; formal **owner acceptance pending**. Remain in evidence review rather than silently declaring Stage 4 and product acceptance complete.
