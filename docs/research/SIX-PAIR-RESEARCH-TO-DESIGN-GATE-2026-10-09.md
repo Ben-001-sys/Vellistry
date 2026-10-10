@@ -17,7 +17,7 @@ source_refs:
   - docs/research/PAIR-04-OFFLINE-PROVIDER-CORPUS-2026-10-09.md
   - docs/research/PAIR-05-SYNTHETIC-RULES-REVERSIBLE-EDIT-2026-10-09.md
   - docs/research/PAIR-06-LEGAL-OPS-RESTORE-2026-10-09.md
-  - docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md
+  - docs/history/2026-10-10-owner-option-b-predesign-selected.md
   - docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md
 ---
 
@@ -69,7 +69,7 @@ The original owner-directed design-first plan prohibited merging/promoting imple
 
 ## Owner decision checklist — Option B recorded; remaining approvals pending
 
-- [x] **Design-entry decision:** **Option B selected** directly by the owner on 2026-10-10: complete outstanding pre-design research and owner-critical decisions **before prototypes**. [Accepted decision](../decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md). **No design or implementation authorization**.
+- [x] **Design-entry decision:** **Option B selected** directly by the owner on 2026-10-10: complete outstanding pre-design research and owner-critical decisions **before prototypes**. [Accepted decision](../history/2026-10-10-owner-option-b-predesign-selected.md). **No design or implementation authorization**.
 - [ ] **Writer evidence:** collect actual, consented author discovery and no-prototype workflow observations before any Figma/Lovable prototyping; do not fabricate trials or replace them with vendor claims.
 - [ ] **Rule mapping:** approve/revise/reject an exact owner-reviewed operational source mapping; never equate approving P1 with approving 134 active controls.
 - [ ] **Security posture:** agree on required live logout/session semantics for private manuscript operations and whether experimental Nest-only tests warrant implementation-stage design.
