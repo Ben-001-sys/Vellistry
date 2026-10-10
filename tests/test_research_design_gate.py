@@ -141,13 +141,13 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertEqual(state_meta["status"], "active")
 
     def test_exact_owner_option_b_decision_and_two_track_research_plan(self):
-        record_path = ROOT / "docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md"
+        record_path = ROOT / "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
         plan_path = ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md"
         record, decision = read_doc(record_path)
         plan, instructions = read_doc(plan_path)
-        self.assertEqual(record["status"], "accepted")
-        self.assertEqual(record["approved_by"], "project_owner")
-        self.assertEqual(str(record["decided_at"]), "2026-10-10")
+        self.assertEqual(record["status"], "recorded")
+        self.assertEqual(record["actor"], "project_owner")
+        self.assertEqual(str(record["occurred_on"]), "2026-10-10")
         self.assertIn(
             "I choose Vellistry design-entry Option B: complete outstanding "
             "pre-design research and owner-critical decisions before prototypes.",
