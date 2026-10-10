@@ -8,7 +8,7 @@ updated_at: 2026-10-10
 owner: project_owner
 version: 1.0.0
 sources:
-  - "docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md"
+  - "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
   - "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
   - "docs/research/MVP-READINESS-GATES-AND-ARCHITECTURE-DECISION-QUESTIONS-2026-10-09.md"
   - "docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md"
@@ -20,7 +20,7 @@ related_research: [R01, R02, R03, R05, R06, R07, R08, R10, R11, R14, R15, R16, R
 
 ## Authority and status
 
-On **2026-10-10**, the owner selected **Option B**: **"complete outstanding pre-design research and owner-critical decisions before prototypes."** The authoritative [accepted decision](../decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md) prohibits new Figma Make/Lovable/Figma Design prototypes and new MVP feature implementation until a new explicit design-entry decision. Preserve prior merged research evidence; do **not** reset experiments or claim that six merged research pairs equate to completed user/model/privacy evaluations.
+On **2026-10-10**, the owner selected **Option B**: **"complete outstanding pre-design research and owner-critical decisions before prototypes."** The authoritative [accepted decision](../history/2026-10-10-owner-option-b-predesign-selected.md) prohibits new Figma Make/Lovable/Figma Design prototypes and new MVP feature implementation until a new explicit design-entry decision. Preserve prior merged research evidence; do **not** reset experiments or claim that six merged research pairs equate to completed user/model/privacy evaluations.
 
 Research deliverables may use invented manuscripts, existing official documentation, non-interactive study instruments and **consented** participant feedback. Do not upload real unpublished manuscripts to design/LLM providers, purchase services, change production auth or use actual customer accounts.
 
