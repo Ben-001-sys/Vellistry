@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.36
+version: 0.1.37
 ---
 
 # Vellistry — Current State
@@ -16,6 +16,7 @@ version: 0.1.36
 
 - **Figma design artifact (unapproved):** [Vellistry synthetic concepts](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U): two prior editable alternatives (writing-first, story-workspace-first) plus four unified editable concept screens (manual editor, save recovery, rewrite review, separate canon review). The initial writing-first and story-workspace alternatives and unified rewrite screen were visually inspected; remaining QA and functional prototyping are incomplete. Synthetic labels/versions are not executed save, AI or DB evidence.
 - **Design documentation on this proposed branch:** [UX handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md), [11-journey state matrix](docs/design/VEL-DES-002-JOURNEY-AND-STATE-MATRIX-2026-10-10.md) and [consented writer validation plan](docs/design/VEL-DES-002-WRITER-VALIDATION-PLAN-2026-10-10.md). These materials are **proposed** and do not claim complete Figma flows, actual writer interviews, operational model quality or validated accessibility.
+- **Two additional planned prototype routes (owner instruction, 2026-10-10):** Figma Make (make the existing editable synthetic concepts interactive) **and Lovable** (an independent synthetic frontend-only experiment). Prepared [dual-platform experiment protocol](docs/design/VEL-DES-001-DUAL-PROTOTYPE-EXPERIMENT-2026-10-10.md), [Figma Make prompt](docs/design/VEL-DES-PROMPT-FIGMA-MAKE-2026-10-10.md), [Lovable prompt](docs/design/VEL-DES-PROMPT-LOVABLE-2026-10-10.md), and [remaining screen blueprint](docs/design/VEL-DES-002-REMAINING-SCREEN-BLUEPRINT-2026-10-10.md) on draft PR #55. **Neither external prototype has been executed/verified; Lovable requires user connection, Figma Make is a separate user workflow; no external keys/data/integrations/public publish are authorized.**
 - **Design access limitation:** Figma MCP returned Starter plan rate limit during continued screenshots; no plan upgrade, paid tools or fabricated screenshots. Remaining Figma flows and design testing are pending.
 - **Gates:** G_DESIGN, G_CODE, G_PRIVATE_PILOT and G_RELEASE all remain **pending**. The signed-out unexpired access-token direct PostgREST exposure remains an acknowledged **development-stage** risk, not production-ready private manuscript security. Manual AI-OFF and owner-approved MVP scope remain unchanged.
 - **Next:** finish the remaining proposed author screens and responsive/error variants when Figma design access permits; run real consented fiction-writer prototype tasks before any canonical UX owner approval. Then separately request feature coding authorization; do not start `VEL-IMP-*` work now.
