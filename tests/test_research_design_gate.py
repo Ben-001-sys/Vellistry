@@ -52,7 +52,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         snap = body.split("## Historical phase and branch snapshots")[0]
         self.assertIn("b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7", snap)
         self.assertIn("PR #28", snap)
-        self.assertIn("design-first", snap)
+        self.assertIn("RESEARCH INTEGRATION", snap)
         self.assertIn("Issue #18", snap)
         self.assertIn("Issue #27", snap)
         self.assertNotIn("PR #28 remains unmerged", snap)
