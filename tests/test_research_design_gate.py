@@ -156,7 +156,11 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertEqual(plan["status"], "owner-directed")
         self.assertIn("Maximum two concurrent tracks", instructions)
         self.assertIn("1 — COMPLETE", instructions)
-        self.assertIn("2 — ACTIVE", instructions)
+        self.assertIn("2 — COMPLETE", instructions)
+        self.assertIn("3 — ACTIVE", instructions)
+        self.assertIn("Wave 2 one-pass closeout", instructions)
+        self.assertIn("R15/K2B", instructions)
+        self.assertIn("R07", instructions)
         self.assertIn("Wave 1 bounded one-pass closeout", instructions)
         self.assertIn("NOT RUN", instructions)
         self.assertIn("OWNER DECISION NEEDED", instructions)
@@ -189,6 +193,21 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("OWNER DECISION NEEDED", body)
         self.assertIn("no operational pack is activated".lower(), body.lower())
         self.assertIn("AI usage itself opt-in", body)
+
+    def test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx(self):
+        p=ROOT / "docs/research/OPTION-B-WAVE02-R05-R16-EDITOR-ACCESSIBILITY-2026-10-10.md"
+        d=ROOT / "docs/research/OPTION-B-WAVE02-R11-DOCX-AND-PORTABLE-RESTORE-2026-10-10.md"
+        ed,eb=read_doc(p)
+        dd,db=read_doc(d)
+        self.assertIn("native-at-not-run",ed["status"])
+        self.assertIn("role=textbox",eb)
+        self.assertIn("aria-label",eb)
+        self.assertIn("NOT RUN",eb)
+        self.assertIn("12/12",db)
+        self.assertIn("10/10",db)
+        self.assertIn("five original paragraphs became four",db)
+        self.assertIn("NOT RUN",db)
+        self.assertIn("Wave 3",db)
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
