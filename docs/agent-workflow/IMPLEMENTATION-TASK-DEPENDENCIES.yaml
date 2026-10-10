@@ -1,0 +1,162 @@
+schema_version: 1
+id: VEL-DAG-IMPLEMENTATION-001
+status: proposed-owner-review
+created_at: '2026-10-10'
+updated_at: '2026-10-10'
+owner: project_owner
+purpose: >-
+  Owner-reviewable dependency and permission map for the approved eight-area
+  MVP. This file schedules no work and grants no agent execution permission.
+authority:
+  accepted:
+    - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
+    - docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md
+    - docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md
+  bounded_design_entry:
+    - docs/history/2026-10-10-owner-delegated-mvp-design-entry.md
+  proposed_contracts:
+    - docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md
+gates:
+  - id: G_DESIGN
+    state: pending
+    kind: owner_design_acceptance
+    evidence_required: Canonical editable Figma Design, synthetic prototypes, genuine consented author task results and owner signoff
+  - id: G_CODE
+    state: pending
+    kind: owner_feature_implementation_authorization
+    evidence_required: Explicit implementation authorization based on approved UI/UX and testable specs
+  - id: G_PRIVATE_PILOT
+    state: pending
+    kind: owner_pilot_security_and_recovery
+    evidence_required: Verified author-isolation/session/Storage, DB CAS, full clean encrypted Auth+DB+Storage restore and legal/provider obligations
+  - id: G_RELEASE
+    state: pending
+    kind: owner_public_release
+    evidence_required: Verified end-to-end journeys, real user/a11y tests, privacy/license/cost acceptance and runbooks
+tasks:
+  - id: VEL-PREP-001
+    title: Review implementation architecture and task/CI preparation package
+    phase: preparation
+    status: proposed
+    owner_role: architect
+    dependencies: []
+    required_gates: []
+    output: Owner-reviewed implementation boundary map, agent permissions and DAG
+    permitted_actions: [read, document, validate]
+  - id: VEL-DES-001
+    title: Explore two invented-data author UX concept directions
+    phase: design
+    status: proposed
+    owner_role: designer
+    dependencies: [VEL-PREP-001]
+    required_gates: []
+    output: Writing-first and story-workspace-first concept alternatives without real user data
+    permitted_actions: [read, document, design-synthetic]
+  - id: VEL-DES-002
+    title: Produce canonical editable Figma design and real author validation
+    phase: design
+    status: proposed
+    owner_role: designer
+    dependencies: [VEL-DES-001]
+    required_gates: []
+    output: Editable components, M1–M8 interaction contracts, consented author journey evidence and owner decision request
+    permitted_actions: [read, document, design-synthetic, validate]
+  - id: VEL-IMP-001
+    title: Align scaffold with approved design, first author sign-in and isolated library
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-DES-002]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Authenticated Next/Nest/Supabase book flow with multi-account isolation evidence
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-002
+    title: Create and organize author-owned chapters and planning notes
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-001]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Scoped chapter/list/reorder CRUD with negative authorization tests
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-003
+    title: Real Tiptap 3 manual editor, transactional revision-save CAS and draft recovery
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-002]
+    required_gates: [G_DESIGN, G_CODE]
+    output: UI save truth, Tiptap JSON, idempotent SQL revisions, conflict and browser recovery evidence
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-004
+    title: TXT/DOCX interchange and independent author-scoped book backup
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-003]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Loss-disclosed DOCX, TXT export and validated clean portable backup/restore
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-005
+    title: Source-linked temporal character and storyline profiles
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-003]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Manual and source-backed proposed facts, independent owner-approved canon transitions
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-006
+    title: Immutable source-preserving 134-control rules catalog and scoped overrides
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-003]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Version-pinned 260-origin rule catalog, relevant effective-rule selection, no disabled-rule leaks
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-007
+    title: Optional pinned OpenRouter BYOK Continue and single-span Rewrite proposals
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-003, VEL-IMP-005, VEL-IMP-006]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Session-only key, provider request preview, explicit review-only suggestions and error handling
+    permitted_actions: [read, code, test]
+  - id: VEL-IMP-008
+    title: Revision-safe acceptance, rejection and persisted compensating undo
+    phase: implementation
+    status: blocked
+    owner_role: implementation-agent
+    dependencies: [VEL-IMP-007]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Source-preserving proposal lifecycle, durable idempotency and safe undo without canon auto-promotion
+    permitted_actions: [read, code, test]
+  - id: VEL-VAL-001
+    title: Authenticated end-to-end private-pilot rehearsal and complete clean restore
+    phase: validation
+    status: blocked
+    owner_role: reviewer
+    dependencies: [VEL-IMP-004, VEL-IMP-005, VEL-IMP-006, VEL-IMP-008]
+    required_gates: [G_DESIGN, G_CODE]
+    output: Real browser/user negative cases, real DB and Storage recovery, accessibility and documented security risks
+    permitted_actions: [read, test, document]
+  - id: VEL-PILOT-001
+    title: Private real-author pilot release decision
+    phase: release
+    status: blocked
+    owner_role: project-owner
+    dependencies: [VEL-VAL-001]
+    required_gates: [G_PRIVATE_PILOT]
+    output: Owner-reviewed verified safety, provider legal and recovery decision
+    permitted_actions: [read, review]
+  - id: VEL-RELEASE-001
+    title: Public release decision
+    phase: release
+    status: blocked
+    owner_role: project-owner
+    dependencies: [VEL-PILOT-001]
+    required_gates: [G_RELEASE]
+    output: Explicit authorized rollout only after release acceptance
+    permitted_actions: [read, review]
