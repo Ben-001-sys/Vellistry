@@ -158,7 +158,8 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("1 — COMPLETE", instructions)
         self.assertIn("2 — COMPLETE", instructions)
         self.assertIn("3 — COMPLETE", instructions)
-        self.assertIn("4 — ACTIVE", instructions)
+        self.assertIn("4 — COMPLETE", instructions)
+        self.assertIn("5 — ACTIVE", instructions)
         self.assertIn("Wave 3 one-pass bounded closeout", instructions)
         self.assertIn("Wave 2 one-pass closeout", instructions)
         self.assertIn("R15/K2B", instructions)
@@ -249,7 +250,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         state = (ROOT / "CURRENT-STATE.md").read_text(encoding="utf-8")
         plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
         self.assertIn("owner-waves-01-03-recommendations-accepted.md", state)
-        self.assertIn("Wave 4 is still the only active research pair", plan)
+        self.assertIn("Wave 5 is now the only active research pair", plan)
         self.assertIn("Option B still bars prototypes", plan)
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
