@@ -1,7 +1,7 @@
 ---
 id: VEL-RES-OPTIONB-WAVE03-R07-20261010-001
 type: temporal-story-profiles-extraction-error-research
-status: one-pass-fixture-defined-ci-pending
+status: bounded-synthetic-score-measured-python-ci-not-yet-verified
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
@@ -70,3 +70,23 @@ related_research: [R07, R19]
 **Research PASS if CI verifies:** deterministic temporal contract and an *actual measured weak baseline* showing real error cases. **Not PASSED:** actual LLM extraction accuracy, true-fiction inter-rater agreement, production source-span anchoring, safe multi-user Supabase app APIs, confusion-free author review UX or real author correction effort. This report permits a defensible interface requirement, not a product-quality promise.
 
 **No back-and-forth:** Once source and CI result are committed, move **research-only Wave 4** to R08/R21 legitimate optional AI provider terms/privacy/cost and R14/R21 licensing, author rights and operations without reopening Wave 3 experiments. Owner-specific profile approval authority and privacy semantics remain recommendations until separately approved. **No design prototypes, production coding, paid inference or deployment.**
+
+## Independently computed labeled-fixture baseline — 2026-10-10
+
+The actual checked-in 24 invented Example records were parsed from `wave03_extraction_probe.py` and re-evaluated with the same three matching patterns using an independent JavaScript calculation in this research session. **This is not the Python GitHub Actions test suite and is not a real LLM benchmark.**
+
+| Quantity | Observed |
+|---|---|
+| Labeled snippets | 24 (10 factual positive, 14 negative/uncertain/noncanonical) |
+| True positives | **6** |
+| False positives | **10** |
+| True negatives | **4** |
+| False negatives | **4** |
+| Precision | **0.375 (37.5%)** |
+| Recall | **0.600 (60%)** |
+
+**Four omissions:** paraphrased injury, paraphrased cipher learning, paraphrased courier return, and cross-clause wrist injury. **Ten false proposals:** hypotheticals, hearsay, dialogue, counterfactual, uncertain rumor, dream, three unaccepted AI-manuscript cases, and an unplaced scene with unknown story chronology. These are exact classification outputs of a deliberately naive regex baseline on a hand-authored dataset, **not estimates of real-world percentages, true reader judgments, or a model's reliability**.
+
+**Risk/decision:** No generated candidate becomes canon. The author should see a source quote, accepted manuscript revision, who asserted it, certainty, chronology and change preview, with reject/edit/approve. A character fact whose supporting accepted revision changes becomes source-stale, not silently retained as current truth. Unknown time and subjective claims abstain from objective-state promotion. The product cannot promise 37.5% model precision: no AI model was exercised.
+
+**Execution boundary:** The source-backed independent score above is actually computed; the newly committed Python tests plus 20+8 historical tests require separate GitHub Actions verification. Do not call them PASS until their recorded run completes. No user participant scored output or correction time.
