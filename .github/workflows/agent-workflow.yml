@@ -44,6 +44,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Pin exported task evidence to the stable PR head, never the synthetic
+          # GitHub pull/<id>/merge ref that can disappear after merges.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
