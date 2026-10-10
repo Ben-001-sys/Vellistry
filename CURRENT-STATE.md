@@ -3,14 +3,26 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-08
+updated_at: 2026-10-09
 owner: project_owner
-version: 0.1.20
+version: 0.1.21
 ---
 
 # Vellistry — Current State
 
 ## Phase
+**2026-10-09 current integration checkpoint (PR #28 remains unmerged):** The owner selected **Next.js + NestJS + Supabase** for the initial implementation baseline (ADR-0006 on this branch). A K1 application scaffold was built and typechecked, but **no product deployment or completed live Auth/RLS test is claimed by PR #28 itself**. Separate stacked research PR #29 ran 17/17 local synthetic Supabase authorization checks; PR #32 investigates revoked access tokens and session exposure. Neither stacked research branch is implicitly promoted or merged by this reconciliation.
+
+**Later owner-directed process hold:** The two-at-a-time research and approved UI/UX-design-first sequence documented in merged [PR #30](https://github.com/Ben-001-sys/Vellistry/pull/30) takes precedence over the earlier 22:30 implementation kickoff. Keep this app scaffold in draft; **do not resume feature implementation, deploy, or merge it solely because its merge conflicts are resolved**. Finish necessary research, Figma Make/Lovable exploration, canonical Figma Design review, and explicit owner approval first.
+
+### K0/K1 and security research boundary
+- K0: an initial owner-selected implementation stack and research-aware roadmap were recorded; source authority and provenance remain bounded.
+- K1: pnpm workspace, Next.js web shell, NestJS API, Supabase migration and compile/typecheck evidence exist on this draft branch.
+- K2A: two-author local Supabase Auth/RLS research was exercised in separate stacked PR #29; it is not deployed here and does not establish production session safety.
+- K2B: immediate signout/token revocation and direct Data API exposure are still under separate security investigation in stacked PR #32.
+- K3 and beyond: chapter saves, end-user editor, Rules Studio and provider integrations remain gated under the newer research/design process.
+
+### Earlier historical research baseline
 Research and discovery; engineering knowledge foundation initialization.
 
 ## Accepted direction
