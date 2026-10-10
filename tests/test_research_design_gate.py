@@ -50,9 +50,12 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("## Historical phase and branch snapshots", body)
         self.assertLess(body.index(marker), body.index("## Historical phase and branch snapshots"))
         snap = body.split("## Historical phase and branch snapshots")[0]
-        self.assertIn("b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7", snap)
+        self.assertIn("e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523", snap)
+        self.assertIn("PR #43", snap)
+        self.assertIn("21 original missing research source files", snap)
         self.assertIn("PR #28", snap)
-        self.assertIn("RESEARCH INTEGRATION", snap)
+        self.assertIn("EXPLICIT DESIGN-ENTRY OWNER DECISION PENDING", snap)
+        self.assertNotIn("NOT yet in `main` until PR #43 merges", snap)
         self.assertIn("Issue #18", snap)
         self.assertIn("Issue #27", snap)
         self.assertNotIn("PR #28 remains unmerged", snap)
@@ -107,6 +110,33 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn('"pg": "^8.16.3"', api_package, "K2 restricted-gateway research dependency missing")
         self.assertIn("[auth.email]", supabase_config, "K2 disposable Auth testing configuration missing")
         self.assertIn("enable_confirmations = false", supabase_config)
+
+    def test_post_merge_status_is_authoritative_without_design_approval(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        recovery_meta, recovery_text = read_doc(
+            ROOT / "docs/reports/REPOSITORY-INTEGRITY-RECOVERY-2026-10-10.md"
+        )
+        gate_meta, gate = read_doc(GATE)
+        decision_meta, decision = read_doc(DECISION)
+        state_meta, state = read_doc(STATE)
+
+        self.assertIn("PR #43", readme)
+        self.assertIn("**merged on 2026-10-10**", readme)
+        self.assertNotIn("restoration is proposed", readme)
+        self.assertIn("e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523", gate)
+        self.assertIn("previously missing **21**", gate)
+        self.assertIn("seven", gate.lower())
+        self.assertEqual(recovery_meta["status"], "restoration-merged-and-research-ci-verified")
+        self.assertIn("## Post-merge outcome", recovery_text)
+        self.assertIn("seven GitHub Actions workflows", recovery_text)
+        self.assertEqual(gate_meta["status"], "proposed-owner-review")
+        self.assertEqual(decision_meta["status"], "proposed-owner-review")
+        self.assertIsNone(decision_meta["approved_by"])
+        self.assertIsNone(decision_meta["decision_at"])
+        self.assertIn("**Selected option:** PENDING", decision)
+        self.assertIn("**Implementation authorization:** NOT GIVEN", decision)
+        self.assertIn("No option is selected", state)
+        self.assertEqual(state_meta["status"], "active")
 
     def test_owner_accepted_mvp_and_source_preservation_unchanged(self):
         meta, _ = read_doc(SCOPE)
