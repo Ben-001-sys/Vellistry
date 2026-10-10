@@ -6,7 +6,7 @@ status: owner-directed
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.1.0
+version: 1.2.0
 sources:
   - "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
   - "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
@@ -26,13 +26,13 @@ Research deliverables may use invented manuscripts, existing official documentat
 
 ### Maximum two concurrent tracks
 
-Each wave below contains **at most two** active tracks. **Wave 1 completed one bounded source/public-evidence pass; Wave 2 is the current active research stage**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
+Each wave below contains **at most two** active tracks. **Wave 1 and Wave 2 each completed one bounded research pass; Wave 3 is the only active research wave**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
 
 | Wave | Track A | Track B | Required checkpoint to advance |
 |---|---|---|---|
 | **1 — COMPLETE (BOUNDED; REAL-USER/OWNER GATES OPEN)** | **R02/R03:** actual author discovery, no-prototype workflow walk-throughs and evidence-based competitor feature checks | **R01:** compare complete compact/expanded bodies and prepare versioned 134-control proposal for explicit owner approval | Real-author observation log or candid recruitment blocker; separate source-aware operational control list/default choices submitted to owner |
-| **2 — ACTIVE** | **R05/R16:** keyboard-only/IME/RTL/assistive tech/large manuscript editor evidence; no new UI designs | **R11:** alternate free DOCX/TXT style-preserving route and backup/restore fidelity, with measured Heading outcomes | Reproducible browser/assistive-tech matrix and DOCX semantic round-trip/explicit loss policy |
-| 3 — QUEUED | **R15/K2B:** manuscript privacy and session/SSR/Storage/browser-local-draft/access threat and dataflow model; disposable security tests where necessary | **R07:** living character/storyline temporal truth, canon-source, false-positive extraction and author-review requirement research | Owner-reviewed security design constraints, labeled fiction extraction/refusal results and no auto-canon policy |
+| **2 — COMPLETE (BOUNDED; NATIVE-AT AND FULL-DOCX GAPS OPEN)** | **R05/R16:** keyboard-only/IME/RTL/assistive tech/large manuscript editor evidence; no new UI designs | **R11:** alternate free DOCX/TXT style-preserving route and backup/restore fidelity, with measured Heading outcomes | Reproducible browser/assistive-tech matrix and DOCX semantic round-trip/explicit loss policy |
+| **3 — ACTIVE** | **R15/K2B:** manuscript privacy and session/SSR/Storage/browser-local-draft/access threat and dataflow model; disposable security tests where necessary | **R07:** living character/storyline temporal truth, canon-source, false-positive extraction and author-review requirement research | Owner-reviewed security design constraints, labeled fiction extraction/refusal results and no auto-canon policy |
 | 4 — QUEUED | **R08/R21:** local vs legitimate free BYOK providers, terms/region/cost/privacy, consent and key lifecycle | **R14/R21:** source-license/package audit, Ghana/international privacy responsibilities and no-mandatory-paid operations envelope | Provider/privacy decision or explicit AI integration deferral; accountable license, retention and cost decisions |
 | 5 — QUEUED | **R19/R06:** real model benchmark against approved or clearly synthetic rules, source-grounded continuity and blind human judgments | **R10:** evidence-based revision-safe proposal acceptance, rejection, persisted-undo expectation and concurrency requirements (research fixtures only) | No false quality claim; safe author approval/change protocol, actual result or explicit blocked status |
 | 6 — QUEUED | **R18:** operational failure, retry, idempotency, full backup/restore and realistic recovery-objective research | **G10 synthesis:** acceptance matrix, product requirement uncertainty, author trial findings, license/security owners and owner-decision packet | Complete **pre-design closeout dossier** with true statuses and explicit owner choices |
@@ -88,6 +88,25 @@ Each research record must identify source(s), question, hypothesis, alternative,
 | Direct newly recruited author interviews / observed tasks | No participant recruitment/consent possible in this session; no unassisted observations | NOT RUN, candid blocker, cannot claim user validation |
 | Source 260-record audit | Original hash checked; 130/130 compact/expanded complete bodies and line spans in private packet; 13 title changes and 4 meaning splits | SOURCE INVENTORY COMPLETE |
 | Exact active 134-control mapping and defaults | Versioned expanded-primary + 4 compact split proposal; recommended 130 primary library ON / four compact OFF only after owner approval, AI calls off by default | OWNER DECISION NEEDED — no activation |
-| Next work | Editor/accessibility and DOCX fidelity research reuse existing Pair 02/03 tests | **WAVE 2 ACTIVE (RESEARCH ONLY)** |
+| Next work | Editor/accessibility and DOCX fidelity research were executed as the next bounded wave | **WAVE 2 RESEARCH EVIDENCE COMMITTED; WAVE 3 NEXT** |
 
 **Never reclassify the two outstanding Wave 1 items as PASS without new evidence or explicit owner decision.** The absence of recruits and absent active-map approval do not authorize Figma prototyping or production code. Owner requested to continue research stages rather than stop for repeated chat rounds.
+
+## Wave 2 one-pass closeout — 2026-10-10
+
+**Owner instruction:** research both editor/accessibility and DOCX/recovery once, without iterative approval/recruitment rounds, then proceed to the next research stage. This is approval of research sequencing only.
+
+| Wave 2 check | Actual evidence and source | Honest disposition |
+|---|---|---|
+| Existing editor recovery/keyboard | Previous 12 Chromium and 17/17 HTTP fixtures; new Chromium repeat added per adapter | Historical PASS; Wave2 rerun must use exact final head |
+| International input and composition | Automated Arabic/Hebrew/Chinese persistence and simulated composition in both adapters, first run #38014068189 | First-run cases PASS; true native IME and RTL caret behavior NOT RUN |
+| 3,000-word synthetic persisted chapter | 20,699 characters, single-run diagnostic Next 433 ms / Vite-Nest 547 ms measured (same first run) | PASS narrow fixture, NO SLA or large-book performance certification |
+| Editor accessible input name | Chromium finds role=textbox, but no explicit aria-label/aria-labelledby | FINDING — missing explicit accessible-name mechanism in research fixture; actual AT announcement NOT RUN |
+| Direct structured DOCX | Real python-docx 12/12 on strict Heading/mark/Unicode subset, run #38014068186 | PASS limited supported semantics, not arbitrary Word |
+| Independent Pandoc route | Pandoc 3.1.3 Heading/marks preserved; **1 of 5 original paragraphs lost (empty block)** | PARTIAL / fidelity loss recorded |
+| Calibre editable round trip | Historical Calibre 7.6.0 Heading 3 to 0 | FAIL structural Heading fidelity |
+| Portable archive | Previous 10/10 ZIP/TXT local manifest tests rerun | PASS synthetic archive only; encrypted offsite/production restore NOT RUN |
+
+**Full Wave 2 reports:** [R05/R16 editor and accessibility](../research/OPTION-B-WAVE02-R05-R16-EDITOR-ACCESSIBILITY-2026-10-10.md) and [R11 DOCX and backup](../research/OPTION-B-WAVE02-R11-DOCX-AND-PORTABLE-RESTORE-2026-10-10.md). Automated outcomes must be verified on exact final commit before claiming all new browser assertions passed. Genuine screen-reader operation, Japanese/Korean/Chinese OS IME sessions, RTL mixed-direction selection, actual DOCX import/export into the live app, arbitrary Word feature fidelity, independent Word rendering, and secure offsite restore remain **NOT RUN**.
+
+**Transition:** Wave 2 is closed as a *single bounded research pass* rather than falsely deemed accessibility-certified or format-lossless. **Wave 3 becomes active: R15/K2B real private manuscript/auth/logout/storage threat and dataflow research, and R07 temporally correct Story Profiles/extraction evidence.** Exactly two active tracks; Waves 4–6 queued. Owner-critical approval on R01 mappings, R11 format-loss policy, actual writer studies and release operations remains open. No Figma/Lovable prototyping, feature implementation, paid services or deployment is authorized.
