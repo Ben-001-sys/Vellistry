@@ -1,7 +1,7 @@
 ---
 id: VEL-RES-OPTIONB-WAVE02-R05R16-20261010-001
 type: editor-accessibility-and-scale-research
-status: bounded-browser-test-corrected-native-at-not-run
+status: bounded-chromium-tests-passed-real-at-not-run
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
@@ -70,4 +70,4 @@ Tests on PR's exact head determine whether automated coverage passed. Even when 
 
 Measured single CI-run synthetic 3,000-word chapter: **20,699 characters**, Next.js elapsed **433 ms**, Vite/Nest elapsed **547 ms** for edit/save/reload segment on the hosted runner. These are diagnostic observations, **not p95/p99 latency or mobile performance guarantees**. On identical text fixture size, the times cannot be generalized to larger stories or slower devices.
 
-Rerun exact-head Chromium evidence must be linked here once complete; do not describe 20/20 as passed based on this first run.
+**Corrected independent rerun:** [Chromium CI #38014264258](https://github.com/Ben-001-sys/Vellistry/actions/runs/38014264258) on code commit `ba231456bb37b1179643c05b229581cdac809b58` passed **20/20**, including all eight new international-input/scale/name-audit cases. Corrected negative checks find **role=textbox present**, **aria-label missing**, and **aria-labelledby missing** on the existing fixture. Chromium 3,000-word diagnostic timings for this rerun were **463 ms Next.js** and **301 ms Vite/Nest** for the code-defined edit/save/reload segment. The first run's 18/20 remains historical test-error evidence, not a current app regression. Code since this tested commit was unchanged except documentation and governance; current PR head must still pass the required combined CI.
