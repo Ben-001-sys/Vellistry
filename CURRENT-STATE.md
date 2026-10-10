@@ -3,17 +3,32 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-09
+updated_at: 2026-10-10
 owner: project_owner
-version: 0.1.21
+version: 0.1.22
 ---
 
 # Vellistry — Current State
 
-## Phase
-**2026-10-09 current integration checkpoint (PR #28 remains unmerged):** The owner selected **Next.js + NestJS + Supabase** for the initial implementation baseline (ADR-0006 on this branch). A K1 application scaffold was built and typechecked, but **no product deployment or completed live Auth/RLS test is claimed by PR #28 itself**. Separate stacked research PR #29 ran 17/17 local synthetic Supabase authorization checks; PR #32 investigates revoked access tokens and session exposure. Neither stacked research branch is implicitly promoted or merged by this reconciliation.
+## Current authoritative checkpoint — 2026-10-10 (after research and scaffold merges)
 
-**Later owner-directed process hold:** The two-at-a-time research and approved UI/UX-design-first sequence documented in merged [PR #30](https://github.com/Ben-001-sys/Vellistry/pull/30) takes precedence over the earlier 22:30 implementation kickoff. Keep this app scaffold in draft; **do not resume feature implementation, deploy, or merge it solely because its merge conflicts are resolved**. Finish necessary research, Figma Make/Lovable exploration, canonical Figma Design review, and explicit owner approval first.
+**Git snapshot verified:** `main` at `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` (merge PR #42). This section **supersedes older branch-specific present-tense statements below**, which are preserved for history, not erased or backdated. See [the updated six-pair design gate](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md).
+
+- **Repository integration:** [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) Next.js 16 + NestJS 11 + Supabase Auth/PostgreSQL scaffold **MERGED** 2026-10-10 00:12 UTC. Subsequent stacked security research [#29](https://github.com/Ben-001-sys/Vellistry/pull/29), [#32](https://github.com/Ben-001-sys/Vellistry/pull/32), [#34](https://github.com/Ben-001-sys/Vellistry/pull/34), [#36](https://github.com/Ben-001-sys/Vellistry/pull/36) is also merged. These results do **not** establish integrated production access control, safe universal logout, or deployment readiness.
+- **Research integration:** All six bounded pair bodies are on `main`: [#31 / #33](https://github.com/Ben-001-sys/Vellistry/pull/33) Pair 01; [#37](https://github.com/Ben-001-sys/Vellistry/pull/37) Pair 02; [#38](https://github.com/Ben-001-sys/Vellistry/pull/38) Pair 03; [#39 / #40](https://github.com/Ben-001-sys/Vellistry/pull/40) Pair 04; [#41](https://github.com/Ben-001-sys/Vellistry/pull/41) Pair 05; [#42](https://github.com/Ben-001-sys/Vellistry/pull/42) Pair 06. All have specific research CI evidence; **many acceptance conditions remain unverified**, and `main` has not yet been declared production-integrated.
+- **Other merges:** [#26](https://github.com/Ben-001-sys/Vellistry/pull/26) source-to-spec task, [#35](https://github.com/Ben-001-sys/Vellistry/pull/35) **13/13 synthetic** chapter contract, and [#24](https://github.com/Ben-001-sys/Vellistry/pull/24) provisional Cursor report are merged. [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) and [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remain **OPEN**; CI/test fixtures do not satisfy their full independent-agent/owner gates.
+- **Accepted, not reopened:** owner-approved eight-area MVP; Tiptap 3/ProseMirror; Next.js + NestJS + Supabase implementation foundation; free Calibre/TXT/portable-backup direction; immutable compact/expanded R01 source preservation (ADR-0007); **no mandatory paid services**. **Not approved:** the 134 candidate operational rule mappings, live AI provider/model, production data/session policy, hosting/deployment, finalized UI or public release.
+- **Phase / process gate:** **RESEARCH INTEGRATION → DESIGN-ENTRY OWNER DECISION PENDING**. The [owner-directed research-then-design-then-implementation plan](docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) still applies. No owner-approved canonical Figma Design or new implementation permission is evidenced. Production feature work/deployment remain held, regardless of scaffold merges.
+- **Recorded process variance:** scaffold PR #28 and K2 descendants were merged 2026-10-10 despite an existing plan saying to hold implementation merges until design approval. Preserve these commits as research/app baseline; **do not falsely describe them as approved design exit, silently revert accepted decisions, or interpret merge as waiving the gate**.
+- **Design-entry options:** see [owner decision brief](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md). A *proposed* bounded synthetic-only UI exploration would need explicit owner permission. Real-author discovery, safe manuscript access, final R01 mappings, DOCX style fidelity, live provider privacy, recovery/retention and legal/cost decisions must be tracked by their actual gate.
+- **Combined-main validation:** an integrated research/app regression workflow is being added in this reconciliation PR. Its exact-head results must be checked before recording them as PASS; no passing claim is made merely from creating it.
+
+## Historical phase and branch snapshots (superseded as current status)
+
+## Phase
+**Historical 2026-10-09 integration checkpoint (PR #28 was then unmerged; merged 2026-10-10):** The owner selected **Next.js + NestJS + Supabase** for the initial implementation baseline (ADR-0006 on this branch). A K1 application scaffold was built and typechecked, but **no product deployment or completed live Auth/RLS test is claimed by PR #28 itself**. Separate stacked research PR #29 ran 17/17 local synthetic Supabase authorization checks; PR #32 investigates revoked access tokens and session exposure. Neither stacked research branch is implicitly promoted or merged by this reconciliation.
+
+**Later owner-directed process hold:** The two-at-a-time research and approved UI/UX-design-first sequence documented in merged [PR #30](https://github.com/Ben-001-sys/Vellistry/pull/30) takes precedence over the earlier 22:30 implementation kickoff. The scaffold was subsequently merged on 2026-10-10; **do not resume feature implementation or deploy solely because its merge conflicts were resolved or research branches merged**. The design-first gate remains separately open. Finish necessary research, Figma Make/Lovable exploration, canonical Figma Design review, and explicit owner approval first.
 
 ### K0/K1 and security research boundary
 - K0: an initial owner-selected implementation stack and research-aware roadmap were recorded; source authority and provenance remain bounded.
