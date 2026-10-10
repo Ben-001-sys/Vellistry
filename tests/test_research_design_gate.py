@@ -262,7 +262,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertIn("Each writer supplies a credential", body)
         self.assertIn("free or paid billing", body)
         self.assertIn("The user", body)
-        self.assertIn("AI key", body)
+        self.assertIn("without any AI API credential", body)
         self.assertIn("Option B", body)
         provider = (ROOT / "docs/research/OPTION-B-WAVE04-R08-R21-PROVIDER-PRIVACY-COST-2026-10-10.md").read_text(encoding="utf-8")
         self.assertIn("Subsequent binding owner clarification", provider)
