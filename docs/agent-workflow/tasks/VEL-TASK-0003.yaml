@@ -30,6 +30,8 @@ inputs:
     role: accepted-governance
   - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
     role: accepted-product-scope
+  - path: docs/history/2026-10-10-owner-mvp-direction-approved.md
+    role: latest-accepted-mvp-approval
   - path: docs/history/2026-10-10-owner-delegated-mvp-design-entry.md
     role: bounded-owner-delegation
   - path: docs/research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md
