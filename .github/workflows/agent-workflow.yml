@@ -14,6 +14,8 @@ on:
       - 'docs/specs/**'
       - 'scripts/spec_traceability.py'
       - 'tests/test_spec_traceability.py'
+      - 'scripts/export_stage4_independent_packet.py'
+      - 'tests/test_stage4_independent_packet.py'
       - '.github/workflows/agent-workflow.yml'
   push:
     branches: [main, 'feat/agent-workflow-*']
@@ -29,6 +31,8 @@ on:
       - 'docs/specs/**'
       - 'scripts/spec_traceability.py'
       - 'tests/test_spec_traceability.py'
+      - 'scripts/export_stage4_independent_packet.py'
+      - 'tests/test_stage4_independent_packet.py'
       - '.github/workflows/agent-workflow.yml'
 permissions:
   contents: read
@@ -66,6 +70,17 @@ jobs:
         with:
           name: vellistry-stage4-chapter-context
           path: docs/agent-workflow/context-packs/VEL-CP-0002.md
+          retention-days: 14
+          if-no-files-found: error
+      - name: Test independent Stage 4 cold-start packet and tamper rejection
+        run: python -m unittest discover -s tests -p 'test_stage4_independent_packet.py' -v
+      - name: Export reproducible independent Stage 4 cold-start ZIP
+        run: python scripts/export_stage4_independent_packet.py --output stage4-independent-agent-packet.zip
+      - name: Upload isolated Stage 4 external-agent packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-stage4-independent-agent-packet
+          path: stage4-independent-agent-packet.zip
           retention-days: 14
           if-no-files-found: error
       - name: Export validated Level B agent packet
