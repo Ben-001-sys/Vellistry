@@ -252,7 +252,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         state = (ROOT / "CURRENT-STATE.md").read_text(encoding="utf-8")
         plan = (ROOT / "docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md").read_text(encoding="utf-8")
         self.assertIn("owner-waves-01-03-recommendations-accepted.md", state)
-        self.assertIn("Wave 5 is now the only active research pair", plan)
+        self.assertIn("Wave 6 is now the only active research pair", plan)
         self.assertIn("Option B still bars prototypes", plan)
     def test_owner_free_or_paid_byok_clarification_has_priority(self):
         decision_path = ROOT / "docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md"
