@@ -6,7 +6,7 @@ status: owner-directed
 created_at: 2026-10-10
 updated_at: 2026-10-10
 owner: project_owner
-version: 1.0.0
+version: 1.1.0
 sources:
   - "docs/history/2026-10-10-owner-option-b-predesign-selected.md"
   - "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
@@ -26,12 +26,12 @@ Research deliverables may use invented manuscripts, existing official documentat
 
 ### Maximum two concurrent tracks
 
-Each wave below contains **at most two** active tracks. **Only Wave 1 is activated as the immediate research backlog**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
+Each wave below contains **at most two** active tracks. **Wave 1 completed one bounded source/public-evidence pass; Wave 2 is the current active research stage**. The remaining waves are queued until both Wave 1 reports have a bounded closeout, honest unresolved findings and owner decisions/dependency checks. A "pass" means specific evidence, not automatic product readiness. Unexpected safety-critical unknowns can block progression and require an owner decision.
 
 | Wave | Track A | Track B | Required checkpoint to advance |
 |---|---|---|---|
-| **1 — ACTIVE** | **R02/R03:** actual author discovery, no-prototype workflow walk-throughs and evidence-based competitor feature checks | **R01:** compare complete compact/expanded bodies and prepare versioned 134-control proposal for explicit owner approval | Real-author observation log or candid recruitment blocker; separate source-aware operational control list/default choices submitted to owner |
-| 2 — QUEUED | **R05/R16:** keyboard-only/IME/RTL/assistive tech/large manuscript editor evidence; no new UI designs | **R11:** alternate free DOCX/TXT style-preserving route and backup/restore fidelity, with measured Heading outcomes | Reproducible browser/assistive-tech matrix and DOCX semantic round-trip/explicit loss policy |
+| **1 — COMPLETE (BOUNDED; REAL-USER/OWNER GATES OPEN)** | **R02/R03:** actual author discovery, no-prototype workflow walk-throughs and evidence-based competitor feature checks | **R01:** compare complete compact/expanded bodies and prepare versioned 134-control proposal for explicit owner approval | Real-author observation log or candid recruitment blocker; separate source-aware operational control list/default choices submitted to owner |
+| **2 — ACTIVE** | **R05/R16:** keyboard-only/IME/RTL/assistive tech/large manuscript editor evidence; no new UI designs | **R11:** alternate free DOCX/TXT style-preserving route and backup/restore fidelity, with measured Heading outcomes | Reproducible browser/assistive-tech matrix and DOCX semantic round-trip/explicit loss policy |
 | 3 — QUEUED | **R15/K2B:** manuscript privacy and session/SSR/Storage/browser-local-draft/access threat and dataflow model; disposable security tests where necessary | **R07:** living character/storyline temporal truth, canon-source, false-positive extraction and author-review requirement research | Owner-reviewed security design constraints, labeled fiction extraction/refusal results and no auto-canon policy |
 | 4 — QUEUED | **R08/R21:** local vs legitimate free BYOK providers, terms/region/cost/privacy, consent and key lifecycle | **R14/R21:** source-license/package audit, Ghana/international privacy responsibilities and no-mandatory-paid operations envelope | Provider/privacy decision or explicit AI integration deferral; accountable license, retention and cost decisions |
 | 5 — QUEUED | **R19/R06:** real model benchmark against approved or clearly synthetic rules, source-grounded continuity and blind human judgments | **R10:** evidence-based revision-safe proposal acceptance, rejection, persisted-undo expectation and concurrency requirements (research fixtures only) | No false quality claim; safe author approval/change protocol, actual result or explicit blocked status |
@@ -39,7 +39,7 @@ Each wave below contains **at most two** active tracks. **Only Wave 1 is activat
 
 ## Wave 1: two currently active research tracks
 
-### A — R02/R03 writer and comparator research
+### A — R02/R03 writer and comparator research (one-pass evidence completed; recruited participants NOT RUN)
 
 Use the existing 11 journey tasks from [MVP author journeys](../requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md) and blank [Pair 02 observation sheet](../research/PAIR-02-AUTHOR-OBSERVATIONS-TEMPLATE.csv). Do not claim completed interviews.
 
@@ -51,7 +51,7 @@ Use the existing 11 journey tasks from [MVP author journeys](../requirements/MVP
 
 **Exit gate:** a real, documented user-evidence packet or explicit owner review of recruitment/design-study blockage. Empty observation templates or simulated interview transcripts **cannot** meet this gate.
 
-### B — R01 active source mapping decisions
+### B — R01 active source mapping decisions (full-source packet delivered; owner mapping decision OPEN)
 
 Start with the 260 original immutable source records and [R01 owner proposal](../research/R01-134-CONTROL-OWNER-MAPPING-PROPOSAL-2026-10-09.md). Do not modify or collapse original compact/expanded source hashes.
 
@@ -76,4 +76,18 @@ Each research record must identify source(s), question, hypothesis, alternative,
 - R01 full-body mapping comparison packet with 260 immutable source references, discrepancy taxonomy and proposed activation/default review, *not* a silently selected pack.
 - A Wave 1 status update to the accepted owner decision indicating evidence received, blockers and required owner approval. No dates, recruitment, test results or informed legal judgments are invented here.
 
-**State now:** **Option B accepted; Wave 1 activated as research intent; no pre-design research completion certified; Figma/design entry still withheld.**
+**State updated after owner's one-pass instruction (2026-10-10):** **Option B remains accepted; Wave 1 bounded research documentation is complete, but genuine recruited writer interviews are BLOCKED/NOT RUN, and activation of the 134-rule proposal is OWNER DECISION NEEDED.** The owner explicitly requested no iterative reopening of these two research passes and to proceed to the next stage. Accordingly **Wave 2 R05/R16 + R11 is activated as research-only**, without converting Wave 1 gaps to PASS. Figma/Lovable/Figma Design, feature implementation, paid inference and deployment remain withheld. Source findings: [R02/R03 one-pass report](../research/OPTION-B-WAVE01-R02-R03-ONE-PASS-AUTHOR-EVIDENCE-2026-10-10.md) and [R01 source review](../research/OPTION-B-WAVE01-R01-260-SOURCE-MAPPING-REVIEW-2026-10-10.md).
+
+## Wave 1 bounded one-pass closeout — 2026-10-10
+
+**Owner instruction:** both R02/R03 author research and R01 source review are to be completed in a single research response, without subsequent question/research loops, and work should continue to the next stage. This instruction is interpreted as permission for **research sequencing** rather than proof of interviews completed or activation of original literary defaults.
+
+| Wave 1 subtask | Actual evidence | Honest status |
+|---|---|---|
+| Public author needs and competitor verification | 12 linked firsthand public author signals; 10 grounded competitors (original nine plus Atticus); all 11 accepted author journeys mapped | BOUNDED SECONDARY RESEARCH COMPLETE |
+| Direct newly recruited author interviews / observed tasks | No participant recruitment/consent possible in this session; no unassisted observations | NOT RUN, candid blocker, cannot claim user validation |
+| Source 260-record audit | Original hash checked; 130/130 compact/expanded complete bodies and line spans in private packet; 13 title changes and 4 meaning splits | SOURCE INVENTORY COMPLETE |
+| Exact active 134-control mapping and defaults | Versioned expanded-primary + 4 compact split proposal; recommended 130 primary library ON / four compact OFF only after owner approval, AI calls off by default | OWNER DECISION NEEDED — no activation |
+| Next work | Editor/accessibility and DOCX fidelity research reuse existing Pair 02/03 tests | **WAVE 2 ACTIVE (RESEARCH ONLY)** |
+
+**Never reclassify the two outstanding Wave 1 items as PASS without new evidence or explicit owner decision.** The absence of recruits and absent active-map approval do not authorize Figma prototyping or production code. Owner requested to continue research stages rather than stop for repeated chat rounds.
