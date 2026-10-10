@@ -6,7 +6,7 @@ status: proposed-owner-review
 created_at: 2026-10-09
 updated_at: 2026-10-10
 owner: project_owner
-version: 0.2.1
+version: 0.2.2
 source_refs:
   - docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
@@ -17,13 +17,15 @@ source_refs:
   - docs/research/PAIR-04-OFFLINE-PROVIDER-CORPUS-2026-10-09.md
   - docs/research/PAIR-05-SYNTHETIC-RULES-REVERSIBLE-EDIT-2026-10-09.md
   - docs/research/PAIR-06-LEGAL-OPS-RESTORE-2026-10-09.md
+  - docs/decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md
+  - docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md
 ---
 
 # Vellistry — Six-pair research integration and design-entry review
 
 **Verified post-recovery `main` at `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523` on 2026-10-10** ([PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) merged). The preceding `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` was the earlier, pre-repair checkout on which the missing-files diagnosis was made.
 
-**Decision state: PROPOSED — OWNER APPROVAL REQUIRED.** All six research pairs have merged pull-request records. The previously missing **21** K2 and Pair 04/05 research files were recovered from original stacked branch source in [merged PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and are now verified present on `main`. **Seven exact-head PR #43 workflows passed**, including the combined checkout and local Supabase K2 test. These findings do **not** mean completing every research acceptance criterion, certify production manuscript security, waive owner decisions, or authorize feature implementation, paid services, real manuscript upload, design production, or public release. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
+**Research closeout: OPEN. Owner design-entry decision: OPTION B ACCEPTED (strict pre-design research before prototypes).** All six research pairs have merged pull-request records. The previously missing **21** K2 and Pair 04/05 research files were recovered from original stacked branch source in [merged PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) and are now verified present on `main`. **Seven exact-head PR #43 workflows passed**, including the combined checkout and local Supabase K2 test. These findings do **not** mean completing every research acceptance criterion, certify production manuscript security, waive owner decisions, or authorize feature implementation, paid services, real manuscript upload, design production, or public release. The owner-directed [research → editable Figma design → explicit design approval → implementation plan](../plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md) remains in force.
 
 ## Integration facts and still-unresolved findings
 
@@ -56,23 +58,23 @@ source_refs:
 
 The original owner-directed design-first plan prohibited merging/promoting implementation-only code until research and design gates passed. Nevertheless, on **2026-10-10** [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) (initial Next.js/NestJS/Supabase scaffold) and K2 research descendants were merged into `main` before a canonical Figma design had been accepted. This is a **process variance**, not evidence that a design gate passed or that an owner rescinded it. Preserve the merged source and commit history, do not forcibly revert useful research, but **hold new feature implementation and deployments** pending explicit owner design approval or separately documented change in sequencing.
 
-## Proposed narrow research-to-design disposition (not a decision)
+## Previous design-only recommendation (superseded by Option B)
 
-**Recommendation for owner consideration:** Authorize a **design-only** phase for synthetic manuscripts, after reviewing the above research gaps and explicitly recording which incomplete *research-for-design* evidence is accepted as a risk for exploratory prototyping. This would permit low-fidelity IA, two visibly different prototype directions (Figma Make and/or Lovable), editable Figma Design components and measured author walkthroughs. It would **not**:
+**Historical recommendation, NOT selected:** Authorize a **design-only** phase for synthetic manuscripts, after reviewing the above research gaps and explicitly recording which incomplete *research-for-design* evidence is accepted as a risk for exploratory prototyping. This would permit low-fidelity IA, two visibly different prototype directions (Figma Make and/or Lovable), editable Figma Design components and measured author walkthroughs. It would **not**:
 - certify the 134 proposed R01 controls or switch on authentic active rules;
 - grant product implementation or production deployment permission;
 - waive real manuscript access controls, provider privacy, DOCX fidelity, license review or author-data backup/recovery;
 - imply research interviews or usability trials already happened;
 - approve paid plans, confidential source uploads or using actual unpublished author text.
 
-## Owner decision checklist — all currently pending
+## Owner decision checklist — Option B recorded; remaining approvals pending
 
-- [ ] **Design-entry decision:** approve a bounded design-only phase, request more pre-design evidence, or decline. Record exact scope and caveats; **do not infer approval from merge**.
-- [ ] **Writer evidence:** decide whether first-hand discovery must precede concept prototypes, or approve a scoped exploratory mockup phase with usability studies still mandatory before design acceptance.
+- [x] **Design-entry decision:** **Option B selected** directly by the owner on 2026-10-10: complete outstanding pre-design research and owner-critical decisions **before prototypes**. [Accepted decision](../decisions/OWNER-DESIGN-ENTRY-OPTION-B-2026-10-10.md). **No design or implementation authorization**.
+- [ ] **Writer evidence:** collect actual, consented author discovery and no-prototype workflow observations before any Figma/Lovable prototyping; do not fabricate trials or replace them with vendor claims.
 - [ ] **Rule mapping:** approve/revise/reject an exact owner-reviewed operational source mapping; never equate approving P1 with approving 134 active controls.
 - [ ] **Security posture:** agree on required live logout/session semantics for private manuscript operations and whether experimental Nest-only tests warrant implementation-stage design.
 - [ ] **M3 portability:** choose a non-silent formatting-loss strategy for DOCX handling.
 - [ ] **AI provider/evaluation:** decide allowed real-provider tests, data-use/retention and zero-expense limits before any live author-text transfer.
 - [ ] **Operations/legal:** review rights, licenses, cross-border/privacy, backup custody/retention, hosting costs and initial recovery targets before release.
 
-**No checkbox above is checked by this PR.** Next approved activity should follow the owner's explicit design-entry decision. See [the owner-ready design decision record](../plans/DESIGN-ENTRY-DECISION-2026-10-10.md) for options and safe boundaries.
+**Only the Option B selection is checked.** The other owner decisions remain open; the active research plan is [Option B pre-design closeout](../plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md). Complete its evidence/decision packet, then request a **new** owner design-entry approval. CI success or PR merge does not open the design gate.
