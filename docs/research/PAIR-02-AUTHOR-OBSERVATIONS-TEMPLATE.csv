@@ -1,0 +1,12 @@
+participant_id,session_date,task_id,task,mvp_areas,device_browser,experience_profile,assistive_technology_opt_in,unassisted_outcome_not_run_pass_fail,time_seconds,observer_errors,participant_comments_with_consent,privacy_concern,loss_or_lockin_concern,help_needed,severity_if_failed,evidence_link_private,status
+"","","VEL-JRN-001","Create and navigate two chapters","M1/M2/M3/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-002","Write and format without AI","M2/M3/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-003","Recover and export manuscript","M3/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-004","Manually update character and storyline","M4/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-005","Review candidate profile changes","M2/M4/M7","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-006","Disable restore and add scoped rule","M5/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-007","Preview optional Continue context consent","M5/M6/M7/M8","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-008","Review accept reject undo rewrite","M2/M5/M6/M7","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-009","Accept AI prose and separately reject candidate canon","M4/M6/M7","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-010","Handle stale AI result after new typing","M2/M3/M7","","","","","","","","","","","","","NOT_RUN"
+"","","VEL-JRN-011","Check account isolation backup deletion","M3/M8","","","","","","","","","","","","","NOT_RUN"

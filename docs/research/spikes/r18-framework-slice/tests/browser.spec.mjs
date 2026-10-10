@@ -129,3 +129,60 @@ for(const variant of variants){
   });
  });
 }
+
+
+// R05/R16 Pair 02 — extra keyboard and semantic-mark regressions on the
+// already verified isolated R18 editor fixture. No user screen-reader testing.
+for(const variant of variants){
+ test.describe(variant.name+" Pair 02 editor input and access",()=>{
+  test("keyboard heading and bold marks persist with source JSON intact",async({browser})=>{
+   const {page,context}=await open(browser,variant.origin);
+   try{
+    const editable=await loaded(page);
+    await editable.fill("Chapter title");
+    await waitDraft(page);
+    await editable.click();
+    await page.keyboard.press("ControlOrMeta+Home");
+    await page.keyboard.press("ControlOrMeta+Alt+1");
+    await expect(editable.locator("h1")).toHaveText("Chapter title");
+    await page.keyboard.press("ControlOrMeta+End");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("Mara ");
+    await page.keyboard.press("ControlOrMeta+b");
+    await page.keyboard.type("remembered");
+    await page.keyboard.press("ControlOrMeta+b");
+    await expect(editable.locator("strong")).toContainText("remembered");
+    await waitDraft(page);
+    await save(page,2);
+    const persisted=await pool.query("select revision,document from r18_http.chapters where book_id='book-a'");
+    expect(persisted.rows[0].revision).toBe(2);
+    expect(persisted.rows[0].document.content[0].type).toBe("heading");
+    expect(persisted.rows[0].document.content[0].attrs.level).toBe(1);
+    expect(JSON.stringify(persisted.rows[0].document)).toContain('"type":"bold"');
+    await page.reload();
+    const restored=await loaded(page);
+    await expect(restored.locator("h1")).toHaveText("Chapter title");
+    await expect(restored.locator("strong")).toContainText("remembered");
+   }finally{await context.close();}
+  });
+
+  test("save status is announced semantically and saving is reachable by keyboard",async({browser})=>{
+   const {page,context}=await open(browser,variant.origin);
+   try{
+    const editable=await loaded(page);
+    const status=page.getByRole("status");
+    await expect(status).toHaveAttribute("aria-live","polite");
+    await editable.fill("Keyboard-only save test");
+    await waitDraft(page);
+    await editable.focus();
+    await page.keyboard.press("Tab");
+    const saveButton=page.getByRole("button",{name:"Save revision"});
+    await expect(saveButton).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(status).toHaveText("saved at revision 2");
+    await page.reload();
+    await expect(await loaded(page)).toContainText("Keyboard-only save test");
+   }finally{await context.close();}
+  });
+ });
+}

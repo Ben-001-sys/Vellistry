@@ -16,15 +16,34 @@ export function normalizePayload(p) {
   if(!doc || doc.type!=="doc" || !Array.isArray(doc.content) ||
      doc.content.length>100 || JSON.stringify(doc).length>120000)
     return null;
+  // Pair 02 research boundary: allow a small, explicit subset of the
+  // already-selected Tiptap 3 JSON document schema, never silently strip
+  // unsupported marks/attributes. This is NOT the shipping validation schema.
   for(const node of doc.content){
-    if(node.type!=="paragraph" || !Array.isArray(node.content) || node.content.length>100)
-      return null;
-    for(const part of node.content){
-      if(part.type!=="text" || typeof part.text!=="string" || part.text.length>30000)
-        return null;
-      if(Object.keys(part).some(k=>k!=="type"&&k!=="text"))return null;
+    if(!node || typeof node!=="object" || Array.isArray(node) ||
+      !["paragraph","heading"].includes(node.type) ||
+      (node.content!==undefined && !Array.isArray(node.content)) ||
+      (node.content?.length??0)>100)return null;
+    if(node.type==="heading"){
+      if(!node.attrs || !Number.isInteger(node.attrs.level) ||
+        node.attrs.level<1 || node.attrs.level>3 ||
+        Object.keys(node.attrs).some(k=>k!=="level"))return null;
+    }else if(Object.hasOwn(node,"attrs"))return null;
+    if(Object.keys(node).some(k=>!["type","content","attrs"].includes(k)))return null;
+    for(const part of (node.content??[])){
+      if(!part || part.type!=="text" || typeof part.text!=="string" ||
+        !part.text.length || part.text.length>30000)return null;
+      if(Object.keys(part).some(k=>!["type","text","marks"].includes(k)))return null;
+      if(part.marks!==undefined){
+        if(!Array.isArray(part.marks) || part.marks.length>3)return null;
+        const seen=new Set();
+        for(const mark of part.marks){
+          if(!mark || !["bold","italic","strike","code"].includes(mark.type) ||
+            Object.keys(mark).some(k=>k!=="type") || seen.has(mark.type))return null;
+          seen.add(mark.type);
+        }
+      }
     }
-    if(Object.keys(node).some(k=>k!=="type"&&k!=="content"))return null;
   }
   if(Object.keys(doc).some(k=>k!=="type"&&k!=="content"))return null;
   return {expected:p.expectedRevision,document:doc};

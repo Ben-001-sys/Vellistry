@@ -105,7 +105,29 @@ async function examine(name,base){
    const r=await call("PUT","book-a",{expectedRevision:3,document:doc("not saved"),bookId:"book-b"},{},"missing-chapter");
    assert.equal(r.status,404);
  });
- return {adapter:name,passed:results.length,total:15,checks:results};
+ await check("16 rich heading and bold persist without stripped data",async()=>{
+   const rich={type:"doc",content:[
+     {type:"heading",attrs:{level:1},content:[{type:"text",text:"A Chapter"}]},
+     {type:"paragraph",content:[{type:"text",text:"A "},
+       {type:"text",text:"bold phrase",marks:[{type:"bold"}]}]}
+   ]};
+   const r=await call("PUT","book-a",{expectedRevision:3,document:rich});
+   assert.equal(r.status,200);
+   const back=await call("GET","book-a");
+   assert.deepEqual(back.body.document,rich);
+   const row=await db.query("SELECT document FROM r18_http.chapters WHERE book_id='book-a'");
+   assert.deepEqual(row.rows[0].document,rich);
+ });
+ await check("17 unsupported marks rejected without normalization",async()=>{
+   const invalid={type:"doc",content:[{type:"paragraph",content:[
+     {type:"text",text:"Not silently normalized",marks:[{type:"html"}]}
+   ]}]};
+   const r=await call("PUT","book-a",{expectedRevision:4,document:invalid});
+   assert.equal(r.status,400);
+   const back=await call("GET","book-a");
+   assert.equal(back.body.revision,4);
+ });
+ return {adapter:name,passed:results.length,total:17,checks:results};
 }
 const output={environment:"R18 synthetic disposable PostgreSQL sessions",adapters:[]};
 try{

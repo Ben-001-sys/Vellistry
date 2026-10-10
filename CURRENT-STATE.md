@@ -203,3 +203,17 @@ Owner asked: "continue pair 2 and 3". Pair 02 evidence remains on [draft PR #37]
 **Latest bounded research:** Pair 02 — R02/R03 original eleven author tasks and prior vendor evidence mapped; no actual novelist interviews or accessibility assistive-technology sessions. R05/R16 test harness expanded with Tiptap heading/bold keyboard format persistence; early CI showed 10/12 and a server JSON schema gap. Research-only schema/negative tests improved; exact-head Chromium pass must be checked. Pair 03 — R11 synthetic portable two-book ZIP/TXT restore, real Calibre DOCX→EPUB→DOCX experiment, and R07 temporal approval scenarios. Exact research CI #38004035995 passed 18 new tests plus 20 existing R07 tests; Calibre 7.6.0 preserved three synthetic chapter titles/sentences but **lost heading styles (3 input → 0 output)**.
 
 **Unresolved release-critical gates:** R01 134-control proposal source/enablement owner review; actual Nest-only manuscript security integration, Next SSR and client copies; real author research, accessibility and supported rich-text edit/save; DOCX style fidelity and secure clean-project backup restore; R07 extraction accuracy and UI. Full Figma Make/Lovable alternatives and owner-approved canonical Figma design remain before product feature implementation. Synthetic fixtures are not shipping product paths.
+
+## 2026-10-09 — Pair 02 research activation under bounded Pair 01 deferral
+
+Owner instructed: "this is ok for mvp lets deal with the rest of the pairs" after source-variant mapping proposals and actual local session-liveness / restricted-gateway test evidence. Interpret as permission to **advance research sequencing**, not to approve the original 134 proposed rule controls or waive manuscript privacy/release security. See [Pair 02 evidence](docs/research/PAIR-02-ACCELERATED-AUTHOR-EDITOR-EVIDENCE-2026-10-09.md) and [remaining-pairs reuse ledger](docs/research/ACCELERATED-PAIRS-02-TO-06-EVIDENCE-REUSE-2026-10-09.md).
+
+**Currently active research tracks (exactly two):**
+- R02/R03: author workflows, competitor comparisons, real-writer study tasks; no user interviews yet verified.
+- R05/R16: Tiptap/ProseMirror editor and accessibility; reuse previous real-browser evidence, add bounded browser keyboard/formatting/save-state checks, assistive-tech review remains open.
+
+**Queued:** Pairs 03 (R11/R07), 04 (R08/R21 and R19), 05 (R06/R10), 06 (R14/R21 and R18). These are NOT newly active merely because a reuse ledger exists.
+
+**Carry-forward blockers:** Final R01 source-backed rule mapping, authentic defaults; R15/K2B production-integrated secure manuscript access and SSR, storage, client draft isolation, deletion/retention. Research-only local CI findings do not imply production readiness. Existing Next/Nest/Supabase scaffold remains on hold; dedicated Figma/Lovable design and owner-reviewed UI signoff still precede production implementation.
+
+**Evidence classification:** Pair 02 documentation and tests are a draft PR, not automatically accepted. Check exact-head workflow conclusions before treating new browser behavior as verified. Do not retrospectively rewrite older state, tests or decisions.
