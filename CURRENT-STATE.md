@@ -5,16 +5,22 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.43
+version: 0.1.44
 ---
 
 # Vellistry — Current State
 
+## Owner decision — defer noncritical UI fixes into implementation (2026-10-11)
+
+The owner explicitly directed **leave the editable Figma Design as it is for now; remaining UI adjustments can be fixed during implementation**. The reviewed Library mockup `27:10` still visually combines a populated book card with a “No books yet” message; **no canvas correction occurred**. The owner accepted deferring this **static design** inconsistency, provided the implementation of the Library slice **renders empty and populated states mutually exclusively** and tests account-owned book isolation. Exact behavior and tests are recorded in [VEL-DES-005](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md). All other noncritical UI polish/variants may iterate with implementation; do not confuse deferred visual cleanup with permission to ship broken interactions, copy synthetic account-state leakage, or tolerate manuscript-loss/security bugs.
+
+This resolves PR #57's final P2 review item **by explicit owner-approved deferral, not by visual remediation**. It does not grant `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, or `G_RELEASE`; implementation still requires scoped owner authorization and existing accepted functional contracts. The Supabase signed-out unexpired JWT/direct PostgREST privacy concern remains open for any real manuscript/private pilot.
+
 ## PR #57 reviewer refinements (2026-10-11; partially addressed)
 
-- GitHub PR #57 review of exact head `55e253c` found **three P2 actionable items**: authoritative 16-frame editable master inventory, chronology fix for the old no-Figma-edits statement, and mutually exclusive Library empty/populated UI variants. Three PR-head CI workflows were successful; review was **COMMENTED**, with three open inline threads. **Do not merge based only on CI.**
+- GitHub PR #57 review of exact head `55e253c` found **three P2 actionable items**: authoritative 16-frame editable master inventory, chronology fix for the old no-Figma-edits statement, and mutually exclusive Library empty/populated UI variants. Three PR-head CI workflows were successful; review was **COMMENTED**, with three open inline threads. **CI success alone is insufficient; the owner subsequently accepted deferring the last Library visual finding as recorded in the newer checkpoint above.**
 - Master inventory now resolves to **16 frames**, across two design pages: original A/B alternatives (2), original unified candidates (4), earlier discovered expanded manuscript/story/settings views (3), and newly created editable additions (7). See [canonical design handoff v0.5](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md), [updated journey coverage](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md) and [actual frame list](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md).
-- **Chronology:** the older walkthrough-only checkpoint said no canvas edits had yet occurred. Subsequently the second `hb4` Figma account wrote seven real frames to the same master. A later attempt to fix Library's empty/populated contradiction hit the Starter MCP quota; **no Library layer change was applied**. Keep that visual finding **open** until actual layer change and visual readback.
+- **Chronology:** the older walkthrough-only checkpoint said no canvas edits had yet occurred. Subsequently the second `hb4` Figma account wrote seven real frames to the same master. A later attempt to fix Library's empty/populated contradiction hit the Starter MCP quota; **no Library layer change was applied**. The Library visual defect remains **uncorrected in Figma**, but the owner has now explicitly deferred its cleanup to implementation with a mandatory conditional-rendering test.
 - **Governance:** static design refinement only. No product feature implementation, Make/Lovable paid usage, manuscript data, real auth or new approvals. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending.
 
 ## Seven additional editable Figma Design screens created (2026-10-11)
