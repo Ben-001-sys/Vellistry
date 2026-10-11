@@ -6,7 +6,7 @@ status: proposed-owner-review-planning-only
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.2.0
+version: 0.3.0
 source_refs:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
@@ -107,7 +107,7 @@ The entire following planning phase precedes installing/configuring development 
 **Deliverable:** screen/feature navigation matrix, state transitions and implementation-ready minimum design reference for each slice.
 
 ### PLAN-04 — Test/security/privacy/backup strategy
-- Draft unit/component, Next/Nest API, disposable local Supabase RLS, transactional DB, browser E2E, exploratory accessibility and real-author validation plan. Bind tests to accepted journey IDs, negative cases and fixture provenance.
+- Draft unit/component, Next/Nest API, **owner-selected isolated hosted Supabase development project** RLS, transactional DB, browser E2E, exploratory accessibility and author validation plan. Use only non-destructive synthetic data and never run old local reset fixtures on the linked cloud project. Bind tests to accepted journey IDs, negative cases and fixture provenance.
 - Security threat model covers direct PostgREST bypass of Nest, stale signed-out JWT exposure, key/redaction, BFF cached state, chapter/Storage ID guessing, import/export leakage, cross-persona and cross-book state, stale AI suggestions, prompt/instruction transfer and service-role misuse.
 - Define `PASS/FAIL/BLOCKED/NOT_RUN` evidence and “no false Saved/no silent manuscript loss/no unapproved canon/no cross-author data” zero-tolerance defects in bounded suites.
 - Plan clean Auth+DB+Storage backup and restore, versioned archive format, retention and deletion behavior; define internal recovery objectives as *targets*, not proven service levels.
@@ -137,7 +137,7 @@ This phase is an explicit follow-up activity, **not completed by creating this d
 
 ### SETUP-01 — Verify Windows environment and repositories
 - On the user's Windows 11 desktop, check disk space, 64-bit Windows support, admin rights/organization restrictions and backup location.
-- Install or verify Git for Windows, Cursor Desktop, Node.js 24 LTS, Corepack/pnpm 10, Python 3 for existing agent scripts, Docker Desktop with WSL2 (subject to actual system capability). Do not install a second package manager or upgrade dependencies thoughtlessly.
+- Verify Git for Windows, Cursor Desktop, Node.js 24, Corepack/repo-pinned pnpm 10.18.0 and Python 3 for existing agent scripts. **No Docker Desktop or WSL2 installation is required for the selected hosted Supabase Cloud backend**. Owner-observed versions: Git 2.55.0, Node 24.13.0, Python 3.10.10, Corepack 0.34.5 and global pnpm 11.5.2; choose the pinned pnpm per repo instead of changing the global version. C: has 13.9 GB free; monitor rather than declaring Docker disk usage mandatory.
 - Set or confirm Git identity, credential/SSH auth and access to **personal** `Ben-001-sys/Vellistry` repo; use least privilege. Read organization-repo permissions independently if needed.
 - Open the existing repository folder in Cursor, not a brand-new app; confirm branch/clean status and workspace trust.
 
@@ -147,19 +147,19 @@ This phase is an explicit follow-up activity, **not completed by creating this d
 - Set file-edit and terminal command confirmation boundaries; require approval for destructive commands, secret access, migrations and external network.
 - Keep one branch/worktree for a single assigned task; avoid auto-running a huge agent instruction. Agree report format and checkpoint before allowing edits.
 
-### SETUP-03 — Local Supabase and environment isolation
-- Verify Docker engine/WSL2 health. Start **disposable local** Supabase CLI via repo, inspect local ports and confirm no accidental public bindings. Do not run destructive `supabase db reset` until an identified local disposable target and separate approval.
-- Configure untracked local env files from examples; use only local publishable keys at this stage, never put production keys in Git/chat/log.
-- Check port plan: Next web 127.0.0.1:3000, Nest API 127.0.0.1:4100, Supabase CLI API local 54321, DB 54322, Studio 54323 (verify actual config before relying on these).
-- Create Alice/Bob synthetic local users after explicit testing setup permission; do not upload real creative manuscripts.
+### SETUP-03 — Hosted Supabase Cloud project and environment isolation (owner direction)
+- Use **Supabase Cloud within the owner's existing account**, not self-hosting or running Supabase CLI local containers. Select a **dedicated development project** if available; a Supabase account alone is not an API/project. Confirm project reference, whether it contains real user data and the actual schema/migration status before any write.
+- Configure untracked local env files: Next reads `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`; Nest reads `SUPABASE_URL` + `SUPABASE_PUBLISHABLE_KEY`. Use the project's **HTTPS URL and publishable key**; the repo `.env.example` currently contains *local-only placeholders* and must not be used literally. No secret/service-role key in browser, Git/chat or routine author API.
+- Next stays local at `127.0.0.1:3000`, Nest at `127.0.0.1:4100`; no requirement to bind local Supabase API 54321, DB 54322 or Studio 54323. Verify Auth redirect URLs, session flow and no-cache ownership.
+- Do not run `supabase start`, `pnpm supabase:reset`, `supabase db reset --linked`, `supabase db push`, remote migration repair or existing local reset/security integration scripts on hosted cloud without separately reviewed project selection and explicit permission. Only create Alice/Bob synthetic test accounts in a confirmed disposable dev project under an approved task.
 
 ### SETUP-04 — Baseline run WITHOUT feature implementation
-- Install locked dependencies; run `pnpm check`, `pnpm build`, existing tests; boot web/API/DB; inspect healthy routes and current account/book flow.
-- Record OS/Node/pnpm/Docker/Cursor versions, exact SHA, failing/passing baseline, local env blockers and logs scrubbed of secrets.
-- Confirm backup copy/rollback ability and test data resets are bounded to disposable env. **No feature code change yet**.
+- Install locked dependencies; run `pnpm check`, `pnpm build` and safe non-mutating tests; boot **local web/API**, connecting to the verified HTTPS Supabase Cloud development project. Hosted schema/RLS may differ from checked-in migrations: inspect non-destructively and report `BLOCKED` rather than pushing changes to make a baseline pass.
+- Record observed OS/Node/pnpm/Cursor versions, cloud project reference and scope, exact Git SHA, failing/passing baseline, local network/env blockers and logs scrubbed of secrets; Docker/WSL status is not a blocker.
+- Confirm hosted development project data boundaries, backup/rollback options and explicit author approval before applying Git migration files; **no cloud reset or feature code change yet**.
 - Report baseline and obtain the go-ahead for first Cursor coding slice.
 
-**Exit:** reproducible safe local development workspace and exact baseline evidence. If hardware/container support is constrained, choose an alternative *only after review*, not silent architecture replacement.
+**Exit:** reproducible local Next/Nest + owner's safely isolated hosted Supabase development project and exact baseline evidence. No Docker requirement. A real-manuscript pilot still requires a separate solution for the signed-out unexpired JWT/direct PostgREST risk.
 
 ## 6. Product implementation phases — start only AFTER the setup and scoped coding handoff
 
