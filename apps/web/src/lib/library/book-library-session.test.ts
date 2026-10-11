@@ -314,11 +314,97 @@ test("a lost create response stays unknown until refresh", async () => {
   await env.session.refresh();
   const after = libraryRegion(env.session.snapshot().model);
   assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
-  assert.equal(env.session.snapshot().model.createUncertain, false);
-  assert.equal(after.canCreate, true);
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(after.canCreate, false);
+  assert.equal(after.showRiskRetry, true);
+  assert.equal(after.status, LIBRARY_COPY.createAbsent);
   assert.equal(/saved/i.test(after.status), false);
-  assert.notEqual(after.status, LIBRARY_COPY.createUnknown);
+  assert.equal(createCalls, 1);
   assert.deepEqual(after.books.map((item) => item.title), ["Amber notebook"]);
+});
+
+test("a delayed server commit stays blocked after an empty refresh", async () => {
+  const env = harness();
+  let createCalls = 0;
+  env.createBook = () => {
+    createCalls += 1;
+    return Promise.reject(new Error("response lost"));
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Brand new notebook");
+  await env.session.submitCreate();
+  env.booksForA = [];
+  await env.session.refresh();
+  const missing = libraryRegion(env.session.snapshot().model);
+  assert.equal(createCalls, 1);
+  assert.equal(missing.canCreate, false);
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(missing.showRiskRetry, true);
+  assert.equal(/saved/i.test(missing.status), false);
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+
+  env.booksForA = [book("a-2", "Brand new notebook")];
+  await env.session.refresh();
+  const landed = libraryRegion(env.session.snapshot().model);
+  assert.equal(createCalls, 1);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(landed.canCreate, true);
+  assert.equal(landed.showRiskRetry, false);
+  assert.equal(/saved/i.test(landed.status), false);
+  assert.deepEqual(landed.books.map((item) => item.title), ["Brand new notebook"]);
+});
+
+test("a transient refresh lookup hides the draft and restores it for the same author", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A private title");
+  env.failOwnerReadOn = env.ownerReads + 1;
+  await env.session.refresh();
+  const hidden = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.deepEqual(hidden.books, []);
+  assert.equal(hidden.status.includes("A private title"), false);
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "A private title");
+  assert.deepEqual(libraryRegion(env.session.snapshot().model).books.map((item) => item.title), ["Amber notebook"]);
+});
+
+test("a transient refresh lookup does not reveal the draft to the next author", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A secret title");
+  env.failOwnerReadOn = env.ownerReads + 1;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "");
+  env.failOwnerReadOn = null;
+  env.signedInAs = AUTHOR_B;
+  await env.session.onAuthEvent("SIGNED_IN", AUTHOR_B);
+  const region = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(region.books.some((item) => item.title === "A secret title"), false);
+  assert.equal(region.status.includes("A secret title"), false);
+  assert.deepEqual(region.books.map((item) => item.title), ["Blue notebook"]);
+});
+
+test("an explicit risk retry is required before another create", async () => {
+  const env = harness();
+  let createCalls = 0;
+  env.createBook = () => {
+    createCalls += 1;
+    return Promise.reject(new Error("response lost"));
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Brand new notebook");
+  await env.session.submitCreate();
+  await env.session.refresh();
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+  await env.session.retryUncertainCreate();
+  assert.equal(createCalls, 2);
+  assert.equal(/saved/i.test(env.session.snapshot().model.status), false);
 });
 
 test("an owner change after an unknown create does not reveal that title", async () => {

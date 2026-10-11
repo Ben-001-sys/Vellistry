@@ -4,6 +4,8 @@
  * Same-author Refresh during a create does not abort that POST or bump generation.
  * A lost create response, or a successful response followed by a failed owner lookup,
  * is an unknown outcome. It does not say the book was saved or that the save failed.
+ * A later list that omits the title does not make another create safe.
+ * An unverified refresh conceals the draft and restores it only for that same author.
  * An owner change clears the unsaved title and ignores the previous response.
  */
 
@@ -14,6 +16,7 @@ import {
   concealBooksForSignOut,
   failSignOut,
   initialLibraryState,
+  noteMissingUncertainTitle,
   requestCreate,
   type LibraryState,
 } from "./book-library-state";
@@ -63,6 +66,7 @@ export type LibrarySession = {
   onAuthEvent: (event: string, nextOwner: string | null) => Promise<void>;
   attachAuth: (listen: AuthListen) => () => void;
   refresh: () => Promise<void>;
+  retryUncertainCreate: () => Promise<void>;
   submitCreate: () => Promise<void>;
   signOut: () => Promise<void>;
   failConfiguration: () => void;
@@ -73,6 +77,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   let model = initialLibraryState();
   let draftTitle = "";
   let owner: string | null = null;
+  let concealedDraft: { ownerKey: string; title: string; createWasPending: boolean } | null = null;
   let hasLoaded = false;
   let loadAbort: AbortController | null = null;
   let createAbort: AbortController | null = null;
@@ -101,13 +106,24 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     const ownerChanged = ownerKey !== owner;
     loadAbort?.abort();
     if (ownerChanged) createAbort?.abort();
-    if (ownerChanged) draftTitle = "";
+    let restorePending = false;
+    if (ownerChanged) {
+      if (concealedDraft?.ownerKey === ownerKey) {
+        draftTitle = concealedDraft.title;
+        restorePending = concealedDraft.createWasPending;
+        concealedDraft = null;
+      } else {
+        concealedDraft = null;
+        draftTitle = "";
+      }
+    }
     const controller = new AbortController();
     loadAbort = controller;
     const generation = model.generation + 1;
     owner = ownerKey;
     hasLoaded = true;
     model = beginLoad(model, ownerKey, generation);
+    if (restorePending) model = { ...model, createUncertain: true };
     emit();
     if (ownerKey === null) {
       model = applyLoad(model, generation, null, { kind: "unauthorized" });
@@ -135,10 +151,12 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       const liveOwner = await deps.readOwner();
       if (controller.signal.aborted || model.generation !== generation || liveOwner !== ownerKey) return;
       const uncertain = model.createUncertain;
+      const trimmed = draftTitle.trim();
       model = applyLoad(model, generation, ownerKey, { kind: "ok", books: payload });
-      if (uncertain && model.createUncertain === false) {
-        const trimmed = draftTitle.trim();
-        if (trimmed !== "" && model.books.some((item) => item.title === trimmed)) draftTitle = "";
+      if (uncertain && model.phase !== "error") {
+        const visible = trimmed !== "" && model.books.some((item) => item.title === trimmed);
+        if (visible) draftTitle = "";
+        else model = noteMissingUncertainTitle(model);
       }
       emit();
     } catch {
@@ -164,8 +182,16 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     try {
       nextOwner = await deps.readOwner();
     } catch {
-      // Identity could not be verified. Conceal the previous author's draft and
-      // in-flight work; an aborted POST may still commit, so do not claim failure.
+      // Identity could not be verified. Hide the draft until this author is
+      // confirmed again. Aborting the request does not reverse a server write
+      // and this path does not say the save failed.
+      if (owner !== null && (draftTitle !== "" || model.createPending)) {
+        concealedDraft = {
+          ownerKey: owner,
+          title: draftTitle,
+          createWasPending: model.createPending,
+        };
+      }
       loadAbort?.abort();
       createAbort?.abort();
       draftTitle = "";
@@ -180,6 +206,13 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     // The POST is left running. Success still reloads this author afterwards.
     if (model.createPending && nextOwner === owner) return;
     await startLoad(nextOwner);
+  }
+
+  async function retryUncertainCreate() {
+    if (!model.createUncertain || draftTitle.trim() === "") return;
+    model = { ...model, createUncertain: false };
+    emit();
+    await submitCreate();
   }
 
   async function submitCreate() {
@@ -293,6 +326,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     onAuthEvent,
     attachAuth,
     refresh,
+    retryUncertainCreate,
     submitCreate,
     signOut,
     failConfiguration,

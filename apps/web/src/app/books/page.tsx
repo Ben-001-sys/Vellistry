@@ -79,6 +79,7 @@ export default function Books(){
     <div className="flex gap-4">
       {region.showRefresh ? <button type="button" className="underline" onClick={() => { void session.refresh(); }}>Refresh</button> : null}
       {region.showRetry ? <button type="button" className="underline" onClick={() => { void session.refresh(); }}>Try again</button> : null}
+      {region.showRiskRetry ? <button type="button" className="underline" onClick={() => { void session.retryUncertainCreate(); }}>Save again anyway</button> : null}
       <button type="button" className="underline" onClick={() => { void session.signOut(); }}>Sign out</button>
     </div>
   </main>;
