@@ -5,10 +5,18 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.44
+version: 0.1.45
 ---
 
 # Vellistry — Current State
+
+## Owner implementation-process reset to PLANNING ONLY (2026-10-11; newest)
+
+The owner clarified: **“we are restarting the implementation we are doing the plan for it from start to end no code yet; then after we move into starting cursor on desktop...and all that needed stuff.”** This **supersedes the immediate Cursor-dispatch interpretation** made earlier on 2026-10-11. Existing code, accepted MVP scope, research, Figma master and historical records are **preserved**; the *execution workflow* resets to master planning first. No Cursor Agent launch, local desktop/tool installation, app-code edits, migrations, database reset, real credentials or deployment is authorized in this phase.
+
+The [new standalone planning-only master](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md) maps the full accepted M1–M8 scope, all eleven journeys, PLAN-01..06 decisions, later Cursor desktop/setup preflight, IMP-001..008 sub-slices, validation/security/pilot/release gates, acceptance and dependencies. The [future Cursor Desktop checklist](docs/plans/VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md) is **NOT EXECUTED**. Both reside on the `docs/implementation-master-planning-20261011` review branch pending owner review.
+
+Prior [Issue #58](https://github.com/Ben-001-sys/Vellistry/issues/58) and [draft PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) are a **PAUSED prior implementation kickoff**, not the current instruction to use Cursor or merge. PR #59 contains planning/task files, not verified new runtime application code. Do not merge or dispatch it until a new owner direction after plan review; keep historical context intact. The project-level G_DESIGN/G_CODE records, G_PRIVATE_PILOT and G_RELEASE are not silently marked passed by this planning reset. Signed-out unexpired JWT/direct PostgREST residual manuscript-access risk remains a release/private-pilot blocker.
 
 ## Owner decision — defer noncritical UI fixes into implementation (2026-10-11)
 
