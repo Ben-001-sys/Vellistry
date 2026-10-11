@@ -1,0 +1,75 @@
+---
+id: VEL-DES-CROSS-TOOL-ADJUDICATION-20261011-001
+title: Vellistry Figma Design, Figma Make and Lovable comparative evidence
+type: proposed-design-evaluation
+status: source-audited-make-behavior-unverified
+created_at: 2026-10-11
+updated_at: 2026-10-11
+owner: project_owner
+version: 0.1.0
+sources:
+  - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
+  - docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md
+  - docs/design/VEL-DES-002-JOURNEY-AND-STATE-MATRIX-2026-10-10.md
+  - docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md
+  - docs/design/VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md
+---
+
+# Cross-tool design adjudication — evidence snapshot (NOT OWNER APPROVED)
+
+## What is and is not verified
+
+**Evidence baseline, 2026-10-11:**
+- [Editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U): six synthetic editable frames were created (A, B, four hybrid candidates). Earlier screenshots of A, B and a unified rewrite were inspected, but no connected functional prototype or all-screen responsive QA was demonstrated. Figma Starter MCP calls are now quota-limited.
+- [Figma Make](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1): **user supplied a Make-file URL**. Its content, interaction flow, privacy configuration, and actual generation quality could not be inspected through current tools; its web URL did not load in the available reader. Link receipt is evidence of the artifact referent, *not* an acceptance test.
+- [Lovable synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787): generation completed; source read at exact commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`. Source contains in-memory fixtures, reader/writer shell, model logic and illustrative rules; the **12 model tests + 1 route test are present**, but the generator's claimed pass/Playwright results were **not independently rerun**. Its cloud database was reported disabled, and its project unpublished. Workspace editor visibility is not owner-private.
+- No genuine author interview, approved design, product save API test, security authorization test or real AI call has been undertaken through this stage.
+
+**Evaluation labels**: `STATIC PRESENT` (visual artifact exists), `SOURCE PRESENT` (interactive code visible), `SOURCE DEFECT` (observed mismatch), `NOT INSPECTED` (actual behavior unavailable), `NOT RUN` (no witnessed task success). A code path existing is not a verified user journey. Do **not** use `PASS` without observed execution evidence.
+
+## Matrix against canonical eleven journeys
+
+Source-of-truth titles follow `MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md`, not generated tool marketing descriptions.
+
+| Journey | Figma Design (static) | Figma Make (behavior) | Lovable (source only) | Evidence / next validation |
+|---|---|---|---|---|
+| **VEL-JRN-001** Start a book and move between chapters without losing writing | Chapter rail present | NOT INSPECTED | SOURCE PRESENT | Simulate edits across two chapters, reordering, switching; content must remain correctly keyed |
+| **VEL-JRN-002** Write and format normally with no model/account key | Manual editor present | NOT INSPECTED | SOURCE PRESENT | Independently type, format, undo/redo and select with AI OFF; keyboard and IME still untested |
+| **VEL-JRN-003** Close, reopen, recover and export a manuscript | Conflict frame present | NOT INSPECTED | SOURCE PRESENT (simulation) | In-memory reload loses state, so actual close/reopen recovery/export fidelity is **not demonstrated** |
+| **VEL-JRN-004** Manually revise character/storyline profiles | Profile context present | NOT INSPECTED | SOURCE PRESENT | Author notes and threads have edit handlers; actual author task NOT RUN |
+| **VEL-JRN-005** Approve/revise/dismiss candidate profile changes | Canon-review frame present | NOT INSPECTED | SOURCE DEFECT | Lovable initially accepts evidence solely on revision matching; exact quote does not match source |
+| **VEL-JRN-006** Browse/disable/restore/add creative rule | Rule label/context only | NOT INSPECTED | SOURCE PRESENT (illustrative subset) | Five invented rule rows and overrides; not authoritative 134-control catalog, no complete added-rule coverage observed |
+| **VEL-JRN-007** Connect provider, preview context, request Continue | AI-OFF note only | NOT INSPECTED | SOURCE DEFECT | Mock BYOK preview and proposal exist, but Continue appends rather than respecting insertion point |
+| **VEL-JRN-008** Rewrite, reject/accept and undo | Rewrite review frame present | NOT INSPECTED | SOURCE DEFECT | Rewrite guard accepts unknown block indices; stored Range needs active-text/current-source validation |
+| **VEL-JRN-009** Accept AI prose then review separate profile candidate | Separate prose/canon frames | NOT INSPECTED | SOURCE DEFECT | Separate candidate exists, but undo does not retract AI-prose-derived pending fact |
+| **VEL-JRN-010** Edit during pending AI, then handle stale safely | Design only, no active pending interaction | NOT INSPECTED | SOURCE PRESENT + UNCERTAINTY | Version invalidation exists, but needs independent DOM/insertion/offset tests and stale response scenario |
+| **VEL-JRN-011** Isolate accounts/books and retrieve/delete author data | No comprehensive account screen | NOT INSPECTED | SOURCE PRESENT (simulation) | Toy Writer A/B separate in-memory state; **not** real auth isolation, secure deletion, or sign-out JWT revocation |
+
+**No row is certified PASS.** Lovable's four recorded defects are uncorrected; Make's independent implementation is unknown. The table must be updated only with actual inspected source or observed testing.
+
+## Design recommendation (PROVISIONAL, NOT A DECISION)
+
+Use **writing-first manuscript canvas** as the reference direction for usability assessment, with **on-demand Story Workspace** from alternative B. Keep contextual facts unobtrusive and origin-labelled. This preserves the manual-first M1–M8 decision, but the writer preference for this hybrid **has not been tested**. Do not copy Lovable's flawed Continue/Rewrite or canon lifecycle implementation into editable Figma or the production app.
+
+**P0 interaction correctness outranks cosmetic design selection:** manuscript not lost; save status not false; Continue caret honored; one-paragraph Rewrite selection safely pinned; stale proposal cannot overwrite; source-accurate canon and undo provenance. Because these are author-trust risks, design signoff requires representative independent interaction observations, not merely a generator's "all screens built" claim.
+
+## Highest-value no-credit evaluation sequence
+
+1. **Do not regenerate either tool.** Keep Lovable as a bounded inspected code artifact; use existing Figma Design visuals; run Make Preview manually on the supplied file. Make preview work should not invoke AI generation.
+2. **P0 first (five synthetic scenarios):** two-chapter edit and AI OFF; lost save acknowledgment vs true conflict; Continue at middle caret; invalid/stale Rewrite; AI undo plus fact retraction/source quote. Record actual behavior in [Make review](VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md). Do not declare PASS based on screenshots alone.
+3. **Then P1:** Rules Studio effective rule exclusion, optional BYOK transfer preview, export/deletion warnings, mock Writer A/B switch, 1440/900/390 responsive, keyboard focus.
+4. **No-credit artifacts:** human-readable observation log, sanitized screenshots or recording if authorized, actual Make project state, input/control descriptions. The user may share them through the conversation; the Make file must not be publicly published just for inspection.
+5. **Batch correction plan:** first identify which generator gets each flow closest; present one consolidated behavior correction per platform **only after free credits actually permit**. Do not repeat expensive Build prompts.
+6. **Consolidate into editable Figma Design** only when the evidence supports a decision and tool access is available. Preserve rejected alternatives and why.
+7. **Owner gate:** review canonical design, genuine consenting writer studies, privacy/a11y/recovery evidence, and explicitly authorize G_DESIGN. G_CODE is a separate later approval.
+
+## Owner review questions before canonicalization
+
+- Can a non-AI writer reach first meaningful prose immediately, with story intelligence available when needed?
+- Are **accepted prose**, **unaccepted AI proposal**, **author-approved fact**, and **candidate fact** visually and functionally distinct?
+- Is an unknown save result shown as **unknown**, not success/failure?
+- Does the evidence quote exactly support the proposed fact and story-time context?
+- Are per-provider costs/recipient/context shown only for an opted-in request?
+- Can all P0 actions be discovered at desktop, laptop and narrow widths without clipped selections/controls?
+
+`G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, and `G_RELEASE` remain pending. This documentation may be merged after review without changing those gates.
