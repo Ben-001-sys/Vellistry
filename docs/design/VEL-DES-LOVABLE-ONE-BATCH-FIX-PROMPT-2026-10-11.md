@@ -6,7 +6,7 @@ status: prepared-not-submitted-credit-exhausted
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md
   - docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md
@@ -55,6 +55,10 @@ An independent review of exact source commit `e0a7fd3003c6a392742c0ac7e111073252
 Run `npm test`, `npm run build` and lint if available. Report **actual outputs**, exact changed paths, new prototype commit SHA and any remaining unverified interactive behavior. If browser interaction checks are not run, state that explicitly. Do not claim the product is production ready, real backend secure, or all eleven journeys pass from source inspection alone. Do not publish.
 
 ## END SINGLE CORRECTIVE PROMPT
+
+## Second credit check — 2026-10-11
+
+The owner reported a possible free-credit refresh, so the existing one-batch prompt was attempted through the connected Lovable project with paid Max mode disabled. Lovable again returned **workspace out of credits** and rejected the request **before execution**. No fixes were applied and the project remained at its previously inspected commit. The live credit balance and reset timing are not available from the connector; do not assume a refresh or retry in a loop. No subscription, purchase, database, publishing, or production integration occurred.
 
 ## Manual follow-up after a successful run
 
