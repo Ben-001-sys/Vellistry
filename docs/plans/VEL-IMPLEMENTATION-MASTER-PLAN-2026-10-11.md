@@ -6,7 +6,7 @@ status: proposed-owner-review-planning-only
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.2.0
 source_refs:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
@@ -21,6 +21,21 @@ source_refs:
 ---
 
 # Vellistry MVP — implementation master plan
+
+## Six-package planning completion index (2026-10-11; documents prepared, owner review pending)
+
+**Owner requested all PLAN-01..06 work packages in one documentation pass.** They have been prepared and source-consistency audited on [PR #61](https://github.com/Ben-001-sys/Vellistry/pull/61), rather than waiting through six sequential coding prompts. This is **planning deliverable completion**, not owner approval of proposed endpoints/migrations/route-specific model choices or permission to start Cursor.
+
+| Package | Finished planning artifact | Evidence boundary |
+|---|---|---|
+| PLAN-01 | [Baseline source inventory](VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) and [full 149-feature/test crosswalk](VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md) | Original stable IDs/horizons/status; unique proposed test IDs, all NOT_RUN |
+| PLAN-02 | [Architecture, RLS and API/data contract options](VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md) | Accepted Next/Nest/Supabase/Tiptap stack; future schema/RPC decisions proposed |
+| PLAN-03 | [Author routes, navigation and interaction states](VEL-PLAN-03-UX-NAVIGATION-STATES-2026-10-11.md) | 16 editable Figma static concepts + reported Make audit; no functional screen completion |
+| PLAN-04 | [Security, durability, tests, backup and provider gates](VEL-PLAN-04-TEST-SECURITY-RECOVERY-2026-10-11.md) | Test-plan coverage only, not actual security certification |
+| PLAN-05 | [Future Cursor Desktop and agent PR workflow](VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md) | Cursor not opened/installed; no app code |
+| PLAN-06 | [Review, dependency order and decision register](VEL-PLAN-06-MVP-PLANNING-REVIEW-CLOSEOUT-2026-10-11.md) | Source-consistency **self-review** and explicit pending owner decisions |
+
+The [future desktop environment setup plan](VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md) remains separate and **not executed**. The old Cursor kickoff draft [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) remains PAUSED. **After owner review of PR #61 and acceptance of these planning outputs**, proceed only to Windows/Cursor Git/tooling/local-environment preflight and a no-feature-change baseline; start a coding agent only on a subsequent explicitly scoped task. No real private manuscripts, paid model calls or unapproved deployments.
 
 ## 1. Planning reset, authority and boundaries
 

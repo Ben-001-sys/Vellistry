@@ -5,10 +5,35 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.45
+version: 0.1.47
 ---
 
 # Vellistry — Current State
+
+## PLAN-01..06 all prepared in one planning-only pass (2026-10-11; owner review PENDING)
+
+The owner explicitly requested **complete the full 149-ID MVP mapping and all six implementation-planning work packages at once**. No app code, migration, installation, Cursor Agent task, provider call, local database reset or deployment was performed.
+
+[Draft PR #61](https://github.com/Ben-001-sys/Vellistry/pull/61) now contains:
+- [PLAN-01 actual scaffold audit](docs/plans/VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) plus [all 149 selected MVP/MVP-LIMITED feature IDs individually mapped](docs/plans/VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md) from approved 396-row horizon. 149 unique proposed `T-VEL-...` acceptance identities, all `NOT_RUN`; 78 full, 71 limited, 247 post-MVP; original source status and feature titles preserved.
+- [PLAN-02 architecture/data/API contract proposals](docs/plans/VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md), preserving accepted Next/Nest/Supabase/Tiptap decisions while leaving new RPC and data shape for separate spec review.
+- [PLAN-03 screen navigation/interaction state contract](docs/plans/VEL-PLAN-03-UX-NAVIGATION-STATES-2026-10-11.md) using the 16-frame original Figma design and separately observed Make/Lovable evidence.
+- [PLAN-04 negative/security/recovery and acceptance strategy](docs/plans/VEL-PLAN-04-TEST-SECURITY-RECOVERY-2026-10-11.md).
+- [PLAN-05 future Cursor Desktop/agent/branch/review workflow](docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md).
+- [PLAN-06 synthesis, cross-document consistency and owner decision register](docs/plans/VEL-PLAN-06-MVP-PLANNING-REVIEW-CLOSEOUT-2026-10-11.md).
+- [Updated master roadmap](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md) v0.2 indexes all six.
+
+**Review status:** source consistency and 149-ID uniqueness were programmatically checked as part of this *documentation pass*. This is **self-review**, not independent author research, current integrated test execution or owner signoff. The earlier signed-out still-valid JWT/direct-PostgREST risk remains a blocker to real private-manuscript usage; owner rule-policy agreement remains separate from source-pack activation. Actual provider model terms, exact migration/RPC, clean restore and keyboard/a11y performance remain later test/spec gates. No product/pricing/performance claim is made.
+
+**Next after owner accepts PR #61:** proceed to **Cursor Desktop/local environment setup preflight only**, with existing repo and safe synthetic local infrastructure, then no-feature-change baseline. A new scoped G_CODE authorization is required before assigning Cursor application coding. Former Cursor kickoff [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) stays PAUSED. G_PRIVATE_PILOT and G_RELEASE remain pending.
+
+## PR #60 merged; PLAN-01 requirements/scaffold inventory STARTED (2026-10-11)
+
+Owner instructed review and merge of PR #60 and to begin. **PR #60 was independently read/reviewed, had three PASS CI workflows and no outstanding review threads, and merged to `main` at commit `7e5627b577f90bf2771d6cb2fe99235b84885c44`.** This approves the planning framework/transition to PLAN-01, **not Cursor Desktop setup or application coding**.
+
+PLAN-01 work opened on **documentation-only** branch `docs/plan01-scope-inventory-20261011`. [First scoped source inventory](docs/plans/VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) cross-checks approved M1–M8/396-feature horizon map (78 MVP, 71 MVP-LIMITED, 247 post-MVP) with observed Next/Nest/Supabase files. Verified committed login/book API and author-RLS schema foundation; chapter/revision direct writes are deliberately revoked; no integrated Tiptap page/dependency; historical CI and mockups are not current runtime PASS. Preliminary source-level Library account-switch/stale-response risk, unexpired signed-out JWT/direct PostgREST risk and rules source packaging remain targeted future checks. Exact underlying per-ID list and additional module tests are **not yet exhaustively audited**.
+
+Next *planning-only* activity: review/refine PLAN-01 per-ID source-to-acceptance coverage and then PLAN-02 architecture/data/API model. Prior implementation kickoff PR #59 remains PAUSED. Do not start Cursor Agent, install/reset local dependencies/database, write feature code, deploy, incur AI charges, or handle real private manuscripts under this planning branch. No global G_DESIGN/G_CODE/PILOT/RELEASE gates were modified.
 
 ## Owner implementation-process reset to PLANNING ONLY (2026-10-11; newest)
 
