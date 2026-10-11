@@ -6,7 +6,7 @@ status: owner-cloud-direction-setup-preflight-active
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.2.0
+version: 0.3.0
 sources:
   - docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md
   - README.md
@@ -57,6 +57,12 @@ sources:
 
 **Evidence:** Cursor settings screenshots/notes actually observed, do not invent GUI behavior or current model entitlements.
 
+## Cloud project selected and verified (2026-10-11)
+
+**FACT (Supabase connected account):** User explicitly approved creating `vellistry-dev` in `Ben-001-sys's Org` on their Free plan. Supabase quoted `$0/month` for the project, and it was **created** in `eu-west-2` (London). Project reference: `lflkcrnriitrbclangyr`; project HTTPS API URL: `https://lflkcrnriitrbclangyr.supabase.co`. The post-create get-project check returned `ACTIVE_HEALTHY`, PostgreSQL 17, `public` tables `[]` and migrations `[]`. No tables, user fixtures, migrations, database writes or secret keys were introduced by this setup inventory.
+
+**NEXT and still NOT RUN:** Confirm Cursor Desktop installed/opens, verify Git repository access and clean main, select Corepack-pinned pnpm 10.18.0, install dependencies, configure **untracked** local environment using the hosted project publishable key on the user's machine, run safe no-code baseline. Vellistry Git migration files have **not** been applied to this new empty hosted project and may need a separately reviewed cloud migration task. Do **not** run existing local reset tests or hosted schema push automatically. Raw credentials were not included in this document.
+
 ## Step E — Hosted Supabase Cloud project selection and environment files
 
 - **First:** open the owner's Supabase Dashboard and identify a **development-only project** in the account; if none exists, discuss creating one rather than connecting Vellistry to a production/manuscript database. Confirm project ID/reference, region, project purpose and whether any real records exist. Do not share database passwords or secret/service-role API keys in chat.
@@ -91,7 +97,7 @@ During the owner-authorized desktop setup, verify current Git SHA, use the repo-
 | Cursor Desktop installed, connected and privacy choices | actual GUI/settings | NOT CHECKED |
 | Node 24, pnpm 10.18 via Corepack, Python 3, Git | observed Node 24.13, Git 2.55, Python 3.10; global pnpm 11.5 | PINNED PNPM NOT YET SELECTED |
 | Personal GitHub repository auth and clean main | actual Git access | NOT CHECKED |
-| Supabase Cloud development project and env | choose isolated hosted project, cloud URL/publishable key, verify RLS/schema | PROJECT NOT YET CONFIRMED; NO KEYS SHARED |
+| Supabase Cloud development project and env | `vellistry-dev` / `lflkcrnriitrbclangyr` active healthy, 0 public tables/migrations | PROJECT CREATED; APP SCHEMA/LOCAL ENV NOT CONFIGURED |
 | Existing code test/build baseline | actual exit codes | NOT RUN |
 | First Cursor Agent task dispatched | exact accepted task/branch | NOT AUTHORIZED |
 
