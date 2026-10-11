@@ -6,7 +6,7 @@ status: proposed-owner-and-author-review
 created_at: 2026-10-10
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.3.0
+version: 0.4.0
 sources:
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
@@ -51,7 +51,7 @@ The owner clarified that **the editable Figma Design created for Vellistry is th
 
 **Artifact roles and access evidence:**
 - **Master editable design:** [Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U), six previously created editable frames; retain A/B alternatives as comparison history, iterate the four unified candidate frames and add missing screen families. The initial Figma screenshots were inspected previously, but currently the Starter MCP call quota blocks further design read/write access; **no canvas modifications are claimed in this checkpoint**.
-- **Make exploratory reference:** [Figma Make prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype), and owner-supplied [figma.site preview](https://repo-buzz-33870082.figma.site/). Both are currently **content/behavior NOT INSPECTED** in this environment (Make URL unsupported by Figma MCP, and published-site web cache miss/DNS issue). Do not invent improvements inspired by unseen Make screens.
+- **Make exploratory reference:** [Figma Make prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype), and owner-supplied [figma.site preview](https://repo-buzz-33870082.figma.site/). Direct assistant browser/MCP access remains unavailable, **but the owner has now provided a detailed eleven-journey live walkthrough**. Treat its observed results as [reviewer-reported evidence](VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md), **not as independent assistant verification**. Do not infer anything about inaccessible screens beyond those observations.
 - **Lovable behavioral/layout reference:** [isolated synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787), **source-inspected** at `e0a7fd3003c6a392742c0ac7e111073252c65fb3`; its code contains a narrow `max-width: 640px` manuscript column, chapter navigator, contextual story rail, mobile drawers, library/story destination and demo controls. These are **candidate patterns from source**, not independently user-tested wins. See [four behavior defects](VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md) and [11-journey comparison](VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md).
 
 **Specific improvements to apply to our editable Figma canvas (priority order, not yet built):**
@@ -67,6 +67,22 @@ The owner clarified that **the editable Figma Design created for Vellistry is th
 **Review gates before drawing from a third-party prototype:** verify observed frame or source, check against accepted eight-area manual-first scope and eleven journeys, reject known unsafe behavior, preserve the original Figma visual identity unless a change is supported by tests, then incorporate as editable semantic Figma nodes/components. No flattened screenshot as deliverable. Improvements may combine patterns; neither Make nor Lovable should overwrite the master design wholesale.
 
 **Cost discipline:** inspect existing prototypes, reuse actual source and previews without generative reruns, and batch visual changes when Figma MCP quota permits. Never upgrade paid plans, publish, or trigger new Lovable/Make generation just to solve an access problem. No real manuscripts or credentials. All owners' gates remain pending.
+
+## Figma master refinement from reported Make walkthrough (2026-10-11)
+
+A live-site walkthrough supplied by the owner now provides practical feedback for Make (see [VEL-DES-004](VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md)). **Preserve our original six editable frames and design language**; use the live prototype only for the observed strengths and documented gaps. This is no longer only a conceptual comparison.
+
+| Priority | Editable Figma target | Reported interaction insight | Next minimum design change |
+|---|---|---|---|
+| **P0** | Account-context and Story Workspace states (new `DES-SCR-13`, context for `6:2`/`6:148`) | Writer B profile marker and fact status persisted into Writer A despite separate manuscript text | Specify persona/book scoped profile, thread, fact, proposal, undo, recovery and consent state; account-switch clearing and visible target identity. This defect does not prove real backend insecurity |
+| **P0** | Continue source selection/consent view (`DES-SCR-10`) | Correct collapsed caret at offset 4 was rejected as if no caret existed | Show caret capture, active chapter + revision, insertion preview and valid/invalid/stale caret variants; no silent append |
+| **P0** | Existing save recovery `6:47` | Six status labels distinguished lost ACK vs true conflict, but no recovery interaction | Retain truthful labels; design side-by-side local/server revisions, explicit keep-both / reconcile and non-destructive recovery acknowledgment, while real persistence remains an engineering concern |
+| **P1** | Existing rewrite `6:98` and canon `6:148` | Exact-span Rewrite/reject/undo, stale editing guard, independent fact candidate and post-undo review worked locally | Preserve these interaction semantics, add source/story-time inspection and separate Edit/Dismiss; verify disabled approvals on stale/retracted evidence |
+| **P1** | Library / chapter organizer and manual editor | Chapter switching/reorder preserved text; book/chapter creation missing; Bold no visible result; search absent | Add create actions and empty states; define formatting feedback and search control, with keyboard selection retained |
+| **P1** | Story Workspace / Rules Studio | Only one editable profile; no character/thread creation; disabled rules omitted from effective prompt but scope/add rule missing | Add manual author controls, rule scope, restore and personal-rule creation; do not invent source text for the full 134 catalog |
+| **Later by slice** | Portability/privacy / narrow-screen variants | Export/delete preview buttons yielded no dialog; no mobile or assistive-tech testing reported | Design honest confirmation/warning states, then iterate responsive/accessible details during implementation and genuine testing |
+
+**Minimum implementable UX now:** chapter/library/editor interactions can be specified without a complete thirteen-screen visual system, provided the scoped implementation tests explicitly account for book/account identity and avoid copying Make's profile/canon leakage. Design and feature coding remain separately owner-gated (`G_DESIGN`, `G_CODE`). The stronger privacy/pilot/release gates are unaffected. Avoid exhausting Figma/Lovable free credits on presentation polish.
 
 ## Proposed information architecture and destinations
 
