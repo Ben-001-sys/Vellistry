@@ -19,6 +19,7 @@ export const LIBRARY_COPY = {
   unauthorized: "Please sign in to see your books.",
   loadError: "Unable to load books. Try again.",
   createError: "Could not save this book. Your title remains in the field.",
+  createUnknown: "The save result is unknown. Refresh to check your books before trying again.",
   sessionChanged: "Your session changed. The book was not saved to this account.",
   signingOut: "Signing out...",
   signOutError: "Sign-out did not complete. You may still be signed in. Try signing out again.",
@@ -33,6 +34,7 @@ export type LibraryState = {
   createPending: boolean;
   createOwnerKey: string | null;
   createGeneration: number | null;
+  createUncertain: boolean;
 };
 
 export type LoadOutcome =
@@ -40,7 +42,7 @@ export type LoadOutcome =
   | { kind: "unauthorized" }
   | { kind: "error" };
 
-export type CreateOutcome = "ok" | "unauthorized" | "error" | "session_changed";
+export type CreateOutcome = "ok" | "unauthorized" | "error" | "session_changed" | "unknown";
 
 export type LibraryRegion = {
   phase: LibraryPhase;
@@ -63,6 +65,7 @@ export function initialLibraryState(): LibraryState {
     createPending: false,
     createOwnerKey: null,
     createGeneration: null,
+    createUncertain: false,
   };
 }
 
@@ -98,6 +101,7 @@ export function beginLoad(state: LibraryState, ownerKey: string | null, generati
     ownerKey,
     generation,
     ...clearedCreate(),
+    createUncertain: ownerKey === state.ownerKey && state.createUncertain,
   };
 }
 
@@ -143,6 +147,7 @@ export function applyLoad(
       books: [],
       status: LIBRARY_COPY.empty,
       ...clearedCreate(),
+      createUncertain: false,
     };
   }
   return {
@@ -151,6 +156,7 @@ export function applyLoad(
     books,
     status: "",
     ...clearedCreate(),
+    createUncertain: false,
   };
 }
 
@@ -180,7 +186,7 @@ export function requestCreate(
   state: LibraryState,
   ownerKey: string | null,
 ): { ok: true; state: LibraryState } | { ok: false; state: LibraryState } {
-  if (state.createPending) return { ok: false, state };
+  if (state.createPending || state.createUncertain) return { ok: false, state };
   if (ownerKey === null || state.phase === "loading" || state.phase === "unauthorized") {
     return { ok: false, state };
   }
@@ -192,6 +198,7 @@ export function requestCreate(
       createPending: true,
       createOwnerKey: ownerKey,
       createGeneration: state.generation,
+      createUncertain: false,
     },
   };
 }
@@ -206,7 +213,15 @@ export function applyCreate(
   if (state.createGeneration !== generation || state.createOwnerKey !== ownerKey) return state;
   if (state.ownerKey !== ownerKey || state.generation !== generation) return state;
   if (outcome === "ok") {
-    return { ...state, ...clearedCreate() };
+    return { ...state, ...clearedCreate(), createUncertain: false };
+  }
+  if (outcome === "unknown") {
+    return {
+      ...state,
+      status: LIBRARY_COPY.createUnknown,
+      ...clearedCreate(),
+      createUncertain: true,
+    };
   }
   if (outcome === "unauthorized") {
     return {
@@ -245,7 +260,8 @@ export function libraryRegion(state: LibraryState): LibraryRegion {
     canCreate:
       (state.phase === "empty" || state.phase === "populated" || state.phase === "error") &&
       state.ownerKey !== null &&
-      !state.createPending,
+      !state.createPending &&
+      !state.createUncertain,
     showRefresh: state.phase !== "loading" && !state.createPending,
     showRetry: (state.phase === "error" || state.phase === "unauthorized") && !state.createPending,
     showSignIn: state.phase === "unauthorized",

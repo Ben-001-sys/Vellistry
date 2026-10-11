@@ -31,6 +31,9 @@ type Harness = {
   signedInAs: string | null;
   navigatedTo: string | null;
   fetchCount: number;
+  ownerReads: number;
+  failOwnerReadOn: number | null;
+  booksForA: ReturnType<typeof book>[];
   signOutImpl: () => Promise<{ error: boolean }>;
   createBook: LibrarySessionDeps["createBook"];
 };
@@ -41,18 +44,25 @@ function harness(overrides: Partial<LibrarySessionDeps> = {}): Harness {
     signedInAs: AUTHOR_A,
     navigatedTo: null,
     fetchCount: 0,
+    ownerReads: 0,
+    failOwnerReadOn: null,
+    booksForA: [book("a-1", "Amber notebook")],
     signOutImpl: async () => ({ error: false }),
     createBook: async () => jsonResponse(201, book("created", "Created")),
   };
   const deps: LibrarySessionDeps = {
     fetchBooks: async () => {
       state.fetchCount += 1;
-      if (state.signedInAs === AUTHOR_A) return jsonResponse(200, [book("a-1", "Amber notebook")]);
+      if (state.signedInAs === AUTHOR_A) return jsonResponse(200, state.booksForA);
       if (state.signedInAs === AUTHOR_B) return jsonResponse(200, [book("b-1", "Blue notebook")]);
       return jsonResponse(401, { error: "unauthenticated" });
     },
     createBook: (title, ownerKey, signal) => state.createBook(title, ownerKey, signal),
-    readOwner: async () => state.signedInAs,
+    readOwner: async () => {
+      state.ownerReads += 1;
+      if (state.failOwnerReadOn === state.ownerReads) throw new Error("owner lookup failed");
+      return state.signedInAs;
+    },
     signOut: () => state.signOutImpl(),
     goToLogin: () => { state.navigatedTo = "/login"; },
     ...overrides,
@@ -239,6 +249,105 @@ test("a successful sign-out redirects only after Supabase accepts it", async () 
   assert.equal(env.session.snapshot().draftTitle, "");
   assert.deepEqual(libraryRegion(env.session.snapshot().model).books, []);
   assert.equal(env.session.snapshot().model.status, LIBRARY_COPY.unauthorized);
+});
+
+test("a successful create followed by a failed owner lookup stays unknown", async () => {
+  const env = harness();
+  let createCalls = 0;
+  const started = env.createBook;
+  env.createBook = (title, ownerKey, signal) => {
+    createCalls += 1;
+    return started(title, ownerKey, signal);
+  };
+  await signIn(env, AUTHOR_A);
+  env.failOwnerReadOn = env.ownerReads + 2;
+  env.session.setDraftTitle("Brand new notebook");
+  await env.session.submitCreate();
+
+  const pending = libraryRegion(env.session.snapshot().model);
+  assert.equal(createCalls, 1);
+  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
+  assert.equal(env.session.snapshot().model.createPending, false);
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(pending.status, LIBRARY_COPY.createUnknown);
+  assert.notEqual(pending.status, LIBRARY_COPY.createError);
+  assert.equal(/saved/i.test(pending.status), false);
+  assert.equal(pending.canCreate, false);
+  assert.equal(pending.showRefresh, true);
+  assert.deepEqual(pending.books.map((item) => item.title), ["Amber notebook"]);
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+
+  env.booksForA = [book("a-1", "Amber notebook"), book("a-2", "Brand new notebook")];
+  await env.session.refresh();
+  const after = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(after.canCreate, true);
+  assert.equal(/saved/i.test(after.status), false);
+  assert.deepEqual(after.books.map((item) => item.title), ["Amber notebook", "Brand new notebook"]);
+});
+
+test("a lost create response stays unknown until refresh", async () => {
+  const env = harness();
+  let createCalls = 0;
+  env.createBook = () => {
+    createCalls += 1;
+    return Promise.reject(new Error("response lost"));
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Brand new notebook");
+  await env.session.submitCreate();
+
+  const pending = libraryRegion(env.session.snapshot().model);
+  assert.equal(createCalls, 1);
+  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
+  assert.equal(pending.status, LIBRARY_COPY.createUnknown);
+  assert.notEqual(pending.status, LIBRARY_COPY.createError);
+  assert.equal(/saved/i.test(pending.status), false);
+  assert.equal(pending.canCreate, false);
+  assert.equal(pending.showRefresh, true);
+  assert.deepEqual(pending.books.map((item) => item.title), ["Amber notebook"]);
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+
+  await env.session.refresh();
+  const after = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(after.canCreate, true);
+  assert.equal(/saved/i.test(after.status), false);
+  assert.notEqual(after.status, LIBRARY_COPY.createUnknown);
+  assert.deepEqual(after.books.map((item) => item.title), ["Amber notebook"]);
+});
+
+test("an owner change after an unknown create does not reveal that title", async () => {
+  const env = harness();
+  env.createBook = () => Promise.reject(new Error("response lost"));
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A secret title");
+  await env.session.submitCreate();
+  assert.equal(env.session.snapshot().model.status, LIBRARY_COPY.createUnknown);
+  env.signedInAs = AUTHOR_B;
+  await env.session.onAuthEvent("SIGNED_IN", AUTHOR_B);
+  const region = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(region.status === LIBRARY_COPY.createUnknown, false);
+  assert.deepEqual(region.books.map((item) => item.title), ["Blue notebook"]);
+});
+
+test("an HTTP create error stays a definite failure", async () => {
+  const env = harness();
+  env.createBook = async () => jsonResponse(500, { error: "nope" });
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Brand new notebook");
+  await env.session.submitCreate();
+  const region = libraryRegion(env.session.snapshot().model);
+  assert.equal(region.status, LIBRARY_COPY.createError);
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
+  assert.equal(region.canCreate, true);
+  assert.deepEqual(region.books.map((item) => item.title), ["Amber notebook"]);
 });
 
 function regionShowsEmpty(status: string): boolean {

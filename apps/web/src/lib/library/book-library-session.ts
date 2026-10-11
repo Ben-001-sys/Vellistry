@@ -2,6 +2,8 @@
  * Auth-event controller for the Book Library page.
  * Same-author events do not restart a load or drop an in-flight create.
  * Same-author Refresh during a create does not abort that POST or bump generation.
+ * A lost create response, or a successful response followed by a failed owner lookup,
+ * is an unknown outcome. It does not say the book was saved or that the save failed.
  * An owner change clears the unsaved title and ignores the previous response.
  */
 
@@ -132,7 +134,12 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       const payload: unknown = await response.json();
       const liveOwner = await deps.readOwner();
       if (controller.signal.aborted || model.generation !== generation || liveOwner !== ownerKey) return;
+      const uncertain = model.createUncertain;
       model = applyLoad(model, generation, ownerKey, { kind: "ok", books: payload });
+      if (uncertain && model.createUncertain === false) {
+        const trimmed = draftTitle.trim();
+        if (trimmed !== "" && model.books.some((item) => item.title === trimmed)) draftTitle = "";
+      }
       emit();
     } catch {
       if (controller.signal.aborted || model.generation !== generation) return;
@@ -195,8 +202,20 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     try {
       const response = await deps.createBook(trimmed, ownerKey, controller.signal);
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
-      const liveOwner = await deps.readOwner();
-      if (model.generation !== generation || liveOwner !== ownerKey || owner !== ownerKey) {
+      let liveOwner: string | null = null;
+      let ownerLookupFailed = false;
+      try {
+        liveOwner = await deps.readOwner();
+      } catch {
+        ownerLookupFailed = true;
+      }
+      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      if (ownerLookupFailed && response.ok) {
+        model = applyCreate(model, generation, ownerKey, "unknown");
+        emit();
+        return;
+      }
+      if (!ownerLookupFailed && (liveOwner !== ownerKey || owner !== ownerKey)) {
         if (liveOwner !== ownerKey) await startLoad(liveOwner);
         return;
       }
@@ -221,7 +240,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       await startLoad(ownerKey);
     } catch {
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
-      model = applyCreate(model, generation, ownerKey, "error");
+      model = applyCreate(model, generation, ownerKey, "unknown");
       emit();
     }
   }
