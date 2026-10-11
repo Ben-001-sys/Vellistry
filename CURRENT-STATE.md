@@ -3,12 +3,18 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-10
+updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.37
+version: 0.1.38
 ---
 
 # Vellistry — Current State
+
+## New design-artifact evidence checkpoint (2026-10-11; NOT owner-approved)
+
+- The owner supplied the [Figma Make Writing App Prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1) and the existing [editable Figma Design reference](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U). The Make file URL is recorded but its content, route behavior, privacy, completion and eleven author-journey results remain **unverified**. The Figma connector does not support inspecting Make files, and the Starter MCP quota blocked direct Design metadata. See [Make evidence checkpoint](docs/design/VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md).
+- The separate [Lovable synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787) was generated and source-inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`. Four outstanding interaction/provenance defects are documented in [review](docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). A corrective Lovable call was rejected due to exhausted free workspace credits. No integration into production.
+- **Free-tier policy:** maximize useful inspected results from existing prototypes; no paid plan, additional credit purchase, publicity change, real manuscript/credential, database connection or production code integration. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending. Draft PR #55 is still a documentation/evidence change, not acceptance.
 
 ## Design phase — synthetic concept/UX handoff in progress (2026-10-10; NOT owner-approved)
 
