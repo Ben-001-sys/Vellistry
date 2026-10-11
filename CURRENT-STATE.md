@@ -5,10 +5,16 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.39
+version: 0.1.40
 ---
 
 # Vellistry — Current State
+
+## Owner execution sequencing clarification (2026-10-11; approvals still pending)
+
+The owner explicitly clarified: **the UI does not need to be perfect before starting implementation**. Treat [the editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) as the **living master UI**, improved with inspected Figma Make/Lovable ideas while implementation proceeds in bounded slices. Completion of every screen, visual variant, typography detail or broad usability study is **not** a prerequisite to approving the **first sufficiently specified slice**. Capture the functional scope, critical negative states, testable acceptance criteria and minimal UI direction first; iterate design and product browser tests together.
+
+The design-first **permission boundary remains**: record explicit *scoped* `G_DESIGN` approval for an implementation-ready UX baseline and a **separate scoped `G_CODE`** authorization for the coding slice. Neither is yet granted simply by this sequencing clarification; this checkpoint did **not** initiate product feature coding. Protect manual AI-OFF writing, revision/conflict recovery, two bounded proposal actions, independent canon, author data isolation and explicit provider consent. The signed-out unexpired token / direct PostgREST risk still precludes real manuscripts/private pilots until fixed and tested. Stronger `G_PRIVATE_PILOT` and `G_RELEASE` gates are unchanged. See [revised handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md).
 
 ## New design-artifact evidence checkpoint (2026-10-11; NOT owner-approved)
 
