@@ -6,7 +6,7 @@ status: link-received-inspection-blocked
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - docs/design/VEL-DES-PROMPT-FIGMA-MAKE-2026-10-10.md
   - docs/design/VEL-DES-001-DUAL-PROTOTYPE-EXPERIMENT-2026-10-10.md
@@ -21,6 +21,14 @@ sources:
 **Owner-supplied editable Design reference:** https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U/Vellistry-%25E2%2580%2594-MVP-UI-Concept-Directions--Synthetic--%25E2%2580%2594-2026-10-10?node-id=0-1&p=f&t=eZccZ83MCzGANZRF-0
 
 Make file key: `ayQhoFZLnAUn9212mxaYpw`. Design file key: `krXupCfSLUnOQxEOjIlp9U`. Two URL types are **distinct artifacts**; appearance of a Make link does not prove its contents were copied into the canonical editable Design file. The user has supplied a Make file URL; it is an actual referent, but **contents, generation completion, privacy controls, preview accessibility and working interactions are not verified**.
+
+## Published-site address supplied by owner (2026-10-11)
+
+The owner additionally shared the Figma-hosted preview address: **https://repo-buzz-33870082.figma.site/**. Treat this as a distinct, user-provided *published-site URL*, rather than assuming that the original `/make/` editor link and the published site have identical output or revision. The site's actual visibility and content were **not independently verified**.
+
+**Independent access attempts:** the web reader for this exact site returned `Cache miss`; a direct HTTP request from the available container failed DNS resolution. Search did not surface a cached page for the exact subdomain. Consequently no HTML, screenshot, interaction, underlying source, version, or P0 test result was retrieved from this site. These access failures are limitations of the inspection environment, **not evidence the published site is unavailable to the owner**.
+
+**Cost/privacy:** no Make generation/edit call, paywall bypass, purchase, subscription, or tool-generated publication was made. If the site really is publicly accessible, keep it synthetic only and review any displayed manuscript/key/privacy claims before wider sharing. A public preview can be inspected using a browser-capable Work session or by locally recorded synthetic screenshots; this document does **not** claim that has happened.
 
 ## Inspection attempts and truthful limitations
 
