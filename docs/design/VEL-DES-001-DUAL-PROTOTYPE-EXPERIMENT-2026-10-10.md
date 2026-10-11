@@ -2,11 +2,11 @@
 id: VEL-DES-DUAL-PROTOTYPE-20261010-001
 title: Controlled synthetic prototype experiment — Figma Make and Lovable
 type: proposed-design-experiment
-status: lovable-generated-inspected-figma-make-pending
+status: lovable-inspected-make-link-received-review-pending
 created_at: 2026-10-10
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.2.0
+version: 0.3.0
 sources:
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
@@ -15,7 +15,7 @@ sources:
   - docs/design/VEL-DES-002-JOURNEY-AND-STATE-MATRIX-2026-10-10.md
 ---
 
-# Dual synthetic prototype experiment — Lovable inspected; Figma Make pending
+# Dual synthetic prototype experiment — Lovable inspected; Make link received, inspection pending
 
 ## Owner direction and constraints
 
@@ -117,11 +117,11 @@ For **each platform** record the following row for each JRN-001..011:
 - [x] Original two Figma concepts and four unified candidate frames exist, with partial visual inspection.
 - [x] Git design journey matrix and writer validation plan prepared on PR #55 (draft).
 - [x] Reusable prompts and comparison protocol prepared for both generators (these documents).
-- [ ] Open Figma Make separately and attach approved existing concept frames; create **private synthetic** interaction draft.
+- [x] Owner shared a Figma Make artifact URL: [Vellistry Writing App Prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1). File contents and privacy settings **not independently inspected**; see [Make review checkpoint](VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md).
 - [x] Lovable app connected; isolated **synthetic frontend-only** draft generated at [Vellistry UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787). Source independently reviewed with four defects documented; user journey behavior not independently verified. Free credits exhausted.
 - [ ] Record real returned project links and checked interactions, or `NOT_RUN` / `BLOCKED`.
 - [ ] Inspect responsive/focus behavior; choose patterns to carry into editable Figma.
 - [ ] Validate with real, consenting fiction writers; revise and obtain owner `G_DESIGN`.
 - [ ] Separately authorize `G_CODE` after design acceptance, never from a generator result.
 
-Lovable's isolated generated prototype exists and its source was inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`; see [code review](VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). No Figma Make prototype has been generated or inspected. Neither platform's eleven journeys have been accepted through genuine writer usability testing.
+Lovable's isolated generated prototype exists and its source was inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`; see [code review](VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). Owner supplied a Figma Make file URL, but Make output and interaction behavior have **not** been inspected or validated by available tools. Neither platform's eleven journeys have been accepted through genuine writer usability testing.
