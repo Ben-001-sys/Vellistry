@@ -5,10 +5,28 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.47
+version: 0.1.49
 ---
 
 # Vellistry — Current State
+
+## Supabase Cloud development project CREATED (2026-10-11; newest)
+
+User agreed to create `vellistry-dev` under their connected Supabase Free organization `Ben-001-sys's Org`. Supabase cost checker quoted **$0/month**. The connected Supabase tool created **`lflkcrnriitrbclangyr`** in **London/eu-west-2** and subsequent read-only verification returned **ACTIVE_HEALTHY**, PostgreSQL 17, **zero public tables** and **zero applied migrations**. API URL `https://lflkcrnriitrbclangyr.supabase.co`. No schema changes, Auth users, remote migrations, fixture data, production services, real manuscripts or code changes were performed. This is an isolated new development project, not a deployment.
+
+**Next:** Cursor Desktop installation/open confirmation, personal repo Git checkout and pnpm 10.18.0 using Corepack, local untracked environment configuration using the existing cloud project's publishable key (raw key withheld), and nonmutating baseline. The Vellistry schema is **not yet installed in the hosted project**; cloud migration work requires explicit scoped approval and security review. Paused old Cursor task PR #59 remains PAUSED. Supabase Cloud docs tracked in PR #62 pending merge/review.
+
+# Vellistry — Current State
+
+## OWNER ENVIRONMENT CHOICE — Supabase Cloud, no local Supabase stack (2026-10-11; newest)
+
+The owner corrected the Cursor Desktop setup plan: **Vellistry will use Supabase Cloud within their own existing Supabase account, NOT a self-hosted or locally containerized Supabase instance.** The current Windows setup phase remains no-feature-code baseline only. This owner decision supersedes any previous checklist requiring Docker Desktop/WSL2 and local Supabase API `127.0.0.1:54321` as prerequisites. It does **not** approve hosted schema migrations, hosted resets or private manuscript use.
+
+**Observed desktop preflight (PowerShell, owner supplied):** Windows 11 Pro 64-bit, 15.7GB RAM, 13.9GB free C:, Git 2.55.0.windows.3, Node 24.13.0, Corepack 0.34.5, global pnpm **11.5.2** vs repo-pinned 10.18.0, Python 3.10.10, Docker CLI 29.6.1. `wsl --status` gave no visible result; **WSL/Docker daemon testing is not required for a hosted-cloud connection**. Cursor Desktop installed/open status is **not yet confirmed**.
+
+**Next setup:** identify an isolated **Supabase Cloud development project** under the owner's account (project not yet identified); verify no real author/production data and inspect hosted schema without mutation. The Next frontend and Nest backend run on desktop, using hosted HTTPS URL and publishable key through untracked local env names: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`. Existing committed `.env.example` still shows **local CLI placeholders** and should not be used literally. **No service-role/secret key in browser or normal author paths.** Existing local security scripts/migrations must not run destructive resets or cloud `db push` without explicit isolated-project approval. Cloud RLS/direct PostgREST signed-out-but-valid-JWT risk remains unresolved before any real manuscript/private pilot.
+
+Cloud-specific setup documentation is updated in [Cursor Desktop setup v0.2](docs/plans/VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md), [PLAN-05 Cursor workflow v0.2](docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md), and [master implementation plan v0.3](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md), on the documentation-only review branch `docs/hosted-supabase-desktop-setup-20261011`. No product implementation, remote database operations, provider calls or deployments were performed. Paused [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) remains paused. Setup proceeds only through non-mutating environment verification until a bounded development task receives new authorization.
 
 ## PLAN-01..06 all prepared in one planning-only pass (2026-10-11; owner review PENDING)
 

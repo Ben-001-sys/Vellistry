@@ -1,12 +1,12 @@
 ---
 id: VEL-PLAN-CURSOR-DESKTOP-20261011-001
-title: Cursor desktop and Vellistry local environment setup — future-phase checklist
+title: Cursor Desktop with hosted Supabase Cloud development — owner-selected setup
 type: developer-environment-readiness-plan
-status: proposed-only-do-not-execute
+status: owner-cloud-direction-setup-preflight-active
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.3.0
 sources:
   - docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md
   - README.md
@@ -17,14 +17,14 @@ sources:
   - docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
 ---
 
-# Cursor Desktop setup — PLAN ONLY (for the phase after master-plan acceptance)
+# Cursor Desktop setup — hosted Supabase Cloud (owner-selected, preflight in progress)
 
-**No installation, tool launch, terminal command, agent dispatch, API key entry, schema change or database reset is authorized by this checklist.** Its purpose is to prepare a safe *future walkthrough* after the owner has accepted the implementation master plan. Do not substitute this for a Cursor-executed task.
+**Owner began desktop preflight after the master planning PR was merged.** This checklist records setup verification, **not authorization for Cursor Agent implementation, schema modification, remote migrations, remote resets, provider spending or real author data**. The owner has now explicitly selected **Supabase Cloud via their own Supabase account** instead of running a local Supabase stack. The selected cloud *project*, environment and data-isolation state remain to be confirmed before connection.
 
 ## Step A — Workstation preflight (expected Windows 11, verify when starting)
 
-- Confirm OS architecture/version, storage available, available RAM, network reliability and whether WSL2/virtualization and Docker Desktop are supported. Determine rights to install programs and whether another Docker engine is already present.
-- Verify whether Cursor Desktop, VS Code, Git, Node, pnpm, Python, Docker/WSL2 and a browser are already installed; record versions. Avoid duplicate installations, unnecessary upgrades or changing working tooling.
+- Observed Windows 11 Pro 64-bit, RAM 15.7 GB and free C: 13.9 GB from the owner's PowerShell preflight. Confirm another suitable drive if needed. **Docker/WSL2 is not required for the selected hosted Supabase connection**; only review if a separate future feature test genuinely needs containers.
+- Owner-observed versions: Git 2.55.0.windows.3, Node 24.13.0, Corepack 0.34.5, pnpm **11.5.2** (repo pins 10.18.0), Python 3.10.10, Docker CLI 29.6.1. **Cursor Desktop installation/open state not yet confirmed.** Avoid duplicate installations or changing working tooling unnecessarily.
 - Check repository location and any existing uncommitted project files. Plan to preserve existing work; no deletion/recloning unless needed and approved.
 
 **Evidence:** environment inventory/checklist, no commands run during planning.
@@ -42,7 +42,7 @@ sources:
 
 - Check Node.js **24** matching current repo prerequisites; Corepack availability and pinned pnpm **10.18.0** from root `package.json`. Respect `pnpm-lock.yaml`, not opportunistic dependency upgrades.
 - Verify Python 3 and dependency availability for existing `scripts/agent_workflow.py` handoffs; follow repo README and scripts before installing anything.
-- Verify Docker/WSL2 health for Supabase CLI. Confirm Docker Desktop licensing/commercial applicability before choosing that installation; if infeasible, record blocker and assess a reviewed alternate local setup.
+- **Do not set up local Supabase containers.** Use the owner's existing Supabase Cloud account, with a dedicated, disposable development **project** preferred; an account is not by itself a configured project. Docker/WSL2 may remain unchecked and is **not a blocker** to Next/Nest + hosted Supabase setup.
 - Verify Git credentials and a modern supported browser for app E2E testing, optional browser automation tools only after choosing test scope.
 
 **Evidence:** versions and prerequisites without changing app code.
@@ -57,18 +57,26 @@ sources:
 
 **Evidence:** Cursor settings screenshots/notes actually observed, do not invent GUI behavior or current model entitlements.
 
-## Step E — Local environment files and network boundaries
+## Cloud project selected and verified (2026-10-11)
 
-- Inspect `.env.example`, actual `apps/web`/ `apps/api` env resolution and `supabase/config.toml`; decide only local, untracked env-file destinations, using disposable local publishable keys.
-- Planned default ports based on repo: web `127.0.0.1:3000`, Nest `127.0.0.1:4100`, local Supabase API `127.0.0.1:54321`, Postgres `54322`, Studio `54323`—must verify at runtime, not blindly assume.
+**FACT (Supabase connected account):** User explicitly approved creating `vellistry-dev` in `Ben-001-sys's Org` on their Free plan. Supabase quoted `$0/month` for the project, and it was **created** in `eu-west-2` (London). Project reference: `lflkcrnriitrbclangyr`; project HTTPS API URL: `https://lflkcrnriitrbclangyr.supabase.co`. The post-create get-project check returned `ACTIVE_HEALTHY`, PostgreSQL 17, `public` tables `[]` and migrations `[]`. No tables, user fixtures, migrations, database writes or secret keys were introduced by this setup inventory.
+
+**NEXT and still NOT RUN:** Confirm Cursor Desktop installed/opens, verify Git repository access and clean main, select Corepack-pinned pnpm 10.18.0, install dependencies, configure **untracked** local environment using the hosted project publishable key on the user's machine, run safe no-code baseline. Vellistry Git migration files have **not** been applied to this new empty hosted project and may need a separately reviewed cloud migration task. Do **not** run existing local reset tests or hosted schema push automatically. Raw credentials were not included in this document.
+
+## Step E — Hosted Supabase Cloud project selection and environment files
+
+- **First:** open the owner's Supabase Dashboard and identify a **development-only project** in the account; if none exists, discuss creating one rather than connecting Vellistry to a production/manuscript database. Confirm project ID/reference, region, project purpose and whether any real records exist. Do not share database passwords or secret/service-role API keys in chat.
+- Existing source reads `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Next and `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` in Nest. Configure *untracked local environment files* using the selected cloud project's URL and **publishable** key, not the old `http://127.0.0.1:54321` placeholders in the committed `.env.example`. Use local Next `127.0.0.1:3000` and Nest `127.0.0.1:4100`; hosted Supabase supplies its HTTPS domain, not local 54321/54322/54323 ports.
 - Never paste live service-role, author BYOK, database passwords, tokens, or unarchived manuscript into chat/Git/agent instructions.
-- Review any other local processes on ports, firewall exposure, Docker volumes and backup ownership before starting services.
+- Review local 3000/4100 conflicts, HTTPS reachability from Nest/Next, Supabase Auth redirect URLs for development and network connectivity. Do not expose Nest publicly or permit real-author data while the direct PostgREST/JWT risk is unresolved.
 
-**Evidence:** environment-key **names** and local URL/status only; no secrets.
+**Evidence:** cloud project reference/purpose, non-secret project URL, environment variable **names**, selected key type, local frontend/backend ports and screenshot/status evidence. Never paste API keys, tokens, DB passwords or manuscripts into chat/Git/agent instructions.
+
+**Remote schema guard:** A cloud project may not yet contain Vellistry's existing Git migrations. Never assume its tables/RLS are already present or run migrations just to make a smoke test pass. Supabase CLI commands `db pull`, `db push`, `db dump` can target the linked cloud project; `db reset --linked` is destructive. Before any link or schema operation, verify account/project reference and get explicit task-level authorization. Keep migration files tracked in Git, not ad hoc production Dashboard edits.
 
 ## Step F — First no-feature-change baseline run (requires later permission)
 
-In the actual desktop setup phase—not now—verify the current Git SHA, install from lockfile, run `pnpm check` / `pnpm build`, existing tests, and start Next/Nest/Supabase after confirming safe local ports and targeted environment. `pnpm supabase:reset` destroys local data and requires explicitly verified **disposable target + owner permission**. Provision Alice/Bob only after permitted local synthetic test setup. Record exact errors/exit codes and troubleshoot baseline *before* changing features.
+During the owner-authorized desktop setup, verify current Git SHA, use the repo-pinned pnpm 10.18.0 with Corepack, install locked dependencies, run `pnpm check` and `pnpm build`, and boot **local Next and Nest only** after safe env configuration. Do **not** run `pnpm supabase:start`, `pnpm supabase:reset`, `supabase db reset --linked`, `supabase db push` or old tests that assume a disposable local database against hosted cloud. Read any test setup first: existing local-security scripts may intentionally reset data. Cloud database schema/history should be **inspected without mutations** until an explicitly reviewed and approved migration procedure. Create Alice/Bob only after confirming the cloud project is a disposable development target and the owner permits synthetic records. Record exact checks and outcomes; baseline application DB features may remain BLOCKED until the selected cloud project's schema is verified.
 
 **No new application code** until this baseline report is reviewed and the first implementation slice receives scoped go-ahead.
 
@@ -84,13 +92,13 @@ In the actual desktop setup phase—not now—verify the current Git SHA, instal
 
 | Area | Planned verification | Status today |
 |---|---|---|
-| Owner-approved master implementation plan | scope, milestones, dependencies, tests | NOT APPROVED / PLAN DRAFT |
-| Windows hardware and WSL2/Docker viability | OS, RAM, disk, virtualization | NOT CHECKED |
+| Owner-approved master implementation plan | PR #60/#61 merged and owner began setup | ACCEPTED FOR SETUP; feature coding separate |
+| Windows environment | Windows 11 Pro 64-bit, 15.7GB RAM, 13.9GB free C: | PARTIALLY VERIFIED; Docker/WSL not required for cloud DB |
 | Cursor Desktop installed, connected and privacy choices | actual GUI/settings | NOT CHECKED |
-| Node 24, pinned pnpm 10, Python 3, Git | actual versions/paths | NOT CHECKED |
+| Node 24, pnpm 10.18 via Corepack, Python 3, Git | observed Node 24.13, Git 2.55, Python 3.10; global pnpm 11.5 | PINNED PNPM NOT YET SELECTED |
 | Personal GitHub repository auth and clean main | actual Git access | NOT CHECKED |
-| Local Supabase and untracked env files | safe Docker/ports/keys | NOT CONFIGURED |
+| Supabase Cloud development project and env | `vellistry-dev` / `lflkcrnriitrbclangyr` active healthy, 0 public tables/migrations | PROJECT CREATED; APP SCHEMA/LOCAL ENV NOT CONFIGURED |
 | Existing code test/build baseline | actual exit codes | NOT RUN |
 | First Cursor Agent task dispatched | exact accepted task/branch | NOT AUTHORIZED |
 
-**Next action after plan signoff:** guided Cursor Desktop setup and local development preflight, **not yet feature implementation**.
+**Next action:** confirm **Cursor Desktop installed/open** and identify which **Supabase Cloud development project** the owner wishes to use. Then check Git checkout and pin pnpm via Corepack, configure safe untracked hosted-project env and perform no-feature-change baseline. No application coding yet.
