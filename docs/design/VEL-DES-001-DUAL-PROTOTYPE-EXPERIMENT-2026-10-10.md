@@ -96,6 +96,22 @@ For **each platform** record the following row for each JRN-001..011:
 
 **Decision methodology**: compare separate tasks and measured observations, identify preferred screen/interaction patterns, combine only after a consistency and complexity review. The result may be a hybrid; **neither tool's visual polish nor generated TypeScript automatically wins**. Actual consented fiction writer usability studies are still required before `G_DESIGN`; a prototype comparison alone is not evidence of user approval.
 
+## Owner operating constraint — maximize free-tier value
+
+**Owner instruction (2026-10-11):** Figma Make and Lovable will be used on free, usage-limited tiers. Extract the greatest useful amount of **authorized, synthetic UX design work** before free credits or quotas run out. Treat AI-generation calls, retries, credits and tool-use caps as scarce resources. This is not authorization to subscribe, purchase credits, enable paid functionality, or expose data to bypass free-plan limitations.
+
+**Efficiency rules:**
+
+1. **Front-load context and acceptance tests.** Before each generation call, assemble one complete, versioned input: product scope; 11 journey IDs; invented fixture; visual references; all error/edge states; accessibility and responsive constraints; security prohibitions; and an explicit output/evidence checklist. Preflight it in Git and use free local reasoning/code review to catch contradictory instructions before submitting.
+2. **One substantial first pass, minimal high-value revisions.** Favor a complete cohesive prototype over numerous tiny requests. Batch compatible fixes into one correction prompt. Do not burn credits on cosmetic micro-edits while core manuscript, recovery, provenance and AI/canon safety flows remain incomplete.
+3. **Allocate by uncovered value.** Lovable already produced a synthetic frontend at `e0a7fd3003c6a392742c0ac7e111073252c65fb3`; inspect and reuse this evidence without regenerating an equivalent project. Prioritize Figma Make's independent frame-to-interaction exploration and comparison, with a targeted list of Lovable's four documented interaction defects as negative test probes. Avoid duplicate concept generation.
+4. **Capture results immediately.** After each run, preserve actual project/file URLs, screenshot links when permitted, interaction inventory, code diff/commit, generator feedback, failures, remaining credits or visible limit notices (if actually displayed), and mapping to `VEL-JRN-001..011`. Do not invent counters or assume quotas reset on a particular date. Prefer sanctioned export/inspection over repeated AI generation.
+5. **Stop safely at zero budget.** On credit exhaustion, switch to free static inspection, documentation, locally prepared design specifications and owner-reviewed decisions. Do not ask the user for paid upgrade reflexively; do not retry paid/blocked calls or bypass plan restrictions. Report genuine blockers with existing artifacts and an exact resume checkpoint.
+6. **No involuntary subscription or publish.** No plan upgrade, billing enrollment, automatic add-on, workspace privacy change requiring payment, public Community publication, external service integration, real credentials, private manuscripts or production repository sync without separate explicit approval.
+7. **Evidence, not artificial completion.** A large AI prompt can generate more screens but does not prove interactions work. Mark untested journeys NOT_RUN; preserve code-level defects rather than writing a misleading "all 11 passed" summary. Owner G_DESIGN and G_CODE gates remain independent and pending.
+
+**Current observed constraints:** The Lovable **free workspace ran out of credits**, and a correction request was rejected *before* execution; owner-only project restriction was separately blocked by paid-plan requirements. The initial Figma Starter MCP design-call limit was encountered, and no independent Figma Make generated prototype has yet been verified. Exact remaining Make credit allowance is unknown; don't claim otherwise. See [Lovable code review](VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md) and [execution record](VEL-DES-LOVABLE-EXECUTION-CHECKPOINT-2026-10-10.md).
+
 ## Execution order / current checkpoint
 
 - [x] Original two Figma concepts and four unified candidate frames exist, with partial visual inspection.
