@@ -6,7 +6,7 @@ status: created-structure-audited-not-approved
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.2.0
+version: 0.3.0
 sources:
   - docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md
   - docs/design/VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md
@@ -28,7 +28,7 @@ The owner connected a second Figma MCP account **hb4** which can access the exis
 
 | New editable frame | ID | Design intention |
 |---|---|---|
-| [Library & new book](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10) | `27:10` | **Visual QA defect open:** populated book and empty-state copy shown together; correct into conditional variants before treating as implementation reference |
+| [Library & new book](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10) | `27:10` | **Known visual contradiction deferred by owner to Library implementation:** populated card and empty-state copy appear together in mockup; runtime must render mutually exclusive states per documented contract |
 | [Chapter organizer](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-44) | `27:44` | Chapter identity, reorder, create, unsaved navigation |
 | [Rules Studio](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-80) | `27:80` | Scoped sample controls, effective-rule preview, personal rule creation |
 | [Continue at insertion point](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-113) | `27:113` | Selected collapsed caret and version, consent, stale/invalid refusal |
@@ -38,16 +38,20 @@ The owner connected a second Figma MCP account **hb4** which can access the exis
 
 All seven were placed on the original first page at positions below existing concept frames. Frame size `1440 × 920`. Every new screen uses editable text and nested auto-layout structures; no screenshot was imported as the design.
 
-## PR #57 visual reviewer finding — Library conditional state (UNRESOLVED IN FIGMA)
+## PR #57 visual reviewer finding — Library conditional state (unchanged in Figma; owner-approved deferral)
 
 The exact-head PR review independently observed [Library frame `27:10`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10) and found **the populated `The Glass Orchard` book card is shown alongside the label `No books yet. Create your first book...`**, with no indication that the latter is an alternate illustration. These states are mutually exclusive in the intended product; this is an actual **static design inconsistency**, not a running-app defect.
 
-**Approved correction target when Figma tool quota allows:**
+**Original optional Figma correction target if the canvas is later revisited:**
 - **Preferred:** preserve populated `27:10` as an explicit `Library / Populated` screen; create an editable `Library / Empty` companion frame (separate state) with no real book card, clear primary `Create first book` action, AI OFF default and the synthetic-only disclaimer. In the populated screen remove or replace the “No books yet” panel with a meaningful populated-state section.
 - **Minimum acceptable:** visibly label the existing empty-state panel `ALTERNATE STATE — only when the library contains zero books` and explicitly indicate it is **not displayed alongside a real book card** in a production view. This must be evident visually, not only described here.
-- **Acceptance evidence:** Figma screenshot/structure readback after the actual canvas mutation; verify neither state misleads an implementer about conditional rendering. Record exact changed/new node IDs.
+- **Figma cleanup evidence (when performed):** screenshot/structure readback after the actual canvas mutation. **For the implementation slice instead:** require actual conditional rendering and account-isolation tests before marking the feature complete.
 
-**Current outcome:** Direct `hb4` Figma `use_figma` call to inspect/edit the Library returned **Starter MCP rate limit reached**. Consequently, **NO canvas correction was performed**. The review thread remains unresolved; documentation of intended UI logic is not equivalent to fixing the design layer. **Do not claim PR #57 is fully review-ready** until this is corrected or the owner explicitly decides to defer the visual contradiction with an implementation-safe handoff.
+**Owner decision (2026-10-11): DEFERRAL ACCEPTED FOR IMPLEMENTATION.** The owner explicitly directed that the present static Figma design can remain unchanged and that additional UI refinements will be fixed during implementation. This includes this documented populated/empty Library mockup inconsistency; it is **not** an assertion that the canvas was corrected. The direct `hb4` edit attempt returned the Starter MCP tool-call limit and **no Library Figma layer was changed**.
+
+**Implementation contract (mandatory for the Library slice, not optional polish):** `books.length === 0` renders only the empty-state message and Create first book affordance; `books.length > 0` renders the owned book cards and does **not** render the “No books yet” prompt. These states must not appear together in the same actual runtime view. Scope fetched books to the authenticated owner/account; verify a different user cannot see the first user's books. Add automated component tests for both states and an account-switch regression check when that slice is implemented. The static Figma reference remains knowingly contradictory until later design cleanup.
+
+The review may be **resolved as an explicitly accepted deferral**, not as a completed Figma visual fix or broader permission to code. Design and coding approval gates remain separate. All other UX adjustments may be refined iteratively; account data isolation, lossless save/recovery and other author-trust safeguards must still be correct in the implemented feature before it is considered complete.
 
 ## Validation evidence
 
