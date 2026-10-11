@@ -6,7 +6,7 @@ status: source-audited-make-behavior-unverified
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
   - docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md
@@ -50,6 +50,8 @@ Source-of-truth titles follow `MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md`, 
 ## Design recommendation (PROVISIONAL, NOT A DECISION)
 
 Use **writing-first manuscript canvas** as the reference direction for usability assessment, with **on-demand Story Workspace** from alternative B. Keep contextual facts unobtrusive and origin-labelled. This preserves the manual-first M1–M8 decision, but the writer preference for this hybrid **has not been tested**. Do not copy Lovable's flawed Continue/Rewrite or canon lifecycle implementation into editable Figma or the production app.
+
+**Owner sequencing clarification (2026-10-11):** The comparisons are inputs to a *living* editable Figma design. Do not make finishing every screen, responsive variant or broad visual/usability evaluation a blanket prerequisite to beginning implementation. After a **bounded `G_DESIGN`** decision for an implementation-ready slice and a **separate `G_CODE`** decision, engineers may implement that slice and refine its UI from real tested interactions. The current comparison does not grant either approval; incomplete Make inspection is not itself a reason to fabricate results or forever hold unrelated manual-first work. Critical safety states must still have explicit specifications and be proven before pilot/release.
 
 **P0 interaction correctness outranks cosmetic design selection:** manuscript not lost; save status not false; Continue caret honored; one-paragraph Rewrite selection safely pinned; stale proposal cannot overwrite; source-accurate canon and undo provenance. Because these are author-trust risks, design signoff requires representative independent interaction observations, not merely a generator's "all screens built" claim.
 
