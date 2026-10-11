@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vellistry standalone mark"><defs><linearGradient id="gold" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#946336"/><stop offset=".48" stop-color="#D1A46D"/><stop offset="1" stop-color="#F1CEA0"/></linearGradient></defs><g transform="translate(78 28) scale(.77)"><g>
+<path d="M45 84 H232 C213 94 209 110 220 140 L316 397 C324 418 326 442 332 454 C340 448 346 431 357 406 L406 287 C418 272 431 263 447 259 L379 434 C360 487 342 501 326 501 C307 500 289 484 277 456 L111 147 C92 108 82 100 45 84 Z" fill="#112239"/>
+<path d="M327 468 C347 386 372 318 419 268 C437 248 454 233 465 230 C425 322 390 411 361 465 C350 487 334 502 325 500 Z" fill="#112239"/>
+<path d="M338 329 C346 239 375 172 428 122 C465 87 490 61 490 23 C519 111 493 177 455 210 C423 238 378 264 338 329 Z" fill="url(#gold)"/>
+<path d="M349 321 C377 266 415 214 460 169 C443 194 415 236 384 279 Z" fill="#FFF8EA"/>
+<path d="M393 247 C415 234 438 212 455 198 C445 228 423 244 393 247 Z" fill="#FFF8EA"/>
+<path d="M301 365 C312 384 324 396 344 408 C328 425 318 436 314 449 L314 491 C302 498 297 487 295 475 L295 449 C290 430 279 422 266 410 C280 399 294 382 301 365 Z" fill="url(#gold)"/>
+<circle cx="305" cy="427" r="9" fill="#112239"/><path d="M305 436 V484" stroke="#112239" stroke-width="5" stroke-linecap="round"/>
+</g></g></svg>
