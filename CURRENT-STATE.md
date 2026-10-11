@@ -3,12 +3,38 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-10
+updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.35
+version: 0.1.40
 ---
 
 # Vellistry — Current State
+
+## Owner execution sequencing clarification (2026-10-11; approvals still pending)
+
+The owner explicitly clarified: **the UI does not need to be perfect before starting implementation**. Treat [the editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) as the **living master UI**, improved with inspected Figma Make/Lovable ideas while implementation proceeds in bounded slices. Completion of every screen, visual variant, typography detail or broad usability study is **not** a prerequisite to approving the **first sufficiently specified slice**. Capture the functional scope, critical negative states, testable acceptance criteria and minimal UI direction first; iterate design and product browser tests together.
+
+The design-first **permission boundary remains**: record explicit *scoped* `G_DESIGN` approval for an implementation-ready UX baseline and a **separate scoped `G_CODE`** authorization for the coding slice. Neither is yet granted simply by this sequencing clarification; this checkpoint did **not** initiate product feature coding. Protect manual AI-OFF writing, revision/conflict recovery, two bounded proposal actions, independent canon, author data isolation and explicit provider consent. The signed-out unexpired token / direct PostgREST risk still precludes real manuscripts/private pilots until fixed and tested. Stronger `G_PRIVATE_PILOT` and `G_RELEASE` gates are unchanged. See [revised handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md).
+
+## New design-artifact evidence checkpoint (2026-10-11; NOT owner-approved)
+
+- The owner supplied the [Figma Make Writing App Prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1) and the existing [editable Figma Design reference](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U). The Make file URL is recorded but its content, route behavior, privacy, completion and eleven author-journey results remain **unverified**. The Figma connector does not support inspecting Make files, and the Starter MCP quota blocked direct Design metadata. See [Make evidence checkpoint](docs/design/VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md).
+- The separate [Lovable synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787) was generated and source-inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`. Four outstanding interaction/provenance defects are documented in [review](docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). A corrective Lovable call was rejected due to exhausted free workspace credits. No integration into production.
+- **Free-tier policy:** maximize useful inspected results from existing prototypes; no paid plan, additional credit purchase, publicity change, real manuscript/credential, database connection or production code integration. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending. Draft PR #55 is still a documentation/evidence change, not acceptance.
+- **Cross-tool evidence comparison:** [11-journey adjudication](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md) now distinguishes static Figma, source-inspected Lovable, and Make link-received/uninspected. It records four outstanding Lovable deficiencies and a no-credit P0 test sequence; no prototype is declared ready for writers or product implementation.
+
+## Design phase — synthetic concept/UX handoff in progress (2026-10-10; NOT owner-approved)
+
+**Current verified `main` at branch creation:** `d20bf9b7f6c3f23c55a48984cad94b4151598fc2`, [PR #54](https://github.com/Ben-001-sys/Vellistry/pull/54) **merged** on 2026-10-10 with the two requested phase/approval-policy review fixes. All four exact-PR-head workflows were successful; **a separate post-merge main-commit Actions run was not established by those checks alone**. Stage 5 preparation is integrated, but that does not approve runtime product implementation.
+
+- **Figma design artifact (unapproved):** [Vellistry synthetic concepts](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U): two prior editable alternatives (writing-first, story-workspace-first) plus four unified editable concept screens (manual editor, save recovery, rewrite review, separate canon review). The initial writing-first and story-workspace alternatives and unified rewrite screen were visually inspected; remaining QA and functional prototyping are incomplete. Synthetic labels/versions are not executed save, AI or DB evidence.
+- **Design documentation on this proposed branch:** [UX handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md), [11-journey state matrix](docs/design/VEL-DES-002-JOURNEY-AND-STATE-MATRIX-2026-10-10.md) and [consented writer validation plan](docs/design/VEL-DES-002-WRITER-VALIDATION-PLAN-2026-10-10.md). These materials are **proposed** and do not claim complete Figma flows, actual writer interviews, operational model quality or validated accessibility.
+- **Two additional planned prototype routes (owner instruction, 2026-10-10):** Figma Make (make the existing editable synthetic concepts interactive) **and Lovable** (an independent synthetic frontend-only experiment). Prepared [dual-platform experiment protocol](docs/design/VEL-DES-001-DUAL-PROTOTYPE-EXPERIMENT-2026-10-10.md), [Figma Make prompt](docs/design/VEL-DES-PROMPT-FIGMA-MAKE-2026-10-10.md), [Lovable prompt](docs/design/VEL-DES-PROMPT-LOVABLE-2026-10-10.md), and [remaining screen blueprint](docs/design/VEL-DES-002-REMAINING-SCREEN-BLUEPRINT-2026-10-10.md) on draft PR #55. **Historical status at this 2026-10-10 planning checkpoint:** neither external prototype had yet been executed; the Lovable connector still required connection and Figma Make still required a separate editor workflow. Both subsequently advanced as documented in the newer 2026-10-11 checkpoint above. No external keys, production data, or public publishing were authorized.
+- **Design access limitation:** Figma MCP returned Starter plan rate limit during continued screenshots; no plan upgrade, paid tools or fabricated screenshots. Remaining Figma flows and design testing are pending.
+- **Gates:** G_DESIGN, G_CODE, G_PRIVATE_PILOT and G_RELEASE all remain **pending**. The signed-out unexpired access-token direct PostgREST exposure remains an acknowledged **development-stage** risk, not production-ready private manuscript security. Manual AI-OFF and owner-approved MVP scope remain unchanged.
+- **Next:** finish the remaining proposed author screens and responsive/error variants when Figma design access permits; run real consented fiction-writer prototype tasks before any canonical UX owner approval. Then separately request feature coding authorization; do not start `VEL-IMP-*` work now.
+
+## Historical Stage 5 preparation proposal (PR #54 subsequently merged)
 
 ## Stage 5 — proposed agentic implementation preparation (2026-10-10; PR review pending)
 
