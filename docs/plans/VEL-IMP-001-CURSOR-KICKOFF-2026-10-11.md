@@ -6,7 +6,7 @@ status: owner-directed-cursor-handoff-ready
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
@@ -37,6 +37,7 @@ This kickoff is an **engineering task handoff**; no Cursor task execution or ter
 - Existing DB with author-owned books and revision tables; **do not add or reset migrations** for this first task.
 - `pnpm@10.18.0`, Node 24, root scripts `pnpm check`, `pnpm build`, `pnpm dev:api`, `pnpm dev:web`, local CLI Supabase optional for disposable integration test.
 - `apps/web/src/app/books/page.tsx` already uses `books.length` to display an empty message and its map for book cards. Do not blindly rewrite working code; instead establish tests, improve explicit states and verify account-switch behavior. Prior Figma contradiction is **not necessarily a code bug**.
+- **Source-level risk worth testing first:** the existing Library `load()` handles 401/error by changing `status` without necessarily clearing previously loaded `books`, and lacks visible in-flight request invalidation. A user switch/failure could display stale prior-account cards. This is a **code review hypothesis**, not a reproduced cross-account exploit; validate with synthetic test first, then fix.
 
 ## Slice acceptance contract — implement incrementally, not all eleven journeys
 
@@ -55,6 +56,8 @@ This kickoff is an **engineering task handoff**; no Cursor task execution or ter
 You are the assigned implementer for `VEL-TASK-0004 / VEL-IMP-001` in **Vellistry**. Work only in the current Git checkout on branch `feat/vel-imp-001-auth-library`. Use Cursor Agent to modify files and run local tests. Do not create a new app or start from a cloned Lovable/Make scaffold.
 
 FIRST read: `AGENTS.md`, `PROJECT-CONSTITUTION.md`, `SOURCE-OF-TRUTH.md`, the TOP of `CURRENT-STATE.md`, `docs/agent-workflow/tasks/VEL-TASK-0004.yaml`, this plan file, and existing auth/books source. Check git status and branch before editing. Existing design PR #57 may not yet be merged; do not assume its pending files are in main. If branch or working tree differs from this handoff, STOP and report.
+
+Before altering application code, if local Python dependencies and full Git history are available, generate the task-scoped Git-pinned pack with `python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0004.yaml`. Check whether the output already exists before overwriting, follow `AGENTS.md` and preserve provenance. If unavailable, record the blocker and continue only with the explicit task's accepted authority; do not fabricate a ContextPack.
 
 IMPLEMENT ONLY the first scoped vertical slice:
 1. Audit current sign-in → authenticated library list/create → sign-out path. Keep the accepted Next16/Nest11/Supabase stack and existing routes.
