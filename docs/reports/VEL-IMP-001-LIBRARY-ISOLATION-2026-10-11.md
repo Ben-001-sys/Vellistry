@@ -5,11 +5,11 @@ type: execution-report
 status: proposed-for-review
 created_at: 2026-10-11
 updated_at: 2026-10-11
-version: 0.2.0
+version: 0.3.0
 task_id: null
 context_pack_id: null
 base_commit: 68c9ea5eb29c7bec558321d6b69a2604bd5128a2
-reviewed_head: 092a29a738b7eb7dbabda80ad32dc33296b703b7
+reviewed_head: ce3b91265f6afe815ba94080cfae99e8ad3c2dc9
 review:
   status: pending
   approved_by: null
@@ -24,24 +24,26 @@ Draft pull request: https://github.com/Ben-001-sys/Vellistry/pull/64 . Not merge
 
 ## Work performed
 
-Reviewed head `092a29a738b7eb7dbabda80ad32dc33296b703b7` received four review corrections. The branch still starts from verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`.
+Reviewed head `ce3b91265f6afe815ba94080cfae99e8ad3c2dc9` kept the four earlier corrections and received one further correction. The branch still starts from verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`.
 
 1. The unsaved book-title field clears when the authenticated author changes, and stays when the same author refreshes.
 2. A thrown or returned Supabase sign-out failure leaves the book list cleared, shows an error status, and does not redirect. A successful sign-out redirects to `/login` only after that call succeeds.
 3. `SIGNED_IN`, `TOKEN_REFRESHED`, and `USER_UPDATED` for the same author do not restart the load or abort an in-flight create, so the create response can still be applied. An author change still aborts that create and does not show it for the next author.
 4. `scripts/agent_workflow.py` and `tests/test_agent_workflow.py` match `main` again. This report replaced `docs/agent-workflow/execution-bundles/VEL-IMP-001.md`.
+5. Same-author Refresh during an in-flight create does not abort that POST, bump the load generation, or clear `createPending`. Refresh and Try again are hidden while `createPending` is true. A successful create still clears the draft, does not insert the response book, does not show a Saved status, and then reloads that author's list. An owner change still aborts the create and conceals the previous author.
 
 Hosted Supabase `vellistry-dev` was not queried or modified.
 
 ## Facts and evidence
 
-- **FACT.** Review comment: https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483472688 on `092a29a738b7eb7dbabda80ad32dc33296b703b7`. It is a comment review, not a merge approval.
+- **FACT.** Review comment: https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483472688 on `092a29a738b7eb7dbabda80ad32dc33296b703b7`. The follow-up review https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483572590 on `ce3b91265f6afe815ba94080cfae99e8ad3c2dc9` accepted those four findings and required the create/refresh correction. Both are comment reviews, not merge approvals.
 - **FACT.** Title clearing is implemented in `apps/web/src/lib/library/book-library-session.ts` (`startLoad` clears `draftTitle` only when the owner changes) and bound by `apps/web/src/app/books/page.tsx`. Covered by `author A's unsaved title is cleared when author B signs in` and `a same-author refresh keeps the unsaved title` in `apps/web/src/lib/library/book-library-session.test.ts`.
 - **FACT.** Sign-out handling is `LibrarySession.signOut` in the same session module. Covered by `a rejected sign-out stays on the page with the list cleared`, `a sign-out that returns an error does not redirect`, and `a successful sign-out redirects only after Supabase accepts it`.
 - **FACT.** Same-author auth events are `shouldReloadForAuthEvent` and `onAuthEvent`. Covered by `same-author SIGNED_IN does not drop an in-flight create outcome` and `an author change during create does not apply that create to the next author`.
+- **FACT.** Same-author Refresh during create is `LibrarySession.refresh` in `book-library-session.ts`. It returns without `startLoad` when `createPending` is true and `readOwner()` is still the current author. `libraryRegion` hides Refresh and Try again while `createPending` is true. `same-author Refresh during create keeps the successful acknowledgement` checks that the POST is not aborted, the generation stays put, a second submit does not start another POST, the draft clears only after HTTP 201, the status does not match `/saved/i`, the response book is not inserted, and one later list fetch runs. `an author change during create does not apply that create to the next author` now calls Refresh before the switch and still shows only the next author's titles.
 - **FACT.** `git diff origin/main -- scripts/agent_workflow.py tests/test_agent_workflow.py` is empty. `python3 scripts/agent_workflow.py validate` exited 0 and reported 1 ExecutionBundle (`VEL-EB-0001` only).
 - **FACT.** Commands on this worktree, Node `v22.14.0`, Corepack pnpm `10.18.0`:
-  - `corepack pnpm test:library-isolation` exited 0 (21 pass / 0 fail).
+  - `corepack pnpm test:library-isolation` exited 0 (22 pass / 0 fail).
   - `corepack pnpm check` exited 0.
   - `corepack pnpm build` exited 0.
   - `python3 -m unittest tests/test_agent_workflow.py -v` exited 0 (15 tests).
@@ -51,6 +53,7 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 ## Interpretations
 
 - **INTERPRETATION.** Applying the create response after a same-author auth event is the outcome tracking the review asked for. The BFF expected-user gate is unchanged.
+- **INTERPRETATION.** Ignoring same-author Refresh while a create is pending is the guard from review `5483572590`. The successful create still reloads that author. Aborting the browser request is not treated as reversing a server write. No status text says the book was saved.
 - **INTERPRETATION.** A failed sign-out keeps the typed title because the author did not change. The book list stays hidden until a later refresh or a successful sign-out.
 - **INTERPRETATION.** Moving this report out of `docs/agent-workflow/execution-bundles/` is the separately scoped reporting path from the review. It does not accept PLAN-01..06.
 
@@ -64,7 +67,7 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 
 | Command | Exit | Result |
 |---|---|---|
-| `corepack pnpm test:library-isolation` | 0 | 21 pass / 0 fail. No hosted database. |
+| `corepack pnpm test:library-isolation` | 0 | 22 pass / 0 fail. No hosted database. |
 | `corepack pnpm check` | 0 | Nest and Next typecheck. |
 | `corepack pnpm build` | 0 | Nest and Next production builds. |
 | `python3 scripts/agent_workflow.py validate` | 0 | Pilot bundles only. |
@@ -89,4 +92,4 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 
 ## Reviewer disposition
 
-**Pending owner review.** The four review findings are addressed in this revision. This report is not merge authorization and not a passing live RLS result.
+**Pending owner review.** The four earlier findings stay addressed. The create/refresh race from review `5483572590` is addressed in this revision. This report is not merge authorization and not a passing live RLS result.

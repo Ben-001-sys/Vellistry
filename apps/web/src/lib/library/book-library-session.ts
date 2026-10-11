@@ -1,6 +1,7 @@
 /**
  * Auth-event controller for the Book Library page.
  * Same-author events do not restart a load or drop an in-flight create.
+ * Same-author Refresh during a create does not abort that POST or bump generation.
  * An owner change clears the unsaved title and ignores the previous response.
  */
 
@@ -152,15 +153,21 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   }
 
   async function refresh() {
+    let nextOwner: string | null;
     try {
-      await startLoad(await deps.readOwner());
+      nextOwner = await deps.readOwner();
     } catch {
       const generation = model.generation + 1;
       owner = null;
       hasLoaded = true;
       model = applyLoad(beginLoad(model, null, generation), generation, null, { kind: "error" });
       emit();
+      return;
     }
+    // A same-author refresh must not discard an in-flight create acknowledgement.
+    // The POST is left running. Success still reloads this author afterwards.
+    if (model.createPending && nextOwner === owner) return;
+    await startLoad(nextOwner);
   }
 
   async function submitCreate() {

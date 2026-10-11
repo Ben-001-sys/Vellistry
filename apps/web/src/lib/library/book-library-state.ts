@@ -246,8 +246,8 @@ export function libraryRegion(state: LibraryState): LibraryRegion {
       (state.phase === "empty" || state.phase === "populated" || state.phase === "error") &&
       state.ownerKey !== null &&
       !state.createPending,
-    showRefresh: state.phase !== "loading",
-    showRetry: state.phase === "error" || state.phase === "unauthorized",
+    showRefresh: state.phase !== "loading" && !state.createPending,
+    showRetry: (state.phase === "error" || state.phase === "unauthorized") && !state.createPending,
     showSignIn: state.phase === "unauthorized",
   };
 }

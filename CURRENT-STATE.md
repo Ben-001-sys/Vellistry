@@ -5,14 +5,14 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.49
+version: 0.1.50
 ---
 
 # Vellistry — Current State
 
 ## VEL-IMP-001 review corrections are in the draft PR (2026-10-11)
 
-Issue #63 remains the only coding slice in progress. Draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open against verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. It is not merged and was not deployed. The review of `092a29a738b7eb7dbabda80ad32dc33296b703b7` asked for four corrections. Those are in the follow-up revision: the unsaved title clears on an author change, a failed sign-out does not redirect, a same-author auth event does not drop an in-flight create, and the agent-workflow validator no longer has an IMP-001 bypass.
+Issue #63 remains the only coding slice in progress. Draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open against verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. It is not merged and was not deployed. The review of `092a29a738b7eb7dbabda80ad32dc33296b703b7` asked for four corrections. Those stayed in `ce3b91265f6afe815ba94080cfae99e8ad3c2dc9`: the unsaved title clears on an author change, a failed sign-out does not redirect, a same-author auth event does not drop an in-flight create, and the agent-workflow validator no longer has an IMP-001 bypass. The follow-up review of that head asked for one more correction: same-author Refresh no longer invalidates an in-flight create, and Refresh and Try again stay hidden while creation is pending.
 
 **FACT.** The execution report is [VEL-IMP-001 library isolation](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). It is not a pinned `VEL-EB` bundle and it does not create or recycle a `VEL-TASK`. Synthetic session tests, `corepack pnpm check`, and `corepack pnpm build` passed without a hosted database. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were not changed.
 

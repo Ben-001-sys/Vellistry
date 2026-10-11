@@ -30,6 +30,7 @@ type Harness = {
   session: ReturnType<typeof createLibrarySession>;
   signedInAs: string | null;
   navigatedTo: string | null;
+  fetchCount: number;
   signOutImpl: () => Promise<{ error: boolean }>;
   createBook: LibrarySessionDeps["createBook"];
 };
@@ -39,11 +40,13 @@ function harness(overrides: Partial<LibrarySessionDeps> = {}): Harness {
     session: undefined as unknown as Harness["session"],
     signedInAs: AUTHOR_A,
     navigatedTo: null,
+    fetchCount: 0,
     signOutImpl: async () => ({ error: false }),
     createBook: async () => jsonResponse(201, book("created", "Created")),
   };
   const deps: LibrarySessionDeps = {
     fetchBooks: async () => {
+      state.fetchCount += 1;
       if (state.signedInAs === AUTHOR_A) return jsonResponse(200, [book("a-1", "Amber notebook")]);
       if (state.signedInAs === AUTHOR_B) return jsonResponse(200, [book("b-1", "Blue notebook")]);
       return jsonResponse(401, { error: "unauthenticated" });
@@ -131,6 +134,51 @@ test("same-author SIGNED_IN does not drop an in-flight create outcome", async ()
   }), false);
 });
 
+test("same-author Refresh during create keeps the successful acknowledgement", async () => {
+  const env = harness();
+  const held = holdCreate(env);
+  let createCalls = 0;
+  const started = env.createBook;
+  env.createBook = (title, ownerKey, signal) => {
+    createCalls += 1;
+    return started(title, ownerKey, signal);
+  };
+  await signIn(env, AUTHOR_A);
+  const fetchesAfterLoad = env.fetchCount;
+  env.session.setDraftTitle("Brand new notebook");
+  const pending = env.session.submitCreate();
+  await held.entered;
+  const generation = env.session.snapshot().model.generation;
+  const whilePending = libraryRegion(env.session.snapshot().model);
+  assert.equal(whilePending.canCreate, false);
+  assert.equal(whilePending.showRefresh, false);
+  assert.equal(whilePending.showRetry, false);
+
+  await env.session.refresh();
+  await env.session.submitCreate();
+
+  assert.equal(createCalls, 1);
+  assert.equal(env.fetchCount, fetchesAfterLoad);
+  assert.equal(held.signal()?.aborted, false);
+  assert.equal(env.session.snapshot().model.createPending, true);
+  assert.equal(env.session.snapshot().model.generation, generation);
+  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
+
+  held.release(jsonResponse(201, book("a-2", "Brand new notebook")));
+  await pending;
+
+  const after = env.session.snapshot();
+  const region = libraryRegion(after.model);
+  assert.equal(after.draftTitle, "");
+  assert.equal(after.model.createPending, false);
+  assert.notEqual(after.model.status, LIBRARY_COPY.createError);
+  assert.equal(/saved/i.test(after.model.status), false);
+  assert.equal(env.fetchCount, fetchesAfterLoad + 1);
+  assert.deepEqual(region.books.map((item) => item.title), ["Amber notebook"]);
+  assert.equal(region.books.some((item) => item.title === "Brand new notebook"), false);
+  assert.equal(region.showRefresh, true);
+});
+
 test("an author change during create does not apply that create to the next author", async () => {
   const env = harness();
   const held = holdCreate(env);
@@ -138,6 +186,8 @@ test("an author change during create does not apply that create to the next auth
   env.session.setDraftTitle("A secret title");
   const pending = env.session.submitCreate();
   await held.entered;
+  await env.session.refresh();
+  assert.equal(held.signal()?.aborted, false);
   env.signedInAs = AUTHOR_B;
   await env.session.onAuthEvent("SIGNED_IN", AUTHOR_B);
   assert.equal(held.signal()?.aborted, true);
