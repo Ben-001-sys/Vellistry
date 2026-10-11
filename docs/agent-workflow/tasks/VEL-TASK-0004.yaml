@@ -46,8 +46,6 @@ inputs:
     role: accepted-governance
   - path: SOURCE-OF-TRUTH.md
     role: accepted-governance
-  - path: CURRENT-STATE.md
-    role: working-state-with-historical-checkpoints
   - path: AGENTS.md
     role: agent-instructions
   - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
@@ -76,6 +74,12 @@ source_gaps:
   - id: Runtime
     limitation: >-
       No Cursor local terminal/test results yet; must distinguish NOT RUN from PASS.
+deliverables:
+  - Source-audited minimal authenticated Library UI and API changes on isolated Cursor branch
+  - Synthetic Alice/Bob component and negative authorization regression tests with actual results
+  - Executed typecheck/build and documented integration-test output or honest NOT RUN status
+  - Proposed ExecutionBundle with FACT INTERPRETATION PROPOSAL, exact changed paths and commit
+  - Review-ready unmerged implementation pull request and remaining VEL-IMP-002/003 handoff
 acceptance_criteria:
   - Empty list shows only Create first book/empty state, no example book card
   - Nonempty list shows only account-owned books, never No books yet copy
