@@ -304,6 +304,45 @@ def check_bundle(path: Path, task_by_id: dict[str, dict], pack_by_id: dict[str, 
             raise ValueError(f"{path}: missing section {heading}")
 
 
+ISSUE_SCOPED_BUNDLE_ID = "VEL-IMP-001"
+ISSUE_SCOPED_HEADINGS = (
+    "## Work performed",
+    "## Facts and evidence",
+    "## Interpretations",
+    "## Proposals",
+    "## Tests",
+    "## Artifacts",
+    "## Risks",
+    "## Reviewer disposition",
+)
+
+
+def check_issue_scoped_bundle(path: Path):
+    """VEL-IMP-001 report. It must not mint or recycle a VEL-TASK / ContextPack id."""
+    meta, body = frontmatter(path)
+    if path.stem != ISSUE_SCOPED_BUNDLE_ID or meta.get("id") != ISSUE_SCOPED_BUNDLE_ID:
+        raise ValueError(f"{path}: issue-scoped bundle must be named {ISSUE_SCOPED_BUNDLE_ID}")
+    if meta.get("type") != "execution-bundle" or meta.get("status") != "proposed-for-review":
+        raise ValueError(f"{path}: issue-scoped bundle must stay proposed-for-review")
+    if meta.get("task_id") != ISSUE_SCOPED_BUNDLE_ID:
+        raise ValueError(f"{path}: task_id must stay {ISSUE_SCOPED_BUNDLE_ID} and must not recycle a VEL-TASK")
+    if str(meta.get("task_id", "")).startswith("VEL-TASK-"):
+        raise ValueError(f"{path}: do not attach a VEL-TASK id")
+    if meta.get("context_pack_id") is not None:
+        raise ValueError(f"{path}: do not attach a ContextPack")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(meta.get("base_commit", ""))):
+        raise ValueError(f"{path}: base_commit must be the verified main SHA")
+    review = meta.get("review")
+    if not isinstance(review, dict) or review.get("status") != "pending" or review.get("approved_by") is not None:
+        raise ValueError(f"{path}: review must be pending without an approver")
+    for heading in ISSUE_SCOPED_HEADINGS:
+        if heading not in body:
+            raise ValueError(f"{path}: missing section {heading}")
+    for label in ("FACT", "INTERPRETATION", "PROPOSAL"):
+        if label not in body:
+            raise ValueError(f"{path}: missing {label} label")
+
+
 def validate_all():
     tasks = {}
     for path in sorted(TASKS.glob("*.yaml")):
@@ -320,7 +359,11 @@ def validate_all():
         packs[meta["id"]] = meta
     count = 0
     for path in sorted(BUNDLES.glob("*.md")):
-        check_bundle(path, tasks, packs)
+        meta, _ = frontmatter(path)
+        if meta.get("id") == ISSUE_SCOPED_BUNDLE_ID:
+            check_issue_scoped_bundle(path)
+        else:
+            check_bundle(path, tasks, packs)
         count += 1
     if not tasks or not packs or not count:
         raise ValueError("v0.1 pilot requires a task, ContextPack and ExecutionBundle")

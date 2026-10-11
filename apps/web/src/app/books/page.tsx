@@ -7,6 +7,7 @@ import {
   beginLoad,
   initialLibraryState,
   libraryRegion,
+  requestCreate,
   type LibraryState,
 } from "@/lib/library/book-library-state";
 import {EXPECTED_USER_HEADER} from "@/lib/library/book-create-document";

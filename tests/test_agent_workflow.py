@@ -159,6 +159,24 @@ class HandoffWorkflowTests(unittest.TestCase):
         self.assertEqual(meta["review"]["status"], "pending")
         self.assertIsNone(meta["review"]["approved_by"])
 
+    def test_imp001_report_does_not_recycle_a_vel_task(self):
+        path = ROOT / "docs/agent-workflow/execution-bundles/VEL-IMP-001.md"
+        meta, body = wf.frontmatter(path)
+        self.assertEqual(meta["id"], "VEL-IMP-001")
+        self.assertEqual(meta["task_id"], "VEL-IMP-001")
+        self.assertIsNone(meta["context_pack_id"])
+        self.assertEqual(meta["status"], "proposed-for-review")
+        self.assertNotIn("VEL-TASK-0004", meta["task_id"])
+        self.assertIn("FACT", body)
+        self.assertIn("BLOCKED", body)
+        wf.check_issue_scoped_bundle(path)
+        raw = path.read_text(encoding="utf-8").replace("status: proposed-for-review", "status: accepted", 1)
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / "VEL-IMP-001.md"
+            copy.write_text(raw, encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "proposed-for-review"):
+                wf.check_issue_scoped_bundle(copy)
+
 
 if __name__ == "__main__":
     unittest.main()
