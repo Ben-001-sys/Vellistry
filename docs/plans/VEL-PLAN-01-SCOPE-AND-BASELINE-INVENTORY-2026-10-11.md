@@ -6,7 +6,7 @@ status: working-draft-awaiting-owner-review
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.2.0
 sources:
   - docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
@@ -29,7 +29,7 @@ sources:
 
 **Source authority order:** accepted MVP scope and ADRs > dated owner decisions > approved constrained horizon map > proposed journey/engineering specs > Figma/Make/Lovable synthetic evidence. The recovered 396-feature catalog is an index of discussed features, not 396 separate feature tickets or new product authority.
 
-**Inventory limitation:** GitHub API directory contents, selected exact source files and the approved feature-mapping document were checked. This is **not** a complete file-by-file examination of all ~100KB feature catalog entries, scripts or runtime tests, nor an executed dependency audit. Broader source coverage is a follow-up planning/implementation review, not grounds to invent completeness.
+**Inventory limitation:** GitHub API directory contents, selected exact source files and accepted feature-horizon mapping were checked. A **separate [149-ID per-row crosswalk](VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md)** now individually maps every included/limited record, preserving ID/name/source-status. This is not a full file-by-file audit of the historical ~100KB descriptions, runnable per-feature test suite or real dependency execution; the crosswalk's new task and test mappings remain explicitly proposed.
 
 ## 2. Decisions that are already accepted
 
@@ -129,8 +129,8 @@ Paths listed below were directly checked via GitHub API file contents or directo
 - [x] Identify existing Next/Nest/Supabase scaffold and intended read-only accepted chapter schema.
 - [x] Inspect actual GitHub top-level app directories, two migrations, auth/books paths, current tests and workflows.
 - [x] Record primary discrepancies and reuse/build/investigate classifications.
-- [ ] Complete *row-by-row* verification of all individual 149 included/limited feature IDs against specific tasks and acceptance cases; do not claim this first-pass group map is exhaustive.
-- [ ] Owner reviews PLAN-01 and decides whether additional per-ID audit is required before PLAN-02.
-- [ ] Resolve architecture/security/rules/portability/provider *details* in their designated later planning sections; not incorrectly marked as blockers to writing this inventory.
+- [x] **ID-level planning crosswalk created:** [all 149 included/limited original rows mapped once](VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md) to proposed task ownership and unique test identities; no actual executable per-ID tests or new owner authority claimed.
+- [ ] Owner review/acceptance of all six planning packages; source-to-task test mappings are proposals, not accepted executable cases.
+- [x] Planning-level architecture/security/rules/portability/provider decisions are assigned to [PLAN-02](VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md), [PLAN-04](VEL-PLAN-04-TEST-SECURITY-RECOVERY-2026-10-11.md), and [PLAN-06](VEL-PLAN-06-MVP-PLANNING-REVIEW-CLOSEOUT-2026-10-11.md); risk decisions still require subsequent approvals before affected implementations/pilot.
 
-**Review conclusion proposed:** PLAN-01 group-level baseline is sufficient to proceed to detailed **PLAN-02 Architecture and Data Contract planning**, provided the individual 149 included/limited horizon mappings are checked before issuing implementation tasks. Do not start Cursor Desktop or code on the strength of this source audit alone.
+**PLAN-01 closeout (planning only):** baseline and exact 149-ID crosswalk are prepared and source-reconciled. All implementation tasks/tests are still proposed and NOT_RUN. PLAN-02..06 plans were also prepared in the same documentation pass; owner PR review remains required before Cursor Desktop setup. No app code changes.
