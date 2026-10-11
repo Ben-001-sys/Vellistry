@@ -20,6 +20,8 @@ export const LIBRARY_COPY = {
   loadError: "Unable to load books. Try again.",
   createError: "Could not save this book. Your title remains in the field.",
   sessionChanged: "Your session changed. The book was not saved to this account.",
+  signingOut: "Signing out...",
+  signOutError: "Sign-out did not complete. You may still be signed in. Try signing out again.",
 } as const;
 
 export type LibraryState = {
@@ -148,6 +150,28 @@ export function applyLoad(
     phase: "populated",
     books,
     status: "",
+    ...clearedCreate(),
+  };
+}
+
+/** Clears visible titles while a sign-out attempt is in flight. The owner is unchanged. */
+export function concealBooksForSignOut(state: LibraryState): LibraryState {
+  return {
+    ...state,
+    phase: "loading",
+    books: [],
+    status: LIBRARY_COPY.signingOut,
+    ...clearedCreate(),
+  };
+}
+
+/** Keeps the list cleared and does not describe the author as signed out. */
+export function failSignOut(state: LibraryState): LibraryState {
+  return {
+    ...state,
+    phase: "error",
+    books: [],
+    status: LIBRARY_COPY.signOutError,
     ...clearedCreate(),
   };
 }

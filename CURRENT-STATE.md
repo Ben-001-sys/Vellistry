@@ -5,18 +5,18 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.48
+version: 0.1.49
 ---
 
 # Vellistry — Current State
 
-## VEL-IMP-001 Book Library account isolation is in draft review (2026-10-11)
+## VEL-IMP-001 review corrections are in the draft PR (2026-10-11)
 
-Issue #63 authorized one coding slice: authenticated Book Library account isolation. Draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is open against verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. It is not merged and was not deployed. The report is [VEL-IMP-001](docs/agent-workflow/execution-bundles/VEL-IMP-001.md).
+Issue #63 remains the only coding slice in progress. Draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open against verified `main` `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. It is not merged and was not deployed. The review of `092a29a738b7eb7dbabda80ad32dc33296b703b7` asked for four corrections. Those are in the follow-up revision: the unsaved title clears on an author change, a failed sign-out does not redirect, a same-author auth event does not drop an in-flight create, and the agent-workflow validator no longer has an IMP-001 bypass.
 
-**FACT.** The slice clears or partitions Book Library titles on account change, 401, and load failure, and it refuses a book create whose expected user does not match the verified session. Synthetic tests for that behavior passed without a hosted database. `corepack pnpm check` and `corepack pnpm build` passed after a missing-import fix. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were already on `main` and were not changed.
+**FACT.** The execution report is [VEL-IMP-001 library isolation](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). It is not a pinned `VEL-EB` bundle and it does not create or recycle a `VEL-TASK`. Synthetic session tests, `corepack pnpm check`, and `corepack pnpm build` passed without a hosted database. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were not changed.
 
-**Not accepted and not passed.** This checkpoint does not accept PLAN-01..06, does not mark `G_DESIGN` or `G_CODE` passed, and does not claim live RLS, direct PostgREST logout behavior, or `ACC-M1-01` persistence. Hosted project `vellistry-dev` was not migrated or written. Live book create/reopen stays **BLOCKED** until a reviewed schema exists. PR #59 and Issue #58 stay paused. No new `VEL-TASK` was created, and `VEL-TASK-0004` was not recycled. Crosswalk rows for this slice remain `NOT_RUN` because the full acceptance cases were not executed.
+**Not accepted and not passed.** This checkpoint does not accept PLAN-01..06, does not mark `G_DESIGN` or `G_CODE` passed, and does not claim live RLS, direct PostgREST logout behavior, or `ACC-M1-01` persistence. Hosted project `vellistry-dev` was not migrated or written. Live book create/reopen stays **BLOCKED** until a reviewed schema exists. PR #59 and Issue #58 stay paused. Crosswalk rows for this slice remain `NOT_RUN` because the full acceptance cases were not executed.
 
 ## PLAN-01..06 all prepared in one planning-only pass (2026-10-11; owner review PENDING)
 
