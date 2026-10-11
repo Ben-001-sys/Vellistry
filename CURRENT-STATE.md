@@ -5,10 +5,16 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.41
+version: 0.1.42
 ---
 
 # Vellistry — Current State
+
+## Seven additional editable Figma Design screens created (2026-10-11)
+
+The owner connected the second Figma MCP account `hb4`, which successfully read and wrote the **existing original Figma Design**. Preflight found three existing expanded screens (`15:558` manuscript, `15:676` story workspace, `15:791` Settings/BYOK), so they were **not duplicated**. Seven actual additional editable frames were created on page 01: [Library `27:10`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10), [Chapters `27:44`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-44), [Rules `27:80`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-80), [Continue `27:113`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-113), [Export/Privacy `27:145`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-145), [Profile/Fact `27:179`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-179), and [Save Reconciliation `27:213`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-213). Each uses real editable text/auto-layout nodes; structural readback confirmed seven frames and no text extending beyond its overall screen. See [artifact ledger](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md).
+
+These are **static provisional concept screens**, not operational app controls; screenshot visual QA, mobile variants and real author testing are still open. No existing Figma frames, production code or other prototype credits were changed; `G_DESIGN` and `G_CODE` remain pending.
 
 ## Live Make walkthrough incorporated (2026-10-11, evidence received; not author-approved)
 
