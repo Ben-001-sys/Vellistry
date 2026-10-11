@@ -5,10 +5,18 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.40
+version: 0.1.41
 ---
 
 # Vellistry — Current State
+
+## Live Make walkthrough incorporated (2026-10-11, evidence received; not author-approved)
+
+- [PR #55](https://github.com/Ben-001-sys/Vellistry/pull/55) **MERGED** on 2026-10-11 at `b05458461572983e1b9c5d05b785776b22da0c17`; do not treat it as a pending/draft PR or as approving `G_DESIGN`/`G_CODE`.
+- The owner supplied a detailed *live Figma Make* walkthrough against all eleven author journeys after the prior published-site URL access failures. See [external review evidence](docs/design/VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md) and [reconciled Make-vs-Lovable matrix](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md). This is **externally reported interaction evidence**, not assistant-replayed browser testing, real-writer validation or backend verification.
+- Reported Make strengths: writing-first editor/chapter navigation, locally preserved edits/reorder, rule exclusion from effective guidance, correct selection-bounded Rewrite/reject/undo, separate canon decision, and stale AI guard. **Critical reported failures:** Writer B profile/fact-review state visible in Writer A (mock cross-persona leakage); Continue rejected a valid collapsed caret at offset 4. Save/recovery, profile/thread creation, fact edit/dismiss/provenance, rule creation, formatting/search and export/delete interactions remain incomplete or absent.
+- The [original editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) is the master to improve using the Make review plus inspected Lovable source; **no new Figma canvas edits occurred** because Starter MCP access remains limited. [Figma handoff v0.4](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md) gives P0/P1 refinement targets. Do not require complete visual polish before a *scoped* approved implementation slice.
+- No code, migrations, product auth, real model, publisher settings or paid credits changed here. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, and `G_RELEASE` are still pending; real manuscripts remain barred by the previously acknowledged signed-out unexpired JWT/direct PostgREST risk.
 
 ## Owner execution sequencing clarification (2026-10-11; approvals still pending)
 
@@ -20,7 +28,7 @@ The design-first **permission boundary remains**: record explicit *scoped* `G_DE
 
 - The owner supplied the [Figma Make Writing App Prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1) and the existing [editable Figma Design reference](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U). The Make file URL is recorded but its content, route behavior, privacy, completion and eleven author-journey results remain **unverified**. The Figma connector does not support inspecting Make files, and the Starter MCP quota blocked direct Design metadata. See [Make evidence checkpoint](docs/design/VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md).
 - The separate [Lovable synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787) was generated and source-inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`. Four outstanding interaction/provenance defects are documented in [review](docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). A corrective Lovable call was rejected due to exhausted free workspace credits. No integration into production.
-- **Free-tier policy:** maximize useful inspected results from existing prototypes; no paid plan, additional credit purchase, publicity change, real manuscript/credential, database connection or production code integration. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending. Draft PR #55 is still a documentation/evidence change, not acceptance.
+- **Free-tier policy:** maximize useful inspected results from existing prototypes; no paid plan, additional credit purchase, publicity change, real manuscript/credential, database connection or production code integration. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending. Historical status of PR #55 before merge; PR #55 was merged subsequently, without approving the design/code gates.
 - **Cross-tool evidence comparison:** [11-journey adjudication](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md) now distinguishes static Figma, source-inspected Lovable, and Make link-received/uninspected. It records four outstanding Lovable deficiencies and a no-credit P0 test sequence; no prototype is declared ready for writers or product implementation.
 
 ## Design phase — synthetic concept/UX handoff in progress (2026-10-10; NOT owner-approved)
