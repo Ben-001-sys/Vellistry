@@ -12,7 +12,8 @@ import {
   type BookSummary,
   type LibraryState,
 } from "./book-library-state";
-import { decideBookPost } from "./book-create-document";
+import { decideBookPost, forwardTransportFailure, outcomeForCreateStatus } from "./book-create-document";
+import { ownerFromGetUser } from "./owner-from-auth";
 
 const AUTHOR_A = "author-a";
 const AUTHOR_B = "author-b";
@@ -247,4 +248,33 @@ test("book create rejects a stale account and strips client owner_id", () => {
   assert.equal(forwarded.action, "forward");
   if (forwarded.action !== "forward") return;
   assert.deepEqual(JSON.parse(forwarded.document) as unknown, { title: "Amber notebook" });
+});
+
+test("a lost upstream acknowledgement is not a pre-forward failure", () => {
+  assert.deepEqual(forwardTransportFailure(true), { status: 503, error: "acknowledgment_unknown" });
+  assert.deepEqual(forwardTransportFailure(false), { status: 503, error: "service_unavailable" });
+  assert.equal(outcomeForCreateStatus(503, "acknowledgment_unknown"), "unknown");
+  assert.equal(outcomeForCreateStatus(503, null), "unknown");
+  assert.equal(outcomeForCreateStatus(503, "service_unavailable"), "error");
+  assert.equal(outcomeForCreateStatus(503, "api_not_configured"), "error");
+  assert.equal(outcomeForCreateStatus(401, "unauthenticated"), null);
+  assert.equal(outcomeForCreateStatus(409, "session_changed"), null);
+  assert.equal(outcomeForCreateStatus(400, "invalid_document"), null);
+  assert.equal(outcomeForCreateStatus(500, "nope"), null);
+});
+
+test("a returned auth error is not a confirmed signed-out user", () => {
+  assert.throws(
+    () => ownerFromGetUser({ data: { user: null }, error: { message: "AuthRetryableFetchError" } }),
+    /identity verification failed/,
+  );
+  assert.throws(
+    () => ownerFromGetUser({
+      data: { user: { id: AUTHOR_A } },
+      error: { message: "AuthRetryableFetchError" },
+    }),
+    /identity verification failed/,
+  );
+  assert.equal(ownerFromGetUser({ data: { user: null }, error: null }), null);
+  assert.equal(ownerFromGetUser({ data: { user: { id: AUTHOR_A } }, error: null }), AUTHOR_A);
 });

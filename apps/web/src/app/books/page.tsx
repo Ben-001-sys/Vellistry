@@ -4,6 +4,7 @@ import {useEffect,useState} from "react";
 import {libraryRegion} from "@/lib/library/book-library-state";
 import {EXPECTED_USER_HEADER} from "@/lib/library/book-create-document";
 import {createLibrarySession,type LibrarySession,type LibrarySessionSnapshot} from "@/lib/library/book-library-session";
+import {ownerFromGetUser} from "@/lib/library/owner-from-auth";
 import {getBrowserSupabase} from "@/lib/supabase/browser";
 
 function createPageSession(): LibrarySession {
@@ -19,10 +20,7 @@ function createPageSession(): LibrarySession {
       cache:"no-store",
       signal,
     }),
-    readOwner: async () => {
-      const {data:{user}} = await getBrowserSupabase().auth.getUser();
-      return user?.id ?? null;
-    },
+    readOwner: async () => ownerFromGetUser(await getBrowserSupabase().auth.getUser()),
     signOut: async () => {
       const {error} = await getBrowserSupabase().auth.signOut();
       return {error:error != null};

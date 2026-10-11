@@ -50,3 +50,28 @@ export function decideBookPost(input: {
   if (!parsed.ok) return { action: "reject", status: 400, error: "invalid_document" };
   return { action: "forward", document: parsed.document };
 }
+
+/**
+ * A thrown fetch after the upstream request was sent does not prove the write
+ * never happened. Failures before that send are definite.
+ */
+export function forwardTransportFailure(attemptedUpstream: boolean): {
+  status: 503;
+  error: "acknowledgment_unknown" | "service_unavailable";
+} {
+  if (attemptedUpstream) return { status: 503, error: "acknowledgment_unknown" };
+  return { status: 503, error: "service_unavailable" };
+}
+
+/**
+ * HTTP 503 is unknown unless the BFF names a failure that happened before the
+ * write was forwarded. Any other 503, including an unreadable body, stays unknown.
+ */
+export function outcomeForCreateStatus(
+  status: number,
+  errorCode: string | null,
+): "unknown" | "error" | null {
+  if (status !== 503) return null;
+  if (errorCode === "service_unavailable" || errorCode === "api_not_configured") return "error";
+  return "unknown";
+}

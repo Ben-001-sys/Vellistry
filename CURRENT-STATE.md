@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.52
+version: 0.1.53
 ---
 
 # Vellistry — Current State
@@ -14,7 +14,7 @@ version: 0.1.52
 
 Issue #63 remains the only coding slice in progress. [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open and unmerged. It was not deployed. This branch now contains verified `origin/main` `226f6072785b7271fd30f4979a76e41fca30e39c` (merge of PR #62) as well as the library-isolation work that started from `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. The hosted Supabase Cloud sections below are kept from that main tip.
 
-The review of `6f98f033fff8333e66edf23cd3b12eadacc22ed6` kept the earlier isolation corrections and required two further changes. A lost save whose refreshed list does not show the title stays uncertain until that title appears or the author explicitly chooses to save again. A refresh that cannot verify the author hides the unsaved title and restores it only for that same author. `CURRENT-STATE.md` keeps both this evidence and the hosted-project record from main.
+The review of `6f98f033fff8333e66edf23cd3b12eadacc22ed6` kept the earlier isolation corrections and required two further changes, addressed in `60b187c3575cb794b1969ec389f937479df04ba0`. A lost save whose refreshed list does not show the title stays uncertain until that title appears or the author explicitly chooses to save again. A refresh that cannot verify the author hides the unsaved title and restores it only for that same author. A later correction on this same branch distinguishes a Nest POST whose acknowledgement was lost from a failure before that POST was sent: the lost acknowledgement stays an unknown save, and Create stays disabled. Concealing a draft keeps that unknown-save flag and restores it only for the same author. `auth.getUser()` returning an error conceals private content instead of showing a confirmed signed-out library. A null user with no error still asks the reader to sign in. `CURRENT-STATE.md` keeps both this evidence and the hosted-project record from main.
 
 **FACT.** The execution report is [VEL-IMP-001 library isolation](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). It is not a pinned `VEL-EB` bundle and it does not create or recycle a `VEL-TASK`. Synthetic session tests, `corepack pnpm check`, and `corepack pnpm build` passed without a hosted database. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were not changed by this slice.
 

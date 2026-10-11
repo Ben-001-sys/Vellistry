@@ -2,11 +2,12 @@
  * Auth-event controller for the Book Library page.
  * Same-author events do not restart a load or drop an in-flight create.
  * Same-author Refresh during a create does not abort that POST or bump generation.
- * A lost create response, or a successful response followed by a failed owner lookup,
- * is an unknown outcome. It does not say the book was saved or that the save failed.
+ * A lost create response, a lost upstream acknowledgement, or a successful response
+ * followed by a failed owner lookup is an unknown outcome. It does not say the book
+ * was saved or that the save failed. A pre-forward 503 is a definite failure.
  * A later list that omits the title does not make another create safe.
- * An unverified refresh conceals the draft and restores it only for that same author.
- * An owner change clears the unsaved title and ignores the previous response.
+ * An unverified identity conceals the draft and its uncertain-save flag, and
+ * restores both only for that same author. An owner change clears them.
  */
 
 import {
@@ -20,6 +21,7 @@ import {
   requestCreate,
   type LibraryState,
 } from "./book-library-state";
+import { outcomeForCreateStatus } from "./book-create-document";
 
 export type SignOutResult = { error: boolean };
 
@@ -37,6 +39,17 @@ export type LibrarySessionSnapshot = {
 };
 
 export type AuthListen = (notify: (event: string, nextOwner: string | null) => void) => () => void;
+
+async function createFailureCode(response: Response): Promise<string | null> {
+  try {
+    const payload: unknown = await response.json();
+    if (!payload || typeof payload !== "object" || Array.isArray(payload)) return null;
+    const error = (payload as { error?: unknown }).error;
+    return typeof error === "string" ? error : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * After the first load, reload only when the authenticated author changes.
@@ -77,7 +90,12 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   let model = initialLibraryState();
   let draftTitle = "";
   let owner: string | null = null;
-  let concealedDraft: { ownerKey: string; title: string; createWasPending: boolean } | null = null;
+  let concealedDraft: {
+    ownerKey: string;
+    title: string;
+    createWasPending: boolean;
+    createUncertain: boolean;
+  } | null = null;
   let hasLoaded = false;
   let loadAbort: AbortController | null = null;
   let createAbort: AbortController | null = null;
@@ -106,11 +124,11 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     const ownerChanged = ownerKey !== owner;
     loadAbort?.abort();
     if (ownerChanged) createAbort?.abort();
-    let restorePending = false;
+    let restoreUncertain = false;
     if (ownerChanged) {
       if (concealedDraft?.ownerKey === ownerKey) {
         draftTitle = concealedDraft.title;
-        restorePending = concealedDraft.createWasPending;
+        restoreUncertain = concealedDraft.createWasPending || concealedDraft.createUncertain;
         concealedDraft = null;
       } else {
         concealedDraft = null;
@@ -123,7 +141,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     owner = ownerKey;
     hasLoaded = true;
     model = beginLoad(model, ownerKey, generation);
-    if (restorePending) model = { ...model, createUncertain: true };
+    if (restoreUncertain) model = { ...model, createUncertain: true };
     emit();
     if (ownerKey === null) {
       model = applyLoad(model, generation, null, { kind: "unauthorized" });
@@ -148,7 +166,14 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
         return;
       }
       const payload: unknown = await response.json();
-      const liveOwner = await deps.readOwner();
+      let liveOwner: string | null;
+      try {
+        liveOwner = await deps.readOwner();
+      } catch {
+        if (controller.signal.aborted || model.generation !== generation) return;
+        concealForUnverifiedIdentity();
+        return;
+      }
       if (controller.signal.aborted || model.generation !== generation || liveOwner !== ownerKey) return;
       const uncertain = model.createUncertain;
       const trimmed = draftTitle.trim();
@@ -177,29 +202,34 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     return listen((event, nextOwner) => { void onAuthEvent(event, nextOwner); });
   }
 
+  function concealForUnverifiedIdentity() {
+    // Keep the title and its uncertain-save flag off the visible snapshot.
+    // Aborting the request does not reverse a server write. This path does
+    // not say the save failed and does not treat the author as signed out.
+    if (owner !== null && (draftTitle !== "" || model.createPending || model.createUncertain)) {
+      concealedDraft = {
+        ownerKey: owner,
+        title: draftTitle,
+        createWasPending: model.createPending,
+        createUncertain: model.createUncertain,
+      };
+    }
+    loadAbort?.abort();
+    createAbort?.abort();
+    draftTitle = "";
+    const generation = model.generation + 1;
+    owner = null;
+    hasLoaded = true;
+    model = applyLoad(beginLoad(model, null, generation), generation, null, { kind: "error" });
+    emit();
+  }
+
   async function refresh() {
     let nextOwner: string | null;
     try {
       nextOwner = await deps.readOwner();
     } catch {
-      // Identity could not be verified. Hide the draft until this author is
-      // confirmed again. Aborting the request does not reverse a server write
-      // and this path does not say the save failed.
-      if (owner !== null && (draftTitle !== "" || model.createPending)) {
-        concealedDraft = {
-          ownerKey: owner,
-          title: draftTitle,
-          createWasPending: model.createPending,
-        };
-      }
-      loadAbort?.abort();
-      createAbort?.abort();
-      draftTitle = "";
-      const generation = model.generation + 1;
-      owner = null;
-      hasLoaded = true;
-      model = applyLoad(beginLoad(model, null, generation), generation, null, { kind: "error" });
-      emit();
+      concealForUnverifiedIdentity();
       return;
     }
     // A same-author refresh must not discard an in-flight create acknowledgement.
@@ -210,25 +240,32 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
 
   async function retryUncertainCreate() {
     if (!model.createUncertain || draftTitle.trim() === "") return;
-    model = { ...model, createUncertain: false };
-    emit();
-    await submitCreate();
+    await submitCreate(true);
   }
 
-  async function submitCreate() {
+  async function submitCreate(acknowledgeRisk = false) {
     const trimmed = draftTitle.trim();
     if (!trimmed) return;
     let ownerKey: string | null;
     try {
       ownerKey = await deps.readOwner();
     } catch {
-      ownerKey = null;
+      concealForUnverifiedIdentity();
+      return;
     }
     if (ownerKey !== owner) {
       await startLoad(ownerKey);
       return;
     }
+    if (acknowledgeRisk) {
+      if (!model.createUncertain) return;
+      model = { ...model, createUncertain: false };
+    }
     const opened = requestCreate(model, ownerKey);
+    if (!opened.ok && acknowledgeRisk) {
+      model = { ...model, createUncertain: true };
+      emit();
+    }
     if (!opened.ok || !ownerKey) return;
     const generation = opened.state.createGeneration;
     if (generation === null) return;
@@ -264,6 +301,12 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       }
       if (response.status === 409) {
         model = applyCreate(model, generation, ownerKey, "session_changed");
+        emit();
+        return;
+      }
+      if (response.status === 503) {
+        const transport = outcomeForCreateStatus(response.status, await createFailureCode(response));
+        model = applyCreate(model, generation, ownerKey, transport === "error" ? "error" : "unknown");
         emit();
         return;
       }
