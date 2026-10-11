@@ -164,6 +164,11 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     try {
       nextOwner = await deps.readOwner();
     } catch {
+      // Identity could not be verified. Conceal the previous author's draft and
+      // in-flight work; an aborted POST may still commit, so do not claim failure.
+      loadAbort?.abort();
+      createAbort?.abort();
+      draftTitle = "";
       const generation = model.generation + 1;
       owner = null;
       hasLoaded = true;
