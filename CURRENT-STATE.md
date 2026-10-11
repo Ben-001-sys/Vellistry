@@ -5,10 +5,18 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.45
+version: 0.1.46
 ---
 
 # Vellistry — Current State
+
+## PR #60 merged; PLAN-01 requirements/scaffold inventory STARTED (2026-10-11)
+
+Owner instructed review and merge of PR #60 and to begin. **PR #60 was independently read/reviewed, had three PASS CI workflows and no outstanding review threads, and merged to `main` at commit `7e5627b577f90bf2771d6cb2fe99235b84885c44`.** This approves the planning framework/transition to PLAN-01, **not Cursor Desktop setup or application coding**.
+
+PLAN-01 work opened on **documentation-only** branch `docs/plan01-scope-inventory-20261011`. [First scoped source inventory](docs/plans/VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) cross-checks approved M1–M8/396-feature horizon map (78 MVP, 71 MVP-LIMITED, 247 post-MVP) with observed Next/Nest/Supabase files. Verified committed login/book API and author-RLS schema foundation; chapter/revision direct writes are deliberately revoked; no integrated Tiptap page/dependency; historical CI and mockups are not current runtime PASS. Preliminary source-level Library account-switch/stale-response risk, unexpired signed-out JWT/direct PostgREST risk and rules source packaging remain targeted future checks. Exact underlying per-ID list and additional module tests are **not yet exhaustively audited**.
+
+Next *planning-only* activity: review/refine PLAN-01 per-ID source-to-acceptance coverage and then PLAN-02 architecture/data/API model. Prior implementation kickoff PR #59 remains PAUSED. Do not start Cursor Agent, install/reset local dependencies/database, write feature code, deploy, incur AI charges, or handle real private manuscripts under this planning branch. No global G_DESIGN/G_CODE/PILOT/RELEASE gates were modified.
 
 ## Owner implementation-process reset to PLANNING ONLY (2026-10-11; newest)
 
