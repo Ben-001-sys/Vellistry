@@ -2,11 +2,11 @@
 id: VEL-DES-FIGMA-MAKE-ARTIFACT-20261011-001
 title: Owner-supplied Figma Make artifact — review and evidence checkpoint
 type: design-experiment-evidence
-status: link-received-inspection-blocked
+status: owner-supplied-walkthrough-observed-not-reproduced
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.1
+version: 0.2.0
 sources:
   - docs/design/VEL-DES-PROMPT-FIGMA-MAKE-2026-10-10.md
   - docs/design/VEL-DES-001-DUAL-PROTOTYPE-EXPERIMENT-2026-10-10.md
@@ -21,6 +21,18 @@ sources:
 **Owner-supplied editable Design reference:** https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U/Vellistry-%25E2%2580%2594-MVP-UI-Concept-Directions--Synthetic--%25E2%2580%2594-2026-10-10?node-id=0-1&p=f&t=eZccZ83MCzGANZRF-0
 
 Make file key: `ayQhoFZLnAUn9212mxaYpw`. Design file key: `krXupCfSLUnOQxEOjIlp9U`. Two URL types are **distinct artifacts**; appearance of a Make link does not prove its contents were copied into the canonical editable Design file. The user has supplied a Make file URL; it is an actual referent, but **contents, generation completion, privacy controls, preview accessibility and working interactions are not verified**.
+
+## New evidence — externally reported live walkthrough (2026-10-11)
+
+**This supersedes the old `LINK_RECEIVED / INSPECTION_BLOCKED` coverage state below.** The owner supplied a detailed walkthrough of the live [figma.site Vellistry preview](https://repo-buzz-33870082.figma.site/) against all 11 journeys, previously unavailable to the assistant. Full observation matrix, reported limitations, and high-priority defect/retest specification are recorded in [VEL-DES-004](VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md). The assistant **has not independently replayed the site**, so outcomes are labelled **reviewer-reported**, not independently verified tests.
+
+- **Keep:** writer-first page and chapter rail, separate Story Workspace, AI-OFF editing, differentiated six save status labels, effective-guidance filtering, bounded Rewrite with cross-paragraph rejection, local undo, separate fact approval, stale AI refusal.
+- **Critical defects:** Writer B's profile marker and fact-review status appeared under Writer A after a persona switch; Continue rejected a confirmed collapsed caret, including offset 4.
+- **Partial/missing:** create book/chapter, functional bold/search, real mock recovery compare/reconcile, character/thread creation, fact edit/dismiss/source/story-time, scope/personal rules, export/delete previews. BYOK, persistence, auth, real export and provider calls are unimplemented in this synthetic prototype.
+- **Self-audit correction:** treat its own “Simulated functional” as insufficient when controls are absent or ineffective. Do not infer eleven-journey completion, production security, or responsive/accessibility coverage.
+- **Credit discipline:** prioritize applying proven useful patterns to the original editable Figma master and specifying the critical defects for an eventual approved implementation slice. No Make regeneration is warranted merely to improve documentation.
+
+The historical inspection attempts and proposed manual checklist remain below for provenance; they are **not** the latest coverage status.
 
 ## Published-site address supplied by owner (2026-10-11)
 

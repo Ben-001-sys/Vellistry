@@ -6,7 +6,7 @@ status: proposed-owner-and-author-review
 created_at: 2026-10-10
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.3.0
+version: 0.5.0
 sources:
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
@@ -24,7 +24,7 @@ This is a **design specification draft**, not approved Figma design, a released 
 
 **Design artifact:** [Vellistry — MVP UI Concept Directions (Synthetic)](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U). This is an editable Figma **Design** file; it is not Figma Make, a hosted application, or a tested interactive prototype. Invented story `The Glass Orchard`, `Mira Vale`, `Rowan` and `Elias` is demonstration-only. Any displayed `Saved`, revision number, AI proposal, fact extraction, profile approval or rules count is design copy, **not evidence that live storage, inference, or authorization occurred**.
 
-### Figma evidence ledger (as observed in this conversation)
+### Historical first-six-frame evidence ledger (2026-10-10; SUPERSEDED AS COMPLETE INVENTORY)
 
 | Page | Frame/node link | State | What exists / limitation |
 |---|---|---|---|
@@ -35,7 +35,20 @@ This is a **design specification draft**, not approved Figma design, a released 
 | 02 — Unified UX candidate (NOT APPROVED) | [03 Rewrite review, node 6:98](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-98) | created, screenshot inspected | One-paragraph-span proposal, original/alternative, explicit accept/reject; visual mock, not live model |
 | 02 — Unified UX candidate (NOT APPROVED) | [04 Canon decision, node 6:148](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-148) | created; visual QA incomplete | Evidence-backed candidate, separate approve/edit/dismiss and story-time context |
 
-Figma also contains provisional `Vellistry / Candidate Foundation` light-mode color/spacing variables and `Vellistry / Action Button` component variants Primary, Secondary and Danger. These are **not finalized design tokens** and no alignment to app runtime CSS is claimed. The Next scaffold currently has only system-font styling; application typography, UI routes and API contracts must be agreed after design. Figma access last returned a **Starter-plan MCP tool-call limit**; further canvas work and remaining screenshots were blocked, not silently completed.
+### Canonical master-screen inventory (reviewed 2026-10-11; 16 known editable Figma frames)
+
+**This table supersedes the six-frame checkpoint immediately above.** The original file is [Vellistry — MVP UI Concept Directions (Synthetic)](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U), across two pages. **Known count: 16**, consisting of **two concept alternatives + four unified candidates + three previously existing expanded screens + seven newly created frames**. The inventory describes Figma **static editable design artifacts**, not sixteen fully functioning app routes and not proof of complete journey or responsive coverage. Four unified candidates remain unapproved. No Figma Make or Lovable frame is counted as master-file content.
+
+| Group | Figma frame / exact ID | Present scope |
+|---|---|---|
+| A/B alternatives | [Writing-first `1:2`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=1-2), [Story-first `1:3`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=1-3) | Historical comparison directions |
+| Unified candidates | [Editor `6:2`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-2), [Recovery `6:47`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-47), [Rewrite `6:98`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-98), [Canon `6:148`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=6-148) | Four original unified story-flow concepts |
+| Earlier expanded screens (discovered later) | [Manuscript `15:558`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=15-558), [Story Workspace `15:676`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=15-676), [Settings/BYOK `15:791`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=15-791) | Existing editable expanded screens; **not newly created** in this PR |
+| Seven newly created screens | [Library `27:10`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10), [Chapters `27:44`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-44), [Rules `27:80`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-80), [Continue `27:113`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-113), [Export/privacy `27:145`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-145), [Profiles/facts `27:179`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-179), [Reconciliation `27:213`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-213) | Static editable design additions, structurally confirmed; visual QA incomplete |
+
+**Outstanding design-review finding (P2):** the [Library `27:10`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10) simultaneously displays an existing book card and the text “No books yet.” These are *mutually exclusive product states* and must be separated into distinct visibly labelled Figma variants (preferred: `Library / Populated` and `Library / Empty`) or clearly identified as alternative illustrations. **The Figma canvas is not yet corrected**: the `hb4` direct edit/read attempt returned the Starter MCP rate-limit error. This is an outstanding **visual design defect**, not a running-app defect. Do not close the review thread until the actual Figma layer text/layout is changed and visually checked.
+
+Figma also contains provisional `Vellistry / Candidate Foundation` light-mode color/spacing variables and `Vellistry / Action Button` component variants Primary, Secondary and Danger. These are **not finalized design tokens** and no alignment to app runtime CSS is claimed. The Next scaffold currently has only system-font styling; application typography, UI routes and API contracts must be agreed after design. Historical first-account access returned a **Starter-plan MCP tool-call limit**. Later `hb4` access successfully created seven additional editable frames; the subsequent correction attempt hit `hb4`'s limit. Visual QA remains incomplete.
 
 ## Comparison and provisional structure
 
@@ -50,11 +63,11 @@ Figma also contains provisional `Vellistry / Candidate Foundation` light-mode co
 The owner clarified that **the editable Figma Design created for Vellistry is the artifact to IMPROVE**, using **Figma Make** and **Lovable** as complementary prototype references. These are not three equal final product designs to maintain or independently approve.
 
 **Artifact roles and access evidence:**
-- **Master editable design:** [Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U), six previously created editable frames; retain A/B alternatives as comparison history, iterate the four unified candidate frames and add missing screen families. The initial Figma screenshots were inspected previously, but currently the Starter MCP call quota blocks further design read/write access; **no canvas modifications are claimed in this checkpoint**.
-- **Make exploratory reference:** [Figma Make prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype), and owner-supplied [figma.site preview](https://repo-buzz-33870082.figma.site/). Both are currently **content/behavior NOT INSPECTED** in this environment (Make URL unsupported by Figma MCP, and published-site web cache miss/DNS issue). Do not invent improvements inspired by unseen Make screens.
+- **Master editable design:** [Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) has **16 known editable frames**, catalogued above. The old six-frame description is an explicitly dated historical checkpoint. `hb4` later created seven new frames directly in the original file (see [artifact ledger](VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md)). The latest attempted Library variant correction was blocked by the Starter MCP limit and was **not** applied.
+- **Make exploratory reference:** [Figma Make prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype), and owner-supplied [figma.site preview](https://repo-buzz-33870082.figma.site/). Direct assistant browser/MCP access remains unavailable, **but the owner has now provided a detailed eleven-journey live walkthrough**. Treat its observed results as [reviewer-reported evidence](VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md), **not as independent assistant verification**. Do not infer anything about inaccessible screens beyond those observations.
 - **Lovable behavioral/layout reference:** [isolated synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787), **source-inspected** at `e0a7fd3003c6a392742c0ac7e111073252c65fb3`; its code contains a narrow `max-width: 640px` manuscript column, chapter navigator, contextual story rail, mobile drawers, library/story destination and demo controls. These are **candidate patterns from source**, not independently user-tested wins. See [four behavior defects](VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md) and [11-journey comparison](VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md).
 
-**Specific improvements to apply to our editable Figma canvas (priority order, not yet built):**
+**Further refinements to apply to the 16-frame editable Figma master (some screen families already built statically; interactions and variants still incomplete):**
 
 | Target existing frame | Retain from our original design | Examine from Lovable and optionally inspected Make | Concrete refinement/variants needed |
 |---|---|---|---|
@@ -62,11 +75,27 @@ The owner clarified that **the editable Figma Design created for Vellistry is th
 | `6:47` Save recovery | Compare local candidate and accepted server revision | Lovable's dual synthetic revision comparison and six distinct statuses | Separate `unknown after lost acknowledgment` from actual conflict; explicit keep-both/compare/reconcile; prohibit false “Saved” when unconfirmed |
 | `6:98` Rewrite review | Side-by-side original and candidate, explicit accept/reject | Lovable source-level proposal drawer and request preview, **not its defective selection logic** | Add invalid selection, pending, stale-source, and undo-conflict states; acceptance only for a selected one-paragraph span; visible source revision |
 | `6:148` Canon review | Provenance, story-time, independent approve/edit/dismiss | Lovable's source-linked proposal inspector and pending vs approved fact treatments, **not its mismatched quote or broken undo provenance** | Exact source quotation, evidence-not-found and source-retracted variants; proposal approved separately from prose; undo marks linked candidate unapprovable |
-| New screen families, beside original frames | Maintain typography, color tokens, `Vellistry / Action Button` variants | Lovable's book library, manual Story Workspace, illustrative Rules Studio, demo consent and privacy affordances | Design editable Library/Chapter Organizer; manual profile/thread forms; Rules Studio and effective-rule inspector; BYOK consent; Continue at selected caret; exports/revisions/privacy, prioritized by the eleven accepted journeys |
+| Already-added screen families (`27:10`–`27:213`) | Maintain typography, color tokens, `Vellistry / Action Button` variants | Lovable's author workspace and Make's externally reported behaviors | **These editable static screens now exist.** Validate conditional library empty/populated states, interactive behavior, responsive treatments and provenance; no duplicate new screens needed |
 
 **Review gates before drawing from a third-party prototype:** verify observed frame or source, check against accepted eight-area manual-first scope and eleven journeys, reject known unsafe behavior, preserve the original Figma visual identity unless a change is supported by tests, then incorporate as editable semantic Figma nodes/components. No flattened screenshot as deliverable. Improvements may combine patterns; neither Make nor Lovable should overwrite the master design wholesale.
 
 **Cost discipline:** inspect existing prototypes, reuse actual source and previews without generative reruns, and batch visual changes when Figma MCP quota permits. Never upgrade paid plans, publish, or trigger new Lovable/Make generation just to solve an access problem. No real manuscripts or credentials. All owners' gates remain pending.
+
+## Figma master refinement from reported Make walkthrough (2026-10-11)
+
+A live-site walkthrough supplied by the owner now provides practical feedback for Make (see [VEL-DES-004](VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md)). **Preserve our original six editable frames and design language**; use the live prototype only for the observed strengths and documented gaps. This is no longer only a conceptual comparison.
+
+| Priority | Editable Figma target | Reported interaction insight | Next minimum design change |
+|---|---|---|---|
+| **P0** | Account-context and Story Workspace states (new `DES-SCR-13`, context for `6:2`/`6:148`) | Writer B profile marker and fact status persisted into Writer A despite separate manuscript text | Specify persona/book scoped profile, thread, fact, proposal, undo, recovery and consent state; account-switch clearing and visible target identity. This defect does not prove real backend insecurity |
+| **P0** | Continue source selection/consent view (`DES-SCR-10`) | Correct collapsed caret at offset 4 was rejected as if no caret existed | Show caret capture, active chapter + revision, insertion preview and valid/invalid/stale caret variants; no silent append |
+| **P0** | Existing save recovery `6:47` | Six status labels distinguished lost ACK vs true conflict, but no recovery interaction | Retain truthful labels; design side-by-side local/server revisions, explicit keep-both / reconcile and non-destructive recovery acknowledgment, while real persistence remains an engineering concern |
+| **P1** | Existing rewrite `6:98` and canon `6:148` | Exact-span Rewrite/reject/undo, stale editing guard, independent fact candidate and post-undo review worked locally | Preserve these interaction semantics, add source/story-time inspection and separate Edit/Dismiss; verify disabled approvals on stale/retracted evidence |
+| **P1** | Library / chapter organizer and manual editor | Chapter switching/reorder preserved text; book/chapter creation missing; Bold no visible result; search absent | Add create actions and empty states; define formatting feedback and search control, with keyboard selection retained |
+| **P1** | Story Workspace / Rules Studio | Only one editable profile; no character/thread creation; disabled rules omitted from effective prompt but scope/add rule missing | Add manual author controls, rule scope, restore and personal-rule creation; do not invent source text for the full 134 catalog |
+| **Later by slice** | Portability/privacy / narrow-screen variants | Export/delete preview buttons yielded no dialog; no mobile or assistive-tech testing reported | Design honest confirmation/warning states, then iterate responsive/accessible details during implementation and genuine testing |
+
+**Minimum implementable UX now:** chapter/library/editor interactions can be specified without a complete thirteen-screen visual system, provided the scoped implementation tests explicitly account for book/account identity and avoid copying Make's profile/canon leakage. Design and feature coding remain separately owner-gated (`G_DESIGN`, `G_CODE`). The stronger privacy/pilot/release gates are unaffected. Avoid exhausting Figma/Lovable free credits on presentation polish.
 
 ## Proposed information architecture and destinations
 
