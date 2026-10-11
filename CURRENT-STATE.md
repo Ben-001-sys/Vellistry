@@ -5,8 +5,16 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.48
+version: 0.1.49
 ---
+
+# Vellistry — Current State
+
+## Supabase Cloud development project CREATED (2026-10-11; newest)
+
+User agreed to create `vellistry-dev` under their connected Supabase Free organization `Ben-001-sys's Org`. Supabase cost checker quoted **$0/month**. The connected Supabase tool created **`lflkcrnriitrbclangyr`** in **London/eu-west-2** and subsequent read-only verification returned **ACTIVE_HEALTHY**, PostgreSQL 17, **zero public tables** and **zero applied migrations**. API URL `https://lflkcrnriitrbclangyr.supabase.co`. No schema changes, Auth users, remote migrations, fixture data, production services, real manuscripts or code changes were performed. This is an isolated new development project, not a deployment.
+
+**Next:** Cursor Desktop installation/open confirmation, personal repo Git checkout and pnpm 10.18.0 using Corepack, local untracked environment configuration using the existing cloud project's publishable key (raw key withheld), and nonmutating baseline. The Vellistry schema is **not yet installed in the hosted project**; cloud migration work requires explicit scoped approval and security review. Paused old Cursor task PR #59 remains PAUSED. Supabase Cloud docs tracked in PR #62 pending merge/review.
 
 # Vellistry — Current State
 
