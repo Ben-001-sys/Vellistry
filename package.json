@@ -5,6 +5,7 @@
   "scripts": {
     "build": "pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build",
     "check": "pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck",
+    "test:library-isolation": "pnpm --filter @vellistry/api exec tsx --test src/modules/books/book-create-input.spec.ts ../web/src/lib/library/book-library-state.test.ts",
     "dev:web": "pnpm --filter @vellistry/web dev",
     "dev:api": "pnpm --filter @vellistry/api dev",
     "supabase:start": "supabase start",
