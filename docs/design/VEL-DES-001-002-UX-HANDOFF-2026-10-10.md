@@ -6,7 +6,7 @@ status: proposed-owner-and-author-review
 created_at: 2026-10-10
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.2.0
+version: 0.3.0
 sources:
   - docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
   - docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
@@ -115,14 +115,27 @@ No URL paths, DTOs, tables or exact workflow engines are approved by the IA labe
 
 Widths are **design review targets**, not experimentally established device thresholds or app CSS requirements. Visual contrast, true screen-reader announcements, native IME, RTL and long-chapter performance remain unverified.
 
-## Handoff completion criteria before `G_DESIGN`
+## Owner clarification — implementation may start before pixel-perfect UI (2026-10-11)
 
-1. Editable Figma components and all 11 journey paths, including empty, loading, save error, conflict, stale proposal, denied access and confirmation variants; clear approved/unapproved distinction.
-2. Comprehensive design QA of actual frames and states at desktop, medium and narrow viewports, plus keyboard focus semantics and content overflow.
-3. Prototype tasks and scripted research instrument in the companion plan; real consenting fiction writers tested **without invented evidence**; record observed failures and revisions.
-4. The project owner reviews canonical UX, research findings and changed product interaction contracts. An evidence-backed, separately recorded signoff may transition `G_DESIGN` through a reviewed governance PR; no Figma file or CI test auto-approves the gate.
-5. `G_CODE` is a separate owner decision **after** design acceptance and approved testable feature specs. Do not start VEL-IMP nodes by virtue of merging these design documents.
-6. Production manuscript confidentiality, signed-out access token residual, storage, backup, restore, model-provider/legal, accessibility and release reviews remain their own pilot/release gates.
+**Owner directive:** The editable Figma Design is a **living implementation reference**, not a requirement to finish or polish every UI screen before development begins. Figma Make and Lovable are bounded sources of reusable ideas. We may implement **approved vertical slices** from a sufficiently clear UX contract, refine the Figma canvas in parallel with the app, and learn from real browser tests. A fully polished thirteen-screen-family deck, all visual variants, final color/typography, and completed broad usability study are **not prerequisites to authorizing the first slice**.
+
+**Minimum design/engineering handoff for each slice:**
+
+1. **Stable functional scope:** The accepted eight-area MVP boundaries and relevant `VEL-JRN-001..011` use cases are mapped; exactly two optional AI actions (Continue at insertion point, one-paragraph-span Rewrite); manual AI-OFF editing remains first-class.
+2. **Safety-sensitive behavior is specified:** Save receipt vs uncertain/lost ACK vs conflict; non-destructive recovery; chapter/book/account isolation; author-reviewed AI proposal and safe stale/Undo; source-linked, separately approved canon; explicit AI recipient/context/cost consent. These must be **specified and testable before implementing a risky flow**, but exhaustive pixel-perfect mockups are not required.
+3. **Enough UI direction for the chosen slice:** The editor/workspace IA, relevant existing editable Figma frame(s), interaction states, rough responsive treatment and basic keyboard/error semantics are documented. Unknown noncritical polish stays in an explicit UI backlog; no fabricated Figma or user-test success.
+4. **Explicit bounded owner gates:** A **scoped, sufficiently specified design baseline** may receive `G_DESIGN` approval even with unfinished noncritical screens and visual refinements. **`G_CODE` remains a separate explicit approval**, after that scoped design baseline and implementable acceptance criteria are recorded. This owner clarification alone does **not** mark either gate approved or authorize product coding.
+5. **Ongoing iteration:** Build one small end-to-end manual-first slice, run actual unit/integration/browser tests, correct defects, and refine the canonical Figma alongside code. New workflows need their own acceptance states before construction; shipping claims require demonstrated behavior, not a Lovable/Make generator summary.
+6. **No weakening of privacy/release gates:** The known signed-out unexpired Supabase JWT/direct PostgREST exposure blocks real private manuscripts/pilots until its security boundary is actually resolved and tested. Auth isolation, durable recovery, legal/provider review, real DOCX fidelity, keyboard/IME accessibility and secure backup/restore still require evidence before the relevant pilot/release decisions.
+
+**Prioritization:** Begin with manual library/chapter creation and editor fundamentals, then acknowledged save/recovery and profiles, then rules and optional AI/canon actions as their contracts become implementable. This is an **implementation order proposal**, not a start-coding command. Defer cosmetic polish and noncritical design variants; never defer author-trust correctness inside the feature being implemented.
+
+## Revised design-to-code gate (not a perfection gate)
+
+- **Before scoped `G_DESIGN`:** record the targeted user journey(s), interaction contract, critical negative states, working Figma reference, evidence known/missing and the visual/UI work that can be deferred. Owner approves that **bounded** baseline explicitly; the whole product's UI need not be finished.
+- **Before separate scoped `G_CODE`:** implementation task/acceptance tests and contracts for that same slice are adequately specified; owner explicitly authorizes coding. Draft PR #55, CI passing or an existing prototype do not themselves grant permission.
+- **During implementation:** maintain the canonical editable design as changes are validated; run genuine interaction/accessibility/security tests at meaningful integration points, collect participant feedback where appropriate, and iterate.
+- **Before private pilot/release:** apply the stronger production safety, confidentiality, recovery, model-provider, accessibility, and real-author validation requirements for the affected features. Do not treat provisional UI or synthetic fixtures as proof.
 
 ## Traceability / non-claims
 
