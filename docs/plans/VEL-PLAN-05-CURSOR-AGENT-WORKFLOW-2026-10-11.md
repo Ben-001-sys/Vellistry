@@ -6,7 +6,7 @@ status: proposed-planning-only
 created_at: 2026-10-11
 updated_at: 2026-10-11
 owner: project_owner
-version: 0.1.0
+version: 0.2.0
 sources:
   - docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
   - docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml
@@ -38,11 +38,11 @@ sources:
 
 | Step | Planned verification/action | Required evidence before continuing |
 |---|---|---|
-| DESK-01 | Windows 11 capabilities, virtualization/WSL2/Docker feasibility, disk/memory, existing software versions | true local inventory; no guesses based on historical machine specs |
+| DESK-01 | Owner-verified Windows 11 Pro 64-bit, 15.7GB RAM, 13.9GB free C:, installed development tools; Cursor open state still unknown | use actual observed preflight, not historical workstation specs |
 | DESK-02 | Existing personal GitHub access, folder/clone choice, Git credential or SSH configuration | can fetch personal `Ben-001-sys/Vellistry`, no token published |
 | DESK-03 | Cursor Desktop version/privacy and terminal permission settings, project open at actual repo root | project visible, agent approvals scoped; plan/book files not hidden by wrong worktree |
-| DESK-04 | Node 24 + repo-pinned `pnpm@10.18.0`, Python 3, Docker runtime; respect current `pnpm-lock.yaml` | versions and working dependencies; no unnecessary upgrades |
-| DESK-05 | verify root scripts, untracked local `.env`, local Supabase API/DB/Studio isolated network ports | environment names/URLs only, never secret values |
+| DESK-04 | Node 24.13 + Git 2.55 + Python 3.10 verified; use Corepack for repo-pinned `pnpm@10.18.0` rather than global pnpm 11.5; no Docker requirement for cloud DB | pinned package runner + working dependencies; no unnecessary upgrades |
+| DESK-05 | owner-selected hosted Supabase Cloud development project; untracked env and HTTPS Supabase URL/publishable key; inspect hosted schema non-destructively | verify project identity and RLS; never copy secrets to Git/chat |
 | DESK-06 | read-only git status/base main SHA, `pnpm check`, `pnpm build`, existing tests and local stack health | exact commands, exit codes and fail diagnoses; NO product modifications |
 | DESK-07 | owner reviews actual no-code-change baseline and authorizes **one** coding slice | task with acceptance/negative tests, allowed paths, owner decision |
 | DESK-08 | create isolated feature branch/worktree and pinned ContextPack; then Cursor Agent starts | exact base and task SHA; no conflation with old PR #59 |
@@ -55,11 +55,10 @@ node --version
 corepack --version
 pnpm --version
 python --version
-docker version
 pnpm check
 pnpm build
 ```
-Do not run `supabase db reset` without confirmed **disposable local** target and explicit owner permission; `pnpm supabase:reset` is destructive. Follow README/env examples and check port conflicts before starting services. The old PR #59 task branch is **not** the automatically chosen working base; use reviewed `main` after master planning.
+**Owner environment override (2026-10-11):** use **Supabase Cloud in the owner's existing account**, not local Supabase via Docker. Do not run `supabase start`, local-reset scripts, `supabase db reset --linked`, `db push`, or remote test seed/migrations without verified dedicated disposable project and separate authorization. A remote linked reset deletes cloud data. Review existing env example's local placeholders; actual code reads `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`. The old PR #59 task branch is **not** automatically the working base; use reviewed `main` after planning.
 
 ## 3. Standard task/branch/handoff protocol
 
@@ -68,7 +67,7 @@ Do not run `supabase db reset` without confirmed **disposable local** target and
 3. **Issue/task metadata**: owner creates/reviews GitHub issue and new unique task under `docs/agent-workflow/tasks/VEL-TASK-NNNN.yaml`. Do not recycle ContextPack/task ID or reuse stale approved scope. The existing command `python scripts/agent_workflow.py pack <task>.yaml` is a future option after task is committed, repo clean and underlying source files valid.
 4. **Worktree isolation**: `feature/vel-imp-XXX-short-name` from fresh accepted main; one agent per task/branch; avoid cross-edit collisions. Do not stack unmerged prototypes/design docs or code on unrelated branches.
 5. **Cursor execution boundary**: read-only code/contract inspection, short plan, minimal implementation; require human checkpoint for DB/schema migration, elevated privilege, deletion, secret access, paid/network access, business scope change, git rewrite, deploy, or PR merge.
-6. **Run true checks**: targeted unit tests, real disposable local Supabase/Nest/Next integration when relevant, `pnpm check`, `pnpm build`, browser tests, adversarial/negative cases; record actual environment and outcomes; mark `NOT_RUN` if blocked. No “all green” based on agent text alone.
+6. **Run true checks**: targeted unit tests, deliberately isolated **hosted Supabase development-project** Nest/Next integration when authorized, `pnpm check`, `pnpm build`, browser tests and negative cases. Existing CI/local Supabase scripts may depend on Docker, clean reset and fixture assumptions; do not point destructive tests at hosted project. Design separate explicitly allowed hosted fixtures and mark `NOT_RUN` if unsafe/unavailable; no “all green” based on agent text alone.
 7. **ExecutionBundle**: `docs/agent-workflow/execution-bundles/<unique>.md/json` per repo convention, with objective, start/end SHA, changed paths, exact commands/exits, tests, security failures, screenshots actually examined, FACT / INTERPRETATION / PROPOSAL, unsolved risks and no undocumented credentials.
 8. **PR ready**: create draft PR early, owner reviews exact head, external review if possible, resolve actionable threads with observed evidence, leave intentional deferrals with explicit owner choice. Merging is *separate from* code writing or passing CI.
 9. **Integration**: owner approves merge, check merged main, update `CURRENT-STATE.md` with accepted fact, begin next task from accepted main; do not paste ephemeral Cursor full reports in chat as canonical truth.
@@ -150,4 +149,4 @@ The existing `VEL-DAG-IMPLEMENTATION-001` remains **proposed**; this plan does n
 
 **Complete as a proposed governance/workflow plan:** agents and authority separated, desktop setup sequencing recorded, task/ContextPack/ExecutionBundle defined, PR acceptance checklist, command boundaries and safe no-paid-service operating mode in place.
 
-**NOT completed:** actual Cursor installation, actual desktop privacy settings, Git checkout, Docker/Supabase install, branch creation for code, ContextPack execution, any app-code change or test. Those remain later environment and implementation steps.
+**NOT completed:** actual Cursor installation/open verification, actual desktop privacy settings, Git checkout, hosted Supabase project selection/link and schema validation, branch creation for code, ContextPack execution, any app-code change or build/test. Docker/Supabase local-stack setup is **not required** for the owner-selected cloud workflow.
