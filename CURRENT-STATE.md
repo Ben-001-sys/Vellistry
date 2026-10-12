@@ -3,12 +3,18 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-11
+updated_at: 2026-10-12
 owner: project_owner
-version: 0.1.53
+version: 0.1.54
 ---
 
 # Vellistry — Current State
+
+## IMP-001 failed sign-out/create race correction (2026-10-12; review pending)
+
+**FACT.** In draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64), commit `a1b6b12111932fd4b37dbf5da86ff53e596dc8fd` changed `concealBooksForSignOut()` so an in-flight create interrupted by sign-out retains an uncertain-save lock. If sign-out fails, ordinary Create stays blocked; an aborted client request is not treated as proof that Nest did not commit. Successful sign-out still clears the previous author's private state. Two synthetic session regression tests were added for failed sign-out with delayed create acknowledgement/reconciliation and successful sign-out isolation.
+
+**Verification status:** New regression tests were **NOT_RUN locally** during this correction; exact-head CI must be inspected independently. This commit is not a cloud-persistence, hosted RLS, or signed-out JWT test. The prior documented 41-test result belongs to an older PR head. Owner review and merge authorization remain pending. No Supabase, production, paid-provider, manuscript, or approved-decision changes occurred. PR #59 remains paused.
 
 ## VEL-IMP-001 review corrections are in PR #64 (2026-10-11)
 

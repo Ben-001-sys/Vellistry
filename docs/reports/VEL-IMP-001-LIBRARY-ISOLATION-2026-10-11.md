@@ -4,8 +4,8 @@ title: VEL-IMP-001 Book Library account isolation
 type: execution-report
 status: proposed-for-review
 created_at: 2026-10-11
-updated_at: 2026-10-11
-version: 0.6.0
+updated_at: 2026-10-12
+version: 0.6.1
 task_id: null
 context_pack_id: null
 base_commit: 226f6072785b7271fd30f4979a76e41fca30e39c
@@ -116,3 +116,10 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 - **FACT — regression coverage added:** Two synthetic session tests simulate Author A's delayed GET followed by an A→B or A→signed-out identity result **without an authentication-change callback**. They assert the prior draft and books are not visible after transition.
 - **NOT RUN at authoring time:** These new tests, typecheck, build, and exact-head CI. Earlier 41-test results belong to `3e9c5ad61a7d6f37b2e0f17a21de4a216cc30fc5`, not this correction. CI must be checked against the resulting commit before acceptance.
 - **UNCHANGED:** Hosted Supabase `vellistry-dev`, migrations, production, approved decisions, and the pending owner review. PR #64 remains Draft and unmerged.
+
+## 2026-10-12 failed sign-out/create race correction (verification pending)
+
+- **FACT:** The 2026-10-12 review identified that aborting a pending book-create POST during sign-out cleared `createPending`. A failed sign-out could then re-enable ordinary Create even though the original server write might still commit. Commit `a1b6b12111932fd4b37dbf5da86ff53e596dc8fd` preserves `createUncertain` in `concealBooksForSignOut()` whenever `createPending` or prior `createUncertain` was true; `failSignOut()` preserves this lock. The author must reconcile via Refresh and explicitly acknowledge duplicate risk before a retry if the title remains absent.
+- **FACT:** Added synthetic session tests `failed sign-out during an in-flight create keeps duplicate retry blocked` and `successful sign-out during an in-flight create clears its private retry state`. They cover a delayed server commit after a failed sign-out, a subsequent missing-title GET, eventual list reconciliation, and cross-author isolation on successful sign-out.
+- **NOT_RUN locally:** The two new tests, the full focused `corepack pnpm test:library-isolation` suite, `corepack pnpm check`, and `corepack pnpm build` have not been executed in a local checkout by this reviewer. Do not treat older 41-test results as new-head evidence. GitHub CI must be checked on the final report-containing head.
+- **UNCHANGED:** PR #64 remains Draft and unmerged; owner review is pending. Hosted `vellistry-dev` migrations, real manuscript data, production, direct PostgREST JWT revocation, cloud RLS, `ACC-M1-01`, paid providers, and all other implementation slices remain untouched or BLOCKED.
