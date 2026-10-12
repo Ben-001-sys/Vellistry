@@ -170,6 +170,9 @@ export function concealBooksForSignOut(state: LibraryState): LibraryState {
     books: [],
     status: LIBRARY_COPY.signingOut,
     ...clearedCreate(),
+    // Aborting the client request cannot cancel a POST already accepted by Nest.
+    // If sign-out fails, retain the uncertainty lock for the same author.
+    createUncertain: state.createUncertain || state.createPending,
   };
 }
 

@@ -258,6 +258,80 @@ test("a successful sign-out redirects only after Supabase accepts it", async () 
   assert.equal(env.session.snapshot().model.status, LIBRARY_COPY.unauthorized);
 });
 
+test("failed sign-out during an in-flight create keeps duplicate retry blocked", async () => {
+  const env = harness();
+  const held = holdCreate(env);
+  let createCalls = 0;
+  const originalCreate = env.createBook;
+  env.createBook = (title, ownerKey, signal) => {
+    createCalls += 1;
+    return originalCreate(title, ownerKey, signal);
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Potential duplicate");
+  const pending = env.session.submitCreate();
+  await held.entered;
+  assert.equal(env.session.snapshot().model.createPending, true);
+
+  env.signOutImpl = async () => ({ error: true });
+  await env.session.signOut();
+
+  const failed = env.session.snapshot();
+  assert.equal(env.navigatedTo, null);
+  assert.equal(held.signal()?.aborted, true);
+  assert.equal(failed.draftTitle, "Potential duplicate");
+  assert.equal(failed.model.createPending, false);
+  assert.equal(failed.model.createUncertain, true);
+  assert.equal(libraryRegion(failed.model).status, LIBRARY_COPY.signOutError);
+  assert.equal(libraryRegion(failed.model).canCreate, false);
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+
+  // The server may still finish the aborted POST after a fresh GET.
+  held.release(jsonResponse(201, book("late", "Potential duplicate")));
+  await pending;
+  await env.session.refresh();
+  const missing = libraryRegion(env.session.snapshot().model);
+  assert.equal(missing.canCreate, false);
+  assert.equal(missing.showRiskRetry, true);
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(createCalls, 1);
+
+  env.booksForA = [book("a-1", "Amber notebook"), book("late", "Potential duplicate")];
+  await env.session.refresh();
+  const reconciled = libraryRegion(env.session.snapshot().model);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(reconciled.showRiskRetry, false);
+  assert.equal(createCalls, 1);
+});
+
+test("successful sign-out during an in-flight create clears its private retry state", async () => {
+  const env = harness();
+  const held = holdCreate(env);
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Author A secret");
+  const pending = env.session.submitCreate();
+  await held.entered;
+
+  await env.session.signOut();
+  const signedOut = env.session.snapshot();
+  assert.equal(held.signal()?.aborted, true);
+  assert.equal(env.navigatedTo, "/login");
+  assert.equal(signedOut.draftTitle, "");
+  assert.equal(signedOut.model.createUncertain, false);
+  assert.equal(libraryRegion(signedOut.model).canCreate, false);
+
+  env.signedInAs = AUTHOR_B;
+  await env.session.onAuthEvent("SIGNED_IN", AUTHOR_B);
+  held.release(jsonResponse(201, book("late", "Author A secret")));
+  await pending;
+  const authorB = env.session.snapshot();
+  assert.equal(authorB.draftTitle, "");
+  assert.equal(authorB.model.createUncertain, false);
+  assert.deepEqual(libraryRegion(authorB.model).books.map((item) => item.title), ["Blue notebook"]);
+});
+
 test("a successful create followed by a failed owner lookup stays unknown", async () => {
   const env = harness();
   let createCalls = 0;
