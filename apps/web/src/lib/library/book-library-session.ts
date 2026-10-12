@@ -174,7 +174,13 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
         concealForUnverifiedIdentity();
         return;
       }
-      if (controller.signal.aborted || model.generation !== generation || liveOwner !== ownerKey) return;
+      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      if (liveOwner !== ownerKey) {
+        // The identity changed without an auth callback. Transition now so
+        // the prior author's draft cannot remain visible after verification.
+        await startLoad(liveOwner);
+        return;
+      }
       const uncertain = model.createUncertain;
       const trimmed = draftTitle.trim();
       model = applyLoad(model, generation, ownerKey, { kind: "ok", books: payload });

@@ -639,3 +639,66 @@ test("a create preflight auth error conceals an uncertain draft instead of signi
 function regionShowsEmpty(status: string): boolean {
   return status === LIBRARY_COPY.empty;
 }
+
+async function verifyOwnerTransitionDuringLoadWithoutAuthCallback(nextOwner: string | null) {
+  let fetches = 0;
+  let releaseFirstAuthor: (response: Response) => void = () => undefined;
+  let signalHeldFetch: () => void = () => undefined;
+  const heldFetchStarted = new Promise<void>((resolve) => { signalHeldFetch = resolve; });
+  const heldResponse = new Promise<Response>((resolve) => { releaseFirstAuthor = resolve; });
+  const env = harness({
+    fetchBooks: async () => {
+      fetches += 1;
+      if (fetches === 1) return jsonResponse(200, [book("a-1", "Amber notebook")]);
+      if (fetches === 2) {
+        signalHeldFetch();
+        return heldResponse;
+      }
+      return jsonResponse(200, [book("b-1", "Blue notebook")]);
+    },
+  });
+
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A private title");
+  const seen: Array<{ owner: string | null; title: string; books: string[] }> = [];
+  const unsubscribe = env.session.subscribe((snapshot) => {
+    seen.push({
+      owner: snapshot.model.ownerKey,
+      title: snapshot.draftTitle,
+      books: libraryRegion(snapshot.model).books.map((item) => item.title),
+    });
+  });
+  const pending = env.session.refresh();
+  await heldFetchStarted;
+
+  // Change the verified identity without delivering onAuthStateChange.
+  // The completed Author A GET must not leave Author A's draft on screen.
+  env.signedInAs = nextOwner;
+  releaseFirstAuthor(jsonResponse(200, [book("a-1", "Amber notebook")]));
+  await pending;
+
+  const current = env.session.snapshot();
+  const region = libraryRegion(current.model);
+  assert.equal(current.model.ownerKey, nextOwner);
+  assert.equal(current.draftTitle, "");
+  assert.equal(region.books.some((item) => item.title === "Amber notebook"), false);
+  const firstTransition = seen.findIndex((item) => item.owner === nextOwner);
+  assert.notEqual(firstTransition, -1);
+  assert.equal(seen.slice(firstTransition).some((item) => item.title === "A private title"), false);
+  assert.equal(seen.slice(firstTransition).some((item) => item.books.includes("Amber notebook")), false);
+  unsubscribe();
+  return { region, fetches };
+}
+
+test("a final load identity check switches from A to B without an auth callback", async () => {
+  const { region, fetches } = await verifyOwnerTransitionDuringLoadWithoutAuthCallback(AUTHOR_B);
+  assert.deepEqual(region.books.map((item) => item.title), ["Blue notebook"]);
+  assert.equal(fetches, 3);
+});
+
+test("a final load identity check confirms sign-out without an auth callback", async () => {
+  const { region, fetches } = await verifyOwnerTransitionDuringLoadWithoutAuthCallback(null);
+  assert.deepEqual(region.books, []);
+  assert.equal(region.status, LIBRARY_COPY.unauthorized);
+  assert.equal(fetches, 2);
+});

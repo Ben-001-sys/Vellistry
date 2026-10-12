@@ -109,3 +109,10 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 ## Reviewer disposition
 
 **Pending owner review.** The two findings in review `5483810728` remain addressed. This revision also treats a lost Nest acknowledgement as an unknown save, keeps `createUncertain` with a concealed draft, and does not treat a returned Supabase Auth error as a confirmed sign-out. This report is not merge authorization and not a passing live RLS result.
+
+## 2026-10-12 review-cycle correction (verification pending)
+
+- **FACT — source change prepared:** `runLoad()` now transitions to the newly verified author when the final `readOwner()` result differs from the author whose GET completed. The old author's unsaved draft is cleared by `startLoad()` before the new author's list is displayed. A verified null identity transitions to the signed-out state. The existing generation/abort guard remains in place.
+- **FACT — regression coverage added:** Two synthetic session tests simulate Author A's delayed GET followed by an A→B or A→signed-out identity result **without an authentication-change callback**. They assert the prior draft and books are not visible after transition.
+- **NOT RUN at authoring time:** These new tests, typecheck, build, and exact-head CI. Earlier 41-test results belong to `3e9c5ad61a7d6f37b2e0f17a21de4a216cc30fc5`, not this correction. CI must be checked against the resulting commit before acceptance.
+- **UNCHANGED:** Hosted Supabase `vellistry-dev`, migrations, production, approved decisions, and the pending owner review. PR #64 remains Draft and unmerged.
