@@ -3,12 +3,18 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-12
+updated_at: 2026-10-13
 owner: project_owner
-version: 0.1.54
+version: 0.1.55
 ---
 
 # Vellistry — Current State
+
+## IMP-001 failed-load identity verification (2026-10-13; review pending)
+
+**FACT — code and test changes proposed in PR #64.** The Book Library controller now verifies the live author before publishing 401, HTTP-error, rejected-request, malformed-response, or successful GET results. If identity changed without an auth callback, it transitions to the verified author (or signed-out state) before publishing; if verification fails, the previous draft is concealed and recoverable only by its original author. Five synthetic regression tests were added for A→B (401, 503, rejected GET), A→signed-out (401), and a failed owner lookup on an error response. Existing successful-response protections remain.
+
+**Verification:** These new tests and the focused `corepack pnpm test:library-isolation` command are **NOT_RUN** by this reviewer. The previous five green workflows belong to commit `4c24989e81c9373d54da61bf6057938d88ba656d`, not this correction. Recheck new-head CI before acceptance. This does not verify hosted `vellistry-dev`, RLS, `ACC-M1-01`, or revoked-session direct PostgREST. Owner review and merge authorization remain pending; PR #59 stays paused.
 
 ## IMP-001 failed sign-out/create race correction (2026-10-12; review pending)
 

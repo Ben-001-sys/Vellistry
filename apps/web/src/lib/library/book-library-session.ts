@@ -20,6 +20,7 @@ import {
   noteMissingUncertainTitle,
   requestCreate,
   type LibraryState,
+  type LoadOutcome,
 } from "./book-library-state";
 import { outcomeForCreateStatus } from "./book-create-document";
 
@@ -152,49 +153,53 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   }
 
   async function runLoad(ownerKey: string, generation: number, controller: AbortController) {
+    // Resolve the HTTP outcome first, but do not publish any result until the
+    // current author is verified. Failed GETs can also race an account switch.
+    let outcome: LoadOutcome;
     try {
       const response = await deps.fetchBooks(controller.signal);
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
       if (response.status === 401) {
-        model = applyLoad(model, generation, ownerKey, { kind: "unauthorized" });
-        emit();
-        return;
+        outcome = { kind: "unauthorized" };
+      } else if (!response.ok) {
+        outcome = { kind: "error" };
+      } else {
+        try {
+          outcome = { kind: "ok", books: await response.json() };
+        } catch {
+          outcome = { kind: "error" };
+        }
       }
-      if (!response.ok) {
-        model = applyLoad(model, generation, ownerKey, { kind: "error" });
-        emit();
-        return;
-      }
-      const payload: unknown = await response.json();
-      let liveOwner: string | null;
-      try {
-        liveOwner = await deps.readOwner();
-      } catch {
-        if (controller.signal.aborted || model.generation !== generation) return;
-        concealForUnverifiedIdentity();
-        return;
-      }
-      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
-      if (liveOwner !== ownerKey) {
-        // The identity changed without an auth callback. Transition now so
-        // the prior author's draft cannot remain visible after verification.
-        await startLoad(liveOwner);
-        return;
-      }
-      const uncertain = model.createUncertain;
-      const trimmed = draftTitle.trim();
-      model = applyLoad(model, generation, ownerKey, { kind: "ok", books: payload });
-      if (uncertain && model.phase !== "error") {
-        const visible = trimmed !== "" && model.books.some((item) => item.title === trimmed);
-        if (visible) draftTitle = "";
-        else model = noteMissingUncertainTitle(model);
-      }
-      emit();
     } catch {
-      if (controller.signal.aborted || model.generation !== generation) return;
-      model = applyLoad(model, generation, ownerKey, { kind: "error" });
-      emit();
+      outcome = { kind: "error" };
     }
+    if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+
+    let liveOwner: string | null;
+    try {
+      liveOwner = await deps.readOwner();
+    } catch {
+      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      concealForUnverifiedIdentity();
+      return;
+    }
+    if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+    if (liveOwner !== ownerKey) {
+      // A failed GET is not proof the original author is still signed in.
+      // Transition before emitting any status or exposing the previous draft.
+      await startLoad(liveOwner);
+      return;
+    }
+
+    const uncertain = model.createUncertain;
+    const trimmed = draftTitle.trim();
+    model = applyLoad(model, generation, ownerKey, outcome);
+    if (outcome.kind === "ok" && uncertain && model.phase !== "error") {
+      const visible = trimmed !== "" && model.books.some((item) => item.title === trimmed);
+      if (visible) draftTitle = "";
+      else model = noteMissingUncertainTitle(model);
+    }
+    emit();
   }
 
   function onAuthEvent(event: string, nextOwner: string | null): Promise<void> {

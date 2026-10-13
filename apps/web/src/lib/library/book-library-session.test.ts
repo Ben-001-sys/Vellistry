@@ -776,3 +776,100 @@ test("a final load identity check confirms sign-out without an auth callback", a
   assert.equal(region.status, LIBRARY_COPY.unauthorized);
   assert.equal(fetches, 2);
 });
+
+async function verifyFailedLoadTransitionWithoutAuthCallback(
+  failure: "unauthorized" | "http_error" | "rejected",
+  nextOwner: string | null,
+) {
+  let fetches = 0;
+  let started: () => void = () => undefined;
+  let resolveHeld: (response: Response) => void = () => undefined;
+  let rejectHeld: (reason: Error) => void = () => undefined;
+  const entered = new Promise<void>((resolve) => { started = resolve; });
+  const held = new Promise<Response>((resolve, reject) => {
+    resolveHeld = resolve;
+    rejectHeld = reject;
+  });
+  const env = harness({
+    fetchBooks: async () => {
+      fetches += 1;
+      if (fetches === 1) return jsonResponse(200, [book("a-1", "Amber notebook")]);
+      if (fetches === 2) {
+        started();
+        return held;
+      }
+      return jsonResponse(200, [book("b-1", "Blue notebook")]);
+    },
+  });
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Author A private title");
+  const observed: Array<{ title: string; books: string[] }> = [];
+  const unsubscribe = env.session.subscribe((snapshot) => {
+    observed.push({
+      title: snapshot.draftTitle,
+      books: libraryRegion(snapshot.model).books.map((item) => item.title),
+    });
+  });
+  const pending = env.session.refresh();
+  await entered;
+  // No auth callback arrives before the HTTP error or rejection.
+  env.signedInAs = nextOwner;
+  const beforeResolution = observed.length;
+  if (failure === "rejected") rejectHeld(new Error("network failed"));
+  else resolveHeld(jsonResponse(failure === "unauthorized" ? 401 : 503, { error: failure }));
+  await pending;
+
+  const snapshot = env.session.snapshot();
+  const region = libraryRegion(snapshot.model);
+  assert.equal(snapshot.model.ownerKey, nextOwner);
+  assert.equal(snapshot.draftTitle, "");
+  assert.equal(region.books.some((item) => item.title === "Amber notebook"), false);
+  assert.equal(observed.slice(beforeResolution).some((item) =>
+    item.title === "Author A private title" || item.books.includes("Amber notebook")
+  ), false);
+  if (nextOwner === AUTHOR_B) {
+    assert.deepEqual(region.books.map((item) => item.title), ["Blue notebook"]);
+    assert.equal(fetches, 3);
+  } else {
+    assert.equal(region.status, LIBRARY_COPY.unauthorized);
+    assert.deepEqual(region.books, []);
+    assert.equal(fetches, 2);
+  }
+  unsubscribe();
+}
+
+test("401 book load transitions A to B without an auth callback", async () => {
+  await verifyFailedLoadTransitionWithoutAuthCallback("unauthorized", AUTHOR_B);
+});
+
+test("HTTP error book load transitions A to B without an auth callback", async () => {
+  await verifyFailedLoadTransitionWithoutAuthCallback("http_error", AUTHOR_B);
+});
+
+test("rejected book load transitions A to B without an auth callback", async () => {
+  await verifyFailedLoadTransitionWithoutAuthCallback("rejected", AUTHOR_B);
+});
+
+test("401 book load recognizes sign-out without an auth callback", async () => {
+  await verifyFailedLoadTransitionWithoutAuthCallback("unauthorized", null);
+});
+
+test("failed-load owner lookup error conceals and restores only the verified author's draft", async () => {
+  const env = harness({
+    fetchBooks: async () => jsonResponse(503, { error: "temporarily_unavailable" }),
+  });
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Author A private title");
+  env.failOwnerReadOn = env.ownerReads + 2; // refresh preflight succeeds, final verification fails
+  await env.session.refresh();
+  const hidden = env.session.snapshot();
+  assert.equal(hidden.model.ownerKey, null);
+  assert.equal(hidden.draftTitle, "");
+  assert.deepEqual(libraryRegion(hidden.model).books, []);
+  assert.equal(libraryRegion(hidden.model).phase, "error");
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_A);
+  assert.equal(env.session.snapshot().draftTitle, "Author A private title");
+  assert.equal(libraryRegion(env.session.snapshot().model).phase, "error");
+});

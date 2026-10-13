@@ -4,8 +4,8 @@ title: VEL-IMP-001 Book Library account isolation
 type: execution-report
 status: proposed-for-review
 created_at: 2026-10-11
-updated_at: 2026-10-12
-version: 0.6.1
+updated_at: 2026-10-13
+version: 0.6.2
 task_id: null
 context_pack_id: null
 base_commit: 226f6072785b7271fd30f4979a76e41fca30e39c
@@ -123,3 +123,10 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 - **FACT:** Added synthetic session tests `failed sign-out during an in-flight create keeps duplicate retry blocked` and `successful sign-out during an in-flight create clears its private retry state`. They cover a delayed server commit after a failed sign-out, a subsequent missing-title GET, eventual list reconciliation, and cross-author isolation on successful sign-out.
 - **NOT_RUN locally:** The two new tests, the full focused `corepack pnpm test:library-isolation` suite, `corepack pnpm check`, and `corepack pnpm build` have not been executed in a local checkout by this reviewer. Do not treat older 41-test results as new-head evidence. GitHub CI must be checked on the final report-containing head.
 - **UNCHANGED:** PR #64 remains Draft and unmerged; owner review is pending. Hosted `vellistry-dev` migrations, real manuscript data, production, direct PostgREST JWT revocation, cloud RLS, `ACC-M1-01`, paid providers, and all other implementation slices remain untouched or BLOCKED.
+
+## 2026-10-13 failed-load author-verification correction (review pending)
+
+- **FACT — source correction:** In `book-library-session.ts`, `runLoad()` now obtains the HTTP outcome without applying it until `deps.readOwner()` verifies the current identity. This covers 401, non-2xx, thrown/rejected fetch, JSON parsing failures, and successful responses. If the owner changed without an auth callback, `startLoad(liveOwner)` clears the prior author's draft and loads the new owner. If owner verification throws, `concealForUnverifiedIdentity()` hides private state and preserves same-author recovery. The success-only uncertain-save reconciliation remains unchanged.
+- **FACT — tests added:** `401 book load transitions A to B without an auth callback`, `HTTP error book load transitions A to B without an auth callback`, `rejected book load transitions A to B without an auth callback`, `401 book load recognizes sign-out without an auth callback`, and `failed-load owner lookup error conceals and restores only the verified author's draft`. Tests use synthetic authors and mocked requests.
+- **NOT_RUN:** Newly added focused tests, `corepack pnpm test:library-isolation`, `corepack pnpm check`, and `corepack pnpm build` have not been executed locally by this reviewer. Five green CI workflows on `4c24989e81c9373d54da61bf6057938d88ba656d` are prior-head evidence only. Inspect exact new-head CI before acceptance.
+- **UNCHANGED:** PR #64 stays Draft and unmerged; owner acceptance is pending. No hosted Supabase mutation, real author data, production changes, paid providers, or governance gate promotion. The old PR #59 remains paused. Cloud RLS, `ACC-M1-01`, and direct PostgREST JWT sign-out remain BLOCKED.
