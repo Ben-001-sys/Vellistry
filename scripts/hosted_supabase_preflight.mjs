@@ -78,11 +78,36 @@ function readLocalEnv(root, name) {
   }
 }
 
+
+/**
+ * This bounded guard supports one explicit file per app. Next and dotenv can
+ * otherwise override those files. Inspect names/presence only: never load or
+ * print inherited credential values or competing file contents.
+ */
+function runtimeLayoutErrors(root, environment) {
+  const errors = [];
+  const runtimeNames = ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+    "VELLISTRY_API_BASE_URL", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "API_HOST", "API_PORT"];
+  if (runtimeNames.some(name => Object.hasOwn(environment, name))
+    || Object.keys(environment).some(name => name.toUpperCase().startsWith("DOTENV_CONFIG_"))) {
+    errors.push("Inherited app or dotenv configuration can override the checked files. Use a clean shell for this file-only preflight; values were not read or printed.");
+  }
+  if (environment.NODE_ENV !== undefined && !["development", "production"].includes(environment.NODE_ENV)) {
+    errors.push("This desktop preflight requires development or production mode; Next test mode does not load .env.local.");
+  }
+  for (const name of [".env.development.local", ".env.production.local", ".env.test.local",
+    ".env.development", ".env.production", ".env.test", ".env"]) {
+    if (existsSync(resolve(root, "apps/web", name))) {
+      errors.push("Competing apps/web/" + name + " is outside this file-only preflight. Review it without overwriting existing files.");
+    }
+  }
+  return errors;
+}
 /** Produces safe, non-secret stdout. Does not contact Supabase. */
-export function checkLocalEnvironment(root, expectedProjectRef) {
+export function checkLocalEnvironment(root, expectedProjectRef, { environment = process.env } = {}) {
   const web = readLocalEnv(root, WEB_ENV);
   const api = readLocalEnv(root, API_ENV);
-  const errors = [];
+  const errors = runtimeLayoutErrors(root, environment);
   if (web.missing) errors.push("Missing " + WEB_ENV + " (copy its .env.example locally).");
   if (api.missing) errors.push("Missing " + API_ENV + " (copy its .env.example locally).");
   if (web.parseError) errors.push("Could not parse " + WEB_ENV + ".");

@@ -6,7 +6,7 @@ status: partial-implementation-cloud-migration-blocked
 created_at: 2026-10-14
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.0
+version: 0.1.1
 sources:
   - docs/plans/VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md
   - docs/plans/VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md
@@ -20,7 +20,15 @@ sources:
 
 **Authority and status (2026-10-14).** Owner instructed continuation after PR #64 merged to `main`. This narrowly permits implementation of safer configuration/preflight and preparation of acceptance evidence, **not automatic authorization to write/migrate/reset the connected Supabase Cloud project**, create cloud Auth users, deploy, run paid models or introduce private manuscripts. Cloud schema write actions must be reviewed and separately approved. The inherited MVP/Pilot release gates remain pending.
 
-## Current verified facts
+## Codex Phase A review addendum
+
+Original implementation/eleven tests in PR #65 are ChatGPT-authored. Codex continuation is on a separate branch for Issue #67; neither #65 nor ADR-0008 PR #66 is merged by this review.
+
+The corrected file-only preflight blocks inherited app/dotenv override names, unsupported NODE_ENV and competing Next .env files. It reads neither inherited key values nor competing file contents, and never overwrites them. Use the documented single-file layout in a clean shell/isolated checkout; review existing configuration rather than deleting it. A passing check applies only at invocation time. Restart apps and rebuild Next after changing public build-time values.
+
+[Read-only migration/security review and precise future acceptance matrix](../reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md) records unchanged SQL, default-privilege uncertainties, migration history, CLI Vault exclusion, read-only verification queries and rollback limits. **All hosted operations remain BLOCKED pending separate owner authorization.** A forged owner_id is stripped by the app; direct Data API ownership spoofing must instead be denied by RLS. Full ACC-M1-01 includes chapters and cannot pass in this slice.
+
+## Current verified facts (historical PR #65 observations)
 
 - Source-of-truth Git `main` at merge `4b3996ef7cda878e1af3d679454bd1bb873a79c2` (PR #64 merged 2026-10-14 22:10 UTC).
 - PR #64 source head passed 66 focused mocked tests, typecheck/build; five PR workflows and five post-merge main workflows passed. This is source-/disposable-CI evidence, NOT hosted cloud acceptance.
@@ -31,7 +39,7 @@ sources:
 ## Changes in this proposed code PR
 
 1. Per-runtime ignored environment templates (`apps/web/.env.example` and `apps/api/.env.example`) replace the prior misleading localhost Supabase root example.
-2. `scripts/hosted_supabase_preflight.mjs` parses **only local env files** (not `process.env` secrets), validates expected dev project/URL, **sb_publishable_** key type and equality and loopback-only Nest. It makes **no remote requests**, prints only static, redacted check results and expressly distinguishes local configuration from real connectivity/schema security.
+2. `scripts/hosted_supabase_preflight.mjs` parses **only local env-file values** and blocks inherited override names (without reading their secret values), validates expected dev project/URL, **sb_publishable_** key type and equality and loopback-only Nest. It makes **no remote requests**, prints only static, redacted check results and expressly distinguishes local configuration from real connectivity/schema security.
 3. `tests/hosted_supabase_preflight.test.mjs` exercises coherent configuration, production/wrong project, localhost URL, secret/service-role key rejection, legacy anon JWT rejection, mismatched public keys, exposed Nest/wrong BFF upstream, invalid project ref, missing files and diagnostic redaction. CI executes synthetic checks without real credentials.
 4. Existing client error copy is now cloud-neutral. **No client authorization/RLS, table SQL, frontend feature, network transport or cloud schema changed.**
 
@@ -66,7 +74,7 @@ corepack pnpm check
 corepack pnpm build
 ```
 
-With the cloud schema *still empty*, database-backed Library requests must be recorded **BLOCKED**, not faked as PASS. If beginning local frontend/API processes, use separate terminals for `corepack pnpm dev:api` and `corepack pnpm dev:web`; no port binding beyond loopback. Local env variables should never be printed in transcripts.
+With the cloud schema *still empty*, database-backed Library requests must be recorded **BLOCKED**, not faked as PASS. If beginning local frontend/API processes, use separate terminals for `corepack pnpm dev:api` and `corepack pnpm --filter @vellistry/web dev --hostname 127.0.0.1`; Next defaults to 0.0.0.0, so the explicit hostname is required for a loopback-only frontend. Local env variables should never be printed in transcripts.
 
 ## Existing migrations — requested review before remote application
 
@@ -96,7 +104,7 @@ The Git repository already contains exactly two intended foundation migration fi
 | LIB-01 / ACC-M1-01 | A creates book; refresh/reopen returns durable row owned by A | BLOCKED |
 | LIB-02 / ACC-M8-01 | B sees none of A's books, cannot guess/read or write A's rows | BLOCKED |
 | LIB-03 | Signing out hides rows, switching A→B never flashes A's titles | BLOCKED browser test |
-| LIB-04 | Bad titles and forged `owner_id` denied; server assigns owner via auth | BLOCKED |
+| LIB-04 | Bad titles denied; app strips forged `owner_id`, direct DB spoof denied; authenticated owner assigned | BLOCKED |
 | SEC-01 | Reuse old JWT against direct Data API after logout and document exact scope; DO NOT mark private-pilot PASS until secure | BLOCKED |
 | CRED-01 | Browser never receives `service_role`/`sb_secret_`; no raw keys or manuscript in evidence | NOT RUN |
 | VAL-01 | Full `VEL-JRN-001` and `VEL-JRN-011` end-to-end | NOT RUN; IMP-001 alone cannot complete JRN-001 chapters |

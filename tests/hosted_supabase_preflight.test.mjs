@@ -1,5 +1,8 @@
+import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -129,3 +132,120 @@ test("invalid local config never leaks the offending key in diagnostics", () => 
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+
+function fixture(run) {
+  const root = mkdtempSync(join(tmpdir(), "vellistry-preflight-codex-"));
+  const cfg = good();
+  try {
+    mkdirSync(join(root, "apps/web"), { recursive: true });
+    mkdirSync(join(root, "apps/api"), { recursive: true });
+    for (const [app, values, file] of [["web", cfg.web, ".env.local"], ["api", cfg.api, ".env"]]) {
+      writeFileSync(join(root, "apps", app, file),
+        Object.entries(values).map(([name, value]) => name + "=" + value).join("\n") + "\n");
+    }
+    return run(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+test("does not pass file validation when inherited runtime settings override those files", () => fixture(root => {
+  for (const name of ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+    "VELLISTRY_API_BASE_URL", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "API_HOST", "API_PORT",
+    "DOTENV_CONFIG_PATH"]) {
+    const result = checkLocalEnvironment(root, ref, { environment: { [name]: "synthetic_override_never_print" } });
+    assert.equal(result.ok, false, name);
+    assert.equal(result.messages.join(" ").includes("synthetic_override_never_print"), false);
+  }
+}));
+
+test("rejects competing Next env files that the actual runtime would also read", () => fixture(root => {
+  for (const name of [".env.development.local", ".env.production.local", ".env.test.local",
+    ".env.development", ".env.production", ".env.test", ".env"]) {
+    const path = join(root, "apps/web", name);
+    writeFileSync(path, "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_secret_synthetic_never_print\n");
+    const before = readFileSync(path, "utf8");
+    const result = checkLocalEnvironment(root, ref, { environment: {} });
+    assert.equal(result.ok, false, name);
+    assert.equal(result.messages.join(" ").includes("sb_secret_synthetic_never_print"), false);
+    assert.equal(readFileSync(path, "utf8"), before);
+    rmSync(path);
+  }
+}));
+
+test("rejects test mode because Next does not load the required .env.local there", () => fixture(root => {
+  assert.equal(checkLocalEnvironment(root, ref, { environment: { NODE_ENV: "test" } }).ok, false);
+}));
+
+test("actual Next runtime precedence demonstrates why competing env files must block preflight", () => fixture(root => {
+  const webRequire = createRequire(new URL("../apps/web/package.json", import.meta.url));
+  const nextRequire = createRequire(webRequire.resolve("next/package.json"));
+  const envLoader = nextRequire.resolve("@next/env");
+  writeFileSync(join(root, "apps/web/.env.development.local"),
+    "NEXT_PUBLIC_SUPABASE_URL=https://differentproject1234.supabase.co\n");
+  const script = "const {loadEnvConfig}=require(process.argv[1]);"
+    + "loadEnvConfig(process.argv[2],true,{info(){},error(){}},true);"
+    + "if(process.env.NEXT_PUBLIC_SUPABASE_URL!=='https://differentproject1234.supabase.co') process.exit(2);";
+  const observed = spawnSync(process.execPath, ["-e", script, envLoader, join(root, "apps/web")],
+    { encoding: "utf8", env: cleanChildEnvironment() });
+  assert.equal(observed.status, 0);
+  assert.equal(checkLocalEnvironment(root, ref, { environment: {} }).ok, false);
+}));
+
+function cleanChildEnvironment() {
+  return { PATH: process.env.PATH ?? "", SystemRoot: process.env.SystemRoot ?? "" };
+}
+
+test("actual CLI succeeds and rejects unsafe config without printing synthetic key values", () => fixture(root => {
+  const script = fileURLToPath(new URL("../scripts/hosted_supabase_preflight.mjs", import.meta.url));
+  const invoke = () => spawnSync(process.execPath, [script, ref],
+    { cwd: root, encoding: "utf8", env: cleanChildEnvironment() });
+  const beforeWeb = readFileSync(join(root, "apps/web/.env.local"), "utf8");
+  const beforeApi = readFileSync(join(root, "apps/api/.env"), "utf8");
+  const success = invoke();
+  assert.equal(success.status, 0);
+  assert.match(success.stdout, /NOT TESTED/);
+  assert.equal(success.stdout.includes(key), false);
+  assert.equal(readFileSync(join(root, "apps/web/.env.local"), "utf8"), beforeWeb);
+  assert.equal(readFileSync(join(root, "apps/api/.env"), "utf8"), beforeApi);
+  const fakeSecret = "sb_secret_synthetic_cli_never_print";
+  writeFileSync(join(root, "apps/web/.env.local"),
+    beforeWeb.replace(key, fakeSecret));
+  const failure = invoke();
+  assert.equal(failure.status, 1);
+  assert.equal((failure.stdout + failure.stderr).includes(fakeSecret), false);
+}));
+
+test("actual CLI fails safely with absent env files", () => {
+  const root = mkdtempSync(join(tmpdir(), "vellistry-missing-env-"));
+  try {
+    const script = fileURLToPath(new URL("../scripts/hosted_supabase_preflight.mjs", import.meta.url));
+    const result = spawnSync(process.execPath, [script, ref],
+      { cwd: root, encoding: "utf8", env: cleanChildEnvironment() });
+    assert.equal(result.status, 1);
+    assert.match(result.stdout, /BLOCKED/);
+    assert.equal(result.stderr, "");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("cloud URL rejects credentials, ports, lookalike hosts, path and query additions", () => {
+  for (const bad of ["http://" + ref + ".supabase.co", url + ".example.test", url + ":444",
+    "https://user:synthetic_password@" + ref + ".supabase.co", url + "/rest/v1",
+    url + "?token=synthetic", url + "#fragment"]) {
+    const cfg = good();
+    cfg.web.NEXT_PUBLIC_SUPABASE_URL = bad;
+    assert.equal(validateHostedConfig(cfg).ok, false);
+    assert.equal(validateHostedConfig(cfg).errors.join(" ").includes("synthetic_password"), false);
+  }
+});
+
+test("unreadable env paths fail without reflecting filesystem or parser errors", () => fixture(root => {
+  rmSync(join(root, "apps/web/.env.local"));
+  mkdirSync(join(root, "apps/web/.env.local"));
+  const result = checkLocalEnvironment(root, ref, { environment: {} });
+  assert.equal(result.ok, false);
+  assert.match(result.messages.join(" "), /Could not parse/);
+}));
