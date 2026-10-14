@@ -49,11 +49,11 @@ corepack pnpm --version
 The repository pins `pnpm@10.18.0`. **Do not reset or discard changes** just to synchronize. On an authorized updated checkout:
 
 ```powershell
-Copy-Item apps/web/.env.example apps/web/.env.local
-Copy-Item apps/api/.env.example apps/api/.env
+if (-not (Test-Path apps/web/.env.local)) { Copy-Item apps/web/.env.example apps/web/.env.local }
+if (-not (Test-Path apps/api/.env)) { Copy-Item apps/api/.env.example apps/api/.env }
 ```
 
-Use the **same verified Cloud dev project** `https://lflkcrnriitrbclangyr.supabase.co` and its actual **modern publishable key** in both ignored files. Edit only locally. Obtain the key from [Supabase Dashboard for vellistry-dev](https://supabase.com/dashboard/project/lflkcrnriitrbclangyr) → Connect / API keys. **Never paste raw key values, service-role keys, passwords, bearer tokens or manuscripts in chat, Cursor prompts, PRs or Git.** `NEXT_PUBLIC_*` is browser-visible, so only the publishable key is allowed. The preflight validates formatting, not a key's actual validity.
+**Existing local .env files are preserved, not overwritten.** Use the **same verified Cloud dev project** `https://lflkcrnriitrbclangyr.supabase.co` and its actual **modern publishable key** in both ignored files. Edit only locally. Obtain the key from [Supabase Dashboard for vellistry-dev](https://supabase.com/dashboard/project/lflkcrnriitrbclangyr) → Connect / API keys. **Never paste raw key values, service-role keys, passwords, bearer tokens or manuscripts in chat, Cursor prompts, PRs or Git.** `NEXT_PUBLIC_*` is browser-visible, so only the publishable key is allowed. The preflight validates formatting, not a key's actual validity.
 
 Run:
 
