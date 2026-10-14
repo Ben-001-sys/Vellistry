@@ -3,8 +3,8 @@ id: VEL-AGENT-001
 type: agent-instructions
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-08
-version: 0.1.2
+updated_at: 2026-10-14
+version: 0.1.3
 ---
 
 # Instructions for Vellistry Research and Development Agents
@@ -15,6 +15,12 @@ version: 0.1.2
 3. Relevant accepted ADRs and requirements.
 4. Task-specific ContextPack and original sources.
 5. Related history, experiments, and execution reports if relevant.
+
+## Primary agentic implementation workflow (ADR-0008, owner-selected 2026-10-14)
+
+**Codex is the default bounded code implementer.** ChatGPT is the architect/task coordinator and exact-head reviewer; GitHub is the source of truth; the owner approves consequential scope, cloud database operations, PR merge and release. Read [ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md) and the latest `CURRENT-STATE.md` before preparing/accepting new code tasks. Older Cursor workflows are historical; Cursor may be an editor or explicitly reassigned agent, never silently the default.
+
+Default sequence: **owner-approved task → ChatGPT ContextPack/spec/negative checks → Codex in isolated branch/worktree → actual tests + ExecutionBundle → ChatGPT source/CI review → owner merge decision → verify merged `main` and update state**. Record the actual executor; do not reattribute a ChatGPT-made PR to Codex or invent a successful Codex dispatch. Never let Codex self-approve remote migrations, secrets, real manuscripts, costs or deployment.
 
 ## Operational task handoff (Stage 3 pilot)
 Use [docs/agent-workflow/README.md](docs/agent-workflow/README.md) for task lifecycle, pinned ContextPack generation, ExecutionBundle reporting, and solo-maintainer review. This workflow remains a v0.1 proposal until owner-reviewed and merged. Do not confuse proposed task status with an accepted product decision.
