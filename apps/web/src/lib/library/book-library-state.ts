@@ -20,7 +20,7 @@ export const LIBRARY_COPY = {
   loadError: "Unable to load books. Try again.",
   createError: "Could not save this book. Your title remains in the field.",
   createUnknown: "The save result is unknown. Refresh to check your books before trying again.",
-  createAbsent: "This title is not in the refreshed list. Saving again may create a duplicate if the first save is still finishing.",
+  createAbsent: "This save is not confirmed by the refreshed list. Saving again may create a duplicate if the first save is still finishing.",
   sessionChanged: "Your session changed. The book was not saved to this account.",
   signingOut: "Signing out...",
   signOutError: "Sign-out did not complete. You may still be signed in. Try signing out again.",

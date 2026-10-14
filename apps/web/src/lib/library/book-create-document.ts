@@ -64,14 +64,14 @@ export function forwardTransportFailure(attemptedUpstream: boolean): {
 }
 
 /**
- * HTTP 503 is unknown unless the BFF names a failure that happened before the
- * write was forwarded. Any other 503, including an unreadable body, stays unknown.
+ * Server errors after dispatch cannot prove that the database did not commit.
+ * Only a named BFF pre-forward 503 is a definite failure.
  */
 export function outcomeForCreateStatus(
   status: number,
   errorCode: string | null,
 ): "unknown" | "error" | null {
-  if (status !== 503) return null;
-  if (errorCode === "service_unavailable" || errorCode === "api_not_configured") return "error";
+  if (status < 500) return null;
+  if (status === 503 && (errorCode === "service_unavailable" || errorCode === "api_not_configured")) return "error";
   return "unknown";
 }

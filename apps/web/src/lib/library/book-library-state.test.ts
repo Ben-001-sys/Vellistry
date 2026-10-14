@@ -13,10 +13,41 @@ import {
   type LibraryState,
 } from "./book-library-state";
 import { decideBookPost, forwardTransportFailure, outcomeForCreateStatus } from "./book-create-document";
-import { ownerFromGetUser } from "./owner-from-auth";
+import { ownerFromGetUser, verifiedBookAccess } from "./owner-from-auth";
 
 const AUTHOR_A = "author-a";
 const AUTHOR_B = "author-b";
+
+test("BFF verifies the exact token it forwards rather than a separately read identity", async () => {
+  const tokens: Array<string | undefined> = [];
+  const access = await verifiedBookAccess({
+    getSession: async () => ({ data: { session: { access_token: "synthetic-token-b" } }, error: null }),
+    getUser: async token => {
+      tokens.push(token);
+      return { data: { user: { id: token === "synthetic-token-b" ? AUTHOR_B : AUTHOR_A } }, error: null };
+    },
+  });
+  assert.deepEqual(tokens, ["synthetic-token-b"]);
+  assert.deepEqual(access, { ownerKey: AUTHOR_B, accessToken: "synthetic-token-b" });
+  const decision = decideBookPost({ sessionUserId: access!.ownerKey, expectedUserId: AUTHOR_A, rawBody: '{"title":"Private A"}' });
+  assert.deepEqual(decision, { action: "reject", status: 409, error: "session_changed" });
+});
+
+test("BFF refuses missing, errored, or unverified access tokens", async () => {
+  for (const failure of ["session-error", "no-session", "user-error", "no-user"]) {
+    const access = await verifiedBookAccess({
+      getSession: async () => ({
+        data: { session: failure === "no-session" ? null : { access_token: "synthetic-token" } },
+        error: failure === "session-error" ? new Error("unavailable") : null,
+      }),
+      getUser: async () => ({
+        data: { user: failure === "no-user" ? null : { id: AUTHOR_A } },
+        error: failure === "user-error" ? new Error("unverified") : null,
+      }),
+    });
+    assert.equal(access, null);
+  }
+});
 
 function book(title: string, id: string): BookSummary {
   return {
@@ -260,7 +291,7 @@ test("a lost upstream acknowledgement is not a pre-forward failure", () => {
   assert.equal(outcomeForCreateStatus(401, "unauthenticated"), null);
   assert.equal(outcomeForCreateStatus(409, "session_changed"), null);
   assert.equal(outcomeForCreateStatus(400, "invalid_document"), null);
-  assert.equal(outcomeForCreateStatus(500, "nope"), null);
+  assert.equal(outcomeForCreateStatus(500, "nope"), "unknown");
 });
 
 test("a returned auth error is not a confirmed signed-out user", () => {

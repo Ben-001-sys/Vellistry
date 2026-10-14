@@ -1,6 +1,7 @@
 import {NextRequest,NextResponse} from "next/server";
 import {decideBookPost,EXPECTED_USER_HEADER,forwardTransportFailure} from "@/lib/library/book-create-document";
 import {getServerSupabase} from "@/lib/supabase/server";
+import {verifiedBookAccess} from "@/lib/library/owner-from-auth";
 
 export const dynamic="force-dynamic";
 export const runtime="nodejs";
@@ -21,17 +22,15 @@ async function forward(req:NextRequest,method:"GET"|"POST"){
  let attemptedUpstream=false;
  try{
   const supabase=await getServerSupabase();
-  const {data:{user},error}=await supabase.auth.getUser();
-  if(error||!user)return privateJson({error:"unauthenticated"},401);
-  const {data:{session}}=await supabase.auth.getSession();
-  if(!session?.access_token)return privateJson({error:"unauthenticated"},401);
+  const access=await verifiedBookAccess(supabase.auth);
+  if(!access)return privateJson({error:"unauthenticated"},401);
   const base=process.env.VELLISTRY_API_BASE_URL;
   if(!base)return privateJson({error:"api_not_configured"},503);
   const target=new URL("/v1/books",base);
   let content:string|undefined;
   if(method==="POST"){
    const decision=decideBookPost({
-    sessionUserId:user.id,
+    sessionUserId:access.ownerKey,
     expectedUserId:req.headers.get(EXPECTED_USER_HEADER),
     rawBody:await req.text(),
    });
@@ -50,7 +49,7 @@ async function forward(req:NextRequest,method:"GET"|"POST"){
    attemptedUpstream=true;
   }
   const upstream=await fetch(target,{
-   method,headers:{"Authorization":"Bearer "+session.access_token,"Content-Type":"application/json"},
+   method,headers:{"Authorization":"Bearer "+access.accessToken,"Content-Type":"application/json"},
    body:content,cache:"no-store"
   });
   if(upstream.status===401)return privateJson({error:"unauthenticated"},401);

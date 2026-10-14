@@ -547,6 +547,132 @@ test("a transient refresh lookup does not reveal the draft to the next author", 
   assert.deepEqual(region.books.map((item) => item.title), ["Blue notebook"]);
 });
 
+for (const verifiedOwner of [AUTHOR_A, AUTHOR_B, "lookup-error"]) {
+  test(`a stale auth event keeps a concealed draft hidden until verification: ${verifiedOwner}`, async () => {
+    let holdLoad = false;
+    let releaseLoad: (response: Response) => void = () => undefined;
+    const heldLoad = new Promise<Response>(resolve => { releaseLoad = resolve; });
+    const env = harness({
+      fetchBooks: async () => holdLoad ? heldLoad : jsonResponse(200, []),
+    });
+    await signIn(env, AUTHOR_A);
+    env.session.setDraftTitle("Concealed private title");
+    env.failOwnerReadOn = env.ownerReads + 1;
+    await env.session.refresh();
+    const seen: string[] = [];
+    env.session.subscribe(snapshot => { seen.push(snapshot.draftTitle); });
+    holdLoad = true;
+    const pending = env.session.onAuthEvent("TOKEN_REFRESHED", AUTHOR_A);
+    assert.equal(env.session.snapshot().draftTitle, "");
+    assert.equal(seen.every(title => title === ""), true);
+    env.signedInAs = verifiedOwner === AUTHOR_B ? AUTHOR_B : AUTHOR_A;
+    env.failOwnerReadOn = verifiedOwner === "lookup-error" ? env.ownerReads + 1 : null;
+    holdLoad = false;
+    releaseLoad(jsonResponse(200, []));
+    await pending;
+    assert.equal(env.session.snapshot().draftTitle, verifiedOwner === AUTHOR_A ? "Concealed private title" : "");
+    if (verifiedOwner !== AUTHOR_A) assert.equal(seen.every(title => title === ""), true);
+    if (verifiedOwner === "lookup-error") {
+      env.failOwnerReadOn = null;
+      await env.session.refresh();
+      assert.equal(env.session.snapshot().draftTitle, "Concealed private title");
+    }
+  });
+}
+
+test("an existing same-title row cannot resolve a lost create acknowledgement", async () => {
+  const env = harness();
+  let creates = 0;
+  env.createBook = async () => { creates += 1; throw new Error("reply lost"); };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Amber notebook");
+  await env.session.submitCreate();
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "Amber notebook");
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(libraryRegion(env.session.snapshot().model).canCreate, false);
+  await env.session.submitCreate();
+  assert.equal(creates, 1);
+  // Concealment and restoration must also preserve the original row baseline.
+  env.failOwnerReadOn = env.ownerReads + 1;
+  await env.session.refresh();
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  env.booksForA.push(book("new-id", "Amber notebook"));
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.equal(creates, 1);
+});
+
+test("a create without a verified list baseline stays uncertain on a same-title GET", async () => {
+  let failLoad = true;
+  const env = harness({ fetchBooks: async () => failLoad
+    ? jsonResponse(500, {}) : jsonResponse(200, [book("old-id", "Untitled")]) });
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Untitled");
+  env.createBook = async () => { throw new Error("reply lost"); };
+  await env.session.submitCreate();
+  failLoad = false;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "Untitled");
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(libraryRegion(env.session.snapshot().model).canCreate, false);
+});
+
+test("identity is verified after a delayed 503 body is consumed", async () => {
+  const env = harness();
+  let releaseBody: (payload: unknown) => void = () => undefined;
+  let bodyEntered: () => void = () => undefined;
+  const entered = new Promise<void>(resolve => { bodyEntered = resolve; });
+  const body = new Promise<unknown>(resolve => { releaseBody = resolve; });
+  env.createBook = async () => {
+    const response = jsonResponse(503, {});
+    response.json = () => { bodyEntered(); return body; };
+    return response;
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A confidential pending title");
+  const pending = env.session.submitCreate();
+  await entered;
+  const seen: string[] = [];
+  env.session.subscribe(snapshot => { seen.push(snapshot.draftTitle); });
+  env.signedInAs = AUTHOR_B; // No auth callback while the response body streams.
+  releaseBody({ error: "acknowledgment_unknown" });
+  await pending;
+  assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_B);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(seen.every(title => title === ""), true);
+});
+
+test("server errors after dispatch preserve unknown save outcomes", async () => {
+  for (const status of [500, 502, 504]) {
+    const env = harness();
+    let creates = 0;
+    env.createBook = async () => { creates += 1; return jsonResponse(status, {}); };
+    await signIn(env, AUTHOR_A);
+    env.session.setDraftTitle("Potentially committed book");
+    await env.session.submitCreate();
+    assert.equal(env.session.snapshot().model.createUncertain, true);
+    assert.equal(libraryRegion(env.session.snapshot().model).status, LIBRARY_COPY.createUnknown);
+    await env.session.submitCreate();
+    assert.equal(creates, 1);
+  }
+});
+
+test("successful sign-out discards an already concealed draft", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Draft before sign-out");
+  env.failOwnerReadOn = env.ownerReads + 1;
+  await env.session.refresh();
+  await env.session.signOut();
+  env.failOwnerReadOn = null;
+  await signIn(env, AUTHOR_A);
+  assert.equal(env.session.snapshot().draftTitle, "");
+});
+
 test("an explicit risk retry is required before another create", async () => {
   const env = harness();
   let createCalls = 0;
@@ -582,7 +708,7 @@ test("an owner change after an unknown create does not reveal that title", async
 
 test("an HTTP create error stays a definite failure", async () => {
   const env = harness();
-  env.createBook = async () => jsonResponse(500, { error: "nope" });
+  env.createBook = async () => jsonResponse(400, { error: "invalid_document" });
   await signIn(env, AUTHOR_A);
   env.session.setDraftTitle("Brand new notebook");
   await env.session.submitCreate();

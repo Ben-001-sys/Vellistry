@@ -91,6 +91,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   let model = initialLibraryState();
   let draftTitle = "";
   let owner: string | null = null;
+  let createEvidence: { ownerKey: string; title: string; knownBookIds: Set<string> | null } | null = null;
   let concealedDraft: {
     ownerKey: string;
     title: string;
@@ -123,18 +124,21 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
 
   function startLoad(ownerKey: string | null): Promise<void> {
     const ownerChanged = ownerKey !== owner;
+    if (ownerKey === null) {
+      concealedDraft = null;
+      createEvidence = null;
+      draftTitle = "";
+    }
     loadAbort?.abort();
     if (ownerChanged) createAbort?.abort();
-    let restoreUncertain = false;
     if (ownerChanged) {
-      if (concealedDraft?.ownerKey === ownerKey) {
-        draftTitle = concealedDraft.title;
-        restoreUncertain = concealedDraft.createWasPending || concealedDraft.createUncertain;
+      // Auth event payloads are hints, not independent identity verification.
+      // Keep a matching concealed draft off-snapshot until runLoad verifies it.
+      if (concealedDraft?.ownerKey !== ownerKey) {
         concealedDraft = null;
-      } else {
-        concealedDraft = null;
-        draftTitle = "";
+        createEvidence = null;
       }
+      draftTitle = "";
     }
     const controller = new AbortController();
     loadAbort = controller;
@@ -142,7 +146,6 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     owner = ownerKey;
     hasLoaded = true;
     model = beginLoad(model, ownerKey, generation);
-    if (restoreUncertain) model = { ...model, createUncertain: true };
     emit();
     if (ownerKey === null) {
       model = applyLoad(model, generation, null, { kind: "unauthorized" });
@@ -191,11 +194,22 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       return;
     }
 
+    if (concealedDraft?.ownerKey === liveOwner) {
+      draftTitle = concealedDraft.title;
+      model = { ...model, createUncertain: concealedDraft.createWasPending || concealedDraft.createUncertain };
+      concealedDraft = null;
+    }
     const uncertain = model.createUncertain;
     const trimmed = draftTitle.trim();
     model = applyLoad(model, generation, ownerKey, outcome);
     if (outcome.kind === "ok" && uncertain && model.phase !== "error") {
-      const visible = trimmed !== "" && model.books.some((item) => item.title === trimmed);
+      // Titles are not unique. Only a new row relative to a known pre-create
+      // list is reconciliation evidence. An unavailable baseline stays unknown.
+      const evidence = createEvidence;
+      const knownBookIds = evidence?.knownBookIds;
+      const visible = evidence?.ownerKey === ownerKey && evidence.title === trimmed &&
+        knownBookIds != null && model.books.some((item) =>
+          item.title === trimmed && !knownBookIds.has(item.id));
       if (visible) draftTitle = "";
       else model = noteMissingUncertainTitle(model);
     }
@@ -280,6 +294,12 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     if (!opened.ok || !ownerKey) return;
     const generation = opened.state.createGeneration;
     if (generation === null) return;
+    createEvidence = {
+      ownerKey,
+      title: trimmed,
+      knownBookIds: model.phase === "empty" || model.phase === "populated"
+        ? new Set(model.books.map(item => item.id)) : null,
+    };
     model = opened.state;
     emit();
     const controller = new AbortController();
@@ -287,6 +307,10 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     createAbort = controller;
     try {
       const response = await deps.createBook(trimmed, ownerKey, controller.signal);
+      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      // Consume asynchronous error bodies before the final identity check.
+      const transport = outcomeForCreateStatus(response.status,
+        response.status === 503 ? await createFailureCode(response) : null);
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
       let liveOwner: string | null = null;
       let ownerLookupFailed = false;
@@ -317,8 +341,7 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
         emit();
         return;
       }
-      if (response.status === 503) {
-        const transport = outcomeForCreateStatus(response.status, await createFailureCode(response));
+      if (transport !== null) {
         model = applyCreate(model, generation, ownerKey, transport === "error" ? "error" : "unknown");
         emit();
         return;
