@@ -5,6 +5,7 @@ on:
     paths:
       - "apps/**"
       - "package.json"
+      - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
       - "supabase/**"
       - ".github/workflows/implementation-foundation.yml"
@@ -16,6 +17,7 @@ on:
     paths:
       - "apps/**"
       - "package.json"
+      - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
       - "supabase/**"
       - ".github/workflows/implementation-foundation.yml"
@@ -39,7 +41,9 @@ jobs:
         with:
           node-version: 24
       - name: Install without hosted secrets or paid APIs
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
+      - name: Regress Book Library isolation and unknown saves (synthetic)
+        run: pnpm test:library-isolation
       - name: Compile NestJS backend
         run: pnpm --filter @vellistry/api build
       - name: Type-check NestJS backend

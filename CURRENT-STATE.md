@@ -3,12 +3,47 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-11
+updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.49
+version: 0.1.58
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — IMP-001 final bounded verification; owner review pending
+
+**Latest amendment:** source commit `675c394e9b3f154a8cd09bd5a84574597f15621f` additionally fixes failed-sign-out identity verification and stale sign-out results affecting the next author's pending create. Three regressions reproduced the defects before correction. All six local commands passed again on this source (**66/66 focused tests**, 15 workflow tests, both check/build and both validators; all exit 0). Final source outputs are retained separately in the report; the 63-test checkpoint below is historical. The latest report-only head and its renewed checks/CI are identified in PR #64.
+
+**FACT.** Continued existing draft PR #64 from actual head `57962ace49ca85550108649fd8c3ba7345857650`, already containing base `main` `226f6072785b7271fd30f4979a76e41fca30e39c`. Correction commit `9ff870a92c1ca446e4651c4bd39ee280c5002166` fixes concealed-title restoration before verified identity, old same-title rows falsely resolving unknown creates, identity changes during delayed error-body reads, ambiguous server-error retry, concealed draft retention after successful sign-out, and separate BFF identity/token reads. Adds ten focused regressions (63 total) and runs the focused suite in foundation CI with a frozen lockfile.
+
+All six requested local checks passed on that committed source: **63/63 synthetic tests**, Nest/Next typecheck and build, workflow validation (3 tasks/1 pack/1 bundle), **15 workflow tests**, and spec traceability (8 scenarios), all exit 0. Full outputs, exact source SHA, limitations and owner checklist are in the [updated execution report](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). The final report-head SHA, renewed local verification and exact-head CI conclusions are recorded in PR #64 after commit creation. Earlier NOT_RUN entries below preserve their historical authoring state.
+
+**INTERPRETATION / PROPOSAL.** The corrected source is prepared for the owner's review decision, contingent on the final-head checks recorded in the PR; it is not owner acceptance. PR #64 remains **Draft and unmerged**. Focused synthetic tests and disposable CI integration do not establish hosted Supabase acceptance. Hosted schema/persistence/RLS, `ACC-M1-01`, full journeys and the signed-out unexpired-JWT direct PostgREST risk remain **BLOCKED/unverified**. `vellistry-dev`, migrations, deployment, paid AI, private manuscripts and other implementation slices were untouched. PR #59 remains paused; no accepted decision or approval gate was changed.
+
+## 2026-10-14 — IMP-001 rejected POST and final identity verification hardening (pending CI)
+PR #64 remains Draft and unmerged. The Library session now conceals private draft/list state when the final identity lookup fails after any POST HTTP outcome, and verifies identity before publishing a rejected-POST uncertain-save status. An account change routes to the newly verified owner without exposing the old draft. Three synthetic regressions were added, and the earlier success-plus-failed-lookup test now expects concealment and same-owner-only restoration. These focused tests have **NOT_RUN** independently in this connector-only edit; exact-head CI must be checked. Hosted Supabase, migrations, and production remain untouched. Owner acceptance is pending.
+
+## IMP-001 failed-load identity verification (2026-10-13; review pending)
+
+**FACT — code and test changes proposed in PR #64.** The Book Library controller now verifies the live author before publishing 401, HTTP-error, rejected-request, malformed-response, or successful GET results. If identity changed without an auth callback, it transitions to the verified author (or signed-out state) before publishing; if verification fails, the previous draft is concealed and recoverable only by its original author. Five synthetic regression tests were added for A→B (401, 503, rejected GET), A→signed-out (401), and a failed owner lookup on an error response. Existing successful-response protections remain.
+
+**Verification:** These new tests and the focused `corepack pnpm test:library-isolation` command are **NOT_RUN** by this reviewer. The previous five green workflows belong to commit `4c24989e81c9373d54da61bf6057938d88ba656d`, not this correction. Recheck new-head CI before acceptance. This does not verify hosted `vellistry-dev`, RLS, `ACC-M1-01`, or revoked-session direct PostgREST. Owner review and merge authorization remain pending; PR #59 stays paused.
+
+## IMP-001 failed sign-out/create race correction (2026-10-12; review pending)
+
+**FACT.** In draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64), commit `a1b6b12111932fd4b37dbf5da86ff53e596dc8fd` changed `concealBooksForSignOut()` so an in-flight create interrupted by sign-out retains an uncertain-save lock. If sign-out fails, ordinary Create stays blocked; an aborted client request is not treated as proof that Nest did not commit. Successful sign-out still clears the previous author's private state. Two synthetic session regression tests were added for failed sign-out with delayed create acknowledgement/reconciliation and successful sign-out isolation.
+
+**Verification status:** New regression tests were **NOT_RUN locally** during this correction; exact-head CI must be inspected independently. This commit is not a cloud-persistence, hosted RLS, or signed-out JWT test. The prior documented 41-test result belongs to an older PR head. Owner review and merge authorization remain pending. No Supabase, production, paid-provider, manuscript, or approved-decision changes occurred. PR #59 remains paused.
+
+## VEL-IMP-001 review corrections are in PR #64 (2026-10-11)
+
+Issue #63 remains the only coding slice in progress. [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open and unmerged. It was not deployed. This branch now contains verified `origin/main` `226f6072785b7271fd30f4979a76e41fca30e39c` (merge of PR #62) as well as the library-isolation work that started from `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. The hosted Supabase Cloud sections below are kept from that main tip.
+
+The review of `6f98f033fff8333e66edf23cd3b12eadacc22ed6` kept the earlier isolation corrections and required two further changes, addressed in `60b187c3575cb794b1969ec389f937479df04ba0`. A lost save whose refreshed list does not show the title stays uncertain until that title appears or the author explicitly chooses to save again. A refresh that cannot verify the author hides the unsaved title and restores it only for that same author. A later correction on this same branch distinguishes a Nest POST whose acknowledgement was lost from a failure before that POST was sent: the lost acknowledgement stays an unknown save, and Create stays disabled. Concealing a draft keeps that unknown-save flag and restores it only for the same author. `auth.getUser()` returning an error conceals private content instead of showing a confirmed signed-out library. A null user with no error still asks the reader to sign in. `CURRENT-STATE.md` keeps both this evidence and the hosted-project record from main.
+
+**FACT.** The execution report is [VEL-IMP-001 library isolation](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). It is not a pinned `VEL-EB` bundle and it does not create or recycle a `VEL-TASK`. Synthetic session tests, `corepack pnpm check`, and `corepack pnpm build` passed without a hosted database. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were not changed by this slice.
+
+**Not accepted and not passed.** This checkpoint does not accept PLAN-01..06, does not mark `G_DESIGN` or `G_CODE` passed, and does not claim live RLS, direct PostgREST logout behavior, or `ACC-M1-01` persistence. Hosted project `vellistry-dev` was not migrated or written by this slice. Live book create/reopen stays **BLOCKED**. PR #59 and Issue #58 stay paused. Crosswalk rows for this slice remain `NOT_RUN` because the full acceptance cases were not executed.
 
 ## Supabase Cloud development project CREATED (2026-10-11; newest)
 

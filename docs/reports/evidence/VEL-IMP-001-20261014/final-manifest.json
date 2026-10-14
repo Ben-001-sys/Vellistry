@@ -1,0 +1,38 @@
+[
+  {
+    "exit_code": 0,
+    "command": "corepack pnpm test:library-isolation",
+    "started_utc": "2026-10-14T21:47:42.6163948Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  },
+  {
+    "exit_code": 0,
+    "command": "corepack pnpm check",
+    "started_utc": "2026-10-14T21:47:44.2004362Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  },
+  {
+    "exit_code": 0,
+    "command": "corepack pnpm build",
+    "started_utc": "2026-10-14T21:47:48.2783197Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  },
+  {
+    "exit_code": 0,
+    "command": "python scripts/agent_workflow.py validate",
+    "started_utc": "2026-10-14T21:47:57.5659294Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  },
+  {
+    "exit_code": 0,
+    "command": "python -m unittest discover -s tests -p 'test_agent_workflow.py' -v",
+    "started_utc": "2026-10-14T21:47:59.3014383Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  },
+  {
+    "exit_code": 0,
+    "command": "python scripts/spec_traceability.py validate",
+    "started_utc": "2026-10-14T21:48:08.4656804Z",
+    "commit": "675c394e9b3f154a8cd09bd5a84574597f15621f"
+  }
+]
