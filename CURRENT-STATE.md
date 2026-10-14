@@ -5,12 +5,14 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.57
+version: 0.1.58
 ---
 
 # Vellistry — Current State
 
 ## 2026-10-14 — IMP-001 final bounded verification; owner review pending
+
+**Latest amendment:** source commit `675c394e9b3f154a8cd09bd5a84574597f15621f` additionally fixes failed-sign-out identity verification and stale sign-out results affecting the next author's pending create. Three regressions reproduced the defects before correction. All six local commands passed again on this source (**66/66 focused tests**, 15 workflow tests, both check/build and both validators; all exit 0). Final source outputs are retained separately in the report; the 63-test checkpoint below is historical. The latest report-only head and its renewed checks/CI are identified in PR #64.
 
 **FACT.** Continued existing draft PR #64 from actual head `57962ace49ca85550108649fd8c3ba7345857650`, already containing base `main` `226f6072785b7271fd30f4979a76e41fca30e39c`. Correction commit `9ff870a92c1ca446e4651c4bd39ee280c5002166` fixes concealed-title restoration before verified identity, old same-title rows falsely resolving unknown creates, identity changes during delayed error-body reads, ambiguous server-error retry, concealed draft retention after successful sign-out, and separate BFF identity/token reads. Adds ten focused regressions (63 total) and runs the focused suite in foundation CI with a frozen lockfile.
 

@@ -5,11 +5,11 @@ type: execution-report
 status: proposed-for-review
 created_at: 2026-10-11
 updated_at: 2026-10-14
-version: 0.7.0
+version: 0.7.1
 task_id: null
 context_pack_id: null
 base_commit: 226f6072785b7271fd30f4979a76e41fca30e39c
-reviewed_head: 9ff870a92c1ca446e4651c4bd39ee280c5002166
+reviewed_head: 675c394e9b3f154a8cd09bd5a84574597f15621f
 historical_reviewed_head: 6f98f033fff8333e66edf23cd3b12eadacc22ed6
 review:
   status: pending
@@ -23,7 +23,17 @@ This is the factual execution report for Issue #63. It is not a v0.1 ContextPack
 
 Pull request: https://github.com/Ben-001-sys/Vellistry/pull/64 . Not merged. Review https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483810728 at 15:16 UTC on 2026-10-11 examined `6f98f033fff8333e66edf23cd3b12eadacc22ed6` and observed GitHub `draft: false`. This revision does not request merge.
 
-## 2026-10-14 final verification and owner review preparation
+## 2026-10-14 final-review amendment — failed sign-out identity races
+
+**FACT.** Final negative-path review after the earlier `f9325acfced7b3ac2ac966a50b45494f4a3ccd53` checkpoint found that a failed sign-out did not independently verify the current identity, and a late sign-out result could apply to the next author's state. Three added regressions failed on the prior code (**63 pass / 3 fail**, exit 1): silent A-to-B switch during failed sign-out; unverifiable identity after failure; and A's delayed failure clearing B's in-flight create. These are bounded **P1** isolation/duplicate-retry findings, not hosted acceptance failures.
+
+**FACT.** Commit `675c394e9b3f154a8cd09bd5a84574597f15621f` captures the sign-out author/generation, discards late results after either changes, and verifies identity before retaining a draft on failure. It loads a newly verified author or conceals an unverified draft while retaining same-author recovery and unknown-write locks. Successful sign-out behavior is unchanged for the current attempt. All **66 focused tests passed** after the correction. There are **13 added tests** in this continuation relative to the supplied 53-test head.
+
+All six commands ran again on committed source `675c394e9b3f154a8cd09bd5a84574597f15621f`: focused suite **66/66**, Nest/Next check **PASS**, Nest/Next build **PASS**, workflow validation **3 tasks / 1 pack / 1 bundle**, workflow unittests **15/15**, and spec validation **8 scenarios**; each exited **0**. [Complete source-head output](evidence/VEL-IMP-001-20261014/final-verification.txt) and [exact command/commit/exit manifest](evidence/VEL-IMP-001-20261014/final-manifest.json) supersede the earlier 63-test results as latest source evidence. The final report-only commit is separately rerun and identified in PR #64's description, together with its exact-head CI, to avoid a self-referential commit SHA in this file.
+
+**INTERPRETATION / PROPOSAL.** No known P1/P2 source blockers remain from this bounded self-review; the owner makes the review decision. The source-review, synthetic/disposable-integration and blocked-hosted-acceptance boundaries and owner checklist below still apply. The earlier `9ff870a` and `f9325ac` results are historical checkpoints, not evidence for this new code. The changed-file list below additionally includes these two final evidence files. PR #64 stays Draft and unmerged, and `vellistry-dev` is untouched.
+
+## 2026-10-14 initial verification checkpoint and owner review preparation
 
 This checkpoint supersedes the verification-pending statements below **for the current source**, while preserving them as historical records. The final report-only commit is identified by PR #64's current head; its exact SHA, renewed six-command verification, and CI conclusions are recorded in the PR description after commit creation. `reviewed_head` above identifies the immutable code correction commit, not an invented self-referential report SHA.
 
