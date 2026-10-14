@@ -22,6 +22,12 @@ This is the factual execution report for Issue #63. It is not a v0.1 ContextPack
 
 Pull request: https://github.com/Ben-001-sys/Vellistry/pull/64 . Not merged. Review https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483810728 at 15:16 UTC on 2026-10-11 examined `6f98f033fff8333e66edf23cd3b12eadacc22ed6` and observed GitHub `draft: false`. This revision does not request merge.
 
+## 2026-10-14 follow-up — unverified create completion (pending verification)
+
+**FACT (source change, not executed test evidence):** `submitCreate` now conceals private draft/list state if the final owner lookup fails after a POST HTTP response, including unsuccessful HTTP responses. The rejected-POST catch path re-verifies the author, transitions to a different verified owner, or conceals on verification failure; only a verified same-author rejected POST publishes the unknown-save status. Existing uncertainty locks are restored only after the original author is verified.
+
+**TEST STATUS: NOT_RUN.** Added three synthetic regression tests (HTTP failure plus final lookup failure; rejected POST plus silent A→B switch; rejected POST plus failed owner verification) and revised the previous 201-plus-failed-lookup test. Connector-side source edits are not evidence that `corepack pnpm test:library-isolation`, `corepack pnpm check`, or `corepack pnpm build` executed. Await exact-head CI and owner review. No hosted database writes, merges, or release claims.
+
 ## Work performed
 
 Reviewed head `6f98f033fff8333e66edf23cd3b12eadacc22ed6` is the owner's commit on top of merge `2113114b9644ff2090b8c723cbab2ce2d5ef01c3`. That merge brought `origin/main` `226f6072785b7271fd30f4979a76e41fca30e39c`. The earlier implementation base remains `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. Review `5483810728` required two further corrections, which landed in `60b187c3575cb794b1969ec389f937479df04ba0`. This revision continues from that commit and addresses three further findings. It does not open a new pull request.

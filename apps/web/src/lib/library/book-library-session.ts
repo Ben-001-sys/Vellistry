@@ -296,9 +296,11 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
         ownerLookupFailed = true;
       }
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
-      if (ownerLookupFailed && response.ok) {
-        model = applyCreate(model, generation, ownerKey, "unknown");
-        emit();
+      if (ownerLookupFailed) {
+        // Neither a successful nor a failed HTTP response proves who is now
+        // authenticated. Hide the private draft until identity is verified.
+        // The pending POST is retained as uncertain for the original author.
+        concealForUnverifiedIdentity();
         return;
       }
       if (!ownerLookupFailed && (liveOwner !== ownerKey || owner !== ownerKey)) {
@@ -332,6 +334,21 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
       await startLoad(ownerKey);
     } catch {
       if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      // A rejected POST can race a silent account switch. Never publish its
+      // uncertain-save status or preserve the draft for an unverified author.
+      let liveOwner: string | null;
+      try {
+        liveOwner = await deps.readOwner();
+      } catch {
+        if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+        concealForUnverifiedIdentity();
+        return;
+      }
+      if (controller.signal.aborted || model.generation !== generation || owner !== ownerKey) return;
+      if (liveOwner !== ownerKey) {
+        await startLoad(liveOwner);
+        return;
+      }
       model = applyCreate(model, generation, ownerKey, "unknown");
       emit();
     }

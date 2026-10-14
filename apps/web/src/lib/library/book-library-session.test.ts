@@ -345,20 +345,20 @@ test("a successful create followed by a failed owner lookup stays unknown", asyn
   env.session.setDraftTitle("Brand new notebook");
   await env.session.submitCreate();
 
-  const pending = libraryRegion(env.session.snapshot().model);
+  const hidden = env.session.snapshot();
+  const pending = libraryRegion(hidden.model);
   assert.equal(createCalls, 1);
-  assert.equal(env.session.snapshot().draftTitle, "Brand new notebook");
-  assert.equal(env.session.snapshot().model.createPending, false);
-  assert.equal(env.session.snapshot().model.createUncertain, true);
-  assert.equal(pending.status, LIBRARY_COPY.createUnknown);
+  assert.equal(hidden.model.ownerKey, null);
+  assert.equal(hidden.draftTitle, "");
+  assert.equal(hidden.model.createPending, false);
+  assert.equal(hidden.model.createUncertain, false);
   assert.notEqual(pending.status, LIBRARY_COPY.createError);
-  assert.equal(/saved/i.test(pending.status), false);
   assert.equal(pending.canCreate, false);
-  assert.equal(pending.showRefresh, true);
-  assert.deepEqual(pending.books.map((item) => item.title), ["Amber notebook"]);
+  assert.deepEqual(pending.books, []);
   await env.session.submitCreate();
   assert.equal(createCalls, 1);
 
+  // The uncertain title is restored only after the original author is verified.
   env.booksForA = [book("a-1", "Amber notebook"), book("a-2", "Brand new notebook")];
   await env.session.refresh();
   const after = libraryRegion(env.session.snapshot().model);
@@ -367,6 +367,83 @@ test("a successful create followed by a failed owner lookup stays unknown", asyn
   assert.equal(after.canCreate, true);
   assert.equal(/saved/i.test(after.status), false);
   assert.deepEqual(after.books.map((item) => item.title), ["Amber notebook", "Brand new notebook"]);
+});
+
+
+test("a failed POST final identity lookup conceals the draft even on HTTP error", async () => {
+  const env = harness();
+  let createCalls = 0;
+  env.createBook = async () => {
+    createCalls += 1;
+    return jsonResponse(500, { error: "server_error" });
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Private failed submission");
+  env.failOwnerReadOn = env.ownerReads + 2;
+  await env.session.submitCreate();
+  const hidden = env.session.snapshot();
+  assert.equal(hidden.model.ownerKey, null);
+  assert.equal(hidden.draftTitle, "");
+  assert.deepEqual(libraryRegion(hidden.model).books, []);
+  assert.equal(libraryRegion(hidden.model).canCreate, false);
+  assert.equal(createCalls, 1);
+
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  const restored = env.session.snapshot();
+  assert.equal(restored.model.ownerKey, AUTHOR_A);
+  assert.equal(restored.draftTitle, "Private failed submission");
+  assert.equal(restored.model.createUncertain, true);
+  assert.equal(libraryRegion(restored.model).canCreate, false);
+  assert.equal(createCalls, 1);
+});
+
+test("a rejected POST does not expose A's draft after a silent switch to B", async () => {
+  const env = harness();
+  env.createBook = async () => {
+    env.signedInAs = AUTHOR_B;
+    throw new Error("network response lost");
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("Author A confidential title");
+  await env.session.submitCreate();
+  const snapshot = env.session.snapshot();
+  assert.equal(snapshot.model.ownerKey, AUTHOR_B);
+  assert.equal(snapshot.draftTitle, "");
+  assert.equal(snapshot.model.createUncertain, false);
+  assert.deepEqual(libraryRegion(snapshot.model).books.map(item => item.title), ["Blue notebook"]);
+  assert.equal(snapshot.model.status.includes("Author A confidential title"), false);
+});
+
+test("a rejected POST with unverifiable identity conceals and restores only for A", async () => {
+  const env = harness();
+  let createCalls = 0;
+  env.createBook = async () => {
+    createCalls += 1;
+    throw new Error("network response lost");
+  };
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A uncertain secret");
+  env.failOwnerReadOn = env.ownerReads + 2;
+  await env.session.submitCreate();
+  assert.equal(env.session.snapshot().model.ownerKey, null);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(libraryRegion(env.session.snapshot().model).canCreate, false);
+  await env.session.submitCreate();
+  assert.equal(createCalls, 1);
+
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_A);
+  assert.equal(env.session.snapshot().draftTitle, "A uncertain secret");
+  assert.equal(env.session.snapshot().model.createUncertain, true);
+  assert.equal(libraryRegion(env.session.snapshot().model).canCreate, false);
+
+  env.signedInAs = AUTHOR_B;
+  await env.session.onAuthEvent("SIGNED_IN", AUTHOR_B);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(env.session.snapshot().model.createUncertain, false);
+  assert.deepEqual(libraryRegion(env.session.snapshot().model).books.map(item => item.title), ["Blue notebook"]);
 });
 
 test("a lost create response stays unknown until refresh", async () => {
