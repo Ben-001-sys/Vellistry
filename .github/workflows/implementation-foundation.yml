@@ -44,6 +44,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Regress Book Library isolation and unknown saves (synthetic)
         run: pnpm test:library-isolation
+      - name: Test hosted Supabase environment guard without keys/network
+        run: pnpm test:hosted-preflight
       - name: Compile NestJS backend
         run: pnpm --filter @vellistry/api build
       - name: Type-check NestJS backend
