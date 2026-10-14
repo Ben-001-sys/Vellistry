@@ -1,0 +1,66 @@
+[
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm install --frozen-lockfile",
+    "started_utc": "2026-10-14T23:17:44.2238991Z",
+    "output": "install.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm test:hosted-preflight",
+    "started_utc": "2026-10-14T23:17:44.9228559Z",
+    "output": "hosted-preflight.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm test:library-isolation",
+    "started_utc": "2026-10-14T23:17:45.9348113Z",
+    "output": "library-isolation.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm check",
+    "started_utc": "2026-10-14T23:17:47.8160879Z",
+    "output": "check.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm build",
+    "started_utc": "2026-10-14T23:17:53.1326116Z",
+    "output": "build.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "python scripts/agent_workflow.py validate",
+    "started_utc": "2026-10-14T23:18:10.3504732Z",
+    "output": "agent-workflow.txt"
+  },
+  {
+    "expected_exit": 0,
+    "actual_exit": 0,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "python -m unittest discover -s tests -p 'test_agent_workflow.py' -v",
+    "started_utc": "2026-10-14T23:18:15.3478685Z",
+    "output": "workflow-tests.txt"
+  },
+  {
+    "expected_exit": 1,
+    "actual_exit": 1,
+    "commit": "a6dee3edd37ab05b2607e716e375f0d216b5066a",
+    "command": "corepack pnpm check:hosted-env",
+    "started_utc": "2026-10-14T23:18:28.3691279Z",
+    "output": "missing-environment.txt"
+  }
+]

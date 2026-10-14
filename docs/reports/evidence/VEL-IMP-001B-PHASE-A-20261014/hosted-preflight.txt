@@ -1,0 +1,31 @@
+
+> vellistry@ test:hosted-preflight C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.6027ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.1822ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1586ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.2132ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.1721ms)
+✔ rejects mismatched Web/API project publishable keys (0.1358ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.1292ms)
+✔ rejects invalid or omitted expected project reference (0.1059ms)
+✔ missing local files are reported without consulting environment or network (1.4812ms)
+✔ reads ignored local files, never emits key values in success output (6.6597ms)
+✔ invalid local config never leaks the offending key in diagnostics (3.5281ms)
+✔ does not pass file validation when inherited runtime settings override those files (6.48ms)
+✔ rejects competing Next env files that the actual runtime would also read (15.5201ms)
+✔ rejects test mode because Next does not load the required .env.local there (3.9819ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (86.4319ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (135.9315ms)
+✔ actual CLI fails safely with absent env files (61.5227ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.5246ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (4.1677ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 477.516

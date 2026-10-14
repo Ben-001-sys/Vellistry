@@ -5,10 +5,21 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.59
+version: 0.1.60
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — Codex IMP-001B repository-only Phase A prepared for review
+
+**FACT.** Issue #67 was executed on separate isolated branch `codex/vel-imp-001b-phase-a` from actual main `4b3996ef7cda878e1af3d679454bd1bb873a79c2`. Original PR #65 at `604e1ebfd0baab930ee4dc39aecf7289dc64188a` remains **ChatGPT-authored**; eleven commits were copied with provenance, not reattributed. PR #65 and ADR-0008 PR #66 were not taken over or merged. ADR-0008 role choice is owner-directed; its documentation remains unmerged.
+
+Codex reproduced runtime-env/Next precedence false positives and corrected the preflight to block unsupported inherited overrides/competing files and test mode, added eight regressions (19 total), added missing CI path triggers, and corrected outdated README/root-env/local-reset and frontend hostname guidance. At source `a6dee3edd37ab05b2607e716e375f0d216b5066a`, frozen install, **19 preflight tests**, **66 library tests**, check/build, workflow validation and **15 workflow tests** passed (exit 0). Absent-env preflight failed safely with the expected exit 1.
+
+[VEL-EB-0005](docs/agent-workflow/execution-bundles/VEL-EB-0005.md) records actual outputs, pinned VEL-TASK/CP-0005, provenance, findings and limitations. The [read-only two-migration review](docs/reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md) includes effective/default privilege uncertainty, CLI Vault/history conditions, read-only verification queries, rollback limits and exact future acceptance cases. Neither SQL migration nor the lockfile changed. Exact final report-head checks/CI are recorded in the new draft PR after commit creation.
+
+**INTERPRETATION / PROPOSAL.** Repository-only Phase A is proposed for coordinator/owner review, not accepted or hosted-tested. Phase B remains **BLOCKED** pending explicit exact-project migration/history/privilege approval and separate disposable user/fixture/security-probe/cleanup authorization. No cloud queries, migrations, users, secrets, data writes, paid AI, manuscripts, deployment or merges occurred. Signed-out unexpired-JWT/direct PostgREST and full journeys remain unverified/private-pilot gated. PR #59 stays paused; IMP-002 was not started.
+
 
 ## 2026-10-14 — IMP-001 merged; hosted cloud preflight implementation under review (NEWEST)
 
