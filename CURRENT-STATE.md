@@ -5,10 +5,20 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.58
+version: 0.1.59
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — IMP-001 merged; hosted cloud preflight implementation under review (NEWEST)
+
+**Git/main FACT:** PR [#64](https://github.com/Ben-001-sys/Vellistry/pull/64) **merged** on 2026-10-14 at 22:10 UTC as `4b3996ef7cda878e1af3d679454bd1bb873a79c2`, following exact-head source review, 66 passing synthetic focused tests and five successful pull_request workflows; five push workflows on the merge commit also completed successfully. Earlier entries below saying "#64 is open/draft" are **historical snapshots now superseded**, not current PR status. [Issue #63](https://github.com/Ben-001-sys/Vellistry/issues/63) remains open for true hosted integration acceptance; old [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) remains a paused draft.
+
+**Connected hosted cloud FACT (read-only recheck):** `vellistry-dev` project `lflkcrnriitrbclangyr` in eu-west-2 has status `ACTIVE_HEALTHY` with **no public application tables and no applied migrations**. The two checked-in Git SQL migration files remain **UNAPPLIED** to this hosted development database. Do not claim book persistence/real account acceptance, RLS or revoked-session security is verified on this cloud project.
+
+**Owner implementation continuation:** the owner instructed proceeding with implementation. A new bounded branch `feat/vel-imp-001b-hosted-cloud-preflight` proposes per-app ignored hosted env templates, a Node read-only environment guard, synthetic no-key leak/key-type/project-ref regression tests, CI wiring, and the review/acceptance checklist at [IMP-001B](docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md). This is a separate **proposal**, not merged, and **not** authorization for cloud migrations, new Auth accounts, remote tests, deployments, real manuscripts, or agent-paid calls. Owner approval is required before applying existing SQL migrations or writing synthetic data to cloud.
+
+**Remaining gates:** `ACC-M1-01` real durable book creation/reopen, browser cross-account journey, 11 full MVP journeys and residual signed-out unexpired JWT direct PostgREST access are BLOCKED/NOT_RUN as applicable. No change in broader G_DESIGN/G_CODE/G_PRIVATE_PILOT/G_RELEASE gate states. Source-approved six-phase planning remains reference; this is a bounded follow-up to IMP-001, not IMP-002.
 
 ## 2026-10-14 — IMP-001 final bounded verification; owner review pending
 
