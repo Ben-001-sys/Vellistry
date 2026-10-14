@@ -5,10 +5,18 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.56
+version: 0.1.57
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — IMP-001 final bounded verification; owner review pending
+
+**FACT.** Continued existing draft PR #64 from actual head `57962ace49ca85550108649fd8c3ba7345857650`, already containing base `main` `226f6072785b7271fd30f4979a76e41fca30e39c`. Correction commit `9ff870a92c1ca446e4651c4bd39ee280c5002166` fixes concealed-title restoration before verified identity, old same-title rows falsely resolving unknown creates, identity changes during delayed error-body reads, ambiguous server-error retry, concealed draft retention after successful sign-out, and separate BFF identity/token reads. Adds ten focused regressions (63 total) and runs the focused suite in foundation CI with a frozen lockfile.
+
+All six requested local checks passed on that committed source: **63/63 synthetic tests**, Nest/Next typecheck and build, workflow validation (3 tasks/1 pack/1 bundle), **15 workflow tests**, and spec traceability (8 scenarios), all exit 0. Full outputs, exact source SHA, limitations and owner checklist are in the [updated execution report](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). The final report-head SHA, renewed local verification and exact-head CI conclusions are recorded in PR #64 after commit creation. Earlier NOT_RUN entries below preserve their historical authoring state.
+
+**INTERPRETATION / PROPOSAL.** The corrected source is prepared for the owner's review decision, contingent on the final-head checks recorded in the PR; it is not owner acceptance. PR #64 remains **Draft and unmerged**. Focused synthetic tests and disposable CI integration do not establish hosted Supabase acceptance. Hosted schema/persistence/RLS, `ACC-M1-01`, full journeys and the signed-out unexpired-JWT direct PostgREST risk remain **BLOCKED/unverified**. `vellistry-dev`, migrations, deployment, paid AI, private manuscripts and other implementation slices were untouched. PR #59 remains paused; no accepted decision or approval gate was changed.
 
 ## 2026-10-14 — IMP-001 rejected POST and final identity verification hardening (pending CI)
 PR #64 remains Draft and unmerged. The Library session now conceals private draft/list state when the final identity lookup fails after any POST HTTP outcome, and verifies identity before publishing a rejected-POST uncertain-save status. An account change routes to the newly verified owner without exposing the old draft. Three synthetic regressions were added, and the earlier success-plus-failed-lookup test now expects concealment and same-owner-only restoration. These focused tests have **NOT_RUN** independently in this connector-only edit; exact-head CI must be checked. Hosted Supabase, migrations, and production remain untouched. Owner acceptance is pending.

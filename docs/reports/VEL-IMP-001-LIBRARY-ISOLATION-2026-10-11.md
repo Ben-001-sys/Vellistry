@@ -4,12 +4,13 @@ title: VEL-IMP-001 Book Library account isolation
 type: execution-report
 status: proposed-for-review
 created_at: 2026-10-11
-updated_at: 2026-10-13
-version: 0.6.2
+updated_at: 2026-10-14
+version: 0.7.0
 task_id: null
 context_pack_id: null
 base_commit: 226f6072785b7271fd30f4979a76e41fca30e39c
-reviewed_head: 6f98f033fff8333e66edf23cd3b12eadacc22ed6
+reviewed_head: 9ff870a92c1ca446e4651c4bd39ee280c5002166
+historical_reviewed_head: 6f98f033fff8333e66edf23cd3b12eadacc22ed6
 review:
   status: pending
   approved_by: null
@@ -21,6 +22,53 @@ review:
 This is the factual execution report for Issue #63. It is not a v0.1 ContextPack handoff. No `VEL-TASK` was created, and `VEL-TASK-0004` was not recycled. The report lives under `docs/reports/` so `scripts/agent_workflow.py` keeps validating only pinned `VEL-EB-####` bundles. The earlier hard-coded `VEL-IMP-001` validator bypass has been removed.
 
 Pull request: https://github.com/Ben-001-sys/Vellistry/pull/64 . Not merged. Review https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5483810728 at 15:16 UTC on 2026-10-11 examined `6f98f033fff8333e66edf23cd3b12eadacc22ed6` and observed GitHub `draft: false`. This revision does not request merge.
+
+## 2026-10-14 final verification and owner review preparation
+
+This checkpoint supersedes the verification-pending statements below **for the current source**, while preserving them as historical records. The final report-only commit is identified by PR #64's current head; its exact SHA, renewed six-command verification, and CI conclusions are recorded in the PR description after commit creation. `reviewed_head` above identifies the immutable code correction commit, not an invented self-referential report SHA.
+
+**FACT — synchronization.** Local checkout initially had clean branch `feat/vel-imp-001-auth-library` at `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. Fetched and switched to the existing PR branch `feat/vel-imp-001-library-isolation`, whose actual remote head was the supplied `57962ace49ca85550108649fd8c3ba7345857650`. Base `main` was `226f6072785b7271fd30f4979a76e41fca30e39c` and was already an ancestor; no rebase, reset, or uncommitted work disposal occurred. PR metadata incorrectly named `66eccd7` as current head. Issue #63, the latest review [5524992294](https://github.com/Ben-001-sys/Vellistry/pull/64#pullrequestreview-5524992294), both resolved historical inline threads, governing ADR-0006, relevant journey/acceptance requirements, PLAN-02/03/04 and the original report were inspected.
+
+**FACT — bounded findings corrected in `9ff870a92c1ca446e4651c4bd39ee280c5002166`.**
+
+1. **P1, concealed-draft disclosure through auth events:** `startLoad` no longer restores a concealed title from an auth-event owner hint. Restoration occurs only after the final independent `readOwner()` succeeds for that author, with the generation/abort checks still intact. Delayed GET regressions cover verified A, verified B and failed verification, checking every emitted snapshot.
+2. **P2, duplicate-title false reconciliation:** a create captures IDs from its pre-create verified list. Reconciliation requires a matching title with a new ID relative to that baseline. Existing same-title rows cannot unlock ordinary Create. The baseline survives same-author concealment. A create from a load-error state has no trustworthy baseline and stays uncertain, with explicit risk retry available after refresh. The status copy now says the *save* is unconfirmed, including when an old same-title row exists.
+3. **P1, identity check before a delayed error body:** the asynchronous 503 body is consumed before final owner verification. A silent A-to-B transition during body streaming now conceals A before any outcome is published.
+4. **P1, ambiguous upstream server failures:** post-dispatch 500/502/504 and other server errors remain unknown, like ambiguous 503. Only named BFF pre-forward 503 failures are definite. Auth/validation/session-mismatch denials remain definite. The prior synthetic test that assumed a 500 meant no write was corrected to use an actual 400 validation denial; a new regression blocks ordinary retry for ambiguous server errors.
+5. **P2, concealed draft surviving successful sign-out:** a confirmed signed-out load clears concealed state even if the visible owner was already null. A regression first reproduced the unwanted restoration on later sign-in, then passed after the correction. Failed sign-out and in-flight uncertain-write protections remain covered.
+6. **P1, separately verified and forwarded session token:** the BFF previously verified the implicit current user and then separately read a token. It now independently verifies the exact token it will forward with `getUser(accessToken)`. The expected-user POST gate uses that verified token's author. Synthetic adapter regressions cover differing identities and missing/errored sessions or verification.
+7. Foundation CI now runs `pnpm test:library-isolation`, installs with the existing frozen lockfile, and triggers on lockfile changes. No dependency or framework version was changed.
+
+**FACT — verification.** Initial supplied-head suite: **53/53 PASS**, exit 0. Seven added regression cases reproduced the first four defects (**53 pass / 7 fail**, exit 1); the sign-out regression separately reproduced its defect (**60 pass / 1 fail**, exit 1). Corrected suite: **63/63 PASS**, exit 0. The extra BFF tests use a synthetic auth adapter; they do not authenticate against hosted Supabase.
+
+All six requested commands were then executed afresh on committed source head `9ff870a92c1ca446e4651c4bd39ee280c5002166`, using Windows PowerShell, Node 24.13.0, Corepack 0.34.5, repo-pinned pnpm 10.18.0, and Python 3.10.10. Existing dependencies sufficed. Initial sandbox attempts to fetch Corepack's pnpm package failed with `ENOTFOUND`; the approved unrestricted invocation succeeded. No lockfile or `next-env.d.ts` change resulted.
+
+- `corepack pnpm test:library-isolation`: **PASS**, exit **0**, **63 tests / 63 pass / 0 fail / 0 skipped**. [Full output](evidence/VEL-IMP-001-20261014/library-isolation.txt).
+- `corepack pnpm check`: **PASS**, exit **0**, Nest and Next typechecks. [Full output](evidence/VEL-IMP-001-20261014/check.txt).
+- `corepack pnpm build`: **PASS**, exit **0**, Nest compilation and Next 16.4 production build, five routes. [Full output](evidence/VEL-IMP-001-20261014/build.txt).
+- `python scripts/agent_workflow.py validate`: **PASS**, exit **0**, **3 tasks / 1 ContextPack / 1 ExecutionBundle**. [Full output](evidence/VEL-IMP-001-20261014/agent-workflow.txt).
+- `python -m unittest discover -s tests -p 'test_agent_workflow.py' -v`: **PASS**, exit **0**, **15 tests**. [Full output](evidence/VEL-IMP-001-20261014/agent-workflow-tests.txt).
+- `python scripts/spec_traceability.py validate`: **PASS**, exit **0**, **8 source-traced proposed acceptance scenarios**. [Full output](evidence/VEL-IMP-001-20261014/spec-traceability.txt).
+
+The [machine-readable manifest](evidence/VEL-IMP-001-20261014/manifest.json) records each command, UTC start, exact commit and exit code. These are executed results, not inherited historical results. Exact final report-head local output is retained separately and included in the PR description; final CI must be checked against that same final SHA.
+
+**Changed files in this continuation:** `.github/workflows/implementation-foundation.yml`; `apps/web/src/app/api/books/route.ts`; `apps/web/src/lib/library/{book-create-document.ts,book-library-session.ts,book-library-session.test.ts,book-library-state.ts,book-library-state.test.ts,owner-from-auth.ts}`; this report; the seven evidence files linked above; and the newest `CURRENT-STATE.md` checkpoint. Nest `BooksController`/`BooksService`, `/books` page wiring and database policies were inspected; no changes were needed there. Nest still verifies bearer credentials per request, sends a title-only insert and relies on per-user RLS and the database owner default.
+
+**INTERPRETATION — review readiness.** The identified source-code blockers have bounded corrections and regression evidence. This is the implementing agent's source review, not independent human approval. PR #64 remains open, Draft and unmerged. Exact-head CI conclusions belong in the final PR checkpoint; a CodeRabbit status saying review was skipped because Draft is not a substantive review.
+
+**Evidence boundaries and remaining risks:**
+
+- **Ready for source-code review:** correction source, runnable regressions, raw outputs, provenance and owner checklist are present. Owner acceptance is pending; no Draft-state promotion or merge is authorized.
+- **Disposable/local integration:** only exact-head GitHub K2 and PostgreSQL workflow results may establish their bounded disposable-stack checks. The 63 focused tests are synthetic controller/model/input/auth-adapter tests, not Next browser E2E, live BFF-to-Nest-to-database coverage or hosted acceptance. See final-head CI links in the PR.
+- **BLOCKED pending hosted database acceptance:** `vellistry-dev` was neither queried nor modified. Hosted schema/persistence, cross-author cloud RLS, `ACC-M1-01`, full `VEL-JRN-001/011` and signed-out unexpired-JWT direct PostgREST acceptance remain unverified. No migrations, deployment, manuscripts, paid AI or IMP-002 work occurred; PR #59 stays paused.
+- No server idempotency or request receipt was added. Comparing new IDs is bounded list reconciliation, not proof that a specific attempt committed: another same-author tab can create the same title. The app does not claim Saved. Explicit **Save again anyway** can still duplicate a late first write; it remains a deliberate disclosed risk. Browser reload/navigation does not persist the in-memory uncertainty record; durable recovery requires a separately reviewed contract.
+
+**PROPOSAL — owner's self-review checklist:**
+
+- [ ] Inspect the final diff, especially concealed-draft restoration, new-row baseline, exact-token verification and unknown outcomes.
+- [ ] Confirm all six final-head local commands and applicable exact-head CI conclusions, including the newly executed focused CI step.
+- [ ] Keep synthetic/disposable-stack results separate from blocked hosted acceptance and residual JWT risk.
+- [ ] Record the owner's explicit review decision. No agent approval, merge, private-pilot approval or release follows automatically.
 
 ## 2026-10-14 follow-up — unverified create completion (pending verification)
 
@@ -85,7 +133,7 @@ Hosted Supabase `vellistry-dev` was not queried or modified.
 - **PROPOSAL.** Live schema, RLS, and `ACC-M1-01` remain a separate authorized task. Do not write to `vellistry-dev` for this slice.
 - **PROPOSAL.** If a future task needs a pinned ContextPack, the owner chooses a new `VEL-TASK` id. Do not recycle `VEL-TASK-0004`.
 
-## Tests
+## Historical tests on 3e9c5ad (not current-head evidence)
 
 | Command | Exit | Result |
 |---|---|---|
