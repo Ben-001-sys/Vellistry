@@ -673,6 +673,52 @@ test("successful sign-out discards an already concealed draft", async () => {
   assert.equal(env.session.snapshot().draftTitle, "");
 });
 
+test("failed sign-out verifies a silent account switch before retaining the draft", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A private sign-out draft");
+  env.signOutImpl = async () => { env.signedInAs = AUTHOR_B; return { error: true }; };
+  await env.session.signOut();
+  assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_B);
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.deepEqual(libraryRegion(env.session.snapshot().model).books.map(item => item.title), ["Blue notebook"]);
+  assert.equal(env.navigatedTo, null);
+});
+
+test("failed sign-out conceals the draft when identity cannot be verified", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  env.session.setDraftTitle("A private sign-out draft");
+  env.failOwnerReadOn = env.ownerReads + 1;
+  env.signOutImpl = async () => ({ error: true });
+  await env.session.signOut();
+  assert.equal(env.session.snapshot().draftTitle, "");
+  assert.equal(libraryRegion(env.session.snapshot().model).canCreate, false);
+  env.failOwnerReadOn = null;
+  await env.session.refresh();
+  assert.equal(env.session.snapshot().draftTitle, "A private sign-out draft");
+});
+
+test("late failed sign-out cannot discard the next author's pending create", async () => {
+  const env = harness();
+  await signIn(env, AUTHOR_A);
+  let finishSignOut: (result: { error: boolean }) => void = () => undefined;
+  env.signOutImpl = () => new Promise(resolve => { finishSignOut = resolve; });
+  const signingOut = env.session.signOut();
+  await signIn(env, AUTHOR_B);
+  const held = holdCreate(env);
+  env.session.setDraftTitle("B pending book");
+  const creating = env.session.submitCreate();
+  await held.entered;
+  finishSignOut({ error: true });
+  await signingOut;
+  assert.equal(env.session.snapshot().model.createPending, true);
+  assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_B);
+  assert.equal(env.navigatedTo, null);
+  held.release(jsonResponse(201, book("b-new", "B pending book")));
+  await creating;
+});
+
 test("an explicit risk retry is required before another create", async () => {
   const env = harness();
   let createCalls = 0;

@@ -378,6 +378,9 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
   }
 
   async function signOut() {
+    const signOutOwner = owner;
+    const signOutGeneration = model.generation;
+    const isCurrent = () => owner === signOutOwner && model.generation === signOutGeneration;
     loadAbort?.abort();
     createAbort?.abort();
     model = concealBooksForSignOut(model);
@@ -389,7 +392,20 @@ export function createLibrarySession(deps: LibrarySessionDeps): LibrarySession {
     } catch {
       failed = true;
     }
+    if (!isCurrent()) return;
     if (failed) {
+      let liveOwner: string | null;
+      try {
+        liveOwner = await deps.readOwner();
+      } catch {
+        if (isCurrent()) concealForUnverifiedIdentity();
+        return;
+      }
+      if (!isCurrent()) return;
+      if (liveOwner !== signOutOwner) {
+        await startLoad(liveOwner);
+        return;
+      }
       model = failSignOut(model);
       emit();
       return;
