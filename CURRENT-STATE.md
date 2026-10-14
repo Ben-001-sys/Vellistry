@@ -1,17 +1,17 @@
-## 2026-10-14 — IMP-001 rejected POST and final identity verification hardening (pending CI)
-PR #64 remains Draft and unmerged. The Library session now conceals private draft/list state when the final identity lookup fails after any POST HTTP outcome, and verifies identity before publishing a rejected-POST uncertain-save status. An account change routes to the newly verified owner without exposing the old draft. Three synthetic regressions were added, and the earlier success-plus-failed-lookup test now expects concealment and same-owner-only restoration. These focused tests have **NOT_RUN** independently in this connector-only edit; exact-head CI must be checked. Hosted Supabase, migrations, and production remain untouched. Owner acceptance is pending.
-
 ---
 id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-13
+updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.55
+version: 0.1.56
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — IMP-001 rejected POST and final identity verification hardening (pending CI)
+PR #64 remains Draft and unmerged. The Library session now conceals private draft/list state when the final identity lookup fails after any POST HTTP outcome, and verifies identity before publishing a rejected-POST uncertain-save status. An account change routes to the newly verified owner without exposing the old draft. Three synthetic regressions were added, and the earlier success-plus-failed-lookup test now expects concealment and same-owner-only restoration. These focused tests have **NOT_RUN** independently in this connector-only edit; exact-head CI must be checked. Hosted Supabase, migrations, and production remain untouched. Owner acceptance is pending.
 
 ## IMP-001 failed-load identity verification (2026-10-13; review pending)
 
