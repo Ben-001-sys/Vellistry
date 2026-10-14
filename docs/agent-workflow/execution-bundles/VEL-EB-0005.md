@@ -4,7 +4,7 @@ title: Codex IMP-001B repository-only Phase A verification
 type: execution-bundle
 status: proposed-for-review
 created_at: '2026-10-14'
-version: 0.1.0
+version: 0.1.1
 task_id: VEL-TASK-0005
 context_pack_id: VEL-CP-0005
 base_commit: 237e41824012c1c1136eefcee6a5d11f5f974c77
@@ -210,6 +210,14 @@ All cloud acceptance cases and verification SQL in the migration review:
 - No private manuscripts, cloud Auth users, cloud SQL/migrations, secrets,
   provider calls, deployment, merge or IMP-002 work occurred.
 - Exact model variant beyond the system GPT-6 identity was not exposed.
+
+## CI blocker observed after submission
+
+**FACT.** Draft PR #68 was created at `f29d65ea079cdab9fda7417470f8633331fb16a1`. All ten listed local command outcomes matched expectations on that exact head (including 19/19 preflight, 66/66 library, 15/15 workflow tests and expected missing-env exit 1). Its complete transcript is retained as `f29d65e-verification.txt`.
+
+All six PR-triggered workflows and two push workflows reported FAILURE before execution. Foundation run https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713344 had `runner_id: 0`, no runner name and `steps: []`; there is no failed-step log. Foundation, Agent Workflow and K2 check annotations independently state that the job was not started because recent account payments failed or the spending limit needs increasing. The condition is recorded in `ci-f29d65e-runs.json`, `ci-f29d65e-foundation-jobs.json` and `ci-f29d65e-annotations.json` in the evidence directory.
+
+**INTERPRETATION.** This is a GitHub account execution blocker, not evidence that the tests failed and not a CI PASS. No Linux CI, disposable K2/PostgreSQL integration or workflow execution is claimed for this task. CodeRabbit skipped review because Draft. Owner must resolve permitted GitHub Actions access and then rerun applicable checks on the submitted final head. Codex neither changed billing/spending nor reran unchanged blocked jobs. The final reporting-only head is identified and locally reverified in PR #68; its CI conclusion must also remain explicit. Coordinator/owner source review can proceed, but CI acceptance is blocked.
 
 ## Reviewer disposition
 

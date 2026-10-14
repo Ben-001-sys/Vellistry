@@ -5,12 +5,14 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.60
+version: 0.1.61
 ---
 
 # Vellistry — Current State
 
 ## 2026-10-14 — Codex IMP-001B repository-only Phase A prepared for review
+
+**CI FACT / blocker:** separate draft [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) is locally verified, but GitHub reported all six PR workflows failed before any step ran. Check annotations cite account payment/spending-limit restrictions. No exact-head Linux/disposable integration PASS is claimed. Owner account action and subsequent exact-head rerun are required; no billing change or paid execution was attempted. Full diagnostics are retained in VEL-EB-0005 evidence.
 
 **FACT.** Issue #67 was executed on separate isolated branch `codex/vel-imp-001b-phase-a` from actual main `4b3996ef7cda878e1af3d679454bd1bb873a79c2`. Original PR #65 at `604e1ebfd0baab930ee4dc39aecf7289dc64188a` remains **ChatGPT-authored**; eleven commits were copied with provenance, not reattributed. PR #65 and ADR-0008 PR #66 were not taken over or merged. ADR-0008 role choice is owner-directed; its documentation remains unmerged.
 
