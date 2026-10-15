@@ -22,7 +22,9 @@ source_refs:
 
 ## Goal and current permission boundary
 
-This is the **preparation of future agentic implementation**; it is not an authorization for agents to start new shipping features. Research Waves 1–6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
+**Current-status correction (2026-10-15):** The immediately following preparation-only wording records the earlier project stage. It is **not** a blanket prohibition overriding later explicitly authorized implementation slices such as merged IMP-001 (#64) and the unmerged, Codex-executed IMP-001B (#68). Each new coding or hosted-database action still requires its own bounded authorization, source revision and evidence. This operating-model proposal is not itself an authorization.
+
+**Historical preparation-stage boundary:** This was the **preparation of future agentic implementation**; it did not authorize agents to start shipping features. Research Waves 1–6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
 
 Reuse the successful *bounded* Stage 4 clean-room handoff pattern and Git-pinned source authority. The Stage 4 Cursor Grok 4.7 synthetic 17/17 run verifies **one task's reproducible evidence**, not a standing claim that every new task or tool is independent or production-ready. Stage 3 Issue #18 is still separately open.
 
