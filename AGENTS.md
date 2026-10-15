@@ -22,8 +22,8 @@ version: 0.1.3
 
 Default sequence: **owner-approved task → ChatGPT ContextPack/spec/negative checks → Codex in isolated branch/worktree → actual tests + ExecutionBundle → ChatGPT source/CI review → owner merge decision → verify merged `main` and update state**. Record the actual executor; do not reattribute a ChatGPT-made PR to Codex or invent a successful Codex dispatch. Never let Codex self-approve remote migrations, secrets, real manuscripts, costs or deployment.
 
-## Operational task handoff (Stage 3 pilot)
-Use [docs/agent-workflow/README.md](docs/agent-workflow/README.md) for task lifecycle, pinned ContextPack generation, ExecutionBundle reporting, and solo-maintainer review. This workflow remains a v0.1 proposal until owner-reviewed and merged. Do not confuse proposed task status with an accepted product decision.
+## Operational task handoff (Stage 3 validation and implementation)
+Use [docs/agent-workflow/README.md](docs/agent-workflow/README.md) for task lifecycle, pinned ContextPack generation, ExecutionBundle reporting, and solo-maintainer review. The pinned task/ContextPack/ExecutionBundle mechanism has validated repository artifacts and is used by Codex in draft PR #68 (task `VEL-TASK-0005`, pack `VEL-CP-0005`, bundle `VEL-EB-0005`). This does not mean the current task or associated implementation is owner-accepted or merged. Follow the approved scope of each individual task; any material scope expansion requires an updated, authorized and pinned handoff.
 
 ## Duties
 - Report what is **FACT**, what is **INTERPRETATION**, and what is **PROPOSAL**.
