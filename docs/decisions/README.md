@@ -15,3 +15,4 @@ Initial decisions:
 - [ADR-0005 — Earlier TypeScript modular-monolith stack candidate (proposed; not owner-accepted)](ADR-0005-vellistry-typescript-modular-monolith-mvp.md)
 
 - [ADR-0006 — Next.js + NestJS + Supabase implementation baseline](ADR-0006-next-nest-supabase-implementation-foundation.md)
+- [ADR-0008 — Codex primary agentic implementation workflow (owner-accepted 2026-10-14)](ADR-0008-codex-primary-agentic-implementation-workflow.md)

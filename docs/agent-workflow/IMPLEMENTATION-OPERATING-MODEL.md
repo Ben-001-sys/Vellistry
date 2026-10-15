@@ -4,9 +4,9 @@ title: Agentic implementation operating model and handoff controls
 type: proposed-operating-protocol
 status: proposed-owner-review
 created_at: 2026-10-10
-updated_at: 2026-10-10
+updated_at: 2026-10-15
 owner: project_owner
-version: 0.1.1
+version: 0.1.3
 source_refs:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
@@ -18,9 +18,13 @@ source_refs:
 
 # Vellistry — agentic coding execution and review (proposed)
 
+**Accepted tool-role override (2026-10-14):** [ADR-0008](../decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md) selects **Codex as the default implementation agent**. This document's historical Cursor evidence remains valid, but older blanket references to Cursor as the current implementer are superseded. ChatGPT coordinates and reviews, Codex implements bounded approved tasks, GitHub records provenance, and the owner authorizes high-impact changes. This override does not approve cloud database writes, migrations, real author data, paid calls or release.
+
 ## Goal and current permission boundary
 
-This is the **preparation of future agentic implementation**; it is not an authorization for agents to start new shipping features. Research Waves 1–6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
+**Current-status correction (2026-10-15):** The immediately following preparation-only wording records the earlier project stage. It is **not** a blanket prohibition overriding later explicitly authorized implementation slices such as merged IMP-001 (#64) and the unmerged, Codex-executed IMP-001B (#68). Each new coding or hosted-database action still requires its own bounded authorization, source revision and evidence. This operating-model proposal is not itself an authorization.
+
+**Historical preparation-stage boundary:** This was the **preparation of future agentic implementation**; it did not authorize agents to start shipping features. Research Waves 1–6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
 
 Reuse the successful *bounded* Stage 4 clean-room handoff pattern and Git-pinned source authority. The Stage 4 Cursor Grok 4.7 synthetic 17/17 run verifies **one task's reproducible evidence**, not a standing claim that every new task or tool is independent or production-ready. Stage 3 Issue #18 is still separately open.
 
@@ -30,7 +34,7 @@ Reuse the successful *bounded* Stage 4 clean-room handoff pattern and Git-pinned
 |---|---|---|
 | **Project owner** | Final MVP/design signoff, source-rule and security policy decisions, task approval, PR acceptance and merge, production spend/release | Self-review permitted under accepted constitution; never fabricate another approver |
 | **ChatGPT — architect/coordinator** | Parse owner goals, inspect repo/CI, maintain specs, dependency plan and ContextPack proposals, assess agent outputs and risks, prepare PR reviews | No authority to change accepted direction or mark tests/owner decisions PASS without evidence; no background execution claims |
-| **Cursor / Codex — assigned implementer** | Single ticket in isolated worktree/branch, tests, code/docs within allowed paths, original terminal outputs and ExecutionBundle | No unsolicited migrations/secrets, architecture rewrite, destructive operation, merge or deployment |
+| **Codex — default implementer (ADR-0008)** | Single approved ticket in isolated worktree/branch; implement and test changes, produce actual terminal evidence and ExecutionBundle | No unsolicited migrations/secrets, architecture rewrite, destructive operation, merge or deployment; Cursor only by explicit task reassignment |
 | **Independent reviewer** (can be another model/tool) | Read diff, challenge security/edge cases, independently reproduce checks, report FACT/INTERPRETATION/PROPOSAL | Advisory, not independent human approval; same-agent review is not an independent rerun |
 | **CI runner** | Reproduce deterministic contracts on pinned SHA, compare source and artifacts, show regressions | Green checks are not author usability, privacy certification, original-source inspection or successful release |
 
@@ -41,7 +45,7 @@ Tools are **roles, not licenses or subscriptions**; no new paid agent/MCP servic
 Before an agent starts, coordinator must read in order:
 1. `PROJECT-CONSTITUTION.md` and `SOURCE-OF-TRUTH.md`.
 2. Latest **top** section of `CURRENT-STATE.md` plus merged Git SHA and current open PR/issues (historical lower sections may be superseded).
-3. Accepted MVP scope, ADR-0003/0006/0007, Wave 5 MVP decision and Wave 6 G10 (observe provisional vs accepted status and gated evidence).
+3. Accepted MVP scope, ADR-0003/0006/0007/**0008**, Wave 5 MVP decision and Wave 6 G10 (observe provisional vs accepted status and gated evidence).
 4. This proposed operating protocol, current implementation architecture boundaries and dependency DAG.
 5. **Only** the task-specific approved specification, assigned task, scope-limited ContextPack and necessary file paths.
 

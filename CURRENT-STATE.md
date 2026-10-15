@@ -5,10 +5,20 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-14
 owner: project_owner
-version: 0.1.58
+version: 0.1.59
 ---
 
 # Vellistry — Current State
+
+## 2026-10-14 — Codex selected as primary implementation agent (NEWEST; governance PR in review)
+
+**Owner decision:** The owner explicitly instructed: “make it an adr we are using codex now,” confirming that Vellistry's agentic coding workflow now assigns **Codex** the default implementation role. Accepted decision record [ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md) and [history event](docs/history/2026-10-14-owner-selects-codex-primary-implementation.md) were authored on a **separate documentation-only PR branch**; until that PR is merged the corresponding files are proposals to incorporate into `main`, not evidence of a completed Codex handoff. The owner is the decision authority, independent of merge status.
+
+**Operating loop:** ChatGPT architects/specifies and reviews; **Codex** implements authorized bounded tasks in a separate Git branch/worktree, runs real tests and reports a factual ExecutionBundle; GitHub tracks source/CI; the owner reviews and authorizes merges/remote migrations/costs. Cursor-era execution records and PR #64 remain true historical evidence, not relabelled Codex work.
+
+**Live checkpoint:** Git `main` was verified at `4b3996ef7cda878e1af3d679454bd1bb873a79c2` (PR #64 merged). Draft [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) is a separate **ChatGPT-authored** hosted Supabase preflight code proposal, **NOT Codex execution evidence**. It remains draft and unmerged; a Codex task needs a freshly pinned, owner-scoped handoff rather than an automatic merge or silent relabel. Hosted `vellistry-dev` has no public tables/applied migrations as last checked. Applying migrations, creating remote Auth fixtures, deploying, real manuscripts, paid APIs and broader feature implementation remain separately gated; PR #65 CI cannot grant these permissions.
+
+**Source authority:** Earlier entries below stating PR #64 is draft/unmerged are historical snapshots superseded by live GitHub metadata; the new executor role comes from ADR-0008, not retroactive editing of PLAN-05's Cursor history.
 
 ## 2026-10-14 — IMP-001 final bounded verification; owner review pending
 
