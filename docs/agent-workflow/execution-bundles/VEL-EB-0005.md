@@ -225,3 +225,23 @@ All six PR-triggered workflows and two push workflows reported FAILURE before ex
 tests; owner acceptance and separate ChatGPT review remain pending. No agent
 approval or CI result grants hosted acceptance permission. PRs #65/#66 remain
 unmerged and preserve their original provenance. Stop before Phase B.
+
+## 2026-10-15 owner approval and authorized Phase B continuation
+
+**FACT.** Direct owner approval now covers Phase A and the explicitly described
+Phase B scope (exact project, original two migrations, two disposable users,
+synthetic acceptance/cleanup, no merges). The review YAML remains pending
+because there is no owner GitHub evidence URL; this does not negate the chat
+authorization. No GitHub account identity/approval evidence was invented.
+
+See [Phase B checkpoint](../../reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md)
+for independently verified read-only catalog results and the additional SQL
+hold. New proposed files are the CLI-generated books-grant migration,
+tests/book_privileges_regression.sql, checkpoint and raw catalog evidence;
+foundation CI and CURRENT-STATE are updated. These are Codex-authored additions
+after Phase A; the pinned Phase A ContextPack and original two migrations are
+unchanged. This continuation is not authorized by the historical Phase A task
+file: its authority is the explicit subsequent owner conversation. No cloud
+mutation or Auth user creation has occurred. Regression SQL is NOT_RUN because
+local PostgreSQL is unavailable and Docker's engine is stopped. Additional
+migration approval and secure CLI authentication are required to continue.

@@ -3,12 +3,19 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 owner: project_owner
-version: 0.1.61
+version: 0.1.62
 ---
 
 # Vellistry — Current State
+
+## 2026-10-15 — Owner authorizes Phase A and bounded Phase B; pre-apply hold
+
+**FACT.** The owner answered "both" to explicit Phase A and exact-project Phase B authorization (two reviewed migrations, two disposable Auth users, synthetic acceptance and cleanup; merges excluded). This direct-chat approval has no GitHub review permalink; historical pending-approval entries below are superseded for that scope. No PR was merged.
+
+**FACT / blocker.** Independent connected read-only checks verified vellistry-dev / lflkcrnriitrbclangyr is healthy, with zero application tables, zero Auth users and no migration history. Public-table defaults grant excess authenticated privileges including TRUNCATE. A proposed third, books-only grant-hardening migration and disposable PostgreSQL regression are prepared, not applied or behaviorally verified. The original two migrations are unchanged. The [Phase B checkpoint](docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md) records evidence and the separate additional-SQL approval required by the Phase A migration review. CLI authentication is also required to preserve original migration versions. No hosted writes/users/acceptance occurred; GitHub billing/spending restrictions remain a separate CI blocker. No full integration or private-pilot acceptance is claimed.
+
 
 ## 2026-10-14 — Codex IMP-001B repository-only Phase A prepared for review
 
@@ -75,6 +82,13 @@ User agreed to create `vellistry-dev` under their connected Supabase Free organi
 **Next:** Cursor Desktop installation/open confirmation, personal repo Git checkout and pnpm 10.18.0 using Corepack, local untracked environment configuration using the existing cloud project's publishable key (raw key withheld), and nonmutating baseline. The Vellistry schema is **not yet installed in the hosted project**; cloud migration work requires explicit scoped approval and security review. Paused old Cursor task PR #59 remains PAUSED. Supabase Cloud docs tracked in PR #62 pending merge/review.
 
 # Vellistry — Current State
+
+## 2026-10-15 — Owner authorizes Phase A and bounded Phase B; pre-apply hold
+
+**FACT.** The owner answered "both" to explicit Phase A and exact-project Phase B authorization (two reviewed migrations, two disposable Auth users, synthetic acceptance and cleanup; merges excluded). This direct-chat approval has no GitHub review permalink; historical pending-approval entries below are superseded for that scope. No PR was merged.
+
+**FACT / blocker.** Independent connected read-only checks verified vellistry-dev / lflkcrnriitrbclangyr is healthy, with zero application tables, zero Auth users and no migration history. Public-table defaults grant excess authenticated privileges including TRUNCATE. A proposed third, books-only grant-hardening migration and disposable PostgreSQL regression are prepared, not applied or behaviorally verified. The original two migrations are unchanged. The [Phase B checkpoint](docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md) records evidence and the separate additional-SQL approval required by the Phase A migration review. CLI authentication is also required to preserve original migration versions. No hosted writes/users/acceptance occurred; GitHub billing/spending restrictions remain a separate CI blocker. No full integration or private-pilot acceptance is claimed.
+
 
 ## OWNER ENVIRONMENT CHOICE — Supabase Cloud, no local Supabase stack (2026-10-11; newest)
 
