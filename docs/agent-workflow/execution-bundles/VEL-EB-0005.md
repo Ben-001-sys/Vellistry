@@ -245,3 +245,12 @@ file: its authority is the explicit subsequent owner conversation. No cloud
 mutation or Auth user creation has occurred. Regression SQL is NOT_RUN because
 local PostgreSQL is unavailable and Docker's engine is stopped. Additional
 migration approval and secure CLI authentication are required to continue.
+
+**Proposal verification checkpoint:** source 0f41a27a2de879f6d75c86c21b0d47d1d783f0c9
+passed all eight repeated local commands (19 preflight, 66 library and 15
+workflow tests; Nest/Next check/build; workflow/traceability/metadata validators).
+Full outputs and exact-source CI annotation are retained in the linked Phase B
+checkpoint evidence. The PostgreSQL regression remains NOT_RUN. Source-head
+foundation CI 38776359432 failed before runner allocation (billing/spending
+restriction), including new book-privileges job 116564913083. Exact final
+report-head verification is recorded in PR #68. No mutation was applied.

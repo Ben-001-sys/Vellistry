@@ -84,3 +84,24 @@ GitHub CI remains separately blocked by the previously captured account
 payment/spending restriction. Phase A owner approval does not turn unexecuted
 CI into a PASS. PR #65 remains ChatGPT-authored; this proposed hardening and
 regression are Codex-authored. PRs #65/#66/#68 remain unmerged.
+
+## Committed proposal verification
+
+At correction commit 0f41a27a2de879f6d75c86c21b0d47d1d783f0c9, all of the
+following actual commands exited 0: corepack pnpm test:hosted-preflight
+(19/19), corepack pnpm test:library-isolation (66/66), corepack pnpm check,
+corepack pnpm build, python scripts/agent_workflow.py validate (4 tasks,
+2 ContextPacks, 2 ExecutionBundles), python -m unittest discover -s tests
+-p 'test_agent_workflow.py' -v (15/15), python scripts/spec_traceability.py
+validate (8 scenarios), and python scripts/check_knowledge_metadata.py
+(25 records). Full outputs are in the sibling evidence directory under
+phase-b-source-0f41a27-verification.txt. These do not execute the new SQL test.
+
+Exact-source foundation CI run 38776359432 failed before execution. Its
+book-privileges job 116564913083 and build job both have runner_id=0 and
+steps=[]; the annotation again cites account payment/spending restriction.
+No SQL regression PASS is claimed. Other exact-source workflows likewise
+report failure. No billing change or paid retry was attempted. The final
+report-only head and its renewed verification/CI are recorded in PR #68.
+The stalled local Docker engine probe was terminated; the attempted runtime
+stop also did not promptly return. No container or disposable database ran.

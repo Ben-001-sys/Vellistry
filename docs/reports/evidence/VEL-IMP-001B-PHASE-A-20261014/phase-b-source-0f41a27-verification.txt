@@ -1,0 +1,194 @@
+0f41a27a2de879f6d75c86c21b0d47d1d783f0c9
+
+> vellistry@ test:hosted-preflight C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.66ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.5306ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1495ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.2127ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.2123ms)
+✔ rejects mismatched Web/API project publishable keys (0.1366ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.3041ms)
+✔ rejects invalid or omitted expected project reference (0.2294ms)
+✔ missing local files are reported without consulting environment or network (2.1748ms)
+✔ reads ignored local files, never emits key values in success output (5.9363ms)
+✔ invalid local config never leaks the offending key in diagnostics (3.6399ms)
+✔ does not pass file validation when inherited runtime settings override those files (8.5634ms)
+✔ rejects competing Next env files that the actual runtime would also read (18.1638ms)
+✔ rejects test mode because Next does not load the required .env.local there (5.0591ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (130.1634ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (175.8986ms)
+✔ actual CLI fails safely with absent env files (82.8501ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.3723ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (7.3584ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 673.5655
+EXIT test:hosted-preflight=0
+
+> vellistry@ test:library-isolation C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api exec tsx --test src/modules/books/book-create-input.spec.ts ../web/src/lib/library/book-library-state.test.ts ../web/src/lib/library/book-library-session.test.ts
+
+✔ author A's unsaved title is cleared when author B signs in (30.0955ms)
+✔ a same-author refresh keeps the unsaved title (1.3685ms)
+✔ same-author SIGNED_IN does not drop an in-flight create outcome (2.2021ms)
+✔ same-author Refresh during create keeps the successful acknowledgement (2.1013ms)
+✔ an author change during create does not apply that create to the next author (1.3403ms)
+✔ a rejected sign-out stays on the page with the list cleared (1.8299ms)
+✔ a sign-out that returns an error does not redirect (0.765ms)
+✔ a successful sign-out redirects only after Supabase accepts it (0.8906ms)
+✔ failed sign-out during an in-flight create keeps duplicate retry blocked (2.0119ms)
+✔ successful sign-out during an in-flight create clears its private retry state (1.8163ms)
+✔ a successful create followed by a failed owner lookup stays unknown (4.6681ms)
+✔ a failed POST final identity lookup conceals the draft even on HTTP error (1.3208ms)
+✔ a rejected POST does not expose A's draft after a silent switch to B (1.1331ms)
+✔ a rejected POST with unverifiable identity conceals and restores only for A (1.2087ms)
+✔ a lost create response stays unknown until refresh (0.9409ms)
+✔ a delayed server commit stays blocked after an empty refresh (1.0412ms)
+✔ a transient refresh lookup hides the draft and restores it for the same author (0.8277ms)
+✔ a transient refresh lookup does not reveal the draft to the next author (0.8075ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-a (0.8995ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-b (0.729ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: lookup-error (0.8165ms)
+✔ an existing same-title row cannot resolve a lost create acknowledgement (1.8281ms)
+✔ a create without a verified list baseline stays uncertain on a same-title GET (0.8795ms)
+✔ identity is verified after a delayed 503 body is consumed (1.1222ms)
+✔ server errors after dispatch preserve unknown save outcomes (1.1729ms)
+✔ successful sign-out discards an already concealed draft (0.6913ms)
+✔ failed sign-out verifies a silent account switch before retaining the draft (0.8473ms)
+✔ failed sign-out conceals the draft when identity cannot be verified (0.5848ms)
+✔ late failed sign-out cannot discard the next author's pending create (0.7116ms)
+✔ an explicit risk retry is required before another create (0.6855ms)
+✔ an owner change after an unknown create does not reveal that title (0.4975ms)
+✔ an HTTP create error stays a definite failure (0.5546ms)
+✔ a successful Nest write with a lost upstream acknowledgement stays unknown (0.864ms)
+✔ a pre-forward 503 stays a definite save failure (0.762ms)
+✔ an unreadable 503 acknowledgement stays unknown (0.4294ms)
+✔ a create acknowledgement with an unreadable success body still reloads (1.0427ms)
+✔ a lost post and a failed identity lookup keep uncertainty for the same author (1.3339ms)
+✔ a concealed uncertain save stays hidden from the next author (0.9118ms)
+✔ a returned Supabase auth error conceals the draft until the same author is verified (0.7137ms)
+✔ a confirmed signed-out user clears the draft and asks for sign-in (0.7348ms)
+✔ a create preflight auth error conceals an uncertain draft instead of signing out (3.3727ms)
+✔ a final load identity check switches from A to B without an auth callback (1.6591ms)
+✔ a final load identity check confirms sign-out without an auth callback (0.6969ms)
+✔ 401 book load transitions A to B without an auth callback (1.1885ms)
+✔ HTTP error book load transitions A to B without an auth callback (0.6785ms)
+✔ rejected book load transitions A to B without an auth callback (0.6585ms)
+✔ 401 book load recognizes sign-out without an auth callback (0.4548ms)
+✔ failed-load owner lookup error conceals and restores only the verified author's draft (0.525ms)
+✔ BFF verifies the exact token it forwards rather than a separately read identity (2.5095ms)
+✔ BFF refuses missing, errored, or unverified access tokens (0.7655ms)
+✔ a late response from author A does not repopulate author B (1.344ms)
+✔ a delayed author A fetch is ignored after author B is already shown (0.3864ms)
+✔ 401 and load errors clear book rows and stay distinct from empty (0.6127ms)
+✔ zero books show the empty call to action and nonzero books never do (0.3887ms)
+✔ refresh keeps the latest owner and a stale retry cannot restore the previous list (0.3833ms)
+✔ a successful create acknowledgement does not insert a response book (0.5409ms)
+✔ book create failure keeps the current list and does not claim an empty library (0.4097ms)
+✔ a stale or cross-account submission does not create into the visible library (0.5542ms)
+✔ unauthorized create clears rows and a same-owner conflict adds no book (0.5154ms)
+✔ create while empty still shows the call to action after a save failure (0.2739ms)
+✔ malformed book payloads clear the list instead of rendering private fields (0.2394ms)
+✔ book create rejects a stale account and strips client owner_id (0.574ms)
+✔ a lost upstream acknowledgement is not a pre-forward failure (0.3719ms)
+✔ a returned auth error is not a confirmed signed-out user (0.9762ms)
+✔ client owner_id is ignored and the insert payload is title only (1.911ms)
+✔ missing or oversized titles are rejected without a payload (0.2138ms)
+ℹ tests 66
+ℹ suites 0
+ℹ pass 66
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 749.5821
+EXIT test:library-isolation=0
+
+> vellistry@ check C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\web
+> tsc --noEmit
+
+EXIT check=0
+
+> vellistry@ build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\web
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 52ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.1s
+  Running TypeScript ...
+  Finished TypeScript in 3.3s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 1734ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+EXIT build=0
+PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated
+EXIT workflow-validate=0
+test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_repository_pilot_validates (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_blob_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_role_spoofing_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_snapshot_text_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_tampered_pinned_task_blob_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_task_preserves_source_gap_and_draft_status (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unapproved_bundle_cannot_claim_accepted (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unsafe_paths_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 14.873s
+
+OK
+PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated
+EXIT workflow-tests=0
+VALID: VEL-SPEC-001 � 8 source-traced proposed acceptance scenarios
+EXIT traceability=0
+PASS: validated metadata for 25 ADR/history records.
+EXIT metadata=0
+?? scripts/__pycache__/
+?? tests/__pycache__/
