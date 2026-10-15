@@ -1,0 +1,8 @@
+
+> vellistry@ check:hosted-env C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> node scripts/hosted_supabase_preflight.mjs lflkcrnriitrbclangyr
+
+BLOCKED: hosted development configuration needs attention.
+Missing apps/web/.env.local (copy its .env.example locally).
+Missing apps/api/.env (copy its .env.example locally).
+ ELIFECYCLE  Command failed with exit code 1.

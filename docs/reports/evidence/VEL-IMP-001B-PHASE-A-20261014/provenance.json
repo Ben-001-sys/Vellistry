@@ -1,0 +1,68 @@
+[
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "c04504bdb89d3597ad18ce5d10d14491a7c8c6e8",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "fe3925cca6791ac7ef2fae3d30baaa4eaf6b85da"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "c0de77c301af66704de31bb7f704ea1245e1015e",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "b0014647da337635975d447491b24cdf31398e40"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "809c4c000b34d8f90037716989eef1d4e467e614",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "da076c4d90c345f29b58678468eb72cb73c8c3a5"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "3c7d1614545b466efbfa6596150f30f117aa58b0",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "0ce67561a2280cb08d114b3a546fac7f862260ea"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "abf4d7e3365f2935ef9b8b59788075f999a129ac",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "5d291fbf8fe84a1faeb80e49ec895ff430d159fc"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "519e95df6b4420dac6969741f513e6cc40e48863",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "6ea35ee48ed28e942d1c6881dc303d00a6be9771"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "897f8fbf88dc458893872d27d1324ac67b8dd037",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "539a9e0a9ce427005f4ca36e7e89effc8803ce94"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "2d28eb0a600121f5deb14991b939821986e5be08",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "03c713007b7f09e3a466e0614605ad9e5243f850"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "70f421efa132aad06ffe20846022e9d35b70625a",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "d768d7020d06f3152c3666a05fec290baf13ee2a"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "1332a21d2eb31f7a423c9537a687535b59559338",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "be164853c80769c186a3adae2c0ee539bbd52ca7"
+  },
+  {
+    "basis": "Issue 67 / PR 65 attribution; not inferred from Git actor",
+    "original_commit": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "implementation_agent": "ChatGPT",
+    "copied_commit": "212ea83882928c323c11e2b38eb684daf2fe7642"
+  }
+]

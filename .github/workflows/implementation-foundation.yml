@@ -7,6 +7,10 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
+      - ".env.example"
+      - "scripts/hosted_supabase_preflight.mjs"
+      - "tests/hosted_supabase_preflight.test.mjs"
+      - "tests/book_privileges_regression.sql"
       - "supabase/**"
       - ".github/workflows/implementation-foundation.yml"
       - "docs/decisions/ADR-0006-*"
@@ -19,6 +23,10 @@ on:
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
+      - ".env.example"
+      - "scripts/hosted_supabase_preflight.mjs"
+      - "tests/hosted_supabase_preflight.test.mjs"
+      - "tests/book_privileges_regression.sql"
       - "supabase/**"
       - ".github/workflows/implementation-foundation.yml"
       - "docs/decisions/ADR-0006-*"
@@ -44,6 +52,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Regress Book Library isolation and unknown saves (synthetic)
         run: pnpm test:library-isolation
+      - name: Test hosted Supabase environment guard without keys/network
+        run: pnpm test:hosted-preflight
       - name: Compile NestJS backend
         run: pnpm --filter @vellistry/api build
       - name: Type-check NestJS backend
@@ -54,3 +64,31 @@ jobs:
         run: pnpm --filter @vellistry/web build
       - name: Type-check Next.js frontend
         run: pnpm --filter @vellistry/web typecheck
+
+  book-privileges:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original migrations must reproduce the excess-grant defect
+        run: |
+          if psql -h 127.0.0.1 -U postgres -d postgres -v skip_hardening=true -f tests/book_privileges_regression.sql > before.log 2>&1; then
+            cat before.log
+            exit 1
+          fi
+          cat before.log
+          grep -q 'Privilege mismatch: role=anon table=books privilege=TRUNCATE expected=f' before.log
+      - name: Hardening must preserve the complete privilege matrix and RLS
+        run: psql -h 127.0.0.1 -U postgres -d postgres -f tests/book_privileges_regression.sql

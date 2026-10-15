@@ -27,7 +27,45 @@ See [ADR-0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundat
 - `apps/api`: NestJS 11 health and protected books endpoints.
 - `supabase/migrations`: PostgreSQL books, chapters, immutable revision tables and author/book RLS.
 - Story Memory, Tiptap 3 full editor, revision-save RPC, long-term backup and optional AI will follow as tested vertical slices.
-- All development can use the local Supabase CLI; **no paid services required**.
+- Desktop development uses the owner-selected Supabase Cloud dev project; disposable local CI is separate. No paid service is required by this Phase A task.
+
+## Prerequisites
+
+For the owner-selected hosted development workflow: Node 24 and Corepack with
+repository-pinned pnpm 10.18.0. Docker/WSL is not required to use the hosted
+development project. Disposable local Supabase CI remains a separate fixture.
+
+## Hosted desktop setup — Phase A boundary
+
+The development target is Supabase Cloud `vellistry-dev`
+(`lflkcrnriitrbclangyr`). The repository-only preflight does not connect to it
+or authorize migrations/users. See the [IMP-001B setup plan](docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md)
+and [read-only migration/acceptance review](docs/reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md).
+
+Run `corepack pnpm install --frozen-lockfile`,
+`corepack pnpm test:hosted-preflight`, `corepack pnpm test:library-isolation`,
+`corepack pnpm check` and `corepack pnpm build` without hosted credentials.
+The separate `corepack pnpm check:hosted-env` is expected to exit 1 until the
+operator configures the two ignored per-app files locally under the approved
+workflow. Do not copy the root map-only .env.example as runtime configuration,
+overwrite existing env files or paste any keys into chat/Git.
+
+When workstation configuration is separately performed, preserve existing
+`apps/web/.env.local` and `apps/api/.env`; use their per-app examples only if
+absent. The guard supports those two files in a clean shell; inherited app/
+dotenv overrides, competing Next .env files and test mode block the file-only
+check. It does not verify whether a key belongs to a project. Public Next
+variables are build-time values: restart/rebuild after changing configuration.
+
+After the required permissions/configuration, start local processes with
+`corepack pnpm dev:api` and
+`corepack pnpm --filter @vellistry/web dev --hostname 127.0.0.1`.
+Next's default hostname is 0.0.0.0, so use the explicit loopback hostname.
+Do not create accounts/books or apply/reset any cloud database under Phase A.
+Missing hosted schema keeps real Library acceptance BLOCKED.
+
+<details>
+<summary>Historical local bootstrap — superseded for desktop setup; do not execute under Phase A</summary>
 
 ## Prerequisites
 
@@ -44,6 +82,8 @@ Node 24, pnpm 10, and Docker-compatible container runtime for local Supabase. Lo
 7. Open `http://127.0.0.1:3000`; sign up through the local Auth server and create your first book. If email confirmation is enabled, use the local Supabase email inbox or appropriate development settings to confirm before signing in.
 
 API health endpoint: `http://127.0.0.1:4100/v1/health`. All other exposed book endpoints require a verifiable Supabase access token and RLS permissions.
+
+</details>
 
 ## Security boundaries
 

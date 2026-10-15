@@ -3,12 +3,42 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 owner: project_owner
-version: 0.1.58
+version: 0.1.62
 ---
 
 # Vellistry — Current State
+
+## 2026-10-15 — Owner authorizes Phase A and bounded Phase B; pre-apply hold
+
+**FACT.** The owner answered "both" to explicit Phase A and exact-project Phase B authorization (two reviewed migrations, two disposable Auth users, synthetic acceptance and cleanup; merges excluded). This direct-chat approval has no GitHub review permalink; historical pending-approval entries below are superseded for that scope. No PR was merged.
+
+**FACT / blocker.** Independent connected read-only checks verified vellistry-dev / lflkcrnriitrbclangyr is healthy, with zero application tables, zero Auth users and no migration history. Public-table defaults grant excess authenticated privileges including TRUNCATE. A proposed third, books-only grant-hardening migration and disposable PostgreSQL regression are prepared, not applied or behaviorally verified. The original two migrations are unchanged. The [Phase B checkpoint](docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md) records evidence and the separate additional-SQL approval required by the Phase A migration review. CLI authentication is also required to preserve original migration versions. No hosted writes/users/acceptance occurred; GitHub billing/spending restrictions remain a separate CI blocker. No full integration or private-pilot acceptance is claimed.
+
+
+## 2026-10-14 — Codex IMP-001B repository-only Phase A prepared for review
+
+**CI FACT / blocker:** separate draft [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) is locally verified, but GitHub reported all six PR workflows failed before any step ran. Check annotations cite account payment/spending-limit restrictions. No exact-head Linux/disposable integration PASS is claimed. Owner account action and subsequent exact-head rerun are required; no billing change or paid execution was attempted. Full diagnostics are retained in VEL-EB-0005 evidence.
+
+**FACT.** Issue #67 was executed on separate isolated branch `codex/vel-imp-001b-phase-a` from actual main `4b3996ef7cda878e1af3d679454bd1bb873a79c2`. Original PR #65 at `604e1ebfd0baab930ee4dc39aecf7289dc64188a` remains **ChatGPT-authored**; eleven commits were copied with provenance, not reattributed. PR #65 and ADR-0008 PR #66 were not taken over or merged. ADR-0008 role choice is owner-directed; its documentation remains unmerged.
+
+Codex reproduced runtime-env/Next precedence false positives and corrected the preflight to block unsupported inherited overrides/competing files and test mode, added eight regressions (19 total), added missing CI path triggers, and corrected outdated README/root-env/local-reset and frontend hostname guidance. At source `a6dee3edd37ab05b2607e716e375f0d216b5066a`, frozen install, **19 preflight tests**, **66 library tests**, check/build, workflow validation and **15 workflow tests** passed (exit 0). Absent-env preflight failed safely with the expected exit 1.
+
+[VEL-EB-0005](docs/agent-workflow/execution-bundles/VEL-EB-0005.md) records actual outputs, pinned VEL-TASK/CP-0005, provenance, findings and limitations. The [read-only two-migration review](docs/reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md) includes effective/default privilege uncertainty, CLI Vault/history conditions, read-only verification queries, rollback limits and exact future acceptance cases. Neither SQL migration nor the lockfile changed. Exact final report-head checks/CI are recorded in the new draft PR after commit creation.
+
+**INTERPRETATION / PROPOSAL.** Repository-only Phase A is proposed for coordinator/owner review, not accepted or hosted-tested. Phase B remains **BLOCKED** pending explicit exact-project migration/history/privilege approval and separate disposable user/fixture/security-probe/cleanup authorization. No cloud queries, migrations, users, secrets, data writes, paid AI, manuscripts, deployment or merges occurred. Signed-out unexpired-JWT/direct PostgREST and full journeys remain unverified/private-pilot gated. PR #59 stays paused; IMP-002 was not started.
+
+
+## 2026-10-14 — IMP-001 merged; hosted cloud preflight implementation under review (NEWEST)
+
+**Git/main FACT:** PR [#64](https://github.com/Ben-001-sys/Vellistry/pull/64) **merged** on 2026-10-14 at 22:10 UTC as `4b3996ef7cda878e1af3d679454bd1bb873a79c2`, following exact-head source review, 66 passing synthetic focused tests and five successful pull_request workflows; five push workflows on the merge commit also completed successfully. Earlier entries below saying "#64 is open/draft" are **historical snapshots now superseded**, not current PR status. [Issue #63](https://github.com/Ben-001-sys/Vellistry/issues/63) remains open for true hosted integration acceptance; old [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) remains a paused draft.
+
+**Connected hosted cloud FACT (read-only recheck):** `vellistry-dev` project `lflkcrnriitrbclangyr` in eu-west-2 has status `ACTIVE_HEALTHY` with **no public application tables and no applied migrations**. The two checked-in Git SQL migration files remain **UNAPPLIED** to this hosted development database. Do not claim book persistence/real account acceptance, RLS or revoked-session security is verified on this cloud project.
+
+**Owner implementation continuation:** the owner instructed proceeding with implementation. A new bounded branch `feat/vel-imp-001b-hosted-cloud-preflight` proposes per-app ignored hosted env templates, a Node read-only environment guard, synthetic no-key leak/key-type/project-ref regression tests, CI wiring, and the review/acceptance checklist at [IMP-001B](docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md). This is a separate **proposal**, not merged, and **not** authorization for cloud migrations, new Auth accounts, remote tests, deployments, real manuscripts, or agent-paid calls. Owner approval is required before applying existing SQL migrations or writing synthetic data to cloud.
+
+**Remaining gates:** `ACC-M1-01` real durable book creation/reopen, browser cross-account journey, 11 full MVP journeys and residual signed-out unexpired JWT direct PostgREST access are BLOCKED/NOT_RUN as applicable. No change in broader G_DESIGN/G_CODE/G_PRIVATE_PILOT/G_RELEASE gate states. Source-approved six-phase planning remains reference; this is a bounded follow-up to IMP-001, not IMP-002.
 
 ## 2026-10-14 — IMP-001 final bounded verification; owner review pending
 
@@ -52,6 +82,13 @@ User agreed to create `vellistry-dev` under their connected Supabase Free organi
 **Next:** Cursor Desktop installation/open confirmation, personal repo Git checkout and pnpm 10.18.0 using Corepack, local untracked environment configuration using the existing cloud project's publishable key (raw key withheld), and nonmutating baseline. The Vellistry schema is **not yet installed in the hosted project**; cloud migration work requires explicit scoped approval and security review. Paused old Cursor task PR #59 remains PAUSED. Supabase Cloud docs tracked in PR #62 pending merge/review.
 
 # Vellistry — Current State
+
+## 2026-10-15 — Owner authorizes Phase A and bounded Phase B; pre-apply hold
+
+**FACT.** The owner answered "both" to explicit Phase A and exact-project Phase B authorization (two reviewed migrations, two disposable Auth users, synthetic acceptance and cleanup; merges excluded). This direct-chat approval has no GitHub review permalink; historical pending-approval entries below are superseded for that scope. No PR was merged.
+
+**FACT / blocker.** Independent connected read-only checks verified vellistry-dev / lflkcrnriitrbclangyr is healthy, with zero application tables, zero Auth users and no migration history. Public-table defaults grant excess authenticated privileges including TRUNCATE. A proposed third, books-only grant-hardening migration and disposable PostgreSQL regression are prepared, not applied or behaviorally verified. The original two migrations are unchanged. The [Phase B checkpoint](docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md) records evidence and the separate additional-SQL approval required by the Phase A migration review. CLI authentication is also required to preserve original migration versions. No hosted writes/users/acceptance occurred; GitHub billing/spending restrictions remain a separate CI blocker. No full integration or private-pilot acceptance is claimed.
+
 
 ## OWNER ENVIRONMENT CHOICE — Supabase Cloud, no local Supabase stack (2026-10-11; newest)
 

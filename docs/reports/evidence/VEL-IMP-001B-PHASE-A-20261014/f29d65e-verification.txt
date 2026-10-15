@@ -1,0 +1,227 @@
+Final head: f29d65ea079cdab9fda7417470f8633331fb16a1
+
+COMMAND: corepack pnpm install --frozen-lockfile
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 557ms using pnpm v10.18.0
+EXIT: 0 (expected 0)
+
+COMMAND: corepack pnpm test:hosted-preflight
+
+> vellistry@ test:hosted-preflight C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.5465ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.1826ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1311ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.2371ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.174ms)
+✔ rejects mismatched Web/API project publishable keys (0.1292ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.1272ms)
+✔ rejects invalid or omitted expected project reference (0.1052ms)
+✔ missing local files are reported without consulting environment or network (1.7937ms)
+✔ reads ignored local files, never emits key values in success output (4.7998ms)
+✔ invalid local config never leaks the offending key in diagnostics (3.5107ms)
+✔ does not pass file validation when inherited runtime settings override those files (6.3578ms)
+✔ rejects competing Next env files that the actual runtime would also read (16.6325ms)
+✔ rejects test mode because Next does not load the required .env.local there (4.3803ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (86.2421ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (157.4503ms)
+✔ actual CLI fails safely with absent env files (67.4866ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.3347ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (3.9599ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 520.4508
+EXIT: 0 (expected 0)
+
+COMMAND: corepack pnpm test:library-isolation
+
+> vellistry@ test:library-isolation C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api exec tsx --test src/modules/books/book-create-input.spec.ts ../web/src/lib/library/book-library-state.test.ts ../web/src/lib/library/book-library-session.test.ts
+
+✔ author A's unsaved title is cleared when author B signs in (25.9696ms)
+✔ a same-author refresh keeps the unsaved title (0.8083ms)
+✔ same-author SIGNED_IN does not drop an in-flight create outcome (1.3122ms)
+✔ same-author Refresh during create keeps the successful acknowledgement (1.0317ms)
+✔ an author change during create does not apply that create to the next author (0.8211ms)
+✔ a rejected sign-out stays on the page with the list cleared (0.6407ms)
+✔ a sign-out that returns an error does not redirect (0.4776ms)
+✔ a successful sign-out redirects only after Supabase accepts it (0.518ms)
+✔ failed sign-out during an in-flight create keeps duplicate retry blocked (1.3546ms)
+✔ successful sign-out during an in-flight create clears its private retry state (1.1259ms)
+✔ a successful create followed by a failed owner lookup stays unknown (2.8584ms)
+✔ a failed POST final identity lookup conceals the draft even on HTTP error (0.8428ms)
+✔ a rejected POST does not expose A's draft after a silent switch to B (0.7389ms)
+✔ a rejected POST with unverifiable identity conceals and restores only for A (0.8009ms)
+✔ a lost create response stays unknown until refresh (0.6709ms)
+✔ a delayed server commit stays blocked after an empty refresh (0.7956ms)
+✔ a transient refresh lookup hides the draft and restores it for the same author (0.7117ms)
+✔ a transient refresh lookup does not reveal the draft to the next author (0.5885ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-a (0.68ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-b (0.5255ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: lookup-error (0.5541ms)
+✔ an existing same-title row cannot resolve a lost create acknowledgement (0.8789ms)
+✔ a create without a verified list baseline stays uncertain on a same-title GET (0.5662ms)
+✔ identity is verified after a delayed 503 body is consumed (0.726ms)
+✔ server errors after dispatch preserve unknown save outcomes (0.7859ms)
+✔ successful sign-out discards an already concealed draft (0.449ms)
+✔ failed sign-out verifies a silent account switch before retaining the draft (0.5668ms)
+✔ failed sign-out conceals the draft when identity cannot be verified (0.4039ms)
+✔ late failed sign-out cannot discard the next author's pending create (0.5118ms)
+✔ an explicit risk retry is required before another create (0.4477ms)
+✔ an owner change after an unknown create does not reveal that title (0.4204ms)
+✔ an HTTP create error stays a definite failure (0.3733ms)
+✔ a successful Nest write with a lost upstream acknowledgement stays unknown (0.5671ms)
+✔ a pre-forward 503 stays a definite save failure (0.6256ms)
+✔ an unreadable 503 acknowledgement stays unknown (0.3379ms)
+✔ a create acknowledgement with an unreadable success body still reloads (0.5473ms)
+✔ a lost post and a failed identity lookup keep uncertainty for the same author (0.6431ms)
+✔ a concealed uncertain save stays hidden from the next author (0.4389ms)
+✔ a returned Supabase auth error conceals the draft until the same author is verified (2.5259ms)
+✔ a confirmed signed-out user clears the draft and asks for sign-in (0.5416ms)
+✔ a create preflight auth error conceals an uncertain draft instead of signing out (0.6179ms)
+✔ a final load identity check switches from A to B without an auth callback (0.9913ms)
+✔ a final load identity check confirms sign-out without an auth callback (0.4627ms)
+✔ 401 book load transitions A to B without an auth callback (0.9864ms)
+✔ HTTP error book load transitions A to B without an auth callback (0.5642ms)
+✔ rejected book load transitions A to B without an auth callback (0.5351ms)
+✔ 401 book load recognizes sign-out without an auth callback (0.3852ms)
+✔ failed-load owner lookup error conceals and restores only the verified author's draft (0.4386ms)
+✔ BFF verifies the exact token it forwards rather than a separately read identity (3.5973ms)
+✔ BFF refuses missing, errored, or unverified access tokens (0.6489ms)
+✔ a late response from author A does not repopulate author B (0.9731ms)
+✔ a delayed author A fetch is ignored after author B is already shown (0.2377ms)
+✔ 401 and load errors clear book rows and stay distinct from empty (0.4015ms)
+✔ zero books show the empty call to action and nonzero books never do (0.2672ms)
+✔ refresh keeps the latest owner and a stale retry cannot restore the previous list (0.2837ms)
+✔ a successful create acknowledgement does not insert a response book (0.382ms)
+✔ book create failure keeps the current list and does not claim an empty library (0.2966ms)
+✔ a stale or cross-account submission does not create into the visible library (0.3751ms)
+✔ unauthorized create clears rows and a same-owner conflict adds no book (0.2496ms)
+✔ create while empty still shows the call to action after a save failure (0.1303ms)
+✔ malformed book payloads clear the list instead of rendering private fields (0.1329ms)
+✔ book create rejects a stale account and strips client owner_id (0.3279ms)
+✔ a lost upstream acknowledgement is not a pre-forward failure (0.2442ms)
+✔ a returned auth error is not a confirmed signed-out user (0.5255ms)
+✔ client owner_id is ignored and the insert payload is title only (1.4439ms)
+✔ missing or oversized titles are rejected without a payload (0.1614ms)
+ℹ tests 66
+ℹ suites 0
+ℹ pass 66
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 540.6168
+EXIT: 0 (expected 0)
+
+COMMAND: corepack pnpm check
+
+> vellistry@ check C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\web
+> tsc --noEmit
+
+EXIT: 0 (expected 0)
+
+COMMAND: corepack pnpm build
+
+> vellistry@ build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry\apps\web
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 145ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1416ms
+  Running TypeScript ...
+  Finished TypeScript in 1892ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 765ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+EXIT: 0 (expected 0)
+
+COMMAND: python scripts/agent_workflow.py validate
+PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated
+EXIT: 0 (expected 0)
+
+COMMAND: python -m unittest discover -s tests -p 'test_agent_workflow.py' -v
+test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_repository_pilot_validates (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_blob_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_role_spoofing_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_snapshot_text_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_tampered_pinned_task_blob_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_task_preserves_source_gap_and_draft_status (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unapproved_bundle_cannot_claim_accepted (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unsafe_paths_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 11.619s
+
+OK
+PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated
+EXIT: 0 (expected 0)
+
+COMMAND: corepack pnpm check:hosted-env
+
+> vellistry@ check:hosted-env C:\Users\admin\.codex\worktrees\vel-imp-001b-phase-a\Vellistry
+> node scripts/hosted_supabase_preflight.mjs lflkcrnriitrbclangyr
+
+BLOCKED: hosted development configuration needs attention.
+Missing apps/web/.env.local (copy its .env.example locally).
+Missing apps/api/.env (copy its .env.example locally).
+ ELIFECYCLE  Command failed with exit code 1.
+EXIT: 1 (expected 1)
+
+COMMAND: python scripts/check_knowledge_metadata.py
+PASS: validated metadata for 25 ADR/history records.
+EXIT: 0 (expected 0)
+
+COMMAND: python scripts/spec_traceability.py validate
+VALID: VEL-SPEC-001 � 8 source-traced proposed acceptance scenarios
+EXIT: 0 (expected 0)

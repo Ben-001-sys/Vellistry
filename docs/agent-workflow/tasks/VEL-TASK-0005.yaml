@@ -1,0 +1,76 @@
+id: VEL-TASK-0005
+title: Codex repository-only IMP-001B preflight verification
+type: implementation-task
+status: verification
+created_at: '2026-10-14'
+updated_at: '2026-10-14'
+owner: project_owner
+context_pack_id: VEL-CP-0005
+objective: >-
+  Execute Issue 67 Phase A only: independently review the ChatGPT-authored PR 65,
+  correct demonstrated preflight defects, run no-credential checks, and prepare
+  a factual ExecutionBundle plus read-only migration/hosted acceptance review.
+in_scope:
+  - scripts/hosted_supabase_preflight.mjs and targeted synthetic regressions
+  - CI path triggers and repository-only test/build verification
+  - Task, immutable ContextPack, ExecutionBundle, provenance and review evidence
+  - Read-only review of exactly the two existing SQL migrations and future acceptance plan
+out_of_scope:
+  - Cloud queries, migrations, Auth fixtures, data writes, secrets and deployment
+  - Changing SQL schemas, dependencies, architecture or accepted owner decisions
+  - Taking over PR 65 or modifying PR 66; merging any PR or starting IMP-002
+inputs:
+  - path: PROJECT-CONSTITUTION.md
+    role: accepted-governance
+  - path: SOURCE-OF-TRUTH.md
+    role: accepted-source-authority
+  - path: docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md
+    role: accepted-architecture
+  - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
+    role: accepted-scope
+  - path: docs/agent-workflow/inputs/VEL-TASK-0005-ISSUE-67.md
+    role: owner-authorized-repository-only-task-snapshot
+  - path: docs/agent-workflow/inputs/VEL-TASK-0005-ADR-0008.md
+    role: owner-selected-role-record-in-unmerged-PR-66
+  - path: scripts/hosted_supabase_preflight.mjs
+    role: ChatGPT-authored-preflight-input
+  - path: tests/hosted_supabase_preflight.test.mjs
+    role: ChatGPT-authored-synthetic-tests-input
+  - path: docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md
+    role: ChatGPT-authored-plan-input
+  - path: supabase/migrations/20261009000000_initial_author_books.sql
+    role: read-only-migration-review-input
+  - path: supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql
+    role: read-only-migration-review-input
+source_gaps:
+  - id: HOSTED
+    limitation: No cloud state is independently queried in Phase A; prior healthy/empty observations are historical inputs only.
+  - id: ADR0008
+    limitation: Owner-selected role is authorized by this task, but PR 66 remains unmerged and is not silently imported.
+  - id: CONTEXT
+    limitation: CURRENT-STATE, IMP-001 report and PLAN-02/04 were read separately; the compact pack is not a cold-start or independent-agent test.
+deliverables:
+  - Provenance-preserving isolated Codex branch and draft PR
+  - Targeted regressions and bounded preflight fixes only where defects are reproduced
+  - Actual test/build outputs, exits, source SHA and exact-head CI evidence
+  - VEL-EB-0005 with FACT INTERPRETATION PROPOSAL and pending owner review
+  - Read-only migration security review and future hosted acceptance approval hold
+acceptance_criteria:
+  - Original PR 65 commits/tests remain attributed to ChatGPT and originals remain untouched
+  - Absent env, project/key mismatch, local URL and secret diagnostics fail safely
+  - Effective runtime overrides cannot silently invalidate a passing file-only preflight
+  - Node 24 and PowerShell invocations are actually tested using synthetic temporary files
+  - Required locked install, preflight/library tests, check/build and workflow validation have real recorded exits
+  - No cloud operation, real credential, migration change, fixture, merge or deployment occurs
+allowed_actions:
+  - read
+  - analyze
+  - scoped-repository-code-and-test-corrections
+  - no-secret-local-install-tests-builds
+  - create-isolated-branch-and-draft-PR
+  - prepare-read-only-migration-review
+approval_required_for:
+  - Owner acceptance and merge of this PR, PR 65 or PR 66
+  - Exact-project Phase B migrations and auditable history application
+  - Disposable cloud Auth users and fixture creation/cleanup
+  - Any secret use, cloud query/write, deployment, paid provider or private manuscript
