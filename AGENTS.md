@@ -3,8 +3,8 @@ id: VEL-AGENT-001
 type: agent-instructions
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-14
-version: 0.1.3
+updated_at: 2026-10-15
+version: 0.1.4
 ---
 
 # Instructions for Vellistry Research and Development Agents
