@@ -4,11 +4,11 @@ title: Use Codex as the primary implementation agent in Vellistry's governed age
 type: architecture-decision
 status: accepted
 created_at: 2026-10-14
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 decided_at: 2026-10-14
 author: project-research
 approved_by: project_owner
-version: 1.0.0
+version: 1.0.1
 sources:
   - "Fiction Writing Project owner message, 2026-10-14: 'make it an adr we are using codex now'. Direct reply to the previously explained ChatGPT architect/coordinator, Cursor implementation, GitHub source-of-truth workflow. Original conversation permalink pending archival."
   - docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
