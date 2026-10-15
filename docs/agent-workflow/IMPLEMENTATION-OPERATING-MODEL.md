@@ -4,9 +4,9 @@ title: Agentic implementation operating model and handoff controls
 type: proposed-operating-protocol
 status: proposed-owner-review
 created_at: 2026-10-10
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 owner: project_owner
-version: 0.1.2
+version: 0.1.3
 source_refs:
   - PROJECT-CONSTITUTION.md
   - SOURCE-OF-TRUTH.md
