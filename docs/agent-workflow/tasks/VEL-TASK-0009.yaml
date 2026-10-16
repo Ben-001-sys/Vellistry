@@ -28,36 +28,16 @@ out_of_scope:
 - Hosted Supabase operations/migrations/users, secrets, paid calls, real manuscripts,
   billing/protection settings, deploy or merges
 inputs:
+- path: docs/agent-workflow/tasks/VEL-TASK-0008.yaml
+  role: canonical-owner-dispatched-contract
 - path: PROJECT-CONSTITUTION.md
-  role: accepted-owner-authority
-- path: SOURCE-OF-TRUTH.md
-  role: accepted-source-hierarchy
-- path: AGENTS.md
-  role: effective-agent-contract
-- path: PROJECT.md
-  role: current-project-definition
-- path: README.md
-  role: stale-onboarding
+  role: owner-authority
 - path: docs/agent-workflow/README.md
-  role: merged-handoff-mechanism
-- path: docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
-  role: current-operating-model
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/issue-72.json
-  role: owner-dispatched-bounded-requirements
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/issue-71.json
-  role: secondary-remediation-dependency-index
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/SOURCE-DELTA-MAP.md
-  role: pre-edit-coverage-and-source-provenance
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/open-prs.json
-  role: verified-open-pr-heads
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/pr66/docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
-  role: chatgpt-authored-owner-selected-ADR
-- path: docs/agent-workflow/inputs/VEL-TASK-0008/pr66/docs/history/2026-10-14-owner-selects-codex-primary-implementation.md
-  role: original-owner-decision-record
+  role: immutable-handoff-contract
 - path: tests/test_research_design_gate.py
-  role: historical-checkpoint-contract-needing-archive-path
+  role: preserved-historical-assertions
 - path: docs/agent-workflow/inputs/VEL-TASK-0008/AMENDMENT-01.md
-  role: bounded-archive-test-compatibility-amendment
+  role: bounded-test-path-amendment
 source_gaps:
 - id: PRIMARY-OWNER
   limitation: Original October14 approval conversation permalink missing; preserved
