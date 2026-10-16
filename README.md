@@ -1,62 +1,67 @@
-# Vellistry — initial implementation
+# Vellistry
 
-Vellistry is an author-controlled fiction writing application with optional AI. This is the **first application foundation**. It is not yet a deployed product and does not claim complete authentication, manuscript recovery, or accepted story memory.
+Vellistry is an author-controlled fiction writing application with optional AI.
+The Next.js/NestJS/Supabase foundation and author-isolated Book Library are
+integrated. Full manuscript editing, hosted acceptance, private pilot and release
+remain gated; this repository is not a deployed product.
 
-## Current development gate — updated 2026-10-10
+Start with [CURRENT-STATE.md](CURRENT-STATE.md) for the checked main SHA, active
+tasks/PRs, actual CI evidence, security holds and historical links. Then read
+[PROJECT.md](PROJECT.md), [PROJECT-CONSTITUTION.md](PROJECT-CONSTITUTION.md),
+[SOURCE-OF-TRUTH.md](SOURCE-OF-TRUTH.md) and [AGENTS.md](AGENTS.md).
 
-**Latest owner MVP decision (2026-10-10):** “I approve this for mvp.” The integrated eight-area author-first scope and narrow optional Continue/Rewrite BYOK AI direction are **owner-approved for the MVP target**; see the [dated event](docs/history/2026-10-10-owner-mvp-direction-approved.md). Synthetic-only UI concept design and planning may proceed under the earlier bounded Wave 6 delegation. Final editable Figma design approval, feature-engineering go-ahead and live/pilot/public release must be recorded separately; synthetic research is not production security, model quality or author validation.
+## Governed implementation
 
-The initial Next.js/NestJS/Supabase foundation from [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) and research from all six pairs have merged. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**, restoring **21 missing K2 and Pair 04/05 research files** to `main` (merge `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`). The [exact PR #43 head](https://github.com/Ben-001-sys/Vellistry/commit/a20b6cd54aff4e80408a1fdd194a782709bf6134) passed seven relevant workflows, including the combined application/research baseline and real disposable Supabase K2 tests. This establishes research/source integration **not production security, user validation, design approval or deployment**; no separate merged-main rerun is claimed.
+The owner selects scope and approves consequential changes/merges. ChatGPT
+coordinates and independently reviews evidence; Codex implements bounded tasks
+under [ADR0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md).
+Use the existing [Task → immutable ContextPack → ExecutionBundle workflow](docs/agent-workflow/README.md)
+in an isolated branch, with sources committed and pack validated before edits.
+Planning, write access and passing CI do not grant implementation or release approval.
+Original ChatGPT PR66/65 and Cursor-era work keep their provenance.
 
-- [CURRENT-STATE.md](CURRENT-STATE.md) contains the newest authoritative integration snapshot; older sections document their historical PR states.
-- [Six-pair research/design checkpoint](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md) separates experiments from pending rule mapping, auth/session, DOCX, provider, usability and legal gates.
-- **Owner subsequently approved Waves 1–3 research recommendations (2026-10-10):** See [owner event](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md) for manual-first writing, 134-rule future catalog policy (not activated), accessible/loss-aware editor/export requirements and author-governed private Story Profiles. This does **not** close unrun tests, production security, legal/provider decisions, or the separate Option B prohibition on UI prototypes and implementation.
-- **Owner BYOK clarification (2026-10-10):** Vellistry presents supported provider/model options and a key entry field; writers supply **their own free OR paid provider API key**. The provider bills the writer according to their account. Optional AI works only when explicitly invoked; the manual editor never requires a key. See [owner event](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md). This does not authorize provider integration or override manuscript privacy requirements.
-- **Wave 5 scoped MVP decision (research-only):** [Single-pass MVP scope choice](docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md) selects optional **Continue** and **Rewrite selected text** with curated OpenRouter BYOK models (author-owned **free OR paid API key**), plaintext suggestion review, Accept/Reject, server-revision-safe acceptance and history-backed Undo. Existing eight core MVP areas remain unchanged. No real provider model evaluation or implementation occurred; only synthetic local tests were executed, and the accepted Option B design/prototype restriction still applies.
-- **Final bounded MVP design entry (Wave 6):** Owner delegated one-pass final stage choice; [dated event](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md) and [G10 synthesis](docs/research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md) select **two invented-data UI concept directions and canonical editable Figma Design** followed by real writer testing. Earlier Option B below is the historic decision; **production features, real model calls, real accounts and deployment remain unauthorized**.
-- **Owner design decision: Option B ACCEPTED (2026-10-10).** Complete outstanding pre-design research and owner-critical decisions **before prototypes**. See [accepted decision](docs/history/2026-10-10-owner-option-b-predesign-selected.md) and [two-track research closeout plan](docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md). No Figma Make/Lovable/Figma Design prototype, feature implementation, deployment or paid inference is newly authorized; a separate owner decision is required to enter design. **Chronology:** This initial pre-design prohibition was subsequently superseded for synthetic-only concept design by the Wave 6 delegated decision above; it remains in force for actual product coding, real author data and deployment.
-- **Stage 4 synthetic agent workflow separately accepted:** [PR #45](https://github.com/Ben-001-sys/Vellistry/pull/45), [PR #48](https://github.com/Ben-001-sys/Vellistry/pull/48) and [PR #49](https://github.com/Ben-001-sys/Vellistry/pull/49) established an independently rerun bounded ContextPack/Cursor handoff; Issue #27 closed for that workflow only, not for full application readiness. [Owner event](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md).
-- [Combined research/app baseline CI](.github/workflows/combined-main-baseline.yml) runs testable merged Python contracts, pnpm app builds and disposable PostgreSQL restore assertions. A passing baseline is **not** security certification, usability approval or permission to release.
-- Existing experimental security code must not be promoted as public private-manuscript routes without the appropriate integrated authorization, active-session and browser tests.
+## Application foundation and development
 
-## Approved direction
+- `apps/web`: Next.js16/React19; Supabase session clients, protected Library UI/BFF.
+- `apps/api`: NestJS11; verified author-token books endpoints with RLS-scoped calls.
+- `supabase/migrations`: schema and restrictive manuscript DML migration. Do not
+  apply these to a hosted project without exact-target, scoped owner approval.
+- Full Tiptap editor, revision-save RPC, Story Memory and optional AI are future
+  bounded slices. No paid provider is required by the manual writing experience.
 
-See [ADR-0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md) and the [dated implementation kickoff plan](docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md).
+Use Node24 and repository-pinned pnpm10.18.0 through Corepack, with
+`corepack pnpm install --frozen-lockfile`. `corepack pnpm check`,
+`corepack pnpm build` and `corepack pnpm test:library-isolation` verify the
+repository foundation without hosted writes.
 
-- `apps/web`: Next.js 16, React 19, Tailwind 4 and browser/server Supabase session clients.
-- `apps/api`: NestJS 11 health and protected books endpoints.
-- `supabase/migrations`: PostgreSQL books, chapters, immutable revision tables and author/book RLS.
-- Story Memory, Tiptap 3 full editor, revision-save RPC, long-term backup and optional AI will follow as tested vertical slices.
-- All development can use the local Supabase CLI; **no paid services required**.
+The owner-selected desktop development target is **Supabase Cloud**. A local
+Supabase/Docker stack is **not required** for that connection. Follow the
+[historical hosted setup plan](docs/plans/VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md)
+with the current AGENTS role contract; do not execute its old Cursor assignment.
+Runtime environment values belong in untracked local configuration. Do not print
+or commit keys/tokens, use service-role authority in normal author paths, or run
+remote migration/reset/fixture commands without separate authorization.
 
-## Prerequisites
+Disposable local Supabase/PostgreSQL services are used for isolated CI tests;
+those fixtures do not replace the selected hosted development target or establish
+hosted acceptance. Local resets are destructive and permitted only on explicitly
+disposable instances. This documentation task does not authorize cloud operations.
 
-Node 24, pnpm 10, and Docker-compatible container runtime for local Supabase. Local Supabase must remain bound to a trusted local interface.
+## Verification and review
 
-## Local startup
+[Primary Vellistry CI](.github/workflows/ci.yml) runs exact-head governance on PRs,
+conservative applicable application/security checks before merge, and full main
+or manual verification. Draft advisory execution deliberately leaves the stable
+merge gate blocked. The25 older workflows are **manual-only** historical jobs.
 
-1. Run `corepack enable` (or install pnpm 10 independently) and `pnpm install`.
-2. Run `pnpm supabase:start`. Then inspect local URL and **local-only publishable/anon key** with `pnpm supabase:status`.
-3. Copy `.env.example` to `apps/api/.env`. Set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` from the local status. Keep `API_PORT=4100`.
-4. Copy the `NEXT_PUBLIC_*` and `VELLISTRY_API_BASE_URL` lines into `apps/web/.env.local`. Use the same local project URL and publishable key.
-5. Run `pnpm supabase:reset` to create the sample **schema**. This operation **destroys local database content**; only run on a disposable development instance.
-6. Start `pnpm dev:api` and `pnpm dev:web` in separate terminals.
-7. Open `http://127.0.0.1:3000`; sign up through the local Auth server and create your first book. If email confirmation is enabled, use the local Supabase email inbox or appropriate development settings to confirm before signing in.
+Run `python scripts/agent_workflow.py validate`,
+`python scripts/check_knowledge_metadata.py`,
+`python scripts/check_implementation_readiness.py`,
+`python scripts/spec_traceability.py validate` and focused Python unit tests.
+The integrated runner is `python scripts/ci_governance.py` (Linux is the CI
+reference environment; a historical Windows R01 fixture descriptor issue remains).
+Green checks do not prove hosted RLS acceptance, direct signed-out JWT revocation,
+author usability, billing savings, branch-protection enforcement or release readiness.
+Owner-only approval remains necessary before merge and consequential operations.
 
-API health endpoint: `http://127.0.0.1:4100/v1/health`. All other exposed book endpoints require a verifiable Supabase access token and RLS permissions.
-
-## Security boundaries
-
-- Use only Supabase **publishable/anon** keys in web or author-scoped API paths. Never commit a service-role key or browser token.
-- The NestJS API validates the bearer token against Supabase Auth on each author request. The database sets `owner_id` from `auth.uid()`, not a submitted user ID. The API performs PostgREST queries with the author's bearer token, so RLS filters remain effective.
-- Session retrieval in the Next.js proxy is not relied on as the sole authorization: Nest rechecks identity. Real client cookie refresh, CSRF, proxy boundaries and session revocation must still be verified.
-- Public health does not claim database/identity service availability.
-- Chapter revisions are deliberately **read-only** in this first migration. The next vertical slice introduces a transactional audited revision-save RPC before adding editor write APIs.
-- `apps/web` does not yet integrate shadcn/ui or full Tiptap chapter editor. These are next milestones, not silently completed features.
-- No public deployment, real author manuscript or real credentials were used in bootstrap CI.
-
-## Current checks
-
-The integrated PR #43 research checkout passed app builds, metadata/governance checks, local Supabase Auth/RLS/session research tests, and PostgreSQL recovery fixtures. These are **disposable local research results**. Production-facing K2 requires integrated Nest-only private manuscript authorization, browser SSR/session and account-switch checks, Storage and export protections, and deployment-level security review before release.
-
-See earlier [research tests](docs/research/spikes/r18-framework-slice/README.md) for synthetic Next/Nest HTTP and Chromium evidence; research fixtures are not production authentication.
+Historical integration: PR #43 **merged on 2026-10-10**, restoring21 research files. Its seven passing workflows were research evidence; see the [recovery report](docs/reports/REPOSITORY-INTEGRITY-RECOVERY-2026-10-10.md), not a fresh current-head result.

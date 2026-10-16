@@ -4,9 +4,9 @@ title: Stage 3 agent task handoff contract
 type: process
 status: proposed
 created_at: 2026-10-08
-updated_at: 2026-10-09
+updated_at: 2026-10-16
 owner: project_owner
-version: 0.1.2
+version: 0.1.3
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -14,7 +14,16 @@ related_adrs:
 
 # Agent Workflow v0.1 — Research and Engineering Handoffs
 
-This is an **operational v0.1 pilot**, proposed for owner review. It implements small, repo-owned ContextPack and ExecutionBundle artifacts without a new service, MCP server, orchestrator, or project database. It applies to research tasks now and coding tasks later.
+The task/ContextPack/ExecutionBundle mechanism is merged and operational (PR5,
+Stage4 accepted bounded handoff and current PR70 examples). Its historical v0.1
+proposal metadata does not mean the implementation is absent. Product acceptance,
+independent-agent claims and new task permissions remain separately reviewed.
+It uses repo-owned artifacts without a new service or orchestrator. Read the
+[current agent contract](../../AGENTS.md), [ADR0008](../decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md)
+and [CURRENT-STATE](../../CURRENT-STATE.md) before dispatch. Codex implements
+qualifying changes; ChatGPT coordinates/reviews; only the owner approves scope
+and merge. Commit sources/task, generate/validate/commit the immutable pack
+before implementation. Automatic compliance enforcement remains Issue73 work.
 
 ## Lifecycle (solo maintainer)
 

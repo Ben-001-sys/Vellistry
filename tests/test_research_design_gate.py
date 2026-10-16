@@ -13,6 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "CURRENT-STATE.md"
+HISTORICAL_STATE = ROOT / "docs/reports/CURRENT-STATE-ARCHIVE-2026-10-16.md"
 GATE = ROOT / "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md"
 PLAN = ROOT / "docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md"
 DECISION = ROOT / "docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md"
@@ -43,7 +44,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         self.assertNotIn("Pair02 #37 and alternatives #39", body)
 
     def test_current_snapshot_precedes_preserved_old_checkpoints(self):
-        meta, body = read_doc(STATE)
+        meta, body = read_doc(HISTORICAL_STATE)
         self.assertEqual(meta["status"], "active")
         marker = "## Current authoritative checkpoint — 2026-10-10"
         self.assertIn(marker, body)
@@ -119,7 +120,7 @@ class ResearchDesignGateTests(unittest.TestCase):
         )
         gate_meta, gate = read_doc(GATE)
         decision_meta, decision = read_doc(DECISION)
-        state_meta, state = read_doc(STATE)
+        state_meta, state = read_doc(HISTORICAL_STATE)
 
         self.assertIn("PR #43", readme)
         self.assertIn("**merged on 2026-10-10**", readme)

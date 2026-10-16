@@ -4,9 +4,9 @@ title: PLAN-05 — Cursor Desktop, Git worktree, agent and PR operating contract
 type: proposed-agentic-implementation-operating-plan
 status: proposed-planning-only
 created_at: 2026-10-11
-updated_at: 2026-10-11
+updated_at: 2026-10-14
 owner: project_owner
-version: 0.2.0
+version: 0.2.1
 sources:
   - docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
   - docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml
@@ -19,6 +19,8 @@ sources:
 ---
 
 # PLAN-05 — Cursor as primary bounded implementation agent
+
+**CURRENT ROLE DECISION — SUPERSEDED FOR NEW TASK DISPATCH (2026-10-14).** The owner selected **Codex** as the default implementation agent in accepted [ADR-0008](../decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md). Retain the following Cursor-specific PLAN-05 text as its historical planning baseline, **not an instruction to route new code tasks to Cursor**. The unchanged authorization, git isolation, ContextPack/ExecutionBundle, exact-head review and security requirements still apply. The actual assigned executor must be recorded on each task.
 
 **Status: planning document, NOT a Cursor execution.** User selected Cursor Desktop as implementation environment *after* the six planning work packages are reviewed. The older unmerged `feat/vel-imp-001-auth-library`, Issue #58, draft PR #59 are PAUSED prior kickoff, not a command to begin. We do not open Cursor, install tools, clone, run tests, invoke agents, change environment or incur charges during this stage. The earlier Stage 4 synthetic Cursor handoff proved a bounded ContextPack execution, not readiness for all product code.
 
