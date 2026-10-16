@@ -1,0 +1,115 @@
+id: VEL-TASK-0010
+title: VEL-GOV-003 PR-to-task and provenance compliance
+type: implementation-task
+status: in-progress
+created_at: '2026-10-16'
+updated_at: '2026-10-16'
+owner: project_owner
+context_pack_id: VEL-CP-0010
+objective: Implement bounded Issue73 repository-only compliance in existing consolidated
+  CI, preserving draft-aware security and honest trust limitations.
+in_scope: &id001
+- .github/workflows/ci.yml
+- scripts/ci_policy.py
+- scripts/ci_governance.py
+- scripts/pr_compliance.py
+- scripts/run_pr_compliance.py
+- tests/test_pr_compliance.py
+- tests/test_ci_policy.py
+- tests/test_governance_entrypoints.py
+- AGENTS.md
+- CURRENT-STATE.md
+- docs/agent-workflow/README.md
+- docs/agent-workflow/PR-COMPLIANCE.md
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/agent-workflow/authorizations/VEL-TASK-0010.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0010.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0010.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0010.md
+- docs/agent-workflow/inputs/VEL-TASK-0010/*
+- docs/reports/VEL-GOV-003*
+- docs/reports/evidence/VEL-GOV-003/*
+out_of_scope:
+- Product features, existing security/SQL fixtures, dependencies, accepted decision
+  meaning, other PR branches
+- Hosted Supabase reads/writes/migrations/users, secrets, real manuscripts, paid calls,
+  deploy, merge, billing/protection/admin changes
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: accepted-owner-boundaries
+- path: SOURCE-OF-TRUTH.md
+  role: accepted-authority
+- path: AGENTS.md
+  role: effective-role-contract
+- path: docs/agent-workflow/README.md
+  role: existing-immutable-handoff
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: owner-selected-roles
+- path: .github/workflows/ci.yml
+  role: single-automatic-workflow
+- path: scripts/ci_policy.py
+  role: draft-and-security-gate
+- path: docs/agent-workflow/inputs/VEL-TASK-0010/issue-73.json
+  role: owner-dispatched-requirements-and-relayed-handoff
+- path: docs/agent-workflow/inputs/VEL-TASK-0010/COVERAGE-TRUST-DESIGN.md
+  role: coverage-threat-and-acceptance-design
+source_gaps:
+- id: IDENTITY
+  limitation: GitHub authors/model strings and coordinator comments cannot prove human
+    or LLM identity; protected owner review required.
+- id: PRIMARY
+  limitation: Original44-item checklist/earlier approval permalinks unavailable; direct
+    current dispatch distinct.
+- id: BOOTSTRAP
+  limitation: First adoption base lacks checker; pinned one-baseline provisional bootstrap
+    requires owner review; no claim of protected enforcement.
+- id: HOSTED
+  limitation: Hosted acceptance NOT_RUN, third migration unapproved, JWT risk unresolved;
+    do not perform cloud operations.
+deliverables:
+- Committed sources/task then generated validated immutable CP0010 before code
+- Tiny compliance policy/base-anchored static checker, existing CI/gate integration,
+  comprehensive synthetic negative/positive Git tests
+- Canonical EB0010, actual commands/results, changed-path/auth/attack matrices, draft
+  PR and exact-head CI ledger
+acceptance_criteria:
+- Qualifying missing/malformed task/pack/EB/scope/provenance cannot yield merge-eligible
+  green; docs exemptions narrow and tested
+- Immutable pins/source/base and phase scopes enforced; inherited origins and model/executor
+  declarations explicit without cryptographic identity claims
+- Draft gate stays blocked; ready/main/full security/recovery and manual historical
+  workflows preserved
+- Self-editing controls, deleted tests and missing-check discovery tested against
+  base verifier; bootstrap disclosed, no circular task impossibility
+- Owner acceptance separate from advisory review/CI; no spoofed role/migration approval
+  or task reassignment broadens sensitive actions
+- All issue/handoff negative cases tested in disposable local Git fixtures; actual
+  local and final-head CI evidence recorded
+allowed_actions:
+- Read live issues/PRs/main and effective contracts
+- Commit Task0010 and snapshots; generate/validate/commit immutable CP0010 before
+  edits
+- Implement only explicit allowlist in isolated branch; run focused and existing consolidated
+  CI including full disposable verification
+- Create draft PR and technical evidence ledger; report exact SHA for independent
+  review
+approval_required_for:
+- Owner adoption/merge, branch protection/settings, alternate executor or scope expansion
+- Any hosted/SQL migration execution/private data/paid/release/admin action
+compliance:
+  change_base: f371448538dafa92faebbef9bcda2a36c6ca1fa9
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/73#issuecomment-6226100456
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-16'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
