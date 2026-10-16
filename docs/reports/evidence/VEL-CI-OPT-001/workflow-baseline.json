@@ -1,0 +1,1962 @@
+{
+  "agent-workflow.yml": {
+    "git_blob": "6528ae05ea8a351b66a9ee5a06553ded345d6ce5",
+    "workflow": {
+      "name": "Agent workflow",
+      "on": {
+        "workflow_dispatch": "",
+        "pull_request": {
+          "paths": [
+            "docs/agent-workflow/**",
+            "scripts/agent_workflow.py",
+            "tests/test_agent_workflow.py",
+            "tests/test_handoff_recovery.py",
+            "scripts/handoff_recovery.py",
+            "scripts/export_level_b_handoff.py",
+            "tests/test_level_b_export.py",
+            "docs/agent-workflow/LEVEL-B-AGENT-PROMPT.md",
+            "docs/specs/**",
+            "scripts/spec_traceability.py",
+            "tests/test_spec_traceability.py",
+            "scripts/export_stage4_independent_packet.py",
+            "tests/test_stage4_independent_packet.py",
+            ".github/workflows/agent-workflow.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main",
+            "feat/agent-workflow-*"
+          ],
+          "paths": [
+            "docs/agent-workflow/**",
+            "scripts/agent_workflow.py",
+            "tests/test_agent_workflow.py",
+            "tests/test_handoff_recovery.py",
+            "scripts/handoff_recovery.py",
+            "scripts/export_level_b_handoff.py",
+            "tests/test_level_b_export.py",
+            "docs/agent-workflow/LEVEL-B-AGENT-PROMPT.md",
+            "docs/specs/**",
+            "scripts/spec_traceability.py",
+            "tests/test_spec_traceability.py",
+            "scripts/export_stage4_independent_packet.py",
+            "tests/test_stage4_independent_packet.py",
+            ".github/workflows/agent-workflow.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "validate-handoffs": {
+          "name": "Validate pinned agent handoffs",
+          "runs-on": "ubuntu-latest",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4",
+              "with": {
+                "fetch-depth": "0",
+                "ref": "${{ github.event.pull_request.head.sha || github.sha }}"
+              }
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Assert immutable packet source is exact event commit",
+              "env": {
+                "EXPECTED_PR_HEAD": "${{ github.event.pull_request.head.sha || github.sha }}"
+              },
+              "run": "test \"$(git rev-parse HEAD)\" = \"$EXPECTED_PR_HEAD\"\ngit cat-file -t \"$EXPECTED_PR_HEAD\" | grep -qx commit\n"
+            },
+            {
+              "name": "Install metadata dependency",
+              "run": "python -m pip install 'PyYAML>=6.0,<7'"
+            },
+            {
+              "name": "Test agent handoff generation and validation",
+              "run": "python -m unittest discover -s tests -p 'test_agent_workflow.py' -v"
+            },
+            {
+              "name": "Validate agent task, ContextPack and ExecutionBundle",
+              "run": "python scripts/agent_workflow.py validate"
+            },
+            {
+              "name": "Test detached cold-start reconstruction",
+              "run": "python -m unittest discover -s tests -p 'test_handoff_recovery.py' -v"
+            },
+            {
+              "name": "Test Level B packet export and tamper rejection",
+              "run": "python -m unittest discover -s tests -p 'test_level_b_export.py' -v"
+            },
+            {
+              "name": "Test Stage 4 spec traceability and negative cases",
+              "run": "python -m unittest discover -s tests -p 'test_spec_traceability.py' -v"
+            },
+            {
+              "name": "Validate source-to-spec references",
+              "run": "python scripts/spec_traceability.py validate"
+            },
+            {
+              "name": "Generate current-scope Stage 4 ContextPack",
+              "run": "python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml"
+            },
+            {
+              "name": "Validate generated Stage 4 ContextPack",
+              "run": "python scripts/agent_workflow.py validate"
+            },
+            {
+              "name": "Upload proposed Stage 4 ContextPack",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "vellistry-stage4-chapter-context",
+                "path": "docs/agent-workflow/context-packs/VEL-CP-0002.md",
+                "retention-days": "14",
+                "if-no-files-found": "error"
+              }
+            },
+            {
+              "name": "Test independent Stage 4 cold-start packet and tamper rejection",
+              "run": "python -m unittest discover -s tests -p 'test_stage4_independent_packet.py' -v"
+            },
+            {
+              "name": "Export reproducible independent Stage 4 cold-start ZIP",
+              "run": "python scripts/export_stage4_independent_packet.py --output stage4-independent-agent-packet.zip"
+            },
+            {
+              "name": "Upload isolated Stage 4 external-agent packet",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "vellistry-stage4-independent-agent-packet",
+                "path": "stage4-independent-agent-packet.zip",
+                "retention-days": "14",
+                "if-no-files-found": "error"
+              }
+            },
+            {
+              "name": "Export validated Level B agent packet",
+              "run": "python scripts/export_level_b_handoff.py --output level-b-test-packet.zip"
+            },
+            {
+              "name": "Upload Level B agent packet",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "vellistry-level-b-cold-start",
+                "path": "level-b-test-packet.zip",
+                "retention-days": "14",
+                "if-no-files-found": "error"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "combined-main-baseline.yml": {
+    "git_blob": "c093a8cc91a35c6fc80babf9e73556e9b125eeb9",
+    "workflow": {
+      "name": "Combined research and application baseline",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "CURRENT-STATE.md",
+            "docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md",
+            "docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md",
+            "docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md",
+            ".github/workflows/combined-main-baseline.yml",
+            "tests/test_research_design_gate.py",
+            "apps/**",
+            "supabase/**",
+            "docs/research/experiments/**",
+            "docs/research/spikes/**",
+            "docs/specs/**",
+            "scripts/**",
+            "tests/**",
+            "package.json",
+            "pnpm-workspace.yaml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "knowledge-and-synthetic": {
+          "name": "Current-gate integrity and merged Python contracts",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "12",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4",
+              "with": {
+                "fetch-depth": "0"
+              }
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Install YAML parser",
+              "run": "python -m pip install 'PyYAML>=6,<7'"
+            },
+            {
+              "name": "Validate accepted decision and history metadata",
+              "run": "python -m unittest discover -s tests -p 'test_knowledge_metadata.py' -v\npython scripts/check_knowledge_metadata.py\n"
+            },
+            {
+              "name": "Verify six-pair research and approval boundaries",
+              "run": "python -m unittest discover -s tests -p 'test_research_design_gate.py' -v"
+            },
+            {
+              "name": "Regress source-preserving R01 mapping gates",
+              "run": "python -m unittest discover -s tests -p 'test_r01_*.py' -v\n"
+            },
+            {
+              "name": "Regress Stage 3 agent provenance",
+              "run": "python -m unittest discover -s tests -p 'test_agent_workflow.py' -v\npython -m unittest discover -s tests -p 'test_handoff_recovery.py' -v\npython -m unittest discover -s tests -p 'test_level_b_export.py' -v\npython scripts/agent_workflow.py validate\n"
+            },
+            {
+              "name": "Regress Stage 4 source and synthetic chapter contracts",
+              "run": "python -m unittest discover -s tests -p 'test_spec_traceability.py' -v\npython scripts/spec_traceability.py validate\npython -m unittest discover -s tests -p 'test_stage4_chapter_contract.py' -v\n"
+            },
+            {
+              "name": "Regress merged Pair 03\u00e2\u20ac\u201c06 offline research evidence",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair03_*.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair04_offline_provider.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair05_synthetic_rules.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair06_legal_registry.py' -v\n"
+            }
+          ]
+        },
+        "app-build": {
+          "name": "Integrated Next and Nest build / typecheck",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "20",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "pnpm/action-setup@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install merged pnpm workspace (no hosted keys)",
+              "run": "pnpm install --no-frozen-lockfile"
+            },
+            {
+              "name": "Build and typecheck Nest API",
+              "run": "pnpm --filter @vellistry/api build\npnpm --filter @vellistry/api typecheck\n"
+            },
+            {
+              "name": "Build and typecheck Next web",
+              "env": {
+                "NEXT_TELEMETRY_DISABLED": "1"
+              },
+              "run": "pnpm --filter @vellistry/web build\npnpm --filter @vellistry/web typecheck\n"
+            }
+          ]
+        },
+        "postgres-synthetic-recovery": {
+          "name": "Merged PostgreSQL CAS and restore contract",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "16",
+          "services": {
+            "postgres": {
+              "image": "postgres:16",
+              "env": {
+                "POSTGRES_USER": "postgres",
+                "POSTGRES_PASSWORD": "pair06synthetic",
+                "POSTGRES_DB": "pair06db"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U postgres -d pair06db\" --health-interval 5s --health-timeout 3s --health-retries 10"
+            }
+          },
+          "env": {
+            "PGPASSWORD": "pair06synthetic",
+            "PAIR06_DATABASE_URL": "postgresql://postgres:pair06synthetic@127.0.0.1:5432/pair06db"
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Install PostgreSQL client binaries",
+              "run": "sudo apt-get update -qq\nsudo apt-get install -y postgresql-client\n"
+            },
+            {
+              "name": "Rerun disposable Pair 06 atomicity and independent restore",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "implementation-foundation.yml": {
+    "git_blob": "d9d7562a6616ca7184d12662663bbc9329673dc0",
+    "workflow": {
+      "name": "Vellistry implementation foundation",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "apps/**",
+            "package.json",
+            "pnpm-lock.yaml",
+            "pnpm-workspace.yaml",
+            "supabase/**",
+            ".github/workflows/implementation-foundation.yml",
+            "docs/decisions/ADR-0006-*",
+            "docs/history/2026-10-09-next-nest-supabase-*",
+            "docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md",
+            "README.md"
+          ]
+        },
+        "push": {
+          "paths": [
+            "apps/**",
+            "package.json",
+            "pnpm-lock.yaml",
+            "pnpm-workspace.yaml",
+            "supabase/**",
+            ".github/workflows/implementation-foundation.yml",
+            "docs/decisions/ADR-0006-*",
+            "docs/history/2026-10-09-next-nest-supabase-*",
+            "docs/plans/MVP-ENGINEERING-IMPLEMENTATION-KICKOFF-2026-10-09.md",
+            "README.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "build": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "20",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "pnpm/action-setup@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install without hosted secrets or paid APIs",
+              "run": "pnpm install --frozen-lockfile"
+            },
+            {
+              "name": "Regress Book Library isolation and unknown saves (synthetic)",
+              "run": "pnpm test:library-isolation"
+            },
+            {
+              "name": "Compile NestJS backend",
+              "run": "pnpm --filter @vellistry/api build"
+            },
+            {
+              "name": "Type-check NestJS backend",
+              "run": "pnpm --filter @vellistry/api typecheck"
+            },
+            {
+              "name": "Build Next.js frontend",
+              "env": {
+                "NEXT_TELEMETRY_DISABLED": "1"
+              },
+              "run": "pnpm --filter @vellistry/web build"
+            },
+            {
+              "name": "Type-check Next.js frontend",
+              "run": "pnpm --filter @vellistry/web typecheck"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "implementation-readiness.yml": {
+    "git_blob": "f02f4cf87779db3190094b8c00699291b7485e3c",
+    "workflow": {
+      "name": "Stage 5 agentic implementation readiness",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md",
+            "docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md",
+            "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md",
+            "docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml",
+            "docs/agent-workflow/tasks/VEL-TASK-0003.yaml",
+            "scripts/check_implementation_readiness.py",
+            "tests/test_implementation_readiness.py",
+            ".github/workflows/implementation-readiness.yml",
+            "CURRENT-STATE.md"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md",
+            "docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md",
+            "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md",
+            "docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml",
+            "docs/agent-workflow/tasks/VEL-TASK-0003.yaml",
+            "scripts/check_implementation_readiness.py",
+            "tests/test_implementation_readiness.py",
+            ".github/workflows/implementation-readiness.yml",
+            "CURRENT-STATE.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "preparation-guard": {
+          "name": "Gate-safe DAG, task and negative-case tests",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "10",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4",
+              "with": {
+                "fetch-depth": "0"
+              }
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Install metadata parser",
+              "run": "python -m pip install 'PyYAML>=6,<7'"
+            },
+            {
+              "name": "Validate DAG and non-waived owner gates",
+              "run": "python scripts/check_implementation_readiness.py"
+            },
+            {
+              "name": "Test positive and negative gate scenarios",
+              "run": "python -m unittest discover -s tests -p 'test_implementation_readiness.py' -v"
+            },
+            {
+              "name": "Validate all historical agent artifacts and new proposed task",
+              "run": "python scripts/agent_workflow.py validate"
+            },
+            {
+              "name": "Validate current source/spec traceability",
+              "run": "python scripts/spec_traceability.py validate"
+            },
+            {
+              "name": "Generate NEW pinned Stage 5 preparation ContextPack (not an agent run)",
+              "run": "python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml"
+            },
+            {
+              "name": "Validate generated immutable proposed packet",
+              "run": "python scripts/agent_workflow.py validate"
+            },
+            {
+              "name": "Upload proposed, non-authorized handoff packet",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "vellistry-stage5-preparation-context",
+                "path": "docs/agent-workflow/context-packs/VEL-CP-0003.md",
+                "if-no-files-found": "error",
+                "retention-days": "14"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "k2-supabase-auth-rls.yml": {
+    "git_blob": "c36559d27ead732ca310b97e5113efef560192ae",
+    "workflow": {
+      "name": "K2 real local Supabase Auth + author RLS security",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "apps/api/**",
+            "supabase/**",
+            ".github/workflows/k2-supabase-auth-rls.yml",
+            "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
+          ]
+        },
+        "push": {
+          "paths": [
+            "apps/api/**",
+            "supabase/**",
+            ".github/workflows/k2-supabase-auth-rls.yml",
+            "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "concurrency": {
+        "group": "vellistry-k2-supabase-${{ github.event.pull_request.number || github.ref }}",
+        "cancel-in-progress": "true"
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "real-supabase-security": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "30",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "pnpm/action-setup@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install no-paid-service project dependencies",
+              "run": "pnpm install --no-frozen-lockfile"
+            },
+            {
+              "name": "Pick free, temporary CI-only Supabase API/DB ports",
+              "run": "python3 - <<'PY'\nimport socket\nfrom pathlib import Path\nports = []\nfor _ in range(2):\n    with socket.socket() as sock:\n        sock.bind((\"127.0.0.1\", 0))\n        ports.append(sock.getsockname()[1])\ncfg = Path(\"supabase/config.toml\")\nraw = cfg.read_text(encoding=\"utf-8\")\nfor old, new in zip((54321, 54322), ports):\n    marker = f\"port = {old}\"\n    if marker not in raw:\n        raise SystemExit(f\"Local Supabase CI port marker missing: {marker}\")\n    raw = raw.replace(marker, f\"port = {new}\", 1)\ncfg.write_text(raw, encoding=\"utf-8\")\nprint(f\"Disposable local Supabase API/DB CI ports selected: {ports}\")\nPY\n"
+            },
+            {
+              "name": "Start real disposable local Supabase services",
+              "run": "# Retain database, Auth, PostgREST, API gateway. Exclude unrelated services.\n# Do not use a linked cloud project or production credentials.\npnpm exec supabase start --exclude realtime,storage-api,imgproxy,mailpit,studio,edge-runtime,logflare,vector,supavisor,postgres-meta\n"
+            },
+            {
+              "name": "Compile genuine NestJS API",
+              "run": "pnpm --filter @vellistry/api build"
+            },
+            {
+              "name": "Validate actual sign-up, RLS, tokens, cross-author data and logout behavior",
+              "shell": "bash",
+              "run": "set -euo pipefail\n# CLI output is trusted and local; NEVER print its secret values.\nset -a\nsource <(pnpm exec supabase status -o env)\nset +a\nexport SUPABASE_URL=\"${API_URL}\"\nexport SUPABASE_PUBLISHABLE_KEY=\"${PUBLISHABLE_KEY:-${ANON_KEY:-}}\"\nexport SUPABASE_TEST_SERVICE_KEY=\"${SERVICE_ROLE_KEY:-${SECRET_KEY:-}}\"\nexport API_PORT=4100\nexport API_HOST=127.0.0.1\nexport VELLISTRY_TEST_API_URL=http://127.0.0.1:4100\ntest -n \"${SUPABASE_URL}\"\ntest -n \"${SUPABASE_PUBLISHABLE_KEY}\"\ntest -n \"${SUPABASE_TEST_SERVICE_KEY}\"\nnode apps/api/dist/main.js >nest-k2.log 2>&1 &\nSERVER_PID=$!\ncleanup() {\n  kill \"$SERVER_PID\" 2>/dev/null || true\n  # Restrict diagnostic output to application startup/error lines.\n  tail -30 nest-k2.log || true\n}\ntrap cleanup EXIT\nready=0\nfor i in $(seq 1 60); do\n  if curl --fail --silent -o /dev/null http://127.0.0.1:4100/v1/health; then ready=1; break; fi\n  sleep 1\ndone\nif [ \"$ready\" != \"1\" ]; then echo \"Nest API unavailable\"; exit 1; fi\nnode apps/api/tests/supabase-auth-rls.integration.mjs\nnode apps/api/tests/k2b-session-exposure.integration.mjs\n# Observe auth.sessions row removal under local/global logout, separately from JWT validity.\nnode apps/api/tests/k2b-active-session-row.integration.mjs\n# This final experiment REVOKES grants and intentionally breaks Nest's\n# existing PostgREST book transport; run it last in disposable CI.\nnode apps/api/tests/k2b-data-api-lockdown.integration.mjs\n# Research-only restricted Nest / Postgres route proof uses a separate role.\n# Run AFTER old route is deliberately broken by grant-lockdown diagnostic.\ntest -n \"${DB_URL:-}\"\nnode apps/api/tests/k2b-private-nest-gateway.integration.mjs\n"
+            },
+            {
+              "name": "Attach synthetic-only results (no token or password)",
+              "if": "always()",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "k2-supabase-auth-rls-results",
+                "path": "k2-auth-rls-results.json\nk2b-session-observations.json\nk2b-live-session-row-observations.json\nk2b-lockdown-observations.json\nk2b-private-gateway-observations.json\n",
+                "if-no-files-found": "ignore",
+                "retention-days": "7"
+              }
+            },
+            {
+              "name": "Shut down disposable local Supabase",
+              "if": "always()",
+              "run": "pnpm exec supabase stop --no-backup || true"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "knowledge-metadata.yml": {
+    "git_blob": "ee78cd54f164461b6290b8c145bbc8b31054bdbb",
+    "workflow": {
+      "name": "Knowledge metadata",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/decisions/**",
+            "docs/history/**",
+            "docs/governance/**",
+            "scripts/check_knowledge_metadata.py",
+            "tests/test_knowledge_metadata.py",
+            "CURRENT-STATE.md",
+            ".github/workflows/knowledge-metadata.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/decisions/**",
+            "docs/history/**",
+            "docs/governance/**",
+            "scripts/check_knowledge_metadata.py",
+            "tests/test_knowledge_metadata.py",
+            "CURRENT-STATE.md",
+            ".github/workflows/knowledge-metadata.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "metadata": {
+          "name": "Validate ADR and history metadata",
+          "runs-on": "ubuntu-latest",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Install YAML parser",
+              "run": "python -m pip install 'PyYAML>=6.0,<7'"
+            },
+            {
+              "name": "Run positive and negative regression tests",
+              "run": "python -m unittest discover -s tests -p 'test_knowledge_metadata.py' -v"
+            },
+            {
+              "name": "Validate metadata",
+              "run": "python scripts/check_knowledge_metadata.py"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "option-b-wave02-docx-fidelity.yml": {
+    "git_blob": "dc09e9d6a0815ba2547c3ce09ac2d64aa1dbcd70",
+    "workflow": {
+      "name": "Option B Wave 2 DOCX fidelity and recovery research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/pair_wave02_*",
+            "docs/research/experiments/test_pair_wave02_*",
+            ".github/workflows/option-b-wave02-docx-fidelity.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/pair_wave02_*",
+            "docs/research/experiments/test_pair_wave02_*",
+            ".github/workflows/option-b-wave02-docx-fidelity.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "docx-structural-and-portable-recovery": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "8",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "name": "Install MIT python-docx and no-paid dependencies",
+              "run": "sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-docx"
+            },
+            {
+              "name": "Controlled semantic DOCX roundtrip and original backup invariants",
+              "run": "/usr/bin/python3 -m unittest discover -s docs/research/experiments -p 'test_pair_wave02_docx.py' -v\n/usr/bin/python3 -m unittest discover -s docs/research/experiments -p 'test_pair03_portability.py' -v\n"
+            }
+          ]
+        },
+        "pandoc-independent-word-style-measurement": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "10",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "name": "Install independent free Pandoc + python-docx",
+              "run": "sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends pandoc python3-docx"
+            },
+            {
+              "name": "Measure DOCX Markdown DOCX paragraph/mark fidelity",
+              "run": "/usr/bin/python3 docs/research/experiments/pair_wave02_pandoc_probe.py"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "option-b-wave03-privacy-story-profiles.yml": {
+    "git_blob": "d968ecb7b1a2e80cdbe8eea3b4d9b4be59657999",
+    "workflow": {
+      "name": "Option B Wave 3 security and Story Profiles research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/wave03_*",
+            "docs/research/experiments/test_wave03_*",
+            "docs/research/OPTION-B-WAVE03-*",
+            ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/wave03_*",
+            "docs/research/experiments/test_wave03_*",
+            "docs/research/OPTION-B-WAVE03-*",
+            ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "scoped-security-threat-model": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "7",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Synthetic session/Storage/deletion boundaries and actual source gap audit",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_wave03_security_boundary.py' -v"
+            }
+          ]
+        },
+        "temporal-canon-extractor-errors": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "7",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Actual labeled deterministic extraction misses and StoryContract scenarios",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_wave03_story_profiles.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair03_story_profiles.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v\n"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "option-b-wave06-recovery.yml": {
+    "git_blob": "8dce47dccc6ff8529732bba926e900efcb712d25",
+    "workflow": {
+      "name": "Option B Wave 6 recovery contract research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/wave06_*",
+            "docs/research/experiments/test_wave06_*",
+            "docs/research/OPTION-B-WAVE06-*",
+            ".github/workflows/option-b-wave06-recovery.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/wave06_*",
+            "docs/research/experiments/test_wave06_*",
+            ".github/workflows/option-b-wave06-recovery.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "offline-failure-and-recovery-matrix": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "8",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Run twenty deterministic recovery failure cases",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_wave06_recovery_contract.py' -v"
+            },
+            {
+              "name": "Regress ten supported portable project backup cases",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair03_portability.py' -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "pair03-r11-r07-research.yml": {
+    "git_blob": "07509e3230895e7ab0ad0746567c10bcc3ac1dfe",
+    "workflow": {
+      "name": "Pair 03 R11 portability and R07 profiles research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/pair03_*",
+            "docs/research/experiments/test_pair03_*",
+            ".github/workflows/pair03-r11-r07-research.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/pair03_*",
+            "docs/research/experiments/test_pair03_*",
+            ".github/workflows/pair03-r11-r07-research.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "backup-text-and-temporal-profile": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "10",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "R11 TXT/archive and R07 multi-scene deterministic checks",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair03_*.py' -v\n# Retain and regress the existing 20 source-gating tests as well.\npython -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v\n"
+            }
+          ]
+        },
+        "calibre-docx-fidelity": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "25",
+          "env": {
+            "QT_QPA_PLATFORM": "offscreen"
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "name": "Install no-paid Calibre engine and python-docx from Ubuntu packages",
+              "run": "sudo apt-get update -qq\nsudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends calibre python3-docx\n"
+            },
+            {
+              "name": "Calibre synthetic DOCX -> EPUB -> DOCX fidelity probe",
+              "run": "command -v ebook-convert\n/usr/bin/python3 docs/research/experiments/pair03_calibre_probe.py\n"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "pair04-offline-provider-corpus.yml": {
+    "git_blob": "d7bfc66be06c7284f96bd517d1ff5eb96f397ea4",
+    "workflow": {
+      "name": "Pair 04 offline provider and corpus research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/pair04_*",
+            "docs/research/experiments/test_pair04_*",
+            "docs/research/independent-alternatives/pairs-04-05/**",
+            ".github/workflows/pair04-offline-provider-corpus.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/pair04_*",
+            "docs/research/experiments/test_pair04_*",
+            "docs/research/independent-alternatives/pairs-04-05/**",
+            ".github/workflows/pair04-offline-provider-corpus.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "no-network-research-contract": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "5",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Validate imported independent corpus structures only",
+              "run": "python docs/research/independent-alternatives/pairs-04-05/validate_fixtures.py"
+            },
+            {
+              "name": "Check offline consent, privacy, limits, failure and corpus rules",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair04_offline_provider.py' -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "pair05-synthetic-rules-tiptap.yml": {
+    "git_blob": "f8d8ba3ef94927c80a85a971460bf39b5f062671",
+    "workflow": {
+      "name": "Pair 05 simulated rules and Tiptap patch research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/pair05_*",
+            "docs/research/experiments/test_pair05_*",
+            "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs",
+            ".github/workflows/pair05-synthetic-rules-tiptap.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/pair05_*",
+            "docs/research/experiments/test_pair05_*",
+            "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs",
+            ".github/workflows/pair05-synthetic-rules-tiptap.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "synthetic-scoped-guidance": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "5",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Simulated Rule Studio scope/override checks",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair05_synthetic_rules.py' -v"
+            }
+          ]
+        },
+        "tiptap-proposed-edits": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "12",
+          "defaults": {
+            "run": {
+              "working-directory": "docs/research/spikes/tiptap3-headless"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install real open-source Tiptap 3 and jsdom",
+              "run": "npm install --no-audit --no-fund"
+            },
+            {
+              "name": "Test real ProseMirror proposal safety without production server",
+              "run": "node --test pair05_patch.test.mjs"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "pair06-legal-postgres-recovery.yml": {
+    "git_blob": "1834432bf0873100e557251b4726ab2d62d6b714",
+    "workflow": {
+      "name": "Pair 06 license governance and real PostgreSQL recovery research",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/pair06_*",
+            "docs/research/experiments/test_pair06_*",
+            "docs/research/PAIR-06-LEGAL-OPERATING-RISK-REGISTER.json",
+            ".github/workflows/pair06-legal-postgres-recovery.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/experiments/pair06_*",
+            "docs/research/experiments/test_pair06_*",
+            "docs/research/PAIR-06-LEGAL-OPERATING-RISK-REGISTER.json",
+            ".github/workflows/pair06-legal-postgres-recovery.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "license-privacy-evidence-index": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "5",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Validate unresolved legal/rights/privacy/operating risk inventory",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair06_legal_registry.py' -v"
+            }
+          ]
+        },
+        "postgres-cas-backup-restore": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "12",
+          "services": {
+            "postgres": {
+              "image": "postgres:16",
+              "env": {
+                "POSTGRES_USER": "postgres",
+                "POSTGRES_PASSWORD": "pair06synthetic",
+                "POSTGRES_DB": "pair06db"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U postgres -d pair06db\" --health-interval 5s --health-timeout 3s --health-retries 10"
+            }
+          },
+          "env": {
+            "PGPASSWORD": "pair06synthetic",
+            "PAIR06_DATABASE_URL": "postgresql://postgres:pair06synthetic@127.0.0.1:5432/pair06db"
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Install PostgreSQL client binaries",
+              "run": "sudo apt-get update -qq\nsudo apt-get install -y postgresql-client\n"
+            },
+            {
+              "name": "Live PostgreSQL atomicity retry and clean-restore tests (synthetic only)",
+              "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r01-manifest.yml": {
+    "git_blob": "7176fec5a9029288e78fd48a4581dc40ba2edd44",
+    "workflow": {
+      "name": "R01 source-variant manifest validation",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "scripts/r01_manifest.py",
+            "tests/test_r01_manifest.py",
+            "tests/test_r01_mapping_gate.py",
+            "scripts/r01_mapping_gate.py",
+            "docs/research/R01-CONFLICT-MAPPING-REVIEW-2026-10-09.md",
+            "docs/research/R01-PAIR-01-OWNER-RULE-PACK-2026-10-09.md",
+            ".github/workflows/r01-manifest.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "scripts/r01_manifest.py",
+            "tests/test_r01_manifest.py",
+            "docs/research/R01-PAIR-01-OWNER-RULE-PACK-2026-10-09.md",
+            ".github/workflows/r01-manifest.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "synthetic-parser": {
+          "runs-on": "ubuntu-latest",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Test version-aware source parser (synthetic-only, no author source upload)",
+              "run": "python -m unittest discover -s tests -p \"test_r01_*.py\" -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r01-review-packet.yml": {
+    "git_blob": "7975d51abd6f780fb5088ef399e3e4ae84142e95",
+    "workflow": {
+      "name": "R01 review packet research tests",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "scripts/r01_manifest.py",
+            "scripts/r01_review_packet.py",
+            "scripts/r01_mapping_proposal.py",
+            "tests/test_r01_review_packet.py",
+            "tests/test_r01_mapping_proposal.py",
+            ".github/workflows/r01-review-packet.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "scripts/r01_manifest.py",
+            "scripts/r01_review_packet.py",
+            "tests/test_r01_review_packet.py",
+            ".github/workflows/r01-review-packet.yml"
+          ]
+        }
+      },
+      "jobs": {
+        "review-packet-synthetic": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "5",
+          "permissions": {
+            "contents": "read"
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Validate source variants and explicit mapping boundaries (synthetic only)",
+              "run": "python -m unittest discover -s tests -p \"test_r01_review_packet.py\" -v\npython -m unittest discover -s tests -p \"test_r01_mapping_proposal.py\" -v\n"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r05-tiptap3-spike.yml": {
+    "git_blob": "443a9f5a7b0457d014bb28124a7f1568d5770c53",
+    "workflow": {
+      "name": "R05 Tiptap3 isolated editor spike",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/tiptap3-headless/**",
+            ".github/workflows/r05-tiptap3-spike.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/research/spikes/tiptap3-headless/**",
+            ".github/workflows/r05-tiptap3-spike.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "editor-spike": {
+          "name": "Tiptap 3 headless editing behavior (nonproduction)",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "8",
+          "defaults": {
+            "run": {
+              "working-directory": "docs/research/spikes/tiptap3-headless"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "22"
+              }
+            },
+            {
+              "name": "Install isolated test dependencies (not an application dependency decision)",
+              "run": "npm install --no-audit --no-fund"
+            },
+            {
+              "name": "Show exact dependency versions",
+              "run": "npm ls @tiptap/core @tiptap/pm @tiptap/starter-kit jsdom --depth=0"
+            },
+            {
+              "name": "Execute actual Tiptap 3 jsdom smoke tests",
+              "run": "npm test"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r06-synthetic-research.yml": {
+    "git_blob": "a36f5ce6130a69549bee45f5ce966c99c52a49f2",
+    "workflow": {
+      "name": "R06 synthetic research contract",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/r06_synthetic_request_simulator.py",
+            ".github/workflows/r06-synthetic-research.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/research/experiments/r06_synthetic_request_simulator.py",
+            ".github/workflows/r06-synthetic-research.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "synthetic-contract": {
+          "name": "Validate simulated request inclusion and isolation",
+          "runs-on": "ubuntu-latest",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Run R06 synthetic contract tests \u00e2\u20ac\u201d not model quality tests",
+              "run": "python docs/research/experiments/r06_synthetic_request_simulator.py"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r07-story-state-contract.yml": {
+    "git_blob": "2022a5a780ff478a64e1b3c86a9763620a8f7667",
+    "workflow": {
+      "name": "R07 synthetic author-approved story state contract",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/experiments/r07_story_state_contract.py",
+            "docs/research/experiments/test_r07_story_state_contract.py",
+            ".github/workflows/r07-story-state-contract.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/research/experiments/r07_story_state_contract.py",
+            "docs/research/experiments/test_r07_story_state_contract.py",
+            ".github/workflows/r07-story-state-contract.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "story-state": {
+          "name": "Verify synthetic story approval contract",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "5",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Run no-network stdlib-only tests",
+              "working-directory": "docs/research/experiments",
+              "run": "python -m unittest -v test_r07_story_state_contract"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r18-browser-recovery.yml": {
+    "git_blob": "f9dbeb2efd596be9a2cecb1ce359396e6d34cd5e",
+    "workflow": {
+      "name": "R18 Tiptap browser recovery comparison",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/r18-framework-slice/**",
+            ".github/workflows/r18-browser-recovery.yml",
+            "docs/reports/R18-BROWSER-WRITING-AND-DRAFT-RECOVERY-2026-10-09.md"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/spikes/r18-framework-slice/**",
+            ".github/workflows/r18-browser-recovery.yml",
+            "docs/reports/R18-BROWSER-WRITING-AND-DRAFT-RECOVERY-2026-10-09.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "browser-recovery": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "25",
+          "services": {
+            "postgres": {
+              "image": "postgres:17",
+              "env": {
+                "POSTGRES_DB": "vellistry_frameworks",
+                "POSTGRES_USER": "vellistry",
+                "POSTGRES_PASSWORD": "synthetic-only"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U vellistry -d vellistry_frameworks\" --health-interval 5s --health-timeout 5s --health-retries 20"
+            }
+          },
+          "defaults": {
+            "run": {
+              "working-directory": "docs/research/spikes/r18-framework-slice"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install community packages",
+              "run": "npm install --no-audit --no-fund"
+            },
+            {
+              "name": "Install Chromium for real browser testing",
+              "run": "npx playwright install --with-deps chromium"
+            },
+            {
+              "name": "Seed synthetic two-owner database",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks"
+              },
+              "run": "npm run seed"
+            },
+            {
+              "name": "Test authoring and IndexedDB recovery through both frontends",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks",
+                "NEXT_TELEMETRY_DISABLED": "1",
+                "CI": "1"
+              },
+              "run": "./node_modules/.bin/next dev apps/next --hostname 127.0.0.1 --port 3100 >next.log 2>&1 &\nNEXT_PID=$!\n./node_modules/.bin/tsx --tsconfig apps/nest/tsconfig.json apps/nest/api.ts >nest.log 2>&1 &\nNEST_PID=$!\n./node_modules/.bin/vite --config apps/vite/vite.config.mjs >vite.log 2>&1 &\nVITE_PID=$!\ncleanup() {\n  echo '--- NEXT LAST LINES ---'; tail -45 next.log || true\n  echo '--- NEST LAST LINES ---'; tail -45 nest.log || true\n  echo '--- VITE LAST LINES ---'; tail -45 vite.log || true\n  kill \"$NEXT_PID\" \"$NEST_PID\" \"$VITE_PID\" 2>/dev/null || true\n}\ntrap cleanup EXIT\nfor port in 3100 3101 5173; do\n  ready=0\n  for attempt in $(seq 1 100); do\n    if curl -fsS -o /dev/null \"http://127.0.0.1:$port/\" ||\n      [ \"$(curl -s -o /dev/null -w '%{http_code}' \"http://127.0.0.1:$port/api/books/book-a/chapters/chapter-1\")\" = \"401\" ]; then\n        ready=1\n        break\n    fi\n    sleep 1\n  done\n  if [ \"$ready\" != 1 ]; then\n    echo \"service at $port failed to become ready\"\n    exit 1\n  fi\ndone\nnpm run test:browser\n"
+            },
+            {
+              "name": "Collect browser traces on failure",
+              "if": "failure()",
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "r18-browser-recovery-traces",
+                "path": "docs/research/spikes/r18-framework-slice/test-results/",
+                "retention-days": "7"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r18-framework-comparison.yml": {
+    "git_blob": "237d2fa566c60a3cf7a68fbb1a3b39e5fce1371d",
+    "workflow": {
+      "name": "R18 framework authoring contract comparison",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/r18-framework-slice/**",
+            ".github/workflows/r18-framework-comparison.yml",
+            "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/spikes/r18-framework-slice/**",
+            ".github/workflows/r18-framework-comparison.yml",
+            "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "authoring": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "20",
+          "services": {
+            "postgres": {
+              "image": "postgres:17",
+              "env": {
+                "POSTGRES_DB": "vellistry_frameworks",
+                "POSTGRES_USER": "vellistry",
+                "POSTGRES_PASSWORD": "synthetic-only"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U vellistry -d vellistry_frameworks\" --health-interval 5s --health-timeout 5s --health-retries 20"
+            }
+          },
+          "defaults": {
+            "run": {
+              "working-directory": "docs/research/spikes/r18-framework-slice"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "24"
+              }
+            },
+            {
+              "name": "Install community open-source dependencies",
+              "run": "npm install --no-audit --no-fund"
+            },
+            {
+              "name": "Record actually resolved framework versions",
+              "run": "node -p \"'next '+require('next/package.json').version\"\nnode -p \"'react '+require('react/package.json').version\"\nnode -p \"'nest '+require('@nestjs/core/package.json').version\"\nnode -p \"'vite '+require('vite/package.json').version\"\nnode -p \"'tiptap '+JSON.parse(require('node:fs').readFileSync('node_modules/@tiptap/react/package.json','utf8')).version\"\n"
+            },
+            {
+              "name": "Seed isolated two-author PostgreSQL data",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks"
+              },
+              "run": "npm run seed"
+            },
+            {
+              "name": "Run both API adapters under the same HTTP contract",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks",
+                "NEXT_TELEMETRY_DISABLED": "1"
+              },
+              "run": "./node_modules/.bin/next dev apps/next --hostname 127.0.0.1 --port 3100 > next.log 2>&1 &\nNEXT_PID=$!\n./node_modules/.bin/tsx --tsconfig apps/nest/tsconfig.json apps/nest/api.ts > nest.log 2>&1 &\nNEST_PID=$!\ncleanup() {\n  echo '--- NEXT LOG ---'; tail -80 next.log || true\n  echo '--- NEST LOG ---'; tail -80 nest.log || true\n  kill \"$NEXT_PID\" \"$NEST_PID\" 2>/dev/null || true\n}\ntrap cleanup EXIT\nfor port in 3100 3101; do\n  ok=0\n  for attempt in $(seq 1 90); do\n    if [ \"$(curl -s -o /dev/null -w '%{http_code}' \"http://127.0.0.1:$port/api/books/book-a/chapters/chapter-1\" || true)\" = \"401\" ]; then\n      ok=1\n      break\n    fi\n    sleep 1\n  done\n  if [ \"$ok\" != 1 ]; then echo \"API $port did not become ready\"; exit 1; fi\ndone\nnpm run test:http\n"
+            },
+            {
+              "name": "Build Vite/Tiptap frontend",
+              "run": "npm run build:vite"
+            },
+            {
+              "name": "Build Next/Tiptap application",
+              "env": {
+                "NEXT_TELEMETRY_DISABLED": "1",
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@127.0.0.1:5432/vellistry_frameworks"
+              },
+              "run": "npm run build:next"
+            },
+            {
+              "uses": "actions/upload-artifact@v4",
+              "if": "always()",
+              "with": {
+                "name": "r18-http-contract-evidence",
+                "path": "docs/research/spikes/r18-framework-slice/http-contract-results.json\n",
+                "retention-days": "7"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r18-postgres-memory.yml": {
+    "git_blob": "5957dbffb40e58d93dcfd53c73f2eb7996f02608",
+    "workflow": {
+      "name": "R18 PostgreSQL temporal story memory",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/r18-postgres-memory/**",
+            "docs/reports/R18-POSTGRES-MEMORY-SECURITY-AND-RETRIEVAL-2026-10-09.md",
+            ".github/workflows/r18-postgres-memory.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/spikes/r18-postgres-memory/**",
+            "docs/reports/R18-POSTGRES-MEMORY-SECURITY-AND-RETRIEVAL-2026-10-09.md",
+            ".github/workflows/r18-postgres-memory.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "postgres-memory": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "15",
+          "services": {
+            "postgres": {
+              "image": "postgres:17",
+              "env": {
+                "POSTGRES_DB": "vellistry_memory",
+                "POSTGRES_USER": "vellistry",
+                "POSTGRES_PASSWORD": "synthetic-only"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U vellistry -d vellistry_memory\" --health-interval 5s --health-timeout 5s --health-retries 15"
+            }
+          },
+          "steps": [
+            {
+              "name": "Checkout exact PR head",
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "name": "Ensure PostgreSQL client",
+              "run": "if ! command -v psql >/dev/null 2>&1; then\n  sudo apt-get update -qq\n  sudo apt-get install -y postgresql-client\nfi\npsql --version\n"
+            },
+            {
+              "name": "Run schema and 12 fail-fast assertion groups",
+              "env": {
+                "PGPASSWORD": "synthetic-only",
+                "PGHOST": "localhost",
+                "PGPORT": "5432",
+                "PGUSER": "vellistry",
+                "PGDATABASE": "vellistry_memory"
+              },
+              "run": "psql -X -v ON_ERROR_STOP=1 \\\n  -f docs/research/spikes/r18-postgres-memory/schema.sql \\\n  -f docs/research/spikes/r18-postgres-memory/assertions.sql\n"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r18-retrieval-benchmark.yml": {
+    "git_blob": "1613b1cb950310b943a43f6cadcc9a7c2e7e6268",
+    "workflow": {
+      "name": "R18 long-manuscript retrieval benchmark",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/r18-retrieval/**",
+            ".github/workflows/r18-retrieval-benchmark.yml",
+            "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/spikes/r18-retrieval/**",
+            ".github/workflows/r18-retrieval-benchmark.yml",
+            "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "lexical": {
+          "name": "PostgreSQL FTS baseline",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "12",
+          "services": {
+            "postgres": {
+              "image": "pgvector/pgvector:0.8.6-pg17",
+              "env": {
+                "POSTGRES_USER": "vellistry",
+                "POSTGRES_DB": "vellistry_retrieval",
+                "POSTGRES_PASSWORD": "synthetic-only"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U vellistry -d vellistry_retrieval\" --health-interval 5s --health-timeout 5s --health-retries 20"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.11"
+              }
+            },
+            {
+              "name": "Install open-source PostgreSQL client",
+              "run": "python -m pip install \"psycopg[binary]>=3.2,<4\""
+            },
+            {
+              "name": "Run 100k-word indexed lexical benchmark",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@localhost:5432/vellistry_retrieval"
+              },
+              "run": "python docs/research/spikes/r18-retrieval/benchmark.py \\\n  --mode lexical --output retrieval-lexical.json\n"
+            },
+            {
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "r18-lexical-results",
+                "path": "retrieval-lexical.json",
+                "retention-days": "7"
+              }
+            }
+          ]
+        },
+        "semantic": {
+          "name": "PostgreSQL vector and hybrid CPU-only",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "20",
+          "services": {
+            "postgres": {
+              "image": "pgvector/pgvector:0.8.6-pg17",
+              "env": {
+                "POSTGRES_USER": "vellistry",
+                "POSTGRES_DB": "vellistry_retrieval",
+                "POSTGRES_PASSWORD": "synthetic-only"
+              },
+              "ports": [
+                "5432:5432"
+              ],
+              "options": "--health-cmd \"pg_isready -U vellistry -d vellistry_retrieval\" --health-interval 5s --health-timeout 5s --health-retries 20"
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.11"
+              }
+            },
+            {
+              "name": "Install open-source CPU embedding and PostgreSQL clients",
+              "run": "python -m pip install \"psycopg[binary]>=3.2,<4\" \"fastembed==0.8.1\""
+            },
+            {
+              "name": "Generate local 384d embeddings and compare ranked retrieval",
+              "env": {
+                "DATABASE_URL": "postgresql://vellistry:synthetic-only@localhost:5432/vellistry_retrieval",
+                "HF_HUB_DISABLE_TELEMETRY": "1",
+                "OMP_NUM_THREADS": "2"
+              },
+              "run": "python docs/research/spikes/r18-retrieval/benchmark.py \\\n  --mode full --output retrieval-full.json\n"
+            },
+            {
+              "uses": "actions/upload-artifact@v4",
+              "with": {
+                "name": "r18-hybrid-results",
+                "path": "retrieval-full.json",
+                "retention-days": "7"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "r18-story-memory.yml": {
+    "git_blob": "15ffa684bc4880340684940df5c0e15857d1d390",
+    "workflow": {
+      "name": "R18 synthetic story memory",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/r18-fiction-memory/**",
+            ".github/workflows/r18-story-memory.yml"
+          ]
+        },
+        "push": {
+          "paths": [
+            "docs/research/spikes/r18-fiction-memory/**",
+            ".github/workflows/r18-story-memory.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "memory": {
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "10",
+          "steps": [
+            {
+              "name": "Checkout",
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "name": "Use Node.js 22",
+              "uses": "actions/setup-node@v4",
+              "with": {
+                "node-version": "22"
+              }
+            },
+            {
+              "name": "Run synthetic no-dependency memory tests",
+              "run": "node --test docs/research/spikes/r18-fiction-memory/memory.test.mjs"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "stage4-independent-cursor-evidence.yml": {
+    "git_blob": "118dbcc35e8d6b1221f8d7757773a601478453ac",
+    "workflow": {
+      "name": "Stage 4 independent Cursor evidence reproduction",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/**",
+            "docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md",
+            "docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md",
+            ".github/workflows/stage4-independent-cursor-evidence.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/**",
+            "docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md",
+            ".github/workflows/stage4-independent-cursor-evidence.yml"
+          ]
+        },
+        "workflow_dispatch": ""
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "independently-reproduce": {
+          "name": "Verify archived Cursor artifacts and rerun original synthetic tests",
+          "runs-on": "ubuntu-latest",
+          "timeout-minutes": "8",
+          "strategy": {
+            "fail-fast": "false",
+            "matrix": {
+              "python-version": [
+                "3.10",
+                "3.13"
+              ]
+            }
+          },
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "${{ matrix.python-version }}"
+              }
+            },
+            {
+              "name": "Verify exact SHA-256 for original unedited agent files",
+              "working-directory": "docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003",
+              "run": "printf '%s  %s\\n' '4365f4ff676e5e272409ed913a2b2c003e69451a75a331aad176243c5eb36578' 'VEL-EB-0002-INDEPENDENT.md' \\\n  '74705667484e5a9f0969f9ca37760da252fb11e76f3b3cb98c3b8a0fcc410c15' 'synthetic_chapter_contract.py' \\\n  '9790507cc129abc01ee4cabba063ee20cc038564d3ffa77c19c31668726d2194' 'test_synthetic_chapter_contract.py' | sha256sum -c -\n"
+            },
+            {
+              "name": "Compile both original Python modules",
+              "working-directory": "docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003",
+              "run": "python -I -S -m py_compile synthetic_chapter_contract.py test_synthetic_chapter_contract.py"
+            },
+            {
+              "name": "Independently execute all 17 original synthetic tests",
+              "working-directory": "docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003",
+              "run": "python -m unittest -v"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "stage4-synthetic-chapter-contract.yml": {
+    "git_blob": "ed256afaa1bc5de6ad9f34e4ef0d796266900123",
+    "workflow": {
+      "name": "Stage 4 synthetic chapter contract",
+      "on": {
+        "pull_request": {
+          "paths": [
+            "docs/research/spikes/stage4-synthetic-chapter-contract/**",
+            "tests/test_stage4_chapter_contract.py",
+            "docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md",
+            ".github/workflows/stage4-synthetic-chapter-contract.yml"
+          ]
+        },
+        "push": {
+          "branches": [
+            "main"
+          ],
+          "paths": [
+            "docs/research/spikes/stage4-synthetic-chapter-contract/**",
+            "tests/test_stage4_chapter_contract.py",
+            "docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md",
+            ".github/workflows/stage4-synthetic-chapter-contract.yml"
+          ]
+        }
+      },
+      "permissions": {
+        "contents": "read"
+      },
+      "jobs": {
+        "chapter-contract": {
+          "name": "Run invented-author chapter contract scenarios",
+          "runs-on": "ubuntu-latest",
+          "steps": [
+            {
+              "uses": "actions/checkout@v4"
+            },
+            {
+              "uses": "actions/setup-python@v5",
+              "with": {
+                "python-version": "3.12"
+              }
+            },
+            {
+              "name": "Run all synthetic contract and negative cases",
+              "run": "python -m unittest discover -s tests -p 'test_stage4_chapter_contract.py' -v"
+            },
+            {
+              "name": "Confirm no runtime third-party dependencies",
+              "run": "python -m compileall -q docs/research/spikes/stage4-synthetic-chapter-contract"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

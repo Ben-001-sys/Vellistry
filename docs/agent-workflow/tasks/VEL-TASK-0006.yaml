@@ -1,0 +1,85 @@
+id: VEL-TASK-0006
+title: VEL-CI-OPT-001 consolidate CI without weakening required verification
+type: implementation-task
+status: in-progress
+created_at: '2026-10-16'
+updated_at: '2026-10-16'
+owner: project_owner
+context_pack_id: VEL-CP-0006
+objective: 'Execute Issue #69: replace redundant automatic CI with one conservatively classified primary
+  workflow, preserve meaningful security/governance/negative coverage and manual historical reproducibility,
+  measure only actual available evidence, and submit a draft PR without merging.'
+in_scope:
+- .github/workflows/** trigger consolidation and primary ci.yml
+- scripts/ci_*.py and tests/test_ci_*.py for routing, gates and governance orchestration
+- docs/agent-workflow/tasks/VEL-TASK-0006.yaml, immutable VEL-CP-0006.md and VEL-EB-0006.md
+- docs/agent-workflow/inputs/VEL-TASK-0006-* and docs/reports/VEL-CI-OPT-001* evidence
+- CURRENT-STATE.md material status update; dependency caches hold only non-secret package data
+out_of_scope:
+- PR65/68 edits, product features, application Auth or migration corrections
+- Hosted Supabase reads/writes, users, secrets, manuscripts, deployment
+- Billing/spending/auth-scope/protection/admin changes and PR merges
+- Accepted decision changes, waived release/private-pilot gates or paid provider calls
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: accepted-governance
+- path: SOURCE-OF-TRUTH.md
+  role: accepted-source-authority
+- path: AGENTS.md
+  role: agent-instructions
+- path: docs/agent-workflow/README.md
+  role: operational-handoff-contract
+- path: docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
+  role: proposed-protocol-subject-to-owner-dispatch
+- path: docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md
+  role: accepted-architecture
+- path: docs/agent-workflow/inputs/VEL-TASK-0006-ISSUE-69.md
+  role: explicit-owner-task-snapshot
+- path: docs/agent-workflow/inputs/VEL-TASK-0006-ADR-0008.md
+  role: owner-selected-ADR-from-unmerged-PR66
+- path: docs/reports/VEL-CI-OPT-001-COVERAGE-2026-10-16.md
+  role: pre-edit-coverage-audit
+- path: .github/workflows/agent-workflow.yml
+  role: original-provenance-jobs
+- path: .github/workflows/combined-main-baseline.yml
+  role: original-integrated-baseline
+- path: .github/workflows/k2-supabase-auth-rls.yml
+  role: original-required-security-probes
+source_gaps:
+- id: BILLING
+  limitation: Usage API unavailable without extra user scope; blocked starts are not billed minutes.
+- id: HOSTED
+  limitation: Hosted acceptance and signed-out unexpired JWT risk remain unverified and outside scope.
+- id: CROSS-PR
+  limitation: PR68 SQL privilege regression/preflight are not on main; preserve future wiring, do not
+    import schema fix.
+- id: IDENTITY
+  limitation: Codex system identifies GPT-6; precise build not exposed; same-session pack is not independent
+    cold-start evidence.
+deliverables:
+- Pre-edit old-to-new coverage audit and raw baseline metrics
+- Unique task and committed validated immutable ContextPack before CI edits
+- One automatic CI, conservative classifier and fail-closed final gate with regression tests
+- ExecutionBundle with actual commands/exits/SHAs, limitations, rollback and draft PR
+acceptance_criteria:
+- One unfiltered primary automatic PR workflow and one main push baseline; full manual mode
+- Preserve root governance/provenance/readiness/metadata/traceability and 66 library regressions
+- Auth/backend ownership/SQL/migration/lockfile/CI changes mandate real disposable security checks
+- Docs-only, rename/deletion, unknown paths, ready_for_review, main and manual classification covered
+- Final gate fails missing, skipped-applicable, failed, cancelled or malformed required results
+- No duplicate app install/build in automatic path; PR-only concurrency cancellation
+- All original workflow job bodies intact and manually dispatchable; required current checks mapped before
+  disable
+- Actual run behavior and billing limitations disclosed; no synthetic savings claims
+- Draft PR and owner/ChatGPT review pending; no merge or sensitive operations
+allowed_actions:
+- Read repo/GitHub issues, PR sources, run/job metadata, protection and billing metrics without mutation
+- Create isolated branch, canonical task and source snapshots; commit and generate/validate immutable
+  pack
+- After handoff validation implement scoped CI/scripts/tests and execute disposable local/CI tests
+- Push task branch and open/update draft PR; report evidence for ChatGPT independent review and owner
+  approval
+approval_required_for:
+- Merge, spending/billing, protection/admin or auth-scope changes
+- Hosted operations, secrets, private data, deployment, paid APIs or unrelated code
+- Any expansion beyond the Issue69 CI permission envelope

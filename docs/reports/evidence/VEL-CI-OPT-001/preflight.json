@@ -1,0 +1,11 @@
+{
+  "main": "4b3996ef7cda878e1af3d679454bd1bb873a79c2",
+  "original_checkout": "78f80bb33a27db362202b81d04db05919fd77a52",
+  "adr0008_pr66_head": "36da413fea67179ac8395af1cececd477fd193a2",
+  "refs_checked": 84,
+  "reserved_id_collisions": [],
+  "classic_branch_protection": "404 Branch not protected",
+  "effective_branch_rules": [],
+  "billing_usage": "404: token lacks user scope; no scope refresh or billing mutation attempted",
+  "runner_minutes": "unavailable; starts are not billable minutes"
+}

@@ -1,0 +1,8 @@
+{
+  ".github/workflows/combined-main-baseline.yml": 73,
+  ".github/workflows/agent-workflow.yml": 12,
+  ".github/workflows/knowledge-metadata.yml": 69,
+  ".github/workflows/implementation-readiness.yml": 69,
+  ".github/workflows/implementation-foundation.yml": 50,
+  ".github/workflows/k2-supabase-auth-rls.yml": 27
+}
