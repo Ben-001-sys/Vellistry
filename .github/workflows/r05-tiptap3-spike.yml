@@ -1,14 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R05 Tiptap3 isolated editor spike
 on:
-  pull_request:
-    paths:
-      - 'docs/research/spikes/tiptap3-headless/**'
-      - '.github/workflows/r05-tiptap3-spike.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'docs/research/spikes/tiptap3-headless/**'
-      - '.github/workflows/r05-tiptap3-spike.yml'
+  workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

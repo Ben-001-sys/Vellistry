@@ -234,7 +234,7 @@
               "run": "python -m unittest discover -s tests -p 'test_spec_traceability.py' -v\npython scripts/spec_traceability.py validate\npython -m unittest discover -s tests -p 'test_stage4_chapter_contract.py' -v\n"
             },
             {
-              "name": "Regress merged Pair 03\u00e2\u20ac\u201c06 offline research evidence",
+              "name": "Regress merged Pair 03\u201306 offline research evidence",
               "run": "python -m unittest discover -s docs/research/experiments -p 'test_pair03_*.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair04_offline_provider.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair05_synthetic_rules.py' -v\npython -m unittest discover -s docs/research/experiments -p 'test_pair06_legal_registry.py' -v\n"
             }
           ]
@@ -1329,7 +1329,7 @@
               }
             },
             {
-              "name": "Run R06 synthetic contract tests \u00e2\u20ac\u201d not model quality tests",
+              "name": "Run R06 synthetic contract tests \u2014 not model quality tests",
               "run": "python docs/research/experiments/r06_synthetic_request_simulator.py"
             }
           ]

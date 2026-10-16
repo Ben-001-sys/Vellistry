@@ -1,19 +1,9 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Pair 05 simulated rules and Tiptap patch research
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/pair05_*"
-      - "docs/research/experiments/test_pair05_*"
-      - "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs"
-      - ".github/workflows/pair05-synthetic-rules-tiptap.yml"
-  push:
-    paths:
-      - "docs/research/experiments/pair05_*"
-      - "docs/research/experiments/test_pair05_*"
-      - "docs/research/spikes/tiptap3-headless/pair05_patch.test.mjs"
-      - ".github/workflows/pair05-synthetic-rules-tiptap.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

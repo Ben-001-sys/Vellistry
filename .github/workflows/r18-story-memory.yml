@@ -1,14 +1,7 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R18 synthetic story memory
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/spikes/r18-fiction-memory/**"
-      - ".github/workflows/r18-story-memory.yml"
-  push:
-    paths:
-      - "docs/research/spikes/r18-fiction-memory/**"
-      - ".github/workflows/r18-story-memory.yml"
   workflow_dispatch:
 
 permissions:

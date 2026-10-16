@@ -1,18 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Option B Wave 3 security and Story Profiles research
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/wave03_*"
-      - "docs/research/experiments/test_wave03_*"
-      - "docs/research/OPTION-B-WAVE03-*"
-      - ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
-  push:
-    paths:
-      - "docs/research/experiments/wave03_*"
-      - "docs/research/experiments/test_wave03_*"
-      - "docs/research/OPTION-B-WAVE03-*"
-      - ".github/workflows/option-b-wave03-privacy-story-profiles.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
 

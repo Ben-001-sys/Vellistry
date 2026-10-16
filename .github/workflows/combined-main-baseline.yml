@@ -1,27 +1,9 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Combined research and application baseline
 
 # Validates one integrated checkout after rapid research/stack PR merges.
 # This is research-and-build evidence, NOT product security or release certification.
 on:
-  pull_request:
-    paths:
-      - 'CURRENT-STATE.md'
-      - 'docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md'
-      - 'docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md'
-      - 'docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md'
-      - '.github/workflows/combined-main-baseline.yml'
-      - 'tests/test_research_design_gate.py'
-      - 'apps/**'
-      - 'supabase/**'
-      - 'docs/research/experiments/**'
-      - 'docs/research/spikes/**'
-      - 'docs/specs/**'
-      - 'scripts/**'
-      - 'tests/**'
-      - 'package.json'
-      - 'pnpm-workspace.yaml'
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

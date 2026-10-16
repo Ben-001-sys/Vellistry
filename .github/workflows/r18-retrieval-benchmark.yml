@@ -1,16 +1,7 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R18 long-manuscript retrieval benchmark
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/spikes/r18-retrieval/**"
-      - ".github/workflows/r18-retrieval-benchmark.yml"
-      - "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
-  push:
-    paths:
-      - "docs/research/spikes/r18-retrieval/**"
-      - ".github/workflows/r18-retrieval-benchmark.yml"
-      - "docs/reports/R18-LONG-MANUSCRIPT-RETRIEVAL-2026-10-09.md"
   workflow_dispatch:
 
 permissions:

@@ -1,16 +1,7 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R18 framework authoring contract comparison
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/spikes/r18-framework-slice/**"
-      - ".github/workflows/r18-framework-comparison.yml"
-      - "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
-  push:
-    paths:
-      - "docs/research/spikes/r18-framework-slice/**"
-      - ".github/workflows/r18-framework-comparison.yml"
-      - "docs/reports/R18-AUTHENTICATED-AUTHORING-FRAMEWORK-COMPARISON-2026-10-09.md"
   workflow_dispatch:
 
 permissions:

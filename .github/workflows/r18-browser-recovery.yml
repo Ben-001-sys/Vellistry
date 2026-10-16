@@ -1,16 +1,7 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R18 Tiptap browser recovery comparison
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/spikes/r18-framework-slice/**"
-      - ".github/workflows/r18-browser-recovery.yml"
-      - "docs/reports/R18-BROWSER-WRITING-AND-DRAFT-RECOVERY-2026-10-09.md"
-  push:
-    paths:
-      - "docs/research/spikes/r18-framework-slice/**"
-      - ".github/workflows/r18-browser-recovery.yml"
-      - "docs/reports/R18-BROWSER-WRITING-AND-DRAFT-RECOVERY-2026-10-09.md"
   workflow_dispatch:
 
 permissions:
