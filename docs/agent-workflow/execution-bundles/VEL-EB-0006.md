@@ -217,3 +217,17 @@ ChatGPT independent exact-head review: pending. Owner approval/merge: pending.
 This Codex implementation/self-review is advisory and not an independent human
 approval. Hosted database acceptance, private pilot and release remain outside
 scope. No source-authority or approval evidence URL was invented.
+
+
+### Final bounded correction: manual regression-deletion guard
+
+Final source review found that workflow_dispatch has no diff base, so the
+future required-regression presence guard covered PR/main events but could be
+bypassed by manually dispatching a branch that deleted an already-integrated
+regression. A real temporary Git-history test demonstrated the missing error
+(23 pass/1 fail among the 24 routing tests). Dispatch now checks required-source
+presence against refs/remotes/origin/main, fetched by the full-history exact-head
+classifier checkout. Missing main fails closed. Manual remains full verification;
+it does not use a last-commit-only path shortcut. All 24 tests pass after the
+correction. Before/after outputs are retained in the evidence directory; final
+SHA/run supersede earlier checkpoints only after actual verification.

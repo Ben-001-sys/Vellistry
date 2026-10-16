@@ -83,8 +83,12 @@ def plan_event(event_name: str, event: dict, head: str, *, cwd: Path = ROOT) -> 
         raise ValueError('Only main push baseline is supported')
     base = event.get('pull_request', {}).get('base', {}).get('sha') if event_name == 'pull_request' else event.get('before')
     paths = []
-    # Main/manual always select full checks even if no diff base is available.
-    if base and base != '0' * 40:
+    # Dispatch has no before/base field. Compare required-source presence with
+    # main so a manual green check cannot bypass a failed PR deletion guard.
+    if event_name == 'workflow_dispatch':
+        base = git('rev-parse', 'refs/remotes/origin/main', cwd=cwd).decode().strip()
+    # Main/manual select full checks; manual needs no path diff.
+    if event_name != 'workflow_dispatch' and base and base != '0' * 40:
         paths = changed_paths(base, head, pr=event_name == 'pull_request', cwd=cwd)
     elif event_name == 'pull_request':
         raise ValueError('PR base missing')

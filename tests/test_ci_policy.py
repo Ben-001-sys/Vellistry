@@ -51,6 +51,10 @@ class RoutingTests(unittest.TestCase):
             self.assertEqual(policy.classify(paths)['security'],'true')
             event={'pull_request':{'head':{'sha':head},'base':{'sha':base}}}
             with self.assertRaisesRegex(ValueError,'removed'): policy.plan_event('pull_request',event,head,cwd=root)
+            git('update-ref','refs/remotes/origin/main',base)
+            with patch.dict(os.environ,{'GITHUB_SHA':head}):
+                with self.assertRaisesRegex(ValueError,'removed'):
+                    policy.plan_event('workflow_dispatch',{},head,cwd=root)
     def test_exact_head_and_missing_pr_base_fail(self):
         with self.assertRaisesRegex(ValueError,'exact event'): policy.plan_event('pull_request',{'pull_request':{'head':{'sha':'a'*40}}},'b'*40)
         with self.assertRaisesRegex(ValueError,'base missing'): policy.plan_event('pull_request',{'pull_request':{'head':{'sha':'a'*40}}},'a'*40)
