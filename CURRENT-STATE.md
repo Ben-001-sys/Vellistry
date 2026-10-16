@@ -3,12 +3,46 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-14
+updated_at: 2026-10-16
 owner: project_owner
-version: 0.1.58
+version: 0.1.59
 ---
 
 # Vellistry — Current State
+
+## 2026-10-16 — CI optimization proposed in draft PR #70
+
+**FACT.** Owner-authorized Issue #69 executed in isolated Codex branch
+codex/vel-ci-opt-001 from actual merged main
+4b3996ef7cda878e1af3d679454bd1bb873a79c2. Unique VEL-TASK/CP-0006 were
+committed and validated before CI edits. [Draft PR #70](https://github.com/Ben-001-sys/Vellistry/pull/70)
+proposes one automatic primary workflow, 25 intact manual-only historical
+workflows, conservative change routing, one application install/build path and
+a fail-closed final gate. This remains unmerged and unaccepted; older PR64-draft
+statements below are historical, superseded by the actual merged baseline.
+
+**Verified source evidence.** Source commit
+4259620ad0f4207bf1aa720c3809f32c93b59314 passed its single GitHub workflow:
+286 governance/offline/archive tests, 66 library tests, both app builds/checks,
+12 real PostgreSQL recovery tests and all five real disposable Supabase security
+probes; final gate passed with nonapplicable proposed-PR68 SQL test skipped.
+No hosted database acceptance is claimed. Final reporting-head checks are
+recorded in the PR. [ExecutionBundle VEL-EB-0006](docs/agent-workflow/execution-bundles/VEL-EB-0006.md)
+links the pre-edit coverage matrix, exact tests, actual timings and limitations.
+
+**Measurement limits.** Automatic workflow definitions reduce 25 to 1; one
+observed full CI run used 232 allocated-job seconds versus 296 for old main
+(21.62% less, single cross-day comparison, not billable minutes). General >=75%
+invocation reduction and ~60% runner-minute targets are not established;
+billing metrics are unavailable with current scope. No billing/admin settings
+were changed. A pre-existing R01 temporary-file descriptor error remains on
+Windows; the same root suite passes Linux. Manual/main/cancellation and docs-only
+routing are tested, not falsely claimed as live post-merge behavior.
+
+**Review gate.** ChatGPT exact-head review and owner's approval are pending.
+PR65/68 and their hosted/grant-hardening work remain separate, untouched. No
+accepted architecture, product, private-pilot or release gate changed; no hosted
+Supabase operation, private manuscript, deployment, paid AI or merge occurred.
 
 ## 2026-10-14 — IMP-001 final bounded verification; owner review pending
 

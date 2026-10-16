@@ -1,0 +1,90 @@
+[
+  {
+    "run_id": 38645722971,
+    "jobs": [
+      {
+        "id": 116131952881,
+        "name": "Gate-safe DAG, task and negative-case tests",
+        "conclusion": "success",
+        "runner_id": 1000002693,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:20Z",
+        "observed_runner_seconds": 9.0
+      }
+    ]
+  },
+  {
+    "run_id": 38645722966,
+    "jobs": [
+      {
+        "id": 116131952790,
+        "name": "Validate ADR and history metadata",
+        "conclusion": "success",
+        "runner_id": 1000002694,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:24Z",
+        "observed_runner_seconds": 13.0
+      }
+    ]
+  },
+  {
+    "run_id": 38645722900,
+    "jobs": [
+      {
+        "id": 116131952404,
+        "name": "build",
+        "conclusion": "success",
+        "runner_id": 1000002692,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:51Z",
+        "observed_runner_seconds": 40.0
+      }
+    ]
+  },
+  {
+    "run_id": 38645722762,
+    "jobs": [
+      {
+        "id": 116131951684,
+        "name": "Merged PostgreSQL CAS and restore contract",
+        "conclusion": "success",
+        "runner_id": 1000002688,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:50Z",
+        "observed_runner_seconds": 39.0
+      },
+      {
+        "id": 116131951997,
+        "name": "Current-gate integrity and merged Python contracts",
+        "conclusion": "success",
+        "runner_id": 1000002691,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:25Z",
+        "observed_runner_seconds": 14.0
+      },
+      {
+        "id": 116131952035,
+        "name": "Integrated Next and Nest build / typecheck",
+        "conclusion": "success",
+        "runner_id": 1000002690,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:10:50Z",
+        "observed_runner_seconds": 39.0
+      }
+    ]
+  },
+  {
+    "run_id": 38645722722,
+    "jobs": [
+      {
+        "id": 116131951833,
+        "name": "real-supabase-security",
+        "conclusion": "success",
+        "runner_id": 1000002689,
+        "started_at": "2026-10-14T22:10:11Z",
+        "completed_at": "2026-10-14T22:12:33Z",
+        "observed_runner_seconds": 142.0
+      }
+    ]
+  }
+]

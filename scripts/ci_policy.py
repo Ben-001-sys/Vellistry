@@ -48,6 +48,8 @@ def classify(paths: list[str], *, full: bool = False, privilege_present: bool = 
             pass
         elif p.startswith('docs/agent-workflow/') and p.endswith(('.yaml', '.yml')):
             pass  # Always-required governance validates these.
+        elif p.startswith('docs/reports/') and p.endswith(('.json', '.csv')):
+            pass  # Inert review evidence, never runtime configuration.
         elif p.startswith('docs/') and p.endswith(('.md', '.txt', '.rst')):
             if 'ADR-0006-' in p:
                 app = security = recovery = True

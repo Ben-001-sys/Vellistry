@@ -1,0 +1,60 @@
+2026-10-16T19:40:58.0318547Z ℹ tests 66
+2026-10-16T19:40:58.0319218Z ℹ pass 66
+2026-10-16T19:40:58.0319392Z ℹ fail 0
+2026-10-16T19:40:58.0674708Z ##[group]Run if test -f tests/hosted_supabase_preflight.test.mjs; then node --test tests/hosted_supabase_preflight.test.mjs; else echo 'NOTICE: PR68 hosted preflight is not on this checkout; not tested'; fi
+2026-10-16T19:40:58.0675742Z [36;1mif test -f tests/hosted_supabase_preflight.test.mjs; then node --test tests/hosted_supabase_preflight.test.mjs; else echo 'NOTICE: PR68 hosted preflight is not on this checkout; not tested'; fi[0m
+2026-10-16T19:40:58.0805030Z NOTICE: PR68 hosted preflight is not on this checkout; not tested
+2026-10-16T19:41:03.3296613Z ✓ Compiled successfully in 3.0s
+2026-10-16T19:41:03.3413349Z   Running TypeScript ...
+2026-10-16T19:41:05.2998038Z   Finished TypeScript in 1962ms ...
+2026-10-16T19:43:19.7169055Z PASS K2-01 real Supabase signup, password login, two distinct JWTs
+2026-10-16T19:43:19.8942818Z PASS K2-02 Nest verifies genuine Supabase access token for both authors
+2026-10-16T19:43:19.9032039Z PASS K2-03 missing, malformed, tampered tokens rejected
+2026-10-16T19:43:19.9891877Z PASS K2-04 server-side auth.uid sets owner identity on book creation
+2026-10-16T19:43:20.0623015Z PASS K2-05 Nest list scoped to caller JWT, same-name books do not leak
+2026-10-16T19:43:20.1384282Z PASS K2-06 forged owner_id payload and identity header cannot become another author
+2026-10-16T19:43:20.1428547Z PASS K2-07 direct Data API cannot read cross-author books
+2026-10-16T19:43:20.1455282Z PASS K2-08 direct Data API rejects owner_id spoof on INSERT
+2026-10-16T19:43:20.1510011Z PASS K2-09 cross-book updates blocked; owner reassignment denied
+2026-10-16T19:43:20.1552010Z PASS K2-10 anon role cannot read or insert owner books
+2026-10-16T19:43:20.1699796Z PASS K2-11 test-only privileged fixture creates synthetic chapters and revisions
+2026-10-16T19:43:20.1744149Z PASS K2-12 chapter read RLS isolates book-scoped manuscripts
+2026-10-16T19:43:20.1783567Z PASS K2-13 immutable accepted revision reads isolated across authors
+2026-10-16T19:43:20.1867778Z PASS K2-14 direct chapter and revision writes blocked pending transactional save RPC
+2026-10-16T19:43:20.2535126Z PASS K2-15 Nest rejects malformed and oversized author data
+2026-10-16T19:43:20.2577879Z PASS K2-16 cross-author DELETE cannot remove private book
+2026-10-16T19:43:20.3260564Z PASS K2-17 sign-out exposure measured without making false immediate-revocation guarantee
+2026-10-16T19:43:20.9748500Z PASS K2B-01 two independent Alice sessions, one Bob session, unique signed session_ids
+2026-10-16T19:43:21.0233593Z PASS K2B-02 both Alice sessions authorized, Bob's data remains isolated
+2026-10-16T19:43:21.1328670Z PASS K2B-03 local signout does not terminate independently signed-in Alice session
+2026-10-16T19:43:21.1426819Z PASS K2B-04 signed-out primary refresh token cannot renew session
+2026-10-16T19:43:21.1428560Z PASS K2B-05 post-signout PostgREST row exposure measured, not assumed or hidden
+2026-10-16T19:43:21.1454599Z PASS K2B-06 another account still cannot read signed-out Alice's private book
+2026-10-16T19:43:21.2241697Z PASS K2B-07 global signout revokes refresh token, measures remaining signed access JWT
+2026-10-16T19:43:21.2268200Z PASS K2B-08 another author's valid session remains unaffected by Alice logout
+2026-10-16T19:43:21.2586516Z PASS K2B-09 getClaims versus fresh getUser behavior measured without equating checks
+2026-10-16T19:43:22.1315802Z PASS K2B-LIVE-01 three live session IDs have exactly one database row each
+2026-10-16T19:43:22.1365562Z PASS K2B-LIVE-02 protected synthetic book created for authorized author
+2026-10-16T19:43:22.3924194Z PASS K2B-LIVE-03 local signout removes only the primary session database row while old JWT remains unexpired
+2026-10-16T19:43:22.3955369Z PASS K2B-LIVE-04 measured old JWT direct API access separately from session-row liveness
+2026-10-16T19:43:22.6317976Z PASS K2B-LIVE-05 global logout removes both Alice session rows without revoking Bob's session
+2026-10-16T19:43:22.6319019Z PASS K2B-LIVE-06 session-row observation completed; no app role, grant or production code changed
+2026-10-16T19:43:23.2411026Z PASS K2B-LOCK-01 before grant change, owner can read own chapter and Nest books API works
+2026-10-16T19:43:23.2992955Z PASS K2B-LOCK-02 stage 1: direct Data API chapter and revision reads denied by table grants
+2026-10-16T19:43:23.3399006Z PASS K2B-LOCK-03 stage 1: owner books still work through Nest and two accounts remain isolated
+2026-10-16T19:43:23.3704755Z PASS K2B-LOCK-04 Auth identity remains functional despite direct chapter table lockdown
+2026-10-16T19:43:23.4659719Z PASS K2B-LOCK-05 stage 2: revoking books protects direct Data API but BREAKS existing Nest books service
+2026-10-16T19:43:23.4965304Z PASS K2B-LOCK-06 Auth server and independently signed-in Bob identity still available
+2026-10-16T19:43:23.8534553Z PASS K2B-GATE-01 restricted Postgres role cannot bypass RLS or directly inspect auth.sessions
+2026-10-16T19:43:24.3468708Z PASS K2B-GATE-02 Alice two real sessions and Bob one real session created
+2026-10-16T19:43:24.4318243Z PASS K2B-GATE-03 isolated NestJS gateway rejects missing/invalid credentials
+2026-10-16T19:43:24.6255597Z PASS K2B-GATE-04 restricted Nest Postgres path supports authorized books and cross-author isolation
+2026-10-16T19:43:24.7245919Z PASS K2B-GATE-05 new restricted gateway works where current public-Data-API Nest route fails
+2026-10-16T19:43:24.7966147Z PASS K2B-GATE-06 RLS author filtering survives pooled connection reuse
+2026-10-16T19:43:24.9241567Z PASS K2B-GATE-07 revoked unexpired JWT denied by Nest gateway; other active sessions retained
+2026-10-16T19:43:25.0181867Z PASS K2B-GATE-08 global logout denies other Alice session without affecting Bob
+2026-10-16T19:43:25.0182674Z PASS K2B-GATE-09 research-only transport experiment completed; no production module or migration changed
+k2b-session-observations.json
+k2b-live-session-row-observations.json
+k2b-lockdown-observations.json
+k2b-private-gateway-observations.json

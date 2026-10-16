@@ -1,0 +1,44 @@
+{
+  "status": "Actual local pre-commit snapshots; source-head GitHub evidence separately pinned at4259620",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s tests -p test_agent_workflow.py -v",
+      "exit": 0,
+      "tests": 15,
+      "phase": "after pack commit20ec5dd, before CI edits"
+    },
+    {
+      "command": "python -X utf8 -m unittest discover -s tests -p test_ci_policy.py -v",
+      "exit": 0,
+      "tests": 24
+    },
+    {
+      "command": "python scripts/ci_governance.py with PYTHONUTF8=1",
+      "exit": 1,
+      "attempted_tests": 146,
+      "errors": 1,
+      "reason": "Existing Windows R01 mkstemp open descriptor; Linux committed-source147 all pass"
+    },
+    {
+      "command": "actionlint1.7.12 -shellcheck= (all workflows)",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm install --frozen-lockfile",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm test:library-isolation",
+      "exit": 0,
+      "tests": 66
+    },
+    {
+      "command": "corepack pnpm build",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm check",
+      "exit": 0
+    }
+  ]
+}

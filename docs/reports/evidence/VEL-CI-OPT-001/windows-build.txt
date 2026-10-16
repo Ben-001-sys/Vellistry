@@ -1,0 +1,38 @@
+
+> vellistry@ build C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\apps\web
+> next build
+
+▲ Next.js 16.4.0 (Turbopack)
+✓ Running next.config.ts took 158ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.3s
+  Running TypeScript ...
+  Finished TypeScript in 2.8s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 722ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

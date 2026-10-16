@@ -1,7 +1,7 @@
 id: VEL-TASK-0006
 title: VEL-CI-OPT-001 consolidate CI without weakening required verification
 type: implementation-task
-status: in-progress
+status: verification
 created_at: '2026-10-16'
 updated_at: '2026-10-16'
 owner: project_owner

@@ -15,7 +15,7 @@ policy=importlib.util.module_from_spec(spec); spec.loader.exec_module(policy)
 
 class RoutingTests(unittest.TestCase):
     def test_docs_and_governance_are_lightweight(self):
-        for path in ('README.md','CURRENT-STATE.md','docs/decisions/ADR-0008-any.md','docs/agent-workflow/tasks/VEL-TASK-0006.yaml','docs/agent-workflow/context-packs/VEL-CP-0006.md','docs/agent-workflow/execution-bundles/VEL-EB-0006.md','scripts/agent_workflow.py','tests/test_handoff_recovery.py'):
+        for path in ('README.md','CURRENT-STATE.md','docs/reports/evidence/result.json','docs/reports/evidence/timings.csv','docs/decisions/ADR-0008-any.md','docs/agent-workflow/tasks/VEL-TASK-0006.yaml','docs/agent-workflow/context-packs/VEL-CP-0006.md','docs/agent-workflow/execution-bundles/VEL-EB-0006.md','scripts/agent_workflow.py','tests/test_handoff_recovery.py'):
             with self.subTest(path=path): self.assertEqual(set(policy.classify([path]).values()),{'false'})
     def test_frontend_build_without_unrelated_containers(self):
         self.assertEqual(policy.classify(['apps/web/src/app/globals.css']),dict(application='true',security='false',recovery='false',privileges='false'))

@@ -1,0 +1,179 @@
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0002.md
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0003.md
+COMMAND: C:\Program Files\Python310\python.exe -m unittest discover -s tests -p test_*.py -v
+test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_repository_pilot_validates (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_blob_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_role_spoofing_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_snapshot_text_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_tampered_pinned_task_blob_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_task_preserves_source_gap_and_draft_status (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unapproved_bundle_cannot_claim_accepted (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unsafe_paths_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_every_required_failure_skip_cancel_or_missing_fails (test_ci_policy.FinalGateTests) ... ok
+test_failure_of_nonapplicable_job_is_not_hidden (test_ci_policy.FinalGateTests) ... ok
+test_inconsistent_security_cannot_pass (test_ci_policy.FinalGateTests) ... ok
+test_missing_or_invalid_outputs_and_jobs_fail (test_ci_policy.FinalGateTests) ... ok
+test_success_and_nonapplicable_skips_pass (test_ci_policy.FinalGateTests) ... ok
+test_bad_git_shas_and_events_fail (test_ci_policy.RoutingTests) ... ok
+test_docs_and_governance_are_lightweight (test_ci_policy.RoutingTests) ... ok
+test_exact_head_and_missing_pr_base_fail (test_ci_policy.RoutingTests) ... ok
+test_frontend_build_without_unrelated_containers (test_ci_policy.RoutingTests) ... ok
+test_full_manual_and_main_baseline (test_ci_policy.RoutingTests) ... ok
+test_git_rename_delete_and_hostile_filename_are_data (test_ci_policy.RoutingTests) ... ok
+test_main_manual_and_ready_event (test_ci_policy.RoutingTests) ... ok
+test_proposed_privilege_test_is_not_falsely_claimed (test_ci_policy.RoutingTests) ... ok
+test_security_paths_cannot_evade_integration (test_ci_policy.RoutingTests) ... ok
+test_unknown_executable_and_config_are_conservative (test_ci_policy.RoutingTests) ... ok
+test_unsafe_paths_fail (test_ci_policy.RoutingTests) ... ok
+test_exact_head_no_persisted_credentials_in_all_jobs (test_ci_policy.WorkflowContractTests) ... ok
+test_final_gate_always_includes_every_applicable_result (test_ci_policy.WorkflowContractTests) ... ok
+test_governance_generates_required_pack_before_exporter_tests (test_ci_policy.WorkflowContractTests) ... ok
+test_k2_checks_are_preserved_and_cannot_skip_when_applicable (test_ci_policy.WorkflowContractTests) ... ok
+test_only_one_automatic_workflow_and_original_jobs_intact (test_ci_policy.WorkflowContractTests) ... ok
+test_sql_regression_when_available_is_fail_fast (test_ci_policy.WorkflowContractTests) ... ok
+test_unfiltered_events_and_pr_only_cancellation (test_ci_policy.WorkflowContractTests) ... ok
+test_changed_claimed_source_status_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_detached_reader_never_invents_original_source_verification (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_missing_embedded_snapshot_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_missing_permission_field_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_recovers_task_from_packet_with_no_repo_or_chat (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_canonical_design_dependency_cannot_be_skipped (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_cycle_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_direct_release_or_paid_execution_forbidden (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_duplicate_task_id_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_feature_coding_cannot_be_enabled_without_owner_gates (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_feature_coding_status_cannot_be_promoted_by_yaml (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_private_pilot_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_public_release_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_release_ids_cannot_masquerade_as_preparation_or_validation (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_missing_dependency_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_owner_gate_cannot_be_marked_passed_by_agent (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_owner_gated_acyclic_dag (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_preparation_cannot_request_code_or_migration_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_private_pilot_and_release_both_require_owner_gates (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_source_file_must_exist (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_synthetic_design_cannot_request_code_or_unknown_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_task_is_preparatory_not_implementation_permission (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_unknown_action_and_duplicate_action_are_rejected (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_validation_and_release_cannot_smuggle_coding_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_accepted_adr_without_approver_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_invalid_frontmatter_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_mismatched_history_id_date_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_no_records_fails_closed (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_real_records_pass_when_unmodified (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_export_is_reproducible (test_level_b_export.HandoffExportTests) ... ok
+test_export_never_overwrites (test_level_b_export.HandoffExportTests) ... ok
+test_missing_parent_directory_or_bad_extension_fails (test_level_b_export.HandoffExportTests) ... ok
+test_mutated_allowed_actions_fail_before_export (test_level_b_export.HandoffExportTests) ... ok
+test_only_historical_pack_and_prompt_in_archive (test_level_b_export.HandoffExportTests) ... ok
+test_prompt_has_no_answers_or_scoring_rubric (test_level_b_export.HandoffExportTests) ... ok
+test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests) ... ERROR
+test_missing_headings_are_not_silently_accepted (test_r01_manifest.ManifestTests) ... ok
+test_bare_code_and_invented_variants_rejected (test_r01_mapping_gate.MappingGateTests) ... ok
+test_exact_identity_allowed_only_with_full_explicit_approval (test_r01_mapping_gate.MappingGateTests) ... ok
+test_unapproved_mapping_rejected (test_r01_mapping_gate.MappingGateTests) ... ok
+test_117_title_matching_pairs_still_need_body_review (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_four_real_distinct_subjects_split (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_mapping_cli_refuses_original_as_output (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_missing_source_code_fails_closed (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_preserves_all_260_and_proposes_134_without_activation (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_remaining_nine_title_differences_not_silently_split (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_title_divergence_change_requires_research_review (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_variant_identity_tamper_fails_closed (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_all_130_unresolved_and_260_preserved (test_r01_review_packet.ReviewPacketTests) ... ok
+test_check_failure_does_not_create_output (test_r01_review_packet.ReviewPacketTests) ... ok
+test_complete_candidate_is_structural_only (test_r01_review_packet.ReviewPacketTests) ... ok
+test_existing_destination_cannot_be_clobbered (test_r01_review_packet.ReviewPacketTests) ... ok
+test_manifest_collision_and_missing_code_rejected (test_r01_review_packet.ReviewPacketTests) ... ok
+test_missing_mappings_cannot_pass (test_r01_review_packet.ReviewPacketTests) ... ok
+test_original_never_overwritten_even_when_out_equals_source (test_r01_review_packet.ReviewPacketTests) ... ok
+test_owner_approval_fields_required_but_not_self_authenticating (test_r01_review_packet.ReviewPacketTests) ... ok
+test_separate_aliases_per_distinct_meaning (test_r01_review_packet.ReviewPacketTests) ... ok
+test_symlink_destination_does_not_follow_source (test_r01_review_packet.ReviewPacketTests) ... ok
+test_unknown_variant_and_source_hash_rejected (test_r01_review_packet.ReviewPacketTests) ... ok
+test_all_six_merged_pair_evidence_links_present (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_current_snapshot_precedes_preserved_old_checkpoints (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_design_first_plan_preserved_and_merge_variance_disclosed (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_exact_owner_option_b_decision_and_two_track_research_plan (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_merged_research_artifacts_are_really_in_this_checkout (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_accepted_mvp_and_source_preservation_unchanged (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_free_or_paid_byok_clarification_has_priority (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_option_b_recorded_without_design_authorization (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_post_merge_status_is_authoritative_without_design_approval (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_subsequent_owner_waves_01_03_approval_not_technical_certification (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_one_mapping_proposal_preserves_source_and_owner_gate (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_one_public_author_research_is_not_mislabeled_interviews (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_six_recovery_g10_and_delegated_design_stage_boundaries (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_three_privacy_and_canon_research_keep_live_gaps_open (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_acceptance_ref_must_exist_in_source (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_approved_scope_and_draft_plan_are_distinguished (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_draft_acceptance_falsely_labeled_accepted_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_duplicate_scenario_id_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_missing_scenario_heading_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_missing_scenario_source_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_no_unsupported_completed_claim (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_path_escape_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_post_mvp_feature_cannot_be_smuggled_into_slice (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_promotion_to_accepted_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_refuses_architecture_beyond_eight_areas (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_copy_on_read_does_not_mutate_accepted_document (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_empty_or_unsupported_document_is_not_persisted (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_ownership_checks_precede_version_or_fault_handling (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc001_book_creation_chapter_navigation_and_reopen (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc002_ai_free_format_payload_proxy_not_real_editor (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc003_saving_only_acknowledged_revision (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc004_ambiguous_postcommit_ack_cannot_show_saved (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc004_interruption_before_commit_no_false_saved (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc005_direct_stale_revision_raises (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc005_stale_editor_rejected_without_overwrite (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc006_cross_author_reads_and_writes_denied (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc006_unknown_id_does_not_disclose_title_or_text (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc007_cross_book_chapter_id_cannot_be_reinterpreted (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_existing_packet_is_not_overwritten (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_only_two_inputs_and_correct_hashes (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_repeatable_export_byte_for_byte (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_stale_git_pinning_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_tampered_contextpack_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_wrong_output_suffix_refused (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+
+======================================================================
+ERROR: test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\tests\test_r01_manifest.py", line 41, in test_complete_pair_and_clash_detection
+    finally:path.unlink(missing_ok=True)
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1206, in unlink
+    self._accessor.unlink(self)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\admin\\AppData\\Local\\Temp\\tmppvp80dc5.md'
+
+----------------------------------------------------------------------
+Ran 146 tests in 32.203s
+
+FAILED (errors=1)
+PASS: 4 task(s), 4 ContextPack(s), 1 ExecutionBundle(s) validated
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\scripts\ci_governance.py", line 51, in <module>
+    if __name__=='__main__': main()
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\scripts\ci_governance.py", line 22, in main
+    python('-m','unittest','discover','-s','tests','-p','test_*.py','-v')
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\scripts\ci_governance.py", line 12, in python
+    def python(*args): run(sys.executable,*args)
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\scripts\ci_governance.py", line 11, in run
+    subprocess.run([str(a) for a in args],cwd=cwd,check=True)
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Program Files\\Python310\\python.exe', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v']' returned non-zero exit status 1.
