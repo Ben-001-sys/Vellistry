@@ -1,17 +1,9 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Option B Wave 2 DOCX fidelity and recovery research
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/pair_wave02_*"
-      - "docs/research/experiments/test_pair_wave02_*"
-      - ".github/workflows/option-b-wave02-docx-fidelity.yml"
-  push:
-    paths:
-      - "docs/research/experiments/pair_wave02_*"
-      - "docs/research/experiments/test_pair_wave02_*"
-      - ".github/workflows/option-b-wave02-docx-fidelity.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
 

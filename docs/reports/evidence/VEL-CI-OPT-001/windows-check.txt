@@ -1,0 +1,12 @@
+
+> vellistry@ check C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\apps\web
+> tsc --noEmit
+

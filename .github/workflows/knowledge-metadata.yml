@@ -1,24 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Knowledge metadata
 on:
-  pull_request:
-    paths:
-      - 'docs/decisions/**'
-      - 'docs/history/**'
-      - 'docs/governance/**'
-      - 'scripts/check_knowledge_metadata.py'
-      - 'tests/test_knowledge_metadata.py'
-      - 'CURRENT-STATE.md'
-      - '.github/workflows/knowledge-metadata.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'docs/decisions/**'
-      - 'docs/history/**'
-      - 'docs/governance/**'
-      - 'scripts/check_knowledge_metadata.py'
-      - 'tests/test_knowledge_metadata.py'
-      - 'CURRENT-STATE.md'
-      - '.github/workflows/knowledge-metadata.yml'
+  workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

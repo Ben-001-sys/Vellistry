@@ -1,16 +1,7 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Pair 03 R11 portability and R07 profiles research
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/pair03_*"
-      - "docs/research/experiments/test_pair03_*"
-      - ".github/workflows/pair03-r11-r07-research.yml"
-  push:
-    paths:
-      - "docs/research/experiments/pair03_*"
-      - "docs/research/experiments/test_pair03_*"
-      - ".github/workflows/pair03-r11-r07-research.yml"
   workflow_dispatch:
 
 permissions:

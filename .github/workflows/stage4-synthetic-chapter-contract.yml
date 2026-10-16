@@ -1,18 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Stage 4 synthetic chapter contract
 on:
-  pull_request:
-    paths:
-      - 'docs/research/spikes/stage4-synthetic-chapter-contract/**'
-      - 'tests/test_stage4_chapter_contract.py'
-      - 'docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md'
-      - '.github/workflows/stage4-synthetic-chapter-contract.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'docs/research/spikes/stage4-synthetic-chapter-contract/**'
-      - 'tests/test_stage4_chapter_contract.py'
-      - 'docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md'
-      - '.github/workflows/stage4-synthetic-chapter-contract.yml'
+  workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

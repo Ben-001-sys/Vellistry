@@ -1,0 +1,34 @@
+test_every_required_failure_skip_cancel_or_missing_fails (test_ci_policy.FinalGateTests) ... ok
+test_failure_of_nonapplicable_job_is_not_hidden (test_ci_policy.FinalGateTests) ... ok
+test_inconsistent_security_cannot_pass (test_ci_policy.FinalGateTests) ... ok
+test_missing_or_invalid_outputs_and_jobs_fail (test_ci_policy.FinalGateTests) ... ok
+test_success_and_nonapplicable_skips_pass (test_ci_policy.FinalGateTests) ... ok
+test_bad_git_shas_and_events_fail (test_ci_policy.RoutingTests) ... ok
+test_docs_and_governance_are_lightweight (test_ci_policy.RoutingTests) ... ok
+test_exact_head_and_missing_pr_base_fail (test_ci_policy.RoutingTests) ... ok
+test_frontend_build_without_unrelated_containers (test_ci_policy.RoutingTests) ... ok
+test_full_manual_and_main_baseline (test_ci_policy.RoutingTests) ... ok
+test_git_rename_delete_and_hostile_filename_are_data (test_ci_policy.RoutingTests) ... ok
+test_main_manual_and_ready_event (test_ci_policy.RoutingTests) ... ok
+test_proposed_privilege_test_is_not_falsely_claimed (test_ci_policy.RoutingTests) ... ok
+test_security_paths_cannot_evade_integration (test_ci_policy.RoutingTests) ... ok
+test_unknown_executable_and_config_are_conservative (test_ci_policy.RoutingTests) ... ok
+test_unsafe_paths_fail (test_ci_policy.RoutingTests) ... ok
+ERROR
+
+======================================================================
+ERROR: setUpClass (test_ci_policy.WorkflowContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-ci-opt-001\Vellistry\tests\test_ci_policy.py", line 101, in setUpClass
+    cls.workflow=yaml.load((ROOT/'.github/workflows/ci.yml').read_text(),Loader=yaml.BaseLoader)
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\admin\\.codex\\worktrees\\vel-ci-opt-001\\Vellistry\\.github\\workflows\\ci.yml'
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.000s
+
+FAILED (errors=1)

@@ -1,0 +1,146 @@
+[
+  {
+    "run": 38956662940,
+    "jobs": [
+      {
+        "id": 117161126563,
+        "name": "Classify exact-head changes",
+        "conclusion": "success",
+        "runner_id": 1000002766,
+        "observed_seconds": 5.0
+      },
+      {
+        "id": 117161173194,
+        "name": "Governance and provenance",
+        "conclusion": "success",
+        "runner_id": 1000002767,
+        "observed_seconds": 14.0
+      },
+      {
+        "id": 117161173205,
+        "name": "Application and applicable security",
+        "conclusion": "success",
+        "runner_id": 1000002768,
+        "observed_seconds": 168.0
+      },
+      {
+        "id": 117161173316,
+        "name": "Merged PostgreSQL CAS and restore contract",
+        "conclusion": "success",
+        "runner_id": 1000002769,
+        "observed_seconds": 38.0
+      },
+      {
+        "id": 117161175789,
+        "name": "Integrated SQL privilege regression",
+        "conclusion": "skipped",
+        "runner_id": null,
+        "observed_seconds": 0
+      },
+      {
+        "id": 117162348147,
+        "name": "Vellistry CI gate",
+        "conclusion": "success",
+        "runner_id": 1000002770,
+        "observed_seconds": 7.0
+      }
+    ],
+    "observed_seconds": 232.0
+  },
+  {
+    "run": 38958193334,
+    "jobs": [
+      {
+        "id": 117166388155,
+        "name": "Classify exact-head changes",
+        "conclusion": "success",
+        "runner_id": 1000002773,
+        "observed_seconds": 6.0
+      },
+      {
+        "id": 117166445266,
+        "name": "Governance and provenance",
+        "conclusion": "success",
+        "runner_id": 1000002774,
+        "observed_seconds": 14.0
+      },
+      {
+        "id": 117166445424,
+        "name": "Application and applicable security",
+        "conclusion": "success",
+        "runner_id": 1000002775,
+        "observed_seconds": 122.0
+      },
+      {
+        "id": 117166445434,
+        "name": "Merged PostgreSQL CAS and restore contract",
+        "conclusion": "success",
+        "runner_id": 1000002776,
+        "observed_seconds": 34.0
+      },
+      {
+        "id": 117166447102,
+        "name": "Integrated SQL privilege regression",
+        "conclusion": "skipped",
+        "runner_id": null,
+        "observed_seconds": 0
+      },
+      {
+        "id": 117167272376,
+        "name": "Vellistry CI gate",
+        "conclusion": "success",
+        "runner_id": 1000002777,
+        "observed_seconds": 5.0
+      }
+    ],
+    "observed_seconds": 181.0
+  },
+  {
+    "run": 38958548133,
+    "jobs": [
+      {
+        "id": 117167527185,
+        "name": "Classify exact-head changes",
+        "conclusion": "success",
+        "runner_id": 1000002780,
+        "observed_seconds": 4.0
+      },
+      {
+        "id": 117167565498,
+        "name": "Application and applicable security",
+        "conclusion": "success",
+        "runner_id": 1000002782,
+        "observed_seconds": 133.0
+      },
+      {
+        "id": 117167565503,
+        "name": "Governance and provenance",
+        "conclusion": "success",
+        "runner_id": 1000002781,
+        "observed_seconds": 14.0
+      },
+      {
+        "id": 117167565611,
+        "name": "Merged PostgreSQL CAS and restore contract",
+        "conclusion": "success",
+        "runner_id": 1000002783,
+        "observed_seconds": 27.0
+      },
+      {
+        "id": 117167568623,
+        "name": "Integrated SQL privilege regression",
+        "conclusion": "skipped",
+        "runner_id": null,
+        "observed_seconds": 0
+      },
+      {
+        "id": 117168468646,
+        "name": "Vellistry CI gate",
+        "conclusion": "success",
+        "runner_id": 1000002784,
+        "observed_seconds": 6.0
+      }
+    ],
+    "observed_seconds": 184.0
+  }
+]

@@ -1,21 +1,9 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: K2 real local Supabase Auth + author RLS security
 
 on:
-  pull_request:
-    paths:
-      - "apps/api/**"
-      - "supabase/**"
-      - ".github/workflows/k2-supabase-auth-rls.yml"
-      - "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
-  push:
-    paths:
-      - "apps/api/**"
-      - "supabase/**"
-      - ".github/workflows/k2-supabase-auth-rls.yml"
-      - "docs/research/K2-LOCAL-SUPABASE-AUTH-RLS-2026-10-09.md"
   workflow_dispatch:
 
-# Avoid overlapping disposable Supabase stacks on repeated PR updates.
 concurrency:
   group: vellistry-k2-supabase-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

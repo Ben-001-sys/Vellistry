@@ -1,0 +1,354 @@
+{
+  "run_id": 38956662940,
+  "head": "4259620ad0f4207bf1aa720c3809f32c93b59314",
+  "jobs": [
+    {
+      "id": 117161126563,
+      "name": "Classify exact-head changes",
+      "conclusion": "success",
+      "runner_id": 1000002766,
+      "started_at": "2026-10-16T19:40:40Z",
+      "completed_at": "2026-10-16T19:40:45Z",
+      "observed_runner_seconds": 5.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:41Z",
+          "completed_at": "2026-10-16T19:40:41Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:41Z",
+          "completed_at": "2026-10-16T19:40:42Z"
+        },
+        {
+          "name": "Conservative change plan",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:42Z",
+          "completed_at": "2026-10-16T19:40:42Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:42Z",
+          "completed_at": "2026-10-16T19:40:42Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:42Z",
+          "completed_at": "2026-10-16T19:40:43Z"
+        }
+      ]
+    },
+    {
+      "id": 117161173194,
+      "name": "Governance and provenance",
+      "conclusion": "success",
+      "runner_id": 1000002767,
+      "started_at": "2026-10-16T19:40:47Z",
+      "completed_at": "2026-10-16T19:41:01Z",
+      "observed_runner_seconds": 14.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:48Z",
+          "completed_at": "2026-10-16T19:40:49Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:49Z",
+          "completed_at": "2026-10-16T19:40:51Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:51Z",
+          "completed_at": "2026-10-16T19:40:51Z"
+        },
+        {
+          "name": "Install YAML parser only",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:51Z",
+          "completed_at": "2026-10-16T19:40:53Z"
+        },
+        {
+          "name": "Run all current governance and negative contracts once",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:53Z",
+          "completed_at": "2026-10-16T19:40:57Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:57Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:58Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:58Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:58Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        }
+      ]
+    },
+    {
+      "id": 117161173205,
+      "name": "Application and applicable security",
+      "conclusion": "success",
+      "runner_id": 1000002768,
+      "started_at": "2026-10-16T19:40:46Z",
+      "completed_at": "2026-10-16T19:43:34Z",
+      "observed_runner_seconds": 168.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:47Z",
+          "completed_at": "2026-10-16T19:40:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:48Z",
+          "completed_at": "2026-10-16T19:40:49Z"
+        },
+        {
+          "name": "Run pnpm/action-setup@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:49Z",
+          "completed_at": "2026-10-16T19:40:50Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:50Z",
+          "completed_at": "2026-10-16T19:40:53Z"
+        },
+        {
+          "name": "Install one frozen workspace",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:53Z",
+          "completed_at": "2026-10-16T19:40:57Z"
+        },
+        {
+          "name": "Library isolation and unknown-save negative tests",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:57Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        },
+        {
+          "name": "Hosted preflight regressions when source is integrated",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:58Z",
+          "completed_at": "2026-10-16T19:40:58Z"
+        },
+        {
+          "name": "Build both applications once",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:58Z",
+          "completed_at": "2026-10-16T19:41:06Z"
+        },
+        {
+          "name": "Typecheck both applications once",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:06Z",
+          "completed_at": "2026-10-16T19:41:09Z"
+        },
+        {
+          "name": "Pick free, temporary CI-only Supabase API/DB ports",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:09Z",
+          "completed_at": "2026-10-16T19:41:09Z"
+        },
+        {
+          "name": "Start real disposable local Supabase services",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:09Z",
+          "completed_at": "2026-10-16T19:43:17Z"
+        },
+        {
+          "name": "Validate actual sign-up, RLS, tokens, cross-author data and logout behavior",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:17Z",
+          "completed_at": "2026-10-16T19:43:25Z"
+        },
+        {
+          "name": "Attach synthetic-only results (no token or password)",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:25Z",
+          "completed_at": "2026-10-16T19:43:25Z"
+        },
+        {
+          "name": "Shut down disposable local Supabase",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:25Z",
+          "completed_at": "2026-10-16T19:43:28Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:28Z",
+          "completed_at": "2026-10-16T19:43:32Z"
+        },
+        {
+          "name": "Post Run pnpm/action-setup@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:32Z",
+          "completed_at": "2026-10-16T19:43:32Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:32Z",
+          "completed_at": "2026-10-16T19:43:32Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:32Z",
+          "completed_at": "2026-10-16T19:43:32Z"
+        }
+      ]
+    },
+    {
+      "id": 117161173316,
+      "name": "Merged PostgreSQL CAS and restore contract",
+      "conclusion": "success",
+      "runner_id": 1000002769,
+      "started_at": "2026-10-16T19:40:47Z",
+      "completed_at": "2026-10-16T19:41:25Z",
+      "observed_runner_seconds": 38.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:47Z",
+          "completed_at": "2026-10-16T19:40:48Z"
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:40:48Z",
+          "completed_at": "2026-10-16T19:41:02Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:02Z",
+          "completed_at": "2026-10-16T19:41:03Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:03Z",
+          "completed_at": "2026-10-16T19:41:03Z"
+        },
+        {
+          "name": "Install PostgreSQL client binaries",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:03Z",
+          "completed_at": "2026-10-16T19:41:18Z"
+        },
+        {
+          "name": "Rerun disposable Pair 06 atomicity and independent restore",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:18Z",
+          "completed_at": "2026-10-16T19:41:23Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:23Z",
+          "completed_at": "2026-10-16T19:41:23Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:23Z",
+          "completed_at": "2026-10-16T19:41:23Z"
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:23Z",
+          "completed_at": "2026-10-16T19:41:24Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:41:24Z",
+          "completed_at": "2026-10-16T19:41:24Z"
+        }
+      ]
+    },
+    {
+      "id": 117161175789,
+      "name": "Integrated SQL privilege regression",
+      "conclusion": "skipped",
+      "runner_id": null,
+      "started_at": "2026-10-16T19:40:45Z",
+      "completed_at": "2026-10-16T19:40:45Z",
+      "observed_runner_seconds": null,
+      "steps": []
+    },
+    {
+      "id": 117162348147,
+      "name": "Vellistry CI gate",
+      "conclusion": "success",
+      "runner_id": 1000002770,
+      "started_at": "2026-10-16T19:43:36Z",
+      "completed_at": "2026-10-16T19:43:43Z",
+      "observed_runner_seconds": 7.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:38Z",
+          "completed_at": "2026-10-16T19:43:38Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:38Z",
+          "completed_at": "2026-10-16T19:43:40Z"
+        },
+        {
+          "name": "Reject failed, cancelled, missing or skipped applicable checks",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:40Z",
+          "completed_at": "2026-10-16T19:43:40Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:40Z",
+          "completed_at": "2026-10-16T19:43:40Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-10-16T19:43:40Z",
+          "completed_at": "2026-10-16T19:43:40Z"
+        }
+      ]
+    }
+  ],
+  "metric": "Observed allocated-job execution spans; NOT billable minutes"
+}

@@ -1,16 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R07 synthetic author-approved story state contract
 on:
-  pull_request:
-    paths:
-      - 'docs/research/experiments/r07_story_state_contract.py'
-      - 'docs/research/experiments/test_r07_story_state_contract.py'
-      - '.github/workflows/r07-story-state-contract.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'docs/research/experiments/r07_story_state_contract.py'
-      - 'docs/research/experiments/test_r07_story_state_contract.py'
-      - '.github/workflows/r07-story-state-contract.yml'
+  workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

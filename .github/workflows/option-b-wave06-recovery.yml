@@ -1,17 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Option B Wave 6 recovery contract research
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/wave06_*"
-      - "docs/research/experiments/test_wave06_*"
-      - "docs/research/OPTION-B-WAVE06-*"
-      - ".github/workflows/option-b-wave06-recovery.yml"
-  push:
-    paths:
-      - "docs/research/experiments/wave06_*"
-      - "docs/research/experiments/test_wave06_*"
-      - ".github/workflows/option-b-wave06-recovery.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

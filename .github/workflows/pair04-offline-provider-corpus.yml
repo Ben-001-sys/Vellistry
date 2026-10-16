@@ -1,19 +1,9 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: Pair 04 offline provider and corpus research
 
 on:
-  pull_request:
-    paths:
-      - "docs/research/experiments/pair04_*"
-      - "docs/research/experiments/test_pair04_*"
-      - "docs/research/independent-alternatives/pairs-04-05/**"
-      - ".github/workflows/pair04-offline-provider-corpus.yml"
-  push:
-    paths:
-      - "docs/research/experiments/pair04_*"
-      - "docs/research/experiments/test_pair04_*"
-      - "docs/research/independent-alternatives/pairs-04-05/**"
-      - ".github/workflows/pair04-offline-provider-corpus.yml"
   workflow_dispatch:
+
 permissions:
   contents: read
 

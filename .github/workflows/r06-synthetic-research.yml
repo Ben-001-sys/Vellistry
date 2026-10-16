@@ -1,14 +1,8 @@
+# Historical/manual reproduction. Current automatic coverage: ci.yml.
 name: R06 synthetic research contract
 on:
-  pull_request:
-    paths:
-      - 'docs/research/experiments/r06_synthetic_request_simulator.py'
-      - '.github/workflows/r06-synthetic-research.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'docs/research/experiments/r06_synthetic_request_simulator.py'
-      - '.github/workflows/r06-synthetic-research.yml'
+  workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

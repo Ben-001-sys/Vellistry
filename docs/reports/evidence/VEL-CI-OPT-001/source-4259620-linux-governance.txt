@@ -1,0 +1,710 @@
+﻿2026-10-16T19:40:48.6459453Z Current runner version: '2.337.0'
+2026-10-16T19:40:48.6488129Z ##[group]Runner Image Provisioner
+2026-10-16T19:40:48.6489104Z Hosted Compute Agent
+2026-10-16T19:40:48.6489924Z Version: 20261012.601
+2026-10-16T19:40:48.6490673Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-16T19:40:48.6491526Z Build Date: 2026-10-12T17:48:21Z
+2026-10-16T19:40:48.6492649Z Worker ID: {6ebc3d23-73f0-44f2-959f-0fd7f38b07d8}
+2026-10-16T19:40:48.6493504Z Region: westus3
+2026-10-16T19:40:48.6494310Z Cloud: Azure
+2026-10-16T19:40:48.6494985Z ##[endgroup]
+2026-10-16T19:40:48.6496685Z ##[group]Operating System
+2026-10-16T19:40:48.6497557Z Ubuntu
+2026-10-16T19:40:48.6498177Z 24.04.5
+2026-10-16T19:40:48.6498870Z LTS
+2026-10-16T19:40:48.6499501Z ##[endgroup]
+2026-10-16T19:40:48.6500158Z ##[group]Runner Image
+2026-10-16T19:40:48.6501043Z Image: ubuntu-24.04
+2026-10-16T19:40:48.6501722Z Version: 20261012.334.1
+2026-10-16T19:40:48.6503649Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-16T19:40:48.6505587Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-16T19:40:48.6506960Z ##[endgroup]
+2026-10-16T19:40:48.6508291Z ##[group]GITHUB_TOKEN Permissions
+2026-10-16T19:40:48.6510521Z Contents: read
+2026-10-16T19:40:48.6511250Z Metadata: read
+2026-10-16T19:40:48.6512323Z ##[endgroup]
+2026-10-16T19:40:48.6514709Z Secret source: Actions
+2026-10-16T19:40:48.6516028Z Cache mode: write
+2026-10-16T19:40:48.6516901Z Prepare workflow directory
+2026-10-16T19:40:48.6800906Z Prepare all required actions
+2026-10-16T19:40:48.6840377Z Getting action download info
+2026-10-16T19:40:48.9959811Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-16T19:40:49.2914837Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-16T19:40:49.3941765Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-16T19:40:49.6549449Z Complete job name: Governance and provenance
+2026-10-16T19:40:49.7170483Z ##[group]Run actions/checkout@v4
+2026-10-16T19:40:49.7171150Z with:
+2026-10-16T19:40:49.7171546Z   ref: 4259620ad0f4207bf1aa720c3809f32c93b59314
+2026-10-16T19:40:49.7172179Z   persist-credentials: false
+2026-10-16T19:40:49.7172594Z   fetch-depth: 0
+2026-10-16T19:40:49.7172969Z   repository: Ben-001-sys/Vellistry
+2026-10-16T19:40:49.7175966Z   token: ***
+2026-10-16T19:40:49.7176330Z   ssh-strict: true
+2026-10-16T19:40:49.7176687Z   ssh-user: git
+2026-10-16T19:40:49.7177030Z   clean: true
+2026-10-16T19:40:49.7177403Z   sparse-checkout-cone-mode: true
+2026-10-16T19:40:49.7177826Z   fetch-tags: false
+2026-10-16T19:40:49.7178188Z   show-progress: true
+2026-10-16T19:40:49.7178563Z   lfs: false
+2026-10-16T19:40:49.7178900Z   submodules: false
+2026-10-16T19:40:49.7179259Z   set-safe-directory: true
+2026-10-16T19:40:49.7179663Z   allow-unsafe-pr-checkout: false
+2026-10-16T19:40:49.7180233Z ##[endgroup]
+2026-10-16T19:40:49.8000807Z Syncing repository: Ben-001-sys/Vellistry
+2026-10-16T19:40:49.8003480Z ##[group]Getting Git version info
+2026-10-16T19:40:49.8004424Z Working directory is '/home/runner/work/Vellistry/Vellistry'
+2026-10-16T19:40:49.8005302Z [command]/usr/bin/git version
+2026-10-16T19:40:49.8614233Z git version 2.55.0
+2026-10-16T19:40:49.8630729Z ##[endgroup]
+2026-10-16T19:40:49.8643944Z Temporarily overriding HOME='/home/runner/work/_temp/3b48d75d-e4ce-4af9-bd56-abd18fdf5db6' before making global git config changes
+2026-10-16T19:40:49.8645668Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T19:40:49.8648278Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Vellistry/Vellistry
+2026-10-16T19:40:49.8691552Z Deleting the contents of '/home/runner/work/Vellistry/Vellistry'
+2026-10-16T19:40:49.8695476Z ##[group]Initializing the repository
+2026-10-16T19:40:49.8698466Z [command]/usr/bin/git init /home/runner/work/Vellistry/Vellistry
+2026-10-16T19:40:49.8789195Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-16T19:40:49.8790023Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-16T19:40:49.8790949Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-16T19:40:49.8791765Z hint: call:
+2026-10-16T19:40:49.8792432Z hint:
+2026-10-16T19:40:49.8792882Z hint: 	git config --global init.defaultBranch <name>
+2026-10-16T19:40:49.8793389Z hint:
+2026-10-16T19:40:49.8793851Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-16T19:40:49.8794573Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-16T19:40:49.8795150Z hint:
+2026-10-16T19:40:49.8795489Z hint: 	git branch -m <name>
+2026-10-16T19:40:49.8795887Z hint:
+2026-10-16T19:40:49.8796385Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-16T19:40:49.8800363Z Initialized empty Git repository in /home/runner/work/Vellistry/Vellistry/.git/
+2026-10-16T19:40:49.8807783Z [command]/usr/bin/git remote add origin https://github.com/Ben-001-sys/Vellistry
+2026-10-16T19:40:49.8847730Z ##[endgroup]
+2026-10-16T19:40:49.8848378Z ##[group]Disabling automatic garbage collection
+2026-10-16T19:40:49.8850497Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-16T19:40:49.8878110Z ##[endgroup]
+2026-10-16T19:40:49.8878704Z ##[group]Setting up auth
+2026-10-16T19:40:49.8883181Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T19:40:49.8913459Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T19:40:49.9179425Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T19:40:49.9208944Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T19:40:49.9396219Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T19:40:49.9426111Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-16T19:40:49.9614012Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-16T19:40:49.9648787Z ##[endgroup]
+2026-10-16T19:40:49.9649410Z ##[group]Fetching the repository
+2026-10-16T19:40:49.9656388Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-10-16T19:40:51.3664563Z From https://github.com/Ben-001-sys/Vellistry
+2026-10-16T19:40:51.3666823Z  * [new branch]      archive/pr26-pre-reconcile-20261009 -> origin/archive/pr26-pre-reconcile-20261009
+2026-10-16T19:40:51.3668963Z  * [new branch]      archive/pr48-pre-main-sync-20261010 -> origin/archive/pr48-pre-main-sync-20261010
+2026-10-16T19:40:51.3671354Z  * [new branch]      archive/stage3-cursor-levelb-pr24-pre-sync -> origin/archive/stage3-cursor-levelb-pr24-pre-sync
+2026-10-16T19:40:51.3674631Z  * [new branch]      archive/stage3-pr15-before-feature-inventory-sync -> origin/archive/stage3-pr15-before-feature-inventory-sync
+2026-10-16T19:40:51.3677490Z  * [new branch]      archive/stage3-pr15-before-main-sync -> origin/archive/stage3-pr15-before-main-sync
+2026-10-16T19:40:51.3680137Z  * [new branch]      archive/stage3-pr5-original-history -> origin/archive/stage3-pr5-original-history
+2026-10-16T19:40:51.3682853Z  * [new branch]      assets/vellistry-logo-svg-variants-20261011 -> origin/assets/vellistry-logo-svg-variants-20261011
+2026-10-16T19:40:51.3686007Z  * [new branch]      chore/rebase-stage5-readiness-on-mvp-approval-20261010 -> origin/chore/rebase-stage5-readiness-on-mvp-approval-20261010
+2026-10-16T19:40:51.3689710Z  * [new branch]      chore/reconcile-research-design-gate-main-20261010 -> origin/chore/reconcile-research-design-gate-main-20261010
+2026-10-16T19:40:51.3691942Z  * [new branch]      codex/vel-ci-opt-001 -> origin/codex/vel-ci-opt-001
+2026-10-16T19:40:51.3693650Z  * [new branch]      codex/vel-imp-001b-phase-a -> origin/codex/vel-imp-001b-phase-a
+2026-10-16T19:40:51.3695689Z  * [new branch]      docs/adr-0003-tiptap3-manuscript-editor -> origin/docs/adr-0003-tiptap3-manuscript-editor
+2026-10-16T19:40:51.3698026Z  * [new branch]      docs/adr-0005-vellistry-mvp-stack-v0.1 -> origin/docs/adr-0005-vellistry-mvp-stack-v0.1
+2026-10-16T19:40:51.3700473Z  * [new branch]      docs/adr-0008-codex-primary-agentic-coding -> origin/docs/adr-0008-codex-primary-agentic-coding
+2026-10-16T19:40:51.3703014Z  * [new branch]      docs/complete-feature-inventory-v0.1 -> origin/docs/complete-feature-inventory-v0.1
+2026-10-16T19:40:51.3705262Z  * [new branch]      docs/cursor-levelb-result-v01 -> origin/docs/cursor-levelb-result-v01
+2026-10-16T19:40:51.3708529Z  * [new branch]      docs/design-ux-journey-contracts-20261010 -> origin/docs/design-ux-journey-contracts-20261010
+2026-10-16T19:40:51.3714020Z  * [new branch]      docs/hosted-supabase-desktop-setup-20261011 -> origin/docs/hosted-supabase-desktop-setup-20261011
+2026-10-16T19:40:51.3722840Z  * [new branch]      docs/implementation-master-planning-20261011 -> origin/docs/implementation-master-planning-20261011
+2026-10-16T19:40:51.3725574Z  * [new branch]      docs/make-walkthrough-evidence-20261011 -> origin/docs/make-walkthrough-evidence-20261011
+2026-10-16T19:40:51.3728213Z  * [new branch]      docs/owner-mvp-direction-confirmed-20261010 -> origin/docs/owner-mvp-direction-confirmed-20261010
+2026-10-16T19:40:51.3730818Z  * [new branch]      docs/plan01-scope-inventory-20261011 -> origin/docs/plan01-scope-inventory-20261011
+2026-10-16T19:40:51.3733568Z  * [new branch]      docs/post-merge-43-status-design-entry-20261010 -> origin/docs/post-merge-43-status-design-entry-20261010
+2026-10-16T19:40:51.3736481Z  * [new branch]      docs/research-knowledge-baseline-v0.1 -> origin/docs/research-knowledge-baseline-v0.1
+2026-10-16T19:40:51.3738659Z  * [new branch]      docs/research-migration-r02 -> origin/docs/research-migration-r02
+2026-10-16T19:40:51.3741144Z  * [new branch]      docs/research-two-at-a-time-design-first-20261009 -> origin/docs/research-two-at-a-time-design-first-20261009
+2026-10-16T19:40:51.3743939Z  * [new branch]      docs/stage3-cursor-levelb-on-main -> origin/docs/stage3-cursor-levelb-on-main
+2026-10-16T19:40:51.3746845Z  * [new branch]      docs/stage4-cursor-independent-result-provisional-20261010 -> origin/docs/stage4-cursor-independent-result-provisional-20261010
+2026-10-16T19:40:51.3750683Z  * [new branch]      docs/stage4-owner-closeout-current-state-20261010 -> origin/docs/stage4-owner-closeout-current-state-20261010
+2026-10-16T19:40:51.3754207Z  * [new branch]      docs/stage5-agentic-implementation-preparation-20261010 -> origin/docs/stage5-agentic-implementation-preparation-20261010
+2026-10-16T19:40:51.3757552Z  * [new branch]      feat/agent-handoff-cold-start-main-sync-2 -> origin/feat/agent-handoff-cold-start-main-sync-2
+2026-10-16T19:40:51.3760199Z  * [new branch]      feat/agent-handoff-cold-start-synced -> origin/feat/agent-handoff-cold-start-synced
+2026-10-16T19:40:51.3762843Z  * [new branch]      feat/agent-handoff-cold-start-v0.1 -> origin/feat/agent-handoff-cold-start-v0.1
+2026-10-16T19:40:51.3765232Z  * [new branch]      feat/agent-workflow-stage3-synced -> origin/feat/agent-workflow-stage3-synced
+2026-10-16T19:40:51.3767451Z  * [new branch]      feat/agent-workflow-stage3-v0.1 -> origin/feat/agent-workflow-stage3-v0.1
+2026-10-16T19:40:51.3770031Z  * [new branch]      feat/next-nest-supabase-mvp-foundation-20261009 -> origin/feat/next-nest-supabase-mvp-foundation-20261009
+2026-10-16T19:40:51.3772893Z  * [new branch]      feat/stage3-levelb-handoff-export-v0.1 -> origin/feat/stage3-levelb-handoff-export-v0.1
+2026-10-16T19:40:51.3775882Z  * [new branch]      feat/stage4-independent-execution-packet-20261010 -> origin/feat/stage4-independent-execution-packet-20261010
+2026-10-16T19:40:51.3778766Z  * [new branch]      feat/stage4-spec-driven-chapter-slice-v01 -> origin/feat/stage4-spec-driven-chapter-slice-v01
+2026-10-16T19:40:51.3781220Z  * [new branch]      feat/vel-imp-001-auth-library -> origin/feat/vel-imp-001-auth-library
+2026-10-16T19:40:51.3783569Z  * [new branch]      feat/vel-imp-001-library-isolation -> origin/feat/vel-imp-001-library-isolation
+2026-10-16T19:40:51.3785989Z  * [new branch]      feat/vel-imp-001b-hosted-cloud-preflight -> origin/feat/vel-imp-001b-hosted-cloud-preflight
+2026-10-16T19:40:51.3787927Z  * [new branch]      main                 -> origin/main
+2026-10-16T19:40:51.3790244Z  * [new branch]      planning/mvp-readiness-user-journeys-v0.1 -> origin/planning/mvp-readiness-user-journeys-v0.1
+2026-10-16T19:40:51.3793875Z  * [new branch]      research/independent-pairs-04-05-alternatives-20261009 -> origin/research/independent-pairs-04-05-alternatives-20261009
+2026-10-16T19:40:51.3796857Z  * [new branch]      research/k2-supabase-auth-rls-20261009 -> origin/research/k2-supabase-auth-rls-20261009
+2026-10-16T19:40:51.3800117Z  * [new branch]      research/option-b-wave01-one-pass-author-and-guidance-20261010 -> origin/research/option-b-wave01-one-pass-author-and-guidance-20261010
+2026-10-16T19:40:51.3803928Z  * [new branch]      research/option-b-wave02-editor-accessibility-docx-20261010 -> origin/research/option-b-wave02-editor-accessibility-docx-20261010
+2026-10-16T19:40:51.3807488Z  * [new branch]      research/option-b-wave03-privacy-and-story-profiles-20261010 -> origin/research/option-b-wave03-privacy-and-story-profiles-20261010
+2026-10-16T19:40:51.3810816Z  * [new branch]      research/option-b-wave04-provider-legal-ops-20261010 -> origin/research/option-b-wave04-provider-legal-ops-20261010
+2026-10-16T19:40:51.3814382Z  * [new branch]      research/option-b-wave05-mvp-quality-reversible-20261010 -> origin/research/option-b-wave05-mvp-quality-reversible-20261010
+2026-10-16T19:40:51.3818045Z  * [new branch]      research/option-b-wave06-final-closeout-design-entry-20261010 -> origin/research/option-b-wave06-final-closeout-design-entry-20261010
+2026-10-16T19:40:51.3822356Z  * [new branch]      research/pair01-accelerated-decision-brief-20261009 -> origin/research/pair01-accelerated-decision-brief-20261009
+2026-10-16T19:40:51.3825543Z  * [new branch]      research/pair01-k2b-auth-session-liveness-20261009 -> origin/research/pair01-k2b-auth-session-liveness-20261009
+2026-10-16T19:40:51.3828679Z  * [new branch]      research/pair01-k2b-private-gateway-proof-20261009 -> origin/research/pair01-k2b-private-gateway-proof-20261009
+2026-10-16T19:40:51.3831543Z  * [new branch]      research/pair01-k2b-session-exposure-20261009 -> origin/research/pair01-k2b-session-exposure-20261009
+2026-10-16T19:40:51.3834370Z  * [new branch]      research/pair01-r01-source-manifest-20261009 -> origin/research/pair01-r01-source-manifest-20261009
+2026-10-16T19:40:51.3838397Z  * [new branch]      research/pair02-author-workflows-editor-accessibility-20261009 -> origin/research/pair02-author-workflows-editor-accessibility-20261009
+2026-10-16T19:40:51.3841860Z  * [new branch]      research/pair03-portability-temporal-profiles-20261009 -> origin/research/pair03-portability-temporal-profiles-20261009
+2026-10-16T19:40:51.3845109Z  * [new branch]      research/pair04-provider-corpus-offline-20261009 -> origin/research/pair04-provider-corpus-offline-20261009
+2026-10-16T19:40:51.3848208Z  * [new branch]      research/pair05-synthetic-rules-tiptap-reversible-20261009 -> origin/research/pair05-synthetic-rules-tiptap-reversible-20261009
+2026-10-16T19:40:51.3851322Z  * [new branch]      research/pair06-legal-operations-restore-20261009 -> origin/research/pair06-legal-operations-restore-20261009
+2026-10-16T19:40:51.3854089Z  * [new branch]      research/r01-r15-source-and-data-trust-v0.1 -> origin/research/r01-r15-source-and-data-trust-v0.1
+2026-10-16T19:40:51.3856749Z  * [new branch]      research/r04-mvp-boundaries-validation-v0.1 -> origin/research/r04-mvp-boundaries-validation-v0.1
+2026-10-16T19:40:51.3859234Z  * [new branch]      research/r04-specific-mvp-proposal-v0.1 -> origin/research/r04-specific-mvp-proposal-v0.1
+2026-10-16T19:40:51.3861705Z  * [new branch]      research/r05-browser-manuscript-spike-v0.1 -> origin/research/r05-browser-manuscript-spike-v0.1
+2026-10-16T19:40:51.3922463Z  * [new branch]      research/r05-editor-license-capability-scan-v0.1 -> origin/research/r05-editor-license-capability-scan-v0.1
+2026-10-16T19:40:51.3926054Z  * [new branch]      research/r05-tiptap3-headless-spike-v0.1 -> origin/research/r05-tiptap3-headless-spike-v0.1
+2026-10-16T19:40:51.3929870Z  * [new branch]      research/r06-rule-application-benchmark-v0.1 -> origin/research/r06-rule-application-benchmark-v0.1
+2026-10-16T19:40:51.3934075Z  * [new branch]      research/r07-live-story-profiles-contract-v0.1 -> origin/research/r07-live-story-profiles-contract-v0.1
+2026-10-16T19:40:51.3937471Z  * [new branch]      research/r11-manuscript-portability-options-v0.1 -> origin/research/r11-manuscript-portability-options-v0.1
+2026-10-16T19:40:51.3940198Z  * [new branch]      research/r18-browser-tiptap-recovery-20261009 -> origin/research/r18-browser-tiptap-recovery-20261009
+2026-10-16T19:40:51.3943386Z  * [new branch]      research/r18-long-manuscript-retrieval-benchmark-20261009 -> origin/research/r18-long-manuscript-retrieval-benchmark-20261009
+2026-10-16T19:40:51.3946683Z  * [new branch]      research/r18-next-vite-nest-authored-chapter-slice-20261009 -> origin/research/r18-next-vite-nest-authored-chapter-slice-20261009
+2026-10-16T19:40:51.3949648Z  * [new branch]      research/r18-postgres-memory-rls-fts-20261009 -> origin/research/r18-postgres-memory-rls-fts-20261009
+2026-10-16T19:40:51.3952578Z  * [new branch]      research/r18-temporal-memory-contract-proof-20261009 -> origin/research/r18-temporal-memory-contract-proof-20261009
+2026-10-16T19:40:51.3955063Z  * [new branch]      sync/pr26-stage4-on-main-20261009 -> origin/sync/pr26-stage4-on-main-20261009
+2026-10-16T19:40:51.3957452Z  * [new branch]      sync/pr48-stage4-evidence-on-main-20261010 -> origin/sync/pr48-stage4-evidence-on-main-20261010
+2026-10-16T19:40:51.3959940Z  * [new branch]      test/stage4-synthetic-chapter-contract-v01 -> origin/test/stage4-synthetic-chapter-contract-v01
+2026-10-16T19:40:51.3963882Z [command]/usr/bin/git rev-parse --verify --quiet 4259620ad0f4207bf1aa720c3809f32c93b59314^{object}
+2026-10-16T19:40:51.3965395Z 4259620ad0f4207bf1aa720c3809f32c93b59314
+2026-10-16T19:40:51.3967673Z ##[endgroup]
+2026-10-16T19:40:51.3968858Z ##[group]Determining the checkout info
+2026-10-16T19:40:51.3970187Z ##[endgroup]
+2026-10-16T19:40:51.3970971Z [command]/usr/bin/git sparse-checkout disable
+2026-10-16T19:40:51.3973359Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-16T19:40:51.3975970Z ##[group]Checking out the ref
+2026-10-16T19:40:51.3977270Z [command]/usr/bin/git checkout --progress --force 4259620ad0f4207bf1aa720c3809f32c93b59314
+2026-10-16T19:40:51.4086020Z Note: switching to '4259620ad0f4207bf1aa720c3809f32c93b59314'.
+2026-10-16T19:40:51.4086886Z 
+2026-10-16T19:40:51.4087501Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-16T19:40:51.4089018Z changes and commit them, and you can discard any commits you make in this
+2026-10-16T19:40:51.4090521Z state without impacting any branches by switching back to a branch.
+2026-10-16T19:40:51.4091373Z 
+2026-10-16T19:40:51.4091985Z If you want to create a new branch to retain commits you create, you may
+2026-10-16T19:40:51.4093602Z do so (now or later) by using -c with the switch command. Example:
+2026-10-16T19:40:51.4094767Z 
+2026-10-16T19:40:51.4095266Z   git switch -c <new-branch-name>
+2026-10-16T19:40:51.4096052Z 
+2026-10-16T19:40:51.4096529Z Or undo this operation with:
+2026-10-16T19:40:51.4097244Z 
+2026-10-16T19:40:51.4097565Z   git switch -
+2026-10-16T19:40:51.4098084Z 
+2026-10-16T19:40:51.4098930Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-16T19:40:51.4099869Z 
+2026-10-16T19:40:51.4100782Z HEAD is now at 4259620 Consolidate automatic CI with fail-closed routing and preserved manual coverage
+2026-10-16T19:40:51.4103819Z ##[endgroup]
+2026-10-16T19:40:51.4131256Z [command]/usr/bin/git log -1 --format=%H
+2026-10-16T19:40:51.4154604Z 4259620ad0f4207bf1aa720c3809f32c93b59314
+2026-10-16T19:40:51.4162415Z ##[group]Removing auth
+2026-10-16T19:40:51.4164922Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T19:40:51.4195771Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T19:40:51.4388089Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T19:40:51.4410864Z http.https://github.com/.extraheader
+2026-10-16T19:40:51.4417428Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-16T19:40:51.4447831Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T19:40:51.4630273Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T19:40:51.4664020Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-16T19:40:51.4844802Z ##[endgroup]
+2026-10-16T19:40:51.5121173Z ##[group]Run actions/setup-python@v5
+2026-10-16T19:40:51.5122307Z with:
+2026-10-16T19:40:51.5122970Z   python-version: 3.12
+2026-10-16T19:40:51.5123712Z   check-latest: false
+2026-10-16T19:40:51.5129965Z   token: ***
+2026-10-16T19:40:51.5130676Z   update-environment: true
+2026-10-16T19:40:51.5131477Z   allow-prereleases: false
+2026-10-16T19:40:51.5132439Z   freethreaded: false
+2026-10-16T19:40:51.5133159Z ##[endgroup]
+2026-10-16T19:40:51.6174541Z ##[group]Installed versions
+2026-10-16T19:40:51.6305816Z (node:2232) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-16T19:40:51.6308817Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-16T19:40:51.6310607Z Successfully set up CPython (3.12.15)
+2026-10-16T19:40:51.6312615Z ##[endgroup]
+2026-10-16T19:40:51.6513581Z ##[group]Run python -m pip install 'PyYAML>=6,<7'
+2026-10-16T19:40:51.6515248Z [36;1mpython -m pip install 'PyYAML>=6,<7'[0m
+2026-10-16T19:40:51.7042403Z shell: /usr/bin/bash -e {0}
+2026-10-16T19:40:51.7043237Z env:
+2026-10-16T19:40:51.7044076Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:51.7045401Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-16T19:40:51.7046701Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:51.7047906Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:51.7049088Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:51.7050299Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-16T19:40:51.7051326Z ##[endgroup]
+2026-10-16T19:40:52.7803462Z Collecting PyYAML<7,>=6
+2026-10-16T19:40:52.8257969Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-10-16T19:40:52.8335670Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-10-16T19:40:52.8656929Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 58.9 MB/s  0:00:00
+2026-10-16T19:40:52.9157365Z Installing collected packages: PyYAML
+2026-10-16T19:40:52.9625745Z Successfully installed PyYAML-6.0.3
+2026-10-16T19:40:53.0118634Z ##[group]Run python scripts/ci_governance.py
+2026-10-16T19:40:53.0118972Z [36;1mpython scripts/ci_governance.py[0m
+2026-10-16T19:40:53.0178566Z shell: /usr/bin/bash -e {0}
+2026-10-16T19:40:53.0178782Z env:
+2026-10-16T19:40:53.0179006Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:53.0179364Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-16T19:40:53.0179700Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:53.0180006Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:53.0180300Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:53.0180596Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-16T19:40:53.0180851Z ##[endgroup]
+2026-10-16T19:40:53.0553333Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml
+2026-10-16T19:40:53.1406367Z Created docs/agent-workflow/context-packs/VEL-CP-0002.md
+2026-10-16T19:40:53.1463366Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml
+2026-10-16T19:40:53.2332943Z Created docs/agent-workflow/context-packs/VEL-CP-0003.md
+2026-10-16T19:40:53.2393235Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s tests -p test_*.py -v
+2026-10-16T19:40:53.4932406Z test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests.test_bundle_approval_requires_owner_and_evidence) ... ok
+2026-10-16T19:40:53.4943455Z test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests.test_bundle_assessment_is_not_formal_approval) ... ok
+2026-10-16T19:40:53.5442455Z test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests.test_changed_current_task_does_not_invalidate_pinned_historical_pack) ... ok
+2026-10-16T19:40:53.5859567Z test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests.test_injected_instructions_outside_contract_are_rejected) ... ok
+2026-10-16T19:40:53.5921353Z test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests.test_missing_task_field_fails) ... ok
+2026-10-16T19:40:53.6536836Z test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests.test_pack_generation_is_valid_and_embeds_snapshots) ... ok
+2026-10-16T19:40:53.6966239Z test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests.test_permission_scope_approval_and_criteria_mutations_fail) ... ok
+2026-10-16T19:40:53.9943545Z test_repository_pilot_validates (test_agent_workflow.HandoffWorkflowTests.test_repository_pilot_validates) ... ok
+2026-10-16T19:40:54.0027469Z test_source_blob_tampering_fails (test_agent_workflow.HandoffWorkflowTests.test_source_blob_tampering_fails) ... ok
+2026-10-16T19:40:54.0220939Z test_source_role_spoofing_fails (test_agent_workflow.HandoffWorkflowTests.test_source_role_spoofing_fails) ... ok
+2026-10-16T19:40:54.0325450Z test_source_snapshot_text_tampering_fails (test_agent_workflow.HandoffWorkflowTests.test_source_snapshot_text_tampering_fails) ... ok
+2026-10-16T19:40:54.0361861Z test_tampered_pinned_task_blob_fails (test_agent_workflow.HandoffWorkflowTests.test_tampered_pinned_task_blob_fails) ... ok
+2026-10-16T19:40:54.0362938Z test_task_preserves_source_gap_and_draft_status (test_agent_workflow.HandoffWorkflowTests.test_task_preserves_source_gap_and_draft_status) ... ok
+2026-10-16T19:40:54.0385930Z test_unapproved_bundle_cannot_claim_accepted (test_agent_workflow.HandoffWorkflowTests.test_unapproved_bundle_cannot_claim_accepted) ... ok
+2026-10-16T19:40:54.0387424Z test_unsafe_paths_rejected (test_agent_workflow.HandoffWorkflowTests.test_unsafe_paths_rejected) ... ok
+2026-10-16T19:40:54.0394210Z test_every_required_failure_skip_cancel_or_missing_fails (test_ci_policy.FinalGateTests.test_every_required_failure_skip_cancel_or_missing_fails) ... ok
+2026-10-16T19:40:54.0395267Z test_failure_of_nonapplicable_job_is_not_hidden (test_ci_policy.FinalGateTests.test_failure_of_nonapplicable_job_is_not_hidden) ... ok
+2026-10-16T19:40:54.0396423Z test_inconsistent_security_cannot_pass (test_ci_policy.FinalGateTests.test_inconsistent_security_cannot_pass) ... ok
+2026-10-16T19:40:54.0397396Z test_missing_or_invalid_outputs_and_jobs_fail (test_ci_policy.FinalGateTests.test_missing_or_invalid_outputs_and_jobs_fail) ... ok
+2026-10-16T19:40:54.0398272Z test_security_recovery_cannot_be_skipped (test_ci_policy.FinalGateTests.test_security_recovery_cannot_be_skipped) ... ok
+2026-10-16T19:40:54.0399125Z test_success_and_nonapplicable_skips_pass (test_ci_policy.FinalGateTests.test_success_and_nonapplicable_skips_pass) ... ok
+2026-10-16T19:40:54.0399917Z test_bad_git_shas_and_events_fail (test_ci_policy.RoutingTests.test_bad_git_shas_and_events_fail) ... ok
+2026-10-16T19:40:54.0400725Z test_docs_and_governance_are_lightweight (test_ci_policy.RoutingTests.test_docs_and_governance_are_lightweight) ... ok
+2026-10-16T19:40:54.0401636Z test_exact_head_and_missing_pr_base_fail (test_ci_policy.RoutingTests.test_exact_head_and_missing_pr_base_fail) ... ok
+2026-10-16T19:40:54.0402632Z test_frontend_build_without_unrelated_containers (test_ci_policy.RoutingTests.test_frontend_build_without_unrelated_containers) ... ok
+2026-10-16T19:40:54.0403383Z test_full_manual_and_main_baseline (test_ci_policy.RoutingTests.test_full_manual_and_main_baseline) ... ok
+2026-10-16T19:40:54.1100748Z test_git_rename_delete_and_hostile_filename_are_data (test_ci_policy.RoutingTests.test_git_rename_delete_and_hostile_filename_are_data) ... ok
+2026-10-16T19:40:54.1139030Z test_main_manual_and_ready_event (test_ci_policy.RoutingTests.test_main_manual_and_ready_event) ... ok
+2026-10-16T19:40:54.1140353Z test_proposed_privilege_test_is_not_falsely_claimed (test_ci_policy.RoutingTests.test_proposed_privilege_test_is_not_falsely_claimed) ... ok
+2026-10-16T19:40:54.1141811Z test_security_paths_cannot_evade_integration (test_ci_policy.RoutingTests.test_security_paths_cannot_evade_integration) ... ok
+2026-10-16T19:40:54.1143249Z test_unknown_executable_and_config_are_conservative (test_ci_policy.RoutingTests.test_unknown_executable_and_config_are_conservative) ... ok
+2026-10-16T19:40:54.1143878Z test_unsafe_paths_fail (test_ci_policy.RoutingTests.test_unsafe_paths_fail) ... ok
+2026-10-16T19:40:54.1267933Z test_exact_head_no_persisted_credentials_in_all_jobs (test_ci_policy.WorkflowContractTests.test_exact_head_no_persisted_credentials_in_all_jobs) ... ok
+2026-10-16T19:40:54.1268779Z test_final_gate_always_includes_every_applicable_result (test_ci_policy.WorkflowContractTests.test_final_gate_always_includes_every_applicable_result) ... ok
+2026-10-16T19:40:54.1284494Z test_governance_generates_required_pack_before_exporter_tests (test_ci_policy.WorkflowContractTests.test_governance_generates_required_pack_before_exporter_tests) ... ok
+2026-10-16T19:40:54.1286023Z test_k2_checks_are_preserved_and_cannot_skip_when_applicable (test_ci_policy.WorkflowContractTests.test_k2_checks_are_preserved_and_cannot_skip_when_applicable) ... ok
+2026-10-16T19:40:54.1848454Z test_only_one_automatic_workflow_and_original_jobs_intact (test_ci_policy.WorkflowContractTests.test_only_one_automatic_workflow_and_original_jobs_intact) ... ok
+2026-10-16T19:40:54.1849744Z test_sql_regression_when_available_is_fail_fast (test_ci_policy.WorkflowContractTests.test_sql_regression_when_available_is_fail_fast) ... ok
+2026-10-16T19:40:54.1850913Z test_unfiltered_events_and_pr_only_cancellation (test_ci_policy.WorkflowContractTests.test_unfiltered_events_and_pr_only_cancellation) ... ok
+2026-10-16T19:40:54.2600151Z test_changed_claimed_source_status_fails (test_handoff_recovery.ColdStartHandoffTests.test_changed_claimed_source_status_fails) ... ok
+2026-10-16T19:40:54.3071935Z test_detached_reader_never_invents_original_source_verification (test_handoff_recovery.ColdStartHandoffTests.test_detached_reader_never_invents_original_source_verification) ... ok
+2026-10-16T19:40:54.3519135Z test_missing_embedded_snapshot_fails (test_handoff_recovery.ColdStartHandoffTests.test_missing_embedded_snapshot_fails) ... ok
+2026-10-16T19:40:54.3967202Z test_missing_permission_field_fails (test_handoff_recovery.ColdStartHandoffTests.test_missing_permission_field_fails) ... ok
+2026-10-16T19:40:54.4435248Z test_recovers_task_from_packet_with_no_repo_or_chat (test_handoff_recovery.ColdStartHandoffTests.test_recovers_task_from_packet_with_no_repo_or_chat) ... ok
+2026-10-16T19:40:54.4537010Z test_canonical_design_dependency_cannot_be_skipped (test_implementation_readiness.Stage5ReadinessTests.test_canonical_design_dependency_cannot_be_skipped) ... ok
+2026-10-16T19:40:54.4635476Z test_cycle_must_fail (test_implementation_readiness.Stage5ReadinessTests.test_cycle_must_fail) ... ok
+2026-10-16T19:40:54.4734762Z test_direct_release_or_paid_execution_forbidden (test_implementation_readiness.Stage5ReadinessTests.test_direct_release_or_paid_execution_forbidden) ... ok
+2026-10-16T19:40:54.4832247Z test_duplicate_task_id_must_fail (test_implementation_readiness.Stage5ReadinessTests.test_duplicate_task_id_must_fail) ... ok
+2026-10-16T19:40:54.4928834Z test_feature_coding_cannot_be_enabled_without_owner_gates (test_implementation_readiness.Stage5ReadinessTests.test_feature_coding_cannot_be_enabled_without_owner_gates) ... ok
+2026-10-16T19:40:54.5025349Z test_feature_coding_status_cannot_be_promoted_by_yaml (test_implementation_readiness.Stage5ReadinessTests.test_feature_coding_status_cannot_be_promoted_by_yaml) ... ok
+2026-10-16T19:40:54.5123893Z test_future_private_pilot_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests.test_future_private_pilot_also_requires_correct_gate) ... ok
+2026-10-16T19:40:54.5223471Z test_future_public_release_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests.test_future_public_release_also_requires_correct_gate) ... ok
+2026-10-16T19:40:54.5325822Z test_future_release_ids_cannot_masquerade_as_preparation_or_validation (test_implementation_readiness.Stage5ReadinessTests.test_future_release_ids_cannot_masquerade_as_preparation_or_validation) ... ok
+2026-10-16T19:40:54.5423526Z test_missing_dependency_must_fail (test_implementation_readiness.Stage5ReadinessTests.test_missing_dependency_must_fail) ... ok
+2026-10-16T19:40:54.5521069Z test_owner_gate_cannot_be_marked_passed_by_agent (test_implementation_readiness.Stage5ReadinessTests.test_owner_gate_cannot_be_marked_passed_by_agent) ... ok
+2026-10-16T19:40:54.5619786Z test_owner_gated_acyclic_dag (test_implementation_readiness.Stage5ReadinessTests.test_owner_gated_acyclic_dag) ... ok
+2026-10-16T19:40:54.5730940Z test_preparation_cannot_request_code_or_migration_actions (test_implementation_readiness.Stage5ReadinessTests.test_preparation_cannot_request_code_or_migration_actions) ... ok
+2026-10-16T19:40:54.5828356Z test_private_pilot_and_release_both_require_owner_gates (test_implementation_readiness.Stage5ReadinessTests.test_private_pilot_and_release_both_require_owner_gates) ... ok
+2026-10-16T19:40:54.5924638Z test_source_file_must_exist (test_implementation_readiness.Stage5ReadinessTests.test_source_file_must_exist) ... ok
+2026-10-16T19:40:54.6034297Z test_synthetic_design_cannot_request_code_or_unknown_actions (test_implementation_readiness.Stage5ReadinessTests.test_synthetic_design_cannot_request_code_or_unknown_actions) ... ok
+2026-10-16T19:40:54.6169926Z test_task_is_preparatory_not_implementation_permission (test_implementation_readiness.Stage5ReadinessTests.test_task_is_preparatory_not_implementation_permission) ... ok
+2026-10-16T19:40:54.6268144Z test_unknown_action_and_duplicate_action_are_rejected (test_implementation_readiness.Stage5ReadinessTests.test_unknown_action_and_duplicate_action_are_rejected) ... ok
+2026-10-16T19:40:54.6371616Z test_validation_and_release_cannot_smuggle_coding_actions (test_implementation_readiness.Stage5ReadinessTests.test_validation_and_release_cannot_smuggle_coding_actions) ... ok
+2026-10-16T19:40:54.6754043Z test_accepted_adr_without_approver_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_accepted_adr_without_approver_is_rejected) ... ok
+2026-10-16T19:40:54.7143806Z test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_duplicate_identifier_is_rejected) ... ok
+2026-10-16T19:40:54.7506696Z test_invalid_frontmatter_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_invalid_frontmatter_is_rejected) ... ok
+2026-10-16T19:40:54.7877899Z test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_malformed_adr_filename_is_not_skipped) ... ok
+2026-10-16T19:40:54.8251663Z test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_malformed_history_filename_is_not_skipped) ... ok
+2026-10-16T19:40:54.8627213Z test_mismatched_history_id_date_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_mismatched_history_id_date_is_rejected) ... ok
+2026-10-16T19:40:54.8654536Z test_no_records_fails_closed (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_no_records_fails_closed) ... ok
+2026-10-16T19:40:54.9027259Z test_real_records_pass_when_unmodified (test_knowledge_metadata.KnowledgeMetadataValidationTests.test_real_records_pass_when_unmodified) ... ok
+2026-10-16T19:40:54.9979675Z test_export_is_reproducible (test_level_b_export.HandoffExportTests.test_export_is_reproducible) ... ok
+2026-10-16T19:40:55.0435931Z test_export_never_overwrites (test_level_b_export.HandoffExportTests.test_export_never_overwrites) ... ok
+2026-10-16T19:40:55.1349475Z test_missing_parent_directory_or_bad_extension_fails (test_level_b_export.HandoffExportTests.test_missing_parent_directory_or_bad_extension_fails) ... ok
+2026-10-16T19:40:55.1444315Z test_mutated_allowed_actions_fail_before_export (test_level_b_export.HandoffExportTests.test_mutated_allowed_actions_fail_before_export) ... ok
+2026-10-16T19:40:55.1916054Z test_only_historical_pack_and_prompt_in_archive (test_level_b_export.HandoffExportTests.test_only_historical_pack_and_prompt_in_archive) ... ok
+2026-10-16T19:40:55.1917618Z test_prompt_has_no_answers_or_scoring_rubric (test_level_b_export.HandoffExportTests.test_prompt_has_no_answers_or_scoring_rubric) ... ok
+2026-10-16T19:40:55.1934131Z test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests.test_complete_pair_and_clash_detection) ... ok
+2026-10-16T19:40:55.1937941Z test_missing_headings_are_not_silently_accepted (test_r01_manifest.ManifestTests.test_missing_headings_are_not_silently_accepted) ... ok
+2026-10-16T19:40:55.1939262Z test_bare_code_and_invented_variants_rejected (test_r01_mapping_gate.MappingGateTests.test_bare_code_and_invented_variants_rejected) ... ok
+2026-10-16T19:40:55.1940665Z test_exact_identity_allowed_only_with_full_explicit_approval (test_r01_mapping_gate.MappingGateTests.test_exact_identity_allowed_only_with_full_explicit_approval) ... ok
+2026-10-16T19:40:55.1941944Z test_unapproved_mapping_rejected (test_r01_mapping_gate.MappingGateTests.test_unapproved_mapping_rejected) ... ok
+2026-10-16T19:40:55.1948668Z test_117_title_matching_pairs_still_need_body_review (test_r01_mapping_proposal.ProposedMappingTests.test_117_title_matching_pairs_still_need_body_review) ... ok
+2026-10-16T19:40:55.1958027Z test_four_real_distinct_subjects_split (test_r01_mapping_proposal.ProposedMappingTests.test_four_real_distinct_subjects_split) ... ok
+2026-10-16T19:40:55.1981906Z test_mapping_cli_refuses_original_as_output (test_r01_mapping_proposal.ProposedMappingTests.test_mapping_cli_refuses_original_as_output) ... ok
+2026-10-16T19:40:55.1995849Z test_missing_source_code_fails_closed (test_r01_mapping_proposal.ProposedMappingTests.test_missing_source_code_fails_closed) ... ok
+2026-10-16T19:40:55.2003730Z test_preserves_all_260_and_proposes_134_without_activation (test_r01_mapping_proposal.ProposedMappingTests.test_preserves_all_260_and_proposes_134_without_activation) ... ok
+2026-10-16T19:40:55.2011024Z test_remaining_nine_title_differences_not_silently_split (test_r01_mapping_proposal.ProposedMappingTests.test_remaining_nine_title_differences_not_silently_split) ... ok
+2026-10-16T19:40:55.2027185Z test_title_divergence_change_requires_research_review (test_r01_mapping_proposal.ProposedMappingTests.test_title_divergence_change_requires_research_review) ... ok
+2026-10-16T19:40:55.2041844Z test_variant_identity_tamper_fails_closed (test_r01_mapping_proposal.ProposedMappingTests.test_variant_identity_tamper_fails_closed) ... ok
+2026-10-16T19:40:55.2047147Z test_all_130_unresolved_and_260_preserved (test_r01_review_packet.ReviewPacketTests.test_all_130_unresolved_and_260_preserved) ... ok
+2026-10-16T19:40:55.2062225Z test_check_failure_does_not_create_output (test_r01_review_packet.ReviewPacketTests.test_check_failure_does_not_create_output) ... ok
+2026-10-16T19:40:55.2070037Z test_complete_candidate_is_structural_only (test_r01_review_packet.ReviewPacketTests.test_complete_candidate_is_structural_only) ... ok
+2026-10-16T19:40:55.2078625Z test_existing_destination_cannot_be_clobbered (test_r01_review_packet.ReviewPacketTests.test_existing_destination_cannot_be_clobbered) ... ok
+2026-10-16T19:40:55.2098459Z test_manifest_collision_and_missing_code_rejected (test_r01_review_packet.ReviewPacketTests.test_manifest_collision_and_missing_code_rejected) ... ok
+2026-10-16T19:40:55.2103508Z test_missing_mappings_cannot_pass (test_r01_review_packet.ReviewPacketTests.test_missing_mappings_cannot_pass) ... ok
+2026-10-16T19:40:55.2111105Z test_original_never_overwritten_even_when_out_equals_source (test_r01_review_packet.ReviewPacketTests.test_original_never_overwritten_even_when_out_equals_source) ... ok
+2026-10-16T19:40:55.2117732Z test_owner_approval_fields_required_but_not_self_authenticating (test_r01_review_packet.ReviewPacketTests.test_owner_approval_fields_required_but_not_self_authenticating) ... ok
+2026-10-16T19:40:55.2124420Z test_separate_aliases_per_distinct_meaning (test_r01_review_packet.ReviewPacketTests.test_separate_aliases_per_distinct_meaning) ... ok
+2026-10-16T19:40:55.2131824Z test_symlink_destination_does_not_follow_source (test_r01_review_packet.ReviewPacketTests.test_symlink_destination_does_not_follow_source) ... ok
+2026-10-16T19:40:55.2139216Z test_unknown_variant_and_source_hash_rejected (test_r01_review_packet.ReviewPacketTests.test_unknown_variant_and_source_hash_rejected) ... ok
+2026-10-16T19:40:55.2151229Z test_all_six_merged_pair_evidence_links_present (test_research_design_gate.ResearchDesignGateTests.test_all_six_merged_pair_evidence_links_present) ... ok
+2026-10-16T19:40:55.2159144Z test_current_snapshot_precedes_preserved_old_checkpoints (test_research_design_gate.ResearchDesignGateTests.test_current_snapshot_precedes_preserved_old_checkpoints) ... ok
+2026-10-16T19:40:55.2174799Z test_design_first_plan_preserved_and_merge_variance_disclosed (test_research_design_gate.ResearchDesignGateTests.test_design_first_plan_preserved_and_merge_variance_disclosed) ... ok
+2026-10-16T19:40:55.2199849Z test_exact_owner_option_b_decision_and_two_track_research_plan (test_research_design_gate.ResearchDesignGateTests.test_exact_owner_option_b_decision_and_two_track_research_plan) ... ok
+2026-10-16T19:40:55.2204214Z test_merged_research_artifacts_are_really_in_this_checkout (test_research_design_gate.ResearchDesignGateTests.test_merged_research_artifacts_are_really_in_this_checkout) ... ok
+2026-10-16T19:40:55.2249497Z test_owner_accepted_mvp_and_source_preservation_unchanged (test_research_design_gate.ResearchDesignGateTests.test_owner_accepted_mvp_and_source_preservation_unchanged) ... ok
+2026-10-16T19:40:55.2267841Z test_owner_free_or_paid_byok_clarification_has_priority (test_research_design_gate.ResearchDesignGateTests.test_owner_free_or_paid_byok_clarification_has_priority) ... ok
+2026-10-16T19:40:55.2278484Z test_owner_option_b_recorded_without_design_authorization (test_research_design_gate.ResearchDesignGateTests.test_owner_option_b_recorded_without_design_authorization) ... ok
+2026-10-16T19:40:55.2310310Z test_post_merge_status_is_authoritative_without_design_approval (test_research_design_gate.ResearchDesignGateTests.test_post_merge_status_is_authoritative_without_design_approval) ... ok
+2026-10-16T19:40:55.2329198Z test_subsequent_owner_waves_01_03_approval_not_technical_certification (test_research_design_gate.ResearchDesignGateTests.test_subsequent_owner_waves_01_03_approval_not_technical_certification) ... ok
+2026-10-16T19:40:55.2359255Z test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit (test_research_design_gate.ResearchDesignGateTests.test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit) ... ok
+2026-10-16T19:40:55.2369369Z test_wave_one_mapping_proposal_preserves_source_and_owner_gate (test_research_design_gate.ResearchDesignGateTests.test_wave_one_mapping_proposal_preserves_source_and_owner_gate) ... ok
+2026-10-16T19:40:55.2379479Z test_wave_one_public_author_research_is_not_mislabeled_interviews (test_research_design_gate.ResearchDesignGateTests.test_wave_one_public_author_research_is_not_mislabeled_interviews) ... ok
+2026-10-16T19:40:55.2422253Z test_wave_six_recovery_g10_and_delegated_design_stage_boundaries (test_research_design_gate.ResearchDesignGateTests.test_wave_six_recovery_g10_and_delegated_design_stage_boundaries) ... ok
+2026-10-16T19:40:55.2443104Z test_wave_three_privacy_and_canon_research_keep_live_gaps_open (test_research_design_gate.ResearchDesignGateTests.test_wave_three_privacy_and_canon_research_keep_live_gaps_open) ... ok
+2026-10-16T19:40:55.2461113Z test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx (test_research_design_gate.ResearchDesignGateTests.test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx) ... ok
+2026-10-16T19:40:55.2521727Z test_acceptance_ref_must_exist_in_source (test_spec_traceability.SpecTraceabilityTests.test_acceptance_ref_must_exist_in_source) ... ok
+2026-10-16T19:40:55.2589473Z test_approved_scope_and_draft_plan_are_distinguished (test_spec_traceability.SpecTraceabilityTests.test_approved_scope_and_draft_plan_are_distinguished) ... ok
+2026-10-16T19:40:55.2643808Z test_draft_acceptance_falsely_labeled_accepted_rejected (test_spec_traceability.SpecTraceabilityTests.test_draft_acceptance_falsely_labeled_accepted_rejected) ... ok
+2026-10-16T19:40:55.2666652Z test_duplicate_scenario_id_rejected (test_spec_traceability.SpecTraceabilityTests.test_duplicate_scenario_id_rejected) ... ok
+2026-10-16T19:40:55.2726443Z test_missing_scenario_heading_rejected (test_spec_traceability.SpecTraceabilityTests.test_missing_scenario_heading_rejected) ... ok
+2026-10-16T19:40:55.2788526Z test_missing_scenario_source_rejected (test_spec_traceability.SpecTraceabilityTests.test_missing_scenario_source_rejected) ... ok
+2026-10-16T19:40:55.2850600Z test_no_unsupported_completed_claim (test_spec_traceability.SpecTraceabilityTests.test_no_unsupported_completed_claim) ... ok
+2026-10-16T19:40:55.2873672Z test_path_escape_rejected (test_spec_traceability.SpecTraceabilityTests.test_path_escape_rejected) ... ok
+2026-10-16T19:40:55.2932209Z test_post_mvp_feature_cannot_be_smuggled_into_slice (test_spec_traceability.SpecTraceabilityTests.test_post_mvp_feature_cannot_be_smuggled_into_slice) ... ok
+2026-10-16T19:40:55.2955416Z test_promotion_to_accepted_rejected (test_spec_traceability.SpecTraceabilityTests.test_promotion_to_accepted_rejected) ... ok
+2026-10-16T19:40:55.2978438Z test_refuses_architecture_beyond_eight_areas (test_spec_traceability.SpecTraceabilityTests.test_refuses_architecture_beyond_eight_areas) ... ok
+2026-10-16T19:40:55.2979778Z test_copy_on_read_does_not_mutate_accepted_document (test_stage4_chapter_contract.Stage4ChapterContractTests.test_copy_on_read_does_not_mutate_accepted_document) ... ok
+2026-10-16T19:40:55.2981253Z test_empty_or_unsupported_document_is_not_persisted (test_stage4_chapter_contract.Stage4ChapterContractTests.test_empty_or_unsupported_document_is_not_persisted) ... ok
+2026-10-16T19:40:55.2983134Z test_ownership_checks_precede_version_or_fault_handling (test_stage4_chapter_contract.Stage4ChapterContractTests.test_ownership_checks_precede_version_or_fault_handling) ... ok
+2026-10-16T19:40:55.2984668Z test_sc001_book_creation_chapter_navigation_and_reopen (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc001_book_creation_chapter_navigation_and_reopen) ... ok
+2026-10-16T19:40:55.2986294Z test_sc002_ai_free_format_payload_proxy_not_real_editor (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc002_ai_free_format_payload_proxy_not_real_editor) ... ok
+2026-10-16T19:40:55.2987710Z test_sc003_saving_only_acknowledged_revision (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc003_saving_only_acknowledged_revision) ... ok
+2026-10-16T19:40:55.2989137Z test_sc004_ambiguous_postcommit_ack_cannot_show_saved (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc004_ambiguous_postcommit_ack_cannot_show_saved) ... ok
+2026-10-16T19:40:55.2990635Z test_sc004_interruption_before_commit_no_false_saved (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc004_interruption_before_commit_no_false_saved) ... ok
+2026-10-16T19:40:55.2991989Z test_sc005_direct_stale_revision_raises (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc005_direct_stale_revision_raises) ... ok
+2026-10-16T19:40:55.2993153Z test_sc005_stale_editor_rejected_without_overwrite (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc005_stale_editor_rejected_without_overwrite) ... ok
+2026-10-16T19:40:55.2994555Z test_sc006_cross_author_reads_and_writes_denied (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc006_cross_author_reads_and_writes_denied) ... ok
+2026-10-16T19:40:55.2995976Z test_sc006_unknown_id_does_not_disclose_title_or_text (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc006_unknown_id_does_not_disclose_title_or_text) ... ok
+2026-10-16T19:40:55.2997045Z test_sc007_cross_book_chapter_id_cannot_be_reinterpreted (test_stage4_chapter_contract.Stage4ChapterContractTests.test_sc007_cross_book_chapter_id_cannot_be_reinterpreted) ... ok
+2026-10-16T19:40:55.2997897Z test_existing_packet_is_not_overwritten (test_stage4_independent_packet.Stage4IndependentPacketTests.test_existing_packet_is_not_overwritten) ... ok
+2026-10-16T19:40:55.3605281Z test_only_two_inputs_and_correct_hashes (test_stage4_independent_packet.Stage4IndependentPacketTests.test_only_two_inputs_and_correct_hashes) ... ok
+2026-10-16T19:40:55.4808962Z test_repeatable_export_byte_for_byte (test_stage4_independent_packet.Stage4IndependentPacketTests.test_repeatable_export_byte_for_byte) ... ok
+2026-10-16T19:40:55.4886156Z test_stale_git_pinning_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests.test_stale_git_pinning_fails_closed) ... ok
+2026-10-16T19:40:55.5430187Z test_tampered_contextpack_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests.test_tampered_contextpack_fails_closed) ... ok
+2026-10-16T19:40:55.5432995Z test_wrong_output_suffix_refused (test_stage4_independent_packet.Stage4IndependentPacketTests.test_wrong_output_suffix_refused) ... ok
+2026-10-16T19:40:55.5433760Z 
+2026-10-16T19:40:55.5433967Z ----------------------------------------------------------------------
+2026-10-16T19:40:55.5434408Z Ran 147 tests in 2.061s
+2026-10-16T19:40:55.5434530Z 
+2026-10-16T19:40:55.5434596Z OK
+2026-10-16T19:40:55.5434846Z PASS: 4 task(s), 4 ContextPack(s), 1 ExecutionBundle(s) validated
+2026-10-16T19:40:55.5586696Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/check_knowledge_metadata.py
+2026-10-16T19:40:55.6278756Z PASS: validated metadata for 25 ADR/history records.
+2026-10-16T19:40:55.6320906Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/check_implementation_readiness.py
+2026-10-16T19:40:55.6745183Z PASS: 14 DAG nodes validated, 4 owner gates pending, no cycles, no unauthorized feature dispatch
+2026-10-16T19:40:55.6746462Z Order: VEL-PREP-001, VEL-DES-001, VEL-DES-002, VEL-IMP-001, VEL-IMP-002, VEL-IMP-003, VEL-IMP-004, VEL-IMP-005, VEL-IMP-006, VEL-IMP-007, VEL-IMP-008, VEL-VAL-001, VEL-PILOT-001, VEL-RELEASE-001
+2026-10-16T19:40:55.6784583Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/agent_workflow.py validate
+2026-10-16T19:40:56.0125554Z PASS: 4 task(s), 4 ContextPack(s), 1 ExecutionBundle(s) validated
+2026-10-16T19:40:56.0185820Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/spec_traceability.py validate
+2026-10-16T19:40:56.0618977Z VALID: VEL-SPEC-001 — 8 source-traced proposed acceptance scenarios
+2026-10-16T19:40:56.0665080Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_pair03_*.py -v
+2026-10-16T19:40:56.1208450Z test_01_two_books_restore_and_sources_unchanged (test_pair03_portability.PortabilityTests.test_01_two_books_restore_and_sources_unchanged) ... ok
+2026-10-16T19:40:56.1212256Z test_02_rules_and_pending_facts_not_automatically_approved (test_pair03_portability.PortabilityTests.test_02_rules_and_pending_facts_not_automatically_approved) ... ok
+2026-10-16T19:40:56.1216107Z test_03_backup_does_not_invent_secrets_or_change_content (test_pair03_portability.PortabilityTests.test_03_backup_does_not_invent_secrets_or_change_content) ... ok
+2026-10-16T19:40:56.1217535Z test_04_corrupted_zip_rejected_without_mutating_existing (test_pair03_portability.PortabilityTests.test_04_corrupted_zip_rejected_without_mutating_existing) ... ok
+2026-10-16T19:40:56.1218744Z test_05_zip_path_traversal_rejected (test_pair03_portability.PortabilityTests.test_05_zip_path_traversal_rejected) ... ok
+2026-10-16T19:40:56.1223607Z test_06_manifest_hash_tamper_rejected (test_pair03_portability.PortabilityTests.test_06_manifest_hash_tamper_rejected) ... ok
+2026-10-16T19:40:56.1343300Z test_07_duplicate_entry_names_rejected (test_pair03_portability.PortabilityTests.test_07_duplicate_entry_names_rejected) ... /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/zipfile/__init__.py:1650: UserWarning: Duplicate name: 'project.json'
+2026-10-16T19:40:56.1344233Z   return self._open_to_write(zinfo, force_zip64=force_zip64)
+2026-10-16T19:40:56.1344619Z ok
+2026-10-16T19:40:56.1355040Z test_08_oversized_archive_rejected (test_pair03_portability.PortabilityTests.test_08_oversized_archive_rejected) ... ok
+2026-10-16T19:40:56.1379054Z test_09_txt_unicode_windows_line_endings_and_bom (test_pair03_portability.PortabilityTests.test_09_txt_unicode_windows_line_endings_and_bom) ... ok
+2026-10-16T19:40:56.1380074Z test_10_invalid_txt_bytes_are_rejected (test_pair03_portability.PortabilityTests.test_10_invalid_txt_bytes_are_rejected) ... ok
+2026-10-16T19:40:56.1380865Z test_01_ai_off_manual_profile_and_thread (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_01_ai_off_manual_profile_and_thread) ... ok
+2026-10-16T19:40:56.1381721Z test_02_later_written_flashback_cannot_leak_future_injury (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_02_later_written_flashback_cannot_leak_future_injury) ... ok
+2026-10-16T19:40:56.1383190Z test_03_later_character_knowledge_not_in_earlier_context (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_03_later_character_knowledge_not_in_earlier_context) ... ok
+2026-10-16T19:40:56.1384480Z test_04_unaccepted_ai_claim_never_becomes_profile (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_04_unaccepted_ai_claim_never_becomes_profile) ... ok
+2026-10-16T19:40:56.1385372Z test_05_edited_support_blocks_stale_candidate_and_approved_fact (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_05_edited_support_blocks_stale_candidate_and_approved_fact) ... ok
+2026-10-16T19:40:56.1386355Z test_06_subjective_claim_does_not_overwrite_objective_character_state (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_06_subjective_claim_does_not_overwrite_objective_character_state) ... ok
+2026-10-16T19:40:56.1393072Z test_07_same_named_characters_in_other_book_are_isolated (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_07_same_named_characters_in_other_book_are_isolated) ... ok
+2026-10-16T19:40:56.1394424Z test_08_without_known_story_time_no_false_promotion (test_pair03_story_profiles.Pair03ThreeSceneScenario.test_08_without_known_story_time_no_false_promotion) ... ok
+2026-10-16T19:40:56.1394921Z 
+2026-10-16T19:40:56.1395161Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.1395440Z Ran 18 tests in 0.019s
+2026-10-16T19:40:56.1395563Z 
+2026-10-16T19:40:56.1395630Z OK
+2026-10-16T19:40:56.1461625Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_r07_story_state_contract.py -v
+2026-10-16T19:40:56.1877453Z test_01_ai_off_profiles_both_types_and_visible_baseline (test_r07_story_state_contract.StoryStateContractTests.test_01_ai_off_profiles_both_types_and_visible_baseline) ... ok
+2026-10-16T19:40:56.1878608Z test_02_manual_progression_without_ai (test_r07_story_state_contract.StoryStateContractTests.test_02_manual_progression_without_ai) ... ok
+2026-10-16T19:40:56.1879658Z test_03_human_scene_produces_candidate_not_canon (test_r07_story_state_contract.StoryStateContractTests.test_03_human_scene_produces_candidate_not_canon) ... ok
+2026-10-16T19:40:56.1880820Z test_04_explicit_approval_updates_state_and_provenance (test_r07_story_state_contract.StoryStateContractTests.test_04_explicit_approval_updates_state_and_provenance) ... ok
+2026-10-16T19:40:56.1881951Z test_05_rejected_ai_prose_cannot_enter_canon (test_r07_story_state_contract.StoryStateContractTests.test_05_rejected_ai_prose_cannot_enter_canon) ... ok
+2026-10-16T19:40:56.1883517Z test_06_accepted_ai_manuscript_still_needs_profile_approval (test_r07_story_state_contract.StoryStateContractTests.test_06_accepted_ai_manuscript_still_needs_profile_approval) ... ok
+2026-10-16T19:40:56.1884656Z test_07_dismiss_never_changes_state (test_r07_story_state_contract.StoryStateContractTests.test_07_dismiss_never_changes_state) ... ok
+2026-10-16T19:40:56.1885680Z test_08_author_can_revise_suggestion_before_approval (test_r07_story_state_contract.StoryStateContractTests.test_08_author_can_revise_suggestion_before_approval) ... ok
+2026-10-16T19:40:56.1886879Z test_09_revision_during_pending_proposal_blocks_stale_approval (test_r07_story_state_contract.StoryStateContractTests.test_09_revision_during_pending_proposal_blocks_stale_approval) ... ok
+2026-10-16T19:40:56.1887899Z test_10_edited_source_invalidates_approved_derived_state_but_keeps_history (test_r07_story_state_contract.StoryStateContractTests.test_10_edited_source_invalidates_approved_derived_state_but_keeps_history) ... ok
+2026-10-16T19:40:56.1888918Z test_11_flashback_does_not_use_chapter_display_order_as_story_time (test_r07_story_state_contract.StoryStateContractTests.test_11_flashback_does_not_use_chapter_display_order_as_story_time) ... ok
+2026-10-16T19:40:56.1889860Z test_12_story_checkpoint_excludes_future_character_knowledge (test_r07_story_state_contract.StoryStateContractTests.test_12_story_checkpoint_excludes_future_character_knowledge) ... ok
+2026-10-16T19:40:56.1890701Z test_13_character_claim_not_objective_canon (test_r07_story_state_contract.StoryStateContractTests.test_13_character_claim_not_objective_canon) ... ok
+2026-10-16T19:40:56.1891488Z test_14_uncertain_possibility_not_objective_canon (test_r07_story_state_contract.StoryStateContractTests.test_14_uncertain_possibility_not_objective_canon) ... ok
+2026-10-16T19:40:56.1892416Z test_15_same_named_character_never_crosses_books (test_r07_story_state_contract.StoryStateContractTests.test_15_same_named_character_never_crosses_books) ... ok
+2026-10-16T19:40:56.1893243Z test_16_missing_quote_is_not_a_source_backed_proposal (test_r07_story_state_contract.StoryStateContractTests.test_16_missing_quote_is_not_a_source_backed_proposal) ... ok
+2026-10-16T19:40:56.1894112Z test_17_duplicate_approval_must_not_duplicate_state_events (test_r07_story_state_contract.StoryStateContractTests.test_17_duplicate_approval_must_not_duplicate_state_events) ... ok
+2026-10-16T19:40:56.1895007Z test_18_story_thread_progresses_only_after_explicit_update (test_r07_story_state_contract.StoryStateContractTests.test_18_story_thread_progresses_only_after_explicit_update) ... ok
+2026-10-16T19:40:56.1896101Z test_19_unknown_story_order_abstains_instead_of_guessing (test_r07_story_state_contract.StoryStateContractTests.test_19_unknown_story_order_abstains_instead_of_guessing) ... ok
+2026-10-16T19:40:56.1897062Z test_20_manual_update_survives_unrelated_scene_edit (test_r07_story_state_contract.StoryStateContractTests.test_20_manual_update_survives_unrelated_scene_edit) ... ok
+2026-10-16T19:40:56.1913714Z 
+2026-10-16T19:40:56.1913918Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.1914297Z Ran 20 tests in 0.001s
+2026-10-16T19:40:56.1914460Z 
+2026-10-16T19:40:56.1914541Z OK
+2026-10-16T19:40:56.1944519Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_pair04_offline_provider.py -v
+2026-10-16T19:40:56.2388414Z test_11_corpus_consistent_ids_and_stratification (test_pair04_offline_provider.FictionCorpusTests.test_11_corpus_consistent_ids_and_stratification) ... ok
+2026-10-16T19:40:56.2389607Z test_12_model_outputs_and_human_scores_must_stay_empty (test_pair04_offline_provider.FictionCorpusTests.test_12_model_outputs_and_human_scores_must_stay_empty) ... ok
+2026-10-16T19:40:56.2390597Z test_13_each_case_has_reproducible_human_checks_and_approved_facts (test_pair04_offline_provider.FictionCorpusTests.test_13_each_case_has_reproducible_human_checks_and_approved_facts) ... ok
+2026-10-16T19:40:56.2391504Z test_14_contains_exceptions_non_linearity_and_pov_cases (test_pair04_offline_provider.FictionCorpusTests.test_14_contains_exceptions_non_linearity_and_pov_cases) ... ok
+2026-10-16T19:40:56.2392515Z test_01_explicit_consent_disclosure_and_no_default_transfer (test_pair04_offline_provider.ProviderTests.test_01_explicit_consent_disclosure_and_no_default_transfer) ... ok
+2026-10-16T19:40:56.2413287Z test_02_zero_paid_policy_rejects_positive_budget (test_pair04_offline_provider.ProviderTests.test_02_zero_paid_policy_rejects_positive_budget) ... ok
+2026-10-16T19:40:56.2443438Z test_03_selected_book_only_with_explicit_approved_facts (test_pair04_offline_provider.ProviderTests.test_03_selected_book_only_with_explicit_approved_facts) ... ok
+2026-10-16T19:40:56.2445029Z test_04_oversized_input_fails_without_silent_truncation (test_pair04_offline_provider.ProviderTests.test_04_oversized_input_fails_without_silent_truncation) ... ok
+2026-10-16T19:40:56.2446485Z test_05_model_identity_and_output_budget_required (test_pair04_offline_provider.ProviderTests.test_05_model_identity_and_output_budget_required) ... ok
+2026-10-16T19:40:56.2447831Z test_06_all_failure_states_never_mutate_manuscript (test_pair04_offline_provider.ProviderTests.test_06_all_failure_states_never_mutate_manuscript) ... ok
+2026-10-16T19:40:56.2449336Z test_07_success_only_creates_unapproved_proposal_and_cancel_is_safe (test_pair04_offline_provider.ProviderTests.test_07_success_only_creates_unapproved_proposal_and_cancel_is_safe) ... ok
+2026-10-16T19:40:56.2450782Z test_08_redacted_logs_no_source_text_or_secret (test_pair04_offline_provider.ProviderTests.test_08_redacted_logs_no_source_text_or_secret) ... ok
+2026-10-16T19:40:56.2452332Z test_09_non_tuple_context_blocked_no_implicit_unapproved_data (test_pair04_offline_provider.ProviderTests.test_09_non_tuple_context_blocked_no_implicit_unapproved_data) ... ok
+2026-10-16T19:40:56.2453704Z test_10_invalid_provider_event_blocked (test_pair04_offline_provider.ProviderTests.test_10_invalid_provider_event_blocked) ... ok
+2026-10-16T19:40:56.2454360Z 
+2026-10-16T19:40:56.2454549Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.2455010Z Ran 14 tests in 0.001s
+2026-10-16T19:40:56.2455189Z 
+2026-10-16T19:40:56.2455297Z OK
+2026-10-16T19:40:56.2457442Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_pair05_synthetic_rules.py -v
+2026-10-16T19:40:56.2853592Z test_01_default_simulated_rules_visible_but_not_certified (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_01_default_simulated_rules_visible_but_not_certified) ... ok
+2026-10-16T19:40:56.2854871Z test_02_disable_book_rule_excludes_wording_from_entire_request (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_02_disable_book_rule_excludes_wording_from_entire_request) ... ok
+2026-10-16T19:40:56.2856136Z test_03_scene_override_restores_inherited_book_disable (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_03_scene_override_restores_inherited_book_disable) ... ok
+2026-10-16T19:40:56.2857355Z test_04_chapter_priority_precedes_scene_and_overrides_book (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_04_chapter_priority_precedes_scene_and_overrides_book) ... ok
+2026-10-16T19:40:56.2858519Z test_05_author_exception_keeps_canon_and_voices (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_05_author_exception_keeps_canon_and_voices) ... ok
+2026-10-16T19:40:56.2859409Z test_06_all_rules_disabled_means_no_default_text (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_06_all_rules_disabled_means_no_default_text) ... ok
+2026-10-16T19:40:56.2860269Z test_07_custom_rule_only_in_requested_book_and_changes_cache_key (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_07_custom_rule_only_in_requested_book_and_changes_cache_key) ... ok
+2026-10-16T19:40:56.2861163Z test_08_disable_invalidates_cached_prompt_snapshot (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_08_disable_invalidates_cached_prompt_snapshot) ... ok
+2026-10-16T19:40:56.2861906Z test_09_never_claim_real_source_pack (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_09_never_claim_real_source_pack) ... ok
+2026-10-16T19:40:56.2862910Z test_10_context_overflow_explicit_failure_not_truncation (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_10_context_overflow_explicit_failure_not_truncation) ... ok
+2026-10-16T19:40:56.2863792Z test_11_unrecognized_nonboolean_rule_override_rejected (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_11_unrecognized_nonboolean_rule_override_rejected) ... ok
+2026-10-16T19:40:56.2864677Z test_12_imported_prompt_injection_is_untrusted_manuscript (test_pair05_synthetic_rules.SyntheticGuidanceTests.test_12_imported_prompt_injection_is_untrusted_manuscript) ... ok
+2026-10-16T19:40:56.2865169Z 
+2026-10-16T19:40:56.2865300Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.2865572Z Ran 12 tests in 0.001s
+2026-10-16T19:40:56.2865685Z 
+2026-10-16T19:40:56.2865763Z OK
+2026-10-16T19:40:56.2912768Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_pair06_legal_registry.py -v
+2026-10-16T19:40:56.3299441Z test_01_compliance_not_self_certified (test_pair06_legal_registry.LegalOpsEvidenceTests.test_01_compliance_not_self_certified) ... ok
+2026-10-16T19:40:56.3300584Z test_02_all_required_ids_unique (test_pair06_legal_registry.LegalOpsEvidenceTests.test_02_all_required_ids_unique) ... ok
+2026-10-16T19:40:56.3301516Z test_03_real_primary_evidence_per_record (test_pair06_legal_registry.LegalOpsEvidenceTests.test_03_real_primary_evidence_per_record) ... ok
+2026-10-16T19:40:56.3302366Z test_04_license_and_distribution_remain_separate (test_pair06_legal_registry.LegalOpsEvidenceTests.test_04_license_and_distribution_remain_separate) ... ok
+2026-10-16T19:40:56.3303188Z test_05_gdpr_ghana_roles_are_not_declared_certified (test_pair06_legal_registry.LegalOpsEvidenceTests.test_05_gdpr_ghana_roles_are_not_declared_certified) ... ok
+2026-10-16T19:40:56.3303966Z test_06_no_claim_free_backup_or_production_rpo (test_pair06_legal_registry.LegalOpsEvidenceTests.test_06_no_claim_free_backup_or_production_rpo) ... ok
+2026-10-16T19:40:56.3304784Z test_07_author_fiction_rights_and_external_models_separate (test_pair06_legal_registry.LegalOpsEvidenceTests.test_07_author_fiction_rights_and_external_models_separate) ... ok
+2026-10-16T19:40:56.3305666Z test_08_all_unresolved_public_release_actions_remain_open (test_pair06_legal_registry.LegalOpsEvidenceTests.test_08_all_unresolved_public_release_actions_remain_open) ... ok
+2026-10-16T19:40:56.3306316Z 
+2026-10-16T19:40:56.3306455Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.3306911Z Ran 8 tests in 0.000s
+2026-10-16T19:40:56.3307017Z 
+2026-10-16T19:40:56.3307089Z OK
+2026-10-16T19:40:56.3357905Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_wave03_security_boundary.py -v
+2026-10-16T19:40:56.3752735Z test_01_owned_book_allowed (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_01_owned_book_allowed) ... ok
+2026-10-16T19:40:56.3753893Z test_02_cross_owner_denied (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_02_cross_owner_denied) ... ok
+2026-10-16T19:40:56.3755060Z test_03_signed_jwt_time_is_not_session_liveness (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_03_signed_jwt_time_is_not_session_liveness) ... ok
+2026-10-16T19:40:56.3756231Z test_04_independent_alice_session_not_revoked_locally (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_04_independent_alice_session_not_revoked_locally) ... ok
+2026-10-16T19:40:56.3757056Z test_05_other_author_unchanged (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_05_other_author_unchanged) ... ok
+2026-10-16T19:40:56.3757764Z test_06_expired_session_denied (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_06_expired_session_denied) ... ok
+2026-10-16T19:40:56.3758508Z test_07_local_draft_scoped_author_book (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_07_local_draft_scoped_author_book) ... ok
+2026-10-16T19:40:56.3759355Z test_08_signed_download_url_remains_valid_after_logout (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_08_signed_download_url_remains_valid_after_logout) ... ok
+2026-10-16T19:40:56.3760211Z test_09_signed_url_excessive_ttl_rejected (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_09_signed_url_excessive_ttl_rejected) ... ok
+2026-10-16T19:40:56.3761145Z test_10_deleted_book_unreadable_without_backup_erasure_claim (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_10_deleted_book_unreadable_without_backup_erasure_claim) ... ok
+2026-10-16T19:40:56.3762389Z test_11_cross_owner_cannot_delete (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_11_cross_owner_cannot_delete) ... ok
+2026-10-16T19:40:56.3763486Z test_12_existing_nest_books_are_scoped_by_user_token (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_12_existing_nest_books_are_scoped_by_user_token) ... ok
+2026-10-16T19:40:56.3765007Z test_13_current_auth_guard_verifies_user_per_request (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_13_current_auth_guard_verifies_user_per_request) ... ok
+2026-10-16T19:40:56.3766458Z test_14_current_logout_does_not_handle_signout_error (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_14_current_logout_does_not_handle_signout_error) ... ok
+2026-10-16T19:40:56.3767963Z test_15_manuscript_write_privileges_explicitly_restricted (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_15_manuscript_write_privileges_explicitly_restricted) ... ok
+2026-10-16T19:40:56.3768903Z test_16_client_side_browser_books_page_not_ssr_gate (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_16_client_side_browser_books_page_not_ssr_gate) ... ok
+2026-10-16T19:40:56.3769813Z test_17_server_session_helper_exists_but_not_full_proxy (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_17_server_session_helper_exists_but_not_full_proxy) ... ok
+2026-10-16T19:40:56.3770724Z test_18_real_storage_export_and_deletion_unverified (test_wave03_security_boundary.ResearchSessionAndAuthorBoundary.test_18_real_storage_export_and_deletion_unverified) ... ok
+2026-10-16T19:40:56.3771208Z 
+2026-10-16T19:40:56.3771335Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.3771606Z Ran 18 tests in 0.002s
+2026-10-16T19:40:56.3771727Z 
+2026-10-16T19:40:56.3771976Z OK
+2026-10-16T19:40:56.3820730Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_wave03_story_profiles.py -v
+2026-10-16T19:40:56.4263658Z test_11_all_candidates_are_pending_and_case_labels_present (test_wave03_story_profiles.ExtractionQualityCharacterization.test_11_all_candidates_are_pending_and_case_labels_present) ... ok
+2026-10-16T19:40:56.4265123Z test_12_quantify_false_positive_and_false_negative_not_100_percent (test_wave03_story_profiles.ExtractionQualityCharacterization.test_12_quantify_false_positive_and_false_negative_not_100_percent) ... ok
+2026-10-16T19:40:56.4266650Z test_01_flashback_differs_from_reveal_order (test_wave03_story_profiles.TemporalAndAuthorApproval.test_01_flashback_differs_from_reveal_order) ... ok
+2026-10-16T19:40:56.4268038Z test_02_future_information_does_not_enter_prior_chapter (test_wave03_story_profiles.TemporalAndAuthorApproval.test_02_future_information_does_not_enter_prior_chapter) ... ok
+2026-10-16T19:40:56.4269499Z test_03_rejected_ai_text_never_leaks_to_profile (test_wave03_story_profiles.TemporalAndAuthorApproval.test_03_rejected_ai_text_never_leaks_to_profile) ... ok
+2026-10-16T19:40:56.4270905Z test_04_accepted_ai_prose_still_requires_profile_review (test_wave03_story_profiles.TemporalAndAuthorApproval.test_04_accepted_ai_prose_still_requires_profile_review) ... ok
+2026-10-16T19:40:56.4272513Z test_05_stale_quote_revision_cannot_authorize_approval (test_wave03_story_profiles.TemporalAndAuthorApproval.test_05_stale_quote_revision_cannot_authorize_approval) ... ok
+2026-10-16T19:40:56.4273388Z test_06_approved_fact_source_revision_invalidation (test_wave03_story_profiles.TemporalAndAuthorApproval.test_06_approved_fact_source_revision_invalidation) ... ok
+2026-10-16T19:40:56.4274302Z test_07_hearsay_does_not_override_asserted_objective_state (test_wave03_story_profiles.TemporalAndAuthorApproval.test_07_hearsay_does_not_override_asserted_objective_state) ... ok
+2026-10-16T19:40:56.4275187Z test_08_unknown_story_time_blocks_factual_promotion (test_wave03_story_profiles.TemporalAndAuthorApproval.test_08_unknown_story_time_blocks_factual_promotion) ... ok
+2026-10-16T19:40:56.4276003Z test_09_different_book_same_name_stays_isolated (test_wave03_story_profiles.TemporalAndAuthorApproval.test_09_different_book_same_name_stays_isolated) ... ok
+2026-10-16T19:40:56.4276780Z test_10_author_manual_progression_without_ai (test_wave03_story_profiles.TemporalAndAuthorApproval.test_10_author_manual_progression_without_ai) ... ok
+2026-10-16T19:40:56.4277203Z 
+2026-10-16T19:40:56.4277327Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.4277598Z Ran 12 tests in 0.001s
+2026-10-16T19:40:56.4277716Z 
+2026-10-16T19:40:56.4277788Z OK
+2026-10-16T19:40:56.4278783Z WAVE03 SYNTHETIC DETERMINISTIC EXTRACTOR BENCHMARK {"FN": 4, "FP": 10, "TN": 4, "TP": 6, "all_outputs": "pending_unapproved", "not_measured": ["LLM extraction precision", "real author correction time", "model hallucination rate", "real fiction corpus representativeness", "inter-annotator agreement", "multilingual model factuality"], "precision": 0.375, "recall": 0.6, "sample_size": 24}
+2026-10-16T19:40:56.4284442Z WAVE03 LABLED MISCLASSIFICATIONS [{"accepted": true, "classification": "FN", "gold": true, "id": "07", "proposed": false, "reason": "paraphrased injury", "story_time_known": true}, {"accepted": true, "classification": "FN", "gold": true, "id": "08", "proposed": false, "reason": "paraphrased knowledge", "story_time_known": true}, {"accepted": true, "classification": "FN", "gold": true, "id": "09", "proposed": false, "reason": "paraphrased return", "story_time_known": true}, {"accepted": true, "classification": "FN", "gold": true, "id": "10", "proposed": false, "reason": "nonlocal reference", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "12", "proposed": true, "reason": "hypothetical", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "13", "proposed": true, "reason": "hearsay", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "14", "proposed": true, "reason": "dialogue testimony", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "15", "proposed": true, "reason": "counterfactual", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "16", "proposed": true, "reason": "uncertain report", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "17", "proposed": true, "reason": "dream not literal canon", "story_time_known": true}, {"accepted": false, "classification": "FP", "gold": false, "id": "18", "proposed": true, "reason": "unaccepted AI text", "story_time_known": true}, {"accepted": false, "classification": "FP", "gold": false, "id": "19", "proposed": true, "reason": "unaccepted AI text", "story_time_known": true}, {"accepted": false, "classification": "FP", "gold": false, "id": "20", "proposed": true, "reason": "unaccepted AI text", "story_time_known": true}, {"accepted": true, "classification": "FP", "gold": false, "id": "21", "proposed": true, "reason": "unplaced scene", "story_time_known": false}]
+2026-10-16T19:40:56.4329173Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest discover -s docs/research/experiments -p test_wave06_recovery_contract.py -v
+2026-10-16T19:40:56.4733506Z test_01_local_unsynced_draft_not_mislabeled_saved (test_wave06_recovery_contract.ReliabilityContracts.test_01_local_unsynced_draft_not_mislabeled_saved) ... ok
+2026-10-16T19:40:56.4734920Z test_02_rolled_back_transaction_not_acknowledged (test_wave06_recovery_contract.ReliabilityContracts.test_02_rolled_back_transaction_not_acknowledged) ... ok
+2026-10-16T19:40:56.4735845Z test_03_committed_save_lost_ack_retry_idempotent (test_wave06_recovery_contract.ReliabilityContracts.test_03_committed_save_lost_ack_retry_idempotent) ... ok
+2026-10-16T19:40:56.4736622Z test_04_same_key_changed_payload_rejected (test_wave06_recovery_contract.ReliabilityContracts.test_04_same_key_changed_payload_rejected) ... ok
+2026-10-16T19:40:56.4743323Z test_05_stale_second_tab_denied (test_wave06_recovery_contract.ReliabilityContracts.test_05_stale_second_tab_denied) ... ok
+2026-10-16T19:40:56.4753450Z test_06_cross_account_save_denied (test_wave06_recovery_contract.ReliabilityContracts.test_06_cross_account_save_denied) ... ok
+2026-10-16T19:40:56.4754622Z test_07_account_swap_draft_isolation (test_wave06_recovery_contract.ReliabilityContracts.test_07_account_swap_draft_isolation) ... ok
+2026-10-16T19:40:56.4755866Z test_08_original_account_draft_survives_switch (test_wave06_recovery_contract.ReliabilityContracts.test_08_original_account_draft_survives_switch) ... ok
+2026-10-16T19:40:56.4756889Z test_09_late_ack_cannot_delete_newer_local_text (test_wave06_recovery_contract.ReliabilityContracts.test_09_late_ack_cannot_delete_newer_local_text) ... ok
+2026-10-16T19:40:56.4757708Z test_10_matching_ack_clears_only_matching_local_draft (test_wave06_recovery_contract.ReliabilityContracts.test_10_matching_ack_clears_only_matching_local_draft) ... ok
+2026-10-16T19:40:56.4758515Z test_11_unknown_commit_result_retains_original (test_wave06_recovery_contract.ReliabilityContracts.test_11_unknown_commit_result_retains_original) ... ok
+2026-10-16T19:40:56.4759318Z test_12_copied_offline_envelope_restores_unacked_work (test_wave06_recovery_contract.ReliabilityContracts.test_12_copied_offline_envelope_restores_unacked_work) ... ok
+2026-10-16T19:40:56.4760138Z test_13_archive_requires_database_and_object_data (test_wave06_recovery_contract.ReliabilityContracts.test_13_archive_requires_database_and_object_data) ... ok
+2026-10-16T19:40:56.4760868Z test_14_archive_mutation_detected (test_wave06_recovery_contract.ReliabilityContracts.test_14_archive_mutation_detected) ... ok
+2026-10-16T19:40:56.4761768Z test_15_archive_restore_makes_independent_copy (test_wave06_recovery_contract.ReliabilityContracts.test_15_archive_restore_makes_independent_copy) ... ok
+2026-10-16T19:40:56.4762823Z test_16_delete_tombstone_blocks_reads_not_backups (test_wave06_recovery_contract.ReliabilityContracts.test_16_delete_tombstone_blocks_reads_not_backups) ... ok
+2026-10-16T19:40:56.4763659Z test_17_other_author_cannot_delete (test_wave06_recovery_contract.ReliabilityContracts.test_17_other_author_cannot_delete) ... ok
+2026-10-16T19:40:56.4764384Z test_18_no_object_backup_means_recovery_not_verified (test_wave06_recovery_contract.ReliabilityContracts.test_18_no_object_backup_means_recovery_not_verified) ... ok
+2026-10-16T19:40:56.4765142Z test_19_24_hour_target_is_not_a_guarantee (test_wave06_recovery_contract.ReliabilityContracts.test_19_24_hour_target_is_not_a_guarantee) ... ok
+2026-10-16T19:40:56.4765918Z test_20_private_pilot_targets_need_independent_evidence (test_wave06_recovery_contract.ReliabilityContracts.test_20_private_pilot_targets_need_independent_evidence) ... ok
+2026-10-16T19:40:56.4766385Z 
+2026-10-16T19:40:56.4766519Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.4766783Z Ran 20 tests in 0.001s
+2026-10-16T19:40:56.4766890Z 
+2026-10-16T19:40:56.4766968Z OK
+2026-10-16T19:40:56.4794339Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python docs/research/independent-alternatives/pairs-04-05/validate_fixtures.py
+2026-10-16T19:40:56.4991967Z PASS fixture structure: 14 synthetic fiction cases, 15 revision safety cases
+2026-10-16T19:40:56.4992650Z Coverage: 14 genres; tasks: 5 rewrite / 9 continue; deliberate exceptions: 5
+2026-10-16T19:40:56.4993189Z IMPORTANT: This validates test DATA ONLY. Model quality, semantic outcomes, Tiptap patch safety and human ratings are NOT_RUN.
+2026-10-16T19:40:56.5074518Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -I -S -m py_compile synthetic_chapter_contract.py test_synthetic_chapter_contract.py
+2026-10-16T19:40:56.5409442Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m unittest -v
+2026-10-16T19:40:56.5813857Z test_sc001_create_book_two_chapters_reopen_restores_each (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc001_create_book_two_chapters_reopen_restores_each) ... ok
+2026-10-16T19:40:56.5815377Z test_sc001_empty_author_has_no_books (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc001_empty_author_has_no_books) ... ok
+2026-10-16T19:40:56.5816779Z test_sc002_document_fixture_edits_without_ai_demand (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc002_document_fixture_edits_without_ai_demand) ... ok
+2026-10-16T19:40:56.5818257Z test_sc002_unsupported_block_and_mark_rejected (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc002_unsupported_block_and_mark_rejected) ... ok
+2026-10-16T19:40:56.5819752Z test_sc003_result_shape_rejects_unacknowledged_saved (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc003_result_shape_rejects_unacknowledged_saved) ... ok
+2026-10-16T19:40:56.5821385Z test_sc003_saved_only_after_acknowledgment_and_reopen_matches (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc003_saved_only_after_acknowledgment_and_reopen_matches) ... ok
+2026-10-16T19:40:56.5823129Z test_sc004_further_local_edit_keeps_commit_and_draft (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc004_further_local_edit_keeps_commit_and_draft) ... ok
+2026-10-16T19:40:56.5824692Z test_sc004_loss_modes_match_on_client_and_differ_in_store (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc004_loss_modes_match_on_client_and_differ_in_store) ... ok
+2026-10-16T19:40:56.5826290Z test_sc004_reconcile_lost_after_confirms_only_by_read_back (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc004_reconcile_lost_after_confirms_only_by_read_back) ... ok
+2026-10-16T19:40:56.5827901Z test_sc004_reconcile_lost_before_keeps_outstanding_local (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc004_reconcile_lost_before_keeps_outstanding_local) ... ok
+2026-10-16T19:40:56.5829816Z test_sc005_repeated_stale_save_still_conflicts (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc005_repeated_stale_save_still_conflicts) ... ok
+2026-10-16T19:40:56.5831045Z test_sc005_stale_client_cannot_overwrite_unconfirmed_commit (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc005_stale_client_cannot_overwrite_unconfirmed_commit) ... ok
+2026-10-16T19:40:56.5831972Z test_sc005_stale_save_preserves_newer_content (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc005_stale_save_preserves_newer_content) ... ok
+2026-10-16T19:40:56.5833222Z test_sc006_cross_author_write_and_create_do_not_change_chapter (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc006_cross_author_write_and_create_do_not_change_chapter) ... ok
+2026-10-16T19:40:56.5834199Z test_sc006_forged_claim_and_guessed_id_return_same_denial (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc006_forged_claim_and_guessed_id_return_same_denial) ... ok
+2026-10-16T19:40:56.5835099Z test_sc007_same_title_is_isolated_by_book_and_id (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc007_same_title_is_isolated_by_book_and_id) ... ok
+2026-10-16T19:40:56.5835904Z test_sc008_declaration_stays_advisory (test_synthetic_chapter_contract.SyntheticChapterContractTests.test_sc008_declaration_stays_advisory) ... ok
+2026-10-16T19:40:56.5836325Z 
+2026-10-16T19:40:56.5836454Z ----------------------------------------------------------------------
+2026-10-16T19:40:56.5836728Z Ran 17 tests in 0.002s
+2026-10-16T19:40:56.5836838Z 
+2026-10-16T19:40:56.5836910Z OK
+2026-10-16T19:40:56.5883131Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python -m compileall -q docs/research/spikes/stage4-synthetic-chapter-contract
+2026-10-16T19:40:56.6180222Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/agent_workflow.py validate
+2026-10-16T19:40:56.9551865Z PASS: 4 task(s), 4 ContextPack(s), 1 ExecutionBundle(s) validated
+2026-10-16T19:40:56.9617011Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/export_stage4_independent_packet.py --output stage4-independent-agent-packet.zip
+2026-10-16T19:40:57.0650587Z {
+2026-10-16T19:40:57.0650836Z   "task_id": "VEL-TASK-0002",
+2026-10-16T19:40:57.0651096Z   "context_pack_id": "VEL-CP-0002",
+2026-10-16T19:40:57.0651366Z   "base_commit": "4259620ad0f4207bf1aa720c3809f32c93b59314",
+2026-10-16T19:40:57.0651780Z   "packet_sha256": "e91c88eb2debee33459d2e822126d0ecdf2fc5f96106b71e1eaaafe938176ae7",
+2026-10-16T19:40:57.0652211Z   "files": {
+2026-10-16T19:40:57.0652381Z     "VEL-CP-0002.md": {
+2026-10-16T19:40:57.0652668Z       "sha256": "f0951a8b2bbf9edfbb52c72d282537fbca699418ac9337f21fac483fb281f599",
+2026-10-16T19:40:57.0652998Z       "bytes": 48435
+2026-10-16T19:40:57.0653168Z     },
+2026-10-16T19:40:57.0653325Z     "PROMPT.md": {
+2026-10-16T19:40:57.0653588Z       "sha256": "015a60268e87d797a45e9dbcfa3734044e942f9f9307821f6ec096c06d1ab3d1",
+2026-10-16T19:40:57.0653883Z       "bytes": 4475
+2026-10-16T19:40:57.0654070Z     }
+2026-10-16T19:40:57.0654220Z   },
+2026-10-16T19:40:57.0654586Z   "operator_notice": "Only the two ZIP members go to a genuinely fresh agent session. Agent independence not yet verified."
+2026-10-16T19:40:57.0654986Z }
+2026-10-16T19:40:57.0717912Z COMMAND: /opt/hostedtoolcache/Python/3.12.15/x64/bin/python scripts/export_level_b_handoff.py --output level-b-test-packet.zip
+2026-10-16T19:40:57.1624116Z Created independent-agent test package: level-b-test-packet.zip
+2026-10-16T19:40:57.1624506Z Archive contains only: VEL-CP-0001.md, PROMPT.md
+2026-10-16T19:40:57.1624852Z packet_sha256: 3c65276090030e72029288924b7a56fa7429300b84a74529fe3b116a821c79c0
+2026-10-16T19:40:57.1625268Z prompt_sha256: f9909915acfc300ef8249aad2e3ca09bc17fbded5c8b7d422ff9ae76b32b2668
+2026-10-16T19:40:57.1625686Z archive_sha256: 259d13d20e73e7aed06dab18a57f1eab97e308c3180fe37d039d0126595414e6
+2026-10-16T19:40:57.1626031Z base_commit: d14261ce6bab2aea6550454f089c48859eb0a3ee
+2026-10-16T19:40:57.1626546Z task_blob_sha: 3c2bd7001ea96a36909e36731b96911348de2e71
+2026-10-16T19:40:57.1626883Z Level B execution NOT completed; send the ZIP contents only to a fresh agent.
+2026-10-16T19:40:57.1686322Z PASS: current governance and archived provenance checks
+2026-10-16T19:40:57.1798528Z ##[group]Run actions/upload-artifact@v4
+2026-10-16T19:40:57.1798764Z with:
+2026-10-16T19:40:57.1798948Z   name: vellistry-governed-handoff-packets
+2026-10-16T19:40:57.1799524Z   path: docs/agent-workflow/context-packs/VEL-CP-0002.md
+docs/agent-workflow/context-packs/VEL-CP-0003.md
+stage4-independent-agent-packet.zip
+level-b-test-packet.zip
+
+2026-10-16T19:40:57.1800062Z   if-no-files-found: error
+2026-10-16T19:40:57.1800250Z   retention-days: 14
+2026-10-16T19:40:57.1800444Z   compression-level: 6
+2026-10-16T19:40:57.1800623Z   overwrite: false
+2026-10-16T19:40:57.1800800Z   include-hidden-files: false
+2026-10-16T19:40:57.1800995Z env:
+2026-10-16T19:40:57.1801205Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:57.1801536Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-16T19:40:57.1801856Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:57.1802407Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:57.1802698Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-16T19:40:57.1802990Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-16T19:40:57.1803241Z ##[endgroup]
+2026-10-16T19:40:57.3128795Z (node:3153) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-16T19:40:57.3129356Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-16T19:40:57.3179130Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-16T19:40:57.3186477Z The least common ancestor is /home/runner/work/Vellistry/Vellistry. This will be the root directory of the artifact
+2026-10-16T19:40:57.3187307Z With the provided path, there will be 4 files uploaded
+2026-10-16T19:40:57.3187937Z Artifact name is valid!
+2026-10-16T19:40:57.3188338Z Root directory input is valid!
+2026-10-16T19:40:57.6572166Z Beginning upload of artifact content to blob storage
+2026-10-16T19:40:57.6782731Z (node:3153) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-16T19:40:58.0228175Z Uploaded bytes 73715
+2026-10-16T19:40:58.0877404Z Finished uploading artifact content to blob storage!
+2026-10-16T19:40:58.0878277Z SHA256 digest of uploaded artifact zip is db8656f756bf575159d6558b32293fea66d968c1f6221f65bd285aee1bdeec82
+2026-10-16T19:40:58.0880141Z Finalizing artifact upload
+2026-10-16T19:40:58.3517355Z Artifact vellistry-governed-handoff-packets.zip successfully finalized. Artifact ID 12070188988
+2026-10-16T19:40:58.3518424Z Artifact vellistry-governed-handoff-packets has been successfully uploaded! Final size is 73715 bytes. Artifact ID is 12070188988
+2026-10-16T19:40:58.3523464Z Artifact download URL: https://github.com/Ben-001-sys/Vellistry/actions/runs/38956662940/artifacts/12070188988
+2026-10-16T19:40:58.3664382Z Post job cleanup.
+2026-10-16T19:40:58.4596831Z (node:3165) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-16T19:40:58.4597736Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-16T19:40:58.4730680Z Post job cleanup.
+2026-10-16T19:40:58.5450488Z [command]/usr/bin/git version
+2026-10-16T19:40:58.5487035Z git version 2.55.0
+2026-10-16T19:40:58.5518554Z Temporarily overriding HOME='/home/runner/work/_temp/2710e105-ccaf-413c-ab94-4de45cfe2462' before making global git config changes
+2026-10-16T19:40:58.5519308Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T19:40:58.5523458Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Vellistry/Vellistry
+2026-10-16T19:40:58.5556547Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T19:40:58.5585080Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-16T19:40:58.5801363Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T19:40:58.5829881Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-16T19:40:58.6036336Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T19:40:58.6069324Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-16T19:40:58.6413989Z Cleaning up orphan processes
+2026-10-16T19:40:58.6658654Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
