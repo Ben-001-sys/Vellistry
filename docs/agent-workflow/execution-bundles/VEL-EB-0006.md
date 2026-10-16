@@ -4,12 +4,16 @@ title: Codex CI optimization implementation and verification
 type: execution-bundle
 status: proposed-for-review
 created_at: '2026-10-16'
-version: 0.1.0
+version: 0.2.0
 task_id: VEL-TASK-0006
 context_pack_id: VEL-CP-0006
 base_commit: dcd9843d536ba9146e4b422f4a33554132961de5
 main_base: 4b3996ef7cda878e1af3d679454bd1bb873a79c2
-verified_implementation_head: 4259620ad0f4207bf1aa720c3809f32c93b59314
+historical_first_implementation_head: 4259620ad0f4207bf1aa720c3809f32c93b59314
+historical_independently_reviewed_head: b713d945aa06a5fce6a5b9f63a0a9fdcaa4b88ee
+final_evidence_ledger: https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593
+correction_task: VEL-TASK-0007
+correction_context_pack: VEL-CP-0007
 agent:
   name: Codex
   model: GPT-6
@@ -36,6 +40,43 @@ review:
 ---
 
 # VEL-EB-0006 — proposed for ChatGPT review and owner approval
+
+
+## Latest correction evidence and external exact-head ledger
+
+**Current correction submission:** [stable append-only evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593).
+The final corrected SHA, real draft advisory disposition and real full-dispatch
+results are recorded there after the source commit exists. This is the primary
+latest-head reference, avoiding an impossible self-referential report SHA.
+The 4259620/232-second figures below are HISTORICAL initial evidence; they are
+not the current final checkpoint. The independently reviewed b713d94 checkpoint
+completed run38958548133 at184 observed allocated-job seconds (37.84% below the
+296-second old-main cohort). Its exact job timestamps are now committed in
+reviewed-b713d94-checkpoint-jobs.json; billing/cost targets remain unproven.
+
+Owner-authorized correction and independent AI review are preserved in
+[amendment01](../../reports/VEL-CI-OPT-001-AMENDMENT-01.md) and pinned child
+VEL-TASK/CP-0007. [Correction bundle EB0007](VEL-EB-0007.md) records the new work.
+Original CP0006 is unchanged. The schema's one-task/one-pack mapping is retained,
+so the child amendment provides new pins without invalidating the parent pack.
+The coordinator comment relays the owner's approval; it is not represented as
+independently human-authored. The user's direct dispatch authorizes this scope.
+
+Draft-aware policy now makes ordinary draft execution inexpensive and advisory.
+Governance can pass, but the unchanged Vellistry CI gate completes BLOCKED /
+FAILURE, not skipped, pending, or merge-eligible success. Ready PRs classify the
+whole PR diff conservatively; main and explicit dispatch are full. The gate
+recomputes expected mode/flags from the actual event and exact Git head, so
+forged draft outputs cannot bypass ready/security checks. Current full dispatch
+was accepted pre-merge at run38962146340 (old b713 checkpoint only), superseding
+the earlier assumption below that dispatch could not be demonstrated before
+main integration. PR remains draft; no ready transition or main merge is claimed.
+
+Automated checksum-pinned actionlint1.7.12 now runs in lightweight governance.
+All original archived jobs, SQL availability/deletion guards, real disposable
+security probes and least-privilege constraints remain intact. Final corrected
+source verification is pending until appended to the linked ledger; do not
+promote prior full runs or local synthetic event tests to that evidence.
 
 ## Authority, isolation and immutable handoff
 

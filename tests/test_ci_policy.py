@@ -49,15 +49,15 @@ class RoutingTests(unittest.TestCase):
             paths=policy.changed_paths(base,head,pr=True,cwd=root)
             self.assertIn('apps/api/auth.ts',paths); self.assertIn(hostile,paths)
             self.assertEqual(policy.classify(paths)['security'],'true')
-            event={'pull_request':{'head':{'sha':head},'base':{'sha':base}}}
+            event={'action':'synchronize','pull_request':{'draft':False,'head':{'sha':head},'base':{'sha':base}}}
             with self.assertRaisesRegex(ValueError,'removed'): policy.plan_event('pull_request',event,head,cwd=root)
             git('update-ref','refs/remotes/origin/main',base)
             with patch.dict(os.environ,{'GITHUB_SHA':head}):
                 with self.assertRaisesRegex(ValueError,'removed'):
                     policy.plan_event('workflow_dispatch',{},head,cwd=root)
     def test_exact_head_and_missing_pr_base_fail(self):
-        with self.assertRaisesRegex(ValueError,'exact event'): policy.plan_event('pull_request',{'pull_request':{'head':{'sha':'a'*40}}},'b'*40)
-        with self.assertRaisesRegex(ValueError,'base missing'): policy.plan_event('pull_request',{'pull_request':{'head':{'sha':'a'*40}}},'a'*40)
+        with self.assertRaisesRegex(ValueError,'exact event'): policy.plan_event('pull_request',{'action':'opened','pull_request':{'draft':False,'head':{'sha':'a'*40}}},'b'*40)
+        with self.assertRaisesRegex(ValueError,'base missing'): policy.plan_event('pull_request',{'action':'opened','pull_request':{'draft':False,'head':{'sha':'a'*40}}},'a'*40)
     def test_main_manual_and_ready_event(self):
         head='a'*40
         with patch.dict(os.environ,{'GITHUB_SHA':head}):
@@ -65,42 +65,46 @@ class RoutingTests(unittest.TestCase):
                 with self.subTest(event=name): self.assertEqual(policy.plan_event(name,event,head)['security'],'true')
             with self.assertRaises(ValueError): policy.plan_event('push',{'ref':'refs/heads/feature'},head)
         with patch.object(policy,'changed_paths',return_value=['README.md']):
-            event={'action':'ready_for_review','pull_request':{'head':{'sha':head},'base':{'sha':'b'*40}}}
+            event={'action':'ready_for_review','pull_request':{'draft':False,'head':{'sha':head},'base':{'sha':'b'*40}}}
             self.assertEqual(policy.plan_event('pull_request',event,head)['application'],'false')
     def test_bad_git_shas_and_events_fail(self):
         with self.assertRaises(ValueError): policy.changed_paths('main; echo bad','a'*40,pr=True)
         with self.assertRaises(ValueError): policy.plan_event('pull_request_target',{},'a'*40)
 
 class FinalGateTests(unittest.TestCase):
+    def plan(self, full=True):
+        return {**policy.classify([],full=full,privilege_present=full),'mode':'full' if full else 'ready'}
+    def check(self, needs, full=True):
+        return policy.check_gate(needs,expected_plan=self.plan(full))
     def needs(self, full=True):
-        plan=policy.classify([],full=full,privilege_present=full)
+        plan=self.plan(full)
         return {'classify':{'result':'success','outputs':plan},'governance':{'result':'success'},**{j:{'result':'success' if full else 'skipped'} for j in ('application','recovery','privileges')}}
     def test_success_and_nonapplicable_skips_pass(self):
-        policy.check_gate(self.needs()); policy.check_gate(self.needs(False))
+        self.check(self.needs()); self.check(self.needs(False),False)
     def test_every_required_failure_skip_cancel_or_missing_fails(self):
         for job in self.needs():
             for result in ('failure','cancelled','skipped',None,'timed_out'):
                 n=self.needs(); n[job]['result']=result
-                with self.subTest(job=job,result=result),self.assertRaises(ValueError): policy.check_gate(n)
+                with self.subTest(job=job,result=result),self.assertRaises(ValueError): self.check(n)
     def test_missing_or_invalid_outputs_and_jobs_fail(self):
         for flag in policy.FLAGS:
             n=self.needs(); del n['classify']['outputs'][flag]
-            with self.subTest(flag=flag),self.assertRaises(ValueError): policy.check_gate(n)
+            with self.subTest(flag=flag),self.assertRaises(ValueError): self.check(n)
         for flag in policy.FLAGS:
             n=self.needs(); n['classify']['outputs'][flag]='TRUE'
-            with self.assertRaises(ValueError): policy.check_gate(n)
+            with self.assertRaises(ValueError): self.check(n)
         n=self.needs(); del n['recovery']
-        with self.assertRaises(ValueError): policy.check_gate(n)
+        with self.assertRaises(ValueError): self.check(n)
     def test_inconsistent_security_cannot_pass(self):
         n=self.needs(); n['classify']['outputs']['application']='false'
-        with self.assertRaises(ValueError): policy.check_gate(n)
+        with self.assertRaises(ValueError): self.check(n)
     def test_security_recovery_cannot_be_skipped(self):
         n=self.needs(); n['classify']['outputs']['recovery']='false'
-        with self.assertRaises(ValueError): policy.check_gate(n)
+        with self.assertRaises(ValueError): self.check(n)
 
     def test_failure_of_nonapplicable_job_is_not_hidden(self):
         n=self.needs(False); n['application']['result']='failure'
-        with self.assertRaises(ValueError): policy.check_gate(n)
+        with self.assertRaises(ValueError): self.check(n,False)
 
 class WorkflowContractTests(unittest.TestCase):
     @classmethod
@@ -166,10 +170,110 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertEqual(len(installs),1)
         self.assertEqual(installs[0]['run'],'pnpm install --frozen-lockfile')
         self.assertEqual(sum('pnpm build' == s.get('run') for s in app['steps']),1)
+    def test_draft_mode_and_verified_linter_are_wired_without_renaming_merge_gate(self):
+        w=self.workflow
+        self.assertIn('converted_to_draft',w['on']['pull_request']['types'])
+        self.assertEqual(w['jobs']['classify']['outputs']['mode'],'${{ steps.plan.outputs.mode }}')
+        self.assertIn('Draft advisory',w['jobs']['governance']['name'])
+        self.assertEqual(w['jobs']['gate']['steps'][0]['with']['fetch-depth'],'0')
+        lint=next(s['run'] for s in w['jobs']['governance']['steps'] if s.get('name','').startswith('Lint all workflows'))
+        self.assertIn('actionlint_1.7.12_linux_amd64.tar.gz',lint)
+        self.assertIn('8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8',lint)
+        self.assertIn('sha256sum --check',lint)
+        self.assertIn('"$RUNNER_TEMP/actionlint" -shellcheck=',lint)
+
     def test_sql_regression_when_available_is_fail_fast(self):
         p=self.workflow['jobs']['privileges']
         self.assertEqual(p['if'],"${{ needs.classify.outputs.privileges == 'true' }}")
         self.assertIn('postgres:17',p['container'])
         self.assertTrue(any('psql -X -v ON_ERROR_STOP=1' in s.get('run','') for s in p['steps']))
+
+
+class DraftPolicyTests(unittest.TestCase):
+    def event(self, draft=True, action='synchronize'):
+        return {'action':action,'pull_request':{'draft':draft,'head':{'sha':'a'*40},'base':{'sha':'b'*40}}}
+    def plan(self, draft=True, action='synchronize', paths=None):
+        with patch.object(policy,'changed_paths',return_value=paths or ['apps/api/auth.ts']):
+            return policy.plan_event('pull_request',self.event(draft,action),'a'*40)
+    def needs(self, plan):
+        return {'classify':{'result':'success','outputs':dict(plan)},'governance':{'result':'success'},**{j:{'result':'success' if plan[j]=='true' else 'skipped'} for j in ('application','recovery','privileges')}}
+    def test_draft_unknown_security_and_ci_paths_are_advisory_only(self):
+        for path in ('apps/api/auth.ts','supabase/migrations/new.sql','.github/workflows/ci.yml','new/unknown.py'):
+            with self.subTest(path=path):
+                plan=self.plan(paths=[path])
+                self.assertEqual(plan.get('mode'),'draft')
+                self.assertEqual({plan[f] for f in policy.FLAGS},{'false'})
+    def test_all_ordinary_draft_activities_are_cheap(self):
+        for action in ('opened','synchronize','reopened','edited','converted_to_draft'):
+            with self.subTest(action=action): self.assertEqual(self.plan(action=action).get('mode'),'draft')
+    def test_ready_for_review_and_ready_updates_require_security(self):
+        for action in ('ready_for_review','synchronize','edited','reopened'):
+            with self.subTest(action=action):
+                plan=self.plan(False,action,paths=['new/unknown.py'])
+                self.assertEqual(plan.get('mode'),'ready')
+                self.assertEqual(plan['security'],'true')
+                self.assertEqual(plan['recovery'],'true')
+    def test_missing_malformed_or_contradictory_draft_metadata_fails(self):
+        events=[self.event(None),self.event('false'),self.event(True,'ready_for_review'),self.event(False,'converted_to_draft'),self.event(True,'unknown_action')]
+        missing=self.event(); del missing['pull_request']['draft']; events.append(missing)
+        for event in events:
+            with self.subTest(event=event),self.assertRaises(ValueError):
+                with patch.object(policy,'changed_paths',return_value=['README.md']): policy.plan_event('pull_request',event,'a'*40)
+    def test_gate_distinguishes_advisory_from_merge_eligibility(self):
+        plan=self.plan()
+        self.assertEqual(policy.check_gate(self.needs(plan),expected_plan=plan),'draft-advisory')
+        ready=self.plan(False)
+        self.assertEqual(policy.check_gate(self.needs(ready),expected_plan=ready),'merge-eligible')
+    def test_forged_draft_flags_cannot_hide_a_ready_security_skip(self):
+        ready=self.plan(False)
+        fake=self.needs(self.plan())
+        with self.assertRaises(ValueError): policy.check_gate(fake,expected_plan=ready)
+        fake=self.needs(ready); fake['application']['result']='skipped'
+        with self.assertRaises(ValueError): policy.check_gate(fake,expected_plan=ready)
+    def test_draft_governance_failure_is_not_an_advisory_pass(self):
+        plan=self.plan(); needs=self.needs(plan); needs['governance']['result']='failure'
+        with self.assertRaises(ValueError): policy.check_gate(needs,expected_plan=plan)
+    def test_cli_draft_advisory_cannot_publish_green_merge_gate(self):
+        head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        base=subprocess.check_output(['git','rev-parse','origin/main'],cwd=ROOT,text=True).strip()
+        event={'action':'synchronize','pull_request':{'draft':True,'head':{'sha':head},'base':{'sha':base}}}
+        plan={**{f:'false' for f in policy.FLAGS},'mode':'draft'}
+        with tempfile.TemporaryDirectory() as directory:
+            packet=Path(directory)/'event.json'; packet.write_text(json.dumps(event),encoding='utf-8')
+            env={**os.environ,'GITHUB_EVENT_NAME':'pull_request','GITHUB_EVENT_PATH':str(packet),'CI_NEEDS':json.dumps(self.needs(plan))}
+            result=subprocess.run([__import__('sys').executable,str(ROOT/'scripts/ci_policy.py'),'gate'],cwd=ROOT,env=env,capture_output=True,text=True)
+            self.assertEqual(result.returncode,1,result.stdout+result.stderr)
+            self.assertIn('ADVISORY PASS',result.stdout)
+            self.assertIn('BLOCKED',result.stdout)
+    def test_cli_recomputes_ready_plan_instead_of_trusting_draft_outputs(self):
+        head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        base=subprocess.check_output(['git','rev-parse','origin/main'],cwd=ROOT,text=True).strip()
+        event={'action':'ready_for_review','pull_request':{'draft':False,'head':{'sha':head},'base':{'sha':base}}}
+        fake={**{f:'false' for f in policy.FLAGS},'mode':'draft'}
+        with tempfile.TemporaryDirectory() as directory:
+            packet=Path(directory)/'event.json'; packet.write_text(json.dumps(event),encoding='utf-8')
+            env={**os.environ,'GITHUB_EVENT_NAME':'pull_request','GITHUB_EVENT_PATH':str(packet),'CI_NEEDS':json.dumps(self.needs(fake))}
+            result=subprocess.run([__import__('sys').executable,str(ROOT/'scripts/ci_policy.py'),'gate'],cwd=ROOT,env=env,capture_output=True,text=True)
+            self.assertNotEqual(result.returncode,0)
+            self.assertNotIn('merge-eligible applicable',result.stdout)
+            self.assertIn('independently verified',result.stderr)
+
+    def test_base_edit_reclassifies_unchanged_ready_head(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            def git(*args): return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL).decode().strip()
+            git('init'); git('config','user.email','synthetic@example.invalid'); git('config','user.name','Synthetic')
+            (root/'README.md').write_text('base'); git('add','.'); git('commit','-m','base'); base0=git('rev-parse','HEAD')
+            (root/'apps/api').mkdir(parents=True); (root/'apps/api/auth.ts').write_text('security delta'); git('add','.'); git('commit','-m','security'); base1=git('rev-parse','HEAD')
+            (root/'README.md').write_text('docs'); git('add','.'); git('commit','-m','docs'); head=git('rev-parse','HEAD')
+            event={'action':'synchronize','pull_request':{'draft':False,'head':{'sha':head},'base':{'sha':base1}}}
+            self.assertEqual(policy.plan_event('pull_request',event,head,cwd=root)['security'],'false')
+            event['action']='edited'; event['pull_request']['base']['sha']=base0
+            self.assertEqual(policy.plan_event('pull_request',event,head,cwd=root)['security'],'true')
+    def test_manual_is_explicitly_full_even_on_draft_branch(self):
+        with patch.dict(os.environ,{'GITHUB_SHA':'a'*40}):
+            plan=policy.plan_event('workflow_dispatch',{},'a'*40)
+            self.assertEqual(plan.get('mode'),'full')
+            self.assertEqual(plan['security'],'true')
 
 if __name__=='__main__': unittest.main()

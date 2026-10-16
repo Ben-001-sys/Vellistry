@@ -5,10 +5,30 @@ type: ci-usage-evidence
 status: proposed-for-owner-review
 created_at: 2026-10-16
 updated_at: 2026-10-16
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Observations, projections and limits
+
+## Reconciled reviewed checkpoint and latest correction ledger
+
+The independently reviewed b713d945aa06a5fce6a5b9f63a0a9fdcaa4b88ee run
+38958548133 completed with184 allocated-job execution seconds: classify4,
+application/security133, governance14, recovery27, gate6; SQL not applicable.
+Compared with296 historical seconds this is37.84% lower observed allocation,
+not billed minutes or a controlled benchmark. Intermediate776ef84 run38958193334
+used181 seconds. The initial4259620/run38956662940/232seconds observation below
+is retained as HISTORICAL, not the final result. Raw reviewed checkpoint and
+all three timing records are committed under evidence/VEL-CI-OPT-001.
+
+Latest correction exact-head draft/full results are in the
+[append-only external evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593), updated after the source commit
+exists. This resolves the report/SHA cycle without relabeling earlier runs or
+repeated report-only CI churn. Ordinary draft governance success is advisory;
+its stable merge gate must finish blocked, so do not report that workflow as a
+merge-eligible PASS. Ready/main/full verification preserves required security.
+No new billable usage access or savings target claim is made.
+
 
 **FACT.** Current main before this task is
 4b3996ef7cda878e1af3d679454bd1bb873a79c2. The last 300 observed workflow starts
@@ -23,7 +43,7 @@ triggers only and unchanged job bodies; one primary workflow has automatic PR
 and main-push events. Automatic definitions fall 25 to 1 (96%). This is a source
 measurement, not a claim of 96% billing or actual invocation savings.
 
-**Observed new source run.** Draft PR #70 head
+**Historical first source run.** Draft PR #70 head
 4259620ad0f4207bf1aa720c3809f32c93b59314 generated exactly one automatic PR
 workflow and no feature-branch push workflow:
 https://github.com/Ben-001-sys/Vellistry/actions/runs/38956662940 .
@@ -53,7 +73,7 @@ jobs, totaling 296 seconds from job started_at to completed_at. New full-securit
 PR run 38956662940 ran five allocated jobs, totaling 232 seconds. Skipped jobs
 with runner_id=0 contribute no observed execution span.
 
-| Component | Baseline seconds | New source seconds |
+| Component | Baseline seconds | Historical4259620 seconds |
 |---|---:|---:|
 | Governance/classification/final gate | 36 | 26 |
 | Application builds and real security | 221 | 168 |

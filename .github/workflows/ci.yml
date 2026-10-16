@@ -1,4 +1,4 @@
-# Primary automatic CI. Stable final gate; historical workflows are manual-only.
+# Primary automatic CI. Draft advisory is not a merge-eligible PASS.
 name: Vellistry CI
 'on':
   pull_request:
@@ -8,6 +8,7 @@ name: Vellistry CI
     - reopened
     - ready_for_review
     - edited
+    - converted_to_draft
   push:
     branches:
     - main
@@ -27,6 +28,7 @@ jobs:
       security: ${{ steps.plan.outputs.security }}
       recovery: ${{ steps.plan.outputs.recovery }}
       privileges: ${{ steps.plan.outputs.privileges }}
+      mode: ${{ steps.plan.outputs.mode }}
     steps:
     - uses: actions/checkout@v4
       with:
@@ -37,7 +39,7 @@ jobs:
       id: plan
       run: python scripts/ci_policy.py classify
   governance:
-    name: Governance and provenance
+    name: ${{ needs.classify.outputs.mode == 'draft' && 'Draft advisory governance' || 'Governance and provenance' }}
     needs:
     - classify
     runs-on: ubuntu-latest
@@ -53,6 +55,14 @@ jobs:
         python-version: '3.12'
     - name: Install YAML parser only
       run: python -m pip install 'PyYAML>=6,<7'
+    - name: Lint all workflows with verified actionlint 1.7.12
+      run: |
+        curl --fail --silent --show-error --location --retry 3 \
+          --output "$RUNNER_TEMP/actionlint.tar.gz" \
+          https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz
+        echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $RUNNER_TEMP/actionlint.tar.gz" | sha256sum --check
+        tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP" actionlint
+        "$RUNNER_TEMP/actionlint" -shellcheck=
     - name: Run all current governance and negative contracts once
       run: python scripts/ci_governance.py
     - uses: actions/upload-artifact@v4
@@ -265,6 +275,7 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
         persist-credentials: false
+        fetch-depth: 0
     - name: Reject failed, cancelled, missing or skipped applicable checks
       env:
         CI_NEEDS: ${{ toJSON(needs) }}

@@ -5,10 +5,34 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-16
 owner: project_owner
-version: 0.1.59
+version: 0.1.60
 ---
 
 # Vellistry — Current State
+
+## 2026-10-16 — Owner-authorized CI draft-awareness correction (PR #70, unmerged)
+
+**FACT.** ChatGPT independently reviewed b713d94 and requested bounded corrections;
+the owner directly dispatched the authorized correction. Child VEL-TASK/CP-0007
+pins the amendment and review sources before CI edits, without mutating original
+CP0006 or changing validator rules. Parent [EB0006](docs/agent-workflow/execution-bundles/VEL-EB-0006.md)
+and [child EB0007](docs/agent-workflow/execution-bundles/VEL-EB-0007.md) link the
+[latest external exact-head evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593).
+
+**Proposal implemented for review.** Ordinary draft updates run advisory governance
+and verified workflow lint; the unchanged Vellistry CI gate completes BLOCKED,
+not merge-eligible green or perpetually pending. Ready PRs retain conservative
+applicable security/recovery; main and explicit dispatch are full. The gate
+recomputes mode/flags from the exact event/head. Local36 policy tests and all26
+workflow syntax checks pass; actual final draft/full runs must be recorded in
+the linked ledger before claiming final verification. No PR ready/merge change.
+
+**Evidence reconciliation.** Prior independently reviewed b713d94 full run38958548133
+used184 observed allocated-job seconds versus296 old main (37.84%); initial232
+seconds below remains historical. Pre-merge full dispatch is now actually proven
+available (old-head run38962146340). No billable-minute/general target claim is
+made. PR68 and cloud/billing/admin/product scope remain unchanged. Owner approval
+and another independent exact-head review remain pending.
 
 ## 2026-10-16 — CI optimization proposed in draft PR #70
 

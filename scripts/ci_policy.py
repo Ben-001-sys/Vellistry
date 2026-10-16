@@ -72,11 +72,27 @@ def changed_paths(base: str, head: str, *, pr: bool, cwd: Path = ROOT) -> list[s
     raw = git('diff', '--no-renames', '--name-only', '-z', base, head, '--', cwd=cwd)
     return [p.decode('utf-8', errors='strict') for p in raw.split(b'\0') if p]
 
+def event_mode(event_name: str, event: dict) -> str:
+    if event_name in ('push', 'workflow_dispatch'):
+        return 'full'
+    if event_name != 'pull_request':
+        raise ValueError('Unsupported event')
+    pr = event.get('pull_request', {})
+    draft = pr.get('draft')
+    action = event.get('action')
+    activities = {'opened', 'synchronize', 'reopened', 'ready_for_review', 'edited', 'converted_to_draft'}
+    if type(draft) is not bool or action not in activities:
+        raise ValueError('Missing or malformed PR draft/activity metadata')
+    if (action == 'ready_for_review' and draft) or (action == 'converted_to_draft' and not draft):
+        raise ValueError('Contradictory PR draft/activity metadata')
+    return 'draft' if draft else 'ready'
+
 def plan_event(event_name: str, event: dict, head: str, *, cwd: Path = ROOT) -> dict[str, str]:
     expected = event.get('pull_request', {}).get('head', {}).get('sha') if event_name == 'pull_request' else os.environ.get('GITHUB_SHA', head)
     if expected != head:
         raise ValueError('Checkout is not exact event head')
-    full = event_name in ('workflow_dispatch', 'push')
+    mode = event_mode(event_name, event)
+    full = mode == 'full'
     if event_name not in ('pull_request', 'push', 'workflow_dispatch'):
         raise ValueError('Unsupported event')
     if event_name == 'push' and event.get('ref') != 'refs/heads/main':
@@ -97,9 +113,13 @@ def plan_event(event_name: str, event: dict, head: str, *, cwd: Path = ROOT) -> 
             existed = subprocess.run(['git','cat-file','-e',f'{base}:{test}'],cwd=cwd,capture_output=True).returncode == 0
             if existed and not (cwd / test).is_file():
                 raise ValueError('Existing required integration regression was removed')
-    return classify(paths, full=full, privilege_present=(cwd / PRIVILEGE_TEST).is_file())
+    plan = classify(paths, full=full, privilege_present=(cwd / PRIVILEGE_TEST).is_file())
+    if mode == 'draft':
+        # Preserve all diff/deletion validation; defer only execution, never merge eligibility.
+        plan = {flag: 'false' for flag in FLAGS}
+    return {**plan, 'mode': mode}
 
-def check_gate(needs: dict) -> None:
+def check_gate(needs: dict, *, expected_plan: dict) -> str:
     required = {'classify','governance','application','recovery','privileges'}
     if set(needs) != required:
         raise ValueError('Incomplete required job results')
@@ -107,6 +127,10 @@ def check_gate(needs: dict) -> None:
         if needs[job].get('result') != 'success':
             raise ValueError(f'Required {job} did not succeed')
     outputs = needs['classify'].get('outputs', {})
+    if expected_plan.get('mode') not in ('draft', 'ready', 'full'):
+        raise ValueError('Invalid expected event mode')
+    if set(outputs) != set(expected_plan) or outputs != expected_plan:
+        raise ValueError('Classifier plan differs from independently verified event/head')
     if any(outputs.get(f) not in ('true','false') for f in FLAGS):
         raise ValueError('Missing or malformed routing outputs')
     if outputs['security'] == 'true' and outputs['application'] != 'true':
@@ -120,18 +144,28 @@ def check_gate(needs: dict) -> None:
         allowed = {'success'} if outputs[job] == 'true' else {'success','skipped'}
         if result not in allowed:
             raise ValueError(f'Applicable or failed {job}: {result}')
+    return 'draft-advisory' if outputs['mode'] == 'draft' else 'merge-eligible'
 
 def main() -> int:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode',choices=('classify','gate'))
     args=parser.parse_args()
+    head=git('rev-parse','HEAD').decode().strip()
+    event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))
+    outputs=plan_event(os.environ['GITHUB_EVENT_NAME'],event,head)
     if args.mode == 'gate':
-        check_gate(json.loads(os.environ['CI_NEEDS']))
-        print('PASS: all applicable required CI jobs succeeded')
+        result=check_gate(json.loads(os.environ['CI_NEEDS']), expected_plan=outputs)
+        if result == 'draft-advisory':
+            message='ADVISORY PASS: draft governance succeeded. BLOCKED: merge verification requires ready-for-review or explicit full verification.'
+            print(message)
+            if os.environ.get('GITHUB_STEP_SUMMARY'):
+                with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as stream:
+                    stream.write('## Draft advisory only; merge gate BLOCKED\n'+message+'\n')
+            # A skipped check can count as success for branch protection. Complete
+            # the stable merge gate with failure instead of publishing a false green.
+            return 1
+        print('PASS: merge-eligible applicable required CI jobs succeeded at '+head)
     else:
-        head=git('rev-parse','HEAD').decode().strip()
-        event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))
-        outputs=plan_event(os.environ['GITHUB_EVENT_NAME'],event,head)
         print(json.dumps(outputs,sort_keys=True))
         if outputs['security']=='true' and outputs['privileges']=='false':
             print('NOTICE: proposed PR68 privilege regression is not on this checkout; no privilege-test PASS claimed.')
