@@ -1,0 +1,84 @@
+id: VEL-TASK-0007
+title: Bounded draft-aware correction round for VEL-CI-OPT-001
+type: implementation-task
+status: in-progress
+created_at: '2026-10-16'
+updated_at: '2026-10-16'
+owner: project_owner
+context_pack_id: VEL-CP-0007
+amends_task_id: VEL-TASK-0006
+objective: 'Execute the explicitly owner-authorized Issue69 correction to draft PR70: cheap truthful draft
+  advisory checks, mandatory pre-merge security and full verification, and canonical final evidence reconciliation.
+  Preserve CP0006 and use this pinned child amendment rather than silently mutating the original handoff.'
+in_scope:
+- Existing codex/vel-ci-opt-001 isolated branch; .github/workflows/ci.yml, scripts/ci_*.py and tests/test_ci_*.py
+- VEL-TASK/CP/EB-0007 amendment artifacts; parent Task0006 cross-reference and EB0006 evidence addendum
+- docs/agent-workflow/inputs/VEL-TASK-0007-* and docs/reports/VEL-CI-OPT-001* evidence; CURRENT-STATE
+  material checkpoint
+- Explicit workflow_dispatch full verification on the final source ref, cheap draft run and append-only
+  PR evidence ledger
+out_of_scope:
+- PR68 edits, application or SQL migration fixes, hosted Supabase operations or real author data
+- Merge/ready-state promotion, billing/protection/admin/auth-scope changes, deployment or paid provider
+  calls
+- Mutating immutable CP0006, changing handoff validator semantics or accepted decisions
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: accepted-governance
+- path: SOURCE-OF-TRUTH.md
+  role: accepted-authority
+- path: docs/agent-workflow/README.md
+  role: existing-handoff-contract
+- path: docs/agent-workflow/tasks/VEL-TASK-0006.yaml
+  role: canonical-parent-task
+- path: docs/agent-workflow/inputs/VEL-TASK-0007-AUTHORIZATION-REVIEW.md
+  role: explicit-correction-dispatch-and-independent-review
+- path: docs/reports/VEL-CI-OPT-001-AMENDMENT-01.md
+  role: bounded-amendment-plan
+- path: scripts/ci_policy.py
+  role: reviewed-classifier-and-gate
+- path: .github/workflows/ci.yml
+  role: reviewed-primary-workflow
+- path: tests/test_ci_policy.py
+  role: existing-negative-regressions
+- path: docs/agent-workflow/execution-bundles/VEL-EB-0006.md
+  role: parent-execution-evidence-to-reconcile
+source_gaps:
+- id: BILLING
+  limitation: Billable minutes/costs remain unavailable; execution seconds and starts are not billing.
+- id: HOSTED
+  limitation: Hosted acceptance and PR68 grant fix are separate, untouched.
+- id: LIVE-EVENTS
+  limitation: Keep PR draft; ready/main events will be scenario tests, not a fabricated live transition.
+- id: PROVENANCE
+  limitation: Direct owner dispatch validates coordinator-relayed scope; AI review is not human approval.
+    Same-session repin is not independent cold start.
+deliverables:
+- Committed, validated CP0007 child amendment before CI changes
+- Draft-aware strict classifier/gate with regressions and pinned automated workflow lint
+- Reconciled parent EB0006 and child EB0007, usage history and actual final draft/full run links
+- Existing draft PR updated for another exact-head independent review, without merge
+acceptance_criteria:
+- Ordinary draft updates perform cheap governance and completed blocked merge gate; advisory pass cannot
+  become merge-eligible PASS
+- Ready_for_review and synchronize/edited/base changes on ready PRs retain conservative relevant integration;
+  unknown paths require security
+- Main and explicit dispatch run full; final SHA has actual draft and full runs without changing draft
+  status
+- Gate independently validates event mode/flags/head; missing metadata, spoofed draft plan, failed/cancelled/missing
+  or applicable-skipped jobs fail
+- All original security/SQL availability/deletion/author isolation/governance safeguards preserved
+- Original CP0006 unchanged and schema-valid; child amendment pinned and validated before CI edit
+- EB0006 latest evidence discoverable,184second b713 checkpoint reconciled,232seconds historical, final
+  ledger anchored externally
+- No claim of billed savings or general targets, no PR68/cloud/admin/merge action
+allowed_actions:
+- Read live task/review/branch and existing governance
+- Commit this scoped child task/source plan, generate and validate immutable ContextPack using current
+  tools
+- Implement only scoped CI/script/test corrections; run local and disposable CI verification
+- Explicitly dispatch full verification on task ref and publish append-only technical evidence in PR70
+- Update canonical evidence/current-state and return exact corrected head for independent review
+approval_required_for:
+- Merging, marking ready to bypass scope, changing required-check names/protection/billing/auth scopes
+- Cloud operations, PR68 edits, app/schema changes or other scope expansion

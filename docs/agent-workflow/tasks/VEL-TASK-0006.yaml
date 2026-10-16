@@ -83,3 +83,8 @@ approval_required_for:
 - Merge, spending/billing, protection/admin or auth-scope changes
 - Hosted operations, secrets, private data, deployment, paid APIs or unrelated code
 - Any expansion beyond the Issue69 CI permission envelope
+amendment_tasks:
+- task_id: VEL-TASK-0007
+  context_pack_id: VEL-CP-0007
+  authorization: https://github.com/Ben-001-sys/Vellistry/issues/69#issuecomment-6224002164
+  relationship: bounded-correction-child; original CP0006 retained
