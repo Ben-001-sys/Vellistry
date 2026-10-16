@@ -60,7 +60,7 @@ compliance remains separate Issue #73 work.
 | Item | Verified status / next dependency |
 |---|---|
 | [Issue #71](https://github.com/Ben-001-sys/Vellistry/issues/71) | Secondary44-item remediation dependency ledger; original checklist attachment unavailable. No claim all44 are complete. |
-| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Owner-dispatched governance reconciliation in this isolated branch; [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Independent review and owner adoption pending. |
+| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Owner-dispatched governance reconciliation in separate [draft PR75](https://github.com/Ben-001-sys/Vellistry/pull/75); [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Independent review and owner adoption pending. |
 | [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) | PR-to-task compliance enforcement; prepared/blocked on governance adoption, not implemented here. |
 | [Issue #74](https://github.com/Ben-001-sys/Vellistry/issues/74) | Disposable PG17 privilege proof; not executed here. No migration approval. |
 | [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | ChatGPT-authored DRAFT/OPEN, `36da413fea67179ac8395af1cececd477fd193a2`; owner alone decides adoption/closure after this separate reconciliation. |

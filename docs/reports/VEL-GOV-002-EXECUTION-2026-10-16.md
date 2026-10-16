@@ -88,7 +88,7 @@ secrets, private manuscripts, paid calls, admin/billing changes or merge.
 Raw local outputs/exit codes: [local-checks.json](evidence/VEL-GOV-002/local-checks.json).
 Initial failures retained in initial-checks.json and entrypoint-before.txt.
 Before correction, new8 tests produced4 failures/4 errors (stale/missing inputs).
-After correction they pass8/8; original research/design assertions pass16/16.
+After correction113 focused tests pass: entrypoint8, original research/design16, handoff15, metadata8, readiness19, traceability11 and CI-policy36. All final focused commands exit0. Validators pass28metadata records,7tasks/5packs/5bundles,14DAG nodes with4pending gates,8spec scenarios.
 Initial bundle validation failed on unpinned source references, corrected by
 using only actual pack inputs. Native Windows metadata fixture encoding failed
 under default locale; explicit `python -X utf8` rerun is recorded separately,
@@ -96,7 +96,7 @@ not a claim that the default command passed. No fixture/validator change made.
 
 Final exact SHA and actual GitHub run results belong in the external evidence
 ledger after the report commit exists, avoiding a self-referential SHA claim.
-The final static report will link that ledger before final push. Full verification
+The [append-only PR75 evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/75#issuecomment-6225421525) is linked here before final push and will record the exact submitted head after it exists. Full verification
 uses existing workflow_dispatch, leaving the PR draft. Draft advisory governance
 must pass while the stable merge gate intentionally blocks; no unexpected failures
 are hidden. Linux complete-root result is distinct from Windows focused results.
@@ -119,3 +119,7 @@ remain. The historical Windows R01 descriptor problem remains outside scope.
   keep Issue74 privilege evidence and hosted acceptance separate.
 - No new gate opening, private-pilot/release, cloud/migration or spending approval
   is requested or assumed by completion of this bounded task.
+
+## Latest final-head evidence
+
+[PR75 ledger](https://github.com/Ben-001-sys/Vellistry/pull/75#issuecomment-6225421525) is the canonical external final SHA/CI reference. Implementation source `904b7014d30ebcf651ce96159a85a8e7134b6022` precedes this final report amendment; its earlier CI is not reused as final-head evidence. The final submitted draft remains subject to ChatGPT independent review and owner acceptance.

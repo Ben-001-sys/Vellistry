@@ -19,11 +19,16 @@ sources:
 - docs/agent-workflow/inputs/VEL-TASK-0008/AMENDMENT-01.md
 evidence:
 - docs/reports/VEL-GOV-002-EXECUTION-2026-10-16.md
+- docs/reports/evidence/VEL-GOV-002/local-checks.json
+- docs/reports/evidence/VEL-GOV-002/scope-and-preservation.json
+- https://github.com/Ben-001-sys/Vellistry/pull/75#issuecomment-6225421525
 review:
   status: pending
   approved_by: null
   evidence: null
 amends_task_id: VEL-TASK-0008
+final_evidence_ledger: https://github.com/Ben-001-sys/Vellistry/pull/75#issuecomment-6225421525
+implementation_source_commit: 904b7014d30ebcf651ce96159a85a8e7134b6022
 ---
 
 # VEL-GOV-002 execution
@@ -38,7 +43,7 @@ Main inspected at a8751190073f682caabdc2897d8f64bc59ac9ebb. Ready/main CI3897008
 
 ## Tests
 
-Actual command outputs and exact-head final CI references are recorded in the linked execution report/PR evidence ledger. Verification is in progress at initial authoring; no unrun result is called PASS.
+Actual command outputs and exact-head final CI references are recorded in the linked execution report/PR evidence ledger. Local113 focused tests passed (8entrypoint,16historical design,15handoff,8metadata,19readiness,11traceability,36CI-policy), all exit0 using explicit Python UTF-8 mode. Metadata28 records; workflow7tasks/5packs/5bundles; readiness14nodes/4pending gates; spec8scenarios validate. Final report-head SHA and actual CI are in the external ledger below, not inferred from these pre-commit outputs.
 
 ## Artifacts
 
@@ -59,3 +64,7 @@ Original owner conversation and44-item checklist missing, hosted acceptance NOT_
 ## Reviewer disposition
 
 Independent review and owner adoption pending.
+
+## Latest exact-head review evidence
+
+[Append-only PR75 evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/75#issuecomment-6225421525) supplies the final commit SHA and actual draft/full CI results after this bundle commit. This external reference is authoritative for latest-head verification; the source commit above is explicitly historical. PR75 remains draft; independent review and owner adoption/PR66 disposition remain pending.

@@ -1,7 +1,7 @@
 id: VEL-TASK-0008
 title: VEL-GOV-002 reconcile effective governance with merged CI
 type: implementation-task
-status: in-progress
+status: verification
 created_at: '2026-10-16'
 updated_at: '2026-10-16'
 owner: project_owner
