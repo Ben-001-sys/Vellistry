@@ -5,479 +5,103 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-16
 owner: project_owner
-version: 0.1.60
+version: 0.1.61
 ---
 
-# Vellistry — Current State
-
-## 2026-10-16 — Owner-authorized CI draft-awareness correction (PR #70, unmerged)
-
-**FACT.** ChatGPT independently reviewed b713d94 and requested bounded corrections;
-the owner directly dispatched the authorized correction. Child VEL-TASK/CP-0007
-pins the amendment and review sources before CI edits, without mutating original
-CP0006 or changing validator rules. Parent [EB0006](docs/agent-workflow/execution-bundles/VEL-EB-0006.md)
-and [child EB0007](docs/agent-workflow/execution-bundles/VEL-EB-0007.md) link the
-[latest external exact-head evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593).
-
-**Proposal implemented for review.** Ordinary draft updates run advisory governance
-and verified workflow lint; the unchanged Vellistry CI gate completes BLOCKED,
-not merge-eligible green or perpetually pending. Ready PRs retain conservative
-applicable security/recovery; main and explicit dispatch are full. The gate
-recomputes mode/flags from the exact event/head. Local36 policy tests and all26
-workflow syntax checks pass; actual final draft/full runs must be recorded in
-the linked ledger before claiming final verification. No PR ready/merge change.
-
-**Evidence reconciliation.** Prior independently reviewed b713d94 full run38958548133
-used184 observed allocated-job seconds versus296 old main (37.84%); initial232
-seconds below remains historical. Pre-merge full dispatch is now actually proven
-available (old-head run38962146340). No billable-minute/general target claim is
-made. PR68 and cloud/billing/admin/product scope remain unchanged. Owner approval
-and another independent exact-head review remain pending.
-
-## 2026-10-16 — CI optimization proposed in draft PR #70
-
-**FACT.** Owner-authorized Issue #69 executed in isolated Codex branch
-codex/vel-ci-opt-001 from actual merged main
-4b3996ef7cda878e1af3d679454bd1bb873a79c2. Unique VEL-TASK/CP-0006 were
-committed and validated before CI edits. [Draft PR #70](https://github.com/Ben-001-sys/Vellistry/pull/70)
-proposes one automatic primary workflow, 25 intact manual-only historical
-workflows, conservative change routing, one application install/build path and
-a fail-closed final gate. This remains unmerged and unaccepted; older PR64-draft
-statements below are historical, superseded by the actual merged baseline.
-
-**Verified source evidence.** Source commit
-4259620ad0f4207bf1aa720c3809f32c93b59314 passed its single GitHub workflow:
-286 governance/offline/archive tests, 66 library tests, both app builds/checks,
-12 real PostgreSQL recovery tests and all five real disposable Supabase security
-probes; final gate passed with nonapplicable proposed-PR68 SQL test skipped.
-No hosted database acceptance is claimed. Final reporting-head checks are
-recorded in the PR. [ExecutionBundle VEL-EB-0006](docs/agent-workflow/execution-bundles/VEL-EB-0006.md)
-links the pre-edit coverage matrix, exact tests, actual timings and limitations.
-
-**Measurement limits.** Automatic workflow definitions reduce 25 to 1; one
-observed full CI run used 232 allocated-job seconds versus 296 for old main
-(21.62% less, single cross-day comparison, not billable minutes). General >=75%
-invocation reduction and ~60% runner-minute targets are not established;
-billing metrics are unavailable with current scope. No billing/admin settings
-were changed. A pre-existing R01 temporary-file descriptor error remains on
-Windows; the same root suite passes Linux. Manual/main/cancellation and docs-only
-routing are tested, not falsely claimed as live post-merge behavior.
-
-**Review gate.** ChatGPT exact-head review and owner's approval are pending.
-PR65/68 and their hosted/grant-hardening work remain separate, untouched. No
-accepted architecture, product, private-pilot or release gate changed; no hosted
-Supabase operation, private manuscript, deployment, paid AI or merge occurred.
-
-## 2026-10-14 — IMP-001 final bounded verification; owner review pending
-
-**Latest amendment:** source commit `675c394e9b3f154a8cd09bd5a84574597f15621f` additionally fixes failed-sign-out identity verification and stale sign-out results affecting the next author's pending create. Three regressions reproduced the defects before correction. All six local commands passed again on this source (**66/66 focused tests**, 15 workflow tests, both check/build and both validators; all exit 0). Final source outputs are retained separately in the report; the 63-test checkpoint below is historical. The latest report-only head and its renewed checks/CI are identified in PR #64.
-
-**FACT.** Continued existing draft PR #64 from actual head `57962ace49ca85550108649fd8c3ba7345857650`, already containing base `main` `226f6072785b7271fd30f4979a76e41fca30e39c`. Correction commit `9ff870a92c1ca446e4651c4bd39ee280c5002166` fixes concealed-title restoration before verified identity, old same-title rows falsely resolving unknown creates, identity changes during delayed error-body reads, ambiguous server-error retry, concealed draft retention after successful sign-out, and separate BFF identity/token reads. Adds ten focused regressions (63 total) and runs the focused suite in foundation CI with a frozen lockfile.
-
-All six requested local checks passed on that committed source: **63/63 synthetic tests**, Nest/Next typecheck and build, workflow validation (3 tasks/1 pack/1 bundle), **15 workflow tests**, and spec traceability (8 scenarios), all exit 0. Full outputs, exact source SHA, limitations and owner checklist are in the [updated execution report](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). The final report-head SHA, renewed local verification and exact-head CI conclusions are recorded in PR #64 after commit creation. Earlier NOT_RUN entries below preserve their historical authoring state.
-
-**INTERPRETATION / PROPOSAL.** The corrected source is prepared for the owner's review decision, contingent on the final-head checks recorded in the PR; it is not owner acceptance. PR #64 remains **Draft and unmerged**. Focused synthetic tests and disposable CI integration do not establish hosted Supabase acceptance. Hosted schema/persistence/RLS, `ACC-M1-01`, full journeys and the signed-out unexpired-JWT direct PostgREST risk remain **BLOCKED/unverified**. `vellistry-dev`, migrations, deployment, paid AI, private manuscripts and other implementation slices were untouched. PR #59 remains paused; no accepted decision or approval gate was changed.
-
-## 2026-10-14 — IMP-001 rejected POST and final identity verification hardening (pending CI)
-PR #64 remains Draft and unmerged. The Library session now conceals private draft/list state when the final identity lookup fails after any POST HTTP outcome, and verifies identity before publishing a rejected-POST uncertain-save status. An account change routes to the newly verified owner without exposing the old draft. Three synthetic regressions were added, and the earlier success-plus-failed-lookup test now expects concealment and same-owner-only restoration. These focused tests have **NOT_RUN** independently in this connector-only edit; exact-head CI must be checked. Hosted Supabase, migrations, and production remain untouched. Owner acceptance is pending.
-
-## IMP-001 failed-load identity verification (2026-10-13; review pending)
-
-**FACT — code and test changes proposed in PR #64.** The Book Library controller now verifies the live author before publishing 401, HTTP-error, rejected-request, malformed-response, or successful GET results. If identity changed without an auth callback, it transitions to the verified author (or signed-out state) before publishing; if verification fails, the previous draft is concealed and recoverable only by its original author. Five synthetic regression tests were added for A→B (401, 503, rejected GET), A→signed-out (401), and a failed owner lookup on an error response. Existing successful-response protections remain.
-
-**Verification:** These new tests and the focused `corepack pnpm test:library-isolation` command are **NOT_RUN** by this reviewer. The previous five green workflows belong to commit `4c24989e81c9373d54da61bf6057938d88ba656d`, not this correction. Recheck new-head CI before acceptance. This does not verify hosted `vellistry-dev`, RLS, `ACC-M1-01`, or revoked-session direct PostgREST. Owner review and merge authorization remain pending; PR #59 stays paused.
-
-## IMP-001 failed sign-out/create race correction (2026-10-12; review pending)
-
-**FACT.** In draft [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64), commit `a1b6b12111932fd4b37dbf5da86ff53e596dc8fd` changed `concealBooksForSignOut()` so an in-flight create interrupted by sign-out retains an uncertain-save lock. If sign-out fails, ordinary Create stays blocked; an aborted client request is not treated as proof that Nest did not commit. Successful sign-out still clears the previous author's private state. Two synthetic session regression tests were added for failed sign-out with delayed create acknowledgement/reconciliation and successful sign-out isolation.
-
-**Verification status:** New regression tests were **NOT_RUN locally** during this correction; exact-head CI must be inspected independently. This commit is not a cloud-persistence, hosted RLS, or signed-out JWT test. The prior documented 41-test result belongs to an older PR head. Owner review and merge authorization remain pending. No Supabase, production, paid-provider, manuscript, or approved-decision changes occurred. PR #59 remains paused.
-
-## VEL-IMP-001 review corrections are in PR #64 (2026-10-11)
-
-Issue #63 remains the only coding slice in progress. [PR #64](https://github.com/Ben-001-sys/Vellistry/pull/64) on `feat/vel-imp-001-library-isolation` is still open and unmerged. It was not deployed. This branch now contains verified `origin/main` `226f6072785b7271fd30f4979a76e41fca30e39c` (merge of PR #62) as well as the library-isolation work that started from `68c9ea5eb29c7bec558321d6b69a2604bd5128a2`. The hosted Supabase Cloud sections below are kept from that main tip.
-
-The review of `6f98f033fff8333e66edf23cd3b12eadacc22ed6` kept the earlier isolation corrections and required two further changes, addressed in `60b187c3575cb794b1969ec389f937479df04ba0`. A lost save whose refreshed list does not show the title stays uncertain until that title appears or the author explicitly chooses to save again. A refresh that cannot verify the author hides the unsaved title and restores it only for that same author. A later correction on this same branch distinguishes a Nest POST whose acknowledgement was lost from a failure before that POST was sent: the lost acknowledgement stays an unknown save, and Create stays disabled. Concealing a draft keeps that unknown-save flag and restores it only for the same author. `auth.getUser()` returning an error conceals private content instead of showing a confirmed signed-out library. A null user with no error still asks the reader to sign in. `CURRENT-STATE.md` keeps both this evidence and the hosted-project record from main.
-
-**FACT.** The execution report is [VEL-IMP-001 library isolation](docs/reports/VEL-IMP-001-LIBRARY-ISOLATION-2026-10-11.md). It is not a pinned `VEL-EB` bundle and it does not create or recycle a `VEL-TASK`. Synthetic session tests, `corepack pnpm check`, and `corepack pnpm build` passed without a hosted database. `pnpm-lock.yaml` and `apps/web/next-env.d.ts` were not changed by this slice.
-
-**Not accepted and not passed.** This checkpoint does not accept PLAN-01..06, does not mark `G_DESIGN` or `G_CODE` passed, and does not claim live RLS, direct PostgREST logout behavior, or `ACC-M1-01` persistence. Hosted project `vellistry-dev` was not migrated or written by this slice. Live book create/reopen stays **BLOCKED**. PR #59 and Issue #58 stay paused. Crosswalk rows for this slice remain `NOT_RUN` because the full acceptance cases were not executed.
-
-## Supabase Cloud development project CREATED (2026-10-11; newest)
-
-User agreed to create `vellistry-dev` under their connected Supabase Free organization `Ben-001-sys's Org`. Supabase cost checker quoted **$0/month**. The connected Supabase tool created **`lflkcrnriitrbclangyr`** in **London/eu-west-2** and subsequent read-only verification returned **ACTIVE_HEALTHY**, PostgreSQL 17, **zero public tables** and **zero applied migrations**. API URL `https://lflkcrnriitrbclangyr.supabase.co`. No schema changes, Auth users, remote migrations, fixture data, production services, real manuscripts or code changes were performed. This is an isolated new development project, not a deployment.
-
-**Next:** Cursor Desktop installation/open confirmation, personal repo Git checkout and pnpm 10.18.0 using Corepack, local untracked environment configuration using the existing cloud project's publishable key (raw key withheld), and nonmutating baseline. The Vellistry schema is **not yet installed in the hosted project**; cloud migration work requires explicit scoped approval and security review. Paused old Cursor task PR #59 remains PAUSED. Supabase Cloud docs tracked in PR #62 pending merge/review.
-
-# Vellistry — Current State
-
-## OWNER ENVIRONMENT CHOICE — Supabase Cloud, no local Supabase stack (2026-10-11; newest)
-
-The owner corrected the Cursor Desktop setup plan: **Vellistry will use Supabase Cloud within their own existing Supabase account, NOT a self-hosted or locally containerized Supabase instance.** The current Windows setup phase remains no-feature-code baseline only. This owner decision supersedes any previous checklist requiring Docker Desktop/WSL2 and local Supabase API `127.0.0.1:54321` as prerequisites. It does **not** approve hosted schema migrations, hosted resets or private manuscript use.
-
-**Observed desktop preflight (PowerShell, owner supplied):** Windows 11 Pro 64-bit, 15.7GB RAM, 13.9GB free C:, Git 2.55.0.windows.3, Node 24.13.0, Corepack 0.34.5, global pnpm **11.5.2** vs repo-pinned 10.18.0, Python 3.10.10, Docker CLI 29.6.1. `wsl --status` gave no visible result; **WSL/Docker daemon testing is not required for a hosted-cloud connection**. Cursor Desktop installed/open status is **not yet confirmed**.
-
-**Next setup:** identify an isolated **Supabase Cloud development project** under the owner's account (project not yet identified); verify no real author/production data and inspect hosted schema without mutation. The Next frontend and Nest backend run on desktop, using hosted HTTPS URL and publishable key through untracked local env names: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`. Existing committed `.env.example` still shows **local CLI placeholders** and should not be used literally. **No service-role/secret key in browser or normal author paths.** Existing local security scripts/migrations must not run destructive resets or cloud `db push` without explicit isolated-project approval. Cloud RLS/direct PostgREST signed-out-but-valid-JWT risk remains unresolved before any real manuscript/private pilot.
-
-Cloud-specific setup documentation is updated in [Cursor Desktop setup v0.2](docs/plans/VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md), [PLAN-05 Cursor workflow v0.2](docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md), and [master implementation plan v0.3](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md), on the documentation-only review branch `docs/hosted-supabase-desktop-setup-20261011`. No product implementation, remote database operations, provider calls or deployments were performed. Paused [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) remains paused. Setup proceeds only through non-mutating environment verification until a bounded development task receives new authorization.
-
-## PLAN-01..06 all prepared in one planning-only pass (2026-10-11; owner review PENDING)
-
-The owner explicitly requested **complete the full 149-ID MVP mapping and all six implementation-planning work packages at once**. No app code, migration, installation, Cursor Agent task, provider call, local database reset or deployment was performed.
-
-[Draft PR #61](https://github.com/Ben-001-sys/Vellistry/pull/61) now contains:
-- [PLAN-01 actual scaffold audit](docs/plans/VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) plus [all 149 selected MVP/MVP-LIMITED feature IDs individually mapped](docs/plans/VEL-PLAN-01-149-FEATURE-TO-TEST-CROSSWALK-2026-10-11.md) from approved 396-row horizon. 149 unique proposed `T-VEL-...` acceptance identities, all `NOT_RUN`; 78 full, 71 limited, 247 post-MVP; original source status and feature titles preserved.
-- [PLAN-02 architecture/data/API contract proposals](docs/plans/VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md), preserving accepted Next/Nest/Supabase/Tiptap decisions while leaving new RPC and data shape for separate spec review.
-- [PLAN-03 screen navigation/interaction state contract](docs/plans/VEL-PLAN-03-UX-NAVIGATION-STATES-2026-10-11.md) using the 16-frame original Figma design and separately observed Make/Lovable evidence.
-- [PLAN-04 negative/security/recovery and acceptance strategy](docs/plans/VEL-PLAN-04-TEST-SECURITY-RECOVERY-2026-10-11.md).
-- [PLAN-05 future Cursor Desktop/agent/branch/review workflow](docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md).
-- [PLAN-06 synthesis, cross-document consistency and owner decision register](docs/plans/VEL-PLAN-06-MVP-PLANNING-REVIEW-CLOSEOUT-2026-10-11.md).
-- [Updated master roadmap](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md) v0.2 indexes all six.
-
-**Review status:** source consistency and 149-ID uniqueness were programmatically checked as part of this *documentation pass*. This is **self-review**, not independent author research, current integrated test execution or owner signoff. The earlier signed-out still-valid JWT/direct-PostgREST risk remains a blocker to real private-manuscript usage; owner rule-policy agreement remains separate from source-pack activation. Actual provider model terms, exact migration/RPC, clean restore and keyboard/a11y performance remain later test/spec gates. No product/pricing/performance claim is made.
-
-**Next after owner accepts PR #61:** proceed to **Cursor Desktop/local environment setup preflight only**, with existing repo and safe synthetic local infrastructure, then no-feature-change baseline. A new scoped G_CODE authorization is required before assigning Cursor application coding. Former Cursor kickoff [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) stays PAUSED. G_PRIVATE_PILOT and G_RELEASE remain pending.
-
-## PR #60 merged; PLAN-01 requirements/scaffold inventory STARTED (2026-10-11)
-
-Owner instructed review and merge of PR #60 and to begin. **PR #60 was independently read/reviewed, had three PASS CI workflows and no outstanding review threads, and merged to `main` at commit `7e5627b577f90bf2771d6cb2fe99235b84885c44`.** This approves the planning framework/transition to PLAN-01, **not Cursor Desktop setup or application coding**.
-
-PLAN-01 work opened on **documentation-only** branch `docs/plan01-scope-inventory-20261011`. [First scoped source inventory](docs/plans/VEL-PLAN-01-SCOPE-AND-BASELINE-INVENTORY-2026-10-11.md) cross-checks approved M1–M8/396-feature horizon map (78 MVP, 71 MVP-LIMITED, 247 post-MVP) with observed Next/Nest/Supabase files. Verified committed login/book API and author-RLS schema foundation; chapter/revision direct writes are deliberately revoked; no integrated Tiptap page/dependency; historical CI and mockups are not current runtime PASS. Preliminary source-level Library account-switch/stale-response risk, unexpired signed-out JWT/direct PostgREST risk and rules source packaging remain targeted future checks. Exact underlying per-ID list and additional module tests are **not yet exhaustively audited**.
-
-Next *planning-only* activity: review/refine PLAN-01 per-ID source-to-acceptance coverage and then PLAN-02 architecture/data/API model. Prior implementation kickoff PR #59 remains PAUSED. Do not start Cursor Agent, install/reset local dependencies/database, write feature code, deploy, incur AI charges, or handle real private manuscripts under this planning branch. No global G_DESIGN/G_CODE/PILOT/RELEASE gates were modified.
-
-## Owner implementation-process reset to PLANNING ONLY (2026-10-11; newest)
-
-The owner clarified: **“we are restarting the implementation we are doing the plan for it from start to end no code yet; then after we move into starting cursor on desktop...and all that needed stuff.”** This **supersedes the immediate Cursor-dispatch interpretation** made earlier on 2026-10-11. Existing code, accepted MVP scope, research, Figma master and historical records are **preserved**; the *execution workflow* resets to master planning first. No Cursor Agent launch, local desktop/tool installation, app-code edits, migrations, database reset, real credentials or deployment is authorized in this phase.
-
-The [new standalone planning-only master](docs/plans/VEL-IMPLEMENTATION-MASTER-PLAN-2026-10-11.md) maps the full accepted M1–M8 scope, all eleven journeys, PLAN-01..06 decisions, later Cursor desktop/setup preflight, IMP-001..008 sub-slices, validation/security/pilot/release gates, acceptance and dependencies. The [future Cursor Desktop checklist](docs/plans/VEL-CURSOR-DESKTOP-SETUP-PLAN-2026-10-11.md) is **NOT EXECUTED**. Both reside on the `docs/implementation-master-planning-20261011` review branch pending owner review.
-
-Prior [Issue #58](https://github.com/Ben-001-sys/Vellistry/issues/58) and [draft PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) are a **PAUSED prior implementation kickoff**, not the current instruction to use Cursor or merge. PR #59 contains planning/task files, not verified new runtime application code. Do not merge or dispatch it until a new owner direction after plan review; keep historical context intact. The project-level G_DESIGN/G_CODE records, G_PRIVATE_PILOT and G_RELEASE are not silently marked passed by this planning reset. Signed-out unexpired JWT/direct PostgREST residual manuscript-access risk remains a release/private-pilot blocker.
-
-## Owner decision — defer noncritical UI fixes into implementation (2026-10-11)
-
-The owner explicitly directed **leave the editable Figma Design as it is for now; remaining UI adjustments can be fixed during implementation**. The reviewed Library mockup `27:10` still visually combines a populated book card with a “No books yet” message; **no canvas correction occurred**. The owner accepted deferring this **static design** inconsistency, provided the implementation of the Library slice **renders empty and populated states mutually exclusively** and tests account-owned book isolation. Exact behavior and tests are recorded in [VEL-DES-005](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md). All other noncritical UI polish/variants may iterate with implementation; do not confuse deferred visual cleanup with permission to ship broken interactions, copy synthetic account-state leakage, or tolerate manuscript-loss/security bugs.
-
-This resolves PR #57's final P2 review item **by explicit owner-approved deferral, not by visual remediation**. It does not grant `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, or `G_RELEASE`; implementation still requires scoped owner authorization and existing accepted functional contracts. The Supabase signed-out unexpired JWT/direct PostgREST privacy concern remains open for any real manuscript/private pilot.
-
-## PR #57 reviewer refinements (2026-10-11; partially addressed)
-
-- GitHub PR #57 review of exact head `55e253c` found **three P2 actionable items**: authoritative 16-frame editable master inventory, chronology fix for the old no-Figma-edits statement, and mutually exclusive Library empty/populated UI variants. Three PR-head CI workflows were successful; review was **COMMENTED**, with three open inline threads. **CI success alone is insufficient; the owner subsequently accepted deferring the last Library visual finding as recorded in the newer checkpoint above.**
-- Master inventory now resolves to **16 frames**, across two design pages: original A/B alternatives (2), original unified candidates (4), earlier discovered expanded manuscript/story/settings views (3), and newly created editable additions (7). See [canonical design handoff v0.5](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md), [updated journey coverage](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md) and [actual frame list](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md).
-- **Chronology:** the older walkthrough-only checkpoint said no canvas edits had yet occurred. Subsequently the second `hb4` Figma account wrote seven real frames to the same master. A later attempt to fix Library's empty/populated contradiction hit the Starter MCP quota; **no Library layer change was applied**. The Library visual defect remains **uncorrected in Figma**, but the owner has now explicitly deferred its cleanup to implementation with a mandatory conditional-rendering test.
-- **Governance:** static design refinement only. No product feature implementation, Make/Lovable paid usage, manuscript data, real auth or new approvals. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending.
-
-## Seven additional editable Figma Design screens created (2026-10-11)
-
-The owner connected the second Figma MCP account `hb4`, which successfully read and wrote the **existing original Figma Design**. Preflight found three existing expanded screens (`15:558` manuscript, `15:676` story workspace, `15:791` Settings/BYOK), so they were **not duplicated**. Seven actual additional editable frames were created on page 01: [Library `27:10`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-10), [Chapters `27:44`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-44), [Rules `27:80`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-80), [Continue `27:113`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-113), [Export/Privacy `27:145`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-145), [Profile/Fact `27:179`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-179), and [Save Reconciliation `27:213`](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U?node-id=27-213). Each uses real editable text/auto-layout nodes; structural readback confirmed seven frames and no text extending beyond its overall screen. See [artifact ledger](docs/design/VEL-DES-005-FIGMA-ADDITIONAL-EDITABLE-SCREENS-2026-10-11.md).
-
-These are **static provisional concept screens**, not operational app controls; screenshot visual QA, mobile variants and real author testing are still open. No existing Figma frames, production code or other prototype credits were changed; `G_DESIGN` and `G_CODE` remain pending.
-
-## Live Make walkthrough incorporated (2026-10-11, evidence received; not author-approved)
-
-- [PR #55](https://github.com/Ben-001-sys/Vellistry/pull/55) **MERGED** on 2026-10-11 at `b05458461572983e1b9c5d05b785776b22da0c17`; do not treat it as a pending/draft PR or as approving `G_DESIGN`/`G_CODE`.
-- The owner supplied a detailed *live Figma Make* walkthrough against all eleven author journeys after the prior published-site URL access failures. See [external review evidence](docs/design/VEL-DES-004-MAKE-LIVE-WALKTHROUGH-2026-10-11.md) and [reconciled Make-vs-Lovable matrix](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md). This is **externally reported interaction evidence**, not assistant-replayed browser testing, real-writer validation or backend verification.
-- Reported Make strengths: writing-first editor/chapter navigation, locally preserved edits/reorder, rule exclusion from effective guidance, correct selection-bounded Rewrite/reject/undo, separate canon decision, and stale AI guard. **Critical reported failures:** Writer B profile/fact-review state visible in Writer A (mock cross-persona leakage); Continue rejected a valid collapsed caret at offset 4. Save/recovery, profile/thread creation, fact edit/dismiss/provenance, rule creation, formatting/search and export/delete interactions remain incomplete or absent.
-- **Historical as of the earlier Make walkthrough (before the `hb4` additions):** the [original editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) was the master awaiting permitted edits; at **that time** no new canvas edits had occurred because the first Starter MCP access was quota-blocked. **Subsequently** `hb4` successfully added seven frames, as documented above. [Figma handoff v0.5](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md) contains the current 16-frame inventory and P0/P1 targets. Complete visual polish is not prerequisite to a scoped approved implementation slice.
-- No code, migrations, product auth, real model, publisher settings or paid credits changed here. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, and `G_RELEASE` are still pending; real manuscripts remain barred by the previously acknowledged signed-out unexpired JWT/direct PostgREST risk.
-
-## Owner execution sequencing clarification (2026-10-11; approvals still pending)
-
-The owner explicitly clarified: **the UI does not need to be perfect before starting implementation**. Treat [the editable Figma Design](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U) as the **living master UI**, improved with inspected Figma Make/Lovable ideas while implementation proceeds in bounded slices. Completion of every screen, visual variant, typography detail or broad usability study is **not** a prerequisite to approving the **first sufficiently specified slice**. Capture the functional scope, critical negative states, testable acceptance criteria and minimal UI direction first; iterate design and product browser tests together.
-
-The design-first **permission boundary remains**: record explicit *scoped* `G_DESIGN` approval for an implementation-ready UX baseline and a **separate scoped `G_CODE`** authorization for the coding slice. Neither is yet granted simply by this sequencing clarification; this checkpoint did **not** initiate product feature coding. Protect manual AI-OFF writing, revision/conflict recovery, two bounded proposal actions, independent canon, author data isolation and explicit provider consent. The signed-out unexpired token / direct PostgREST risk still precludes real manuscripts/private pilots until fixed and tested. Stronger `G_PRIVATE_PILOT` and `G_RELEASE` gates are unchanged. See [revised handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md).
-
-## New design-artifact evidence checkpoint (2026-10-11; NOT owner-approved)
-
-- The owner supplied the [Figma Make Writing App Prototype](https://www.figma.com/make/ayQhoFZLnAUn9212mxaYpw/Vellistry-Writing-App-Prototype?t=KzH4zPGS8uDWWE50-1) and the existing [editable Figma Design reference](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U). The Make file URL is recorded but its content, route behavior, privacy, completion and eleven author-journey results remain **unverified**. The Figma connector does not support inspecting Make files, and the Starter MCP quota blocked direct Design metadata. See [Make evidence checkpoint](docs/design/VEL-DES-FIGMA-MAKE-ARTIFACT-REVIEW-2026-10-11.md).
-- The separate [Lovable synthetic UX Lab](https://lovable.dev/projects/ff8ff817-87a7-49d2-af25-a4e018cd0787) was generated and source-inspected at commit `e0a7fd3003c6a392742c0ac7e111073252c65fb3`. Four outstanding interaction/provenance defects are documented in [review](docs/design/VEL-DES-LOVABLE-INITIAL-CODE-REVIEW-2026-10-11.md). A corrective Lovable call was rejected due to exhausted free workspace credits. No integration into production.
-- **Free-tier policy:** maximize useful inspected results from existing prototypes; no paid plan, additional credit purchase, publicity change, real manuscript/credential, database connection or production code integration. `G_DESIGN`, `G_CODE`, `G_PRIVATE_PILOT`, `G_RELEASE` remain pending. Historical status of PR #55 before merge; PR #55 was merged subsequently, without approving the design/code gates.
-- **Historical prior source status:** the initial comparison covered six Figma frames and a Make URL not yet exercised by the assistant. It has since been superseded by [the reviewed 16-frame inventory and owner-supplied Make eleven-journey walkthrough](docs/design/VEL-DES-003-CROSS-TOOL-EVIDENCE-AND-DECISION-2026-10-11.md). Neither equals independently verified production journey completion; Lovable's four initial code-level defects remain outstanding.
-
-## Design phase — synthetic concept/UX handoff in progress (2026-10-10; NOT owner-approved)
-
-**Current verified `main` at branch creation:** `d20bf9b7f6c3f23c55a48984cad94b4151598fc2`, [PR #54](https://github.com/Ben-001-sys/Vellistry/pull/54) **merged** on 2026-10-10 with the two requested phase/approval-policy review fixes. All four exact-PR-head workflows were successful; **a separate post-merge main-commit Actions run was not established by those checks alone**. Stage 5 preparation is integrated, but that does not approve runtime product implementation.
-
-- **Figma design artifact (unapproved):** [Vellistry synthetic concepts](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U): two prior editable alternatives (writing-first, story-workspace-first) plus four unified editable concept screens (manual editor, save recovery, rewrite review, separate canon review). The initial writing-first and story-workspace alternatives and unified rewrite screen were visually inspected; remaining QA and functional prototyping are incomplete. Synthetic labels/versions are not executed save, AI or DB evidence.
-- **Design documentation on this proposed branch:** [UX handoff](docs/design/VEL-DES-001-002-UX-HANDOFF-2026-10-10.md), [11-journey state matrix](docs/design/VEL-DES-002-JOURNEY-AND-STATE-MATRIX-2026-10-10.md) and [consented writer validation plan](docs/design/VEL-DES-002-WRITER-VALIDATION-PLAN-2026-10-10.md). These materials are **proposed** and do not claim complete Figma flows, actual writer interviews, operational model quality or validated accessibility.
-- **Two additional planned prototype routes (owner instruction, 2026-10-10):** Figma Make (make the existing editable synthetic concepts interactive) **and Lovable** (an independent synthetic frontend-only experiment). Prepared [dual-platform experiment protocol](docs/design/VEL-DES-001-DUAL-PROTOTYPE-EXPERIMENT-2026-10-10.md), [Figma Make prompt](docs/design/VEL-DES-PROMPT-FIGMA-MAKE-2026-10-10.md), [Lovable prompt](docs/design/VEL-DES-PROMPT-LOVABLE-2026-10-10.md), and [remaining screen blueprint](docs/design/VEL-DES-002-REMAINING-SCREEN-BLUEPRINT-2026-10-10.md) on draft PR #55. **Historical status at this 2026-10-10 planning checkpoint:** neither external prototype had yet been executed; the Lovable connector still required connection and Figma Make still required a separate editor workflow. Both subsequently advanced as documented in the newer 2026-10-11 checkpoint above. No external keys, production data, or public publishing were authorized.
-- **Design access limitation:** Figma MCP returned Starter plan rate limit during continued screenshots; no plan upgrade, paid tools or fabricated screenshots. Remaining Figma flows and design testing are pending.
-- **Gates:** G_DESIGN, G_CODE, G_PRIVATE_PILOT and G_RELEASE all remain **pending**. The signed-out unexpired access-token direct PostgREST exposure remains an acknowledged **development-stage** risk, not production-ready private manuscript security. Manual AI-OFF and owner-approved MVP scope remain unchanged.
-- **Next:** finish the remaining proposed author screens and responsive/error variants when Figma design access permits; run real consented fiction-writer prototype tasks before any canonical UX owner approval. Then separately request feature coding authorization; do not start `VEL-IMP-*` work now.
-
-## Historical Stage 5 preparation proposal (PR #54 subsequently merged)
-
-## Stage 5 — proposed agentic implementation preparation (2026-10-10; PR review pending)
-
-**Latest verified `main` at preparation refresh:** `42bc285257a6526c5e4c9444dfd373bd963c43e8`, merging [PR #53](https://github.com/Ben-001-sys/Vellistry/pull/53). The owner's exact **“I approve this for mvp”** decision remains authoritative for the *integrated eight-area MVP direction*, recorded in [HIS-20261010-046](docs/history/2026-10-10-owner-mvp-direction-approved.md). It does **not** approve finished design, shipping product features, real manuscripts or public release.
-
-- **This PR prepares, not executes, agentic coding:** [Stage 5 roadmap](docs/plans/IMPLEMENTATION-AGENTIC-READINESS-2026-10-10.md), [architecture boundaries](docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md), [agent operating protocol](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md), [gate-checked task DAG](docs/agent-workflow/IMPLEMENTATION-TASK-DEPENDENCIES.yaml), proposed `VEL-TASK-0003` and CI-generated proposed Git-pinned `VEL-CP-0003`. No new feature code, runtime DB changes, paid calls or deployment are included.
-- **Permission sequence:** permitted two synthetic-only Figma/Lovable concept directions → canonical editable Figma Design and consented real-author walkthroughs → explicit owner design signoff (G_DESIGN) **and separate feature-implementation authorization (G_CODE)** → bounded coding agents. Private pilot and release also remain owner-gated. All graph implementation/release tasks are **BLOCKED**.
-- **Preserved choices:** Next.js 16/NestJS 11/Supabase Auth + RLS/PostgREST, Tiptap 3, AI-OFF manual-first writing, immutable 260 guidance sources / accepted future 134-control catalog, optional Continue and single-paragraph-span Rewrite via author-funded free-or-paid BYOK, explicit author canon and undo.
-- **Known security limitation:** Owner decided to keep the current Supabase Auth/RLS/PostgREST approach **for now**; unexpired signed-out JWT direct Data API access remains a documented risk. This is neither an implemented restricted Nest gateway nor production security signoff. Full Auth/DB/Storage backup, legal/provider policy and real runtime author tests remain unverified.
-- **Agent evidence:** Owner-accepted Stage 4 synthetic Cursor pilot is complete for that bounded test (Issue #27 closed). Stage 3 historical Issue #18 is independently open. Neither is actual product implementation acceptance.
-- **CI:** proposed readiness validator includes negative tests for cycles, gate bypass and lost source paths; CI-generated ContextPack is only a prepared artifact, not agent execution. Validate on exact PR head and check merged `main` after owner review.
-
-## Prior approved MVP and research snapshots (historical)
-
-## Owner-confirmed MVP direction — 2026-10-10 (latest decision)
-
-The project owner explicitly stated **“I approve this for mvp”** after integration of Option B Waves 1–6 and the Stage 4 research/governance reconciliation. This **approves the integrated eight-area, manual-first Vellistry MVP direction**, including two optional user-BYOK AI actions (Continue Writing and Rewrite Selection), review/accept/reject and revision-safe undo, Rules Studio and author-controlled Story Profiles. Exact contemporaneous approval and boundaries are recorded in [HIS-20261010-046](docs/history/2026-10-10-owner-mvp-direction-approved.md). The baseline `main` research merges and approved product direction must not be confused with a finished/shipping application.
-
-**Stage:** MVP scope and bounded research direction approved; continue the previously delegated **synthetic-only concept design, final Figma UI review and engineering planning**. No finished design has been signed off, and this short owner statement is **not explicit authorization for unrestricted product-feature implementation, paid platform services, transfer of real unpublished manuscripts, or public deployment**. Author trials, full security/session/Storage, actual CAS/restore, accessibility/IME, DOCX fidelity and real provider quality/terms remain evidence gates. Earlier section headers and chronology are retained below as historical snapshots.
-
-## Latest combined project status — 2026-10-10
-
-- **Author research and design:** Option B research Waves 1–6 completed their explicitly bounded secondary/synthetic passes. The later owner-delegated Wave 6 decision permits **two invented-data UI concept directions and an editable Figma Design only**, superseding the earlier no-prototype hold only to that extent. Actual author interviews, live literary-model quality, integrated manuscript security, and tested recovery remain open; production features, private data and deployment are **NOT AUTHORIZED**.
-- **Agent workflow, separate from product validation:** The owner accepted the independently reproduced **Stage 4 ContextPack/Cursor synthetic handoff pilot** (PRs #45/#48/#49; Issue #27 closed for that bounded workflow). Issue #18 and real feature-agent/product acceptance remain open.
-- **History reconciliation:** Stage 4 and later Option B research governance are both retained below. Older statements about PR #43, Issue #27, prototypes and active waves are historical snapshots, not current authorization.
-
-## Stage 4 bounded independent-agent workflow — owner-accepted and closed (2026-10-10)
-
-**Current `main` verified at:** `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`. This is the accepted **agentic-coding Stage 4 synthetic handoff pilot**, **not** an accepted production chapter implementation. This new section supersedes older, historically preserved text below saying PR #45/48 are pending or Issue #27 is open.
-
-- [PR #45](https://github.com/Ben-001-sys/Vellistry/pull/45) **merged**, commit `d27569ba87fa1738c9940b06ba3eeea5ee92a333`: a reproducible, two-file, current-head ContextPack dispatch mechanism, pinned task inputs and tamper/overwrite checks.
-- [PR #48](https://github.com/Ben-001-sys/Vellistry/pull/48) **merged**, commit `07c6f6a5527a29af19b6fbca0a43c0dccc0158ee`: independently reproduced **17/17** synthetic Cursor tests (0 failures) under Python 3.10 and 3.13 in GitHub CI, all 3 original unedited Cursor files preserved byte-for-byte under [raw/VEL-HO-0003](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0003/), and owner [acceptance event](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md). The [VEL-HO-0003 evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0003.md) version 0.3.0 records the exact hashes, technical evidence and limitations.
-- [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) **closed as completed**, specifically for this bounded independent-agent ContextPack → synthetic execution → raw evidence → independent rerun → owner-review workflow.
-- **Session boundary:** initial two-file fresh Cursor chat is reported by owner and agent, supported by screenshot; hidden session context has **not** been forensically certified. Do not claim stronger proof.
-- **Remaining separate work:** historical Stage 3 [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open; multi-agent cross-tool recovery, automatic context synchronization and orchestration remain future work. Proposed `VEL-SPEC-001` and real G03/G08, browser Tiptap, auth/RLS, persistence/recovery and every actual product acceptance case remain **NOT TESTED/NOT APPROVED**; Stage 4 does not override the owner-directed research → UI design → approval → feature implementation gate.
-- **Owner design-entry decision:** [design-entry proposal](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains pending; acceptance here is an agentic-coding workflow pilot, not a UI-design or release authorization.
-
-## Historical preceding 2026-10-10 state snapshot (superseded where noted)
-
-## Post-reconciliation agentic coding checkpoint — 2026-10-10
-
-**Verified `main` revision:** `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) **merged on 2026-10-10**; all 21 missing K2 and Pair 04/05 research artifacts were independently verified present in `main`. Seven workflows passed on PR #43's exact source head, including combined app/research checks, real disposable PostgreSQL restore, and local Supabase security experiments. A distinct **post-merge** combined-`main` green run has **not** been established by the PR-head checks alone. Older references below to PR #43 "awaiting merge" are retained only as historical pre-merge statements and are superseded here.
-
-- **Current phase:** research integration completed at the file/CI-baseline level; [design-entry decision](docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md) remains `proposed-owner-review`, with no design approval. The original research → Figma design → explicit owner-approved feature implementation sequencing remains operative.
-- **Agentic coding MVP:** Git governance, YAML task, Git-pinned ContextPack generation and tamper-checked Stage 3/4 metadata, and synthetic chapter tests exist. [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending independent agent/session evidence and owner acceptance; [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remains open pending **a separate agent execution**, raw test results, a reproducible ExecutionBundle and owner review.
-- **Pending PR on separate branch (NOT in `main` yet):** `feat/stage4-independent-execution-packet-20261010` proposes a CI-exported **two-file current ContextPack + minimal agent prompt** and deterministic pack validation for a clean-room Cursor/Codex Stage 4 trial. Dispatch/reproducibility is documented in [Stage 4 independent operator guide](docs/agent-workflow/STAGE4-INDEPENDENT-DISPATCH.md). Creating a packet is **not** proof an external agent was run or that the workflow is complete.
-- **Security boundary retained:** a signed-out but unexpired token could still access private rows through the *direct* Data API in a disposable Supabase research test. The restricted Nest transport is an experiment; production-integrated private manuscript access/revocation is **not approved**.
-
-## Current authoritative checkpoint — 2026-10-10 (after PR #43 merged)
-
-**Verified `main` snapshot:** `e7f1c82ced0a4e8b3196aaa7e5b874b41afc4523`, [merge PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43), on 2026-10-10. Prior `b4c3f2748b2bfdd52f4a90a14ea4d620d902cee7` was the **pre-reconciliation PR #42 main snapshot**, not the current head. Older dated sections below remain historical observations, not current status.
-
-- **Repository/source integration:** [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28) merged the Next.js 16 + NestJS 11 + Supabase/Auth/PostgreSQL scaffold. Research from Pairs 01–06 is represented in merged PRs. [PR #43](https://github.com/Ben-001-sys/Vellistry/pull/43) also merged, restoring **21 original missing research source files** (11 unique K2 security paths and 10 Pair 04/05 paths) from the prior stacked/merged branches to `main`. The recovery report tracks source provenance; the restored code is **experimental research** rather than an approved production private-manuscript gateway.
-- **Exact-head CI:** On PR #43's exact head `a20b6cd54aff4e80408a1fdd194a782709bf6134`, **seven GitHub Actions workflows passed**, including combined research/app baseline (three jobs), disposable local Supabase Auth/RLS K2 security (one job), Pair 04 provider/corpus, Pair 05 rules/Tiptap, isolated editor, application foundation and knowledge metadata. See [combined run #38009740500](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740500) and [security run #38009740468](https://github.com/Ben-001-sys/Vellistry/actions/runs/38009740468). These runs were verified on the **PR head**, not represented here as a fresh separate CI execution on the merge commit.
-- **Open workflow tasks:** [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) independent agent handoff and [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) chapter-save execution pilot remain OPEN; merged synthetic research does not close them. As of this snapshot, **zero open PRs** were returned by GitHub query.
-- **Decisions not reopened:** Owner-approved eight-area MVP, Tiptap 3/ProseMirror, Next/Nest/Supabase foundation, ADR-0007 immutable **260** compact/expanded fiction source records, free Calibre/TXT/backup research direction, and **no mandatory paid services**.
-- **Owner policy accepted, but not deployed:** The owner subsequently explicitly agreed to all Wave 1–3 findings and recommendations on 2026-10-10; see [HIS-20261010-002](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md). This accepts the future **134-control, 130 primary ON / four compact extras OFF** source-preserving guidance catalog with optional AI OFF, manual-first authoring, accessible input, loss-aware DOCX versus EPUB publishing, strong private manuscript/live-session requirements and author-approved temporal canon. **No active rules or production security implementation is enabled or verified by this consent.** The optional inference provider, complete production SSR/Storage/export/deletion/backup integration, actual user and native assistive-tech observations, full DOCX fidelity, legal/privacy signoff, priced operations and Figma design approval remain open.
-- **Wave 1 historical decision status:** The contemporaneous Wave 1 research paragraph below accurately states that the 134-control mapping had **not yet** received owner approval at the time of that research. The later explicit 2026-10-10 owner assent to Waves 1–3 **accepts the mapped catalog/default direction for future specification**, not active rules deployment; do not read the older historical phrase as the current decision.
-- **Present gate / explicit owner decision (2026-10-10): OPTION B ACCEPTED — STRICT PRE-DESIGN RESEARCH.** The owner instructed: "I choose Vellistry design-entry Option B: complete outstanding pre-design research and owner-critical decisions before prototypes." See the [accepted decision](docs/history/2026-10-10-owner-option-b-predesign-selected.md) and [two-track closeout plan](docs/plans/OPTION-B-PREDESIGN-RESEARCH-CLOSEOUT-2026-10-10.md). Figma Make/Lovable/Figma Design prototypes, new MVP feature implementation and deployment remain **NOT AUTHORIZED**; a later, separate owner decision is required to enter design.
-- **Wave 1 bounded research checkpoint (2026-10-10):** R02/R03 completed a single secondary research pass covering 12 public author signals, 10 official competitors and all 11 journey IDs. **No Vellistry participants were recruited or interviewed**, so user validation remains NOT RUN. R01 re-extracted the 130 compact plus 130 expanded original source bodies and prepared a full private 130-pair source review plus 134-alias proposal; **no owner approval of 130 primary ON / 4 compact extras OFF defaults** is implied. See [author evidence](docs/research/OPTION-B-WAVE01-R02-R03-ONE-PASS-AUTHOR-EVIDENCE-2026-10-10.md) and [source review](docs/research/OPTION-B-WAVE01-R01-260-SOURCE-MAPPING-REVIEW-2026-10-10.md). Owner subsequently instructed **one complete Wave 2 research pass and progression with no repeated rounds**. Wave 2 produced actual 12+10 passing limited DOCX/archive checks, Pandoc Heading 1/2 success with one empty paragraph lost, and multilingual/3,000-word Chromium research checks; the original Chromium 18/20 first run exposed an incorrect negative test expecting no textbox role—actual role=textbox is present but explicit aria-label/aria-labelledby is not. **The corrected subsequent Chromium run passed 20/20** on code commit ba231456bb37b1179643c05b229581cdac809b58 ([CI #38014264258](https://github.com/Ben-001-sys/Vellistry/actions/runs/38014264258)). True screen readers, native OS IME and arbitrary DOCX are NOT RUN. **Wave 3 has now completed one bounded research pass:** [R15/K2B manuscript privacy report](docs/research/OPTION-B-WAVE03-R15-K2B-MANUSCRIPT-PRIVACY-2026-10-10.md) and [R07 Story Profiles/extraction report](docs/research/OPTION-B-WAVE03-R07-TEMPORAL-PROFILES-EXTRACTION-2026-10-10.md), including integrated source-file audit, prior real local Supabase session evidence, new synthetic privacy model cases, and 24 labeled invented prose cases with a deliberately weak extractor. New test results must be marked verified only after execution. Direct-PostgREST signed-out JWT residual read, private Storage/export/draft/deletion/SSR integration gaps, and real-model factual precision **remain open**. **Wave 4 is the only active research pair:** R08/R21 optional model/provider privacy and realistic zero-mandatory-paid cost, plus R14/R21 author rights/license/legal/operations. No Figma/Lovable prototypes, new feature implementation, paid inference or deployment are authorized. This is research sequencing, not source-pack activation, completed interviews, design or implementation permission.
-- **Newest research stage (2026-10-10):** Wave 4 source research is complete in the [AI provider report](docs/research/OPTION-B-WAVE04-R08-R21-PROVIDER-PRIVACY-COST-2026-10-10.md) and [legal/operations report](docs/research/OPTION-B-WAVE04-R14-R21-LEGAL-IP-OPERATIONS-2026-10-10.md). Wave 5 R19/R06 and R10 is now the only active research pair. Any older Wave 4 active label above is a historical checkpoint. Findings do not constitute live-model testing, a final provider selection, legal clearance or authorization of design or implementation.
-- **Latest owner BYOK instruction (2026-10-10):** Vellistry provides supported model/provider choices and an API-key entry place. Authors use **their own free or paid provider keys**, without a free-only restriction; charges follow the author's provider account. Core manual fiction writing requires no key and AI is optional. See [HIS-20261010-003](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md). This is product policy, not an implemented key vault, provider integration or inference authorization; previous Wave 4 free-provider-only suggestions are superseded.
-- **Wave 5 one-pass MVP AI/edit decision (2026-10-10):** The owner asked for one complete R19/R06 + R10 research pass and delegated a final small MVP choice with no iterative approvals. See [AI-quality source evidence](docs/research/OPTION-B-WAVE05-R19-R06-AI-QUALITY-AND-RULES-2026-10-10.md), [reversible editing research](docs/research/OPTION-B-WAVE05-R10-REVERSIBLE-AUTHOR-EDIT-2026-10-10.md) and the [scoped MVP choice](docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md). **Selected design/acceptance scope**: one curated/pinned **OpenRouter BYOK** adapter accepting **user-owned free or paid keys**, exactly **Continue** and **Rewrite one contiguous selected span**, review-only plaintext, explicit Accept/Reject, authenticated server CAS/idempotency and revision-backed compensating Undo; manuscript editing remains AI-OFF-capable and Story Profile facts require separate approval. **Executed privately in session**: 18/18 synthetic reversible state tests and 12/12 synthetic quality-protocol tests, the latter exposing one naive first-person-voice false acceptance. **NO real model API, blinded author score, actual Supabase CAS or production feature code was executed**; source fixture ZIP given to user, not repository CI. **Wave 6 R18 and G10 is now the only active research pair**; Figma/prototypes/feature implementation/deployment remain blocked by accepted Option B until a separate explicit owner decision.
-- **Newest Wave 6 closeout/decision (2026-10-10):** The owner directed one-pass R18 and G10, progress to the next stage and choose a small MVP without another loop. [R18 recovery evidence](docs/research/OPTION-B-WAVE06-R18-RELIABILITY-RECOVERY-2026-10-10.md) and [G10 final ten-gate synthesis](docs/research/OPTION-B-WAVE06-G10-FINAL-CLOSEOUT-MVP-DESIGN-ENTRY-2026-10-10.md) record **all six waves bounded COMPLETE**, with real model quality, actual author interviews, integrated private session/CAS/Storage, full encrypted backup/deletion and legal gates NOT RUN/UNVERIFIED. Prior PostgreSQL 12/12 transactions/restore and new 20-case synthetic research checks are not production-proof. **Pilot-only planning targets: RPO 24 hours, RTO 48 hours, not verified SLA.** Under the owner's delegated final-stage choice, [HIS-20261010-004](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md) selects **synthetic-only two-direction UI concept design and editable Figma Design**, with genuine writer usability testing before design signoff. This limited choice supersedes old Option B prohibition on *concept design only*. **No new production feature implementation, paid service, real author data, or deployment is authorized**. Wave 6 is the last research wave; no Wave 7 research activated.
-- **Process variance:** PR #28 and early stacked security research were merged ahead of the originally owner-directed design-first acceptance gate. Preserve those commits and research, but **do not equate a merged scaffold with approved Figma design or public launch**. See [six-pair gate](docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md).
-
-## Historical phase and branch snapshots (superseded as current status)
-
-## Phase
-**Historical 2026-10-09 integration checkpoint (PR #28 was then unmerged; merged 2026-10-10):** The owner selected **Next.js + NestJS + Supabase** for the initial implementation baseline (ADR-0006 on this branch). A K1 application scaffold was built and typechecked, but **no product deployment or completed live Auth/RLS test is claimed by PR #28 itself**. Separate stacked research PR #29 ran 17/17 local synthetic Supabase authorization checks; PR #32 investigates revoked access tokens and session exposure. Neither stacked research branch is implicitly promoted or merged by this reconciliation.
-
-**Later owner-directed process hold:** The two-at-a-time research and approved UI/UX-design-first sequence documented in merged [PR #30](https://github.com/Ben-001-sys/Vellistry/pull/30) takes precedence over the earlier 22:30 implementation kickoff. The scaffold was subsequently merged on 2026-10-10; **do not resume feature implementation or deploy solely because its merge conflicts were resolved or research branches merged**. The design-first gate remains separately open. Finish necessary research, Figma Make/Lovable exploration, canonical Figma Design review, and explicit owner approval first.
-
-### K0/K1 and security research boundary
-- K0: an initial owner-selected implementation stack and research-aware roadmap were recorded; source authority and provenance remain bounded.
-- K1: pnpm workspace, Next.js web shell, NestJS API, Supabase migration and compile/typecheck evidence exist on this draft branch.
-- K2A: two-author local Supabase Auth/RLS research was exercised in separate stacked PR #29; it is not deployed here and does not establish production session safety.
-- K2B: immediate signout/token revocation and direct Data API exposure are still under separate security investigation in stacked PR #32.
-- K3 and beyond: chapter saves, end-user editor, Rules Studio and provider integrations remain gated under the newer research/design process.
-
-### Earlier historical research baseline
-Research and discovery; engineering knowledge foundation initialization.
-
-## Accepted direction
-- Future application code and engineering knowledge will share one GitHub repository (ADR-0001).
-- ADR and historical records require structured, traceable metadata (ADR-0002).
-- Use Git/Markdown first, preserving separate runtime storage for future author data.
-- Apply research governance and lightweight ContextPack/ExecutionBundle handoffs before building complex orchestration.
-
-## Solo-maintainer collaboration policy (2026-10-08)
-- The project owner is the only human contributor for now. Owner self-review and successful required checks are sufficient under the working PR process; no second human reviewer is expected or required.
-- AI review may be requested as an independent diagnostic pass, but does not constitute a formal independent human approval.
-- Material architecture/security/production actions still require deliberate owner sign-off. This clarification is recorded in HIS-20261008-002 and should be revisited if human collaborators join.
-
-## Repository
-Private repository: `Ben-001-sys/Vellistry`.
-Knowledge-baseline PR #1 is closed; its governance and initial research documents are now present on `main`.
-Current proposed research branch: `research/r06-rule-application-benchmark-v0.1`. A separate owner review/merge is required for this research batch.
-
-## Available research sources
-- AI Writing App Blueprint.md
-- Research AI Writing Problems.md
-- Branch · Research AI Writing Problems.md
-- Getting Better With Agentic Coding - Copy.zip (nine-document archive)
-
-These sources have been identified but **not yet fully migrated or individually verified**. See source and research inventories.
-
-## Undecided
-- Feature prioritization and MVP boundary.
-- Detailed PRD and acceptance criteria.
-- Editor framework and page-layout approach.
-- AI provider integration, MCP capabilities, context architecture, story state model.
-- Backend/database/framework/deployment technology.
-- Runtime author-data privacy and security architecture.
-
-## Next actions
-1. Complete source snapshot and stable provenance links for existing research documents.
-2. Extract individual requirements without losing details; distinguish evidence from suggestions.
-3. Audit consistency across research and record ambiguities or conflicts.
-4. Prepare a research-only Rules Studio/default-guidance fixture and perform measured rule-application evaluations with author-controlled exceptions, without altering frozen source.
-5. Continue the professional editor technology/licensing trials as an independent research workstream; do not preselect a stack.
-
-## Verification note
-No application code, product architecture, or live research workflow has been validated by this documentation bootstrap. Do not imply otherwise.
-
-## R01 source-audit progress (2026-10-08; draft evidence)
-- First read-only source inventory and taxonomy audit recorded in [R01-SOURCE-AUDIT-2026-10-08.md](docs/research/R01-SOURCE-AUDIT-2026-10-08.md). The historical fiction-system ZIP and standalone 20-section research blueprint are not available in the inspected source set; earlier archival gap reports remain unverified.
-- SHA-256 checks confirm duplicate blueprint uploads and byte-identical source Markdown inside the 3-file conversation-export ZIP; no original source files were changed.
-- SRC-003 contains 13 domains, 130 unique guidance IDs, 40 numbered constitutional principles, expanded Domain 13 text, and an expanded Post-Draft Audit. The short index and expanded manuals have **13 title differences**, including all ten AR entries, requiring author-reviewed semantic reconciliation before canonical import.
-- External claims, standalone archival completeness, and original user-requirement traceability remain open. This is research evidence, not an accepted fiction-system mapping or application architecture decision.
-- A separate first-pass extraction of **28 user-authored product-intent statements** is recorded in [R01-SRC001-USER-INTENT-EXTRACTION.md](docs/research/R01-SRC001-USER-INTENT-EXTRACTION.md). These are source-derived candidates, not approved requirements. They preserve ambiguity in the original host naming and distinguish user requests from AI suggestions.
-- R01-A semantic comparison completed as **draft research**, documented in [R01-AR-SEMANTIC-RECONCILIATION-2026-10-08.md](docs/research/R01-AR-SEMANTIC-RECONCILIATION-2026-10-08.md). Domain 13 pairs: 3 equivalent-core, 4 overlapping, 3 distinct (AR-04/06/09); PV-10 is also substantively different beyond title wording. Taxonomy authority and IDs remain **unapproved**; preserve both source variants. The earlier first-pass audit includes an explicit addendum clarifying PV-10.
-
-## Owner clarification and market research — 2026-10-08
-- **Owner-directed product behavior:** Freeze the existing fiction guidance as Vellistry's **default-enabled writing-quality pack** while giving users control to disable/remove rules from their active configurations, add custom rules, and determine what influences each relevant AI generation. Original-source content is unchanged; short/expanded AR definition collisions remain preserved as historical research, not silently reconciled. See [the product direction](docs/requirements/PRODUCT-DIRECTION-FROZEN-DEFAULT-GUIDANCE-2026-10-08.md). The exact packaged default release and tested model compliance remain open.
-- **R03 first competitor scan completed as draft research:** Nine relevant AI-fiction or adjacent writing applications, six sampled consumer-feedback themes, and twelve relative-complexity feature candidates documented in [the R03 study](docs/research/R03-AI-FICTION-APPS-COMPETITIVE-SCAN-2026-10-08.md). No paid hands-on trials, representative interviews, pricing benchmark, product MVP approval, or application architecture decision have been made.
-- **Next bounded research:** test effective-rule visibility and toggles against user instructions; define benchmark script for competitive onboarding/drafting and real memory failures; validate editor/export licensing and actual API/MCP integration support from dated sources.
-
-## PR #1 merge-review remediation — 2026-10-08
-- **Validator coverage fixed:** `scripts/check_knowledge_metadata.py` now enumerates every `.md` record under decision/history directories (excluding README), rejects unexpected names instead of silently skipping them, validates history date-to-ID correspondence, and fails closed if no records are found.
-- **Regression proof:** `tests/test_knowledge_metadata.py` contains eight positive/negative tests. The workflow now runs these tests and watches changes to its test file; GitHub Actions [Knowledge metadata run #19](https://github.com/Ben-001-sys/Vellistry/actions/runs/37781479974) completed successfully on the updated code, with **8/8 tests passing and 3 ADR/history records validated**. This proves the current tested cases, not complete historical/semantic validity.
-- **Approval provenance clarified:** `docs/governance/APPROVAL-PROVENANCE-2026-10-08.md` captures recoverable original user wording, its limits, and the reviewer-verification basis. ADR-0001/ADR-0002 and the historical record link to it. ADR-0001 no longer names `apps/` or `packages/` as a predetermined layout; the single-repository governance direction remains separate from application architecture.
-- **Provenance limitation at the earlier review checkpoint (subsequently updated below):** the original decision conversation's immutable URL/full transcript was not archived, and the directly retrievable wording was a question rather than an affirmative statement. The newer, separate owner reconfirmation is cited below; this original-chat archival gap remains open even though present approval is now established.
-- **PR status:** Still open/draft and unmerged; documentation baseline and research remain awaiting owner/reviewer merge decision. No application stack, model provider, package structure, database, deployment, or runtime architecture approved.
-
-## Owner confirmation evidence and final-review gate — 2026-10-08
-- **ADR-0001 owner approval verified:** `Ben-001-sys` explicitly reconfirmed repository co-location in [PR #1 comment 6068029790](https://github.com/Ben-001-sys/Vellistry/pull/1#issuecomment-6068029790). The accepted decision's owner approval is now directly retrievable and no longer requires owner reconfirmation. The original earlier conversation itself remains without a durable permalink; this separate historical provenance gap is not falsely marked solved.
-- **Linked records:** [ADR-0001](docs/decisions/ADR-0001-co-locate-engineering-knowledge-with-application.md), [the provenance review](docs/governance/APPROVAL-PROVENANCE-2026-10-08.md), and the additive [HIS-20261008-003 event](docs/history/2026-10-08-adr-0001-owner-reconfirmation.md) document the evidence. The original HIS-20261008-001 is retained and cross-referenced rather than silently replaced.
-- **Merge boundary:** Confirm green metadata CI and reviewer assessment on the resulting **exact PR head**. PR remains open/draft until the owner decides whether to mark ready and merge; this recorded approval is approval of ADR-0001, **not** authorization to merge the PR.
-
-## PR #1 merge verified; R02 migration begun — 2026-10-08
-- [PR #1](https://github.com/Ben-001-sys/Vellistry/pull/1) merged into `main` at 2026-10-08T20:15:48Z (merge SHA `4b58312652ec6f2b0c40cde984a672b2fc2eeea1`). Earlier pre-merge status entries above are historical snapshots, not the current PR state.
-- The approved **solo-maintainer policy** remains in force: owner self-review and final merge, required CI, optional advisory AI review, and no second human required.
-- New R02 branch `docs/research-migration-r02` contains [the first SRC-002 navigation index](docs/research/R02-SRC002-READER-PROBLEM-SOURCE-INDEX-2026-10-08.md) and [a phased archival and migration plan](docs/research/R02-RESEARCH-MIGRATION-PLAN-2026-10-08.md).
-- R02 is **partial/draft**: original full research bytes still require stable archiving in Git or another immutable referenced location. The initial headings index is not a verified external fact-check, approved writing ruleset, or an architecture decision.
-- Immediate next steps: archive original files with SHA-256 verification; reconcile source paths and update SRC-001–004 register; expand source-to-requirement references without changing frozen guidance or losing variants.
-
-## R06 rule-application research — 2026-10-08
-- Initial [Rules Studio application research](docs/research/R06-RULES-STUDIO-APPLICATION-RESEARCH-2026-10-08.md) checked primary vendor documentation for Novelcrafter, Plotdrive, NovelAI, AI Dungeon and provider instruction/context behavior. Findings about vendor features are documentation-grounded, not verified by running paid competitor accounts.
-- The companion [evaluation protocol](docs/research/R06-RULE-APPLICATION-EVALUATION-PROTOCOL.md) defines **6 synthetic fiction cases and 18 proposed tests**, covering default-on, disable/re-enable, custom instructions, author exceptions, scope isolation, context omissions, stale caches, costs, version changes and quality scoring.
-- A [research ExecutionBundle](docs/research/R06-EXECUTION-BUNDLE-2026-10-08.md) separates verified documentation, interpretation, proposals and non-executed tests.
-- **Measured product results: NONE YET.** No model was called, no API credentials were used, no editor/UI prototype implemented and no confirmed improvement in generated fiction quality is claimed.
-- The 13-domain frozen source remains unchanged; deployable default-pack packaging and AR conflicts remain explicitly unresolved pending author/source review.
-- Research artifacts are proposed on `research/r06-rule-application-benchmark-v0.1`; owner self-review/merge required. This does not alter accepted product direction or settle application architecture.
-
-## R06-002 executable synthetic experiment — 2026-10-08
-- A non-production [synthetic request resolver and 12 tests](docs/research/experiments/r06_synthetic_request_simulator.py) were added to this draft research branch. Its three defaults are invented **SIMULATED GUIDANCE** and deliberately not the frozen 130-lens source.
-- GitHub Actions [R06 synthetic research run #1](https://github.com/Ben-001-sys/Vellistry/actions/runs/37840086630) **passed all 12 tests**, checking enable/disable, custom rule inclusion, project isolation, restoration, canon separation, opaque prior-context rejection, action scoping and duplicate IDs.
-- The [experiment record](docs/research/R06-002-SYNTHETIC-RULE-CONTRACT-RESULTS.md) preserves method and limits. **No AI-generated fiction, real model compliance, provider calls, actual implementation or quality improvement has been tested.**
-- Next: controlled model tests only after test fixtures, source-pack status, appropriate author data and spending cap are selected; no architecture or provider chosen.
-
-## Stage 3 context handoff review remediation — 2026-10-08
-- [Stage 3 PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5) remains **draft and unmerged** during owner review. [Original review #5462675990](https://github.com/Ben-001-sys/Vellistry/pull/5#pullrequestreview-5462675990) identified permission-contract tampering and a merge conflict with `main`.
-- Pilot artifacts: `VEL-TASK-0001` (verification), `VEL-CP-0001` (pinned revision) and `VEL-EB-0001` (proposed for owner review). The pinned pack records the historical task Git blob, while its current task status may progress independently.
-- Remediation in progress: validate the displayed ContextPack contract against its immutable task content (objective, in/out scope, allowed actions, approval requirements, acceptance criteria and deliverables). Add mutation/late-edit tests; require owner-linked evidence for bundle acceptance without equating schema validation with true account authorization.
-- This state update **retains** the already merged R02 reader-research and R06 rules-evaluation records above. Earlier references to their draft branches describe historical work-in-progress checkpoints, not the current state of those merged PRs.
-- Verify the agent-workflow and history metadata checks on the final conflict-resolved PR head before marking Stage 3 ready. An independent second-agent handoff test and original SRC-001 archive are still pending.
-
-## R05 editor license research branch reconciled after formal PR #4 review — 2026-10-09
-- [Original R05 comparative editor study](docs/research/R05-MANUSCRIPT-EDITOR-LICENSING-CAPABILITY-SCAN-2026-10-08.md) and [ExecutionBundle](docs/research/R05-EDITOR-RESEARCH-EXECUTION-BUNDLE-2026-10-08.md) remain **historical pre-selection research** across seven editor toolkits and 12 **proposed, unexecuted** evaluation cases. Their written research time precedes the owner's Tiptap selection and MVP approval; do not rewrite the original research retroactively.
-- **Current R06 status:** [PR #3](https://github.com/Ben-001-sys/Vellistry/pull/3) has **MERGED** into `main`, including synthetic request-assembly evidence. The original R05 branch's statement that R06 remained open was outdated and has been superseded here. No claim of real AI fiction quality is implied.
-- **Current Stage 3 status:** [agent handoff PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5) also has **MERGED** into `main`. Existing earlier 'pending review' passages remain a historical audit trail; the merge status here is later and current at this checkpoint. Preserve all R02/R06/Stage 3 sections and evidence.
-- **Owner-selected editor:** The owner selected **Tiptap 3 / ProseMirror** after the R05 study. The decision is on still-draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6); it does not approve premium Tiptap Pages/Conversion or choose a separate framework, backend, database, AI provider or publishing engine.
-- **Owner-approved product scope:** The eight-area MVP is recorded on draft [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10). This changes the *present* scope but not the facts or date of the pre-decision R05 source paper. Standalone comprehensive EPUB/print layout is intentionally post-MVP.
-- **PR #4 review remediation:** This branch incorporates current `main` history and reconciles the old `CURRENT-STATE.md` overlap rather than copying the older state over merged R02/R06/Stage 3 sections. Verify exact-head metadata checks, mergeability and reviewer comments before any owner-authorized merge.
-
-## R05 Tiptap 3 headless research reconciled after merged-main changes — 2026-10-09
-- [R05 Tiptap 3 real-package research](docs/research/R05-TIPTAP3-MANUSCRIPT-WORKSPACE-VALIDATION-2026-10-08.md) and [ExecutionBundle](docs/research/R05-TIPTAP3-EXECUTION-BUNDLE-2026-10-08.md) record **7/7** passing isolated Node/jsdom tests, with exact passing run [37843380823](https://github.com/Ben-001-sys/Vellistry/actions/runs/37843380823). Tests cover limited editing mechanics, not real-browser UX, secure autosave, author privacy or a production app.
-- **Further research** has separately progressed to seven limited passing actual Chromium tests on [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12), which is stacked on this branch. That does not change the historical claims of the earlier jsdom report.
-- **Editor choice:** The owner selected Tiptap major version 3 / ProseMirror and the accepted decision remains recorded in draft [ADR-0003 PR #6](https://github.com/Ben-001-sys/Vellistry/pull/6). No other app framework, document store, provider or paid Tiptap package was selected by these tests.
-- **Later scope approval:** The eight-area MVP target was approved separately after this original experiment ([PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10)). Do not retrospectively treat the headless experiment as an accepted full MVP.
-- **Merged history preserved:** Reconciliation retains the R02 study, merged R06 PR #3 and merged Stage 3 PR #5 from current `main`. Earlier pending-status entries remain historical, not current statements. This research PR remains open/unmerged until owner review and exact-head checks.
-
-## R07 Live Story Profiles synthetic research — 2026-10-09
-- [R07 source-grounded concept study](docs/research/R07-LIVE-STORY-PROFILES-CONCEPT-MODEL-2026-10-09.md) addresses owner-requested UI-visible **characters and storyline profiles** during human/AI writing, distinguishes accepted manuscript, outline intent, pending extracted suggestions, approved state and subjective/uncertain claims, and separates story-event versus discourse/revision order. Related functions already exist in Novelcrafter, NovelAI and Sudowrite; no novelty claims or production architecture were made.
-- [R07 deterministic story-state experiment](docs/research/experiments/r07_story_state_contract.py) and [20 test cases](docs/research/experiments/test_r07_story_state_contract.py) are pure Python standard library using **invented scenes and hand-authored candidate changes**, no real extractor, private author data or provider. [GitHub Actions #37919046053](https://github.com/Ben-001-sys/Vellistry/actions/runs/37919046053) **PASSED 20/20** on exact code/workflow commit `248f0560f792eee79a45a141941dc80843ca95d3`, including stale evidence, subjective claims, flashbacks, approvals and book separation.
-- [R07 ExecutionBundle](docs/reports/R07-LIVE-PROFILES-EXECUTION-BUNDLE-2026-10-09.md) defines FACT/INTERPRETATION/PROPOSAL and remaining research gates. **R07 remains partial**: actual model precision/recall, trustworthy extraction of beliefs vs objective events, author UI reviews, storage/backups, account security and long-form context accuracy have **not** been verified. The ten R07 research-register checkboxes remain open.
-- This is branch-local **draft research**, not a new approved database, event-sourcing requirement, provider, Tiptap implementation, automatic per-keystroke LLM processing or wider MVP feature addition. Current `main` has not gained those new technologies; the latest separate MVP product decision is on draft PR #10.
-
-## R01 and R15 source/trust research checkpoint — 2026-10-09
-- [R01 original source integrity audit](docs/research/R01-SOURCE-INTEGRITY-AND-AR-VARIANT-AUDIT-2026-10-09.md) verified the three standalone directly uploaded Markdown files **exactly match** their three ZIP members; SHA-256 of SRC-003 matches the already recorded fingerprint. It found **130 compact and 130 expanded lens codes**, 13 domains × 10 each, with **13 nonmatching heading titles**: 10 AR plus DS-09/PV-05/PV-10. Preserve both forms; no AR or source contents were rewritten. **The default deployable pack remains uncertified and owner packaging decision is required.**
-- [R15 private manuscript and BYOK threat model](docs/research/R15-MANUSCRIPT-PRIVACY-AND-BYOK-THREAT-MODEL-2026-10-09.md) maps owner-approved MVP assets to **17 candidate threats and negative verification scenarios** under OWASP ASVS 5.0, authorization and secrets guidance and OWASP LLM risk guidance. This is *paper research only*: no implemented auth, storage, encryption, AI key service, law compliance or penetration test.
-- [R01/R15 ExecutionBundle](docs/reports/R01-R15-EVIDENCE-BUNDLE-2026-10-09.md) preserves exact verification scope and evidence gaps.
-- **Next gates:** R01 owner reviews non-destructive packaging of code/title variants and archival location; R15 compares real application access policy, secrets/consent data flows, backup/deletion design after owner-approved architecture. Protect source/user data and do not infer a model, backend or paid service.
-- These source/trust studies complement approved eight-area MVP scope in [PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) and preparation [PR #11](https://github.com/Ben-001-sys/Vellistry/pull/11); no release gate closed.
-
-## Stage 3 — cold-start evidence synced after feature inventory (2026-10-09)
-- [PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is **open and ready for review, but unmerged**; it adds Level A ContextPack reproducibility evidence. It does not establish independent second-agent success.
-- CI on earlier head `ff2ac4c6c9f29c8e6c6e75d1b5f8171df9a78a78`: [agent workflow run #37939723962](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723962) passed 15 existing tests plus 5 detached tests; [knowledge metadata run #37939723897](https://github.com/Ben-001-sys/Vellistry/actions/runs/37939723897) passed. Exact-head checks after this integration remain separately required.
-- Detached recovery reads only an exported **historical** `VEL-CP-0001` to reconstruct its task boundaries; it cannot authenticate Git, verify original SRC-001, authorize operations, or replace the currently accepted MVP and editor decisions.
-- [VEL-HO-0001](docs/agent-workflow/handoff-evaluations/VEL-HO-0001.md) records the bounded automated test and the explicit **Level B second-agent evaluation gap**. The rubric and result template are versioned for later real evaluation.
-- This integration retains `main`'s merged R02, R06, R07, R01/R15 and feature-inventory knowledge. The most recent feature-inventory [PR #9](https://github.com/Ben-001-sys/Vellistry/pull/9) is merged; earlier status paragraphs elsewhere are historical snapshots.
-
-## Stage 3 Level B clean-room dispatch preparation — 2026-10-09 (proposed)
-- [Stage 3 PR #15](https://github.com/Ben-001-sys/Vellistry/pull/15) is **MERGED** as a Level A detached reconstruction implementation; earlier text saying it was unmerged is a historical snapshot superseded by this section.
-- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) is open, with no independent agent response when last checked. No Level B result or owner acceptance is claimed.
-- Proposed new exporter `scripts/export_level_b_handoff.py` validates the historical ContextPack against the full Git repository before writing exactly two files (`VEL-CP-0001.md` and `PROMPT.md`) into a reproducible ZIP. An isolated fresh agent may receive only these contents.
-- Proposed CI tests verify minimal contents, byte identity, reproducible packaging, and rejection of a tampered permission contract; an Actions artifact makes the packet available without manually assembling context.
-- Original SRC-001 remains unavailable in the historical Git pack. The historical editor-audit task does **not** reopen the later owner-selected Tiptap 3/ProseMirror or accepted MVP decisions.
-- Owner review/merge of the export workflow and actual isolated second-agent run are **distinct acceptance gates**; neither is completed by this entry.
-
-## Stage 3 — first Cursor Level B response (2026-10-09; provisional)
-- The owner supplied a response attributed to **Cursor**; exact submitted text and source fingerprint are preserved in [VEL-HO-0002](docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md) and its [verbatim attachment](docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0002-CURSOR-RESPONSE.md).
-- Content assessment: **9/10 rubric criteria passed**, 0 failed, and **independence not assessed**. The owner supplied screenshots showing Cursor Agent **Grok 4.7**, effort **High**, context **256K**, plus a `level-b-test-packet` Explorer visibly containing only `PROMPT.md` and `VEL-CP-0001.md`, alongside the instruction `follow PROMPT.md guidelines`. This strengthens workspace-isolation evidence but is not proof that the agent chat was new or devoid of inherited context; full independence and owner acceptance remain unverified.
-- This bounded result concerns historical ContextPack `VEL-CP-0001` only. Its pre-decision editor/MVP wording does **not** undo later approved choices.
-- [Issue #18](https://github.com/Ben-001-sys/Vellistry/issues/18) remains open pending session-isolation evidence and owner disposition; Level B is not marked fully accepted.
-
-## ADR-0003 Tiptap v3 owner decision branch reconciled — 2026-10-09
-- **Owner decision:** Tiptap **major version 3 on ProseMirror** is the approved manuscript editing foundation, confirmed 2026-10-08 and recorded in [ADR-0003](docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md) and [HIS-20261008-005](docs/history/2026-10-08-tiptap-3-editor-approved.md). The editor decision predates the later Next/Nest/Supabase implementation approval; formal ADR documentation remains pending this PR's merge.
-- **Later research:** [PR #7](https://github.com/Ben-001-sys/Vellistry/pull/7) contains seven passing Tiptap 3 headless smoke tests. [PR #12](https://github.com/Ben-001-sys/Vellistry/pull/12) independently includes seven passing limited Chromium browser tests. Neither is a production editor, a storage architecture or a professional publishing converter.
-- **Separate later decision:** no paid Tiptap Pages/Conversion; the Next.js + NestJS + Supabase implementation direction is separately owner-selected in draft PR #28, while AI provider and publishing platform remain undecided. [MVP scope PR #10](https://github.com/Ben-001-sys/Vellistry/pull/10) separately records the owner's accepted eight-area product target. Do not infer architecture from this ADR.
-- **Integration:** This PR branch now preserves current merged `main` R02, R06 and Stage 3/PR #5 history. Earlier status paragraphs retain their original research chronology; later merged-state and present approval here are authoritative for current status.
-
-## PR #6 conflict reconciliation and traceability correction — 2026-10-09
-- This branch incorporates the newer merged `main` at `fb8e98bfc24cffce25a9a3df66353a7ff4857648`, including R01/R15 source/trust research and PR #9's accepted-scope feature inventory. Existing historical research sections and approved editor-choice record are preserved.
-- Reviewer-requested linkage correction completed: both ADR-0003 and the Tiptap approval event reference `VEL-REQ-002` (**conventional manuscript editing**), rather than `VEL-REQ-001` (**scoped AI guidance**). Tiptap 3/ProseMirror remains selected but not implemented; no paid Tiptap extensions or unrelated technology approved.
-- Historical decision identifier remains `HIS-20261008-005`. Formal owner merge review remains a separate action; this conflict resolution does not merge the PR.
-
-## Stage 4 — chapter specification and agent task PR #26 reconciled (2026-10-09; proposed)
-- [PR #26](https://github.com/Ben-001-sys/Vellistry/pull/26) proposes [VEL-SPEC-001](docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md): eight source-traced, framework-neutral create/edit/save/reopen scenarios scoped to the **accepted** M1/M2/M3/M8 product areas. The detailed acceptance contract remains **proposed and not product-tested**.
-- [VEL-TASK-0002](docs/agent-workflow/tasks/VEL-TASK-0002.yaml) defines the task scope, missing G03/G08 evidence and owner approval boundaries. [Stage 4 workflow](docs/agent-workflow/STAGE4-SPEC-TO-TASK.md), traceability validator, negative tests and CI generate an immutable `VEL-CP-0002`; the associated ContextPack artifact is an agent input, not proof of a working editor or durable database.
-- The previous PR #26 head passed its Stage 4 CI checks and produced [Agent workflow run #37985564366](https://github.com/Ben-001-sys/Vellistry/actions/runs/37985564366); the **reconciled head must receive its own CI pass** before merging.
-- This branch retains **all newer merged main entries** including the accepted Tiptap 3/ProseMirror ADR and the already merged [Cursor evaluation PR #24](https://github.com/Ben-001-sys/Vellistry/pull/24); historic 9/10 handoff contents do not constitute a fully confirmed session-independence assessment.
-- A Next.js + NestJS + Supabase direction is separately described as owner-selected in [PR #28](https://github.com/Ben-001-sys/Vellistry/pull/28); its branch's own review and merge are distinct from this synthetic task contract. Stage 4 neither selects nor reverses application architecture.
-- Product acceptance tests, real-browser editing, production authorization/durability, separate agent ExecutionBundle and owner review of this specification remain pending. This conflict resolution **does not merge PR #26 or promote the specification to accepted**.
-
-## Stage 4 — synthetic chapter contract execution (2026-10-09; PR #35 pending owner review)
-- [PR #26](https://github.com/Ben-001-sys/Vellistry/pull/26) was verified **merged** before starting. Current task [Issue #27](https://github.com/Ben-001-sys/Vellistry/issues/27) remains open because a separate Cursor/Codex handoff/ExecutionBundle and real application validation have not been accepted.
-- [PR #35](https://github.com/Ben-001-sys/Vellistry/pull/35) adds a **single-process Python in-memory research fixture**, 13 synthetic contract tests, a bounded CI workflow and an [execution-style report](docs/reports/STAGE4-SYNTHETIC-CHAPTER-EXECUTION-2026-10-09.md). Initial run [#38002511826](https://github.com/Ben-001-sys/Vellistry/actions/runs/38002511826) passed **13/13 tests** at initial PR head `24f81eb1ce57f36b886851e46e96d9fdba46b4a8`. Later heads require renewed CI.
-- SC-001/003/004/005/006/007 have **passing synthetic behavior probes**; SC-002 covers a **formatted JSON proxy only**, not real editor interaction; SC-008 is an **untested owner/governance rule**. Actual product acceptance for all eight SCs remains **NOT TESTED**.
-- The fixture does **not** authenticate real users, test production RLS, persist documents across restarts, prove database commit guarantees or provide a browser Tiptap editor. It does not select or override the owner's separate app-stack decisions.
-- Remaining Stage 4 gates: owner reviews experimental scope, independent agent consumes current `VEL-CP-0002` and produces an evidence-bound actual ExecutionBundle, and then the agreed real-stack adapter/browser/security tests are executed with synthetic data.
-
-
-## 2026-10-09 — Owner-directed Pair 02 / Pair 03 research extension
-
-Owner asked: "continue pair 2 and 3". Pair 02 evidence remains on [draft PR #37](https://github.com/Ben-001-sys/Vellistry/pull/37); Pair 03 bounded synthetic studies are on [draft PR #38](https://github.com/Ben-001-sys/Vellistry/pull/38). This is NOT an authorization to open all later pairs or a claim that Pairs 01–03 met public launch readiness.
-
-**Latest bounded research:** Pair 02 — R02/R03 original eleven author tasks and prior vendor evidence mapped; no actual novelist interviews or accessibility assistive-technology sessions. R05/R16 test harness expanded with Tiptap heading/bold keyboard format persistence; early CI showed 10/12 and a server JSON schema gap. Research-only schema/negative tests improved; exact-head Chromium pass must be checked. Pair 03 — R11 synthetic portable two-book ZIP/TXT restore, real Calibre DOCX→EPUB→DOCX experiment, and R07 temporal approval scenarios. Exact research CI #38004035995 passed 18 new tests plus 20 existing R07 tests; Calibre 7.6.0 preserved three synthetic chapter titles/sentences but **lost heading styles (3 input → 0 output)**.
-
-**Unresolved release-critical gates:** R01 134-control proposal source/enablement owner review; actual Nest-only manuscript security integration, Next SSR and client copies; real author research, accessibility and supported rich-text edit/save; DOCX style fidelity and secure clean-project backup restore; R07 extraction accuracy and UI. Full Figma Make/Lovable alternatives and owner-approved canonical Figma design remain before product feature implementation. Synthetic fixtures are not shipping product paths.
-
-## 2026-10-09 — Pair 02 research activation under bounded Pair 01 deferral
-
-Owner instructed: "this is ok for mvp lets deal with the rest of the pairs" after source-variant mapping proposals and actual local session-liveness / restricted-gateway test evidence. Interpret as permission to **advance research sequencing**, not to approve the original 134 proposed rule controls or waive manuscript privacy/release security. See [Pair 02 evidence](docs/research/PAIR-02-ACCELERATED-AUTHOR-EDITOR-EVIDENCE-2026-10-09.md) and [remaining-pairs reuse ledger](docs/research/ACCELERATED-PAIRS-02-TO-06-EVIDENCE-REUSE-2026-10-09.md).
-
-**Currently active research tracks (exactly two):**
-- R02/R03: author workflows, competitor comparisons, real-writer study tasks; no user interviews yet verified.
-- R05/R16: Tiptap/ProseMirror editor and accessibility; reuse previous real-browser evidence, add bounded browser keyboard/formatting/save-state checks, assistive-tech review remains open.
-
-**Queued:** Pairs 03 (R11/R07), 04 (R08/R21 and R19), 05 (R06/R10), 06 (R14/R21 and R18). These are NOT newly active merely because a reuse ledger exists.
-
-**Carry-forward blockers:** Final R01 source-backed rule mapping, authentic defaults; R15/K2B production-integrated secure manuscript access and SSR, storage, client draft isolation, deletion/retention. Research-only local CI findings do not imply production readiness. Existing Next/Nest/Supabase scaffold remains on hold; dedicated Figma/Lovable design and owner-reviewed UI signoff still precede production implementation.
-
-**Evidence classification:** Pair 02 documentation and tests are a draft PR, not automatically accepted. Check exact-head workflow conclusions before treating new browser behavior as verified. Do not retrospectively rewrite older state, tests or decisions.
+# Vellistry — current facts and next authorized work
+
+## Checked repository checkpoint — 2026-10-16
+
+**FACT:** merged main checked at `a8751190073f682caabdc2897d8f64bc59ac9ebb`.
+[PR #70](https://github.com/Ben-001-sys/Vellistry/pull/70) is **MERGED**;
+[ready CI38970082388](https://github.com/Ben-001-sys/Vellistry/actions/runs/38970082388)
+verified source `fb6eeccef43dce7b44b53f41baabc47d93e3caa8` and
+[post-merge main CI38970500477](https://github.com/Ben-001-sys/Vellistry/actions/runs/38970500477)
+verified the main SHA above, both SUCCESS. These runs started actual steps;
+they are not the historical zero-step runner failures on PR66/68.
+This is a dated inspection checkpoint; re-fetch main/open PRs before new work.
+The prospective governance PR is not yet merged and does not change main's SHA.
+
+**CI:** [.github/workflows/ci.yml](.github/workflows/ci.yml) is the single automatic
+workflow. Drafts run governance/advisory checks with a deliberately blocked stable
+merge gate. Ready PRs run conservative applicable checks; main/manual dispatch run
+full. All25 historical workflows are manual-only. Security before merge remains
+mandatory. SQL privilege regression is SKIPPED because its PR68 source is absent;
+this is not SQL acceptance. Billed minutes and actual classic protection enforcement
+remain unverified. CI is not owner approval, author validation or release acceptance.
+
+## Effective roles and source authority
+
+**Owner:** decides scope, consequential policy/security/cost/database operations,
+adoption and merge. **ChatGPT:** coordinator and independent source/CI reviewer.
+**Codex:** primary implementer through unique authorized Task → committed sources →
+immutable pinned ContextPack before edits → isolated worktree → actual tests and
+ExecutionBundle → review → owner decision → post-merge reconciliation.
+Coordinator write access is not coding approval. Alternate agents require an
+explicit owner task exception. No second human approval is a standing requirement.
+
+[ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md)
+preserves the owner's2026-10-14 role selection from ChatGPT-authored PR #66;
+its original conversation permalink is still missing. Owner-selected decision
+and repository integration are distinct. This Issue72 reconciliation is a Codex
+proposal for review; PR66 is not overwritten, closed or silently accepted.
+See [AGENTS.md](AGENTS.md), [workflow](docs/agent-workflow/README.md), and
+[operating model](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md).
+
+Authority order: owner-approved constitution/accepted ADRs and scoped owner
+dispatch control; current Git/CI observations supply evidence; proposed plans,
+coordinator issues and AI reviews do not promote decisions. Original sources,
+source gaps and [SOURCE-OF-TRUTH](SOURCE-OF-TRUTH.md) retain their distinctions.
+Commit authorship is not proof of executor identity. Automated task/executor
+compliance remains separate Issue #73 work.
+
+## Active tasks and proposals at inspection
+
+| Item | Verified status / next dependency |
+|---|---|
+| [Issue #71](https://github.com/Ben-001-sys/Vellistry/issues/71) | Secondary44-item remediation dependency ledger; original checklist attachment unavailable. No claim all44 are complete. |
+| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Owner-dispatched governance reconciliation in separate [draft PR75](https://github.com/Ben-001-sys/Vellistry/pull/75); [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Independent review and owner adoption pending. |
+| [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) | PR-to-task compliance enforcement; prepared/blocked on governance adoption, not implemented here. |
+| [Issue #74](https://github.com/Ben-001-sys/Vellistry/issues/74) | Disposable PG17 privilege proof; not executed here. No migration approval. |
+| [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | ChatGPT-authored DRAFT/OPEN, `36da413fea67179ac8395af1cececd477fd193a2`; owner alone decides adoption/closure after this separate reconciliation. |
+| [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) | ChatGPT-authored DRAFT/OPEN, `604e1ebfd0baab930ee4dc39aecf7289dc64188a`; origin preserved, not imported here. |
+| [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) / [Issue #67](https://github.com/Ben-001-sys/Vellistry/issues/67) | Codex continuation DRAFT/OPEN, `cbb379fa4a4eaa9f576f3abcce2c2258d22cc551`; distinct task0005, independent review and privileges approval pending. |
+| [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) | PAUSED historical Cursor kickoff, DRAFT/OPEN, `5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85`; do not reactivate. |
+| PR64 / Issue63 | Library isolation merged at `4b3996ef7cda878e1af3d679454bd1bb873a79c2`; hosted acceptance still NOT_RUN. |
+
+## Security holds and independent gates
+
+- **Hosted Supabase acceptance NOT_RUN.** Owner-selected dev target is
+  `vellistry-dev`; old observations are historical, not a fresh cloud audit.
+  Original two-migration bounded approval in PR68 does not approve its **third
+  privilege migration**, which remains **unapproved** and unapplied. No migration,
+  fixture user, hosted operation, secret, paid call or real manuscript is authorized here.
+- Signed-out-but-unexpired **JWT** access through direct PostgREST remains a
+  private-manuscript/pilot blocker. Frontend isolation and disposable tests do
+  not prove immediate database token revocation or hosted isolation.
+- **G_DESIGN / G_CODE:** broad gates not promoted by this work; existing bounded
+  owner coding exceptions (Library, CI, this governance task) authorize their
+  slices only. The preparation DAG/validator remain pending and unchanged.
+- **G_PRIVATE_PILOT / G_RELEASE:** separate security/privacy/recovery, product,
+  legal/operational evidence and explicit owner decisions required. No task
+  exception, green CI or merged architecture grants real-manuscript/release permission.
+- Design/writer/accessibility validation, reliable export/recovery, source
+  completeness, billing and protection evidence remain scoped follow-up work.
+
+## Dated history and original decision trail
+
+The [historical current-state archive](docs/reports/CURRENT-STATE-ARCHIVE-2026-10-16.md)
+preserves the entire previous main file byte-for-byte. Its old PR64/70 draft,
+setup, billing and design-stage claims are dated history, not active facts or
+instructions. Older immutable packs remain historical inputs, never new approval.
+
+Accepted background: [stack ADR0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md),
+[Stage4 bounded handoff acceptance](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md),
+[Waves1–3 owner recommendations](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
+[Wave6 bounded design entry](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md).
+[BYOK owner clarification HIS-20261010-003](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md): writers supply their own free OR paid provider credentials; manual writing requires none. These approvals retain their original limits; synthetic results are not product acceptance.
+
+**INTERPRETATION:** corrected entrypoints enable bounded implementation and review
+without treating planning or old state as permission. **PROPOSAL:** ChatGPT reviews
+this exact submitted head and evidence; the owner decides reconciliation adoption
+and PR66 disposition, then verifies merged main before dependent Issue73 work.

@@ -1,0 +1,109 @@
+{
+  "baseRefOid": "8aab49550b74007f1b4a74e54783431efe08f3a7",
+  "body": "## Cursor implementation kickoff — VEL-IMP-001\n\n**Owner requested implementation in Cursor** on 2026-10-11 after explicitly allowing noncritical Figma UI polishing to be deferred. This is a first **bounded local-development slice**, not global G_DESIGN/G_CODE state clearance for all MVP tasks.\n\n### Prepared handoff (code execution is NEXT, not claimed complete)\n- `docs/agent-workflow/tasks/VEL-TASK-0004.yaml`: explicit scope, denylist, evidence gaps, owner-directed bounded authorization, acceptance.\n- `docs/plans/VEL-IMP-001-CURSOR-KICKOFF-2026-10-11.md`: inspected existing web/api structure, exact pasteable Cursor Agent instructions, test plan, local bootstrap, report contract.\n- Tracking [Issue #58](https://github.com/Ben-001-sys/Vellistry/issues/58).\n\n### Implementation target\n- Preserve the existing Next16/Nest11/Supabase book flow; no project regeneration.\n- Correct Library status semantics and conditional empty/populated rendering, account transition state and delayed response leakage.\n- Test with two disposable local accounts against existing bearer and RLS protections.\n- `pnpm check`, `pnpm build`, focused tests; record real outputs in Cursor's ExecutionBundle.\n\n### Exclusions / approvals\nNo schema migration, chapter editor/revisions, BYOK AI, real manuscripts, production secrets, paid services, deployment, or public pilot. Residual signed-out unexpired JWT/direct PostgREST access remains documented and unremediated for actual private author data. Figma master [original file](https://www.figma.com/design/krXupCfSLUnOQxEOjIlp9U); separately reviewed [PR #57](https://github.com/Ben-001-sys/Vellistry/pull/57) was unmerged at kickoff.\n\n**Do not merge this PR until Cursor actually implements the changes, produces test evidence and owner reviews the code.** Current branch contains the task/handoff documents only; runtime implementation has not yet been run.\n\n## Full implementation roadmap\nA full M1–M8 Cursor roadmap with Stage 0–12 work packages, VEL-IMP-001..008 sequence, eleven author journeys, per-feature acceptance checks, security, restore, author testing and separate private-pilot/release gates has been added at docs/plans/MVP-END-TO-END-IMPLEMENTATION-ROADMAP-2026-10-11.md. It is proposed, not blanket approval for later implementation slices. The current task remains only VEL-IMP-001.\n\n\n## PAUSED — newer owner instruction (2026-10-11)\nThe owner reset the implementation workflow to **planning only**: complete the full M1–M8 roadmap and review it before opening/configuring Cursor Desktop; **no application coding or Cursor Agent execution yet**. This prior kickoff is **not currently executable**. See [new planning-only PR #60](https://github.com/Ben-001-sys/Vellistry/pull/60), containing the master roadmap and future Cursor Desktop checklist. Preserve this branch as historical preparatory context; do not merge, run the old agent prompt, or infer G_CODE approval. A fresh bounded task will be selected after the new plan and desktop baseline are reviewed.\n",
+  "commits": [
+    {
+      "authoredDate": "2026-10-11T09:36:40Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-11T09:36:40Z",
+      "messageBody": "…tation task",
+      "messageHeadline": "chore(cursor): register bounded VEL-IMP-001 auth and library implemen…",
+      "oid": "de2ec82af93b96f66e27f68d14453501d85d0f96"
+    },
+    {
+      "authoredDate": "2026-10-11T09:37:35Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-11T09:37:35Z",
+      "messageBody": "…ific prompt",
+      "messageHeadline": "docs(impl): give Cursor executable first-slice contract and repo-spec…",
+      "oid": "db847437f551060b7228c848c929defe87f7e6e7"
+    },
+    {
+      "authoredDate": "2026-10-11T09:39:07Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-11T09:39:07Z",
+      "messageBody": "…-size safe",
+      "messageHeadline": "fix(task): make Cursor assignment schema valid and ContextPack source…",
+      "oid": "cb620bf995a9d3e333d94b0cf852b7a963e03b09"
+    },
+    {
+      "authoredDate": "2026-10-11T09:39:46Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-11T09:39:46Z",
+      "messageBody": "…tate hypothesis",
+      "messageHeadline": "docs(cursor): add pinned ContextPack step and precise stale-library s…",
+      "oid": "4b729ce3cec8443a02ab47935d1a4a2261f776f5"
+    },
+    {
+      "authoredDate": "2026-10-11T10:03:33Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-11T10:03:33Z",
+      "messageBody": "… eight MVP areas",
+      "messageHeadline": "docs(plan): detailed end-to-end Cursor implementation plan across all…",
+      "oid": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0004.yaml",
+      "additions": 103,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/plans/MVP-END-TO-END-IMPLEMENTATION-ROADMAP-2026-10-11.md",
+      "additions": 253,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/plans/VEL-IMP-001-CURSOR-KICKOFF-2026-10-11.md",
+      "additions": 105,
+      "deletions": 0,
+      "changeType": "ADDED"
+    }
+  ],
+  "headRefOid": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85",
+  "isDraft": true,
+  "mergeCommit": null,
+  "mergedAt": null,
+  "number": 59,
+  "state": "OPEN",
+  "title": "PAUSED — prior Cursor Library kickoff (superseded by planning reset)",
+  "url": "https://github.com/Ben-001-sys/Vellistry/pull/59"
+}

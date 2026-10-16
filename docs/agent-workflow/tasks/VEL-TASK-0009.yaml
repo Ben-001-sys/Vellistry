@@ -1,0 +1,92 @@
+id: VEL-TASK-0009
+title: VEL-GOV-002 historical checkpoint regression amendment
+type: implementation-task
+status: verification
+created_at: '2026-10-16'
+updated_at: '2026-10-16'
+owner: project_owner
+context_pack_id: VEL-CP-0009
+objective: Execute directly owner-dispatched Issue72 governance-only reconciliation
+  against merged main a8751190073f682caabdc2897d8f64bc59ac9ebb. Preserve ChatGPT PR66
+  authorship, accepted decisions and owner boundaries.
+in_scope:
+- AGENTS.md, README.md, PROJECT.md, SOURCE-OF-TRUTH.md, CURRENT-STATE.md and unchanged
+  historical current-state archive
+- docs/agent-workflow/README.md and IMPLEMENTATION-OPERATING-MODEL.md; ADR0008/index,
+  original owner history and PLAN05 historical banner
+- Task/CP/EB0008, committed governing snapshots, source/delta map, docs/reports/VEL-GOV-002*
+  and repository-only governance acceptance tests tests/test_governance_entrypoints.py
+- New isolated branch and draft PR; exact-head governed CI and explicit full workflow_dispatch
+  if needed; technical evidence ledger
+- 'tests/test_research_design_gate.py: move only historical CURRENT-STATE assertions
+  to preserved archive; retain all original assertions and current content gate checks'
+out_of_scope:
+- Application/auth/SQL/schema/CI routing or validator/schema implementation changes;
+  Issue73 enforcement and Issue74 privilege experiment
+- PR66/65/68/59 branch edits, closing/relabeling others authorship, accepted product
+  decisions or gate transitions
+- Hosted Supabase operations/migrations/users, secrets, paid calls, real manuscripts,
+  billing/protection settings, deploy or merges
+inputs:
+- path: docs/agent-workflow/tasks/VEL-TASK-0008.yaml
+  role: canonical-owner-dispatched-contract
+- path: PROJECT-CONSTITUTION.md
+  role: owner-authority
+- path: docs/agent-workflow/README.md
+  role: immutable-handoff-contract
+- path: tests/test_research_design_gate.py
+  role: preserved-historical-assertions
+- path: docs/agent-workflow/inputs/VEL-TASK-0008/AMENDMENT-01.md
+  role: bounded-test-path-amendment
+source_gaps:
+- id: PRIMARY-OWNER
+  limitation: Original October14 approval conversation permalink missing; preserved
+    PR66 quotation and direct current owner dispatch are distinct evidence.
+- id: CHECKLIST
+  limitation: Original44-item attachment unavailable; Issue71 secondary index cannot
+    close original checklist.
+- id: APPROVAL
+  limitation: Coordinator GitHub write access and task status do not attest human
+    identity/approval or independently executed review.
+- id: SECURITY
+  limitation: Hosted acceptance NOT_RUN, third privileges migration unapproved, direct
+    signed-out JWT risk, protection and billing unverified.
+deliverables:
+- Committed task/sources then generated validated immutable CP0008 before content
+  edits
+- Current concise onboarding and preserved dated archive; sourced ADR0008 integration
+  without overwrite of PR66
+- Acceptance/negative checks and complete EB0008; separate draft PR for independent
+  review and owner disposition
+acceptance_criteria:
+- Clean repository reader can locate checked main SHA, Codex/ChatGPT/owner roles,
+  active tasks/PRs and holds without chat
+- PR70 merged fact and actual ready/main successes current; historical stale PR64/70
+  statements confined to labeled dated archive
+- Coordinator write access cannot authorize implementation; alternate executor requires
+  explicit owner task exception; lightweight governance distinguished from qualifying
+  implementation
+- ADR0008 owner-selected role preserved with original author and known approval-source
+  gap; existing accepted ADR decisions unchanged
+- G_DESIGN/G_CODE task exceptions separate from G_PRIVATE_PILOT/G_RELEASE; no broad
+  coding or manuscript acceptance inferred
+- Existing metadata/handoff/spec/readiness tests and actual exact-head CI run; no
+  schema relaxation or false test passes
+- No app/cloud/secrets/SQL/CI routing or other PR branch changes; owner alone decides
+  merge/adoption and PR66 disposition
+- All original historical design/research assertions remain executable against byte-preserved
+  archive; new current entrypoint negative checks run without relaxing validators
+allowed_actions:
+- Read current refs/PRs/issues and existing governance
+- Commit selected sources and task; generate/validate/commit immutable pack before
+  implementation
+- Implement only specified docs and focused governance acceptance tests in isolated
+  branch
+- Run appropriate local tests and existing GitHub CI/full dispatch on own branch;
+  publish technical evidence and draft PR
+- Report evidence and proposed owner choices without claiming approval
+approval_required_for:
+- Owner merge/adoption or disposition of PR66; changes to accepted decision meaning
+- Alternate implementer, scope expansion, application/CI enforcement features, hosted/database/paid/private-data/admin
+  operations
+amends_task_id: VEL-TASK-0008

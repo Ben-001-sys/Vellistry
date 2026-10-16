@@ -22,3 +22,6 @@ An event describes what occurred and its evidence. Interpretations and proposals
 - [2026-10-10 — Owner-delegated Wave 6 final MVP design-entry choice](2026-10-10-owner-delegated-mvp-design-entry.md)
 - [2026-10-10 — Owner accepted Stage 4 independent synthetic agent handoff](2026-10-10-stage4-independent-handoff-owner-accepted.md)
 - [2026-10-10 — Owner explicitly approves Vellistry MVP direction](2026-10-10-owner-mvp-direction-approved.md)
+
+- [Owner selects Codex (original ChatGPT record)](2026-10-14-owner-selects-codex-primary-implementation.md)
+- [Governance reconciliation proposal (Codex, not owner adoption)](2026-10-16-governance-current-state-reconciliation.md)

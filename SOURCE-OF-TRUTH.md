@@ -3,9 +3,9 @@ id: VEL-GOV-002
 type: governance
 status: accepted
 created_at: 2026-10-08
-updated_at: 2026-10-08
+updated_at: 2026-10-16
 owner: project_owner
-version: 0.1.2
+version: 0.1.3
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -23,7 +23,7 @@ related_adrs:
 - **ChatGPT and other agents:** analysis and proposal tools, not an independent source of architectural authority.
 
 ## Separate runtime authority
-Future authors' manuscripts, story canon, application settings, credentials, and stored assets belong in purpose-selected runtime storage, not automatically in the Git engineering knowledge base. No runtime architecture has been selected.
+Future authors' manuscripts, story canon, application settings, credentials, and stored assets belong in purpose-selected runtime storage, not automatically in the Git engineering knowledge base. The accepted Next.js/NestJS/Supabase baseline is recorded in ADR-0006; the owner subsequently selected Supabase Cloud for development. This is not production hosting or real-manuscript approval; no live database state is inferred from old records.
 
 ## Five knowledge layers
 1. Authoritative accepted project and implementation knowledge.
@@ -47,3 +47,19 @@ See [docs/governance/RECORD-SCHEMAS.md](docs/governance/RECORD-SCHEMAS.md). All 
 
 ## No silent conflation
 The terms *verified evidence*, *accepted requirement*, *approved decision*, *implemented*, and *tested* are different. Never mark one as another without supporting evidence.
+
+## Current task authority and provenance
+
+[AGENTS.md](AGENTS.md) and [ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md)
+express the owner-selected execution roles: ChatGPT coordinates and reviews;
+Codex implements authorized bounded tasks; the owner alone approves consequential
+scope, adoption and merge. Coordinator write access is not coding permission.
+Lightweight triage/indexing/review does not grant authority to change effective
+instructions or executable behavior. Any alternate implementer requires an
+explicit owner task exception. Git commit author names do not prove runtime identity.
+
+Use the compact [current checkpoint](CURRENT-STATE.md); its dated historical
+archive is evidence, not active dispatch. Original source gaps remain gaps.
+PR66's prior ChatGPT records are adopted with per-file source SHA attribution,
+not relabeled Codex execution. This reconciliation proposes no semantic change
+to accepted architecture or owner authority.

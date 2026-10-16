@@ -1,0 +1,13 @@
+{
+  ".github_unchanged": true,
+  "apps_unchanged": true,
+  "supabase_unchanged": true,
+  "scripts_unchanged": true,
+  "package.json_unchanged": true,
+  "pnpm-lock.yaml_unchanged": true,
+  "ADR0001-0007_unchanged": true,
+  "CP0008_immutable": true,
+  "CP0009_immutable": true,
+  "original_owner_event_exact": true,
+  "archive_exact": true
+}

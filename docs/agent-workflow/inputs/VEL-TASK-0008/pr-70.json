@@ -1,0 +1,570 @@
+{
+  "baseRefOid": "4b3996ef7cda878e1af3d679454bd1bb873a79c2",
+  "body": "## VEL-CI-OPT-001 — owner-authorized correction round (Refs #69)\n\nLatest exact submission SHA and live draft/full results: [append-only evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6224103593).\n\n**Draft and unmerged.** Implements the [bounded owner-authorized correction](https://github.com/Ben-001-sys/Vellistry/issues/69#issuecomment-6224002164) responding to [ChatGPT's independent review of b713d94](https://github.com/Ben-001-sys/Vellistry/pull/70#issuecomment-6223732687). No PR68, billing/admin, cloud or merge changes.\n\n### Draft-aware checks and merge eligibility\n\nOrdinary draft updates run inexpensive governance/provenance, negative policy tests and checksum-pinned actionlint; builds and disposable integration are deferred. **Draft advisory governance may pass, while the unchanged Vellistry CI gate deliberately completes BLOCKED/FAILURE.** It is not skipped, pending or a merge-eligible green. The GitHub workflow failure for that advisory run is intentional, not hidden with continue-on-error.\n\nReady PRs (including ready_for_review, synchronize and edited/base changes) use conservative whole-diff classification. Unknown/auth/backend/shared frontend/SQL/CI/lockfile paths retain applicable real security and recovery. Main and explicit workflow_dispatch run full; full verification is available on this unmerged branch, without toggling draft status. The gate independently derives mode/flags from the exact event/head and rejects forged advisory output, missing metadata and failed/cancelled/missing/applicable-skipped checks.\n\nOne primary automatic workflow, one frozen application install/build path and all25 original manual archive job bodies remain. Original K2/K2B order, local-only/deletion/SQL-availability guards, author-isolation and rollback controls are preserved. PR68's proposed privilege source is absent from main; its skip is not a privilege PASS.\n\n### Governed amendment and evidence\n\nOriginal VEL-TASK/CP-0006 is retained; **immutable CP0006 is unchanged**. The existing schema maps one task to one pack, so unique child VEL-TASK/CP-0007 pins this correction after committing authorization/review/plan sources at1a4f190, before CI edits. CP0007 was generated and validated, then committed at9e5f912. This is a same-session continuation, not an independent cold start. No validator/governance relaxation was made.\n\n[Canonical EB0006](https://github.com/Ben-001-sys/Vellistry/blob/codex/vel-ci-opt-001/docs/agent-workflow/execution-bundles/VEL-EB-0006.md) prominently links the current external ledger and child amendment.\n[Correction EB0007](https://github.com/Ben-001-sys/Vellistry/blob/codex/vel-ci-opt-001/docs/agent-workflow/execution-bundles/VEL-EB-0007.md) records scope, tests, limits and rollback.\n[Usage report](https://github.com/Ben-001-sys/Vellistry/blob/codex/vel-ci-opt-001/docs/reports/VEL-CI-OPT-001-USAGE-2026-10-16.md) reconciles b713d945aa06a5fce6a5b9f63a0a9fdcaa4b88ee/run38958548133/184 observed seconds against296 old-main seconds (37.84% lower observation), preserving4259620/run38956662940/232seconds as historical. Neither is billed usage; general savings targets remain unproven.\n\n36 local policy tests pass, including real Git histories, actual advisory CLI blocking and forged-draft-on-ready CLI rejection. Before/after failures are retained. All26 workflows pass actionlint; automated Linux asset download now verifies a pinned SHA256. Final corrected SHA must have both a real draft advisory run and a real explicitly dispatched full run, recorded in the linked ledger. Prior b713 runs are not relabeled as new verification.\n\n### Holds\n\nChatGPT independent exact-head review and owner approval remain pending. Required merge-check name and protections are unchanged; read-only APIs reported no active main rule. Ready/main transitions remain scenario tests because no readiness promotion or merge is authorized. The inherited native-Windows R01 fixture issue, hosted/private-pilot JWT risks and PR68 rebase/trigger reconciliation remain separate. Historical source/tests/evidence remain reproducible; no accepted product or release gate is promoted.\r\n",
+  "commits": [
+    {
+      "authoredDate": "2026-10-16T19:31:16Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T19:31:16Z",
+      "messageBody": "",
+      "messageHeadline": "Pin CI optimization task, source authority and pre-edit coverage audit",
+      "oid": "dcd9843d536ba9146e4b422f4a33554132961de5"
+    },
+    {
+      "authoredDate": "2026-10-16T19:31:43Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T19:31:43Z",
+      "messageBody": "",
+      "messageHeadline": "Record validated immutable CI optimization ContextPack",
+      "oid": "20ec5dd24f6c3d54e5ddfe6abcf72ca109e45488"
+    },
+    {
+      "authoredDate": "2026-10-16T19:40:28Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T19:40:28Z",
+      "messageBody": "…l coverage",
+      "messageHeadline": "Consolidate automatic CI with fail-closed routing and preserved manua…",
+      "oid": "4259620ad0f4207bf1aa720c3809f32c93b59314"
+    },
+    {
+      "authoredDate": "2026-10-16T19:51:58Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T19:51:58Z",
+      "messageBody": "",
+      "messageHeadline": "Record real CI evidence, usage limits and lightweight report routing",
+      "oid": "776ef84812f5f5755a226d4942e307d3a66f0a7b"
+    },
+    {
+      "authoredDate": "2026-10-16T19:55:58Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T19:55:58Z",
+      "messageBody": "…eleted",
+      "messageHeadline": "Prevent manual verification bypass when an integrated regression is d…",
+      "oid": "b713d945aa06a5fce6a5b9f63a0a9fdcaa4b88ee"
+    },
+    {
+      "authoredDate": "2026-10-16T20:28:36Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T20:28:36Z",
+      "messageBody": "…l handoff",
+      "messageHeadline": "Pin owner-authorized CI correction amendment without changing origina…",
+      "oid": "1a4f190f6a62caa34b6e74d561f4b3df7c210a4a"
+    },
+    {
+      "authoredDate": "2026-10-16T20:29:05Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T20:29:05Z",
+      "messageBody": "",
+      "messageHeadline": "Record validated immutable correction ContextPack",
+      "oid": "9e5f912217f25a89a2043c48b94aa33e21866e22"
+    },
+    {
+      "authoredDate": "2026-10-16T20:37:20Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-16T20:37:20Z",
+      "messageBody": "…ence",
+      "messageHeadline": "Make draft CI advisory-only and reconcile canonical verification evid…",
+      "oid": "fb6eeccef43dce7b44b53f41baabc47d93e3caa8"
+    }
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/agent-workflow.yml",
+      "additions": 2,
+      "deletions": 33,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "additions": 282,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": ".github/workflows/combined-main-baseline.yml",
+      "additions": 1,
+      "deletions": 19,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/implementation-foundation.yml",
+      "additions": 1,
+      "deletions": 24,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/implementation-readiness.yml",
+      "additions": 1,
+      "deletions": 23,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/k2-supabase-auth-rls.yml",
+      "additions": 1,
+      "deletions": 13,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/knowledge-metadata.yml",
+      "additions": 3,
+      "deletions": 19,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/option-b-wave02-docx-fidelity.yml",
+      "additions": 2,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/option-b-wave03-privacy-story-profiles.yml",
+      "additions": 2,
+      "deletions": 12,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/option-b-wave06-recovery.yml",
+      "additions": 2,
+      "deletions": 11,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/pair03-r11-r07-research.yml",
+      "additions": 1,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/pair04-offline-provider-corpus.yml",
+      "additions": 2,
+      "deletions": 12,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/pair05-synthetic-rules-tiptap.yml",
+      "additions": 2,
+      "deletions": 12,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/pair06-legal-postgres-recovery.yml",
+      "additions": 2,
+      "deletions": 12,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r01-manifest.yml",
+      "additions": 1,
+      "deletions": 15,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r01-review-packet.yml",
+      "additions": 2,
+      "deletions": 14,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r05-tiptap3-spike.yml",
+      "additions": 3,
+      "deletions": 9,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r06-synthetic-research.yml",
+      "additions": 3,
+      "deletions": 9,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r07-story-state-contract.yml",
+      "additions": 3,
+      "deletions": 11,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r18-browser-recovery.yml",
+      "additions": 1,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r18-framework-comparison.yml",
+      "additions": 1,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r18-postgres-memory.yml",
+      "additions": 1,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r18-retrieval-benchmark.yml",
+      "additions": 1,
+      "deletions": 10,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/r18-story-memory.yml",
+      "additions": 1,
+      "deletions": 8,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/stage4-independent-cursor-evidence.yml",
+      "additions": 1,
+      "deletions": 12,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": ".github/workflows/stage4-synthetic-chapter-contract.yml",
+      "additions": 3,
+      "deletions": 13,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "additions": 60,
+      "deletions": 2,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0006.md",
+      "additions": 1166,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0007.md",
+      "additions": 1362,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0006.md",
+      "additions": 274,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0007.md",
+      "additions": 169,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0006-ADR-0008.md",
+      "additions": 109,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0006-ISSUE-69.md",
+      "additions": 47,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0007-AUTHORIZATION-REVIEW.md",
+      "additions": 59,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0006.yaml",
+      "additions": 90,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0007.yaml",
+      "additions": 84,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/VEL-CI-OPT-001-AMENDMENT-01.md",
+      "additions": 59,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/VEL-CI-OPT-001-COVERAGE-2026-10-16.md",
+      "additions": 78,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/VEL-CI-OPT-001-USAGE-2026-10-16.md",
+      "additions": 111,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/baseline-300-runs.json",
+      "additions": 3902,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/baseline-main-job-times.json",
+      "additions": 90,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/baseline-push-branches.json",
+      "additions": 257,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/baseline-run-counts.json",
+      "additions": 8,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/correction-authorization-and-review.json",
+      "additions": 16,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/correction-handoff-tests.txt",
+      "additions": 21,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/draft-policy-after-fix.txt",
+      "additions": 41,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/draft-policy-before-fix.txt",
+      "additions": 228,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/historical-full-run-times-4259620-776ef84-b713d94.json",
+      "additions": 146,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/issue-69.json",
+      "additions": 7,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/local-command-manifest.json",
+      "additions": 44,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/manual-deletion-after-fix.txt",
+      "additions": 29,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/manual-deletion-before-fix.txt",
+      "additions": 37,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/pre-edit-handoff-tests.txt",
+      "additions": 21,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/preflight.json",
+      "additions": 11,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/preimplementation-workflow-test.txt",
+      "additions": 34,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/reviewed-b713d94-checkpoint-jobs.json",
+      "additions": 54,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/same-diff-trigger-replay.json",
+      "additions": 94,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/source-4259620-application-safe-excerpts.txt",
+      "additions": 60,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/source-4259620-gate.txt",
+      "additions": 179,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/source-4259620-linux-governance.txt",
+      "additions": 710,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/source-4259620-postgres-recovery.txt",
+      "additions": 459,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/source-4259620-remote-jobs.json",
+      "additions": 354,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-build.txt",
+      "additions": 38,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-check.txt",
+      "additions": 12,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-frozen-install.txt",
+      "additions": 28,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-library-tests.txt",
+      "additions": 78,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-precommit-governance-failure.txt",
+      "additions": 179,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/windows-routing-24-tests.txt",
+      "additions": 29,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-CI-OPT-001/workflow-baseline.json",
+      "additions": 1962,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "scripts/ci_governance.py",
+      "additions": 59,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "scripts/ci_policy.py",
+      "additions": 177,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "tests/test_ci_policy.py",
+      "additions": 279,
+      "deletions": 0,
+      "changeType": "ADDED"
+    }
+  ],
+  "headRefOid": "fb6eeccef43dce7b44b53f41baabc47d93e3caa8",
+  "isDraft": false,
+  "mergeCommit": {
+    "oid": "a8751190073f682caabdc2897d8f64bc59ac9ebb"
+  },
+  "mergedAt": "2026-10-16T21:36:19Z",
+  "number": 70,
+  "state": "MERGED",
+  "title": "VEL-CI-OPT-001: consolidate CI while preserving security and governance",
+  "url": "https://github.com/Ben-001-sys/Vellistry/pull/70"
+}

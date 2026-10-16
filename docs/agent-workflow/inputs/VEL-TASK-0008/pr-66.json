@@ -1,0 +1,253 @@
+{
+  "baseRefOid": "4b3996ef7cda878e1af3d679454bd1bb873a79c2",
+  "body": "## Owner decision — Codex as default agentic implementation agent\n\n**Explicit owner instruction, 2026-10-14:** “make it an adr / we are using codex now.”\n\n### Scope\n- **Accepted ADR-0008** records `ChatGPT architect/coordinator → owner-approved task/ContextPack → **Codex primary implementer** in isolated branch → actual ExecutionBundle/tests → ChatGPT review → owner decision/GitHub merge → post-merge verification`.\n- Preserves previous Cursor-era source/test history and retains Cursor only as an IDE or explicitly assigned alternate.\n- Adds dated owner decision history, ADR index, default Codex instruction to `AGENTS.md`, align role in operating model, add supersession banner to historical PLAN-05 and latest `CURRENT-STATE.md`.\n- Codex runtime/connection **not assumed or tested**; this PR makes no claim that Codex implemented the code.\n\n### Existing PRs\n- PR #64 is merged (`4b3996e`) and historical Cursor implementation evidence remains valid.\n- Draft PR #65 remains **ChatGPT-authored**, not Codex-executed; do not merge/relabel automatically. Its future continuation is subject to a new scoped Codex handoff and owner decision.\n\n### Retained safeguards\nNo runtime application code, migration files, lockfile, tests or workflows changed in this PR. No Supabase cloud writes, test users, database migrations/resets, paid services, real manuscripts, releases or broad implementation permission.\n\n### Owner review checklist\n- [ ] Confirm Codex primary / ChatGPT coordinator / GitHub authority / owner approval roles.\n- [ ] Check ADR metadata/history conformance and truthful approval evidence.\n- [ ] Verify PLAN-05 Cursor references are labelled historical rather than silently erased.\n- [ ] Inspect CI for metadata/agent workflow integrity.\n- [ ] Decide separately how to assign future PR #65 continuation to Codex.\n\n**Decision scope:** `status: accepted` in ADR-0008 is grounded in explicit owner tool-role selection. The PR itself remains subject to owner merge review.",
+  "commits": [
+    {
+      "authoredDate": "2026-10-14T23:00:08Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:00:08Z",
+      "messageBody": "",
+      "messageHeadline": "docs(adr): adopt Codex as default Vellistry implementation agent",
+      "oid": "b7af4c1b19c623e3297228109cc85992b69615da"
+    },
+    {
+      "authoredDate": "2026-10-14T23:00:26Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:00:26Z",
+      "messageBody": "",
+      "messageHeadline": "docs(history): record owner's 2026-10-14 Codex implementer selection",
+      "oid": "f2af8d2406c50cfd23610068decc7f81055846cf"
+    },
+    {
+      "authoredDate": "2026-10-14T23:01:07Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:01:07Z",
+      "messageBody": "",
+      "messageHeadline": "docs(index): include ADR-0008 Codex-primary agentic workflow",
+      "oid": "0f14e066744a11ed16be35532d92bc4a34638359"
+    },
+    {
+      "authoredDate": "2026-10-14T23:01:11Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:01:11Z",
+      "messageBody": "",
+      "messageHeadline": "docs(agents): adopt ADR-0008 Codex implementation handoff",
+      "oid": "e93bc62ec1dbce03c6c42811186464445e1b6a82"
+    },
+    {
+      "authoredDate": "2026-10-14T23:01:15Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:01:15Z",
+      "messageBody": "",
+      "messageHeadline": "docs(workflow): align agentic operating roles with owner-selected Codex",
+      "oid": "3e5bf53c99d07a114ca4f3694f2c34613a8c94ce"
+    },
+    {
+      "authoredDate": "2026-10-14T23:01:19Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:01:19Z",
+      "messageBody": "",
+      "messageHeadline": "docs(plan05): mark historical Cursor-default plan superseded by ADR-0008",
+      "oid": "4a9c9aad62698a595f5c9736613fb204497618e5"
+    },
+    {
+      "authoredDate": "2026-10-14T23:01:23Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:01:23Z",
+      "messageBody": "",
+      "messageHeadline": "docs(state): record Codex-primary decision and distinguish PR #65 origin",
+      "oid": "808699879b69c912b779522fe063db9385925e56"
+    },
+    {
+      "authoredDate": "2026-10-15T17:56:40Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:56:40Z",
+      "messageBody": "… gates",
+      "messageHeadline": "docs(agent-workflow): reconcile Codex handoff evidence and historical…",
+      "oid": "3c81b27d887f837a7d4ffe6a892ff66a4c490490"
+    },
+    {
+      "authoredDate": "2026-10-15T17:56:43Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:56:43Z",
+      "messageBody": "… gates",
+      "messageHeadline": "docs(agent-workflow): reconcile Codex handoff evidence and historical…",
+      "oid": "a1aa9ca672f3f803c9119689535bc7134e0f0d6d"
+    },
+    {
+      "authoredDate": "2026-10-15T17:56:46Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:56:46Z",
+      "messageBody": "… gates",
+      "messageHeadline": "docs(agent-workflow): reconcile Codex handoff evidence and historical…",
+      "oid": "90aa9cc1511e612337d96cbd348fa177c2639f9f"
+    },
+    {
+      "authoredDate": "2026-10-15T17:57:15Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:57:15Z",
+      "messageBody": "",
+      "messageHeadline": "docs(metadata): date and version Codex governance corrections",
+      "oid": "fb59e6a382f349eda83742732e6f32b207df048a"
+    },
+    {
+      "authoredDate": "2026-10-15T17:57:18Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:57:18Z",
+      "messageBody": "",
+      "messageHeadline": "docs(metadata): date and version Codex governance corrections",
+      "oid": "9d92786367ec4ad635b2166d74f22e739c390b3c"
+    },
+    {
+      "authoredDate": "2026-10-15T17:57:21Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:57:21Z",
+      "messageBody": "",
+      "messageHeadline": "docs(metadata): date and version Codex governance corrections",
+      "oid": "36da413fea67179ac8395af1cececd477fd193a2"
+    }
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "additions": 10,
+      "deletions": 4,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "additions": 11,
+      "deletions": 1,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md",
+      "additions": 9,
+      "deletions": 5,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "additions": 109,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/decisions/README.md",
+      "additions": 1,
+      "deletions": 0,
+      "changeType": "MODIFIED"
+    },
+    {
+      "path": "docs/history/2026-10-14-owner-selects-codex-primary-implementation.md",
+      "additions": 53,
+      "deletions": 0,
+      "changeType": "ADDED"
+    },
+    {
+      "path": "docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md",
+      "additions": 4,
+      "deletions": 2,
+      "changeType": "MODIFIED"
+    }
+  ],
+  "headRefOid": "36da413fea67179ac8395af1cececd477fd193a2",
+  "isDraft": true,
+  "mergeCommit": null,
+  "mergedAt": null,
+  "number": 66,
+  "state": "OPEN",
+  "title": "docs(adr-0008): select Codex as Vellistry primary coding agent",
+  "url": "https://github.com/Ben-001-sys/Vellistry/pull/66"
+}
