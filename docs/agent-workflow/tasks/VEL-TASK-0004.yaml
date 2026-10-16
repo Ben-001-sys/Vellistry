@@ -1,0 +1,103 @@
+id: VEL-TASK-0004
+title: Cursor IMP-001 — authenticated, account-isolated Library implementation
+type: implementation-task
+status: ready
+created_at: '2026-10-11'
+updated_at: '2026-10-11'
+owner: project_owner
+assigned_agent: Cursor
+context_pack_id: VEL-CP-0004
+implementation_node: VEL-IMP-001
+objective: >-
+  Improve the existing Next 16 / Nest 11 / Supabase book authentication
+  and Library vertical slice for two disposable local authors, with
+  unambiguous populated/empty/loading/error UI states and real
+  negative isolation tests. This is an incremental extension of
+  the committed scaffold, not a rewrite or the full editor.
+authority:
+  scoped_design_baseline: >-
+    Owner on 2026-10-11 directed keeping the existing editable Figma master
+    as a sufficient provisional UI and deferring noncritical polish to implementation.
+    The exact Library condition is specified below; other design screens stay provisional.
+  scoped_coding_direction: >-
+    Owner on 2026-10-11 explicitly instructed 'lets get started on implementation'
+    and chose Cursor as implementer. Treat as consent to start this first bounded
+    local-only slice, not as broad release, production, live-model or manuscript approval.
+  broader_gates: >-
+    No general G_DESIGN/G_CODE completion is claimed for other VEL-IMP
+    tasks. G_PRIVATE_PILOT and G_RELEASE remain pending.
+in_scope:
+  - Inspect and reuse existing apps/web and apps/api book/auth implementations
+  - Author-owned Library list/create and route into existing book/chapter navigation only if present
+  - Mutually exclusive empty/populated book states, loading/error/retry and accessible keyboard actions
+  - Account switch/sign-out must not retain another account's Library data or late fetch results
+  - Input validation, 401/400 handling and Nest bearer-check plus PostgREST RLS preservation
+  - Unit/component/API integration tests with synthetic disposable Alice/Bob fixtures
+  - Developer verification notes and real run outputs in a proposed ExecutionBundle
+out_of_scope:
+  - Real unpublished manuscripts, production auth claims, private pilot or deployment
+  - Chapter create/edit/reorder, schema migration, revision-save RPC, Tiptap editor and recovery
+  - Any real AI, OpenRouter BYOK, Rules Studio, profiles, DOCX or backup implementation
+  - New auth provider, paid accounts/subscriptions, service-role author queries, direct unscoped data reads
+  - Figma edits, Lovable or Figma Make generation, styling perfection
+  - Merge to main or edit unrelated research/history/accepted architectural decisions
+inputs:
+  - path: PROJECT-CONSTITUTION.md
+    role: accepted-governance
+  - path: SOURCE-OF-TRUTH.md
+    role: accepted-governance
+  - path: AGENTS.md
+    role: agent-instructions
+  - path: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md
+    role: accepted-mvp-boundary
+  - path: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
+    role: proposed-journey-measures
+  - path: docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md
+    role: accepted-stack
+  - path: docs/architecture/IMPLEMENTATION-BOUNDARIES-2026-10-10.md
+    role: proposed-responsibility-map
+  - path: docs/plans/VEL-IMP-001-CURSOR-KICKOFF-2026-10-11.md
+    role: bounded-execution-brief
+source_gaps:
+  - id: Figma
+    limitation: >-
+      Figma master is provisional; its Library frame 27:10 illustrates mutually
+      exclusive empty/populated states together. Follow runtime condition, not the composite illustration.
+  - id: Make
+    limitation: >-
+      External walkthrough reported cross-persona profiles/facts leakage. It is not
+      a production implementation finding. Never copy that unsafe state handling.
+  - id: Session
+    limitation: >-
+      Signed-out unexpired JWT can retain direct PostgREST access until expiry.
+      Do not claim immediate revocation or authorize real manuscript pilot.
+  - id: Runtime
+    limitation: >-
+      No Cursor local terminal/test results yet; must distinguish NOT RUN from PASS.
+deliverables:
+  - Source-audited minimal authenticated Library UI and API changes on isolated Cursor branch
+  - Synthetic Alice/Bob component and negative authorization regression tests with actual results
+  - Executed typecheck/build and documented integration-test output or honest NOT RUN status
+  - Proposed ExecutionBundle with FACT INTERPRETATION PROPOSAL, exact changed paths and commit
+  - Review-ready unmerged implementation pull request and remaining VEL-IMP-002/003 handoff
+acceptance_criteria:
+  - Empty list shows only Create first book/empty state, no example book card
+  - Nonempty list shows only account-owned books, never No books yet copy
+  - Loading, unauthenticated, failure and successful-empty states do not conflate
+  - On sign-out/author switch, old book data and delayed prior responses are never shown to the new account
+  - Authenticated Alice and Bob cannot list or create books as each other; wrong-owner and invalid token attempts are denied
+  - Bad title payloads are denied without leaking details; no client supplied owner_id is trusted
+  - No AI key is required to create, open or list books
+  - Actual typecheck/build and appropriate tests plus negative-case results are recorded; unrun checks named NOT RUN
+  - Code diff is limited to approved paths and has no secrets, migrations, provider calls, production deployment or undocumented package upgrades
+allowed_actions:
+  - read
+  - code
+  - test
+  - write-proposed-report
+approval_required_for:
+  - Creating/changing Supabase migrations, RLS policy or production auth semantics
+  - Using production credentials, hosted Supabase or real author manuscripts
+  - Starting chapter-edit/write, Tiptap/CAS, third-party provider AI or paid services
+  - Pushing deployment, altering release/pilot security gates or merging the PR
+  - Modifying accepted MVP scope, stack or governance documents
