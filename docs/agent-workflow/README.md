@@ -4,9 +4,9 @@ title: Stage 3 agent task handoff contract
 type: process
 status: proposed
 created_at: 2026-10-08
-updated_at: 2026-10-16
+updated_at: 2026-10-17
 owner: project_owner
-version: 0.1.3
+version: 0.1.4
 related_adrs:
   - ADR-0001
   - ADR-0002
@@ -23,7 +23,7 @@ It uses repo-owned artifacts without a new service or orchestrator. Read the
 and [CURRENT-STATE](../../CURRENT-STATE.md) before dispatch. Codex implements
 qualifying changes; ChatGPT coordinates/reviews; only the owner approves scope
 and merge. Commit sources/task, generate/validate/commit the immutable pack
-before implementation. Automatic compliance enforcement remains Issue73 work.
+before implementation. Issue73 proposes [PR compliance evidence validation](PR-COMPLIANCE.md); its bootstrap and protected-owner-review limitations are explicit. CI does not authenticate agents or owners.
 
 ## Lifecycle (solo maintainer)
 

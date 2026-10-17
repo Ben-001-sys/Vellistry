@@ -1,0 +1,14 @@
+[
+  {
+    "endpoint": "repos/Ben-001-sys/Vellistry/branches/main/protection",
+    "exit_code": 1,
+    "output": "{\"message\":\"Branch not protected\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"404\"}",
+    "diagnostic": "gh: Branch not protected (HTTP 404)\n"
+  },
+  {
+    "endpoint": "repos/Ben-001-sys/Vellistry/rulesets",
+    "exit_code": 0,
+    "output": "[]",
+    "diagnostic": ""
+  }
+]

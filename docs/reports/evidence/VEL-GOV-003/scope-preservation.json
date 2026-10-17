@@ -1,0 +1,9 @@
+{
+  "apps": true,
+  "supabase": true,
+  "package.json": true,
+  "pnpm-lock.yaml": true,
+  "scripts/agent_workflow.py": true,
+  "docs/decisions": true,
+  "CP0010_unchanged": true
+}

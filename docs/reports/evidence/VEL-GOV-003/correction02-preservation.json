@@ -1,0 +1,39 @@
+{
+  "reviewed_head": "d1fcca8f4e9471dd9a049808c233a7ddade09b34",
+  "source_commit": "4ef442ee799831e72ce5f89ab949a89888ed8a83",
+  "preserved_paths": [
+    "docs/agent-workflow/tasks/VEL-TASK-0010.yaml",
+    "docs/agent-workflow/context-packs/VEL-CP-0010.md",
+    ".github/workflows/ci.yml",
+    "scripts/ci_governance.py",
+    "scripts/ci_policy.py",
+    "scripts/run_pr_compliance.py",
+    "scripts/agent_workflow.py",
+    "apps",
+    "supabase",
+    "pnpm-lock.yaml",
+    "docs/decisions"
+  ],
+  "command": [
+    "git",
+    "diff",
+    "--exit-code",
+    "d1fcca8f4e9471dd9a049808c233a7ddade09b34",
+    "HEAD",
+    "--",
+    "docs/agent-workflow/tasks/VEL-TASK-0010.yaml",
+    "docs/agent-workflow/context-packs/VEL-CP-0010.md",
+    ".github/workflows/ci.yml",
+    "scripts/ci_governance.py",
+    "scripts/ci_policy.py",
+    "scripts/run_pr_compliance.py",
+    "scripts/agent_workflow.py",
+    "apps",
+    "supabase",
+    "pnpm-lock.yaml",
+    "docs/decisions"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}
