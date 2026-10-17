@@ -134,3 +134,21 @@ scopes or protection changes. This is the explicit remaining enforcement limit.
 Local fixtures are synthetic repository tests, not a malicious live PR, hosted
 security acceptance or independent human approval. Actual final-head runs and
 review limitations belong in VEL-EB-0010 and its linked evidence ledger.
+
+## Review correction01 — final invocation and event coverage
+
+The static contract now requires the actual final `python scripts/ci_policy.py gate`
+step, exact complete `CI_NEEDS: ${{ toJSON(needs) }}` input and terminal position.
+Mandatory steps cannot be skipped or softened by continue-on-error, custom shell,
+working directory or injected execution defaults. Foundational governance must
+execute, and expensive job guards retain their existing classification conditions.
+All six PR activities and unfiltered push-main/manual coverage must remain;
+removing a ready/synchronize event or adding event path/base filters fails.
+
+The gate-policy implementation `scripts/ci_policy.py` still executes from the
+candidate checkout. Structural invocation checks do not establish the semantics
+of maliciously rewritten Python. Owner-protected independent source review is
+explicitly required for that file, the evaluator, loader and calling workflow,
+including first-adoption bootstrap. A future trusted gate-policy loader would
+need a separately reviewed design; none is silently introduced by this correction.
+No branch protection, actor authentication or cryptographic tamper-proof claim.

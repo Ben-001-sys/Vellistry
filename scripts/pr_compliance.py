@@ -113,17 +113,45 @@ def workflow_contract(repo, head):
     for path in REQUIRED:
         blob(repo, head, path)
     workflow = yaml.load(blob(repo, head, '.github/workflows/ci.yml'), Loader=yaml.BaseLoader)
-    require(set(workflow['on']) == {'pull_request', 'push', 'workflow_dispatch'}, 'Unsafe/absent CI events')
+    events = workflow.get('on')
+    require(isinstance(events, dict) and set(events) == {'pull_request', 'push', 'workflow_dispatch'}, 'Unsafe/absent CI events')
+    pr = events['pull_request']
+    activities = {'opened', 'synchronize', 'reopened', 'ready_for_review', 'edited', 'converted_to_draft'}
+    require(isinstance(pr, dict) and set(pr) == {'types'} and isinstance(pr['types'], list)
+            and len(pr['types']) == len(activities) and set(pr['types']) == activities, 'Required unfiltered PR activities missing')
+    require(events['push'] == {'branches': ['main']}, 'Required unfiltered main push verification missing')
+    require(events['workflow_dispatch'] == {}, 'Explicit full verification entrypoint changed')
     require(workflow.get('permissions') == {'contents': 'read'}, 'CI privilege escalation')
+    require('defaults' not in workflow and 'env' not in workflow, 'Global execution override')
     jobs = workflow['jobs']
+    require(set(jobs) == {'classify', 'governance', 'application', 'recovery', 'privileges', 'gate'}, 'Required CI jobs changed')
+    for name, job in jobs.items():
+        require(not ({'continue-on-error', 'defaults', 'strategy'} & set(job)), 'Weakened job execution guard: '+name)
+    for name in ('classify', 'governance', 'gate'):
+        require('env' not in jobs[name], 'Job execution environment override: '+name)
+    require('if' not in jobs['classify'] and 'needs' not in jobs['classify'], 'Classification must execute unconditionally')
+    require('if' not in jobs['governance'] and jobs['governance'].get('needs') == ['classify'], 'Governance must execute after classification')
+    for name in ('application', 'recovery', 'privileges'):
+        expected = "${{ needs.classify.outputs." + name + " == 'true' }}"
+        require(jobs[name].get('needs') == ['classify'] and jobs[name].get('if') == expected, 'Applicable security guard changed: '+name)
+
+    def execution_step(step, command, environment, message):
+        # Prevent a correct-looking command from being skipped, softened or run
+        # in an alternate shell/directory/environment that masks its result.
+        require(set(step) <= {'name', 'id', 'run', 'env'} and step.get('run') == command
+                and step.get('env', {}) == environment, message)
+
     for name in ('governance', 'gate'):
-        steps = jobs[name]['steps']
-        matching = [s for s in steps if s.get('id') == 'compliance']
-        require(len(matching) == 1 and matching[0].get('run') == 'python -I scripts/run_pr_compliance.py'
-                and 'if' not in matching[0] and 'continue-on-error' not in matching[0], 'Missing unconditional compliance step')
+        matching = [step for step in jobs[name]['steps'] if step.get('id') == 'compliance']
+        require(len(matching) == 1, 'Missing unconditional compliance step')
+        execution_step(matching[0], 'python -I scripts/run_pr_compliance.py', {}, 'Missing unconditional compliance step')
     require(jobs['governance'].get('outputs', {}).get('compliance') == '${{ steps.compliance.outputs.status }}', 'Missing compliance job output')
-    require(jobs['gate'].get('name') == 'Vellistry CI gate' and jobs['gate'].get('if') == '${{ always() }}', 'Stable gate missing')
-    require(set(jobs['gate']['needs']) == {'classify', 'governance', 'application', 'recovery', 'privileges'}, 'Incomplete gate dependencies')
+    gate = jobs['gate']
+    require(gate.get('name') == 'Vellistry CI gate' and gate.get('if') == '${{ always() }}', 'Stable gate missing')
+    require(set(gate['needs']) == {'classify', 'governance', 'application', 'recovery', 'privileges'}, 'Incomplete gate dependencies')
+    final = [step for step in gate['steps'] if step.get('name') == 'Reject failed, cancelled, missing or skipped applicable checks']
+    require(len(final) == 1 and final[0] is gate['steps'][-1], 'Final gate invocation missing or displaced')
+    execution_step(final[0], 'python scripts/ci_policy.py gate', {'CI_NEEDS': '${{ toJSON(needs) }}'}, 'Final gate command/result-input contract changed')
     # A zero-test/comment-only replacement must not satisfy test discovery.
     source = blob(repo, head, 'tests/test_pr_compliance.py').decode('utf-8')
     require('class ' in source and 'unittest.TestCase' in source and source.count('def test_') >= 15, 'Deleted/empty compliance regression contract')

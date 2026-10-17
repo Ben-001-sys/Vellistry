@@ -265,4 +265,76 @@ class EventAndTrustTests(unittest.TestCase):
         self.assertNotIn('import pr_compliance',source)
 
 
+
+
+class WorkflowExecutionContractTests(unittest.TestCase):
+    """Mutate only workflow data in real Git; never execute a hostile workflow."""
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+        self.root=Path(self.tmp.name)
+        self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+        for name in policy.REQUIRED:
+            target=self.root/name;target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_text((ROOT/name).read_text(encoding='utf-8'),encoding='utf-8')
+        self.original=yaml.load((ROOT/'.github/workflows/ci.yml').read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
+        self.git('add','-A');self.git('commit','-m','unchanged workflow fixture')
+        policy.workflow_contract(self.root,self.git('rev-parse','HEAD'))
+    def git(self,*args):
+        return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+    def gate_step(self,w):
+        return next(s for s in w['jobs']['gate']['steps'] if s.get('name')=='Reject failed, cancelled, missing or skipped applicable checks')
+    def rejects_mutation(self,label,mutate):
+        w=json.loads(json.dumps(self.original));mutate(w)
+        (self.root/'.github/workflows/ci.yml').write_text(yaml.safe_dump(w,sort_keys=False),encoding='utf-8')
+        self.git('add','-A');self.git('commit','-m','synthetic workflow mutation '+label)
+        with self.subTest(mutation=label),self.assertRaises(ValueError):
+            policy.workflow_contract(self.root,self.git('rev-parse','HEAD'))
+    def test_final_gate_command_removal_and_replacement(self):
+        for label,mutate in (
+            ('remove-command',lambda w:self.gate_step(w).pop('run')),
+            ('no-op-true',lambda w:self.gate_step(w).update(run='true')),
+            ('echo-pass',lambda w:self.gate_step(w).update(run='echo PASS')),
+            ('delete-step',lambda w:w['jobs']['gate']['steps'].remove(self.gate_step(w))),
+        ):self.rejects_mutation(label,mutate)
+    def test_final_gate_job_result_input_is_required_and_exact(self):
+        for label,mutate in (
+            ('remove-env',lambda w:self.gate_step(w).pop('env')),
+            ('remove-needs',lambda w:self.gate_step(w)['env'].pop('CI_NEEDS')),
+            ('forged-success',lambda w:self.gate_step(w)['env'].update(CI_NEEDS='{}')),
+            ('partial-needs',lambda w:self.gate_step(w)['env'].update(CI_NEEDS='${{ toJSON(needs.governance) }}')),
+        ):self.rejects_mutation(label,mutate)
+    def test_required_step_and_job_guards_cannot_soften_failures(self):
+        for label,mutate in (
+            ('skip-final-step',lambda w:self.gate_step(w).update({'if':'false'})),
+            ('ignore-step-failure',lambda w:self.gate_step(w).update({'continue-on-error':'true'})),
+            ('mask-shell-exit',lambda w:self.gate_step(w).update(shell="bash -c '{0}; exit 0'")),
+            ('alternate-working-directory',lambda w:self.gate_step(w).update({'working-directory':'other'})),
+            ('ignore-gate-failure',lambda w:w['jobs']['gate'].update({'continue-on-error':'true'})),
+            ('skip-governance',lambda w:w['jobs']['governance'].update({'if':'false'})),
+            ('skip-classify',lambda w:w['jobs']['classify'].update({'if':'false'})),
+            ('global-shell-override',lambda w:w.update(defaults={'run':{'shell':"bash -c '{0}; exit 0'"}})),
+            ('job-shell-override',lambda w:w['jobs']['gate'].update(defaults={'run':{'shell':"bash -c '{0}; exit 0'"}})),
+        ):self.rejects_mutation(label,mutate)
+    def test_every_required_pull_request_activity_is_preserved(self):
+        for activity in ('opened','synchronize','reopened','ready_for_review','edited','converted_to_draft'):
+            self.rejects_mutation('omit-'+activity,lambda w,a=activity:w['on']['pull_request']['types'].remove(a))
+        for label,mutate in (
+            ('omit-activity-list',lambda w:w['on']['pull_request'].pop('types')),
+            ('filter-pr-paths',lambda w:w['on']['pull_request'].update(paths=['docs/**'])),
+            ('filter-pr-base',lambda w:w['on']['pull_request'].update(branches=['other'])),
+        ):self.rejects_mutation(label,mutate)
+    def test_main_push_verification_cannot_be_redirected_or_filtered(self):
+        for label,mutate in (
+            ('omit-main',lambda w:w['on']['push'].update(branches=[])),
+            ('redirect-main',lambda w:w['on']['push'].update(branches=['other'])),
+            ('filter-main-paths',lambda w:w['on']['push'].update(paths=['docs/**'])),
+            ('ignore-main',lambda w:w['on']['push'].update({'branches-ignore':['main']})),
+        ):self.rejects_mutation(label,mutate)
+    def test_applicable_security_and_compliance_steps_keep_exact_guards(self):
+        for job in ('application','recovery','privileges'):
+            self.rejects_mutation('disable-'+job,lambda w,j=job:w['jobs'][j].update({'if':'false'}))
+        for job in ('governance','gate'):
+            self.rejects_mutation('ignore-compliance-'+job,lambda w,j=job:next(s for s in w['jobs'][j]['steps'] if s.get('id')=='compliance').update({'continue-on-error':'true'}))
+
+
 if __name__=='__main__':unittest.main()
