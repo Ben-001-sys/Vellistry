@@ -55,8 +55,9 @@ Owner to review the draft PR, decide whether to adopt or revise the language can
 
 - PASS (connector comparison): complete LANGUAGE.md source text equals remote file, with final newline; 786 lines and headings 0–19 retained.
 - PASS (connector comparison): existing AGENTS.md material preserved; only bounded section and metadata change.
-- PASS (source/commit inspection): task and ContextPack commits precede effective agent-instruction edit.
-- NOT RUN in this session: local `python scripts/agent_workflow.py validate`, build/test suite, hosted acceptance, real author usability testing. Repository CI results must be observed independently after PR creation; none are claimed passed in this bundle.
+- PASS (source/commit inspection): task and the first CP0010 record were committed before effective agent-instruction edits. The initial CP0010 had a two-character task-contract formatting error; that **unvalidated, undispatched** record was corrected on the same branch afterward (commit `de515a7a6b675f1640345e4ac4e5853bde3c8378`). It would be inaccurate to claim that CP0010 passed validation before editing.
+- PASS (actual GitHub Actions): [PR77 draft advisory governance at corrected head `de515a7`](https://github.com/Ben-001-sys/Vellistry/actions/runs/39052780190) completed successfully, including the repository's Python handoff validator and negative contracts. Initial [run `39052633890`](https://github.com/Ben-001-sys/Vellistry/actions/runs/39052633890) failed because CP0010 omitted closing `**` in the `Acceptance criteria` task-contract heading; this was corrected and rechecked. **Overall CI run conclusion remains failure** because the draft PR merge gate is deliberately blocked. App and SQL jobs were skipped in this documentation-only draft; no claim they passed.
+- NOT RUN locally: `python scripts/agent_workflow.py validate`, Node build/test, hosted acceptance, real author usability testing. The CI run checked the *previous* head; this amended evidence-only commit requires its own actual exact-head CI inspection.
 
 ## Artifacts
 
