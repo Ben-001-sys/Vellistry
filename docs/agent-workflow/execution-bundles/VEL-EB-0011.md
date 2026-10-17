@@ -82,3 +82,14 @@ Owner decides PR sequence and semantic term adoption. The recommended integratio
 ## Reviewer disposition
 
 Pending independent exact-correction-head review and owner's explicit decision. Do not merge automatically.
+
+
+## Post-PR76 merge checkpoint — 2026-10-17
+
+**FACT:** While this corrective PR77 was in progress, [PR76](https://github.com/Ben-001-sys/Vellistry/pull/76) was merged into `main`; checked main is `021379856d07611752832b44bfe951d6ae36f0b2`. Its now-effective CI workflow invokes `python -I scripts/run_pr_compliance.py` and its current Task/CP/EB0010 are owned by PR76. PR77 is still on its original `f371448` fork and does not contain that runner.
+
+**ACTUAL CI FAILURE:** At PR77 operative correction commit `999b5e81873071292099020f818a76dd017dce86`, [CI run39075585267](https://github.com/Ben-001-sys/Vellistry/actions/runs/39075585267) classified successfully but failed in the new governance stage because the PR76 runner file was **missing from the checked-out PR77 source branch**. This is not a failing product-language test or proof the new CP0011 is invalid. A fresh exact-head run must be checked after any next correction.
+
+**BLOCKED, not auto-resolved:** New main's PR compliance requires `compliance.change_base` equal to the evaluated current merge base, pre-edit immutable pack after that base, source/manifest/EB matching and (for ChatGPT as an alternate executor) a task-specific **owner-verified record already present in reviewed main**. It cannot be satisfied by rewriting a historical pin, relabeling ChatGPT as Codex, self-granting exception inside PR77, or recording a fictitious PASS. The user explicitly requested the corrections; a repository-side verified-base authorization with durable link still requires the owner's separate documented action under merged PR76 policy. The next bounded integration must rebase onto the merged main after that owner checkpoint, create a new appropriately scoped pinned task/amendment, retain source ChatGPT provenance and validate actual exact-head checks. This bundle intentionally leaves that post-merge compliance step pending.
+
+**INFERENCE:** The resolved duplicate-ID fix remains valid and should not be undone; the new blocker is sequential integration with subsequently merged PR76 governance.
