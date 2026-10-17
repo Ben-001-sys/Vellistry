@@ -1,0 +1,97 @@
+id: VEL-TASK-0012
+title: VEL-SEC-001 disposable PG17 privilege evidence
+type: research-task
+status: in-progress
+created_at: '2026-10-17'
+updated_at: '2026-10-17'
+owner: project_owner
+context_pack_id: VEL-CP-0012
+objective: Reproduce original books privilege defect and test unchanged proposed PR68
+  third migration in disposable local PG17 only; preserve provenance and separate
+  owner decision.
+in_scope: &id001
+- docs/agent-workflow/tasks/VEL-TASK-0012.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0012.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0012.md
+- docs/agent-workflow/inputs/VEL-TASK-0012/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SEC-001*
+- docs/reports/evidence/VEL-SEC-001/*
+- CURRENT-STATE.md
+out_of_scope:
+- Application/CI/security source edits; tracked SQL/migration copies or changes; PR68
+  edits
+- Hosted Supabase, credentials, manuscripts, billing/settings, deployment, merge,
+  migration approval
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: owner-boundaries
+- path: AGENTS.md
+  role: effective-role-contract
+- path: docs/agent-workflow/README.md
+  role: immutable-handoff
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: primary-implementer
+- path: docs/agent-workflow/inputs/VEL-TASK-0012/handoff.json
+  role: bounded-coordinator-handoff
+- path: docs/agent-workflow/inputs/VEL-TASK-0012/OWNER-DISPATCH.md
+  role: direct-owner-dispatch-record
+- path: docs/agent-workflow/inputs/VEL-TASK-0012/source-refs.json
+  role: immutable-source-identities
+source_gaps:
+- id: HOSTED
+  limitation: No hosted acceptance or approval; synthetic auth.uid/roles/default grants
+    are assumptions.
+- id: OWNER
+  limitation: Direct user dispatch in current chat; original conversation permalink
+    unavailable; coordinator relay not identity proof.
+deliverables:
+- Committed unique Task/sources then validated immutable CP before experiment
+- Separate before/after exact SQL evidence, actual PG17 version, runtime/version/exit
+  logs and cleanup
+- EB0012/report with FACT/INTERPRETATION/PROPOSAL, transport compatibility limits
+  and owner decision packet; evidence branch and Issue74 comment or compliant evidence-only
+  draft PR
+acceptance_criteria:
+- Actual PG17 original fixture fails before hardening and unchanged proposed hardening
+  fixture passes, or accurate BLOCKED/NOT_RUN
+- Explicit ACL TRUNCATE/REFERENCES/TRIGGER/MAINTAIN and RLS owner/cross-author CRUD
+  behavior with expected/observed exits
+- Fresh empty instances for before/after, only synthetic local roles; exact source
+  hashes and SQL preserved
+- No SQL integrated or PR68 edited; actual container/storage cleanup recorded; PostgREST/Nest
+  compatibility assumptions separated from hosted claims
+allowed_actions:
+- Read repository/main/PR68 and public official docs
+- Create isolated branch, commit bounded sources/task and generate/validate/commit
+  immutable pack
+- Start local Docker if available, pull official PostgreSQL17 image, launch uniquely
+  named network-isolated ephemeral instances; docker exec psql with synthetic roles
+  only; no host ports or mounts
+- Copy immutable SQL into ignored throwaway storage, run read-only-source experiment
+  and bounded supplemental behavior probes after pin; capture harness text/commands
+  as evidence
+- Stop/remove only task-owned containers/storage; record any unavailable runtime honestly
+- Commit/push bounded docs/evidence branch and publish Issue74 evidence comment; create
+  evidence-only draft PR only if current compliance passes
+approval_required_for:
+- Owner SQL migration acceptance or any hosted execution
+- Source edits, scope expansion, PR68 changes, merge, billing/admin/settings/deployment/private
+  data
+compliance:
+  change_base: 021379856d07611752832b44bfe951d6ae36f0b2
+  phase: disposable-pg17-evidence
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/74#issuecomment-6243063362
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-16'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

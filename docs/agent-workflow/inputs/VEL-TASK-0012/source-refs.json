@@ -1,0 +1,54 @@
+{
+  "main": "021379856d07611752832b44bfe951d6ae36f0b2",
+  "pr68_head": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+  "source_files": [
+    {
+      "path": "supabase/migrations/20261009000000_initial_author_books.sql",
+      "source_commit": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+      "blob": "192a736d1a5d6ffc6f239c74ed61e7b8d2528b3b",
+      "sha256": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74",
+      "bytes": 3545,
+      "last_change": "917705cc95fd1ae3bf7a8cedbdd7604b9ff392ce"
+    },
+    {
+      "path": "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql",
+      "source_commit": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+      "blob": "0670a60f1c2e299e9771b9af1c677d97712174d9",
+      "sha256": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65",
+      "bytes": 608,
+      "last_change": "9cb86cfd3e52e45368e47c24fac735e3e0163c83"
+    },
+    {
+      "path": "supabase/migrations/20261015171325_restrict_book_privileges.sql",
+      "source_commit": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+      "blob": "230b1540bb5b8962fd2b797d4f8a467d3c035978",
+      "sha256": "c7c384b6192d31e4e17c4f6e00978a16a4e15e2feeacfe148aaf1e2cd2853e81",
+      "bytes": 307,
+      "last_change": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9"
+    },
+    {
+      "path": "tests/book_privileges_regression.sql",
+      "source_commit": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+      "blob": "5feac95772f93330b29150dbc135d766e7b0392e",
+      "sha256": "bcba9b788151d27ee354f41aa658398f1ed0cbfe86cf0d97f7ae685cb0c54e6b",
+      "bytes": 3736,
+      "last_change": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9"
+    }
+  ],
+  "refs_scanned": 93,
+  "reserved_ids": [
+    "0001",
+    "0002",
+    "0003",
+    "0004",
+    "0005",
+    "0006",
+    "0007",
+    "0008",
+    "0009",
+    "0010",
+    "0011"
+  ],
+  "selected_id": "0012",
+  "sql_copied_to_repository": false
+}

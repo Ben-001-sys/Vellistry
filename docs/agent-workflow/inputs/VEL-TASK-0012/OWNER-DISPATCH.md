@@ -1,0 +1,3 @@
+# Direct owner dispatch — 2026-10-17
+
+The owner directly requested in this Codex chat: Continue Issue74 VEL-SEC-001; establish a unique bounded Task and immutable ContextPack; use only isolated disposable PostgreSQL17 to reproduce PR68 books privilege defect and test the proposed third migration; preserve source SQL/provenance; capture versions, SHAs, commands, exit codes, negative behavior and cleanup; return evidence for ChatGPT review and separate owner migration decision. No hosted access/apply, PR68 modification, merge or migration approval. Original chat permalink unavailable; linked issue handoff is a coordinator relay, not independent proof of human approval.
