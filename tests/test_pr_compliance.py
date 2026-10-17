@@ -289,6 +289,23 @@ class WorkflowExecutionContractTests(unittest.TestCase):
         self.git('add','-A');self.git('commit','-m','synthetic workflow mutation '+label)
         with self.subTest(mutation=label),self.assertRaises(ValueError):
             policy.workflow_contract(self.root,self.git('rev-parse','HEAD'))
+    def governance_step(self,w):
+        return next(s for s in w['jobs']['governance']['steps'] if s.get('name')=='Run all current governance and negative contracts once')
+    def test_all_job_permission_overrides_are_rejected(self):
+        for job in self.original['jobs']:
+            for label,permissions in (('contents-write',{'contents':'write'}),('oidc-write',{'id-token':'write'}),('read-only',{'contents':'read'}),('empty',{}),('read-all','read-all')):
+                self.rejects_mutation(job+'-'+label,lambda w,j=job,p=permissions:w['jobs'][j].update(permissions=p))
+    def test_governance_runner_removal_replacement_and_duplicates(self):
+        for label,mutate in (
+            ('remove-governance-command',lambda w:self.governance_step(w).pop('run')),
+            ('replace-governance-command',lambda w:self.governance_step(w).update(run='echo PASS')),
+            ('delete-governance-step',lambda w:w['jobs']['governance']['steps'].remove(self.governance_step(w))),
+            ('duplicate-governance-step',lambda w:w['jobs']['governance']['steps'].append(dict(self.governance_step(w)))),
+            ('renamed-duplicate-governance-step',lambda w:w['jobs']['governance']['steps'].append(dict(name='Other regression step',run='python scripts/ci_governance.py'))),
+        ):self.rejects_mutation(label,mutate)
+    def test_governance_runner_cannot_skip_or_mask_regressions(self):
+        for key,value in (('if','false'),('continue-on-error','true'),('shell',"bash -c '{0}; exit 0'"),('working-directory','other'),('env',{'PYTHONPATH':'other'})):
+            self.rejects_mutation('governance-'+key,lambda w,k=key,v=value:self.governance_step(w).update({k:v}))
     def test_final_gate_command_removal_and_replacement(self):
         for label,mutate in (
             ('remove-command',lambda w:self.gate_step(w).pop('run')),

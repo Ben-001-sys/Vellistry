@@ -1,0 +1,86 @@
+test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) ... test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) ... 
+======================================================================
+FAIL: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-if')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-continue-on-error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-shell')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-working-directory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-env')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) (mutation='remove-governance-command')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) (mutation='replace-governance-command')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) (mutation='delete-governance-step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) (mutation='duplicate-governance-step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) (mutation='renamed-duplicate-governance-step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 11.561s
+
+FAILED (failures=10)
+EXIT_CODE=1

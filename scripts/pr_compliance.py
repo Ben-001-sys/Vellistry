@@ -126,6 +126,7 @@ def workflow_contract(repo, head):
     jobs = workflow['jobs']
     require(set(jobs) == {'classify', 'governance', 'application', 'recovery', 'privileges', 'gate'}, 'Required CI jobs changed')
     for name, job in jobs.items():
+        require('permissions' not in job, 'Job permission override: '+name)
         require(not ({'continue-on-error', 'defaults', 'strategy'} & set(job)), 'Weakened job execution guard: '+name)
     for name in ('classify', 'governance', 'gate'):
         require('env' not in jobs[name], 'Job execution environment override: '+name)
@@ -145,6 +146,12 @@ def workflow_contract(repo, head):
         matching = [step for step in jobs[name]['steps'] if step.get('id') == 'compliance']
         require(len(matching) == 1, 'Missing unconditional compliance step')
         execution_step(matching[0], 'python -I scripts/run_pr_compliance.py', {}, 'Missing unconditional compliance step')
+    regression_command = 'python scripts/ci_governance.py'
+    regression = [step for step in jobs['governance']['steps']
+                  if step.get('name') == 'Run all current governance and negative contracts once'
+                  or step.get('run') == regression_command]
+    require(len(regression) == 1, 'Exactly one unconditional governance regression step required')
+    execution_step(regression[0], regression_command, {}, 'Unconditional governance regression command changed')
     require(jobs['governance'].get('outputs', {}).get('compliance') == '${{ steps.compliance.outputs.status }}', 'Missing compliance job output')
     gate = jobs['gate']
     require(gate.get('name') == 'Vellistry CI gate' and gate.get('if') == '${{ always() }}', 'Stable gate missing')

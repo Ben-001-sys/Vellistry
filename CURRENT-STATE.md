@@ -5,7 +5,7 @@ status: active
 created_at: 2026-10-08
 updated_at: 2026-10-17
 owner: project_owner
-version: 0.1.62
+version: 0.1.63
 ---
 
 # Vellistry — current facts and next authorized work
@@ -23,7 +23,7 @@ coordinator-relayed authorization. Proposed [compliance policy](docs/agent-workf
 adds static task/pack/scope/provenance/code checks to existing governance/final gate.
 This is not actual LLM/human identity authentication or malicious-workflow-proof
 protection. Initial fixed-base bootstrap is provisional pending owner adoption;
-read-only main protection returned404 `Branch not protected` and rulesets[]; settings are not changed. Owner-controlled enforcement remains a rollout prerequisite. Draft remains red advisory; mandatory
+read-only main protection returned404 `Branch not protected` and rulesets[]; settings are not changed. The owner explicitly deferred branch protection for the sole-maintainer phase, accepting that enforcement risk; it is not an additional blocker for this bounded review. Independent source/CI review and owner merge decision remain pending. Draft remains red advisory; mandatory
 ready/main security remains intact. [EB0010](docs/agent-workflow/execution-bundles/VEL-EB-0010.md)
 will link actual final SHA/runs; independent review and owner acceptance pending.
 No application/cloud/SQL execution, secret, paid call, merge or other PR edit.

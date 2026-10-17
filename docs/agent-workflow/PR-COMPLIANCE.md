@@ -152,3 +152,18 @@ explicitly required for that file, the evaluator, loader and calling workflow,
 including first-adoption bootstrap. A future trusted gate-policy loader would
 need a separately reviewed design; none is silently introduced by this correction.
 No branch protection, actor authentication or cryptographic tamper-proof claim.
+
+## Review correction02 — token permissions and regression runner
+
+All jobs must inherit workflow-level `contents: read`; any job `permissions`
+override is rejected, including read-only/empty mappings and OIDC write access.
+Governance must contain exactly one `python scripts/ci_governance.py` regression
+step. Its command is exact and unconditional: no conditional, continue-on-error,
+alternate shell, working directory or injected environment is permitted. Duplicate
+invocations, including under another name, fail. Actual workflow is unchanged.
+
+The owner explicitly deferred branch protection for the sole-maintainer phase,
+accepting the enforcement risk. Earlier protection observations above are history;
+settings are not an additional rollout blocker for this bounded review. No claim
+of enforced repository-level merge prevention follows. Owner source/CI self-review
+and the final merge decision remain required; this task changes no settings.
