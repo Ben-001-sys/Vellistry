@@ -5,13 +5,38 @@ type: execution-report
 status: proposed-for-review
 created_at: 2026-10-17
 updated_at: 2026-10-17
-version: 0.1.1
+version: 0.1.2
 owner: project_owner
 ---
 
 # VEL-GOV-003 execution report
 
-## Latest bounded review correction01
+## Current correction02 checkpoint
+
+FACT: reviewed d1fcca8's two remaining P2 findings are corrected in source `4ef442ee799831e72ce5f89ab949a89888ed8a83`.
+All job permission overrides fail; exactly one unconditional governance regression
+command is required. Three new test methods cover40mutations missed by the old
+validator; all nine workflow methods/75mutations now pass. Complete local57
+compliance and37CI-policy tests PASS, exit0. Metadata28, handoff8tasks/6committed
+packs/6bundles, readiness14nodes/4pending gates and spec8scenarios validate.
+
+Task0010/CP0010 and the actual workflow/application/security/recovery code remain
+unchanged. Scope does not materially change, so no amendment or new pack is needed.
+The [correction02 report](VEL-GOV-003-CORRECTION-02.md) records raw
+commands, before/after and preservation evidence. Final submitted-head SHA and
+full/draft CI are appended after commit to the [canonical ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589).
+All earlier checkpoints below are historical, including correction01's361/54 counts.
+
+The owner explicitly deferred branch protection for this sole-maintainer phase,
+accepting enforcement risk; no settings change or new protection blocker is imposed.
+Static checks are not actor authentication or malicious-workflow-proof enforcement.
+First-adoption bootstrap remains provisional; independent exact-head ChatGPT review
+and owner adoption/merge decision remain pending. Draft/unmerged. Hosted acceptance
+NOT_RUN; no hosted operations, settings, billing, migrations or unrelated PR changes.
+
+
+
+## Historical bounded review correction01
 
 Independent ChatGPT review6235794783 requested final-command/input and PR/main
 coverage corrections on historical submitted64ba4c5. Direct owner continuation
