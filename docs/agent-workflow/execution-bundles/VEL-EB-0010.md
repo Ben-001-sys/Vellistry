@@ -4,7 +4,7 @@ title: VEL-GOV-003 compliance implementation evidence
 type: execution-bundle
 status: proposed-for-review
 created_at: '2026-10-17'
-version: 0.1.0
+version: 0.1.1
 task_id: VEL-TASK-0010
 context_pack_id: VEL-CP-0010
 base_commit: 5bc27535c768998554ee60b7bcb66fa5be12e1d0
@@ -20,36 +20,86 @@ evidence:
 - docs/reports/VEL-GOV-003-EXECUTION.md
 - docs/reports/evidence/VEL-GOV-003/protection-readonly.json
 - https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589
+- docs/reports/VEL-GOV-003-CORRECTION-01.md
+- docs/reports/evidence/VEL-GOV-003/correction01-before.txt
+- docs/reports/evidence/VEL-GOV-003/correction01-after.txt
+- docs/reports/evidence/VEL-GOV-003/correction01-governance.json
+- docs/reports/evidence/VEL-GOV-003/correction01-preservation.json
 review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+implementation_source_commit: 2f8a067c926653a4913f1e32470af30ac11640a6
 execution:
   status: completed
   executor: Codex
   model: GPT-6; exact build not exposed
   tests:
-  - command: python -X utf8 -m unittest discover -s tests -p test_pr_compliance.py
-      -k boolean_protocol -v
-    exit_code: 0
+  - command: .compliance-venv.log/Scripts/python.exe -X utf8 -m unittest discover
+      -s tests -p test_pr_compliance.py -v
     status: PASS
-    evidence: docs/reports/evidence/VEL-GOV-003/version-after.txt
-    source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+    exit_code: 0
+    source_commit: 2f8a067c926653a4913f1e32470af30ac11640a6
+    evidence: docs/reports/evidence/VEL-GOV-003/correction01-full54.txt
   - command: .compliance-venv.log/Scripts/python.exe -X utf8 -m unittest discover
       -s tests -p test_ci_policy.py -v
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-GOV-003/ci-policy-37-source.txt
-    source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+    source_commit: 2f8a067c926653a4913f1e32470af30ac11640a6
+    evidence: docs/reports/evidence/VEL-GOV-003/correction01-policy37.txt
 final_evidence_ledger: https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589
 historical_test_checkpoints:
 - source_commit: 4b6e40a7df585b2f8e9df19b7d31005597fabe79
   tests: 47
   evidence: docs/reports/evidence/VEL-GOV-003/compliance-47-source-checkpoint.txt
+historical_execution_checkpoints:
+- implementation_source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+  reviewed_submission: 64ba4c505fbebe5b067377480a04da4c006d82cc
+  execution:
+    status: completed
+    executor: Codex
+    model: GPT-6; exact build not exposed
+    tests:
+    - command: python -X utf8 -m unittest discover -s tests -p test_pr_compliance.py
+        -k boolean_protocol -v
+      exit_code: 0
+      status: PASS
+      evidence: docs/reports/evidence/VEL-GOV-003/version-after.txt
+      source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+    - command: .compliance-venv.log/Scripts/python.exe -X utf8 -m unittest discover
+        -s tests -p test_ci_policy.py -v
+      status: PASS
+      exit_code: 0
+      evidence: docs/reports/evidence/VEL-GOV-003/ci-policy-37-source.txt
+      source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+updated_at: '2026-10-17'
+review_history:
+- source_commit: 64ba4c505fbebe5b067377480a04da4c006d82cc
+  reviewer: ChatGPT coordinator; advisory source/CI review
+  disposition: targeted-corrections-requested
+  evidence: https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235794783
 ---
 
 # VEL-GOV-003 — Task0010 execution
+
+## Current correction01 checkpoint
+
+Direct owner continuation addresses the independent review of64ba4c5. The two
+static-contract findings are corrected in source `2f8a067c926653a4913f1e32470af30ac11640a6`:
+exact final gate command/complete CI_NEEDS and unfiltered PR/main event coverage,
+with mandatory execution guards. All54 local compliance cases and37CI-policy
+cases pass. New six negative methods cover35workflow mutations;33 were missed
+before the fix. Raw before/after outputs remain evidence, not a live exploit.
+
+Task0010/CP0010 remain unchanged: these are existing self-editing/event acceptance
+cases with no material scope/permission change, so no new task/pack is introduced.
+[Correction report](../../reports/VEL-GOV-003-CORRECTION-01.md) records the rationale.
+[Append-only final ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589) will append the new submitted head and
+actual draft/full CI after this evidence commit exists. Previous355/48-case
+results and0d9 source below are historical, not new-head evidence. Independent
+review and owner adoption remain pending; candidate ci_policy.py semantics and
+bootstrap still require protected owner review, with settings unchanged.
+
 
 ## Work performed
 

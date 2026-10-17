@@ -5,11 +5,25 @@ type: execution-report
 status: proposed-for-review
 created_at: 2026-10-17
 updated_at: 2026-10-17
-version: 0.1.0
+version: 0.1.1
 owner: project_owner
 ---
 
 # VEL-GOV-003 execution report
+
+## Latest bounded review correction01
+
+Independent ChatGPT review6235794783 requested final-command/input and PR/main
+coverage corrections on historical submitted64ba4c5. Direct owner continuation
+authorizes these existing Task0010 acceptance cases; no material scope change,
+new pack or new permissions. Task0010 and immutable CP0010 are unchanged.
+Operative correction source `2f8a067c926653a4913f1e32470af30ac11640a6` supersedes0d9ea36 for current
+verification. [Correction evidence](VEL-GOV-003-CORRECTION-01.md) records before/
+after tests. [Existing final ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589)
+will append the new submitted SHA and actual full/draft runs after evidence commit;
+prior355/48-case results below are historical initial-submission evidence.
+The candidate gate-policy code still requires owner-protected independent review.
+
 
 ## FACT — authorization and provenance
 
@@ -103,11 +117,11 @@ and final CI. Owner decides adoption/merge and protection/exception policy;
 no such decision is made here. After any future approved merge, verify main tree
 and actual post-merge CI. Issue74/PR68 and hosted acceptance remain separate.
 
-## Source binding checkpoint
+## Initial source binding checkpoint (historical)
 
 Operative implementation source `0d9ea3687383d01754b696081528a937e3a6e8a8` includes the bounded boolean-version/type correction. Before/after regression outputs retain the demonstrated failure and passing correction. Final exact head and all48 fixture cases will be independently exercised by final-head CI; pre-source outputs remain labeled checkpoints.
 
-## Final submission evidence reference
+## First submission evidence reference (historical)
 
 [PR76 external ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589) is authoritative for final exact SHA and
 actual draft/full runs. It is linked before the final commit exists; later results
@@ -130,3 +144,5 @@ parser in setup-python before isolated checking.
 Final independent ChatGPT review and owner adoption/enforcement decision are
 pending. No claim of all44items complete, authenticated agent identity, protected
 merge prevention, hosted acceptance or owner approval.
+
+Correction01 local completion: full54 compliance cases and37 CI-policy cases PASS, exit0, on operative source `2f8a067c926653a4913f1e32470af30ac11640a6`. Metadata28records, handoff8tasks/6committed packs/6bundles, readiness14nodes/4pending gates and spec8scenarios validate. Actual final submitted SHA and new full/draft runs are appended to the existing ledger after commit. Historical results remain labeled; no actual PR ready/main transition is claimed.

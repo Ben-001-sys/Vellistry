@@ -1,0 +1,11 @@
+test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 34.956s
+
+OK
