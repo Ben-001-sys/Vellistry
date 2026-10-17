@@ -1,0 +1,16 @@
+{
+  "compared_with": "64ba4c505fbebe5b067377480a04da4c006d82cc",
+  "unchanged": {
+    "docs/agent-workflow/tasks/VEL-TASK-0010.yaml": true,
+    "docs/agent-workflow/context-packs/VEL-CP-0010.md": true,
+    ".github": true,
+    "apps": true,
+    "supabase": true,
+    "scripts/ci_policy.py": true,
+    "scripts/run_pr_compliance.py": true,
+    "scripts/agent_workflow.py": true,
+    "package.json": true,
+    "pnpm-lock.yaml": true,
+    "docs/decisions": true
+  }
+}

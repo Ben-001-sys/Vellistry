@@ -1,0 +1,269 @@
+test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) ... test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) ... test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) ... test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) ... test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) ... test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) ... 
+======================================================================
+FAIL: test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) (mutation='disable-application')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) (mutation='disable-recovery')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) (mutation='disable-privileges')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-opened')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-synchronize')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-reopened')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-ready_for_review')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-edited')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-converted_to_draft')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-activity-list')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='filter-pr-paths')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) (mutation='filter-pr-base')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) (mutation='remove-command')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) (mutation='no-op-true')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) (mutation='echo-pass')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) (mutation='delete-step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) (mutation='remove-env')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) (mutation='remove-needs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) (mutation='forged-success')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) (mutation='partial-needs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) (mutation='omit-main')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) (mutation='redirect-main')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) (mutation='filter-main-paths')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) (mutation='ignore-main')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='skip-final-step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='ignore-step-failure')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mask-shell-exit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='alternate-working-directory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='ignore-gate-failure')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='skip-governance')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='skip-classify')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='global-shell-override')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) (mutation='job-shell-override')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 70.033s
+
+FAILED (failures=33)

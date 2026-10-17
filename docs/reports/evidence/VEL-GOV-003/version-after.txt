@@ -1,0 +1,6 @@
+test_boolean_protocol_version_is_not_integer_one (test_pr_compliance.ComplianceGitTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.925s
+
+OK

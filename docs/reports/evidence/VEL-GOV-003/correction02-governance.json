@@ -1,0 +1,48 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_knowledge_metadata.py"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: validated metadata for 28 ADR/history records.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/agent_workflow.py",
+      "validate"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: 8 task(s), 6 ContextPack(s), 6 ExecutionBundle(s) validated\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_implementation_readiness.py"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: 14 DAG nodes validated, 4 owner gates pending, no cycles, no unauthorized feature dispatch\nOrder: VEL-PREP-001, VEL-DES-001, VEL-DES-002, VEL-IMP-001, VEL-IMP-002, VEL-IMP-003, VEL-IMP-004, VEL-IMP-005, VEL-IMP-006, VEL-IMP-007, VEL-IMP-008, VEL-VAL-001, VEL-PILOT-001, VEL-RELEASE-001\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/spec_traceability.py",
+      "validate"
+    ],
+    "exit_code": 0,
+    "stdout": "VALID: VEL-SPEC-001 \u2014 8 source-traced proposed acceptance scenarios\n",
+    "stderr": ""
+  }
+]

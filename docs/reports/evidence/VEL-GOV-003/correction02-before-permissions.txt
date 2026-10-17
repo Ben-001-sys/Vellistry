@@ -1,0 +1,246 @@
+test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) ... 
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='classify-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='classify-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='classify-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='classify-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='classify-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='governance-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='application-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='application-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='application-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='application-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='application-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='recovery-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='recovery-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='recovery-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='recovery-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='recovery-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='privileges-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='privileges-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='privileges-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='privileges-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='privileges-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='gate-contents-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='gate-oidc-write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='gate-read-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='gate-empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='gate-read-all')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 31.704s
+
+FAILED (failures=30)
+EXIT_CODE=1

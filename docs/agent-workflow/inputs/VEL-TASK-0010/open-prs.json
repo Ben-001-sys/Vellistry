@@ -1,0 +1,34 @@
+[
+  {
+    "headRefName": "codex/vel-imp-001b-phase-a",
+    "headRefOid": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "isDraft": true,
+    "number": 68,
+    "title": "VEL-IMP-001B: verify Phase A and prepare hosted privilege hardening",
+    "url": "https://github.com/Ben-001-sys/Vellistry/pull/68"
+  },
+  {
+    "headRefName": "docs/adr-0008-codex-primary-agentic-coding",
+    "headRefOid": "36da413fea67179ac8395af1cececd477fd193a2",
+    "isDraft": true,
+    "number": 66,
+    "title": "docs(adr-0008): select Codex as Vellistry primary coding agent",
+    "url": "https://github.com/Ben-001-sys/Vellistry/pull/66"
+  },
+  {
+    "headRefName": "feat/vel-imp-001b-hosted-cloud-preflight",
+    "headRefOid": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "isDraft": true,
+    "number": 65,
+    "title": "feat(dev): hosted Supabase preflight and guarded IMP-001B acceptance",
+    "url": "https://github.com/Ben-001-sys/Vellistry/pull/65"
+  },
+  {
+    "headRefName": "feat/vel-imp-001-auth-library",
+    "headRefOid": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85",
+    "isDraft": true,
+    "number": 59,
+    "title": "PAUSED \u2014 prior Cursor Library kickoff (superseded by planning reset)",
+    "url": "https://github.com/Ben-001-sys/Vellistry/pull/59"
+  }
+]

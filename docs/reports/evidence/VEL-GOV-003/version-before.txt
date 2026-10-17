@@ -1,0 +1,20 @@
+test_boolean_protocol_version_is_not_integer_one (test_pr_compliance.ComplianceGitTests) ... FAIL
+
+======================================================================
+FAIL: test_boolean_protocol_version_is_not_integer_one (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+ValueError: Undeclared/duplicate inherited commit origins
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 155, in test_boolean_protocol_version_is_not_integer_one
+    self.f.manifest['version']=True;self.f.amend(policy.MANIFEST,yaml.safe_dump(self.f.manifest));self.rejects('unsupported manifest version')
+  File "C:\Users\admin\.codex\worktrees\vel-gov-003\Vellistry\tests\test_pr_compliance.py", line 66, in rejects
+    with self.assertRaisesRegex((ValueError,subprocess.CalledProcessError),regex or '.'):
+AssertionError: "unsupported manifest version" does not match "Undeclared/duplicate inherited commit origins"
+
+----------------------------------------------------------------------
+Ran 1 test in 4.882s
+
+FAILED (failures=1)
