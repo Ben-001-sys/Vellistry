@@ -66,7 +66,7 @@ The text below is a readable rendering of pinned Git blobs; exact raw bytes rema
 ## Permissions and acceptance
 **Allowed:** Create isolated branch and scoped Task/CP/EB records, Use GitHub connector to commit owner-provided language document and integrate existing AGENTS.md, Verify paths, hashes, diffs and observable CI where available; open a draft PR
 **Owner approval required:** Owner semantic approval of proposed new terminology and unresolved decisions; Owner's final PR merge/adoption decision; App/CI/SQL/runtime changes, release, paid services, cloud operations, secrets or changes to agent executor policy beyond the scoped document integration
-**Acceptance criteria:
+**Acceptance criteria:**
 - LANGUAGE.md complete at repository root, no truncation, status proposed-owner-review; exact content hash/size verifiable
 - AGENTS.md retains previous text and inserts only bounded language instructions; original executor/owner chain unchanged
 - Only specified documentation and related Task/ContextPack/ExecutionBundle artifacts changed
