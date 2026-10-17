@@ -22,6 +22,7 @@ GOV_TESTS = {
     'test_implementation_readiness.py', 'test_knowledge_metadata.py',
     'test_r01_manifest.py', 'test_r01_mapping_gate.py', 'test_r01_mapping_proposal.py',
     'test_r01_review_packet.py', 'test_research_design_gate.py', 'test_stage4_chapter_contract.py',
+    'test_pr_compliance.py',
 }
 PRIVILEGE_TEST = 'tests/book_privileges_regression.sql'
 PREFLIGHT_TEST = 'tests/hosted_supabase_preflight.test.mjs'
@@ -126,6 +127,8 @@ def check_gate(needs: dict, *, expected_plan: dict) -> str:
     for job in ('classify', 'governance'):
         if needs[job].get('result') != 'success':
             raise ValueError(f'Required {job} did not succeed')
+    if needs['governance'].get('outputs', {}).get('compliance') != 'pass':
+        raise ValueError('Missing or failed required PR compliance evidence')
     outputs = needs['classify'].get('outputs', {})
     if expected_plan.get('mode') not in ('draft', 'ready', 'full'):
         raise ValueError('Invalid expected event mode')

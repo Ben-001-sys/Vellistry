@@ -39,6 +39,8 @@ jobs:
       id: plan
       run: python scripts/ci_policy.py classify
   governance:
+    outputs:
+      compliance: ${{ steps.compliance.outputs.status }}
     name: ${{ needs.classify.outputs.mode == 'draft' && 'Draft advisory governance' || 'Governance and provenance' }}
     needs:
     - classify
@@ -63,6 +65,9 @@ jobs:
         echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $RUNNER_TEMP/actionlint.tar.gz" | sha256sum --check
         tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP" actionlint
         "$RUNNER_TEMP/actionlint" -shellcheck=
+    - name: Base-anchored PR compliance evidence
+      id: compliance
+      run: python -I scripts/run_pr_compliance.py
     - name: Run all current governance and negative contracts once
       run: python scripts/ci_governance.py
     - uses: actions/upload-artifact@v4
@@ -276,6 +281,14 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
         persist-credentials: false
         fetch-depth: 0
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Install YAML parser for static compliance
+      run: python -m pip install 'PyYAML>=6,<7'
+    - name: Recompute base-anchored PR compliance evidence
+      id: compliance
+      run: python -I scripts/run_pr_compliance.py
     - name: Reject failed, cancelled, missing or skipped applicable checks
       env:
         CI_NEEDS: ${{ toJSON(needs) }}

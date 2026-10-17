@@ -78,7 +78,11 @@ class FinalGateTests(unittest.TestCase):
         return policy.check_gate(needs,expected_plan=self.plan(full))
     def needs(self, full=True):
         plan=self.plan(full)
-        return {'classify':{'result':'success','outputs':plan},'governance':{'result':'success'},**{j:{'result':'success' if full else 'skipped'} for j in ('application','recovery','privileges')}}
+        return {'classify':{'result':'success','outputs':plan},'governance':{'result':'success','outputs':{'compliance':'pass'}},**{j:{'result':'success' if full else 'skipped'} for j in ('application','recovery','privileges')}}
+    def test_green_security_cannot_hide_missing_compliance(self):
+        for value in ({}, {'compliance':'NOT_RUN'}, {'compliance':'BLOCKED'}, {'compliance':'failure'}):
+            needs=self.needs(); needs['governance']['outputs']=value
+            with self.subTest(outputs=value), self.assertRaises(ValueError): self.check(needs)
     def test_success_and_nonapplicable_skips_pass(self):
         self.check(self.needs()); self.check(self.needs(False),False)
     def test_every_required_failure_skip_cancel_or_missing_fails(self):
@@ -196,7 +200,7 @@ class DraftPolicyTests(unittest.TestCase):
         with patch.object(policy,'changed_paths',return_value=paths or ['apps/api/auth.ts']):
             return policy.plan_event('pull_request',self.event(draft,action),'a'*40)
     def needs(self, plan):
-        return {'classify':{'result':'success','outputs':dict(plan)},'governance':{'result':'success'},**{j:{'result':'success' if plan[j]=='true' else 'skipped'} for j in ('application','recovery','privileges')}}
+        return {'classify':{'result':'success','outputs':dict(plan)},'governance':{'result':'success','outputs':{'compliance':'pass'}},**{j:{'result':'success' if plan[j]=='true' else 'skipped'} for j in ('application','recovery','privileges')}}
     def test_draft_unknown_security_and_ci_paths_are_advisory_only(self):
         for path in ('apps/api/auth.ts','supabase/migrations/new.sql','.github/workflows/ci.yml','new/unknown.py'):
             with self.subTest(path=path):

@@ -3,14 +3,32 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-16
+updated_at: 2026-10-17
 owner: project_owner
-version: 0.1.61
+version: 0.1.62
 ---
 
 # Vellistry — current facts and next authorized work
 
-## Checked repository checkpoint — 2026-10-16
+## Issue73 compliance proposal checkpoint — 2026-10-17
+
+**FACT:** checked main is `f371448538dafa92faebbef9bcda2a36c6ca1fa9` after
+owner-merged PR75. Ready run38973835858 and actual main run38974225858 succeeded.
+The a875119 checkpoint below is historical PR70 integration evidence. PR66 remains
+open/draft and owner-disposition-only; PR65/68/59 heads remain unchanged.
+
+Owner directly dispatched Issue73. Unique Task/CP0010 and source/trust design
+were committed/validated before implementation; comment6226100456 is explicitly
+coordinator-relayed authorization. Proposed [compliance policy](docs/agent-workflow/PR-COMPLIANCE.md)
+adds static task/pack/scope/provenance/code checks to existing governance/final gate.
+This is not actual LLM/human identity authentication or malicious-workflow-proof
+protection. Initial fixed-base bootstrap is provisional pending owner adoption;
+read-only main protection returned404 `Branch not protected` and rulesets[]; settings are not changed. Owner-controlled enforcement remains a rollout prerequisite. Draft remains red advisory; mandatory
+ready/main security remains intact. [EB0010](docs/agent-workflow/execution-bundles/VEL-EB-0010.md)
+will link actual final SHA/runs; independent review and owner acceptance pending.
+No application/cloud/SQL execution, secret, paid call, merge or other PR edit.
+
+## Historical checked repository checkpoint — 2026-10-16
 
 **FACT:** merged main checked at `a8751190073f682caabdc2897d8f64bc59ac9ebb`.
 [PR #70](https://github.com/Ben-001-sys/Vellistry/pull/70) is **MERGED**;
@@ -20,7 +38,7 @@ verified source `fb6eeccef43dce7b44b53f41baabc47d93e3caa8` and
 verified the main SHA above, both SUCCESS. These runs started actual steps;
 they are not the historical zero-step runner failures on PR66/68.
 This is a dated inspection checkpoint; re-fetch main/open PRs before new work.
-The prospective governance PR is not yet merged and does not change main's SHA.
+At that earlier checkpoint the governance PR was not merged; PR75 has since merged as recorded above.
 
 **CI:** [.github/workflows/ci.yml](.github/workflows/ci.yml) is the single automatic
 workflow. Drafts run governance/advisory checks with a deliberately blocked stable
@@ -43,8 +61,7 @@ explicit owner task exception. No second human approval is a standing requiremen
 [ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md)
 preserves the owner's2026-10-14 role selection from ChatGPT-authored PR #66;
 its original conversation permalink is still missing. Owner-selected decision
-and repository integration are distinct. This Issue72 reconciliation is a Codex
-proposal for review; PR66 is not overwritten, closed or silently accepted.
+and repository integration are distinct. The Issue72 reconciliation is now merged through PR75; PR66 is not overwritten, closed or silently accepted.
 See [AGENTS.md](AGENTS.md), [workflow](docs/agent-workflow/README.md), and
 [operating model](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md).
 
@@ -60,8 +77,8 @@ compliance remains separate Issue #73 work.
 | Item | Verified status / next dependency |
 |---|---|
 | [Issue #71](https://github.com/Ben-001-sys/Vellistry/issues/71) | Secondary44-item remediation dependency ledger; original checklist attachment unavailable. No claim all44 are complete. |
-| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Owner-dispatched governance reconciliation in separate [draft PR75](https://github.com/Ben-001-sys/Vellistry/pull/75); [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Independent review and owner adoption pending. |
-| [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) | PR-to-task compliance enforcement; prepared/blocked on governance adoption, not implemented here. |
+| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Merged governance reconciliation through [PR75](https://github.com/Ben-001-sys/Vellistry/pull/75); [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Adopted through merged PR75; historical task reports retained. |
+| [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) | PR-to-task compliance enforcement; owner-dispatched Task0010; static evidence checks proposed here with trust limitations and pending review. |
 | [Issue #74](https://github.com/Ben-001-sys/Vellistry/issues/74) | Disposable PG17 privilege proof; not executed here. No migration approval. |
 | [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | ChatGPT-authored DRAFT/OPEN, `36da413fea67179ac8395af1cececd477fd193a2`; owner alone decides adoption/closure after this separate reconciliation. |
 | [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) | ChatGPT-authored DRAFT/OPEN, `604e1ebfd0baab930ee4dc39aecf7289dc64188a`; origin preserved, not imported here. |

@@ -1,9 +1,9 @@
 id: VEL-TASK-0010
 title: VEL-GOV-003 PR-to-task and provenance compliance
 type: implementation-task
-status: in-progress
+status: verification
 created_at: '2026-10-16'
-updated_at: '2026-10-16'
+updated_at: '2026-10-17'
 owner: project_owner
 context_pack_id: VEL-CP-0010
 objective: Implement bounded Issue73 repository-only compliance in existing consolidated
