@@ -140,7 +140,7 @@ def evaluate(repo, base, head, *, today=None, check_workflow=True):
         return dict(status='pass', disposition='docs-exempt' if paths else 'unchanged-baseline', head=head, base=base,
                     trust='structure-only; owner review required')
     m = mapping(blob(repo, head, MANIFEST))
-    require(m.get('version') == 1, 'Missing/unsupported manifest version')
+    require(type(m.get('version')) is int and m['version'] == 1, 'Missing/unsupported manifest version')
     tid = m.get('task_id', '')
     require(re.fullmatch(r'VEL-TASK-\d{4}', tid) is not None, 'Missing task ID')
     number = tid[-4:]
@@ -150,7 +150,7 @@ def evaluate(repo, base, head, *, today=None, check_workflow=True):
     require(blob(repo, base, task_path, missing=True) is None, 'Task reused from base; create authorized amendment')
     contract = task.get('compliance', {})
     require(contract.get('change_base') == base, 'Wrong task/base; repin explicit amendment')
-    require(contract.get('phase') and contract.get('phase') == m.get('phase'), 'Phase/scope expansion without amendment')
+    require(isinstance(contract.get('phase'),str) and re.fullmatch(r'[a-z][a-z0-9-]{0,64}',contract['phase']) and contract['phase'] == m.get('phase'), 'Phase/scope expansion without amendment')
     auth = contract.get('authorization', {})
     require(auth.get('status') == 'authorized' and URL.fullmatch(str(auth.get('url', ''))), 'Missing/expired/superseded owner authorization')
     require(auth.get('provenance') in {'direct-owner-dispatch-with-coordinator-relay', 'owner-linked-dispatch'}, 'Missing authorization provenance')

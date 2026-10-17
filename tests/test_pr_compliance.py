@@ -151,6 +151,8 @@ class ComplianceGitTests(unittest.TestCase):
             self.assertFalse(policy.inert(path),path)
     def test_rename_delete_and_hidden_executable_not_exempt(self):
         self.f.git('mv','apps/api/book.py','docs/reports/book.md');self.f.head=self.f.commit('rename');self.rejects('Head changed|Disallowed')
+    def test_boolean_protocol_version_is_not_integer_one(self):
+        self.f.manifest['version']=True;self.f.amend(policy.MANIFEST,yaml.safe_dump(self.f.manifest));self.rejects('unsupported manifest version')
     def test_malformed_metadata_and_missing_fields(self):
         self.f.amend(policy.MANIFEST,'not: [valid');
         with self.assertRaises(yaml.YAMLError):self.f.evaluate()
