@@ -106,3 +106,27 @@ and actual post-merge CI. Issue74/PR68 and hosted acceptance remain separate.
 ## Source binding checkpoint
 
 Operative implementation source `0d9ea3687383d01754b696081528a937e3a6e8a8` includes the bounded boolean-version/type correction. Before/after regression outputs retain the demonstrated failure and passing correction. Final exact head and all48 fixture cases will be independently exercised by final-head CI; pre-source outputs remain labeled checkpoints.
+
+## Final submission evidence reference
+
+[PR76 external ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589) is authoritative for final exact SHA and
+actual draft/full runs. It is linked before the final commit exists; later results
+are appended there without a report-only SHA cycle. Both runs must use the same
+final head. Draft advisory success still ends in intentionally blocked gate;
+explicit full verification must pass application/security/recovery and all48
+fixture cases. No ready promotion or merge is performed by Codex.
+
+Local source checkpoints:47 Git cases pass before type correction; demonstrated
+boolean-version failure then1passing regression; all37 CI-policy cases pass on
+committed source/evidence;8entrypoint cases and28metadata records pass;
+8tasks/6committed packs/6bundles validate;14DAG nodes/4pending gates and8spec
+scenarios validate. Raw commands, exits, pass counts and before/after outputs
+are committed under evidence/VEL-GOV-003. The default Windows `python -I`
+bootstrap failed because PyYAML lived only in user-site; an ignored local venv
+with PyYAML6.0.3 under existing>=6,<7 constraint passed actual isolated bootstrap.
+No global/lockfile/framework upgrade occurred. CI installs its existing YAML
+parser in setup-python before isolated checking.
+
+Final independent ChatGPT review and owner adoption/enforcement decision are
+pending. No claim of all44items complete, authenticated agent identity, protected
+merge prevention, hosted acceptance or owner approval.

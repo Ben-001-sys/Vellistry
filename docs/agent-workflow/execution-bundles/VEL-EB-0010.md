@@ -18,6 +18,8 @@ sources:
 - docs/agent-workflow/inputs/VEL-TASK-0010/COVERAGE-TRUST-DESIGN.md
 evidence:
 - docs/reports/VEL-GOV-003-EXECUTION.md
+- docs/reports/evidence/VEL-GOV-003/protection-readonly.json
+- https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589
 review:
   status: pending
   approved_by: null
@@ -33,11 +35,18 @@ execution:
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-GOV-003/version-after.txt
-  - command: python -X utf8 -m unittest discover -s tests -p test_pr_compliance.py
-      -v (47-case checkpoint before type fix)
-    exit_code: 0
+    source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+  - command: .compliance-venv.log/Scripts/python.exe -X utf8 -m unittest discover
+      -s tests -p test_ci_policy.py -v
     status: PASS
-    evidence: docs/reports/evidence/VEL-GOV-003/compliance-47-source-checkpoint.txt
+    exit_code: 0
+    evidence: docs/reports/evidence/VEL-GOV-003/ci-policy-37-source.txt
+    source_commit: 0d9ea3687383d01754b696081528a937e3a6e8a8
+final_evidence_ledger: https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589
+historical_test_checkpoints:
+- source_commit: 4b6e40a7df585b2f8e9df19b7d31005597fabe79
+  tests: 47
+  evidence: docs/reports/evidence/VEL-GOV-003/compliance-47-source-checkpoint.txt
 ---
 
 # VEL-GOV-003 — Task0010 execution
@@ -75,3 +84,7 @@ First-adoption verifier is provisional; workflow/loader self-edit attacks cannot
 ## Reviewer disposition
 
 Independent ChatGPT source/CI review and owner adoption pending. No forged approval or independent execution claim.
+
+## Latest exact-head review evidence
+
+[PR76 append-only evidence ledger](https://github.com/Ben-001-sys/Vellistry/pull/76#issuecomment-6235609589) supplies the final submitted SHA and real draft/full CI after this commit exists. Code source0d9ea36 remains an explicit source checkpoint, not a claim to be the final report head. All48 fixtures must pass on final CI; historical47-case output remains historical. Independent ChatGPT review, owner adoption/merge and actual protected-enforcement decision remain pending.
