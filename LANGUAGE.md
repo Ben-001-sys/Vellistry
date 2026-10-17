@@ -628,7 +628,7 @@ Do not automatically replace all instances of “create”, “accept”, “ver
 
 ### 15.4 Exact `AGENTS.md` insertion candidate
 
-Add after `## Read in order` and before operational workflow if approved. **This snippet is not inserted into the repository by this artifact.**
+Originally proposed for insertion after `## Read in order` and before the operational workflow. **PR #77 now includes this snippet in `AGENTS.md` on its review branch; it is not yet merged into `main`.** This integration does not approve proposed product labels or alter existing owner/Codex authority.
 
 ```markdown
 ## Product language and UX copy (LANGUAGE.md)
