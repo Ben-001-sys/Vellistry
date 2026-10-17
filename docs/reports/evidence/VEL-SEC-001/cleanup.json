@@ -1,0 +1,18 @@
+{
+  "no_pg_container_created": true,
+  "no_image_pull_attempted": true,
+  "no_sql_executed": true,
+  "no_pg_data_or_sql_throwaway_directory_created": true,
+  "desktop_stop": {
+    "command": [
+      "docker",
+      "desktop",
+      "stop"
+    ],
+    "status": "TIMEOUT",
+    "timeout_seconds": 20,
+    "command_process_id": 7084,
+    "termination_exit": 0
+  },
+  "desktop_restored_to_initial_state": "UNVERIFIED"
+}

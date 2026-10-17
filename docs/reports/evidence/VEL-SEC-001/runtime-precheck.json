@@ -1,0 +1,35 @@
+{
+  "initial_command": [
+    "docker",
+    "version"
+  ],
+  "initial_client_version": "29.6.1",
+  "initial_engine_error": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.",
+  "initial_exit_code": "not separately captured in initial multi-command shell",
+  "startup_command": [
+    "docker",
+    "desktop",
+    "start",
+    "--detach"
+  ],
+  "startup_exit_code": 0,
+  "startup_stdout": "Starting Docker Desktop",
+  "native_fallback": {
+    "psql_on_path": false,
+    "postgres_on_path": false,
+    "pg_ctl_on_path": false,
+    "program_files_postgresql_exists": false
+  },
+  "unbounded_probe_sessions": {
+    "aborted_by_ctrl_c": [
+      17032,
+      36684
+    ],
+    "session_exit_codes": [
+      1,
+      1
+    ],
+    "sql_executed": false
+  },
+  "safety": "No cloud connection, database/container launch, image pull or SQL apply attempted."
+}

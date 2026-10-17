@@ -1,0 +1,19 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--exit-code",
+    "021379856d07611752832b44bfe951d6ae36f0b2",
+    "--",
+    "apps",
+    "supabase",
+    "tests",
+    "scripts",
+    ".github",
+    "CURRENT-STATE.md",
+    "docs/agent-workflow/PR-COMPLIANCE.yaml"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

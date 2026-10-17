@@ -1,0 +1,27 @@
+[
+  {
+    "command": [
+      "docker",
+      "desktop",
+      "status"
+    ],
+    "status": "TIMEOUT",
+    "timeout_seconds": 15,
+    "process_id": 12788,
+    "termination_exit": 0
+  },
+  {
+    "command": [
+      "docker",
+      "--context",
+      "desktop-linux",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "status": "TIMEOUT",
+    "timeout_seconds": 15,
+    "process_id": 29024,
+    "termination_exit": 0
+  }
+]
