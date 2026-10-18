@@ -13,6 +13,53 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('ci_policy',ROOT/'scripts/ci_policy.py')
 policy=importlib.util.module_from_spec(spec); spec.loader.exec_module(policy)
 
+
+# Owner-authorized Task0015: one exact supplemental manual workflow only.
+PG17_MANUAL_NAME = 'vel-sec-001-pg17-manual.yml'
+PG17_MANUAL_CONTRACT = yaml.load("""
+name: VEL-SEC-001 disposable PG17 evidence (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pg17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PG17_SERVICE_ID: ${{ job.services.postgres.id }}
+    steps:
+      - name: Checkout exact reviewed revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Run pinned synthetic PG17 evidence
+        run: python3 scripts/pg17_book_privilege_evidence.py
+      - name: Independently verify disposable database cleanup
+        if: ${{ always() }}
+        run: python3 scripts/pg17_book_privilege_evidence.py --cleanup
+      - name: Upload synthetic evidence only
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: vel-sec-001-pg17-evidence
+          path: ${{ runner.temp }}/vel-sec-001-pg17-evidence
+          if-no-files-found: error
+          retention-days: 14
+""", Loader=yaml.BaseLoader)
+
+def check_pg17_manual_contract(workflow):
+    if workflow != PG17_MANUAL_CONTRACT:
+        raise ValueError('PG17 manual workflow security/execution contract changed')
+
 class RoutingTests(unittest.TestCase):
     def test_docs_and_governance_are_lightweight(self):
         for path in ('README.md','CURRENT-STATE.md','docs/reports/evidence/result.json','docs/reports/evidence/timings.csv','docs/decisions/ADR-0008-any.md','docs/agent-workflow/tasks/VEL-TASK-0006.yaml','docs/agent-workflow/context-packs/VEL-CP-0006.md','docs/agent-workflow/execution-bundles/VEL-EB-0006.md','scripts/agent_workflow.py','tests/test_handoff_recovery.py'):
@@ -133,12 +180,16 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertEqual(observed,['pack','discovery'])
 
     def test_only_one_automatic_workflow_and_original_jobs_intact(self):
-        for path in (ROOT/'.github/workflows').glob('*.yml'):
+        workflows = [p for p in (ROOT/'.github/workflows').iterdir() if p.suffix.lower() in {'.yml','.yaml'}]
+        for path in workflows:
             d=yaml.load(path.read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
             if path.name=='ci.yml': continue
             self.assertEqual(set(d['on']),{'workflow_dispatch'},path.name)
-            self.assertEqual(d['jobs'],self.baseline[path.name]['workflow']['jobs'],path.name)
-        self.assertEqual({p.name for p in (ROOT/'.github/workflows').glob('*.yml')},set(self.baseline)|{'ci.yml'})
+            if path.name == PG17_MANUAL_NAME:
+                check_pg17_manual_contract(d)
+            else:
+                self.assertEqual(d['jobs'],self.baseline[path.name]['workflow']['jobs'],path.name)
+        self.assertEqual({p.name for p in workflows},set(self.baseline)|{'ci.yml',PG17_MANUAL_NAME})
         self.assertEqual(len(self.baseline),25)
     def test_unfiltered_events_and_pr_only_cancellation(self):
         w=self.workflow

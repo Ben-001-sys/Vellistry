@@ -1,0 +1,37 @@
+name: VEL-SEC-001 disposable PG17 evidence (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pg17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PG17_SERVICE_ID: ${{ job.services.postgres.id }}
+    steps:
+      - name: Checkout exact reviewed revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Run pinned synthetic PG17 evidence
+        run: python3 scripts/pg17_book_privilege_evidence.py
+      - name: Independently verify disposable database cleanup
+        if: ${{ always() }}
+        run: python3 scripts/pg17_book_privilege_evidence.py --cleanup
+      - name: Upload synthetic evidence only
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: vel-sec-001-pg17-evidence
+          path: ${{ runner.temp }}/vel-sec-001-pg17-evidence
+          if-no-files-found: error
+          retention-days: 14
