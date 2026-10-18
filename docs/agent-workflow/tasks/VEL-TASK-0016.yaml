@@ -52,16 +52,8 @@ inputs:
   role: attributed-source-and-owner-dispatch
 - path: docs/agent-workflow/inputs/VEL-TASK-0016/source-map.json
   role: attributed-source-and-owner-dispatch
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part1.md
-  role: original-language-snapshot-chunk
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part2.md
-  role: original-language-snapshot-chunk
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part3.md
-  role: original-language-snapshot-chunk
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part4.md
-  role: original-language-snapshot-chunk
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part5.md
-  role: original-language-snapshot-chunk
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/LANGUAGE-REVIEW-EXCERPT.md
+  role: selected-original-boundaries-and15-owner-decisions
 source_gaps:
 - id: AUTH
   limitation: Direct owner dispatch plus Issue79 coordinator relay; no independent
@@ -72,6 +64,10 @@ source_gaps:
 - id: PRODUCT
   limitation: Original language research uses historical baseline;15 naming decisions
     pending, no new UX/hosted/competitor acceptance.
+- id: CONTEXT-SIZE
+  limitation: Pack selects original scope/integration/15-decision excerpts due existing90KB
+    aggregate limit. Complete95KB original remains committed read-only and pinned
+    by exact blob/SHA256 in source-map; no source evidence or validator limits weakened.
 deliverables:
 - Task/source then generated validated committed CP0016 before operative edits
 - Exact attributed LANGUAGE adoption; narrowly reconciled AGENTS retaining current
