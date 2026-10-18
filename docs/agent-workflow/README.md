@@ -23,7 +23,7 @@ It uses repo-owned artifacts without a new service or orchestrator. Read the
 and [CURRENT-STATE](../../CURRENT-STATE.md) before dispatch. Codex implements
 qualifying changes; ChatGPT coordinates/reviews; only the owner approves scope
 and merge. Commit sources/task, generate/validate/commit the immutable pack
-before implementation. Issue73 proposes [PR compliance evidence validation](PR-COMPLIANCE.md); its bootstrap and protected-owner-review limitations are explicit. CI does not authenticate agents or owners.
+before implementation. Issue73 [PR compliance evidence validation](PR-COMPLIANCE.md) is integrated through PR76; initial bootstrap is historical, while protected-owner-review limitations remain explicit. CI does not authenticate agents or owners.
 
 ## Lifecycle (solo maintainer)
 
