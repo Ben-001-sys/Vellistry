@@ -1,0 +1,100 @@
+id: "VEL-TASK-0013"
+title: "VEL-SEC-001 GitHub-hosted PostgreSQL17 manual evidence harness"
+type: "implementation-task"
+status: "ready"
+created_at: "2026-10-18"
+updated_at: "2026-10-18"
+owner: "project_owner"
+context_pack_id: "VEL-CP-0013"
+objective: "Codex prepares a single manual-only GitHub Actions PostgreSQL 17 security evidence harness for Issue74, based on current merged main and exact pinned read-only unmerged PR68 SQL/fixture blobs. No SQL file, default automated CI policy, hosted Supabase resource, owner authorization or migration approval is modified. Owner reviews/merges harness before any permitted manual workflow_dispatch; then records actual before/after test evidence and decides PR68 migration separately."
+in_scope:
+- "Codex-prepared single workflow_dispatch-only .github/workflows/vel-sec-001-pg17-manual.yml plus minimal synthetic non-SQL test runner/helper"
+- "Isolated disposable postgres:17 runner test with exact PR68 blob and SHA-256 pins; baseline defect vs separately applied proposed correction, robust privilege/RLS/owner/foreign-author checks, rollback and cleanup"
+- "Test harness negative/error-path checks including missing/wrong SHA, unexpected before failure, after failure, source drift, forbidden remote connection, no remote secrets"
+- "PR76-compatible new Task/CP/EB0013, compliance manifest, before/after evidence report and draft PR for owner review"
+- "Record Postgres version/image digest, actual run/job IDs and command exit codes only after workflow actually runs"
+out_of_scope:
+- "Modifying PR68 source branch, copying proposed migration into main migration tree, approval/application of 20261015171325_restrict_book_privileges.sql on hosted Supabase"
+- "Automatic CI .github/workflows/ci.yml or scripts/pr_compliance.py modifications, new non-manual triggers, elevated GitHub token permissions, owner/admin/billing settings or any CI bypass"
+- "Host Supabase remote access, credentials or real manuscripts; production/deploys, merge approval and private-pilot JWT hold closure"
+- "Fictitious PASS/evidence, reassignment of Codex work to ChatGPT or reuse of colliding Task/CP/EB0012 records"
+inputs:
+- path: "PROJECT-CONSTITUTION.md"
+  role: "owner-governance"
+- path: "AGENTS.md"
+  role: "current-Codex-primary-actor-contract"
+- path: "docs/agent-workflow/README.md"
+  role: "existing-immutable-handoff"
+- path: "docs/agent-workflow/PR-COMPLIANCE.md"
+  role: "merged-CI-task-provenance-policy"
+- path: ".github/workflows/ci.yml"
+  role: "protected-one-automatic-workflow-and-existing-PG17-job"
+- path: "scripts/agent_workflow.py"
+  role: "pack-generator-and-validator-reference"
+- path: "docs/agent-workflow/inputs/VEL-TASK-0013/ISSUE-74-GITHUB-PG17-HANDOFF.md"
+  role: "owner-authorization-and-external-PR68-immutable-source-map"
+source_gaps:
+- id: "HOSTED-RUN"
+  limitation: "GitHub-hosted PG17 workflow/test has not been implemented, merged or manually dispatched; no before/after test pass is known."
+- id: "OWNER-REVIEW"
+  limitation: "Owner direction is relayed in an Issue74 GitHub comment, not cryptographic proof of independent identity; the actual harness merge and future migration approval remain separate owner decisions."
+- id: "SQL-SOURCE"
+  limitation: "PR68 four read-only files are unmerged; their exact Git source blobs and prior SHA256 values are cited in the committed handoff but not part of current-main source snapshots."
+- id: "COLLISION"
+  limitation: "Original Codex security Task/CP/EB0012 collides with independent ChatGPT PR77 Task/CP/EB0012. Both histories must remain intact, this new task is 0013."
+- id: "DISPATCH-ORDER"
+  limitation: "New workflow_dispatch harness cannot run from feature branch until workflow file is on GitHub default branch; owner must explicitly merge validated harness and then trigger manually."
+- id: "HOSTED-TRUST"
+  limitation: "Synthetic default grant and PUBLIC injection do not prove the same grants exist on real hosted Supabase; signed-out JWT and third-migration approval remain on hold."
+deliverables:
+- "Versioned minimal manual-only GitHub Actions PG17 workflow in bounded path, runnable only after owner-reviewed default-branch merge"
+- "Dedicated safe helper and negative harness tests, exact PG17 version and pinned SQL source validation"
+- "Separate before/after database experiment plan with privilege and RLS/mutation matrix, cleanup protocol and sanitize-only artifacts"
+- "Task0013 and actually generated/validated immutable CP0013 before any implementation edits"
+- "PR76 compliance manifest, actual tested/final-head EB0013 and draft PR for independent review; later actual dispatch evidence linked in Issue74"
+- "Explicit owner decision packet for PR68 preserving NOT_APPROVED unless separately approved"
+acceptance_criteria:
+- "No changes to existing automatic Vellistry CI/workflows, SQL migration tree, PR68 branch, hosted Supabase or GitHub admin permissions"
+- "Manual workflow event only workflow_dispatch; read-only token, no secrets, bounded timeout and sanitized output; actionlint and policy negative tests"
+- "Runner verifies exact PR68 source pins and PostgreSQL17 version before any disposable test; absent/drifted source blocks execution"
+- "Before original migrations fails specifically on books TRUNCATE ACL, after proposed fix in separate disposable database passes 48 ACL checks, RLS and supplemental actual REFERENCES/TRIGGER/owner/foreign-author probes"
+- "Unexpected before failure, after failure, startup failure or skipped PG17 marks test FAIL/BLOCKED, never success"
+- "Fresh new-main pinned Task0013 and valid CP0013 committed BEFORE Codex implementation, PASS tests, provenance and per-commit manifest required before owner merge"
+- "Owner approval of harness merge/dispatch and separately of third migration is not inferred from a green synthetic test; actual manual Actions run evidence required"
+allowed_actions:
+- "Read and pin current main, Issue74 authorization, PR68 source and prior blocked Codex report"
+- "Prepare new Task/ContextPack in isolated branch and dispatch bounded task to Codex"
+- "Codex may edit only allow_paths after validating committed immutable pack, run local static/unit tests and standard CI"
+- "Owner may later separately review/merge harness and manually trigger GitHub-hosted disposable PG17 evidence run"
+- "Capture sanitized synthetic test evidence and create draft PR/review packet"
+approval_required_for:
+- "Any SQL source-file change, migration-path approval, hosted or production Supabase migration/apply or access"
+- "Changing consolidated automatic CI policy, default/branch-protection settings, paid/billing/secrets/runner administration"
+- "Merging harness PR to default branch, manually dispatching workflow from main, accepting PR68 third migration, altering private pilot/release gates"
+compliance:
+  change_base: 021379856d07611752832b44bfe951d6ae36f0b2
+  phase: repository-only
+  executor: Codex
+  allow_paths:
+  - ".github/workflows/vel-sec-001-pg17-manual.yml"
+  - "scripts/pg17_book_privilege_evidence.py"
+  - "tests/test_pg17_action_harness.py"
+  - "docs/agent-workflow/inputs/VEL-TASK-0013/*"
+  - "docs/agent-workflow/tasks/VEL-TASK-0013.yaml"
+  - "docs/agent-workflow/context-packs/VEL-CP-0013.md"
+  - "docs/agent-workflow/execution-bundles/VEL-EB-0013.md"
+  - "docs/agent-workflow/PR-COMPLIANCE.yaml"
+  - "docs/reports/VEL-SEC-001-GH-ACTIONS-*"
+  - "docs/reports/evidence/VEL-SEC-001-GH-ACTIONS/*"
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/74#issuecomment-6249776555
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
