@@ -1,0 +1,37 @@
+{
+  "source_pr": 77,
+  "source_head": "3cb1030ae4c636fc18245ed8ae23ebb967e5407d",
+  "language_commits": [
+    "7bc7a6f239901733fbe10aa71159d2ab991bf037",
+    "3118e601f7860250fc7a5c73dc8c263963ca25a1",
+    "999b5e81873071292099020f818a76dd017dce86"
+  ],
+  "agents_original_commit": "dc7e206924074d06714debad6b4ac17c9e6857fd",
+  "records": [
+    {
+      "path": "LANGUAGE.md",
+      "source_commit": "3cb1030ae4c636fc18245ed8ae23ebb967e5407d",
+      "blob": "badc4f189286740736a26b0f58a38bcfb05b0884",
+      "sha256": "a8347a2149ba0cca7c0315a75712f7149f46eaa99947583c5f406c417d1e19c2",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE.md",
+      "original_executor": "ChatGPT"
+    },
+    {
+      "path": "AGENTS.md",
+      "source_commit": "3cb1030ae4c636fc18245ed8ae23ebb967e5407d",
+      "blob": "e093af45475b2e2b34fd5dacdf677478dda790e4",
+      "sha256": "e150fad7286225f40df0e20c34494403812e62d45de467d2754a2fd927d842cf",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0016/PR77-AGENTS.md",
+      "original_executor": "ChatGPT"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0012/PR77-HANDOFF-SUPERSESSION.md",
+      "source_commit": "3cb1030ae4c636fc18245ed8ae23ebb967e5407d",
+      "blob": "0e8ed4f0b128d76519eb8d57c49ce5ae1cca8c0d",
+      "sha256": "d83b868bf104877eb9ad5c4c1981e5c5a6684881d48d986bd75ac0550ace654b",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0016/PR77-PR77-HANDOFF-SUPERSESSION.md",
+      "original_executor": "ChatGPT"
+    }
+  ],
+  "historical_failures": "CP0010/CP0011 pre-edit validation unsupported; CP0012 deterministic review only; current CI missing runner exit2. Neither historical0012 lineage imported."
+}

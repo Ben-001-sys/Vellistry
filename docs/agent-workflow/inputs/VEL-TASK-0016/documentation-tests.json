@@ -1,0 +1,34 @@
+[
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 23.344,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-1.txt",
+    "source_commit": "fab4fe0748a72348193f9cf233a302fb359969c3"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.219,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-2.txt",
+    "source_commit": "fab4fe0748a72348193f9cf233a302fb359969c3"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.156,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-3.txt",
+    "source_commit": "fab4fe0748a72348193f9cf233a302fb359969c3"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.141,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-4.txt",
+    "source_commit": "fab4fe0748a72348193f9cf233a302fb359969c3"
+  }
+]

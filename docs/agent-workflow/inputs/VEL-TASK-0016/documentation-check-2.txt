@@ -1,0 +1,4 @@
+COMMAND: python scripts/check_knowledge_metadata.py
+PASS: validated metadata for 28 ADR/history records.
+
+EXIT: 0

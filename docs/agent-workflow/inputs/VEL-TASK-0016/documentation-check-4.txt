@@ -1,0 +1,4 @@
+COMMAND: python scripts/spec_traceability.py validate
+VALID: VEL-SPEC-001 — 8 source-traced proposed acceptance scenarios
+
+EXIT: 0

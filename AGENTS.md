@@ -3,8 +3,8 @@ id: VEL-AGENT-001
 type: agent-instructions
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-17
-version: 0.1.6
+updated_at: 2026-10-18
+version: 0.1.7
 ---
 
 # Instructions for Vellistry Research and Development Agents
@@ -15,6 +15,15 @@ version: 0.1.6
 3. Relevant accepted ADRs and requirements.
 4. Task-specific ContextPack and original sources.
 5. Related history, experiments, and execution reports if relevant.
+
+## Product language and UX copy (LANGUAGE.md)
+
+- Before any change to user-facing navigation, page names, buttons, forms, dialogs, status messages, errors, tooltips, accessibility labels, onboarding, AI consent or export wording, read root `LANGUAGE.md` alongside the relevant accepted product requirements and current implementation.
+- Follow `LANGUAGE.md` for owner-approved product terminology. Reuse canonical names consistently while allowing explicitly documented contextual short labels; preserve distinct concepts such as manuscript vs notes, AI suggestion vs accepted revision, suggested fact vs approved canon, and local recovery vs confirmed save.
+- Verify what the interface and backend actually do before using success, save, privacy, cost, cancellation, deletion or provider-availability claims. Do not expose internal transport codes as author-facing text or mark proposed/future features as implemented.
+- If a needed term is absent, proposed, disputed or inconsistent with approved scope, record the current wording, candidate, affected surfaces and supporting evidence for owner review. Do not silently make a new canonical decision or rename unrelated concepts.
+- `LANGUAGE.md` governs visible words, not database fields, API routes, internal identifiers, source archives, accepted ADRs, or integration contracts. Do not change those solely to match display labels.
+- Include user-facing copy/state checks and relevant accessibility/negative tests in the task ExecutionBundle. Do not change the language contract or add automation enforcing it outside the owner-authorized Task → ContextPack → implementation → review workflow.
 
 ## Primary agentic implementation workflow (ADR-0008, owner-selected 2026-10-14)
 

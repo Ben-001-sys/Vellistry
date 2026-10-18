@@ -1,0 +1,4 @@
+COMMAND: python scripts/agent_workflow.py validate
+PASS: 10 task(s), 8 ContextPack(s), 7 ExecutionBundle(s) validated
+
+EXIT: 0

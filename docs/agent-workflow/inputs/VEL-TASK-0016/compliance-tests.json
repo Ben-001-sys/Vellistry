@@ -1,0 +1,10 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -v",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 270.015,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0016/compliance57.txt",
+    "source_commit": "fab4fe0748a72348193f9cf233a302fb359969c3"
+  }
+]

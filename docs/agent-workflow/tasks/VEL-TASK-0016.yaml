@@ -1,0 +1,109 @@
+id: VEL-TASK-0016
+title: VEL-LANG-001 main-based recovery of ChatGPT PR77 proposal
+type: implementation-task
+status: verification
+created_at: '2026-10-18'
+updated_at: '2026-10-18'
+owner: project_owner
+context_pack_id: VEL-CP-0016
+objective: Codex integrates only historical ChatGPT LANGUAGE candidate and compatible
+  product-language AGENTS insertion on current main; new validated pre-edit handoff,
+  adopted provenance and evidenced unmerged draft PR; no semantic owner acceptance.
+in_scope: &id001
+- LANGUAGE.md
+- AGENTS.md
+- docs/agent-workflow/tasks/VEL-TASK-0016.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0016.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0016.md
+- docs/agent-workflow/inputs/VEL-TASK-0016/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- Old PR77 branch/history/pack mutation; scripts/tests/workflows, app/UI, SQL, dependencies,
+  accepted ADR or authority changes
+- Hosted/production/private data/secrets/costs/deploy/admin/protection/merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: accepted-boundaries
+- path: SOURCE-OF-TRUTH.md
+  role: authority
+- path: AGENTS.md
+  role: current-effective-instructions
+- path: CURRENT-STATE.md
+  role: dated-project-state
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: accepted-execution-role
+- path: docs/agent-workflow/README.md
+  role: immutable-handoff
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: base-anchored-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/DESIGN.md
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/id-scan.json
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/issue79.json
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/OWNER-DISPATCH.md
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-PR77-HANDOFF-SUPERSESSION.md
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/source-map.json
+  role: attributed-source-and-owner-dispatch
+- path: docs/agent-workflow/inputs/VEL-TASK-0016/LANGUAGE-REVIEW-EXCERPT.md
+  role: selected-original-boundaries-and15-owner-decisions
+source_gaps:
+- id: AUTH
+  limitation: Direct owner dispatch plus Issue79 coordinator relay; no independent
+    human identity proof or semantic/merge approval.
+- id: HISTORY
+  limitation: Historical0010/0011 packs were not validated pre-edit;0012 collisions
+    remain preserved on source branches. No retroactive validation claimed.
+- id: PRODUCT
+  limitation: Original language research uses historical baseline;15 naming decisions
+    pending, no new UX/hosted/competitor acceptance.
+- id: CONTEXT-SIZE
+  limitation: Pack selects original scope/integration/15-decision excerpts due existing90KB
+    aggregate limit. Complete95KB original remains committed read-only and pinned
+    by exact blob/SHA256 in source-map; no source evidence or validator limits weakened.
+deliverables:
+- Task/source then generated validated committed CP0016 before operative edits
+- Exact attributed LANGUAGE adoption; narrowly reconciled AGENTS retaining current
+  main controls
+- Source-bound manifest/EB0016, actual tests/exits and exact-head CI; new Draft PR
+acceptance_criteria:
+- Original final LANGUAGE blob and15 pending decisions unchanged; proposed-owner-review
+  retained
+- Current-main AGENTS governance unchanged except bounded language subsection and
+  metadata update
+- All operative edits after committed pack;3 adopted commits match original patches
+  and ChatGPT origin;reconciliation declared Codex
+- Actual handoff/docs/compliance checks; final exact-head CI distinguishes draft gate
+  from defects;owner pending
+- No changes to PR77, effective CI/scripts/tests/runtime/SQL/admin/other security
+  holds
+allowed_actions:
+- Read refs/issues/PR history and exact source blobs; reserve unique0016 and commit
+  owner/task/source evidence
+- Generate validate and commit immutable CP0016 before operative changes
+- Apply only explicit scope; run existing checks and full/draft consolidated CI; push
+  new branch and open Draft PR
+- Append technical evidence to new draft PR; do not close or change original PR77
+approval_required_for:
+- Terminology decisions, ready/merge acceptance and any scope expansion
+- Any hosted/production/private/secret/paid/admin/deployment/SQL/CI changes
+compliance:
+  change_base: 098ab06a40a84eaba5880223f02e80fab3bf9e86
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/79
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
