@@ -1,0 +1,25 @@
+{
+  "main": "021379856d07611752832b44bfe951d6ae36f0b2",
+  "existing_test_blob": "b9c472057388b5c6429d570ed4a8beedbc5c7c02",
+  "results": [
+    {
+      "label": "unchanged-inventory",
+      "command": "unchanged tests/test_ci_policy.py::WorkflowContractTests.test_only_one_automatic_workflow_and_original_jobs_intact against temporary copied inventory",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "equivalent_exit": 0,
+      "output": "test_only_one_automatic_workflow_and_original_jobs_intact (original_ci_policy_test.WorkflowContractTests) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.119s\n\nOK\n"
+    },
+    {
+      "label": "one-read-only-manual-workflow-added",
+      "command": "unchanged tests/test_ci_policy.py::WorkflowContractTests.test_only_one_automatic_workflow_and_original_jobs_intact against temporary copied inventory",
+      "tests": 1,
+      "failures": 0,
+      "errors": 1,
+      "equivalent_exit": 1,
+      "output": "test_only_one_automatic_workflow_and_original_jobs_intact (original_ci_policy_test.WorkflowContractTests) ... ERROR\n\n======================================================================\nERROR: test_only_one_automatic_workflow_and_original_jobs_intact (original_ci_policy_test.WorkflowContractTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\admin\\.codex\\worktrees\\vel-sec-001-actions\\Vellistry\\tests\\test_ci_policy.py\", line 140, in test_only_one_automatic_workflow_and_original_jobs_intact\n    self.assertEqual(d['jobs'],self.baseline[path.name]['workflow']['jobs'],path.name)\nKeyError: 'vel-sec-001-pg17-manual.yml'\n\n----------------------------------------------------------------------\nRan 1 test in 0.119s\n\nFAILED (errors=1)\n"
+    }
+  ],
+  "cleanup": "TemporaryDirectory removed; no workflow or test changed in checkout"
+}

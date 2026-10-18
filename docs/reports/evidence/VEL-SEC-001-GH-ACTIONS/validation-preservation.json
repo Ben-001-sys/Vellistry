@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/agent_workflow.py",
+      "validate"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: 9 task(s), 7 ContextPack(s), 7 ExecutionBundle(s) validated\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "scripts/check_knowledge_metadata.py"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: validated metadata for 28 ADR/history records.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "021379856d07611752832b44bfe951d6ae36f0b2",
+      "--",
+      ".github",
+      "tests",
+      "scripts",
+      "supabase",
+      "apps",
+      "CURRENT-STATE.md",
+      "docs/agent-workflow/PR-COMPLIANCE.yaml"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

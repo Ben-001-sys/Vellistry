@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "label": "unchanged",
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-c",
+        "import importlib.util,sys,unittest\nfrom pathlib import Path\nsource=Path(sys.argv[1]); inventory=Path(sys.argv[2])\nspec=importlib.util.spec_from_file_location('existing_ci_policy_contract',source/'tests/test_ci_policy.py')\nm=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);m.ROOT=inventory\nsuite=unittest.TestSuite([m.WorkflowContractTests('test_only_one_automatic_workflow_and_original_jobs_intact')])\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nsys.exit(0 if result.wasSuccessful() else 1)\n",
+        "C:\\Users\\admin\\.codex\\worktrees\\vel-sec-001-actions\\Vellistry",
+        "C:\\Users\\admin\\AppData\\Local\\Temp\\vellistry-inventory-proof-tdmy_lbe"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_only_one_automatic_workflow_and_original_jobs_intact (existing_ci_policy_contract.WorkflowContractTests) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.108s\n\nOK\n"
+    },
+    {
+      "label": "new-manual-only-workflow",
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-c",
+        "import importlib.util,sys,unittest\nfrom pathlib import Path\nsource=Path(sys.argv[1]); inventory=Path(sys.argv[2])\nspec=importlib.util.spec_from_file_location('existing_ci_policy_contract',source/'tests/test_ci_policy.py')\nm=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);m.ROOT=inventory\nsuite=unittest.TestSuite([m.WorkflowContractTests('test_only_one_automatic_workflow_and_original_jobs_intact')])\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nsys.exit(0 if result.wasSuccessful() else 1)\n",
+        "C:\\Users\\admin\\.codex\\worktrees\\vel-sec-001-actions\\Vellistry",
+        "C:\\Users\\admin\\AppData\\Local\\Temp\\vellistry-inventory-proof-tdmy_lbe"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_only_one_automatic_workflow_and_original_jobs_intact (existing_ci_policy_contract.WorkflowContractTests) ... ERROR\n\n======================================================================\nERROR: test_only_one_automatic_workflow_and_original_jobs_intact (existing_ci_policy_contract.WorkflowContractTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\admin\\.codex\\worktrees\\vel-sec-001-actions\\Vellistry\\tests\\test_ci_policy.py\", line 140, in test_only_one_automatic_workflow_and_original_jobs_intact\n    self.assertEqual(d['jobs'],self.baseline[path.name]['workflow']['jobs'],path.name)\nKeyError: 'vel-sec-001-pg17-manual.yml'\n\n----------------------------------------------------------------------\nRan 1 test in 0.116s\n\nFAILED (errors=1)\n"
+    }
+  ],
+  "cleanup": "Temporary inventory deleted by TemporaryDirectory; no real workflow added"
+}

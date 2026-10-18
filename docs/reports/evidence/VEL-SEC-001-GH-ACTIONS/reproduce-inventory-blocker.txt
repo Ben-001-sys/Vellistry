@@ -1,0 +1,8 @@
+import importlib.util,sys,unittest
+from pathlib import Path
+source=Path(sys.argv[1]); inventory=Path(sys.argv[2])
+spec=importlib.util.spec_from_file_location('existing_ci_policy_contract',source/'tests/test_ci_policy.py')
+m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);m.ROOT=inventory
+suite=unittest.TestSuite([m.WorkflowContractTests('test_only_one_automatic_workflow_and_original_jobs_intact')])
+result=unittest.TextTestRunner(verbosity=2).run(suite)
+sys.exit(0 if result.wasSuccessful() else 1)
