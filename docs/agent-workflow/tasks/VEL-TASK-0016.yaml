@@ -44,11 +44,7 @@ inputs:
   role: attributed-source-and-owner-dispatch
 - path: docs/agent-workflow/inputs/VEL-TASK-0016/OWNER-DISPATCH.md
   role: attributed-source-and-owner-dispatch
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-AGENTS.md
-  role: attributed-source-and-owner-dispatch
 - path: docs/agent-workflow/inputs/VEL-TASK-0016/PR77-PR77-HANDOFF-SUPERSESSION.md
-  role: attributed-source-and-owner-dispatch
-- path: docs/agent-workflow/inputs/VEL-TASK-0016/pr77.json
   role: attributed-source-and-owner-dispatch
 - path: docs/agent-workflow/inputs/VEL-TASK-0016/source-map.json
   role: attributed-source-and-owner-dispatch
