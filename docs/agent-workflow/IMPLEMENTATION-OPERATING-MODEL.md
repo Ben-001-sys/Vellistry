@@ -33,8 +33,8 @@ agent/approval contracts. Use unique authorized task, committed source snapshots
 validated immutable ContextPack before edits and an ExecutionBundle afterward.
 **Lightweight governance** covers source-linked triage, indexing, draft tasks and
 review comments only; it cannot modify executable behavior, authority or accepted
-decisions. Commit author metadata alone cannot prove the executor. Automatic
-PR-to-task enforcement is NOT implemented by these docs; see Issue #73.
+decisions. Commit author metadata alone cannot prove the executor. Static PR-to-task enforcement is integrated through PR76; see Issue #73 and
+PR-COMPLIANCE.md. It validates declared evidence, not authenticated identity.
 
 | Boundary | Effective status / permitted transition |
 |---|---|

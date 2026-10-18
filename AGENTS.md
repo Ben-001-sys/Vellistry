@@ -39,7 +39,7 @@ Use [the merged operational workflow](docs/agent-workflow/README.md): unique own
 
 **Lightweight governance** means coordinator triage, source indexing, draft task preparation and review/evidence comments that do not implement executable changes, alter effective instructions or promote decisions. These remain attributed, source-linked and reviewable; task preparation is not dispatch or owner acceptance. This exception cannot be used to alter CI, tests, security, agent authority or accepted decisions.
 
-No automatic PR-to-task enforcement is claimed as authenticated identity or owner approval; [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) now has a proposed [static compliance contract](docs/agent-workflow/PR-COMPLIANCE.md) under Task0010. Its base-anchored checks, provisional bootstrap and owner-protected review limits must be inspected before adoption. Read the current [operating model](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md) for design/coding task exceptions versus private-pilot/release gates.
+No automatic PR-to-task enforcement is claimed as authenticated identity or owner approval. [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) is integrated through PR76: the [static compliance contract](docs/agent-workflow/PR-COMPLIANCE.md) runs from the reviewed base. Its initial bootstrap is historical; its owner-protected review limits remain. Read the current [operating model](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md) for design/coding task exceptions versus private-pilot/release gates.
 
 ## Duties
 - Report what is **FACT**, what is **INTERPRETATION**, and what is **PROPOSAL**.

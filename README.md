@@ -52,7 +52,10 @@ disposable instances. This documentation task does not authorize cloud operation
 [Primary Vellistry CI](.github/workflows/ci.yml) runs exact-head governance on PRs,
 conservative applicable application/security checks before merge, and full main
 or manual verification. Draft advisory execution deliberately leaves the stable
-merge gate blocked. The25 older workflows are **manual-only** historical jobs.
+merge gate blocked. The25 older workflows are **manual-only** historical jobs;
+the named PG17 manual harness adds disposable privilege evidence.
+The [44-item remediation ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md)
+indexes the current owner mandate and remaining gates.
 
 Run `python scripts/agent_workflow.py validate`,
 `python scripts/check_knowledge_metadata.py`,
