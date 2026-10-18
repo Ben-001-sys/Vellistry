@@ -1,0 +1,28 @@
+COMMAND: "C:\Program Files\Python310\python.exe" -X utf8 -m unittest discover -s tests -p test_pg17_action_harness.py -v
+SOURCE_COMMIT=17087f3fe6246beb3237fd075c01b4be6448f945
+test_exact_manual_contract_passes (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_inventory_rejects_unknown_names_and_historical_job_changes (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_job_service_and_target_are_exact (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_no_automatic_or_input_events (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_required_commands_cannot_be_skipped_replaced_or_softened (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_token_permissions_and_credentials_cannot_expand (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_after_requires_success_and_original_pass_marker (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_all_exact_source_pins_match_immutable_git_data (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_before_requires_exact_failure_and_sqlstate (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_cleanup_absence_is_checked_and_failures_are_not_masked (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_command_failure_and_timeout_are_recorded (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_forbidden_remote_and_credential_overrides_fail (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_independent_storage_cleanup_refuses_unsafe_paths (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_only_manual_service_id_context_is_allowed (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_orchestration_separates_databases_and_always_cleans_failures (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_service_image_health_ports_version_and_digest_guards (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_source_drift_or_missing_fixture_fails_before_sql (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_supplement_preserves_source_and_requires_rollback (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_target_database_and_sql_file_guards (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.672s
+
+OK
+
+EXIT_CODE=0

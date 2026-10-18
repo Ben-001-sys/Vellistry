@@ -1,0 +1,45 @@
+{
+  "source_commit": "bf88c914b1cd20a45ffbfce478d547e272aaca3d",
+  "completed": [
+    {
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_pg17_action_harness.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "source_commit": "bf88c914b1cd20a45ffbfce478d547e272aaca3d",
+      "count": 19,
+      "evidence": "harness19.txt"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_ci_policy.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "source_commit": "bf88c914b1cd20a45ffbfce478d547e272aaca3d",
+      "count": 37,
+      "evidence": "policy37.txt"
+    }
+  ],
+  "old_inventory_expected_failure_exit": 1,
+  "manual_pg17": "NOT_RUN"
+}

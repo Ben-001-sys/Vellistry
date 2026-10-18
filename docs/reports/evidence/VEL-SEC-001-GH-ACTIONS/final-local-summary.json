@@ -1,0 +1,42 @@
+{
+  "source_commit": "17087f3fe6246beb3237fd075c01b4be6448f945",
+  "tests": [
+    {
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_pg17_action_harness.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "source_commit": "17087f3fe6246beb3237fd075c01b4be6448f945",
+      "evidence": "harness19-final.txt"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python310\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_ci_policy.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "source_commit": "17087f3fe6246beb3237fd075c01b4be6448f945",
+      "evidence": "policy37-final.txt"
+    }
+  ],
+  "pg17_manual": "NOT_RUN"
+}

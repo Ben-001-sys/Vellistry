@@ -1,0 +1,17 @@
+COMMAND: "C:\Program Files\Python310\python.exe" -X utf8 -m unittest discover -s C:\Users\admin\AppData\Local\Temp\tmpruqpw5xk\tests -p test_ci_policy.py -k test_only_one_automatic_workflow -v
+test_only_one_automatic_workflow_and_original_jobs_intact (test_ci_policy.WorkflowContractTests) ... ERROR
+
+======================================================================
+ERROR: test_only_one_automatic_workflow_and_original_jobs_intact (test_ci_policy.WorkflowContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Local\Temp\tmpruqpw5xk\tests\test_ci_policy.py", line 140, in test_only_one_automatic_workflow_and_original_jobs_intact
+    self.assertEqual(d['jobs'],self.baseline[path.name]['workflow']['jobs'],path.name)
+KeyError: 'vel-sec-001-pg17-manual.yml'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.111s
+
+FAILED (errors=1)
+
+EXIT_CODE=1
