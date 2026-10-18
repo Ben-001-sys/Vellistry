@@ -13,8 +13,6 @@ jobs:
         env:
           POSTGRES_HOST_AUTH_METHOD: trust
         options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
-    env:
-      PG17_SERVICE_ID: ${{ job.services.postgres.id }}
     steps:
       - name: Checkout exact reviewed revision
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -24,9 +22,13 @@ jobs:
           fetch-depth: 1
       - name: Run pinned synthetic PG17 evidence
         run: python3 scripts/pg17_book_privilege_evidence.py
+        env:
+          PG17_SERVICE_ID: ${{ job.services.postgres.id }}
       - name: Independently verify disposable database cleanup
         if: ${{ always() }}
         run: python3 scripts/pg17_book_privilege_evidence.py --cleanup
+        env:
+          PG17_SERVICE_ID: ${{ job.services.postgres.id }}
       - name: Upload synthetic evidence only
         if: ${{ always() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

@@ -41,8 +41,8 @@ class ManualWorkflowSafetyTests(unittest.TestCase):
         for permissions in ({'contents':'write'},{'id-token':'write'},{'contents':'read'}):
             self.rejected('job-'+str(permissions),lambda w,p=permissions:w['jobs']['pg17'].update(permissions=p))
         self.rejected('persist-checkout',lambda w:w['jobs']['pg17']['steps'][0]['with'].update({'persist-credentials':'true'}))
-        self.rejected('secret',lambda w:w['jobs']['pg17']['env'].update(KEY='${{ secrets.KEY }}'))
-        self.rejected('external-docker',lambda w:w['jobs']['pg17']['env'].update(DOCKER_HOST='tcp://remote'))
+        self.rejected('secret',lambda w:w['jobs']['pg17'].update(env={'KEY':'${{ secrets.KEY }}'}))
+        self.rejected('external-docker',lambda w:w['jobs']['pg17'].update(env={'DOCKER_HOST':'tcp://remote'}))
 
     def test_job_service_and_target_are_exact(self):
         for label,mutate in (
@@ -52,7 +52,7 @@ class ManualWorkflowSafetyTests(unittest.TestCase):
             ('pg16',lambda w:w['jobs']['pg17']['services']['postgres'].update(image='postgres:16')),
             ('host-port',lambda w:w['jobs']['pg17']['services']['postgres'].update(ports=['5432:5432'])),
             ('missing-health',lambda w:w['jobs']['pg17']['services']['postgres'].pop('options')),
-            ('arbitrary-target',lambda w:w['jobs']['pg17']['env'].update(PG17_SERVICE_ID='remote')),
+            ('arbitrary-target',lambda w:w['jobs']['pg17']['steps'][1]['env'].update(PG17_SERVICE_ID='remote')),
             ('soft-job',lambda w:w['jobs']['pg17'].update({'continue-on-error':'true'})),
             ('skip-job',lambda w:w['jobs']['pg17'].update({'if':'false'})),
         ):self.rejected(label,mutate)
