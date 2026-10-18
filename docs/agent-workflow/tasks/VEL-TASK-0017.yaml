@@ -1,0 +1,92 @@
+id: VEL-TASK-0017
+title: 'STATE-RECONCILE: master mandate source, live state and44-item evidence ledger'
+type: implementation-task
+status: ready
+created_at: '2026-10-18'
+updated_at: '2026-10-18'
+owner: project_owner
+context_pack_id: VEL-CP-0017
+objective: Reconcile current repository facts and establish evidence-based44-item
+  ledger without changing app, SQL, CI or approval authority.
+in_scope: &id001
+- CURRENT-STATE.md
+- AGENTS.md
+- README.md
+- PROJECT.md
+- SOURCE-OF-TRUTH.md
+- docs/agent-workflow/README.md
+- docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
+- docs/agent-workflow/PR-COMPLIANCE.md
+- docs/agent-workflow/tasks/VEL-TASK-0017.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0017.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0017.md
+- docs/agent-workflow/inputs/VEL-TASK-0017/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-MASTER-*
+- docs/reports/CURRENT-STATE-ARCHIVE-2026-10-18.md
+out_of_scope:
+- App/SQL/CI/tests/dependencies and historical pack mutation
+- Hosted/secrets/private data/paid/admin/deployment/merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0017/MANDATE-PART-1.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0017/MANDATE-PART-2.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0017/OWNER-DISPATCH.md
+  role: governing-source
+source_gaps:
+- id: AUTH
+  limitation: Direct owner chat authorization; no fabricated GitHub approval. Issue71
+    is index, not human authentication.
+- id: SOURCES
+  limitation: Original44-item file recovered separately; SRC001-004 research originals
+    remain distinct.
+- id: REVIEW
+  limitation: Exact-head independent review and owner integration still required;
+    standing delegation conditional on effective governance.
+deliverables:
+- Committed source/task then immutable validatedCP before edits
+- Compact current state with byte-preserved prior snapshot
+- 44 individually numbered evidence entries preserving original acceptance and derived
+  counts
+- ExecutionBundle, actual checks, draft PR and independent review request
+acceptance_criteria:
+- Original checklist bytes/hash unchanged; exactly44 numbered entries, no invented
+  DONE
+- Current facts use live main and actualCI; historical status archived
+- No new scope/permission or false hosted/JWT acceptance; all existing workflows untouched
+- Actual governance checks and exact-headCI; distinct reviewer evidence or NOT_RUN
+allowed_actions:
+- Read live repository/issues/PRs/protections and local named original sources
+- Create task/source and pack commits before scoped documentation edits
+- Run validators and fullCI; push isolated branch, draftPR and evidence index
+approval_required_for:
+- Owner merge under current governing authority; no self-approval
+- Hosted/production/private/paid/admin/SQL/security operations and scope expansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: direct-owner-master-mandate-dispatch; issue71-index-only
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
