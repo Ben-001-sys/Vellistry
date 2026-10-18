@@ -1,7 +1,7 @@
 id: VEL-TASK-0016
 title: VEL-LANG-001 main-based recovery of ChatGPT PR77 proposal
 type: implementation-task
-status: ready
+status: verification
 created_at: '2026-10-18'
 updated_at: '2026-10-18'
 owner: project_owner
