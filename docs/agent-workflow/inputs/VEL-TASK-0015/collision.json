@@ -1,0 +1,64 @@
+{
+  "used_historical_ids": [
+    "0001",
+    "0002",
+    "0003",
+    "0004",
+    "0005",
+    "0006",
+    "0007",
+    "0008",
+    "0009",
+    "0010",
+    "0011",
+    "0012",
+    "0013"
+  ],
+  "selected": "0014",
+  "collision_0012": [
+    {
+      "ref": "origin/codex/vel-sec-001",
+      "head": "e4d231ef664a95a4aab0b53fc09f1b5e25faf478",
+      "artifacts": [
+        {
+          "kind": "TASK",
+          "path": "docs/agent-workflow/tasks/VEL-TASK-0012.yaml",
+          "blob": "88385a6485329248b33eb7b039bb25674fc40b5e"
+        },
+        {
+          "kind": "CP",
+          "path": "docs/agent-workflow/context-packs/VEL-CP-0012.md",
+          "blob": "d9d9590f841edd1ac3ec3fd5c7f540b133a6e07a"
+        },
+        {
+          "kind": "EB",
+          "path": "docs/agent-workflow/execution-bundles/VEL-EB-0012.md",
+          "blob": "5d10d9ee23373b5d69c8f08e0a5f90996df02668"
+        }
+      ]
+    },
+    {
+      "ref": "origin/docs/vel-language-standard-20261017",
+      "head": "3cb1030ae4c636fc18245ed8ae23ebb967e5407d",
+      "artifacts": [
+        {
+          "kind": "TASK",
+          "path": "docs/agent-workflow/tasks/VEL-TASK-0012.yaml",
+          "blob": "33d93ffb911ce194a5e4fcc088c8057940028435"
+        },
+        {
+          "kind": "CP",
+          "path": "docs/agent-workflow/context-packs/VEL-CP-0012.md",
+          "blob": "2251508a4871d2d687bea090497257949eddda74"
+        },
+        {
+          "kind": "EB",
+          "path": "docs/agent-workflow/execution-bundles/VEL-EB-0012.md",
+          "blob": "aad78c7647e96fc29cb3b0f312e65c8dae9027d8"
+        }
+      ]
+    }
+  ],
+  "coordinator_reserved_task": "0013",
+  "resolution": "New Task/CP/EB0014 supersedes blocked security0012 for Actions harness only; both historical0012 branches/blobs and coordinator0013 preserved, not renamed/adopted."
+}
