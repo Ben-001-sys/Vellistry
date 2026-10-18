@@ -1,0 +1,45 @@
+{
+  "command": [
+    "C:/Users/admin/.codex/worktrees/vel-gov-003/Vellistry/.compliance-venv.log/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_pr_compliance.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests": 57,
+  "duration_seconds": 297.73,
+  "start_checkpoint": "bf88c914b1cd20a45ffbfce478d547e272aaca3d",
+  "completion_head": "17087f3fe6246beb3237fd075c01b4be6448f945",
+  "unchanged_subjects_between_checkpoints": {
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "bf88c914b1cd20a45ffbfce478d547e272aaca3d",
+      "17087f3fe6246beb3237fd075c01b4be6448f945",
+      "--",
+      "scripts/pr_compliance.py",
+      "scripts/run_pr_compliance.py",
+      "scripts/agent_workflow.py",
+      "tests/test_pr_compliance.py",
+      ".github/workflows/ci.yml"
+    ],
+    "exit_code": 0,
+    "paths": [
+      "scripts/pr_compliance.py",
+      "scripts/run_pr_compliance.py",
+      "scripts/agent_workflow.py",
+      "tests/test_pr_compliance.py",
+      ".github/workflows/ci.yml"
+    ]
+  },
+  "output": "compliance57.txt",
+  "latest_exact_head_ci": "Required separately, not inferred from this local checkpoint"
+}

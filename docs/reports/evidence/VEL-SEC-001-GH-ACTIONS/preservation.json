@@ -1,0 +1,24 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--exit-code",
+    "021379856d07611752832b44bfe951d6ae36f0b2",
+    "HEAD",
+    "--",
+    ".github/workflows/ci.yml",
+    "scripts/ci_policy.py",
+    "scripts/pr_compliance.py",
+    "scripts/ci_governance.py",
+    "docs/reports/evidence/VEL-CI-OPT-001/workflow-baseline.json",
+    "AGENTS.md",
+    "CURRENT-STATE.md",
+    "docs/decisions",
+    "apps",
+    "supabase",
+    "tests/book_privileges_regression.sql"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

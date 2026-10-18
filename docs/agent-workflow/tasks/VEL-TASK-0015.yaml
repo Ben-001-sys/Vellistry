@@ -1,0 +1,115 @@
+id: VEL-TASK-0015
+title: VEL-SEC-001 owner-authorized manual PG17 inventory amendment
+type: implementation-task
+status: verification
+created_at: '2026-10-18'
+updated_at: '2026-10-18'
+owner: project_owner
+context_pack_id: VEL-CP-0015
+objective: Implement manual-only PG17 evidence harness and specifically authorized
+  fixed-inventory test exception; preserve all automatic/security/governance controls;
+  deliver draft PR/CI, SQL NOT_RUN pending owner integration/dispatch.
+in_scope: &id001
+- .github/workflows/vel-sec-001-pg17-manual.yml
+- scripts/pg17_book_privilege_evidence.py
+- tests/test_pg17_action_harness.py
+- docs/agent-workflow/inputs/VEL-TASK-0015/*
+- docs/agent-workflow/tasks/VEL-TASK-0015.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0015.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0015.md
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SEC-001-GH-ACTIONS-*
+- docs/reports/evidence/VEL-SEC-001-GH-ACTIONS/*
+- tests/test_ci_policy.py
+out_of_scope:
+- Any ci.yml, scripts/ci_policy.py, scripts/pr_compliance.py, scripts/ci_governance.py,
+  archived baseline, accepted instruction, app or SQL change
+- Hosted Supabase, PR68 edits/migration approval, real data/secrets, billing/settings/deploy
+  or merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: owner-boundaries
+- path: AGENTS.md
+  role: primary-implementer
+- path: docs/agent-workflow/README.md
+  role: immutable-handoff
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: base-anchored-gate
+- path: .github/workflows/ci.yml
+  role: unchanged-automatic-six-jobs
+- path: tests/test_ci_policy.py
+  role: only-authorized-new-inventory-exception
+- path: docs/agent-workflow/inputs/VEL-TASK-0015/OWNER-AMENDMENT.md
+  role: direct-owner-authorized-amendment
+- path: docs/agent-workflow/inputs/VEL-TASK-0015/architecture-review.json
+  role: independent-advisory-conditions
+- path: docs/agent-workflow/inputs/VEL-TASK-0015/sources.json
+  role: fixed-unmerged-source-pins
+- path: docs/agent-workflow/inputs/VEL-TASK-0015/collision.json
+  role: preserved-historical-collision
+- path: docs/agent-workflow/inputs/VEL-TASK-0015/DESIGN.md
+  role: bounded-design-and-negatives
+source_gaps:
+- id: DISPATCH
+  limitation: Manual workflow must first be owner-reviewed/merged onto default branch
+    then owner-dispatched. No hosted PG17 results claimed beforehand.
+- id: SYNTHETIC
+  limitation: Fixture defaults/PUBLIC injection not observed hosted rights. JWT/private-pilot
+    hold and third migration approval remain separate.
+- id: AUTH
+  limitation: Direct user dispatch in this chat; linked comment is coordinator relay,
+    not authenticated human approval.
+deliverables:
+- Committed unique task/sources and validated immutable CP0015 before code
+- One manual-only read-only Actions workflow, minimal Python helper and negative/positive
+  harness tests
+- Source-bound EB0015, actual local/full/draft CI evidence, draft harness PR; actual
+  PG17 evidence NOT_RUN pending owner integration/dispatch
+acceptance_criteria:
+- One automatic ci.yml and its six jobs unchanged; manual event only, read-only token,
+  no secrets or elevated jobs, actionlint
+- Exact source SHA/blob/SHA256 pins and service-only PG17 checks before applying temporary
+  SQL; source/host/version drift fails
+- Fresh BEFORE and AFTER database workflows distinguish exact expected defect from
+  unrelated errors; AFTER original48ACL and supplemental actual privilege/RLS behavior,
+  cleanup failure fails
+- Synthetic owner/cross-author/forged ownership and REFERENCES/TRIGGER/TRUNCATE SQLSTATE
+  controls plus PUBLIC/role inheritance checks
+- Global0012 collision recorded without mutation; new unused0015; no SQL path or prior
+  PR modified
+- Harness unit tests and actual consolidated CI pass at final exact head; no claimed
+  manual PG17 results until owner-controlled later dispatch
+- Only tests/test_ci_policy.py inventory exception, exact allowed filename with hard
+  full security contract; prohibited mutation negative tests and all25 archive jobs
+  intact
+allowed_actions:
+- Read main, source PR and public docs; reserve unused0015, commit source snapshots/task,
+  generate/validate/commit immutable CP before code
+- Implement only allowed workflow/helper/test/docs paths; run local synthetic harness
+  unit tests and unchanged full/draft CI
+- Create draft harness PR and evidence ledger/Issue74 checkpoint
+- After owner merges, owner manually dispatches; no new harness dispatch by Codex
+  in this task
+- Apply direct owner-authorized tests/test_ci_policy.py exact-name exception with
+  fail-closed safety/negative controls
+approval_required_for:
+- Owner merge/integration of harness and later manual PG17 dispatch
+- Any SQL source/migration approval/apply, hosted connection, broader scope, automatic
+  policy changes, billing/admin/settings/deploy/merge
+compliance:
+  change_base: 021379856d07611752832b44bfe951d6ae36f0b2
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/74#issuecomment-6249988374
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
