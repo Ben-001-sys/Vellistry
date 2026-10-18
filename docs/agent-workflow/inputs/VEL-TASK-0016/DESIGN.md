@@ -1,0 +1,9 @@
+# Bounded integration plan
+
+FACT: current main includes PR76 controls and merged PR78. PR77 remains source-only. IDs0010/0011 historical pack issues and two independent0012 lineages are preserved, not imported or rewritten.
+
+PROPOSAL: after committed validated CP0016, adopt only the three original LANGUAGE.md commits as new Codex adoption commits, with original ChatGPT executor and matching stable Git patch IDs. These commits preserve the exact final source bytes, proposal status and fifteen pending decisions. Do not include old task/pack commits. Reconcile the original language-only AGENTS subsection into current main in a separate Codex commit; explicitly retain current main governance and metadata, increment only the current document date/version. Do not claim its adapted patch equals the original AGENTS commit.
+
+Verification: exact LANGUAGE Git blob equality and all fifteen Section16 decisions retained; current AGENTS minus the inserted language subsection and metadata increment equals main; no prohibited paths; exact three adopted patch-ID comparisons; actual handoff validator, metadata/readiness/spec validation, existing compliance tests; trusted-base compliance on real final committed head; exact-head draft CI. Owner reviews before Ready/merge; no semantic adoption. Record all commands/exits as evidence under this input directory after execution. Existing full CI may be manually dispatched for applicable verification; no workflow changes or new PG17 harness dispatch.
+
+Historical language baseline/date statements are retained as original provenance, not claims of current runtime acceptance. The integration bundle explains current main and this distinction. All external-research claims remain original dated source evidence; this integration does not recertify competitor or hosted behavior.
