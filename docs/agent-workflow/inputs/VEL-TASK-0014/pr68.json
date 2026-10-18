@@ -1,0 +1,262 @@
+{
+  "commits": [
+    {
+      "authoredDate": "2026-10-14T22:42:13Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "(cherry picked from commit c04504bdb89d3597ad18ce5d10d14491a7c8c6e8)",
+      "messageHeadline": "feat(dev): add no-network hosted Supabase environment preflight",
+      "oid": "fe3925cca6791ac7ef2fae3d30baaa4eaf6b85da"
+    },
+    {
+      "authoredDate": "2026-10-14T22:42:36Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026stics\n\n(cherry picked from commit c0de77c301af66704de31bb7f704ea1245e1015e)",
+      "messageHeadline": "test(dev): cover cloud ref, public keys, loopback and redacted diagno\u2026",
+      "oid": "b0014647da337635975d447491b24cdf31398e40"
+    },
+    {
+      "authoredDate": "2026-10-14T22:42:56Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "(cherry picked from commit 809c4c000b34d8f90037716989eef1d4e467e614)",
+      "messageHeadline": "build(dev): add hosted env preflight and test commands",
+      "oid": "da076c4d90c345f29b58678468eb72cb73c8c3a5"
+    },
+    {
+      "authoredDate": "2026-10-14T22:43:00Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "(cherry picked from commit 3c7d1614545b466efbfa6596150f30f117aa58b0)",
+      "messageHeadline": "ci: include offline Supabase cloud config guard regressions",
+      "oid": "0ce67561a2280cb08d114b3a546fac7f862260ea"
+    },
+    {
+      "authoredDate": "2026-10-14T22:43:04Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "(cherry picked from commit abf4d7e3365f2935ef9b8b59788075f999a129ac)",
+      "messageHeadline": "fix(web): use cloud-neutral missing Supabase config message",
+      "oid": "5d291fbf8fe84a1faeb80e49ec895ff430d159fc"
+    },
+    {
+      "authoredDate": "2026-10-14T22:43:31Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026example\n\n(cherry picked from commit 519e95df6b4420dac6969741f513e6cc40e48863)",
+      "messageHeadline": "docs(dev): add safe per-app cloud environment template apps/web/.env.\u2026",
+      "oid": "6ea35ee48ed28e942d1c6881dc303d00a6be9771"
+    },
+    {
+      "authoredDate": "2026-10-14T22:43:34Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026example\n\n(cherry picked from commit 897f8fbf88dc458893872d27d1324ac67b8dd037)",
+      "messageHeadline": "docs(dev): add safe per-app cloud environment template apps/api/.env.\u2026",
+      "oid": "539a9e0a9ce427005f4ca36e7e89effc8803ce94"
+    },
+    {
+      "authoredDate": "2026-10-14T22:43:38Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026idance\n\n(cherry picked from commit 2d28eb0a600121f5deb14991b939821986e5be08)",
+      "messageHeadline": "docs(dev): replace obsolete local-Supabase root example with cloud gu\u2026",
+      "oid": "03c713007b7f09e3a466e0614605ad9e5243f850"
+    },
+    {
+      "authoredDate": "2026-10-14T22:44:30Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026ptance matrix\n\n(cherry picked from commit 70f421efa132aad06ffe20846022e9d35b70625a)",
+      "messageHeadline": "docs(imp001b): define hosted-cloud migration hold point and real acce\u2026",
+      "oid": "d768d7020d06f3152c3666a05fec290baf13ee2a"
+    },
+    {
+      "authoredDate": "2026-10-14T22:44:48Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "(cherry picked from commit 1332a21d2eb31f7a423c9537a687535b59559338)",
+      "messageHeadline": "docs(safety): never overwrite existing ignored local environment files",
+      "oid": "be164853c80769c186a3adae2c0ee539bbd52ca7"
+    },
+    {
+      "authoredDate": "2026-10-14T22:45:07Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:10:25Z",
+      "messageBody": "\u2026ht gate\n\n(cherry picked from commit 604e1ebfd0baab930ee4dc39aecf7289dc64188a)",
+      "messageHeadline": "docs(state): reconcile merged IMP-001 and record hosted cloud preflig\u2026",
+      "oid": "212ea83882928c323c11e2b38eb684daf2fe7642"
+    },
+    {
+      "authoredDate": "2026-10-14T23:12:12Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:12:12Z",
+      "messageBody": "",
+      "messageHeadline": "docs(imp-001b): pin Issue 67 and original PR provenance for Codex",
+      "oid": "237e41824012c1c1136eefcee6a5d11f5f974c77"
+    },
+    {
+      "authoredDate": "2026-10-14T23:17:20Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:17:20Z",
+      "messageBody": "\u2026 hold",
+      "messageHeadline": "fix(imp-001b): block unchecked runtime overrides and review migration\u2026",
+      "oid": "a6dee3edd37ab05b2607e716e375f0d216b5066a"
+    },
+    {
+      "authoredDate": "2026-10-14T23:21:20Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:21:20Z",
+      "messageBody": "",
+      "messageHeadline": "docs(imp-001b): record Codex Phase A execution and hosted approval gate",
+      "oid": "f29d65ea079cdab9fda7417470f8633331fb16a1"
+    },
+    {
+      "authoredDate": "2026-10-14T23:24:32Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-14T23:24:32Z",
+      "messageBody": "",
+      "messageHeadline": "docs(imp-001b): record GitHub Actions account execution blocker",
+      "oid": "942f8da7969aeb351786f25bc464ea296ae78969"
+    },
+    {
+      "authoredDate": "2026-10-15T17:18:31Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:18:31Z",
+      "messageBody": "",
+      "messageHeadline": "Prepare books privilege hardening after authorized hosted precheck",
+      "oid": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9"
+    },
+    {
+      "authoredDate": "2026-10-15T17:20:59Z",
+      "authors": [
+        {
+          "email": "hotorben001@gmail.com",
+          "id": "U_kgDOC65bdA",
+          "login": "Ben-001-sys",
+          "name": "Hotor Benjamin"
+        }
+      ],
+      "committedDate": "2026-10-15T17:20:59Z",
+      "messageBody": "",
+      "messageHeadline": "Record exact-source checks and hosted pre-apply blockers",
+      "oid": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551"
+    }
+  ],
+  "headRefOid": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+  "isDraft": true,
+  "state": "OPEN"
+}
