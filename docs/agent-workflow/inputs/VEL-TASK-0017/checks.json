@@ -1,0 +1,42 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "exit_code": 0,
+    "duration_seconds": 0.266,
+    "source_commit": "5094041987729b56c004333878a6002600d8dccf",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0017/check-0.txt",
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "source_commit": "5094041987729b56c004333878a6002600d8dccf",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0017/check-1.txt",
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "duration_seconds": 0.094,
+    "source_commit": "5094041987729b56c004333878a6002600d8dccf",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0017/check-2.txt",
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "source_commit": "5094041987729b56c004333878a6002600d8dccf",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0017/check-3.txt",
+    "status": "PASS"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "duration_seconds": 32.765,
+    "source_commit": "5094041987729b56c004333878a6002600d8dccf",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0017/check-4.txt",
+    "status": "PASS"
+  }
+]

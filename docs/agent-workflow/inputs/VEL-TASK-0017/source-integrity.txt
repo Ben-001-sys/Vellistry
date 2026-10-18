@@ -1,0 +1,1 @@
+PASS:44 original acceptance entries unchanged; exactly44 unique ledger headings; original mandate/checklist Git bytes equal recovered files; prior CURRENT-STATE byte-identical. No tests/CI/app/SQL paths changed.
