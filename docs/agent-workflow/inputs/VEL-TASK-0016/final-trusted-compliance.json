@@ -1,0 +1,19 @@
+{
+  "command": "python -I scripts/run_pr_compliance.py",
+  "event": {
+    "action": "synchronize",
+    "pull_request": {
+      "draft": true,
+      "head": {
+        "sha": "6ccf4469d877fd522b6dcb574107dd3fe049f1a4"
+      },
+      "base": {
+        "sha": "098ab06a40a84eaba5880223f02e80fab3bf9e86"
+      }
+    }
+  },
+  "head": "6ccf4469d877fd522b6dcb574107dd3fe049f1a4",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-lang-001-main-integration\\scripts\\run_pr_compliance.py\", line 65, in <module>\n    run()\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-lang-001-main-integration\\scripts\\run_pr_compliance.py\", line 60, in run\n    runpy.run_path(str(trusted/'pr_compliance.py'),run_name='__main__')\n  File \"C:\\Program Files\\Python310\\lib\\runpy.py\", line 289, in run_path\n    return _run_module_code(code, init_globals, run_name,\n  File \"C:\\Program Files\\Python310\\lib\\runpy.py\", line 96, in _run_module_code\n    _run_code(code, mod_globals, init_globals,\n  File \"C:\\Program Files\\Python310\\lib\\runpy.py\", line 86, in _run_code\n    exec(code, run_globals)\n  File \"C:\\Users\\admin\\AppData\\Local\\Temp\\vellistry-trusted-compliance-0n9spzi0\\pr_compliance.py\", line 14, in <module>\nModuleNotFoundError: No module named 'yaml'\n"
+}

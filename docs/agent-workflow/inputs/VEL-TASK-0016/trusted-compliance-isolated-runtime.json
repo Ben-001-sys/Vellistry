@@ -1,0 +1,19 @@
+{
+  "command": "C:/Users/admin/.codex/worktrees/vel-gov-003/Vellistry/.compliance-venv.log/Scripts/python.exe -I scripts/run_pr_compliance.py",
+  "event": {
+    "action": "synchronize",
+    "pull_request": {
+      "draft": true,
+      "head": {
+        "sha": "6ccf4469d877fd522b6dcb574107dd3fe049f1a4"
+      },
+      "base": {
+        "sha": "098ab06a40a84eaba5880223f02e80fab3bf9e86"
+      }
+    }
+  },
+  "head": "6ccf4469d877fd522b6dcb574107dd3fe049f1a4",
+  "exit_code": 0,
+  "stdout": "{\"authorization\": \"https://github.com/Ben-001-sys/Vellistry/issues/79\", \"base\": \"098ab06a40a84eaba5880223f02e80fab3bf9e86\", \"changed_paths\": [\"AGENTS.md\", \"LANGUAGE.md\", \"docs/agent-workflow/PR-COMPLIANCE.yaml\", \"docs/agent-workflow/context-packs/VEL-CP-0016.md\", \"docs/agent-workflow/execution-bundles/VEL-EB-0016.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/DESIGN.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/LANGUAGE-REVIEW-EXCERPT.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/OWNER-DISPATCH.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-AGENTS.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part1.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part2.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part3.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part4.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE-part5.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-LANGUAGE.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/PR77-PR77-HANDOFF-SUPERSESSION.md\", \"docs/agent-workflow/inputs/VEL-TASK-0016/bundle-handoff-validation.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/chronology.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/compliance-tests.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/compliance57.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-1.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-2.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-3.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/documentation-check-4.txt\", \"docs/agent-workflow/inputs/VEL-TASK-0016/documentation-tests.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/id-scan.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/integration-verification.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/issue79.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/pr77.json\", \"docs/agent-workflow/inputs/VEL-TASK-0016/source-map.json\", \"docs/agent-workflow/tasks/VEL-TASK-0016.yaml\"], \"disposition\": \"evidence-consistent\", \"head\": \"6ccf4469d877fd522b6dcb574107dd3fe049f1a4\", \"implementation_head\": \"6ccf4469d877fd522b6dcb574107dd3fe049f1a4\", \"owner_disposition\": \"pending\", \"source_commit\": \"fab4fe0748a72348193f9cf233a302fb359969c3\", \"status\": \"pass\", \"task_id\": \"VEL-TASK-0016\", \"trust\": \"declared identity and linked authorization; owner verification required\", \"verifier_base\": \"098ab06a40a84eaba5880223f02e80fab3bf9e86\"}\n",
+  "stderr": ""
+}

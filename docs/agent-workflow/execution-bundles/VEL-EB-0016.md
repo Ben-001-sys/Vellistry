@@ -37,6 +37,8 @@ evidence:
 - docs/agent-workflow/inputs/VEL-TASK-0016/compliance-tests.json
 - docs/agent-workflow/inputs/VEL-TASK-0016/compliance57.txt
 - docs/agent-workflow/inputs/VEL-TASK-0016/bundle-handoff-validation.txt
+- docs/agent-workflow/inputs/VEL-TASK-0016/trusted-compliance-isolated-runtime.json
+- docs/agent-workflow/inputs/VEL-TASK-0016/final-trusted-compliance.json
 review:
   status: pending
   approved_by: null
@@ -84,6 +86,13 @@ execution:
     duration_seconds: 270.015
     evidence: docs/agent-workflow/inputs/VEL-TASK-0016/compliance57.txt
     source_commit: fab4fe0748a72348193f9cf233a302fb359969c3
+  - command: C:/Users/admin/.codex/worktrees/vel-gov-003/Vellistry/.compliance-venv.log/Scripts/python.exe
+      -I scripts/run_pr_compliance.py
+    exit_code: 0
+    status: PASS
+    source_commit: fab4fe0748a72348193f9cf233a302fb359969c3
+    evaluated_head: 6ccf4469d877fd522b6dcb574107dd3fe049f1a4
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0016/trusted-compliance-isolated-runtime.json
 owner_disposition: pending
 ---
 
@@ -124,7 +133,7 @@ This is repository documentation/instruction integration. No UI strings/routes o
 
 ## Tests
 
-Actual command/exits and source bindings are in the execution metadata and raw input logs. Exact original LANGUAGE blob, proposal status, fifteen decisions, three stable patch IDs, current AGENTS preservation, pack chronology and protected-path equality pass. Handoff, knowledge metadata, readiness and spec traceability validators pass. Existing compliance suite:57 tests PASS, exit0 in270.015seconds at operative sourcefab4fe0. Bundle-inclusive actual handoff validation:10tasks/8packs/8bundles PASS, exit0. Final trusted-base/head evaluation is executed after the evidence commit; exact-head CI ledger is in the new Draft PR.
+Actual command/exits and source bindings are in the execution metadata and raw input logs. Exact original LANGUAGE blob, proposal status, fifteen decisions, three stable patch IDs, current AGENTS preservation, pack chronology and protected-path equality pass. Handoff, knowledge metadata, readiness and spec traceability validators pass. Existing compliance suite:57 tests PASS, exit0 in270.015seconds at operative sourcefab4fe0. Bundle-inclusive actual handoff validation:10tasks/8packs/8bundles PASS, exit0. Trusted-base loader evaluated evidence head6ccf4469d877fd522b6dcb574107dd3fe049f1a4: PASS/exit0, with reviewed base098ab06 and source bindingfab4fe0. First system-python isolated invocation failed exit1 because -I hides user-installed PyYAML; unchanged loader passed using an existing isolated PyYAML6.0.3 environment. Both outputs retained. This following report-only commit declares the prior evidence head; final exact-head CI ledger is in the new Draft PR.
 
 `git diff --check origin/main HEAD` reports three blank-EOF warnings in attributed context snapshots/excerpts, exit2. No operative LANGUAGE/AGENTS warning; pinned source formatting is preserved. This check is explicitly not reported PASS. Source-only/no-runtime changes need no new test implementation. Actual GitHub exact-head checks/results will be recorded in the new Draft PR description; a legitimate draft red gate is distinct from compliance/governance failure. No preexisting green run is substituted.
 
