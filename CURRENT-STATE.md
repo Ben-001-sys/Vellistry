@@ -3,14 +3,14 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-18
+updated_at: 2026-10-19
 owner: project_owner
-version: 0.1.64
+version: 0.1.65
 ---
 
 # Vellistry — current facts and next authorized work
 
-## Checked repository checkpoint — 2026-10-18
+## Checked repository checkpoint — 2026-10-19
 
 **FACT:** live main is `fca0d96fd071f1165e3e16658d821a3d36a20293`.
 [Post-merge CI39136089610](https://github.com/Ben-001-sys/Vellistry/actions/runs/39136089610)
@@ -23,16 +23,23 @@ closed without merge; its ChatGPT-authored language source was adopted through
 PR80 with explicit provenance. LANGUAGE.md is present but proposed-owner-review;
 its15 decisions are not all owner-approved.
 
-| Open proposal | Current source / disposition |
+| Proposal | Verified disposition / source |
 |---|---|
-| [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) | Draft paused Cursor kickoff `5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85`; compare unique scope before supersession; do not reactivate. |
-| [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) | Draft ChatGPT preflight `604e1ebfd0baab930ee4dc39aecf7289dc64188a`; selective adoption/provenance review pending. |
-| [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | Draft ChatGPT ADR `36da413fea67179ac8395af1cececd477fd193a2`; effective policy adopted through PR75; source comparison/disposition pending. |
-| [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) | Draft Codex continuation `cbb379fa4a4eaa9f576f3abcce2c2258d22cc551`; contains inherited PR65 source and obsolete CI edits. Never merge entire stale branch; Issue81 governs offline reconciliation. |
+| [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) | CLOSED unmerged2026-10-19; superseded kickoff, source5c7c8fb preserved. Task0021 proved no unique application/SQL/CI changes. |
+| [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | CLOSED unmerged2026-10-19; original ChatGPT ADR source36da413 preserved byte-for-byte in main and adopted through PR75. |
+| [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) | Draft OPEN ChatGPT preflight604e1eb; safe helper/tests selectively adopted in Draft PR85, not merged. |
+| [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) | Draft OPEN Codex continuationcbb379f; includes PR65 source/obsolete CI. Never merge entire stale branch. Issue81 offline review is technically ready in PR84, owner/ChatGPT acceptance pending. |
+| [PR82](https://github.com/Ben-001-sys/Vellistry/pull/82) | CLOSED unmerged; failed handoff preserved, superseded by conformant Task/CP0018 and Draft PR83. |
+
+Draft candidates83–87 remain unmerged. Prior reviewed heads:83 `82a83ea` / fullCI39320774241;
+84 `8a4e526` /39320128393;85 `cb6b5d0` /39320829746;86 `6feb8d8` /39321788645;
+87 `c02069e` /39323878707, all SUCCESS. Subsequent state/recovery corrections require
+new exact-head CI and review in their PR ledgers; these prior runs stay historical.
+Codex advisory reviews are separate from ChatGPT review and owner approval.
 
 PR64 Library isolation is merged. Repository tests and disposable evidence do
 not establish hosted acceptance. Issue63 remains open pending reconciliation of
-its acceptance, Issue58 is paused, and Issue18 retains its independent-session
+its acceptance, Issue58 remains open with superseded kickoff disposition, and Issue18 retains its independent-session
 provenance/owner-disposition gap.
 
 ## Active mandate and onboarding
@@ -70,7 +77,9 @@ independent eligible work while integration waits.
   records PostgreSQL17.11, expected BEFORE P0001/exit3, AFTER48ACL checks and
   supplemental42501 denial probes, rollback and cleanup. Broad grants were
   deliberately injected. These are disposable synthetic results, not hosted ACLs.
-  Artifact12139701246 expires2026-11-01; durable retention is upcoming scoped work.
+  Artifact12139701246 expires2026-11-01; PR84 durably retains its original ZIP/result.
+  Archive SHA256 d426612fbb1197e8e80b8b5a7cd8cfa97e24c2307af3fe786485cf0e416fbf62
+  and member/source identities were independently reproduced (13 evidence checks).
 - [Owner exact SQL definition decision](https://github.com/Ben-001-sys/Vellistry/pull/68#issuecomment-6251764080)
   covers only third migration blob `230b1540bb5b8962fd2b797d4f8a467d3c035978`
   for a future bounded plan. Earlier statements that this definition is unapproved
@@ -86,6 +95,30 @@ independent eligible work while integration waits.
 - Read-only main protection inspection returned404; rulesets empty. Owner deferred
   settings for solo maintenance. Static provenance does not authenticate actors
   or prevent a malicious administrator bypass. No settings changed.
+
+## Verified offline continuation — 2026-10-19
+
+Issue81 offline readiness and corrected PR65/68 provenance are documented in
+[PR84](https://github.com/Ben-001-sys/Vellistry/pull/84); all38 paths mapped:
+5 unchanged ChatGPT paths,6 inherited with Codex changes,27 new PR68 paths.
+A P2 provenance finding was fixed and independently rechecked. CLI version/help
+could not run in the sandbox; no login/dry-run/hosted acceptance is claimed.
+[PR85](https://github.com/Ben-001-sys/Vellistry/pull/85) preserves original authorship
+while adopting only safe preflight helper/tests and package scripts;19 synthetic
+preflight and66 Library tests/builds/checks passed locally and in fullCI. It does
+not integrate SQL or application features. PR65/68 stay OPEN pending adoption.
+
+[PR87 recovery proof](https://github.com/Ben-001-sys/Vellistry/pull/87) records an
+actual missing non-ancestor commit failure, then corrected43-pin recovery. Clean
+restored source passed15 handoff,8 entrypoint,66 Library and19 preflight tests plus
+builds/checks. Corrupt-bundle and missing-file negatives failed as intended.
+The retained anchored bundle survives fresh-clone GC/fsck/handoff verification.
+Same host/root context: fresh independent AI/OS and hosted recovery NOT_RUN.
+Four observed fullCI runs took147–178 wall seconds; job elapsed sums204–236s.
+These are timings, not billable minutes, savings or model tokens.
+Ledger38/42 now PARTIAL;41 remains PARTIAL;27 NOT_STARTED. Current totals:
+**14 DONE /21 PARTIAL /4 BLOCKED /4 IN_VERIFICATION /1 NOT_STARTED =44**.
+Full original acceptance blocks and earlier checkpoints remain in the ledger.
 
 ## Historical evidence retained
 

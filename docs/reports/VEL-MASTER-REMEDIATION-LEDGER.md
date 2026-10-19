@@ -4,7 +4,7 @@
 
 [Original checklist](../agent-workflow/inputs/VEL-TASK-0017/ORIGINAL-CHECKLIST.md), [owner-adopted mandate](../agent-workflow/inputs/VEL-TASK-0017/MASTER-MANDATE.md), [raw issue/PR/run evidence](../agent-workflow/inputs/VEL-TASK-0017/), [Issue71 index](https://github.com/Ben-001-sys/Vellistry/issues/71).
 
-**Derived counts:** BLOCKED=4, DONE=14, IN_VERIFICATION=4, NOT_STARTED=3, PARTIAL=19; total44. IN_VERIFICATION is candidate correction, not integrated DONE.
+**Derived counts:** BLOCKED=4, DONE=14, IN_VERIFICATION=4, NOT_STARTED=1, PARTIAL=21; total44. IN_VERIFICATION is candidate correction, not integrated DONE.
 
 All entries use the date/base above and Task0017 as audit executor. PR references are Ben-001-sys/Vellistry. Evidence is source inspection or cited actual run, never a newly executed test unless explicitly recorded. Original source wording below is retained. Common negative requirement: reject unsupported DONE, missing exact-head evidence, source/proposal conflation and implied hosted/merge authority. Item-specific negative acceptance remains the original text. Owner gates apply to all sensitive actions; successor task IDs are allocated only at dispatch.
 
@@ -37,7 +37,7 @@ Complete the Codex-primary governance transition
 Resolve competing implementation PRs
    Decide how to supersede or close the ChatGPT-authored PR #65 after reviewing its reuse in Codex PR #68. Preserve authorship and cherry-pick provenance. Do not blindly merge both branches.
 
-**Status:** PARTIAL. **Beginning/current evidence:** PR65/68 remain open; PR68 inherits PR65 source.
+**Status:** PARTIAL. **Beginning/current evidence:** PR65/68 remain open; PR84 maps38 source paths and corrected lineage; Draft PR85 selectively adopts safe preflight helper/tests with original ChatGPT/Codex attribution and passing19 tests/fullCI. Adoption is not merged.
 **Dependencies / next work / limitation:** Source comparison/selective adoption before supersession; depends04/35.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
@@ -48,7 +48,7 @@ Resolve competing implementation PRs
 Independently review Codex PR #68
    Inspect actual code, SQL, test fixtures, task permissions, evidence and changed paths. Verify that its new Phase B work is separately authorized and reviewed, rather than accepting the Codex report alone.
 
-**Status:** PARTIAL. **Beginning/current evidence:** Issue74 SQL independent review exists; full PR68 current-main reconciliation pending.
+**Status:** PARTIAL. **Beginning/current evidence:** Issue74 SQL review plus Task0019/PR84 full38-path provenance/conflict review and13 evidence assertions are complete; distinct Codex review fixed a P2 lineage finding. ChatGPT exact-head/owner acceptance and dependent integration remain pending.
 **Dependencies / next work / limitation:** Issue81 provenance/conflict map and review of all code, not SQL alone.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
@@ -60,7 +60,7 @@ Verify the database privilege defect
    Run the proposed PostgreSQL 17 regression on an isolated disposable database. Confirm the original books-table privilege behavior and prove that the proposed grant correction removes inappropriate TRUNCATE and other excess privileges.
 
 **Status:** DONE. **Beginning/current evidence:** Run39135149678 SUCCESS for an isolated regression with deliberately injected broad grants; review6250984828 records PG17.11, BEFORE P0001/exit3, AFTER48ACL,42501 probes and cleanup. This does not reproduce observed hosted default grants.
-**Dependencies / next work / limitation:** Retain artifact12139701246 beforeNov1; no hosted inference.
+**Dependencies / next work / limitation:** Artifact12139701246 retained in PR84 with independently verified ZIP/member hashes; no hosted inference, owner integration pending.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
 ## 06. Approve the additional privilege-hardening migration
@@ -389,7 +389,7 @@ Separate CI failures from infrastructure failures
 Close and reconcile completed or superseded work
    Review paused PR #59 and old Issue #58, continuing Issue #63, outstanding Stage 3 Issue #18, and the newer #65/#66/#68. Close, retain or supersede with accurate links and decisions.
 
-**Status:** PARTIAL. **Beginning/current evidence:** Live openPR59/65/66/68;77closed,80merged; Issues18/58/63open.
+**Status:** PARTIAL. **Beginning/current evidence:** Task0021/PR86 independently reviewed source comparisons and passed fullCI39321788645; PR59/66/82 actually CLOSED unmerged2026-10-19 under the mandate supersession instruction, original sources preserved. PR65/68 and Issues18/58/63/81 remain OPEN; Draft83–87 unmerged.
 **Dependencies / next work / limitation:** Compare scope then eligible dispositions; do not close unmet acceptance.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
@@ -422,8 +422,8 @@ Strengthen secret and private-data protections
 Test full project recovery from a clean environment
    Clone the repository without prior ChatGPT context, set up the pinned tooling, reconstruct the active project state and execute a synthetic task. Record everything that cannot be recovered.
 
-**Status:** NOT_STARTED. **Beginning/current evidence:** CI checkout/build is not full fresh-agent/project recovery.
-**Dependencies / next work / limitation:** Governed clean clone Node24/pnpm10.18 and synthetic reconstruction.
+**Status:** PARTIAL. **Beginning/current evidence:** Task0022/PR87 clean Git-bundle restore recovered43 required immutable/provenance commits; pinned tooling/frozen install,15 handoff+8 entrypoint+66 Library+19 preflight tests, builds/checks pass. First missing-pin failure and corruption/missing-file negatives preserved.
+**Dependencies / next work / limitation:** Same Windows host/root context; fresh independent AI/cleanOS NOT_RUN, so original acceptance is not complete. Retained anchored bundle survives owned-clone GC; exact final CI/review in PR87.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
 ## 39. Make CI reproducible without unsafe cloud dependencies
@@ -455,8 +455,8 @@ Link actual implementation to acceptance status
 Establish repository recovery and backup checks
    Verify that source, evidence, relevant artifacts and migration history can be recovered, including after bad merges or lost agent worktrees. Keep secrets outside backup copies of the knowledge repository.
 
-**Status:** PARTIAL. **Beginning/current evidence:** Task0019/PR84 now retains the original PG17 archive and result in Git with independently verified archive/member hashes,13 evidence checks and source identities. Full repository backup/restore drill remains unexecuted.
-**Dependencies / next work / limitation:** Retained PG evidence verified at PR84 head8a4e526bdf1f21da68ea4e631e68cbd07d2477bc; next perform full source/evidence backup-and-restore drill excluding secrets. Owner integration pending.
+**Status:** PARTIAL. **Beginning/current evidence:** Task0019/PR84 now retains the original PG17 archive and result in Git with independently verified archive/member hashes,13 evidence checks and source identities. Task0022/PR87 now also demonstrates bounded43-pin Git source/evidence recovery, negative checks and GC-safe retained bundle; complete hosted/product recovery remains unverified.
+**Dependencies / next work / limitation:** Retained PG evidence verified at PR84 head8a4e526bdf1f21da68ea4e631e68cbd07d2477bc; bounded source/evidence drill recorded in PR87. Hosted migration history/data and broader retention remain unverified; no comprehensive historical secret audit. Owner integration pending.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
 ## 42. Measure agentic workflow effectiveness
@@ -466,8 +466,8 @@ Establish repository recovery and backup checks
 Measure agentic workflow effectiveness
    Track compliant handoffs, cold-start success, verification time, escaped defects, context size, review rework, cost and false claims to determine whether the workflow actually improves delivery.
 
-**Status:** NOT_STARTED. **Beginning/current evidence:** CI metadata offers elapsed times; no consistent cost/rework/cold-start series.
-**Dependencies / next work / limitation:** Record measurements and unknowns; no invented billable savings.
+**Status:** PARTIAL. **Beginning/current evidence:** Task0022/PR87 records4 actual successful fullCI timing samples (147–178wall seconds,204–236 summed job seconds),4 immutable context byte/hash measurements and1 observed recovery failure/correction.
+**Dependencies / next work / limitation:** No billing API/model token counts/counterfactual savings/escaped-defect rate or independent cold-start series; repeated effectiveness measurement remains pending.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
 ## 43. Delay additional orchestration infrastructure
@@ -515,3 +515,15 @@ Historical starting counts14DONE/18PARTIAL/4BLOCKED/4IN_VERIFICATION/4NOT_STARTE
 - **Preflight continuation:** Task/CP/EB0020 separately adopts pinned safe preflight helper/tests with ChatGPT/Codex provenance;19 synthetic preflight and66 Library tests plus builds/typechecks PASS locally. It is not integrated main or hosted acceptance; finalCI/review is tracked in that draft candidate. PR65/68 disposition stays PARTIAL until successor adoption and remaining decisions.
 
 **Owner gates:** Current accepted authority reserves merge to owner. These drafts remain unmerged. Third SQL definition approval is planning only; no hosted inventory/login/dry-run/apply/Auth fixture, private manuscripts, paid model call, settings or release permission. IMP002/003A/003B remain not implemented in production; SQL mutation paths need separately reviewed-base authority and repository prerequisites before dependent application acceptance.
+
+## Reconciled recovered-review checkpoint — 2026-10-19
+
+Previous continuation totals14DONE/19PARTIAL/4BLOCKED/4IN_VERIFICATION/3NOT_STARTED above are historical. Only38 and42 now advance NOT_STARTED→PARTIAL from actual Task0022 recovery and measured metadata. No DONE added: **14DONE/21PARTIAL/4BLOCKED/4IN_VERIFICATION/1NOT_STARTED=44**. Item27 is the sole NOT_STARTED; source-review subagents are not its fresh independent implementation handoff.
+
+- Recovered distinct reviews: state82a83ea and offline-readiness8a4e526 had no remaining actionable findings. FullCI39320774241 and39320128393 passed respectively; PR84 retained PG17 ZIP/member hashes and13 evidence assertions were independently reproduced. Issue81 offline readiness is documented/review-ready, not formal acceptance or hosted verification.
+- Safe preflight candidate PR85cb6b5d0 received distinct Codex review and fullCI39320829746 SUCCESS, including19 preflight/66 Library tests. No original helper authorship claimed by the integrating agent.
+- Source disposition PR86 at6feb8d8 received distinct review and fullCI39321788645 SUCCESS. Actual closures:59 at20:50:57Z,66 at20:51:02Z,82 at20:51:08Z on2026-10-19, all unmerged. [Disposition evidence](https://github.com/Ben-001-sys/Vellistry/pull/86#issuecomment-6277076424) preserves comparison and closure records. No source branch deleted.
+- Recovery PR87 prior c02069e fullCI39323878707 SUCCESS and distinct source review had no actionable findings; dangling-pin durability was a disclosed limitation. New e56eead77d6b52705ed18418200128d80ffccbcc anchors43 refs and durably retains2,620,689-byte bundle SHA256984a99d0148fe041ee888c0fcc968adf277b7e48be8cd6662a88d3aa07b87465. Fresh owned clone GC/fsck/handoff all exit0. Its fullCI39324704564 and final delta review are tracked externally; no result presumed here. No runtime ownerenv data copied, and no exhaustive Git-history secret audit claimed.
+- The mandate source and all44 acceptance blocks remain unchanged. Main reverified fca0d96fd071f1165e3e16658d821a3d36a20293; Draft83–87 remain unmerged, PR65/68 OPEN. Earlier no-closure and pending-recovery statements describe their original checkpoints.
+
+**Next authorized work / decision boundary:** final exact-head state/recovery review and CI, then ChatGPT independent review and owner-controlled integration. Continue separately scoped offline work as prerequisites permit; IMP002/003A/003B are not claimed implemented. No hosted access, migration execution, private manuscripts, paid calls, repository settings or delegated merge authority inferred.
