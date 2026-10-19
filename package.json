@@ -11,7 +11,9 @@
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
     "supabase:status": "supabase status",
-    "supabase:reset": "supabase db reset"
+    "supabase:reset": "supabase db reset",
+    "test:hosted-preflight": "node --test tests/hosted_supabase_preflight.test.mjs",
+    "check:hosted-config": "node scripts/hosted_supabase_preflight.mjs"
   },
   "devDependencies": {
     "supabase": "^2.0.0",
