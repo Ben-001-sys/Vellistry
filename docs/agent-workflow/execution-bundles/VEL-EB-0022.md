@@ -170,7 +170,7 @@ execution:
     duration_seconds: 0.157
     source_commit: 8a4e526bdf1f21da68ea4e631e68cbd07d2477bc
     report_source_commit: 30ccb8566d0eeeba93f40e6ce60bb90f5ba96323
-    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-create.txt
+    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/commands.json
   - command: git bundle verify H:\cursor\cursor\Vellistry\.worktrees\vel-recovery-proof\docs\reports\evidence\VEL-RECOVERY-PROOF\recovery-pinned.bundle
     status: PASS
     exit_code: 0
@@ -192,14 +192,14 @@ execution:
     duration_seconds: 0.344
     source_commit: 8a4e526bdf1f21da68ea4e631e68cbd07d2477bc
     report_source_commit: 30ccb8566d0eeeba93f40e6ce60bb90f5ba96323
-    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-clone-gc.txt
+    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/commands.json
   - command: git fsck --full
     status: PASS
     exit_code: 0
     duration_seconds: 0.234
     source_commit: 8a4e526bdf1f21da68ea4e631e68cbd07d2477bc
     report_source_commit: 30ccb8566d0eeeba93f40e6ce60bb90f5ba96323
-    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-fsck.txt
+    evidence: docs/reports/evidence/VEL-RECOVERY-PROOF/commands.json
   - command: python scripts/agent_workflow.py validate
     status: PASS
     exit_code: 0
@@ -235,3 +235,6 @@ Same-host caches and installed Python/PyYAML are reused; not clean-machine indep
 
 ## Reviewer disposition
 Prior head c02069e received distinct Codex advisory review without actionable defects and successful fullCI39323878707. Its disclosed dangling-pin limitation is addressed by the anchored-bundle follow-up. Final delta source review/CI and owner decision remain pending. No ChatGPT/human approval, merge or private-pilot/release inference. Current metadata remains proposed-for-review.
+
+## Evidence serialization correction
+The first anchored-bundle evidence revision referenced empty stdout files for successful silent Git commands. Trusted compliance rejected empty test evidence; the zero exits remain actual results. Those entries now point to the nonempty structured commands.json containing their exact commands/exits/durations, retaining the raw empty stdout files as historical output. No test result changed.
