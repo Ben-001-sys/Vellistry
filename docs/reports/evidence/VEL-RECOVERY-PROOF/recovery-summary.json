@@ -39,5 +39,11 @@
   "build": "PASS: both applications",
   "typecheck": "PASS: both applications",
   "hosted_data_recovery": "NOT_RUN",
-  "independent_cold_start": "NOT_RUN"
+  "independent_cold_start": "NOT_RUN",
+  "durable_bundle": "docs/reports/evidence/VEL-RECOVERY-PROOF/recovery-pinned.bundle",
+  "durable_bundle_sha256": "984a99d0148fe041ee888c0fcc968adf277b7e48be8cd6662a88d3aa07b87465",
+  "durable_bundle_bytes": 2620689,
+  "anchored_clone": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-anchored.log",
+  "required_pins_survive_fresh_clone_gc": true,
+  "required_pins_anchored_as_refs": 43
 }

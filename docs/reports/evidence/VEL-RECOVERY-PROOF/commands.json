@@ -342,5 +342,53 @@
     "expected_exit": 0,
     "duration_seconds": 0.094,
     "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-final-tree.txt"
+  },
+  {
+    "command": "git bundle create H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\docs\\reports\\evidence\\VEL-RECOVERY-PROOF\\recovery-pinned.bundle --all",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.157,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-create.txt"
+  },
+  {
+    "command": "git bundle verify H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\docs\\reports\\evidence\\VEL-RECOVERY-PROOF\\recovery-pinned.bundle",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.062,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-verify.txt"
+  },
+  {
+    "command": "git clone --branch codex/vel-db-readiness H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\docs\\reports\\evidence\\VEL-RECOVERY-PROOF\\recovery-pinned.bundle H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-anchored.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.75,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-clone.txt"
+  },
+  {
+    "command": "git gc --prune=now",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-anchored.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.344,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-clone-gc.txt"
+  },
+  {
+    "command": "git fsck --full",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-anchored.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.234,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-fsck.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-anchored.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 31.453,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-handoff-after-gc.txt"
   }
 ]
