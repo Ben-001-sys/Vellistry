@@ -1,0 +1,88 @@
+id: VEL-TASK-0021
+title: Source-based obsolete PR supersession and live disposition evidence
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0021
+objective: Compare unique PR59/66/82 scope with merged/reviewed successors, document
+  all live dispositions and close only demonstrably obsolete candidates under direct
+  standing owner authority.
+in_scope: &id001
+- docs/reports/VEL-PR-HYGIENE-*
+- docs/reports/evidence/VEL-PR-HYGIENE/*
+- docs/agent-workflow/tasks/VEL-TASK-0021.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0021.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0021.md
+- docs/agent-workflow/inputs/VEL-TASK-0021/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- App/SQL/CI/authority/env changes
+- Hosted/paid/private/admin/production/merge and original branch rewrites
+- PR65/68 closure before successor adoption or explicit remaining-content decision
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: scope-and-source-provenance
+- path: SOURCE-OF-TRUTH.md
+  role: scope-and-source-provenance
+- path: AGENTS.md
+  role: scope-and-source-provenance
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: scope-and-source-provenance
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: scope-and-source-provenance
+- path: docs/agent-workflow/inputs/VEL-TASK-0021/OWNER-SCOPE.md
+  role: scope-and-source-provenance
+- path: docs/agent-workflow/inputs/VEL-TASK-0021/pr59.json
+  role: scope-and-source-provenance
+- path: docs/agent-workflow/inputs/VEL-TASK-0021/pr66.json
+  role: scope-and-source-provenance
+- path: docs/agent-workflow/inputs/VEL-TASK-0021/pr82.json
+  role: scope-and-source-provenance
+source_gaps:
+- id: AUTH
+  limitation: Direct owner master/continuation grants bounded routine supersession,
+    not merge authority; GitHub index not identity proof.
+- id: ACCEPTANCE
+  limitation: PR closure doesnot mark unmet hosted or independent-session issue criteria
+    complete.
+deliverables:
+- Pre-editTask and immutable committedCP
+- Exact source/unique-content comparison and owner-gate dispositions
+- Factual EB/checks/fullCI/independent review before eligible closure
+- Preserved PR/source authorship and unresolved issue acceptance
+acceptance_criteria:
+- All significant originalPR66 sections compared with main and preserved source archive
+- PR59 unique paths compared with main Library implementation without reviving stale
+  code
+- PR82 history retained, replacementPR83 exact-head evidence linked
+- No closure of activePR65/68 or unmet issues; no merge or policy authority change
+- Exact-head source/evidence validation and independent review; record closure as
+  supersession, not acceptance
+allowed_actions:
+- Read Git/GitHub PR andissue evidence
+- Commit sourceTask then generate validate commitCP
+- Write only bounded reports/evidence, run fullCI, draftPR and requestreview
+- After verification and distinct review, post truthful supersession comments and
+  close only59/66/82 when uniquely approved scope demonstrably replaced
+approval_required_for:
+- All merges, significant unresolved unique original content, adoption/authority changes
+- Hosted/SQL/private/paid/production/admin or scopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
