@@ -96,6 +96,13 @@ Historical PR #70 integration: main `a8751190073f682caabdc2897d8f64bc59ac9ebb`,
 ready38970082388 and main38970500477 SUCCESS. These are historical, not latest-head
 results. Accepted ADRs and original ChatGPT/Cursor authorship remain unchanged.
 
+Accepted background remains linked:
+[Waves1–3 owner recommendations](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
+[bounded design entry](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md),
+and [BYOK HIS-20261010-003](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md).
+Writers may supply free OR paid provider credentials; manual writing requires
+none. These decisions do not certify hosted, pilot or release acceptance.
+
 **INTERPRETATION:** the integrated controls permit bounded offline development;
 they do not certify hosted security or release. **PROPOSAL:** independently review
 Task0018, resolve the conditional integration boundary, then advance separately
