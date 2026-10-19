@@ -10,8 +10,14 @@
       "same_as_pr65": true,
       "main_same": false,
       "main_present": true,
-      "origin": "ChatGPT PR65 bytes unchanged",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 source unchanged in PR68",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "40028ce40ffd0710c6583ba458158e5b98554605",
+      "pr65_sha256": "5e34610415b08c0102654b5a9c8e52756bebab15f21b3f17e7845e69c0be179e",
+      "codex_followup_commits": [
+        "03c713007b7f09e3a466e0614605ad9e5243f850 docs(dev): replace obsolete local-Supabase root example with cloud guidance"
+      ]
     },
     {
       "path": ".github/workflows/implementation-foundation.yml",
@@ -20,8 +26,16 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": true,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "EXCLUDE stale workflow/state; preserve current main"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "EXCLUDE stale workflow/state; preserve current main",
+      "pr65_present": true,
+      "pr65_blob": "2d0005b7546f5a9ad2523012f2ab09467a82221d",
+      "pr65_sha256": "2fd9037c04ba5344125de782359a7f52d0f73e3be11ef608650abe7a9765fa01",
+      "codex_followup_commits": [
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck",
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold",
+        "0ce67561a2280cb08d114b3a546fac7f862260ea ci: include offline Supabase cloud config guard regressions"
+      ]
     },
     {
       "path": "CURRENT-STATE.md",
@@ -30,8 +44,17 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": true,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "EXCLUDE stale workflow/state; preserve current main"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "EXCLUDE stale workflow/state; preserve current main",
+      "pr65_present": true,
+      "pr65_blob": "48e3cdb03270d87957a660b9fd53c7e4efcf645c",
+      "pr65_sha256": "949d4c3acc7becd808b41d4ad07295b0bff180fff314c6ba77d394c2d512d4f5",
+      "codex_followup_commits": [
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck",
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker",
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate",
+        "212ea83882928c323c11e2b38eb684daf2fe7642 docs(state): reconcile merged IMP-001 and record hosted cloud preflight gate"
+      ]
     },
     {
       "path": "README.md",
@@ -40,8 +63,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": true,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "SELECTIVE DOCUMENTATION reconciliation only; never replace current README"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "SELECTIVE DOCUMENTATION reconciliation only; never replace current README",
+      "pr65_present": true,
+      "pr65_blob": "dbf0d53e5880510b2583f4f6f58db5079cadfaa9",
+      "pr65_sha256": "d3e8b8b19ae66da5e3cd5b260e5d1ff3b7c3a13b13a1860496f2fe59b9893672",
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "apps/api/.env.example",
@@ -50,8 +79,14 @@
       "same_as_pr65": true,
       "main_same": false,
       "main_present": false,
-      "origin": "ChatGPT PR65 bytes unchanged",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 source unchanged in PR68",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "a3c6cb46fea381e005009783e2f2dce10d687fde",
+      "pr65_sha256": "80cd162f5a87e00e0c9e89bb61bbc41b21e7cdbb4f299ec18ac190dba29af9ec",
+      "codex_followup_commits": [
+        "539a9e0a9ce427005f4ca36e7e89effc8803ce94 docs(dev): add safe per-app cloud environment template apps/api/.env.example"
+      ]
     },
     {
       "path": "apps/web/.env.example",
@@ -60,8 +95,14 @@
       "same_as_pr65": true,
       "main_same": false,
       "main_present": false,
-      "origin": "ChatGPT PR65 bytes unchanged",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 source unchanged in PR68",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "f91cf4cf16ec59a96774b50b9715d7fdda6f4900",
+      "pr65_sha256": "ffc4f869d744774d8c14fe1ac6d61bab8db0a58636b84a95afdac50ccbe0bc8d",
+      "codex_followup_commits": [
+        "6ea35ee48ed28e942d1c6881dc303d00a6be9771 docs(dev): add safe per-app cloud environment template apps/web/.env.example"
+      ]
     },
     {
       "path": "apps/web/src/lib/supabase/browser.ts",
@@ -70,8 +111,14 @@
       "same_as_pr65": true,
       "main_same": false,
       "main_present": true,
-      "origin": "ChatGPT PR65 bytes unchanged",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 source unchanged in PR68",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507",
+      "pr65_sha256": "d34a8ec5807c101ebbec1adf8ef4c95e321d5db7b363559bc06b7900b16b9b68",
+      "codex_followup_commits": [
+        "5d291fbf8fe84a1faeb80e49ec895ff430d159fc fix(web): use cloud-neutral missing Supabase config message"
+      ]
     },
     {
       "path": "docs/agent-workflow/context-packs/VEL-CP-0005.md",
@@ -80,8 +127,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold"
+      ]
     },
     {
       "path": "docs/agent-workflow/execution-bundles/VEL-EB-0005.md",
@@ -90,8 +143,17 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551 Record exact-source checks and hosted pre-apply blockers",
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck",
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker",
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/agent-workflow/inputs/VEL-TASK-0005-ADR-0008.md",
@@ -100,8 +162,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "237e41824012c1c1136eefcee6a5d11f5f974c77 docs(imp-001b): pin Issue 67 and original PR provenance for Codex"
+      ]
     },
     {
       "path": "docs/agent-workflow/inputs/VEL-TASK-0005-ISSUE-67.md",
@@ -110,8 +178,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "237e41824012c1c1136eefcee6a5d11f5f974c77 docs(imp-001b): pin Issue 67 and original PR provenance for Codex"
+      ]
     },
     {
       "path": "docs/agent-workflow/tasks/VEL-TASK-0005.yaml",
@@ -120,8 +194,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "237e41824012c1c1136eefcee6a5d11f5f974c77 docs(imp-001b): pin Issue 67 and original PR provenance for Codex"
+      ]
     },
     {
       "path": "docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md",
@@ -130,8 +210,16 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": true,
+      "pr65_blob": "3d17977aca69e5f16f7634ee08326e2a6fa93438",
+      "pr65_sha256": "9c285d34c731d6d524e0c420e760f7ec794cdf1951bf74938d4934319a8a4762",
+      "codex_followup_commits": [
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold",
+        "be164853c80769c186a3adae2c0ee539bbd52ca7 docs(safety): never overwrite existing ignored local environment files",
+        "d768d7020d06f3152c3666a05fec290baf13ee2a docs(imp001b): define hosted-cloud migration hold point and real acceptance matrix"
+      ]
     },
     {
       "path": "docs/reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md",
@@ -140,8 +228,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold"
+      ]
     },
     {
       "path": "docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md",
@@ -150,8 +244,15 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551 Record exact-source checks and hosted pre-apply blockers",
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/agent-workflow.txt",
@@ -160,8 +261,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/build.txt",
@@ -170,8 +277,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/check.txt",
@@ -180,8 +293,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-annotations.json",
@@ -190,8 +309,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-foundation-jobs.json",
@@ -200,8 +325,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-runs.json",
@@ -210,8 +341,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/f29d65e-verification.txt",
@@ -220,8 +357,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "942f8da7969aeb351786f25bc464ea296ae78969 docs(imp-001b): record GitHub Actions account execution blocker"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/hosted-preflight.txt",
@@ -230,8 +373,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/install.txt",
@@ -240,8 +389,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/issue-67.json",
@@ -250,8 +405,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/library-isolation.txt",
@@ -260,8 +421,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/missing-environment.txt",
@@ -270,8 +437,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-readonly-precheck-20261015.json",
@@ -280,8 +453,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-source-0f41a27-ci-annotations.json",
@@ -290,8 +469,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551 Record exact-source checks and hosted pre-apply blockers"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-source-0f41a27-verification.txt",
@@ -300,8 +485,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551 Record exact-source checks and hosted pre-apply blockers"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/provenance.json",
@@ -310,8 +501,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/source-manifest.json",
@@ -320,8 +517,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/workflow-tests.txt",
@@ -330,8 +533,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "f29d65ea079cdab9fda7417470f8633331fb16a1 docs(imp-001b): record Codex Phase A execution and hosted approval gate"
+      ]
     },
     {
       "path": "package.json",
@@ -340,8 +549,14 @@
       "same_as_pr65": true,
       "main_same": false,
       "main_present": true,
-      "origin": "ChatGPT PR65 bytes unchanged",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 source unchanged in PR68",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "df391930b07e1c1ce41d2aa4cb5d3030abd8d824",
+      "pr65_sha256": "735428d8dcdb8101e4382bc3815811ac74fe681de49ea358b83b8f8c256ed2a6",
+      "codex_followup_commits": [
+        "da076c4d90c345f29b58678468eb72cb73c8c3a5 build(dev): add hosted env preflight and test commands"
+      ]
     },
     {
       "path": "scripts/hosted_supabase_preflight.mjs",
@@ -350,8 +565,15 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "b7f4d5a7a1529b4bb67fd84ac9512d9eb0c0caea",
+      "pr65_sha256": "d562cd5df21338e7446307db058e0c898d31062bf2146ccb477101330d893f27",
+      "codex_followup_commits": [
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold",
+        "fe3925cca6791ac7ef2fae3d30baaa4eaf6b85da feat(dev): add no-network hosted Supabase environment preflight"
+      ]
     },
     {
       "path": "supabase/migrations/20261015171325_restrict_book_privileges.sql",
@@ -360,8 +582,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck"
+      ]
     },
     {
       "path": "tests/book_privileges_regression.sql",
@@ -370,8 +598,14 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required"
+      "origin": "New path in Codex PR68 continuation; no PR65 path",
+      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required",
+      "pr65_present": false,
+      "pr65_blob": null,
+      "pr65_sha256": null,
+      "codex_followup_commits": [
+        "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9 Prepare books privilege hardening after authorized hosted precheck"
+      ]
     },
     {
       "path": "tests/hosted_supabase_preflight.test.mjs",
@@ -380,8 +614,15 @@
       "same_as_pr65": false,
       "main_same": false,
       "main_present": false,
-      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
-      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+      "origin": "ChatGPT PR65 original; subsequently modified by Codex PR68 continuation",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions",
+      "pr65_present": true,
+      "pr65_blob": "9be2a35b0ab7bac972b67ffffe39c80770fdc42d",
+      "pr65_sha256": "d2ffb28a40b3e4b0874edb7b11341db21415b4e5f44d7e01f0e720352497fd20",
+      "codex_followup_commits": [
+        "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold",
+        "b0014647da337635975d447491b24cdf31398e40 test(dev): cover cloud ref, public keys, loopback and redacted diagnostics"
+      ]
     }
   ]
 }
