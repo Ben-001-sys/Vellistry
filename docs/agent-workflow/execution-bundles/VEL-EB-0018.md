@@ -76,3 +76,6 @@ Pending. Separate Codex advisory historical review recorded; not ChatGPT or huma
 
 ## CI correction — 2026-10-19
 Full run39221584266 passed trusted compliance but failed3 of244 first-stage governance tests because current-state omitted accepted BYOK/research decision links. Restored those links without changing tests. Focused16 research/design and8 entrypoint tests now PASS. Earlier exact-head review remains historical; newhead requires review andfullCI.
+
+## Ledger continuation — 2026-10-19
+Earlier count statements above are historical Task0018 checkpoints. The current ledger now has14DONE/19PARTIAL/4BLOCKED/4IN_VERIFICATION/3NOT_STARTED; only41 advanced fromNOT_STARTED toPARTIAL after independently verified durable PG17 retention in PR84. Full source/evidence recovery is still outstanding. PR84 finalhead8a4e526 fullCI39320128393 SUCCESS and distinct Codex review no actionable findings are external evidence, not owner/ChatGPT acceptance. Operative state source15100b7 remains unchanged; subsequent report-only ledger/evidence commits require final-head CI and review as recorded externally.
