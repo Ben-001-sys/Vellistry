@@ -1,0 +1,89 @@
+id: VEL-TASK-0020
+title: Selective no-network preflight adoption preserving PR65/68 origins
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0020
+objective: Adopt safe local-only preflight and synthetic negative tests on current
+  main; activate existing focused CI coverage without hosted access or SQL changes.
+in_scope: &id001
+- scripts/hosted_supabase_preflight.mjs
+- tests/hosted_supabase_preflight.test.mjs
+- package.json
+- docs/agent-workflow/tasks/VEL-TASK-0020.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0020.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0020.md
+- docs/agent-workflow/inputs/VEL-TASK-0020/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PREFLIGHT-ADOPTION-*
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/*
+out_of_scope:
+- SQL/app/CI/accepted authority/env files and secret retrieval
+- Hosted/paid/private/production/settings/merge and old PR branch mutation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: scope-and-exact-source
+- path: AGENTS.md
+  role: scope-and-exact-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: scope-and-exact-source
+- path: package.json
+  role: scope-and-exact-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.mjs.txt
+  role: scope-and-exact-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.test.mjs.txt
+  role: scope-and-exact-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0020/OWNER-SCOPE.md
+  role: scope-and-exact-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0020/SOURCE-MAP.json
+  role: scope-and-exact-source
+source_gaps:
+- id: AUTH
+  limitation: Direct owner mandate/continuation authorizes scoped adoption; Issue71
+    index not authenticated owner identity.
+- id: HOSTED
+  limitation: Configuration consistency only; doesnot test cloud/Auth/RLS/migration
+    state.
+- id: EXAMPLES
+  limitation: Env examples excluded by trusted path policy; separate governed correction
+    if needed, no bypass.
+deliverables:
+- Task/source and immutable validated committed CP before implementation
+- Preserved exact PR65/68 helper/tests with attributed changes if needed
+- Focused actual negative tests, app/library checks/build and fullCI
+- Source-bound EB, draftPR and independent review
+acceptance_criteria:
+- No network/DB calls in preflight; tests use only disposable invented files
+- Reject wrong target, public secret key, runtime precedence overrides; sanitized
+  diagnostics
+- Retain original ChatGPT origin and Codex corrections; preserve currentpackage/CI/security
+- No real env files opened/printed/modified; SQL and hosted behavior NOT_TESTED
+- Exact-head compliance, fullCI and review with owner pending
+allowed_actions:
+- Read exact source/history and currentmain
+- Commit bounded task/source then generate validate commit pack
+- Adopt only scoped files; frozen pinned dependency install, synthetic tests, build/typecheck/library
+  and fullCI
+- Push isolated branch anddraftPR; reportevidence
+approval_required_for:
+- Merge, SQL paths/integration, any hosted action, secrets/private/paid/production/admin
+  or scopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
