@@ -1,0 +1,1 @@
+PASS: restored candidatePG17 ZIP hash matches retained archive; all4 SQL/fixture blobs+SHA256 identities recovered from pinned unmerged source object. Read-only Git operations; no SQL executed.

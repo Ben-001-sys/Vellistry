@@ -1,0 +1,46 @@
+[
+  {
+    "run": 39320774241,
+    "head": "82a83eaea18cda27caa7642e46ce83af507f0cae",
+    "conclusion": "success",
+    "actual_started_jobs": 5,
+    "skipped_jobs": 1,
+    "wall_seconds": 178.0,
+    "total_started_job_elapsed_seconds": 225.0,
+    "billed_minutes": "UNVERIFIED; no billing access",
+    "scope": "Actual GitHub-hosted disposable CI; no hosted Supabase acceptance"
+  },
+  {
+    "run": 39320128393,
+    "head": "8a4e526bdf1f21da68ea4e631e68cbd07d2477bc",
+    "conclusion": "success",
+    "actual_started_jobs": 5,
+    "skipped_jobs": 1,
+    "wall_seconds": 147.0,
+    "total_started_job_elapsed_seconds": 204.0,
+    "billed_minutes": "UNVERIFIED; no billing access",
+    "scope": "Actual GitHub-hosted disposable CI; no hosted Supabase acceptance"
+  },
+  {
+    "run": 39320829746,
+    "head": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+    "conclusion": "success",
+    "actual_started_jobs": 5,
+    "skipped_jobs": 1,
+    "wall_seconds": 151.0,
+    "total_started_job_elapsed_seconds": 209.0,
+    "billed_minutes": "UNVERIFIED; no billing access",
+    "scope": "Actual GitHub-hosted disposable CI; no hosted Supabase acceptance"
+  },
+  {
+    "run": 39321788645,
+    "head": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+    "conclusion": "success",
+    "actual_started_jobs": 5,
+    "skipped_jobs": 1,
+    "wall_seconds": 163.0,
+    "total_started_job_elapsed_seconds": 236.0,
+    "billed_minutes": "UNVERIFIED; no billing access",
+    "scope": "Actual GitHub-hosted disposable CI; no hosted Supabase acceptance"
+  }
+]

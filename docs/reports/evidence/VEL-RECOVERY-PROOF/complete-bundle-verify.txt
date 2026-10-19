@@ -1,0 +1,11 @@
+H:/cursor/cursor/Vellistry/.worktrees/vel-recovery-proof/.recovery-complete.bundle.log is okay
+The bundle contains these 7 refs:
+fca0d96fd071f1165e3e16658d821a3d36a20293 refs/remotes/origin/main
+82a83eaea18cda27caa7642e46ce83af507f0cae refs/heads/codex/vel-master-state-amendment
+8a4e526bdf1f21da68ea4e631e68cbd07d2477bc refs/heads/codex/vel-db-readiness
+cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4 refs/heads/codex/vel-preflight-adoption
+6feb8d84e0bea13aef41a6433e5c4c9076f32733 refs/heads/codex/vel-pr-hygiene
+cbb379fa4a4eaa9f576f3abcce2c2258d22cc551 refs/heads/codex/vel-imp-001b-phase-a
+604e1ebfd0baab930ee4dc39aecf7289dc64188a refs/remotes/origin/feat/vel-imp-001b-hosted-cloud-preflight
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1

@@ -1,0 +1,346 @@
+[
+  {
+    "command": "git bundle create H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-source.bundle.log refs/remotes/origin/main refs/heads/codex/vel-master-state-amendment refs/heads/codex/vel-db-readiness refs/heads/codex/vel-preflight-adoption refs/heads/codex/vel-pr-hygiene refs/heads/codex/vel-imp-001b-phase-a refs/remotes/origin/feat/vel-imp-001b-hosted-cloud-preflight",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.344,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-create.txt"
+  },
+  {
+    "command": "git bundle verify H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-source.bundle.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.047,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-verify.txt"
+  },
+  {
+    "command": "git clone --branch codex/vel-db-readiness H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-source.bundle.log H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.781,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-clone.txt"
+  },
+  {
+    "command": "git checkout --detach fca0d96fd071f1165e3e16658d821a3d36a20293",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.094,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/restore-main.txt"
+  },
+  {
+    "command": "git fsck --full",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.266,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/restored-fsck.txt"
+  },
+  {
+    "command": "git cat-file -e fca0d96fd071f1165e3e16658d821a3d36a20293^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.062,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-5.txt"
+  },
+  {
+    "command": "git cat-file -e 82a83eaea18cda27caa7642e46ce83af507f0cae^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.047,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-6.txt"
+  },
+  {
+    "command": "git cat-file -e 8a4e526bdf1f21da68ea4e631e68cbd07d2477bc^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.062,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-7.txt"
+  },
+  {
+    "command": "git cat-file -e cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.047,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-8.txt"
+  },
+  {
+    "command": "git cat-file -e 6feb8d84e0bea13aef41a6433e5c4c9076f32733^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.063,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-9.txt"
+  },
+  {
+    "command": "git cat-file -e cbb379fa4a4eaa9f576f3abcce2c2258d22cc551^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.047,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-10.txt"
+  },
+  {
+    "command": "git cat-file -e 604e1ebfd0baab930ee4dc39aecf7289dc64188a^{commit}",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.062,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/object-11.txt"
+  },
+  {
+    "command": "git diff --exit-code HEAD",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.094,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/main-tree-equality.txt"
+  },
+  {
+    "command": "git clone --no-checkout H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-corrupt.bundle.log H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-corrupt-clone.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 128,
+    "expected_exit": 1,
+    "duration_seconds": 0.187,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/corrupt-bundle-rejected.txt"
+  },
+  {
+    "command": "git diff --exit-code HEAD",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "duration_seconds": 0.094,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/missing-required-file-detected.txt"
+  },
+  {
+    "command": "git diff --exit-code HEAD",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/missing-file-restored.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\node.EXE --version",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.063,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/node-version.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm --version",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.359,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/pnpm-version.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm install --frozen-lockfile",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 4.75,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/clean-frozen-install.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/check_knowledge_metadata.py",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/main-metadata.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/check_implementation_readiness.py",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/main-readiness.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/spec_traceability.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/main-traceability.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/agent_workflow.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-clean.log",
+    "exit_code": 1,
+    "expected_exit": 0,
+    "duration_seconds": 0.391,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/main-handoff.txt"
+  },
+  {
+    "command": "git bundle create H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.bundle.log refs/remotes/origin/main refs/heads/codex/vel-master-state-amendment refs/heads/codex/vel-db-readiness refs/heads/codex/vel-preflight-adoption refs/heads/codex/vel-pr-hygiene refs/heads/codex/vel-imp-001b-phase-a refs/remotes/origin/feat/vel-imp-001b-hosted-cloud-preflight 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5 1a4f190f6a62caa34b6e74d561f4b3df7c210a4a 2041699c9a9d988142fe5a68776740da88437c80 237e41824012c1c1136eefcee6a5d11f5f974c77 2c49dbdc7620c635a24364aff830ba349ebe4260 3118e601f7860250fc7a5c73dc8c263963ca25a1 3428365cea9ef28d27a9acc979b9e97758604022 36db6ab2e38c83d00ce767cf33672d30b28c19fc 39c22ed4641583e745bc0cfc1e80f5461861ab36 3abf3a5c6296273ef9511289b6fafbb1ba2f9867 3b21aea9f9d285270061b787a49bc767792bba16 5094041987729b56c004333878a6002600d8dccf 5674ab345b82d864b2252dcad1de09dd8f05a9e7 5a2ce41bba374ad1b3e6e7579de9c7d85901b9fb 5bc27535c768998554ee60b7bcb66fa5be12e1d0 616587dabf1426748683d0d4289930ab4c915d30 65f6c296c3669b9d2eb27a1e69a84e0b391b16fa 6ccf4469d877fd522b6dcb574107dd3fe049f1a4 79b5af904967f2f0af3dd81b20d30828fd41ea69 7bc7a6f239901733fbe10aa71159d2ab991bf037 8961d0206371e08c88e5b222b52de4d816d54559 93fa3732f5a843d33c9e1a7356292e23aeb71ec0 999b5e81873071292099020f818a76dd017dce86 9cb137fabae7f82491258eda918439c84c320db0 a67e4e3bd4feaecad0f906ae1be778f6b8774ab8 b7dc894c5eb74788678fc4214f9a847c32d7a11f b8a1e72dbf3739fe98e57aa3be69d13b2cb42f23 b9f4d3ffc1cc597b19671ec42c3641b584456177 bb15c5be56ea94dcbbdd3af413071c6e83ef3112 be45ae15899240fed74b14fb402605b14da26c18 cc3203b2aed6beb18da07905a7eacf1c6b4aeed3 ce8049fe817c8f2e77d21c185488a2953770cbe1 d1205a108c80c82d1d36cb5e0f46798f52d5ad3f d14261ce6bab2aea6550454f089c48859eb0a3ee dcd9843d536ba9146e4b422f4a33554132961de5 e256f4be9a7fb90160d72ce5b5e8fad514706af4 e2bc93d733c1cebc49d0de3df386d555ab0945d6 e515d99f13c1111e2348af6b64d9f5251c7e7014 e52ede9c52e0b2be843f023e477df742c6268a07 f69460c79416acbdb036004ff35b2ad531eca99f f70b3086391a4f43943dafdbdfbd386602cba990 fa349d20bc2dfcda4bf3647bcc8426cd316cc105 fab4fe0748a72348193f9cf233a302fb359969c3",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.75,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-create.txt"
+  },
+  {
+    "command": "git bundle verify H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.bundle.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.062,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-verify.txt"
+  },
+  {
+    "command": "git clone --branch codex/vel-db-readiness H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.bundle.log H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.813,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-clone.txt"
+  },
+  {
+    "command": "git checkout --detach fca0d96fd071f1165e3e16658d821a3d36a20293",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-restore-main.txt"
+  },
+  {
+    "command": "git fsck --full",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.266,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-restored-fsck.txt"
+  },
+  {
+    "command": "git diff --exit-code HEAD",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-tree-equality.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm install --frozen-lockfile",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 6.625,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-frozen-install.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/check_knowledge_metadata.py",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-metadata.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/check_implementation_readiness.py",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-readiness.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/spec_traceability.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-traceability.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/agent_workflow.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 24.188,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-handoff.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE -m unittest discover -s tests -p test_agent_workflow.py -v",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 38.609,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-handoff-tests.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.235,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-entrypoint-tests.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm test:library-isolation",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 2.359,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-library66.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm build",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 22.593,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-build.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm check",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 7.25,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-typecheck.txt"
+  },
+  {
+    "command": "git checkout --detach cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.391,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-reviewed-preflight.txt"
+  },
+  {
+    "command": "H:\\BEN\\program files\\corepack.CMD pnpm test:hosted-preflight",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 1.344,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-preflight19.txt"
+  },
+  {
+    "command": "C:\\Program Files\\Python310\\python.EXE scripts/agent_workflow.py validate",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 27.953,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-candidate-handoff.txt"
+  },
+  {
+    "command": "git diff --exit-code HEAD",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-recovery-proof\\.recovery-complete.log",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "duration_seconds": 0.094,
+    "evidence": "docs/reports/evidence/VEL-RECOVERY-PROOF/complete-final-tree.txt"
+  }
+]
