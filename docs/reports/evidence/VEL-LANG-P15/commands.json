@@ -1,0 +1,41 @@
+[
+  {
+    "command": "Execute fenced Python in docs/reports/evidence/VEL-LANG-P15/REPRODUCE.md",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "b8e7a7237594e4fa05846f9b8918b7583e2794b4",
+    "evidence": "docs/reports/evidence/VEL-LANG-P15/source-preservation.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.188,
+    "source_commit": "b8e7a7237594e4fa05846f9b8918b7583e2794b4",
+    "evidence": "docs/reports/evidence/VEL-LANG-P15/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.14,
+    "source_commit": "b8e7a7237594e4fa05846f9b8918b7583e2794b4",
+    "evidence": "docs/reports/evidence/VEL-LANG-P15/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.141,
+    "source_commit": "b8e7a7237594e4fa05846f9b8918b7583e2794b4",
+    "evidence": "docs/reports/evidence/VEL-LANG-P15/spec.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 22.109,
+    "source_commit": "b8e7a7237594e4fa05846f9b8918b7583e2794b4",
+    "evidence": "docs/reports/evidence/VEL-LANG-P15/handoff.txt"
+  }
+]
