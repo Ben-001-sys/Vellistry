@@ -30,7 +30,7 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: e2bc93d733c1cebc49d0de3df386d555ab0945d6
+implementation_source_commit: 93fa3732f5a843d33c9e1a7356292e23aeb71ec0
 execution:
   status: completed
   executor: Codex
@@ -65,6 +65,11 @@ execution:
     exit_code: 0
     source_commit: e2bc93d733c1cebc49d0de3df386d555ab0945d6
     evidence: docs/reports/evidence/VEL-DB-READINESS-001/retention-checks.txt
+  - command: python -c (exact REPRODUCE.md fenced source)
+    status: PASS
+    exit_code: 0
+    source_commit: 93fa3732f5a843d33c9e1a7356292e23aeb71ec0
+    evidence: docs/reports/evidence/VEL-DB-READINESS-001/retention-final-checks.txt
 owner_disposition: pending
 ---
 
@@ -93,3 +98,6 @@ No fresh hosted state, Auth/RLS acceptance or JWT mitigation; private pilot/rele
 
 ## Reviewer disposition
 Pending. The earlier offline-review process was launched before interruption, but no final response was recoverable; no passing result claimed. Final candidate review required. Codex advisory review is distinct from ChatGPT review, human approval and merge authority. Owner disposition remains pending.
+
+## Independent review correction01
+Historical distinct Codex review at fa349d20bc2dfcda4bf3647bcc8426cd316cc105 found P2 incomplete per-file PR65 lineage; six inherited changed files are now explicit, with original blob/hash and follow-up commits. New PR68 paths and unchanged PR65 files are separate. Original7,626-byte synthetic artifact ZIP retained and reproducible13-check source provided; exact archive/member hashes independently reproducible. All38 lineage entries and6 inherited-change records checked. No claim that historical review covers the changed final head; final review pending.
