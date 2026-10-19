@@ -500,3 +500,7 @@ Enforce agentic role boundaries at task dispatch and repository write time (CRIT
 **INTERPRETATION:** continued bounded offline development GO; hosted-dev data acceptance, real-author private pilot and production release NO-GO pending distinct gates.
 
 **PROPOSAL:** review Task0017; progress PR hygiene, Issue81 retention/readiness, language decisions and clean recovery in separate tasks; then chapter/editor/save slices with reviewed SQL path authorization where needed. Current effective governance reserves merge to owner despite conditional mandate delegation.
+
+## Resumption checkpoint — 2026-10-19
+
+PR82 bd4f440 failed governance (Task0017 remained ready and used an unsupported authorization-provenance value). Application/security and PostgreSQL recovery passed in run39149292469; full verification did not pass. No independent review result survived the interruption. New conformant Task/CP0018 precedes re-adoption of the same Codex documentation patch; CP0017/PR82 remain historical. Counts unchanged; no interrupted work promoted.

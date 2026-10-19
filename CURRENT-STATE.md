@@ -14,7 +14,7 @@ version: 0.1.64
 
 **FACT:** live main is `fca0d96fd071f1165e3e16658d821a3d36a20293`.
 [Post-merge CI39136089610](https://github.com/Ben-001-sys/Vellistry/actions/runs/39136089610)
-is SUCCESS on that exact SHA. This is the starting checkpoint for Task0017,
+is SUCCESS on that exact SHA. This is the starting checkpoint for Task0018 (amending Task0017),
 not a prediction of its future merged SHA. Re-fetch main before each task.
 
 PR75 governance (VEL-TASK-0008), PR76 compliance ([Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73)),
@@ -46,7 +46,7 @@ acceptance, evidence, status and remaining work; Issue71 is its external index.
 Original checklist bytes are recovered; SRC001–004 research originals remain gaps.
 
 Codex implements bounded isolated tasks; ChatGPT coordinates/reviews. A distinct
-reviewer is advisory, never a second human approval. Task0017 covers state/ledger
+reviewer is advisory, never a second human approval. Task0018 covers state/ledger
 only. Subsequent PR hygiene, language, security readiness, recovery and IMP-002 /
 IMP-003A / IMP-003B require separate unique tasks and immutable packs. Offline
 implementation is authorized by the mandate within accepted architecture; no
@@ -98,5 +98,5 @@ results. Accepted ADRs and original ChatGPT/Cursor authorship remain unchanged.
 
 **INTERPRETATION:** the integrated controls permit bounded offline development;
 they do not certify hosted security or release. **PROPOSAL:** independently review
-Task0017, resolve the conditional integration boundary, then advance separately
+Task0018, resolve the conditional integration boundary, then advance separately
 scoped dependent tasks using fresh verified main.
