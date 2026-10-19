@@ -1,0 +1,13 @@
+{
+  "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+  "acceptance_blocks": 44,
+  "unchanged": true,
+  "counts": {
+    "PARTIAL": 21,
+    "DONE": 14,
+    "BLOCKED": 4,
+    "IN_VERIFICATION": 4,
+    "NOT_STARTED": 1
+  },
+  "original_hash_match": true
+}

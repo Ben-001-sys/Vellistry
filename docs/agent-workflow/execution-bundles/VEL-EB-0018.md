@@ -4,7 +4,7 @@ title: STATE-RECONCILE evidence and original44-item audit
 type: execution-bundle
 status: proposed-for-review
 created_at: '2026-10-19'
-version: 0.1.0
+version: 0.1.1
 task_id: VEL-TASK-0018
 context_pack_id: VEL-CP-0018
 base_commit: 39c22ed4641583e745bc0cfc1e80f5461861ab36
@@ -26,28 +26,61 @@ sources:
 evidence:
 - docs/agent-workflow/inputs/VEL-TASK-0018/checks.json
 - docs/agent-workflow/inputs/VEL-TASK-0018/review-history.md
+- docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-checks.json
 review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
+implementation_source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
 execution:
   status: completed
   executor: Codex
   model: GPT-6; exact build unavailable
   tests:
-  - command: python -m unittest discover -s tests -p test_research_design_gate.py
-      -v
-    exit_code: 0
-    status: PASS
-    source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
-    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/test_research_design_gate.py.txt
   - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
       -v
     exit_code: 0
     status: PASS
-    source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
-    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/test_governance_entrypoints.py.txt
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 0.281
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-entrypoints.txt
+  - command: python -m unittest discover -s tests -p test_research_design_gate.py
+      -v
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 0.25
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-research.txt
+  - command: python scripts/check_knowledge_metadata.py
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 0.203
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-metadata.txt
+  - command: python scripts/check_implementation_readiness.py
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 0.125
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-readiness.txt
+  - command: python scripts/spec_traceability.py validate
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 0.141
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-spec.txt
+  - command: python scripts/agent_workflow.py validate
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    duration_seconds: 26.234
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-handoff.txt
+  - command: Python ledger counts/44 immutable acceptance blocks/original checklist
+      SHA256 assertions
+    exit_code: 0
+    status: PASS
+    source_commit: 31049f817d07d19a4ff3317d22e0c13701466d6d
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-ledger-assertions.txt
 owner_disposition: pending
 ---
 
@@ -79,3 +112,10 @@ Full run39221584266 passed trusted compliance but failed3 of244 first-stage gove
 
 ## Ledger continuation — 2026-10-19
 Earlier count statements above are historical Task0018 checkpoints. The current ledger now has14DONE/19PARTIAL/4BLOCKED/4IN_VERIFICATION/3NOT_STARTED; only41 advanced fromNOT_STARTED toPARTIAL after independently verified durable PG17 retention in PR84. Full source/evidence recovery is still outstanding. PR84 finalhead8a4e526 fullCI39320128393 SUCCESS and distinct Codex review no actionable findings are external evidence, not owner/ChatGPT acceptance. Operative state source15100b7 remains unchanged; subsequent report-only ledger/evidence commits require final-head CI and review as recorded externally.
+
+## Recovered review and final state reconciliation — 2026-10-19
+All preceding counts, source and pending-test statements are historical checkpoints. At source31049f817d07d19a4ff3317d22e0c13701466d6d, current counts are14DONE/21PARTIAL/4BLOCKED/4IN_VERIFICATION/1NOT_STARTED. Only38 and42 move to PARTIAL after Task0022 actual source recovery and timing/context measurements. All44 original acceptance blocks and original checklist SHA256 remain unchanged. No DONE added;27 independent implementation handoff remains NOT_STARTED.
+
+Current-state now records actual PR59/66/82 closures without merge, preserved source/authorship, Issue81 offline technical readiness, PR84 durable PG17 evidence, PR85 safe preflight candidate and PR87 bounded recovery. Draft83–87 remain unmerged;65/68 OPEN. Prior state82a83ea fullCI39320774241 and distinct Codex review passed; PR84/85/86 prior exact-head fullCI/review results recorded in ledger. Final operative state source changed, so prior CI is not represented as final evidence.
+
+Actual new checks:8 entrypoint +16 research/design tests PASS, metadata/readiness/spec/handoff PASS,44 original acceptance blocks unchanged, exact counts and original source SHA256 assertions PASS. Commands/exits/durations/sourceSHA retained in reconciled-checks.json. New exact-head fullCI and distinct delta review recorded externally after final commit. Reviewer metadata remains pending owner disposition, not fabricated ChatGPT/human approval. Original immutableCP0018 unchanged. Hosted/SQL/settings/private/paid operations and merges not performed.

@@ -1,0 +1,57 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 0.281,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-entrypoints.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_research_design_gate.py -v",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 0.25,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-research.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 0.203,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 0.125,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 0.141,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-spec.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "duration_seconds": 26.234,
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-handoff.txt"
+  },
+  {
+    "command": "Python ledger counts/44 immutable acceptance blocks/original checklist SHA256 assertions",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "31049f817d07d19a4ff3317d22e0c13701466d6d",
+    "evidence": "docs/agent-workflow/inputs/VEL-TASK-0018/reconciled-ledger-assertions.txt"
+  }
+]
