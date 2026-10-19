@@ -1,1 +1,2 @@
 git log --all -- Task/CP/EB0023 paths returned no commits before allocation on2026-10-19. Branch codex/vel-language-decisions created from exactmainfca0d96; live main unchanged. IDs0017–0022 preserved, not reused.
+Initial pack attempt rejected LANGUAGE.md over35000-byte input limit. Exact canonical Git bytes split into sequential <=30000-byte input parts; concatenationSHA256a8347a2149ba0cca7c0315a75712f7149f46eaa99947583c5f406c417d1e19c2. No ContextPack created before correction; original source untouched.
