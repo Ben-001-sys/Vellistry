@@ -85,6 +85,11 @@ execution:
     source_commit: ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45
     evidence: docs/reports/evidence/VEL-LANG-DECISIONS/library66-network.txt
     environment: Network-enabled sandbox escalation; no runtime app credentials
+  - command: Execute fenced Python in docs/reports/evidence/VEL-LANG-DECISIONS/REPRODUCE.md
+    status: PASS
+    exit_code: 0
+    source_commit: ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45
+    evidence: docs/reports/evidence/VEL-LANG-DECISIONS/reproduce-result.txt
 owner_disposition: pending
 ---
 
@@ -113,3 +118,6 @@ Root candidate P15 historical absence claim still needs narrow factual maintenan
 
 ## Reviewer disposition
 Pending distinct source review and finalexactheadCI; owner acceptance separately pending. Original authorship/approvedADR meaning preserved.
+
+## Advisory review reproducibility follow-up
+Distinct Codex advisory review at f6aff75616c2f7c04d285530d4e0d67ac736dad2 found no actionable findings; it noted the7-mutation checker was not retained. REPRODUCE.md now preserves the exact structural checker and source-reassembly assertions; actual replay exits0 with1positive/7negative cases. Prior suites were not unnecessarily rerun; final exacthead CI/review follows this evidence-only correction. Immutable excerpts retain nonfunctional extra-blank-line diff warnings; no ContextPack/source snapshot was rewritten to cosmetically remove them.
