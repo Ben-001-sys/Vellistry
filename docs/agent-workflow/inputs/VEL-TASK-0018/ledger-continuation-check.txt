@@ -1,0 +1,1 @@
+PASS:44 numbered original acceptance entries retained; derived counts14DONE/19PARTIAL/4BLOCKED/4IN_VERIFICATION/3NOT_STARTED; only41 advanced toPARTIAL on verified durable artifact retention. Owner integration and hosted gates unchanged.

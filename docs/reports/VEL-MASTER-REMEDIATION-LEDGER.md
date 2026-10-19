@@ -4,7 +4,7 @@
 
 [Original checklist](../agent-workflow/inputs/VEL-TASK-0017/ORIGINAL-CHECKLIST.md), [owner-adopted mandate](../agent-workflow/inputs/VEL-TASK-0017/MASTER-MANDATE.md), [raw issue/PR/run evidence](../agent-workflow/inputs/VEL-TASK-0017/), [Issue71 index](https://github.com/Ben-001-sys/Vellistry/issues/71).
 
-**Derived counts:** BLOCKED=4, DONE=14, IN_VERIFICATION=4, NOT_STARTED=4, PARTIAL=18; total44. IN_VERIFICATION is candidate correction, not integrated DONE.
+**Derived counts:** BLOCKED=4, DONE=14, IN_VERIFICATION=4, NOT_STARTED=3, PARTIAL=19; total44. IN_VERIFICATION is candidate correction, not integrated DONE.
 
 All entries use the date/base above and Task0017 as audit executor. PR references are Ben-001-sys/Vellistry. Evidence is source inspection or cited actual run, never a newly executed test unless explicitly recorded. Original source wording below is retained. Common negative requirement: reject unsupported DONE, missing exact-head evidence, source/proposal conflation and implied hosted/merge authority. Item-specific negative acceptance remains the original text. Owner gates apply to all sensitive actions; successor task IDs are allocated only at dispatch.
 
@@ -455,8 +455,8 @@ Link actual implementation to acceptance status
 Establish repository recovery and backup checks
    Verify that source, evidence, relevant artifacts and migration history can be recovered, including after bad merges or lost agent worktrees. Keep secrets outside backup copies of the knowledge repository.
 
-**Status:** NOT_STARTED. **Beginning/current evidence:** Git sources and expiring artifacts exist; complete backup/restore drill absent.
-**Dependencies / next work / limitation:** Retain sanitized PG evidence then verify recovery excluding secrets.
+**Status:** PARTIAL. **Beginning/current evidence:** Task0019/PR84 now retains the original PG17 archive and result in Git with independently verified archive/member hashes,13 evidence checks and source identities. Full repository backup/restore drill remains unexecuted.
+**Dependencies / next work / limitation:** Retained PG evidence verified at PR84 head8a4e526bdf1f21da68ea4e631e68cbd07d2477bc; next perform full source/evidence backup-and-restore drill excluding secrets. Owner integration pending.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
 ## 42. Measure agentic workflow effectiveness
@@ -504,3 +504,14 @@ Enforce agentic role boundaries at task dispatch and repository write time (CRIT
 ## Resumption checkpoint — 2026-10-19
 
 PR82 bd4f440 failed governance (Task0017 remained ready and used an unsupported authorization-provenance value). Application/security and PostgreSQL recovery passed in run39149292469; full verification did not pass. No independent review result survived the interruption. New conformant Task/CP0018 precedes re-adoption of the same Codex documentation patch; CP0017/PR82 remain historical. Counts unchanged; no interrupted work promoted.
+
+## Verified continuation ledger — 2026-10-19
+
+Historical starting counts14DONE/18PARTIAL/4BLOCKED/4IN_VERIFICATION/4NOT_STARTED are preserved in the earlier checkpoint; they were not an owner checkbox sign-off. The sole current count change is41 NOT_STARTED→PARTIAL because durable PG17 artifact retention is now implemented, committed/pushed, independently checked and full-CI verified in PR84. Full repository restore is still missing, so41 is not DONE. Current totals:14DONE/19PARTIAL/4BLOCKED/4IN_VERIFICATION/3NOT_STARTED=44.
+
+- **State amendment:** PR83 head3428365cea9ef28d27a9acc979b9e97758604022 received distinct Codex advisory source review with no blockers and fullCI39221895264 SUCCESS (383 governance tests, application/security and CAS/restore PASS; integrated SQL absent/SKIPPED). Ordinary draft39221900743 governance PASS, merge gate deliberately blocked. These are historical verified candidate results; this ledger update will receive its own final-head CI. No merge acceptance inferred.
+- **Issue81 offline stage:** PR84 head8a4e526bdf1f21da68ea4e631e68cbd07d2477bc, source93fa373, fullCI39320128393 SUCCESS; ordinary draft39320135449 governance PASS with designed blocked gate. Reviewer P2 ambiguous PR65 lineage fixed:5 unchanged ChatGPT paths,6 inherited with Codex changes,27 new PR68 paths. Final distinct Codex reviewer found no remaining actionable findings and independently reproduced ZIP/member hashes and13 evidence checks. Offline preparation is technically review-ready; issue acceptance/owner merge and hosted07/08/JWT09 remain separate. No claim of ChatGPT/human approval.
+- **Artifact retention:** archive SHA256 d426612fbb1197e8e80b8b5a7cd8cfa97e24c2307af3fe786485cf0e416fbf62; member fb1fefddde801315d661a6248d138473d0bb2ae9b525f2033c9b8c9d1f3f25cf. Original synthetic run39135149678 remains historical, not rerun. Main remainsfca0d96fd071f1165e3e16658d821a3d36a20293.
+- **Preflight continuation:** Task/CP/EB0020 separately adopts pinned safe preflight helper/tests with ChatGPT/Codex provenance;19 synthetic preflight and66 Library tests plus builds/typechecks PASS locally. It is not integrated main or hosted acceptance; finalCI/review is tracked in that draft candidate. PR65/68 disposition stays PARTIAL until successor adoption and remaining decisions.
+
+**Owner gates:** Current accepted authority reserves merge to owner. These drafts remain unmerged. Third SQL definition approval is planning only; no hosted inventory/login/dry-run/apply/Auth fixture, private manuscripts, paid model call, settings or release permission. IMP002/003A/003B remain not implemented in production; SQL mutation paths need separately reviewed-base authority and repository prerequisites before dependent application acceptance.
