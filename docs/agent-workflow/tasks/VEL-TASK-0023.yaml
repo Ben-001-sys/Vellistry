@@ -29,16 +29,6 @@ inputs:
   role: language-evidence
 - path: docs/agent-workflow/PR-COMPLIANCE.md
   role: language-evidence
-- path: docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md
-  role: language-evidence
-- path: docs/decisions/ADR-0004-free-calibre-document-conversion-and-portable-recovery.md
-  role: language-evidence
-- path: docs/decisions/ADR-0007-immutable-compact-expanded-guidance-sources.md
-  role: language-evidence
-- path: docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md
-  role: language-evidence
-- path: docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md
-  role: language-evidence
 - path: apps/web/src/app/books/page.tsx
   role: language-evidence
 - path: apps/web/src/app/login/page.tsx
@@ -51,14 +41,10 @@ inputs:
   role: owner-authorized-bounded-language-scope
 - path: docs/agent-workflow/inputs/VEL-TASK-0023/SOURCE-REFS.json
   role: owner-authorized-bounded-language-scope
-- path: docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-01.md
-  role: exact-sequential-merged-language-source-bytes
-- path: docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-02.md
-  role: exact-sequential-merged-language-source-bytes
-- path: docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-03.md
-  role: exact-sequential-merged-language-source-bytes
-- path: docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-04.md
-  role: exact-sequential-merged-language-source-bytes
+- path: docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-TASK-EXCERPTS.md
+  role: task-selected-exact-source-excerpts
+- path: docs/agent-workflow/inputs/VEL-TASK-0023/ACCEPTED-DECISION-EXCERPTS.md
+  role: task-selected-exact-source-excerpts
 source_gaps:
 - id: APPROVAL
   limitation: Master authorizes supported ordinary terminology;15 proposals are not
