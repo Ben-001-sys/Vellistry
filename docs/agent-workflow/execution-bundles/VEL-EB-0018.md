@@ -30,18 +30,24 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: d1205a108c80c82d1d36cb5e0f46798f52d5ad3f
+implementation_source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
 execution:
   status: completed
   executor: Codex
   model: GPT-6; exact build unavailable
   tests:
+  - command: python -m unittest discover -s tests -p test_research_design_gate.py
+      -v
+    exit_code: 0
+    status: PASS
+    source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/test_research_design_gate.py.txt
   - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
       -v
     exit_code: 0
     status: PASS
-    source_commit: d1205a108c80c82d1d36cb5e0f46798f52d5ad3f
-    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/entrypoints-final.txt
+    source_commit: 15100b7300aa5c7c7f8c30fe9fd46d0b2415dfe5
+    evidence: docs/agent-workflow/inputs/VEL-TASK-0018/test_governance_entrypoints.py.txt
 owner_disposition: pending
 ---
 
@@ -67,3 +73,6 @@ Task0018, immutableCP0018, EB0018, manifest, state archive and44-item ledger. Or
 Hosted access, migration execution, JWT/private pilot and release remain blocked. Research originals missing; no cold-start proof. Current effective governance reserves merge to owner.
 ## Reviewer disposition
 Pending. Separate Codex advisory historical review recorded; not ChatGPT or human approval. Final exact-head review still required.
+
+## CI correction — 2026-10-19
+Full run39221584266 passed trusted compliance but failed3 of244 first-stage governance tests because current-state omitted accepted BYOK/research decision links. Restored those links without changing tests. Focused16 research/design and8 entrypoint tests now PASS. Earlier exact-head review remains historical; newhead requires review andfullCI.
