@@ -1,0 +1,988 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .Id}}|{{json .Image}}|{{json .Config.Image}}|{{json .State.Health.Status}}|{{json .NetworkSettings.Ports}}",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8"
+      ],
+      "exit_code": 0,
+      "stdout": "\"e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8\"|\"sha256:327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c\"|\"postgres:17\"|\"healthy\"|{\"5432/tcp\":null}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "--format",
+        "{{json .RepoDigests}}",
+        "sha256:327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c"
+      ],
+      "exit_code": 0,
+      "stdout": "[\"postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3\"]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "show server_version_num;",
+      "exit_code": 0,
+      "stdout": "170011\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select version();",
+      "exit_code": 0,
+      "stdout": "PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "psql (PostgreSQL) 17.11 (Debian 17.11-1.pgdg13+2)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.3\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "git version 2.55.0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uname",
+        "-a"
+      ],
+      "exit_code": 0,
+      "stdout": "Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select count(*) from pg_database where datname in ('vel_sec_before','vel_sec_after');",
+      "exit_code": 0,
+      "stdout": "0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "credential.helper=",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--no-tags",
+        "--no-write-fetch-head",
+        "https://github.com/Ben-001-sys/Vellistry.git",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "cat-file",
+        "-t",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551"
+      ],
+      "exit_code": 0,
+      "stdout": "commit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+        "--",
+        "supabase/migrations/20261009000000_initial_author_books.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "100644 blob 192a736d1a5d6ffc6f239c74ed61e7b8d2528b3b\tsupabase/migrations/20261009000000_initial_author_books.sql\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551:supabase/migrations/20261009000000_initial_author_books.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "-- Vellistry first implementation migration. Requires Supabase auth schema.\n-- Intended for local Supabase CLI testing; not yet executed against live Auth/RLS.\n-- No seed author IDs, tokens, real manuscripts or service keys in this file.\ncreate extension if not exists pgcrypto;\n\ncreate table public.books (\n  id uuid primary key default gen_random_uuid(),\n  owner_id uuid not null default auth.uid() references auth.users(id) on delete cascade,\n  title text not null check (char_length(btrim(title)) between 1 and 120),\n  created_at timestamptz not null default now(),\n  updated_at timestamptz not null default now()\n);\ncreate index books_owner_created_idx on public.books(owner_id,created_at desc);\n\ncreate table public.chapters (\n  id uuid primary key default gen_random_uuid(),\n  book_id uuid not null references public.books(id) on delete cascade,\n  title text not null check(char_length(btrim(title)) between 1 and 180),\n  position integer not null check(position>=0),\n  current_revision integer not null default 1 check(current_revision>=1),\n  accepted_document jsonb not null default '{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\"}]}'::jsonb,\n  created_at timestamptz not null default now(),\n  updated_at timestamptz not null default now(),\n  unique(book_id,position),\n  unique(book_id,id)\n);\ncreate index chapters_book_position_idx on public.chapters(book_id,position);\n\ncreate table public.chapter_revisions (\n  book_id uuid not null,\n  chapter_id uuid not null,\n  revision integer not null check(revision>=1),\n  document jsonb not null,\n  recorded_at timestamptz not null default now(),\n  primary key(book_id,chapter_id,revision),\n  foreign key(book_id,chapter_id) references public.chapters(book_id,id) on delete cascade\n);\n\n-- Deny unauthenticated and cross-author access on all three relations.\nalter table public.books enable row level security;\nalter table public.chapters enable row level security;\nalter table public.chapter_revisions enable row level security;\nalter table public.books force row level security;\nalter table public.chapters force row level security;\nalter table public.chapter_revisions force row level security;\n\ncreate policy author_can_read_books on public.books for select to authenticated\n  using (owner_id=(select auth.uid()));\ncreate policy author_can_create_books on public.books for insert to authenticated\n  with check (owner_id=(select auth.uid()));\ncreate policy author_can_update_books on public.books for update to authenticated\n  using (owner_id=(select auth.uid())) with check (owner_id=(select auth.uid()));\ncreate policy author_can_delete_books on public.books for delete to authenticated\n  using (owner_id=(select auth.uid()));\n\ncreate policy author_can_read_chapters on public.chapters for select to authenticated\n using (exists(\n  select 1 from public.books b where b.id=chapters.book_id and b.owner_id=(select auth.uid())\n ));\ncreate policy author_can_read_revisions on public.chapter_revisions for select to authenticated\n using (exists(\n  select 1 from public.books b where b.id=chapter_revisions.book_id and b.owner_id=(select auth.uid())\n ));\n\n-- IMPORTANT: No direct chapter INSERT/UPDATE or revision INSERT policy is granted.\n-- A later versioned, audited create/save RPC must append revisions transactionally.\n-- Do not prematurely grant broad chapter writes.\nrevoke all on public.books,public.chapters,public.chapter_revisions from anon;\ngrant select,insert,update,delete on public.books to authenticated;\ngrant select on public.chapters,public.chapter_revisions to authenticated;\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+        "--",
+        "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "100644 blob 0670a60f1c2e299e9771b9af1c677d97712174d9\tsupabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551:supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "-- K2 hardening: Supabase may have default table privileges granting DML on\n-- new public tables. Absence of an UPDATE RLS policy must not be mistaken for\n-- SQL-level revocation. Make chapter/revision tables read-only to author role\n-- until the K3 audited transactional revision RPC is built.\n-- Do not grant direct INSERT/UPDATE/DELETE on accepted manuscript content.\nrevoke all on table public.chapters, public.chapter_revisions from authenticated;\ngrant select on table public.chapters, public.chapter_revisions to authenticated;\nrevoke all on table public.chapters, public.chapter_revisions from anon;\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+        "--",
+        "supabase/migrations/20261015171325_restrict_book_privileges.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "100644 blob 230b1540bb5b8962fd2b797d4f8a467d3c035978\tsupabase/migrations/20261015171325_restrict_book_privileges.sql\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551:supabase/migrations/20261015171325_restrict_book_privileges.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "-- IMP-001B: remove default table privileges that are not constrained by RLS.\n-- Object-scoped: preserve owner/service roles and existing row policies.\nrevoke all privileges on table public.books from public, anon, authenticated;\ngrant select, insert, update, delete on table public.books to authenticated;\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "ls-tree",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+        "--",
+        "tests/book_privileges_regression.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "100644 blob 5feac95772f93330b29150dbc135d766e7b0392e\ttests/book_privileges_regression.sql\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551:tests/book_privileges_regression.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "-- Disposable vanilla PostgreSQL 17 only. NEVER use a Supabase project.\n-- psql -v ON_ERROR_STOP=1 -f tests/book_privileges_regression.sql\n-- Add -v skip_hardening=true to reproduce the defect in the original two files.\n\\set ON_ERROR_STOP on\nbegin;\ndo $$\nbegin\n  if exists(select 1 from pg_namespace where nspname='auth')\n     or to_regclass('public.books') is not null then\n    raise exception 'Requires empty disposable PostgreSQL; Supabase targets forbidden';\n  end if;\nend $$;\ncreate role anon nologin;\ncreate role authenticated nologin;\ncreate schema auth;\ncreate table auth.users(id uuid primary key);\ncreate function auth.uid() returns uuid language sql stable as\n  'select nullif(current_setting(''request.jwt.claim.sub'',true),'''')::uuid';\ngrant usage on schema public,auth to anon,authenticated;\nalter default privileges in schema public grant all on tables to anon,authenticated;\n\\ir ../supabase/migrations/20261009000000_initial_author_books.sql\n\\ir ../supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql\ndo $$\nbegin\n  if not has_table_privilege('authenticated','public.books','TRUNCATE') then\n    raise exception 'Fixture failed to reproduce the dangerous default';\n  end if;\nend $$;\ngrant truncate on public.books to public;\n\\if :{?skip_hardening}\n\\else\n\\ir ../supabase/migrations/20261015171325_restrict_book_privileges.sql\n\\endif\ndo $$\ndeclare r text; t text; p text; expected boolean;\nbegin\n  foreach r in array array['anon','authenticated'] loop\n    foreach t in array array['books','chapters','chapter_revisions'] loop\n      foreach p in array array['SELECT','INSERT','UPDATE','DELETE','TRUNCATE','REFERENCES','TRIGGER','MAINTAIN'] loop\n        expected := r='authenticated' and\n          (p='SELECT' or (t='books' and p in ('INSERT','UPDATE','DELETE')));\n        if has_table_privilege(r,'public.'||t,p) is distinct from expected then\n          raise exception 'Privilege mismatch: role=% table=% privilege=% expected=%',r,t,p,expected;\n        end if;\n      end loop;\n    end loop;\n  end loop;\n  if (select count(*) from pg_class where oid in\n      ('public.books'::regclass,'public.chapters'::regclass,'public.chapter_revisions'::regclass)\n      and relrowsecurity and relforcerowsecurity) <> 3 then\n    raise exception 'RLS/FORCE RLS missing';\n  end if;\nend $$;\ninsert into auth.users values ('00000000-0000-4000-8000-000000000001'),\n                              ('00000000-0000-4000-8000-000000000002');\nset local role authenticated;\nselect set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000001',true);\ninsert into public.books(id,title) values ('00000000-0000-4000-8000-000000000003','synthetic ACL regression');\nselect set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000002',true);\ndo $$\nbegin\n  if exists(select 1 from public.books) then raise exception 'Cross-author SELECT'; end if;\n  update public.books set title='forbidden';\n  if found then raise exception 'Cross-author UPDATE'; end if;\n  delete from public.books;\n  if found then raise exception 'Cross-author DELETE'; end if;\n  begin\n    truncate public.books cascade;\n    raise exception 'TRUNCATE unexpectedly permitted';\n  exception when insufficient_privilege then null;\n  end;\n  begin\n    insert into public.books(owner_id,title)\n    values ('00000000-0000-4000-8000-000000000001','forged owner');\n    raise exception 'Forged-owner INSERT unexpectedly permitted';\n  exception when insufficient_privilege then null;\n  end;\nend $$;\nreset role;\ndo $$\nbegin\n  if (select count(*) from public.books) <> 1 then\n    raise exception 'Fixture was changed by a foreign author';\n  end if;\nend $$;\nrollback;\n\\echo PASS: 48 privilege cases, RLS flags, owned insert, cross-author and TRUNCATE denials\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "mkdir",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "cp",
+        "/home/runner/work/_temp/vel-sec-001-9ws7p5x_/.",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8:/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "CREATE DATABASE vel_sec_before;",
+      "exit_code": 0,
+      "stdout": "CREATE DATABASE\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_before",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_before",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At",
+        "-v",
+        "skip_hardening=true",
+        "-f",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/tests/book_privileges_regression.sql"
+      ],
+      "exit_code": 3,
+      "stdout": "BEGIN\nDO\nCREATE ROLE\nCREATE ROLE\nCREATE SCHEMA\nCREATE TABLE\nCREATE FUNCTION\nGRANT\nALTER DEFAULT PRIVILEGES\nCREATE EXTENSION\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nREVOKE\nGRANT\nGRANT\nREVOKE\nGRANT\nREVOKE\nDO\nGRANT\n",
+      "stderr": "psql:/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/tests/book_privileges_regression.sql:53: ERROR:  P0001: Privilege mismatch: role=anon table=books privilege=TRUNCATE expected=f\nCONTEXT:  PL/pgSQL function inline_code_block line 10 at RAISE\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\n"
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_before",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "CREATE DATABASE vel_sec_after;",
+      "exit_code": 0,
+      "stdout": "CREATE DATABASE\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_after",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_after",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At",
+        "-f",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/tests/book_privileges_regression.sql"
+      ],
+      "exit_code": 0,
+      "stdout": "BEGIN\nDO\nCREATE ROLE\nCREATE ROLE\nCREATE SCHEMA\nCREATE TABLE\nCREATE FUNCTION\nGRANT\nALTER DEFAULT PRIVILEGES\nCREATE EXTENSION\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nREVOKE\nGRANT\nGRANT\nREVOKE\nGRANT\nREVOKE\nDO\nGRANT\nREVOKE\nGRANT\nDO\nINSERT 0 2\nSET\n00000000-0000-4000-8000-000000000001\nINSERT 0 1\n00000000-0000-4000-8000-000000000002\nDO\nRESET\nDO\nROLLBACK\nPASS: 48 privilege cases, RLS flags, owned insert, cross-author and TRUNCATE denials\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_after",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_after",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "-- Disposable vanilla PostgreSQL 17 only. NEVER use a Supabase project.\n-- psql -v ON_ERROR_STOP=1 -f tests/book_privileges_regression.sql\n-- Add -v skip_hardening=true to reproduce the defect in the original two files.\n\\set ON_ERROR_STOP on\nbegin;\ndo $$\nbegin\n  if exists(select 1 from pg_namespace where nspname='auth')\n     or to_regclass('public.books') is not null then\n    raise exception 'Requires empty disposable PostgreSQL; Supabase targets forbidden';\n  end if;\nend $$;\ncreate role anon nologin;\ncreate role authenticated nologin;\ncreate schema auth;\ncreate table auth.users(id uuid primary key);\ncreate function auth.uid() returns uuid language sql stable as\n  'select nullif(current_setting(''request.jwt.claim.sub'',true),'''')::uuid';\ngrant usage on schema public,auth to anon,authenticated;\nalter default privileges in schema public grant all on tables to anon,authenticated;\n\\ir /tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/supabase/migrations/20261009000000_initial_author_books.sql\n\\ir /tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql\n\n-- Synthetic roles/claims only; never hosted Supabase acceptance.\ncreate schema scratch;\ngrant usage,create on schema scratch to authenticated;\ncreate function scratch.noop() returns trigger language plpgsql as $$begin return new; end$$;\ncreate role vel_sec_service nologin bypassrls;\ngrant all privileges on public.books to vel_sec_service;\ngrant usage on schema public to vel_sec_service;\n-- Before the proposed correction, defaults grant authenticated extra rights.\ndo $$begin\n if not has_table_privilege('authenticated','public.books','TRUNCATE') then\n  raise exception 'Broad default fixture not reproduced'; end if;\nend$$;\ngrant truncate on public.books to public;\n\n\\ir /tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e/supabase/migrations/20261015171325_restrict_book_privileges.sql\n\ndo $$declare r text;t text;p text; expected boolean; n int:=0;\nbegin\n foreach r in array array['anon','authenticated'] loop\n  foreach t in array array['books','chapters','chapter_revisions'] loop\n   foreach p in array array['SELECT','INSERT','UPDATE','DELETE','TRUNCATE','REFERENCES','TRIGGER','MAINTAIN'] loop\n    expected := r='authenticated' and (p='SELECT' or (t='books' and p in ('INSERT','UPDATE','DELETE')));\n    if has_table_privilege(r,'public.'||t,p) is distinct from expected then raise exception 'Supplemental ACL mismatch % % %',r,t,p; end if;\n    raise notice 'ACL role=% table=% privilege=% expected=% observed=%',r,t,p,expected,has_table_privilege(r,'public.'||t,p); n:=n+1;\n   end loop;\n  end loop;\n end loop;\n if n<>48 then raise exception 'ACL count';end if;\n if (select count(*) from pg_class where oid in ('public.books'::regclass,'public.chapters'::regclass,'public.chapter_revisions'::regclass) and relrowsecurity and relforcerowsecurity)<>3 then raise exception 'RLS flags';end if;\n foreach p in array array['SELECT','INSERT','UPDATE','DELETE','TRUNCATE','REFERENCES','TRIGGER','MAINTAIN'] loop\n  if not has_table_privilege('vel_sec_service','public.books',p) then raise exception 'Synthetic service rights lost %',p;end if;\n end loop;\nend$$;\ninsert into auth.users values ('00000000-0000-4000-8000-000000000001'),('00000000-0000-4000-8000-000000000002');\nset local role authenticated;\nselect set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000001',true);\ndo $$declare owner uuid; n integer;\nbegin\n insert into public.books(id,title) values('00000000-0000-4000-8000-000000000003','synthetic owner') returning owner_id into owner;\n if owner<>'00000000-0000-4000-8000-000000000001'::uuid then raise exception 'Default owner/RETURNING failed';end if;\n if (select count(*) from public.books)<>1 then raise exception 'Owner SELECT';end if;\n update public.books set title='synthetic updated' where id='00000000-0000-4000-8000-000000000003';get diagnostics n=row_count;\n if n<>1 then raise exception 'Owner UPDATE';end if;\n insert into public.books(id,title) values('00000000-0000-4000-8000-000000000005','delete me');\n delete from public.books where id='00000000-0000-4000-8000-000000000005';get diagnostics n=row_count;\n if n<>1 then raise exception 'Owner DELETE';end if;\n raise notice 'PASS owner SELECT INSERT(default+RETURNING) UPDATE DELETE';\n if not has_schema_privilege('scratch','CREATE') or not has_function_privilege('scratch.noop()','EXECUTE') then raise exception 'DDL prerequisites missing';end if;\n begin truncate public.books cascade;raise exception 'TRUNCATE permitted';exception when insufficient_privilege then raise notice 'PASS TRUNCATE SQLSTATE=%',SQLSTATE;end;\n begin create table scratch.fk_probe(book_id uuid references public.books(id));raise exception 'REFERENCES permitted';exception when insufficient_privilege then raise notice 'PASS REFERENCES SQLSTATE=%',SQLSTATE;end;\n begin create trigger bad_trigger before insert on public.books for each row execute function scratch.noop();raise exception 'TRIGGER permitted';exception when insufficient_privilege then raise notice 'PASS TRIGGER SQLSTATE=%',SQLSTATE;end;\nend$$;\nselect set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000002',true);\ndo $$declare n integer;\nbegin\n if exists(select from public.books where id='00000000-0000-4000-8000-000000000003') then raise exception 'Foreign SELECT';end if;\n update public.books set title='foreign' where id='00000000-0000-4000-8000-000000000003';get diagnostics n=row_count;if n<>0 then raise exception 'Foreign UPDATE';end if;\n delete from public.books where id='00000000-0000-4000-8000-000000000003';get diagnostics n=row_count;if n<>0 then raise exception 'Foreign DELETE';end if;\n begin insert into public.books(owner_id,title) values('00000000-0000-4000-8000-000000000001','forged');raise exception 'Forged INSERT permitted';exception when insufficient_privilege then raise notice 'PASS forged INSERT SQLSTATE=%',SQLSTATE;end;\n insert into public.books(id,title) values('00000000-0000-4000-8000-000000000004','synthetic other owner');\n begin update public.books set owner_id='00000000-0000-4000-8000-000000000001' where id='00000000-0000-4000-8000-000000000004';raise exception 'Forged UPDATE permitted';exception when insufficient_privilege then raise notice 'PASS forged UPDATE SQLSTATE=%',SQLSTATE;end;\n raise notice 'PASS cross-author SELECT UPDATE DELETE';\nend$$;\nreset role;\ncreate role vel_sec_group nologin inherit;\ngrant authenticated to vel_sec_group;\nset local role vel_sec_group;\nselect set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000001',true);\ndo $$begin\n if (select count(*) from public.books)<>1 then raise exception 'Inherited owner read lost';end if;\n if has_table_privilege('public.books','TRUNCATE') or has_table_privilege('public.books','REFERENCES') or has_table_privilege('public.books','TRIGGER') then raise exception 'Inherited/PUBLIC privilege leak';end if;\n begin truncate public.books cascade;raise exception 'Inherited truncate permitted';exception when insufficient_privilege then raise notice 'PASS inherited/PUBLIC TRUNCATE SQLSTATE=%',SQLSTATE;end;\nend$$;\nreset role;\nset local role anon;\ndo $$begin\n begin perform * from public.books;raise exception 'Anon read permitted';exception when insufficient_privilege then raise notice 'PASS anon SELECT SQLSTATE=%',SQLSTATE;end;\n begin insert into public.books(title) values('anon');raise exception 'Anon insert permitted';exception when insufficient_privilege then raise notice 'PASS anon INSERT SQLSTATE=%',SQLSTATE;end;\nend$$;\nreset role;\nset local role vel_sec_service;\ndo $$begin if (select count(*) from public.books)<>2 then raise exception 'Synthetic privileged read lost';end if;end$$;\nreset role;\ndo $$begin if (select count(*) from public.books)<>2 or not exists(select from public.books where title='synthetic updated') then raise exception 'Foreign/DDL probe changed protected rows';end if;end$$;\nrollback;\n\\echo PASS: supplemental privilege RLS owner foreign-author and cleanup transaction\n",
+      "exit_code": 0,
+      "stdout": "BEGIN\nDO\nCREATE ROLE\nCREATE ROLE\nCREATE SCHEMA\nCREATE TABLE\nCREATE FUNCTION\nGRANT\nALTER DEFAULT PRIVILEGES\nCREATE EXTENSION\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nCREATE INDEX\nCREATE TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nALTER TABLE\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nCREATE POLICY\nREVOKE\nGRANT\nGRANT\nREVOKE\nGRANT\nREVOKE\nCREATE SCHEMA\nGRANT\nCREATE FUNCTION\nCREATE ROLE\nGRANT\nGRANT\nDO\nGRANT\nREVOKE\nGRANT\nDO\nINSERT 0 2\nSET\n00000000-0000-4000-8000-000000000001\nDO\n00000000-0000-4000-8000-000000000002\nDO\nRESET\nCREATE ROLE\nGRANT ROLE\nSET\n00000000-0000-4000-8000-000000000001\nDO\nRESET\nSET\nDO\nRESET\nSET\nDO\nRESET\nDO\nROLLBACK\nPASS: supplemental privilege RLS owner foreign-author and cleanup transaction\n",
+      "stderr": "NOTICE:  00000: ACL role=anon table=books privilege=SELECT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=INSERT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=UPDATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=DELETE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=books privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=SELECT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=INSERT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=UPDATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=DELETE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapters privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=SELECT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=INSERT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=UPDATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=DELETE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=anon table=chapter_revisions privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=SELECT expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=INSERT expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=UPDATE expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=DELETE expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=books privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=SELECT expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=INSERT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=UPDATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=DELETE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapters privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=SELECT expected=t observed=t\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=INSERT expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=UPDATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=DELETE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=TRUNCATE expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=REFERENCES expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=TRIGGER expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: ACL role=authenticated table=chapter_revisions privilege=MAINTAIN expected=f observed=f\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS owner SELECT INSERT(default+RETURNING) UPDATE DELETE\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS TRUNCATE SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS REFERENCES SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS TRIGGER SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS forged INSERT SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS forged UPDATE SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS cross-author SELECT UPDATE DELETE\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS inherited/PUBLIC TRUNCATE SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS anon SELECT SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\nNOTICE:  00000: PASS anon INSERT SQLSTATE=42501\nLOCATION:  exec_stmt_raise, pl_exec.c:3897\n"
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "vel_sec_after",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "DROP DATABASE IF EXISTS vel_sec_before WITH (FORCE);",
+      "exit_code": 0,
+      "stdout": "DROP DATABASE\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "DROP DATABASE IF EXISTS vel_sec_after WITH (FORCE);",
+      "exit_code": 0,
+      "stdout": "DROP DATABASE\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select count(*) from pg_database where datname in ('vel_sec_before','vel_sec_after');",
+      "exit_code": 0,
+      "stdout": "0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "rm",
+        "-rf",
+        "--",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "test",
+        "!",
+        "-e",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .Id}}|{{json .Image}}|{{json .Config.Image}}|{{json .State.Health.Status}}|{{json .NetworkSettings.Ports}}",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8"
+      ],
+      "exit_code": 0,
+      "stdout": "\"e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8\"|\"sha256:327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c\"|\"postgres:17\"|\"healthy\"|{\"5432/tcp\":null}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "--format",
+        "{{json .RepoDigests}}",
+        "sha256:327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c"
+      ],
+      "exit_code": 0,
+      "stdout": "[\"postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3\"]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "show server_version_num;",
+      "exit_code": 0,
+      "stdout": "170011\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select version();",
+      "exit_code": 0,
+      "stdout": "PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "psql (PostgreSQL) 17.11 (Debian 17.11-1.pgdg13+2)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.3\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "git version 2.55.0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uname",
+        "-a"
+      ],
+      "exit_code": 0,
+      "stdout": "Linux runnervm8k3b6 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "DROP DATABASE IF EXISTS vel_sec_before WITH (FORCE);",
+      "exit_code": 0,
+      "stdout": "DROP DATABASE\n",
+      "stderr": "NOTICE:  00000: database \"vel_sec_before\" does not exist, skipping\nLOCATION:  dropdb, dbcommands.c:1671\n"
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "DROP DATABASE IF EXISTS vel_sec_after WITH (FORCE);",
+      "exit_code": 0,
+      "stdout": "DROP DATABASE\n",
+      "stderr": "NOTICE:  00000: database \"vel_sec_after\" does not exist, skipping\nLOCATION:  dropdb, dbcommands.c:1671\n"
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select count(*) from pg_database where datname in ('vel_sec_before','vel_sec_after');",
+      "exit_code": 0,
+      "stdout": "0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "-i",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "psql",
+        "-X",
+        "-h",
+        "/var/run/postgresql",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-v",
+        "VERBOSITY=verbose",
+        "-At"
+      ],
+      "stdin_sql": "select (to_regnamespace('auth') is null and to_regnamespace('scratch') is null\n and to_regclass('public.books') is null and to_regclass('public.chapters') is null and to_regclass('public.chapter_revisions') is null\n and not exists(select from pg_roles where rolname in\n ('anon','authenticated','vel_sec_group','vel_sec_service')))::text;",
+      "exit_code": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "rm",
+        "-rf",
+        "--",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+        "test",
+        "!",
+        "-e",
+        "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "source_commit": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+  "hosted_supabase": "NOT_ACCESSED",
+  "migration_approval": "NOT_GRANTED",
+  "service": {
+    "id": "e73bb0b57b6c6a07dc18c744bf8cb08f3f8857442164ea054a4dcf1adddeaff8",
+    "image_id": "sha256:327daa8fae7178d61f93142f146b098467b345e10997b9eb79f63bd58e5c8f3c",
+    "image": "postgres:17",
+    "repo_digests": [
+      "postgres@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3"
+    ],
+    "health": "healthy",
+    "published_ports": false
+  },
+  "postgres_version": "PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "runner": {
+    "RUNNER_OS": "Linux",
+    "RUNNER_ARCH": "X64",
+    "GITHUB_SHA": "098ab06a40a84eaba5880223f02e80fab3bf9e86",
+    "GITHUB_RUN_ID": "39135149678",
+    "GITHUB_JOB": "pg17"
+  },
+  "runner_directory": "/home/runner/work/_temp/vel-sec-001-9ws7p5x_",
+  "verified_sources": {
+    "supabase/migrations/20261009000000_initial_author_books.sql": {
+      "blob": "192a736d1a5d6ffc6f239c74ed61e7b8d2528b3b",
+      "sha256": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74"
+    },
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": {
+      "blob": "0670a60f1c2e299e9771b9af1c677d97712174d9",
+      "sha256": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65"
+    },
+    "supabase/migrations/20261015171325_restrict_book_privileges.sql": {
+      "blob": "230b1540bb5b8962fd2b797d4f8a467d3c035978",
+      "sha256": "c7c384b6192d31e4e17c4f6e00978a16a4e15e2feeacfe148aaf1e2cd2853e81"
+    },
+    "tests/book_privileges_regression.sql": {
+      "blob": "5feac95772f93330b29150dbc135d766e7b0392e",
+      "sha256": "bcba9b788151d27ee354f41aa658398f1ed0cbfe86cf0d97f7ae685cb0c54e6b"
+    }
+  },
+  "container_directory": "/tmp/vel-sec-001-ec812883c1414cd2991085dd66bc0e9e",
+  "before": {
+    "status": "EXPECTED_FAILURE",
+    "exit_code": 3,
+    "original_fixture_rollback": "PASS"
+  },
+  "after": {
+    "status": "PASS",
+    "exit_code": 0,
+    "original_fixture_rollback": "PASS"
+  },
+  "supplemental": "PASS",
+  "runner_temporary_storage": "REMOVED",
+  "database_cleanup": "PASS",
+  "container_temporary_storage": "REMOVED",
+  "independent_cleanup": "PASS"
+}

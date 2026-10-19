@@ -1,0 +1,387 @@
+{
+  "main": "fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "pr68": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+  "pr65": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+  "files": [
+    {
+      "path": ".env.example",
+      "blob": "40028ce40ffd0710c6583ba458158e5b98554605",
+      "sha256": "5e34610415b08c0102654b5a9c8e52756bebab15f21b3f17e7845e69c0be179e",
+      "same_as_pr65": true,
+      "main_same": false,
+      "main_present": true,
+      "origin": "ChatGPT PR65 bytes unchanged",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": ".github/workflows/implementation-foundation.yml",
+      "blob": "9d20a9175ead4fc61b8a75d8c0a8a0c90be6eb7e",
+      "sha256": "a0256423fd02b9d439000bd12067d03b0611f070159c48262265c50d59f2191c",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": true,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "EXCLUDE stale workflow/state; preserve current main"
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "blob": "c62a70985ed6c4ebb6926d16359061161f8c3435",
+      "sha256": "25b1b20fd9fcccc10bdefe5cf552e6040d53c7a06cb607488dfe2db88712cd01",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": true,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "EXCLUDE stale workflow/state; preserve current main"
+    },
+    {
+      "path": "README.md",
+      "blob": "b92bde63989b075d271c3e29dc6a6fe14baf7309",
+      "sha256": "431d07f892d96462f29a9da1ad7ae36754661fbdd882fcc87e4771b5e7aa774a",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": true,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "SELECTIVE DOCUMENTATION reconciliation only; never replace current README"
+    },
+    {
+      "path": "apps/api/.env.example",
+      "blob": "a3c6cb46fea381e005009783e2f2dce10d687fde",
+      "sha256": "80cd162f5a87e00e0c9e89bb61bbc41b21e7cdbb4f299ec18ac190dba29af9ec",
+      "same_as_pr65": true,
+      "main_same": false,
+      "main_present": false,
+      "origin": "ChatGPT PR65 bytes unchanged",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": "apps/web/.env.example",
+      "blob": "f91cf4cf16ec59a96774b50b9715d7fdda6f4900",
+      "sha256": "ffc4f869d744774d8c14fe1ac6d61bab8db0a58636b84a95afdac50ccbe0bc8d",
+      "same_as_pr65": true,
+      "main_same": false,
+      "main_present": false,
+      "origin": "ChatGPT PR65 bytes unchanged",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": "apps/web/src/lib/supabase/browser.ts",
+      "blob": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507",
+      "sha256": "d34a8ec5807c101ebbec1adf8ef4c95e321d5db7b363559bc06b7900b16b9b68",
+      "same_as_pr65": true,
+      "main_same": false,
+      "main_present": true,
+      "origin": "ChatGPT PR65 bytes unchanged",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0005.md",
+      "blob": "1e687b67c4473cef1fcbaf105a5886b211ff50be",
+      "sha256": "e21b219390686dabf383bba5b947619c2e81afca74b261cbdeadd295b043503b",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0005.md",
+      "blob": "72430cdb2c304846704c9daccdec2de891755bb4",
+      "sha256": "5e0f0a473aa007c32de2749ac476b928abd7ea075e5d794bc5c9768f868703be",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0005-ADR-0008.md",
+      "blob": "5221779bb12a2aae24c73653b9f1cf4126331474",
+      "sha256": "5640d18ab567c174f284febe69952a2865e5bfd6dde70792b04955c819af5170",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0005-ISSUE-67.md",
+      "blob": "5fb47cde0be13647656a624e5c73acef25bed370",
+      "sha256": "39a229490236c07ee1635a7b96507808cb23ec41e48b19702132a85f4be6ad70",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0005.yaml",
+      "blob": "c308e6ee6503a5e1be53ce5ba9ae6930b129939d",
+      "sha256": "d13d9d2a8c920dbdc42696bc7c455d649c9834d01a6029fd19b592243aa32dd7",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md",
+      "blob": "4cb7f426898d260b5aa4e47a89e2b9c1d7657e53",
+      "sha256": "74db1884e2aae583b0d32e0923937d6688eabd0942142ecb50d5e3da7e01215e",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/VEL-IMP-001B-PHASE-A-MIGRATION-REVIEW-2026-10-14.md",
+      "blob": "6c04f9c5fc08abcf476caeaefe9febf3cd7613f2",
+      "sha256": "b8bcded40b297c261e76084b21d8035d6490835bfd463303a8cd0dddb67fc107",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/VEL-IMP-001B-PHASE-B-PRECHECK-2026-10-15.md",
+      "blob": "ca1ddf8a2ab668a1dc46ef4f5be667b1fe11e229",
+      "sha256": "1decf10ff251be67414188be1d64a54d0178fa14a1e271a62285cc6efa1dbe69",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/agent-workflow.txt",
+      "blob": "321c863aa541af21b8e1b5d0f9a2aa617b8dcbdf",
+      "sha256": "b39d94776fd3b8e5f3279e4ed892e20b558de7bf844e46b7cc00b12cd1b1e02a",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/build.txt",
+      "blob": "59f36df20d211f9857de9ec6858a85194ea8825f",
+      "sha256": "b575cf981e3d28653cae19ba23f16d9bdd8e3808e2eeaa35628bd86d9430d260",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/check.txt",
+      "blob": "faadeae2d73199bc40ab4cbeabf2a9fb388b6bdb",
+      "sha256": "224db83747aecbf79d0e93eebaf453b2bf34d8d71cae930b173163afb7ffc418",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-annotations.json",
+      "blob": "1d067fe271b498c4a352deac98df8604f0a41f16",
+      "sha256": "9534bdde107f775557a1b26f39ff70dac1e53938d61154943c1aaf51ade17498",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-foundation-jobs.json",
+      "blob": "043ccd2072dfa28f45b728fa6839f4d877114b1b",
+      "sha256": "6f1c127da5701f4b53e073d19a1faa56fa4d1a483e5bf7ddfa1cf3855c43afe3",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/ci-f29d65e-runs.json",
+      "blob": "ca1c89905dba96694d51bf1eefcf5a1c217916ab",
+      "sha256": "6822fae4754a92e8e50bdedeab803f9260b20bc6e82a0ae52f180a951d479ef8",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/f29d65e-verification.txt",
+      "blob": "429172c2b80c6d3bcb1ba8808c49ebb80ab42930",
+      "sha256": "5a475c5032090a134fcda3a8e33ca7d9cade8ba7b93cc76c9c316ce53cc8f862",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/hosted-preflight.txt",
+      "blob": "4496730f054ad0992d16c884b15b72c5d841f88e",
+      "sha256": "b913f1328b375bf93ae870fccb51109157db8fce38e5e6237980f31bf16ad480",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/install.txt",
+      "blob": "5636866c9589e279f9d30cd028aac6ae2cdd6f39",
+      "sha256": "ad7925cf70b28ba053cd2c4c0b1d02e7aed31aee3b42a15041593e1e96a73cf9",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/issue-67.json",
+      "blob": "932e2361cba164c2e4cbea415ab342bd8eb15989",
+      "sha256": "0b46f1ee277e14d58a45e627cacd24406a6ae9596a18a4d0dc6af8425de754d1",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/library-isolation.txt",
+      "blob": "2959816f83a1da4362dee12de6c275ac1452aba1",
+      "sha256": "5b4e7e9b73d9d183aaabea8b533ac0693cd3e12f3267c7f55e6423b378bd2fce",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/missing-environment.txt",
+      "blob": "987d4941156820dd7b4080cbe4cf270ff5d81b18",
+      "sha256": "427a54ec062e9062c37069c8a67bcdaef4c938b08c2cef063afaae1f2463cb04",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-readonly-precheck-20261015.json",
+      "blob": "98b7d49e72bfa08a193c9737da36bfb588384a58",
+      "sha256": "01630fa54a2d5f4459d644f1feb83d679c7294c45430da71d1f2d17c5ba5866b",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-source-0f41a27-ci-annotations.json",
+      "blob": "f10647aafd01ad683186c483b591b7efc711dbce",
+      "sha256": "9fa4a6b2befb5b2e3719cb696ff20bc881f4b9e24123d0db34b76cb64cf3f120",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/phase-b-source-0f41a27-verification.txt",
+      "blob": "1b2f86bf9044697c97e1e42f41dd8ded3ec84f8c",
+      "sha256": "9f8912b388659fc2eb207cafea0fcae0d9aedcfb9fb6571e0b40b6a409b960ff",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/provenance.json",
+      "blob": "84ba4497bf1cd65d1971ddcefed1fa8eb4f89a44",
+      "sha256": "4f2b268bffdc9366c5a3a663aa0916f8158c709924605d13ec412bf5ac08e081",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/source-manifest.json",
+      "blob": "f69fe35f83a31360fc44065e943034ceb29bf838",
+      "sha256": "f14cd585995bae8677bf4d324a1a2e8e50b8da3eca23ff520ee2f48108367142",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-IMP-001B-PHASE-A-20261014/workflow-tests.txt",
+      "blob": "81fde8c1e759c3732ff11f1ffd18610c7ff4c940",
+      "sha256": "fda2ee7215addc6ca139b579de7798e2505cfc0fe6ac7aa19c18a692daa39d07",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "PRESERVE historical evidence/source reference; not current approval or operative adoption"
+    },
+    {
+      "path": "package.json",
+      "blob": "df391930b07e1c1ce41d2aa4cb5d3030abd8d824",
+      "sha256": "735428d8dcdb8101e4382bc3815811ac74fe681de49ea358b83b8f8c256ed2a6",
+      "same_as_pr65": true,
+      "main_same": false,
+      "main_present": true,
+      "origin": "ChatGPT PR65 bytes unchanged",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": "scripts/hosted_supabase_preflight.mjs",
+      "blob": "0a225d44bc247a8b27ef120fb1e18dd8ace4c152",
+      "sha256": "79dfb0b66217437d20deeaf4a1df42675350abfb70543841fe5988374fbfd66f",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    },
+    {
+      "path": "supabase/migrations/20261015171325_restrict_book_privileges.sql",
+      "blob": "230b1540bb5b8962fd2b797d4f8a467d3c035978",
+      "sha256": "c7c384b6192d31e4e17c4f6e00978a16a4e15e2feeacfe148aaf1e2cd2853e81",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required"
+    },
+    {
+      "path": "tests/book_privileges_regression.sql",
+      "blob": "5feac95772f93330b29150dbc135d766e7b0392e",
+      "sha256": "bcba9b788151d27ee354f41aa658398f1ed0cbfe86cf0d97f7ae685cb0c54e6b",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "RETAIN pinned proposal; separate reviewed-base SQL path/merge authorization required"
+    },
+    {
+      "path": "tests/hosted_supabase_preflight.test.mjs",
+      "blob": "dfb48d0c4a7782ebfa0aa2879b29d2ecf4f8716c",
+      "sha256": "074854ef928bb63af0cad000a43d319fdb640e6c0ce120d78278a4e26f5900bf",
+      "same_as_pr65": false,
+      "main_same": false,
+      "main_present": false,
+      "origin": "PR68 Codex continuation or changed inherited source; inspect history",
+      "disposition": "SELECTIVE ADOPTION candidate in new bounded implementation task; preserve current CI/package additions"
+    }
+  ]
+}
