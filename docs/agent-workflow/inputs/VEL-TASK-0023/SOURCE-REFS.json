@@ -1,0 +1,70 @@
+{
+  "base": "fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "files": [
+    {
+      "path": "PROJECT-CONSTITUTION.md",
+      "blob": "61f79c4dcb47bd99291c16490e8c00692e2ab23b",
+      "sha256": "ea17eba04dc5027dcca3e6f696260e3837248bbfb14bb3a2a87e7df1c479ec9e"
+    },
+    {
+      "path": "SOURCE-OF-TRUTH.md",
+      "blob": "d5bec6f59108ac84715d77b65836f4499194c3f1",
+      "sha256": "689537a2fdf51b9d75202d639035534ec91fb4867e4c9623683c77fc3deec69d"
+    },
+    {
+      "path": "AGENTS.md",
+      "blob": "2feca4ec9ee0f11f5b6ac089c1d5c826d0e043ce",
+      "sha256": "f44909a73dd80a9c8b34558f44805445bb66da4d66caad3a54522b926e358fd3"
+    },
+    {
+      "path": "LANGUAGE.md",
+      "blob": "badc4f189286740736a26b0f58a38bcfb05b0884",
+      "sha256": "a8347a2149ba0cca7c0315a75712f7149f46eaa99947583c5f406c417d1e19c2"
+    },
+    {
+      "path": "docs/agent-workflow/PR-COMPLIANCE.md",
+      "blob": "5f4845623aef3abb15fba7fbe8e78474902cca00",
+      "sha256": "3ce6deae856b0d272b199bf8cc48ed2ad198f64293c05bb14715c013e3da0b1e"
+    },
+    {
+      "path": "docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md",
+      "blob": "6d53dd79bd9e71cc410d78aeddf4345c0922260e",
+      "sha256": "213dcbe80b371b210ca9a80132d3afea3b11d7eebc03f4b7c8aef0480de9c7af"
+    },
+    {
+      "path": "docs/decisions/ADR-0004-free-calibre-document-conversion-and-portable-recovery.md",
+      "blob": "e2192cd7bf1e2eec9b94d82ff92b4927d9aa6deb",
+      "sha256": "cefbabc961db78f8cc26c23287fc2ba5427ddd2a8c269b8da3371b45bf20630e"
+    },
+    {
+      "path": "docs/decisions/ADR-0007-immutable-compact-expanded-guidance-sources.md",
+      "blob": "5f0ef63888a6046b12811feb1e8f0b322bcec2ad",
+      "sha256": "231f26669a22e7a0028327d24bc2eeaf5f8b9f33b0e865623392d46734944cb2"
+    },
+    {
+      "path": "docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md",
+      "blob": "f185bbdd0e39358fb302a159f803571151b05a7e",
+      "sha256": "ce941195b76e6fb2b6b0a84cd27c29bb390e17486b0b8f75f08264b2b85f3a5e"
+    },
+    {
+      "path": "docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md",
+      "blob": "8c881e790b0d4b4f727246093e476af94ac11187",
+      "sha256": "b10fd6bdfe5b690b9282e15d06859ee101bc997cbcec1699720b932c03c0d3c7"
+    },
+    {
+      "path": "apps/web/src/app/books/page.tsx",
+      "blob": "64352dc27e657b4a078c0ffc3d6f2153942fa572",
+      "sha256": "bbef05d421b658e6863b1844bdb06fb70019eda2b977736c0d66e2ba3ee9fb78"
+    },
+    {
+      "path": "apps/web/src/app/login/page.tsx",
+      "blob": "2c499b7259d75a3bebfe780122b30aa51439e7ea",
+      "sha256": "b6a84723d0925c430428f16abc66cf4addcd584311d3d270c72c2986d66a07fb"
+    },
+    {
+      "path": "apps/web/src/lib/library/book-library-state.ts",
+      "blob": "a4bbb94660928bc886df66a81fd57bec6bae746f",
+      "sha256": "aa50f446f69d0979a422b66a21a3ef0f37f8c2a75ab351e178c2b61728b4e4b8"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+git log --all -- Task/CP/EB0023 paths returned no commits before allocation on2026-10-19. Branch codex/vel-language-decisions created from exactmainfca0d96; live main unchanged. IDs0017–0022 preserved, not reused.

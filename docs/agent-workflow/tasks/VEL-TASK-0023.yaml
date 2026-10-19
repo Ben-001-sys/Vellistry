@@ -1,0 +1,103 @@
+id: VEL-TASK-0023
+title: 'LANG-DECISIONS: source-grounded15-ID disposition matrix without feature/approval
+  promotion'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0023
+objective: Reconcile all LANG-P01–P15 decisions against verified merged source; distinguish
+  supported terminology from proposed labels and unverified runtime guarantees.
+in_scope: &id001
+- docs/reports/VEL-LANG-DECISIONS-*
+- docs/reports/evidence/VEL-LANG-DECISIONS/*
+- docs/agent-workflow/tasks/VEL-TASK-0023.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0023.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0023.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- LANGUAGE.md/application/UI/API/SQL/CI/acceptedADR or historical source modifications
+- Hosted/auth/secret/private/paid/admin/production/merge operations or authority changes
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: language-evidence
+- path: SOURCE-OF-TRUTH.md
+  role: language-evidence
+- path: AGENTS.md
+  role: language-evidence
+- path: LANGUAGE.md
+  role: language-evidence
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: language-evidence
+- path: docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md
+  role: language-evidence
+- path: docs/decisions/ADR-0004-free-calibre-document-conversion-and-portable-recovery.md
+  role: language-evidence
+- path: docs/decisions/ADR-0007-immutable-compact-expanded-guidance-sources.md
+  role: language-evidence
+- path: docs/plans/OPTION-B-WAVE05-MVP-FINAL-DECISION-2026-10-10.md
+  role: language-evidence
+- path: docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md
+  role: language-evidence
+- path: apps/web/src/app/books/page.tsx
+  role: language-evidence
+- path: apps/web/src/app/login/page.tsx
+  role: language-evidence
+- path: apps/web/src/lib/library/book-library-state.ts
+  role: language-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0023/OWNER-SCOPE.md
+  role: owner-authorized-bounded-language-scope
+- path: docs/agent-workflow/inputs/VEL-TASK-0023/MANDATE-EXCERPTS.md
+  role: owner-authorized-bounded-language-scope
+- path: docs/agent-workflow/inputs/VEL-TASK-0023/SOURCE-REFS.json
+  role: owner-authorized-bounded-language-scope
+source_gaps:
+- id: APPROVAL
+  limitation: Master authorizes supported ordinary terminology;15 proposals are not
+    blanket owner approval; final adoption/merge remains owner.
+- id: RUNTIME
+  limitation: No hostedAuth/signup/email settings, legal clearance, certified rule
+    mapping, provider availability/pricing or author usability observations.
+- id: PROVENANCE
+  limitation: Merged language source inherited ChatGPT PR77 through PR80; this task
+    authors only a separate Codex review matrix.
+deliverables:
+- CommittedTask/source then immutableCP before report implementation
+- 15-row matrix withcurrent/recommendation/evidence/status/surface/verification/authority
+  and negative claim checks
+- ExecutionBundle with actual tests/sourceSHA, draftPR/fullCI and distinct review
+acceptance_criteria:
+- Exactly15 unique LANG IDs and all eight requested matrix fields
+- Source pinned to actualmain and languageauthorship preserved, nofile/surface implementation
+  implied
+- Existing unknown-save/explicitduplicate-risk protections and conditional signup
+  wording represented accurately
+- Legal/rulecatalog/hosted/AIcost/backup/IME acceptance unknowns explicit; LANGUAGE
+  remains proposed-owner-review
+- Actual source/consistency tests and exact-head CI/review reported, no self-approval
+allowed_actions:
+- Read committed source and owner-named mandate, record exact hashes
+- Commit task/source and validated immutablepack before scoped docs/evidence
+- Run safe synthetic tests and governance checks, publishdraftPR/fullCI and advisoryreview
+approval_required_for:
+- Owner adoption/merge, new canonical branded labels or policychanges
+- Any hosted/auth/SQL/private/paid/admin/production or scopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
