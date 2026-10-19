@@ -59,7 +59,7 @@ Independently review Codex PR #68
 Verify the database privilege defect
    Run the proposed PostgreSQL 17 regression on an isolated disposable database. Confirm the original books-table privilege behavior and prove that the proposed grant correction removes inappropriate TRUNCATE and other excess privileges.
 
-**Status:** DONE. **Beginning/current evidence:** Run39135149678 SUCCESS; review6250984828 records PG17.11, BEFORE P0001/exit3, AFTER48ACL,42501 probes and cleanup.
+**Status:** DONE. **Beginning/current evidence:** Run39135149678 SUCCESS for an isolated regression with deliberately injected broad grants; review6250984828 records PG17.11, BEFORE P0001/exit3, AFTER48ACL,42501 probes and cleanup. This does not reproduce observed hosted default grants.
 **Dependencies / next work / limitation:** Retain artifact12139701246 beforeNov1; no hosted inference.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
@@ -224,7 +224,7 @@ Reduce documentation duplication
 Make formal handoffs the normal coding path
    Require a unique task and ContextPack for consequential coding tasks, plus a traceable ExecutionBundle afterward. PR #68 demonstrates the mechanism; make it standard for future work.
 
-**Status:** DONE. **Beginning/current evidence:** PR76 requires new Task/pre-edit CP/EB; current task follows mechanism.
+**Status:** DONE. **Beginning/current evidence:** PR76 requires new Task/pre-edit CP/EB. Task0017 failed compliance; amendment Task0018 is undergoing verification, not claimed compliant until exact-head checks pass.
 **Dependencies / next work / limitation:** Ongoing control, not authenticated identity.
 **Tracking:** Task0017 audit; Issue71 index. Final result remains the status above until a reviewed successor records actual evidence.
 
