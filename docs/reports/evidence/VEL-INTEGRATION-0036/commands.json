@@ -1,0 +1,96 @@
+[
+  {
+    "command": "Run fenced Python in docs/reports/evidence/VEL-LANG-DECISIONS/REPRODUCE.md",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/original-matrix.txt"
+  },
+  {
+    "command": "Run fenced Python in docs/reports/evidence/VEL-LANGUAGE-DISPOSITIONS-2026-10-20/REPRODUCE.md",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/current-matrix.txt"
+  },
+  {
+    "command": "corepack pnpm install --frozen-lockfile --offline",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 0.844,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/frozen-install.txt"
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 2.328,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/library67.txt"
+  },
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 1.656,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/preflight22.txt"
+  },
+  {
+    "command": "corepack pnpm check",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 7.563,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/check.txt"
+  },
+  {
+    "command": "corepack pnpm build",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 25.937,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/build.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 0.281,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 0.188,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 0.187,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/spec.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 84.844,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/handoff.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3a17ee854bf3f8cad710f91d6f470e7fa18f45af",
+    "duration_seconds": 531.313,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0036/governance.txt"
+  }
+]

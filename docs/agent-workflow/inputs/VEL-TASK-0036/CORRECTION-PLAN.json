@@ -1,0 +1,7 @@
+{
+  "previous_source": "49cf6f88316831ccff12fae869baf00a09e6c8d8",
+  "review_session": "01a159f6-1541-7a61-bae0-763daaccc0e9",
+  "path": "apps/web/src/lib/library/book-library-state.ts",
+  "before": "Your session changed. The creation result is unverified and may have completed for the original account.",
+  "after": "Your session changed. This book creation request was rejected."
+}

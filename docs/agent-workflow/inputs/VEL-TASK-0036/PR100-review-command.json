@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\admin\\AppData\\Local\\OpenAI\\Codex\\bin\\896a0166b774037a\\codex.exe",
+    "-s",
+    "read-only",
+    "-a",
+    "never",
+    "-c",
+    "mcp_servers.composio.enabled=false",
+    "review",
+    "--base",
+    "326f5e4c385644f864348d008c46c1aa54c7b616"
+  ],
+  "head": "49cf6f88316831ccff12fae869baf00a09e6c8d8",
+  "base": "326f5e4c385644f864348d008c46c1aa54c7b616",
+  "authoring_conversation_supplied": false,
+  "auth": "ExistingChatGPT; APIkeyenvironmentexcluded; ComposioMCPdisabled"
+}

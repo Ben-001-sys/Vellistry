@@ -1,0 +1,48 @@
+[
+  {
+    "command": "Compare all selected predecessor Git blobs and source SHA256 map",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/source-identity.txt"
+  },
+  {
+    "command": "Execute retained fenced Python in docs/reports/evidence/VEL-LANG-DECISIONS/REPRODUCE.md",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/focused.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/metadata.txt",
+    "duration_seconds": 0.219
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/readiness.txt",
+    "duration_seconds": 0.14
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/spec.txt",
+    "duration_seconds": 0.172
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/handoff.txt",
+    "duration_seconds": 129.703
+  }
+]

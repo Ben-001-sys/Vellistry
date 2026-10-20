@@ -6,6 +6,7 @@ import {
   shouldReloadForAuthEvent,
   type LibrarySessionDeps,
 } from "./book-library-session";
+import {decideBookPost, forwardTransportFailure} from "./book-create-document";
 import {ownerFromGetUser} from "./owner-from-auth";
 
 const AUTHOR_A = "author-a";
@@ -1121,4 +1122,47 @@ test("failed-load owner lookup error conceals and restores only the verified aut
   assert.equal(env.session.snapshot().model.ownerKey, AUTHOR_A);
   assert.equal(env.session.snapshot().draftTitle, "Author A private title");
   assert.equal(libraryRegion(env.session.snapshot().model).phase, "error");
+});
+
+
+test("pre-forward session rejection stays definite while a dispatched lost acknowledgement locks retry", async () => {
+  const rejected = harness();
+  let forwardedWrites = 0;
+  rejected.createBook = async (title, expectedUserId) => {
+    const decision = decideBookPost({sessionUserId: AUTHOR_B, expectedUserId, rawBody: JSON.stringify({title})});
+    if (decision.action === "reject") return jsonResponse(decision.status, {error: decision.error});
+    forwardedWrites += 1;
+    return jsonResponse(201, book("new", title));
+  };
+  await signIn(rejected, AUTHOR_A);
+  rejected.session.setDraftTitle("Preserved rejected title");
+  await rejected.session.submitCreate();
+  const definite = libraryRegion(rejected.session.snapshot().model);
+  assert.equal(forwardedWrites, 0);
+  assert.equal(rejected.session.snapshot().draftTitle, "Preserved rejected title");
+  assert.equal(rejected.session.snapshot().model.createUncertain, false);
+  assert.equal(definite.canCreate, true);
+  assert.equal(definite.showRiskRetry, false);
+  assert.match(definite.status ?? "", /request was rejected/i);
+  assert.doesNotMatch(definite.status ?? "", /unverified|may have completed|unknown/i);
+
+  const uncertain = harness();
+  let dispatchedWrites = 0;
+  uncertain.createBook = async () => {
+    dispatchedWrites += 1;
+    const failure = forwardTransportFailure(true);
+    return jsonResponse(failure.status, {error: failure.error});
+  };
+  await signIn(uncertain, AUTHOR_A);
+  uncertain.session.setDraftTitle("Possibly committed title");
+  await uncertain.session.submitCreate();
+  const pending = libraryRegion(uncertain.session.snapshot().model);
+  assert.equal(uncertain.session.snapshot().model.createUncertain, true);
+  assert.equal(pending.status, LIBRARY_COPY.createUnknown);
+  assert.match(pending.status ?? "", /unknown/i);
+  assert.equal(pending.canCreate, false);
+  assert.equal(pending.showRiskRetry, true);
+  assert.equal(uncertain.session.snapshot().draftTitle, "Possibly committed title");
+  await uncertain.session.submitCreate();
+  assert.equal(dispatchedWrites, 1);
 });

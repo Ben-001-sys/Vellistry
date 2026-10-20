@@ -1,0 +1,12 @@
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction\apps\web
+> tsc --noEmit
+

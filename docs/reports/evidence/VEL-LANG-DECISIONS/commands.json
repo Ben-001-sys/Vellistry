@@ -1,0 +1,75 @@
+[
+  {
+    "command": "Python15x8matrix positive/7negative/source reassembly/current route and safety wording assertions",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/matrix-source-assertions.json"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.172,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.125,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.141,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/spec.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 25.906,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/handoff.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm install --frozen-lockfile",
+    "exit_code": 1,
+    "status": "FAIL",
+    "duration_seconds": 0.219,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "exit_code": 1,
+    "status": "FAIL",
+    "duration_seconds": 0.187,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/library66.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm install --frozen-lockfile",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 5.094,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install-network.txt",
+    "environment": "Network-enabled sandbox escalation; no runtime app credentials"
+  },
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.906,
+    "source_commit": "ac88c2c7e32f08bc34f346336cfbc0ee1f1dfe45",
+    "evidence": "docs/reports/evidence/VEL-LANG-DECISIONS/library66-network.txt",
+    "environment": "Network-enabled sandbox escalation; no runtime app credentials"
+  }
+]

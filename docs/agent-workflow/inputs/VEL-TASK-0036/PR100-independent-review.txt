@@ -1,0 +1,6 @@
+The session-mismatch wording incorrectly describes a definitely rejected request as a potentially completed write. Test execution was blocked by sandbox spawn EPERM errors.
+
+Review comment:
+
+- [P2] Distinguish rejected session mismatches from unknown writes — H:\cursor\cursor\Vellistry\.worktrees\vel-language-adoption\apps\web\src\lib\library\book-library-state.ts:24-24
+  When a create receives HTTP 409, this message now suggests that a book may have been created for the original account. However, `decideBookPost` returns that response on an identity mismatch before forwarding any write, and `submitCreate` uses `sessionChanged` specifically for that response. Actual uncertain writes use `createUnknown`. Preserve the definite rejection here rather than misleading authors into checking for a potentially created book. This also follows [AGENTS.md:23](AGENTS.md#L23), which requires behavioral claims to match the interface and backend.

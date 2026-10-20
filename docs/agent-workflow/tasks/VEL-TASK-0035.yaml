@@ -1,0 +1,127 @@
+id: VEL-TASK-0035
+title: Scoped language dispositions and truthful existing Library creation copy
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0035
+objective: Integrate original PR88 evidence with unchanged provenance, decide all15ordinary
+  language proposals within owner delegation, and implement only truthful existing
+  Library creation copy without new features or security-state changes.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0023.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0023.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/ACCEPTED-DECISION-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-01.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-02.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-03.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-04.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-TASK-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/MANDATE-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/SOURCE-REFS.json
+- docs/agent-workflow/tasks/VEL-TASK-0023.yaml
+- docs/reports/VEL-LANG-DECISIONS-2026-10-19.md
+- docs/reports/evidence/VEL-LANG-DECISIONS/REPRODUCE.md
+- docs/reports/evidence/VEL-LANG-DECISIONS/commands.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install-network.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/handoff.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/library66-network.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/library66.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/matrix-source-assertions.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/matrix.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/metadata.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/readiness.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/reproduce-result.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/spec.txt
+- docs/agent-workflow/tasks/VEL-TASK-0035.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0035.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0035.md
+- docs/agent-workflow/inputs/VEL-TASK-0035/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0035*
+- docs/reports/evidence/VEL-INTEGRATION-0035/*
+- LANGUAGE.md
+- apps/web/src/app/books/page.tsx
+- apps/web/src/lib/library/book-library-state.ts
+- docs/reports/VEL-LANGUAGE-DISPOSITIONS-2026-10-20.md
+- docs/reports/evidence/VEL-LANGUAGE-DISPOSITIONS-2026-10-20/*
+out_of_scope:
+- Original23pack/report/source modification; whole language-contract acceptance; new
+  app behavior, routes, editor/chapters/AI, SQL/CI/dependency changes
+- Hosted/Auth/private/paid/settings/deploy/release or mergeinsideimplementation; unverifiable
+  legal/provider/source/IME/RTL claims
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0035/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0035/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0035/COPY-PLAN.json
+  role: current-language-scope-or-existing-copy-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0035/LANGUAGE-EXCERPTS.md
+  role: current-language-scope-or-existing-copy-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0035/AMENDMENT-SCOPE.md
+  role: current-language-scope-or-existing-copy-source
+- path: apps/web/src/app/books/page.tsx
+  role: current-language-scope-or-existing-copy-source
+- path: apps/web/src/lib/library/book-library-state.ts
+  role: current-language-scope-or-existing-copy-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- All original PR88 source byte-exact including four source parts and old matrix;
+  current15row/eightfield source-supported dispositions separately recorded
+- App diff equals exactly7literal COPY-PLAN replacements; no state/handlers/identity/unknownwrite/risk-retry
+  changes
+- Root language remains proposed with approvalflag/historicalbaseline and original15rows
+  preserved; current scoped decisions clearly bounded
+- Actual66Library/22preflight/build/check/frozeninstall, originalmatrix/sourcehash/currentmatrixnegativechecks
+  and governance; independenttrustedreview and actualready/postmainCI
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+- After newCP, add current scoped language matrix/document note and only seven exact
+  existing-page/viewmodel copy literals; run safe actual regression/build checks
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 326f5e4c385644f864348d008c46c1aa54c7b616
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
