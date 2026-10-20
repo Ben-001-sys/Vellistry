@@ -292,3 +292,25 @@ test("rejects colon-style unsafe key without leaking its synthetic value", () =>
   assert.equal(result.ok, false);
   assert.equal(result.messages.join(" ").includes(synthetic), false);
 }));
+
+
+test("missing-file guidance links to existing canonical placeholder instructions", () => {
+  const root = mkdtempSync(join(tmpdir(), "vellistry-missing-guidance-"));
+  try {
+    const result = checkLocalEnvironment(root, ref, {environment: {}});
+    assert.equal(result.ok, false);
+    const missing = result.messages.filter(message => message.startsWith("Missing "));
+    assert.equal(missing.length, 2);
+    for (const message of missing) {
+      assert.match(message, /README\.md#desktop-configuration-placeholder-reference/);
+      assert.doesNotMatch(message, /copy its \.env\.example/);
+    }
+    const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
+    assert.match(readme, /^## Desktop configuration placeholder reference$/m);
+    for (const name of ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", "VELLISTRY_API_BASE_URL", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "API_HOST", "API_PORT"]) {
+      assert.ok(readme.includes(name), name);
+    }
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
