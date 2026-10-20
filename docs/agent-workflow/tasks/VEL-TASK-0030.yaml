@@ -1,0 +1,92 @@
+id: VEL-TASK-0030
+title: Correct two demonstrated Windows governance fixture portability defects
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0030
+objective: Make existing UTF8 metadata and temporary-file negative tests reliably
+  execute on supported Windows development host without weakening assertions or changing
+  application/policy.
+in_scope: &id001
+- tests/test_knowledge_metadata.py
+- tests/test_r01_manifest.py
+- docs/agent-workflow/tasks/VEL-TASK-0030.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0030.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0030.md
+- docs/agent-workflow/inputs/VEL-TASK-0030/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-WINDOWS-GOVERNANCE-0030.md
+- docs/reports/evidence/VEL-WINDOWS-GOVERNANCE-0030/*
+out_of_scope:
+- Production validator/CI/application/dependency/SQL/settings changes; skipped or
+  weakened negative tests
+- Hosted/Auth/secrets/private/paid/deploy/mergeinsideimplementation; tracked historical
+  pack rewriting
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-or-demonstrated-portability-regression
+- path: SOURCE-OF-TRUTH.md
+  role: authority-or-demonstrated-portability-regression
+- path: AGENTS.md
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/OWNER-SCOPE.md
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/red-commands.json
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/SOURCE-MAP.json
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/test_knowledge_metadata.py.before.txt
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/test_knowledge_metadata.py.txt
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/test_r01_manifest.py.before.txt
+  role: authority-or-demonstrated-portability-regression
+- path: docs/agent-workflow/inputs/VEL-TASK-0030/test_r01_manifest.py.txt
+  role: authority-or-demonstrated-portability-regression
+source_gaps:
+- id: HOST-SCOPE
+  limitation: Windows3.10 fixture behavior plus real Linux CI; no clean OS, hosted
+    or general portability guarantee inferred.
+deliverables:
+- UniqueTask/source then immutableCP before minimal2testcorrections
+- Observedred/green and fullgovernance output, exact source/head/exits/testcounts
+- EB plus distincttrustedreview/actualreadyCI andpostmain underseparateownerdelegation
+acceptance_criteria:
+- All8metadata and2manifest tests pass with PythonUTF8mode disabled; oldsource failures
+  retained separately
+- No removed/skipped/weakened assertions, no production/security/CI/code/dependency
+  change
+- Full governance actually executes at fixedHEAD in clean owned worktree with no stale
+  generatedpack; zero-test discovery never accepted
+- Actual trustedbasecompliance, separatefinalheadreview, ready/mainCI andmergedtree
+  verification
+allowed_actions:
+- CommitTask/source,generate/validate/commitimmutableCP beforecode
+- Modify only2listedtestfixture setup details,runoffline synthetic tests/newownedcheckout,reportactualevidence
+- PublishPR/trustedreview/readyCI; keep sourcebranches andhistory
+approval_required_for:
+- Outsideone-timeprogram/securitysensitivehosted/private/paid/admin/production/features
+- Unreviewedchange/failingapplicableCI or missingdistinctreview blocksintegration
+compliance:
+  change_base: ea6a2f25453e0a7ca436349fb8606075db7c0672
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

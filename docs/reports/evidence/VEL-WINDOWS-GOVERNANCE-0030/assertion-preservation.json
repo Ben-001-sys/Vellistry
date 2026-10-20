@@ -1,0 +1,18 @@
+{
+  "source_commit": "c8be4274fe6b4b8f3394567a984ac3235595bfb1",
+  "test_contracts": [
+    {
+      "path": "tests/test_knowledge_metadata.py",
+      "tests": 8,
+      "assertion_calls": 12,
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_r01_manifest.py",
+      "tests": 2,
+      "assertion_calls": 10,
+      "unchanged": true
+    }
+  ],
+  "production_policy_and_workflow_unchanged": true
+}

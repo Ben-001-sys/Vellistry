@@ -1,0 +1,29 @@
+[
+  {
+    "command": "python -X utf8=0 -m unittest discover -s tests -p test_knowledge_metadata.py -v",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-windows-governance-fixed-test",
+    "source_commit": "c8be4274fe6b4b8f3394567a984ac3235595bfb1",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.953,
+    "evidence": "docs/reports/evidence/VEL-WINDOWS-GOVERNANCE-0030/metadata8.txt"
+  },
+  {
+    "command": "python -X utf8=0 -m unittest discover -s tests -p test_r01_manifest.py -v",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-windows-governance-fixed-test",
+    "source_commit": "c8be4274fe6b4b8f3394567a984ac3235595bfb1",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-WINDOWS-GOVERNANCE-0030/manifest2.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py",
+    "cwd": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-windows-governance-fixed-test",
+    "source_commit": "c8be4274fe6b4b8f3394567a984ac3235595bfb1",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 401.609,
+    "evidence": "docs/reports/evidence/VEL-WINDOWS-GOVERNANCE-0030/full-governance.txt"
+  }
+]

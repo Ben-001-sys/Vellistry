@@ -1,0 +1,13 @@
+test_accepted_adr_without_approver_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_invalid_frontmatter_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_mismatched_history_id_date_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_no_records_fails_closed (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_real_records_pass_when_unmodified (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.809s
+
+OK

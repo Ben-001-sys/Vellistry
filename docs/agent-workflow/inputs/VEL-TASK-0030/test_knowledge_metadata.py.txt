@@ -1,0 +1,21 @@
+test_accepted_adr_without_approver_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... FAIL
+test_invalid_frontmatter_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_mismatched_history_id_date_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_no_records_fails_closed (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_real_records_pass_when_unmodified (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+
+======================================================================
+FAIL: test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-integrate-86\tests\test_knowledge_metadata.py", line 72, in test_duplicate_identifier_is_rejected
+    self.assertTrue(any("duplicate ID" in e for e in errors), errors)
+AssertionError: False is not true : ["docs\\decisions\\ADR-0003-duplicate.md: 'utf-8' codec can't decode byte 0x97 in position 1228: invalid start byte"]
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.751s
+
+FAILED (failures=1)
