@@ -1,0 +1,87 @@
+id: VEL-TASK-0022
+title: Offline clean source/evidence bundle recovery and pinned-tool verification
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0022
+objective: Demonstrate recovery of pinned main and review-candidate Git source/evidence
+  without runtime secrets, with meaningful corruption/missing-file negatives and actual
+  clean-clone tests.
+in_scope: &id001
+- docs/reports/VEL-RECOVERY-PROOF-*
+- docs/reports/evidence/VEL-RECOVERY-PROOF/*
+- docs/agent-workflow/tasks/VEL-TASK-0022.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0022.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0022.md
+- docs/agent-workflow/inputs/VEL-TASK-0022/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- App/SQL/CI/policy/sourcebranch modifications
+- Hosted/authentication/credential/private/paid/admin/production/merge operations
+- Claims of fresh AI runtime or clean OS independent acceptance
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: recovery-contract
+- path: AGENTS.md
+  role: recovery-contract
+- path: SOURCE-OF-TRUTH.md
+  role: recovery-contract
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: recovery-contract
+- path: package.json
+  role: recovery-contract
+- path: docs/agent-workflow/inputs/VEL-TASK-0022/SOURCE-REFS.json
+  role: recovery-contract
+- path: docs/agent-workflow/inputs/VEL-TASK-0022/OWNER-SCOPE.md
+  role: recovery-contract
+source_gaps:
+- id: INDEPENDENCE
+  limitation: New clone on same Windows host in existing root context; no fresh independent
+    implementation runtime.
+- id: CLOUD
+  limitation: No hosted DB/Auth/Storage/migration history recovered or certified.
+- id: SECRETS
+  limitation: Bundle copies canonical tracked Git objects only; no comprehensive historical
+    secret audit claim.
+deliverables:
+- CommittedTask/source then validated immutableCP before backup/restoration
+- Local ignored bundle and disposable clean clone with exact refs/digests
+- Corrupt-bundle and missing-file negatives; restored Git tree/evidence source hashes
+- Node24/pinned frozen install, actual synthetic tests/build/typechecks/governance;
+  factual EB and review
+acceptance_criteria:
+- No ignored runtime files or .git/config included; no ownerenv content read
+- Pinned main and4candidate commits recover; Git object/tree/evidence integrity verified
+- Corrupt bundle is rejected; missing required file is detected then restored only
+  in owned clone
+- Tool versions/commands/exits/counts and recovery limitations reported honestly
+- No cold-start/hosted/privatepilot/release or owner-merge approval inferred
+allowed_actions:
+- Read/pin Git refs and scoped governing sources
+- Commit task/source then generate validate commit immutablepack
+- Create bundle and new owned disposable local clones/corrupt copies; verify absolute
+  containment before fault injection
+- Frozen dependency install and safe synthetic local checks; write scoped reports/evidence;
+  draftPR/fullCI/review
+approval_required_for:
+- Any hosted data/auth/storage/SQL recovery or credentials
+- Merge, source authority change, private manuscripts, paid/admin/production orscopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

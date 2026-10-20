@@ -1,0 +1,1 @@
+ERROR: Git operation failed for rev-parse: fatal: path 'docs/agent-workflow/tasks/VEL-TASK-0001.yaml' exists on disk, but not in 'd14261ce6bab2aea6550454f089c48859eb0a3ee'

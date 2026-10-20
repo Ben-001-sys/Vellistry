@@ -1,0 +1,7 @@
+{
+  "refs/remotes/origin/main": "fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "refs/heads/codex/vel-master-state-amendment": "82a83eaea18cda27caa7642e46ce83af507f0cae",
+  "refs/heads/codex/vel-db-readiness": "8a4e526bdf1f21da68ea4e631e68cbd07d2477bc",
+  "refs/heads/codex/vel-preflight-adoption": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+  "refs/heads/codex/vel-pr-hygiene": "6feb8d84e0bea13aef41a6433e5c4c9076f32733"
+}
