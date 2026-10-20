@@ -1,0 +1,1 @@
+PASS: all8metadata/2manifest test names and every unittest assert call unchanged; only fixture encoding and descriptor lifetime corrected. No skip or production policy change.
