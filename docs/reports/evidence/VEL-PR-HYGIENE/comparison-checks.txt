@@ -1,0 +1,1 @@
+PASS:7/7 PR66 originals preserved byte-for-byte in merged main archive; ADR body before implementation section unchanged; PLAN05 byte-identical. PR59 contains3 planning files andzero app/SQL/CI files. Supersession doesnot mark hosted or issue acceptance complete.

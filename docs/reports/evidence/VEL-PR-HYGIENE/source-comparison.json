@@ -1,0 +1,107 @@
+{
+  "base": "fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "files": [
+    {
+      "pr": 59,
+      "source": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85",
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0004.yaml",
+      "blob": "492c4dcbbc7f94a2df943d465867ef9373cf4d03",
+      "sha256": "f70bbeb1808550eab70d6d32971465331e6acb4de9ea8b74379a31799a401c96",
+      "present_in_main": false,
+      "identical_in_main": false,
+      "archived_exact": null
+    },
+    {
+      "pr": 59,
+      "source": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85",
+      "path": "docs/plans/MVP-END-TO-END-IMPLEMENTATION-ROADMAP-2026-10-11.md",
+      "blob": "05a934d91754d0740647c944928483847ffa5698",
+      "sha256": "9a00e41eeb6880b82a81bdcf105b96a6aaca6c369bab59cb92ac6683a862ef4e",
+      "present_in_main": false,
+      "identical_in_main": false,
+      "archived_exact": null
+    },
+    {
+      "pr": 59,
+      "source": "5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85",
+      "path": "docs/plans/VEL-IMP-001-CURSOR-KICKOFF-2026-10-11.md",
+      "blob": "c513298590b640ab8fba5ea2941a8b514b48c4aa",
+      "sha256": "ee7eb5814f716d06315693c9b62f6498f40e8e5363c65e02aad0612b7583a589",
+      "present_in_main": false,
+      "identical_in_main": false,
+      "archived_exact": null
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "AGENTS.md",
+      "blob": "47116a984cd6add00942d2c2e29fc46f161343a4",
+      "sha256": "c15670720a19ca248bbf6b141254dada790301e67026d521dbf38736bd16e2e1",
+      "present_in_main": true,
+      "identical_in_main": false,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "CURRENT-STATE.md",
+      "blob": "a69392a34c193e9d71ce1df0414f948c24e833f9",
+      "sha256": "5e97968e39015357c2174fba5b1129c1ffa8aab2cc8cbdf743cd96f0cae37ae9",
+      "present_in_main": true,
+      "identical_in_main": false,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md",
+      "blob": "8a0d443cc1214b9d47597b25eeeab784850530cb",
+      "sha256": "7a63f6ba7115705273d0fd48fbbb17dad2d892f286bbf8b282794765f00b2f54",
+      "present_in_main": true,
+      "identical_in_main": false,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "blob": "62da0f1baffbf898ec936b7bea667b69e27d3484",
+      "sha256": "d56a27a44c6c8e2f53d3bcd6b7873e6affbf29139c4ba70194127d53528e30b2",
+      "present_in_main": true,
+      "identical_in_main": false,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "docs/decisions/README.md",
+      "blob": "2a17e40c0d3b1a6feeae2b7d6ff7872cd52151be",
+      "sha256": "d62415413d21a185f1c44a7899d8972f8678896fb19ddea0a3536bedd638be86",
+      "present_in_main": true,
+      "identical_in_main": false,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "docs/history/2026-10-14-owner-selects-codex-primary-implementation.md",
+      "blob": "c3f681a1bd723cf23046bd2062f96cbc8214c464",
+      "sha256": "d243bbf12b237477dc4d88c5d28fbe254edc35af49a941bb8810718dea79ee0d",
+      "present_in_main": true,
+      "identical_in_main": true,
+      "archived_exact": true
+    },
+    {
+      "pr": 66,
+      "source": "36da413fea67179ac8395af1cececd477fd193a2",
+      "path": "docs/plans/VEL-PLAN-05-CURSOR-AGENT-WORKFLOW-2026-10-11.md",
+      "blob": "f2c99f82cddabf74fd9f4562dbe30b0f87af6023",
+      "sha256": "d9ddfc9abb47a0370f1af3c63dfa3f8b3a2c2bf5e8b040718804d5490c533510",
+      "present_in_main": true,
+      "identical_in_main": true,
+      "archived_exact": true
+    }
+  ],
+  "adr_body_before_implementation_equal": true,
+  "plan05_equal": true
+}
