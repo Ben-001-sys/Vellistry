@@ -1,0 +1,49 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_agent_workflow.py -v",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 51.797,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/handoff17.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -k case_aliases -v",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/pr-case-families.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.141,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.094,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.109,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/spec.txt"
+  },
+  {
+    "command": "Verify predecessor blobs, preserved test ASTs and unchanged evaluator/workflow/dependencies",
+    "source_commit": "a1249a618280061b4599a2ad2b90db0abe3b8500",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/preservation.txt"
+  }
+]

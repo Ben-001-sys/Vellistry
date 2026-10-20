@@ -1,0 +1,1 @@
+PASS:23 predecessor paths exact;3 explicitly corrected guard/test paths. Every old test AST, including environment aliases, unchanged; only GitMetadataCaseTests added. Original CP0032 and records preserved. Evaluator/workflow/lockfile unchanged; no environment-template exception.
