@@ -1,0 +1,17 @@
+test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests) ... ERROR
+test_missing_headings_are_not_silently_accepted (test_r01_manifest.ManifestTests) ... ok
+
+======================================================================
+ERROR: test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-integrate-86\tests\test_r01_manifest.py", line 41, in test_complete_pair_and_clash_detection
+    finally:path.unlink(missing_ok=True)
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1206, in unlink
+    self._accessor.unlink(self)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\admin\\AppData\\Local\\Temp\\tmpenixske7.md'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.010s
+
+FAILED (errors=1)

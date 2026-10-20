@@ -1,0 +1,20 @@
+{
+  "base": "ea6a2f25453e0a7ca436349fb8606075db7c0672",
+  "paths": [
+    {
+      "path": "tests/test_knowledge_metadata.py",
+      "source": "ea6a2f25453e0a7ca436349fb8606075db7c0672",
+      "blob": "69255dcb792cc7210bedbe8721dc5585b24da4de",
+      "sha256": "af842f6b5f5ef7975571ce176ca3080d1e30e3bed80454546a8d6b05f0ab385c",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0030/test_knowledge_metadata.py.before.txt"
+    },
+    {
+      "path": "tests/test_r01_manifest.py",
+      "source": "ea6a2f25453e0a7ca436349fb8606075db7c0672",
+      "blob": "879643f0e55e0b90d03dcc2c22cdf950c1e1a01c",
+      "sha256": "ab8089504d6ec9dd074c6f85d9180b0dbe4b9b54c283cfd81988f0532a67b8e9",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0030/test_r01_manifest.py.before.txt"
+    }
+  ],
+  "red_observation_head": "2e0365a443890f7e85a480e34cd55fe9d330e57a"
+}

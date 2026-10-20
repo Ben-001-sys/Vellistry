@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8=0",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_knowledge_metadata.py",
+      "-v"
+    ],
+    "exit_code": 1,
+    "source_sha": "2e0365a443890f7e85a480e34cd55fe9d330e57a"
+  },
+  {
+    "command": [
+      "python",
+      "-X",
+      "utf8=0",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_r01_manifest.py",
+      "-v"
+    ],
+    "exit_code": 1,
+    "source_sha": "2e0365a443890f7e85a480e34cd55fe9d330e57a"
+  }
+]
