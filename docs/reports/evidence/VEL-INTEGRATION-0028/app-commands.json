@@ -1,0 +1,23 @@
+[
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 2.968,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/library66.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 10.266,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/check.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 25.469,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/build.txt"
+  }
+]

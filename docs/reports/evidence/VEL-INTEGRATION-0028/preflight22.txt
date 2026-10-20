@@ -1,0 +1,30 @@
+âœ” accepts coherent hosted project URL, modern publishable key and loopback Nest (1.5699ms)
+âœ” rejects another cloud project, even if Web and API agree on that project (0.1757ms)
+âœ” rejects localhost Supabase URL; local containers are not the selected backend (0.1516ms)
+âœ” rejects secret/service-role key in browser and backend publishable slot (0.2122ms)
+âœ” rejects legacy JWT key in the modern publishable-key slot (0.1543ms)
+âœ” rejects mismatched Web/API project publishable keys (0.1193ms)
+âœ” rejects externally exposed API host and wrong BFF upstream (0.1683ms)
+âœ” rejects invalid or omitted expected project reference (0.1195ms)
+âœ” missing local files are reported without consulting environment or network (2.1569ms)
+âœ” reads ignored local files, never emits key values in success output (17.4935ms)
+âœ” invalid local config never leaks the offending key in diagnostics (6.5489ms)
+âœ” does not pass file validation when inherited runtime settings override those files (15.3091ms)
+âœ” rejects competing Next env files that the actual runtime would also read (29.3881ms)
+âœ” rejects test mode because Next does not load the required .env.local there (5.9759ms)
+âœ” actual Next runtime precedence demonstrates why competing env files must block preflight (116.6521ms)
+âœ” actual CLI succeeds and rejects unsafe config without printing synthetic key values (185.6677ms)
+âœ” actual CLI fails safely with absent env files (81.8849ms)
+âœ” cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.307ms)
+âœ” unreadable env paths fail without reflecting filesystem or parser errors (6.55ms)
+âœ” rejects colon-style API host override observed by actual dotenv runtime (88.4898ms)
+âœ” rejects colon-style upstream override observed by actual Next runtime (100.0485ms)
+âœ” rejects colon-style unsafe key without leaking its synthetic value (101.0699ms)
+â„¹ tests 22
+â„¹ suites 0
+â„¹ pass 22
+â„¹ fail 0
+â„¹ cancelled 0
+â„¹ skipped 0
+â„¹ todo 0
+â„¹ duration_ms 908.4559

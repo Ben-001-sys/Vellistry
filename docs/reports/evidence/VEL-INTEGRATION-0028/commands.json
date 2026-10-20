@@ -1,0 +1,48 @@
+[
+  {
+    "command": "Compare all selected predecessor Git blobs and source SHA256 map",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/source-identity.txt"
+  },
+  {
+    "command": "node --test tests/hosted_supabase_preflight.test.mjs",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/preflight22.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/metadata.txt",
+    "duration_seconds": 0.25
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/readiness.txt",
+    "duration_seconds": 0.157
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/spec.txt",
+    "duration_seconds": 0.156
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "0499c788f7d1ede25d935ee97066c9f953c618ad",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/handoff.txt",
+    "duration_seconds": 47.406
+  }
+]

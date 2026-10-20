@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tests/hosted_supabase_preflight.test.mjs"
+  ],
+  "source_sha": "27cd6f9bab81777ca335a001e091a064f9177474",
+  "exit_code": 1,
+  "expected": "18 pass / 4 fail, demonstrating parser/override defects"
+}
