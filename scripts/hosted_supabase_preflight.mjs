@@ -8,8 +8,12 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { parseEnv } from "node:util";
+import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
+
+// Resolve the same pinned dotenv parser used by the API runtime, not Node's
+// different env-file grammar. Loader errors remain fail-closed and redacted.
+const apiRequire = createRequire(new URL("../apps/api/package.json", import.meta.url));
 
 export const WEB_ENV = "apps/web/.env.local";
 export const API_ENV = "apps/api/.env";
@@ -71,7 +75,7 @@ function readLocalEnv(root, name) {
   const path = resolve(root, name);
   if (!existsSync(path)) return { missing: true, values: {} };
   try {
-    return { missing: false, values: parseEnv(readFileSync(path, "utf8")) };
+    return { missing: false, values: apiRequire("dotenv").parse(readFileSync(path, "utf8")) };
   } catch {
     // Never reflect a parser exception that may contain confidential source text.
     return { missing: false, parseError: true, values: {} };
@@ -88,7 +92,8 @@ function runtimeLayoutErrors(root, environment) {
   const errors = [];
   const runtimeNames = ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
     "VELLISTRY_API_BASE_URL", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "API_HOST", "API_PORT"];
-  if (runtimeNames.some(name => Object.hasOwn(environment, name))
+  if (Object.hasOwn(environment, "DOTENV_KEY")
+    || runtimeNames.some(name => Object.hasOwn(environment, name))
     || Object.keys(environment).some(name => name.toUpperCase().startsWith("DOTENV_CONFIG_"))) {
     errors.push("Inherited app or dotenv configuration can override the checked files. Use a clean shell for this file-only preflight; values were not read or printed.");
   }
