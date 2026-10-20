@@ -1,0 +1,158 @@
+id: VEL-TASK-0036
+title: Correct rejected-session copy with source-backed uncertainty regression
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0036
+objective: Adopt the reviewed PR100 language source, preserve all historical Task35
+  evidence, correct the demonstrated session-mismatch wording P2, and prove definite
+  rejection versus uncertain dispatched writes without changing runtime behavior.
+in_scope: &id001
+- LANGUAGE.md
+- apps/web/src/app/books/page.tsx
+- apps/web/src/lib/library/book-library-state.ts
+- docs/agent-workflow/context-packs/VEL-CP-0023.md
+- docs/agent-workflow/context-packs/VEL-CP-0035.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0023.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0035.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/ACCEPTED-DECISION-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-01.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-02.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-03.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-PART-04.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/LANGUAGE-TASK-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/MANDATE-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0023/SOURCE-REFS.json
+- docs/agent-workflow/inputs/VEL-TASK-0035/AMENDMENT-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0035/COPY-PLAN.json
+- docs/agent-workflow/inputs/VEL-TASK-0035/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0035/LANGUAGE-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0035/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0035/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0035/previous-main-evidence-manifest.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0023.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0035.yaml
+- docs/reports/VEL-INTEGRATION-0035.md
+- docs/reports/VEL-LANG-DECISIONS-2026-10-19.md
+- docs/reports/VEL-LANGUAGE-DISPOSITIONS-2026-10-20.md
+- docs/reports/evidence/VEL-INTEGRATION-0035/additional-commands.json
+- docs/reports/evidence/VEL-INTEGRATION-0035/build.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/check.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/commands.json
+- docs/reports/evidence/VEL-INTEGRATION-0035/current-language-checks.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/focused.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/frozen-install.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/handoff.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/library66.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/metadata.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/preflight22.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/readiness.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/source-identity.txt
+- docs/reports/evidence/VEL-INTEGRATION-0035/spec.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/REPRODUCE.md
+- docs/reports/evidence/VEL-LANG-DECISIONS/commands.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install-network.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/frozen-install.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/handoff.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/library66-network.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/library66.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/matrix-source-assertions.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/matrix.json
+- docs/reports/evidence/VEL-LANG-DECISIONS/metadata.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/readiness.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/reproduce-result.txt
+- docs/reports/evidence/VEL-LANG-DECISIONS/spec.txt
+- docs/reports/evidence/VEL-LANGUAGE-DISPOSITIONS-2026-10-20/REPRODUCE.md
+- docs/reports/evidence/VEL-LANGUAGE-DISPOSITIONS-2026-10-20/matrix.json
+- docs/agent-workflow/tasks/VEL-TASK-0036.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0036.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0036.md
+- docs/agent-workflow/inputs/VEL-TASK-0036/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0036*
+- docs/reports/evidence/VEL-INTEGRATION-0036/*
+- apps/web/src/lib/library/book-library-session.test.ts
+out_of_scope:
+- Old Task/CP/input/EB mutation; runtime request/state/security changes; any new feature/SQL/CI/dependency
+  modification
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/CORRECTION-PLAN.json
+  role: review-correction-scope
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/PR100-independent-review.txt
+  role: review-correction-scope
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/PR100-review-command.json
+  role: review-correction-scope
+- path: apps/web/src/lib/library/book-create-document.ts
+  role: existing-rejection-unknown-control-contract
+- path: apps/web/src/lib/library/book-library-session.ts
+  role: existing-rejection-unknown-control-contract
+- path: apps/web/src/app/api/books/route.ts
+  role: existing-rejection-unknown-control-contract
+- path: apps/web/src/lib/library/book-library-session.test.ts
+  role: existing-rejection-unknown-control-contract
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- All predecessor sources remain byte-exact except state.ts single approved literal,
+  new session regression, and current language report/matrix/replay reconciliation.
+  Historical Task35/CP35/inputs35/EB35 and original23 sources unchanged.
+- Regression-first test demonstrates old wording fails for pre-forward identity rejection;
+  corrected wording passes. Genuine dispatched unknown write remains uncertain and
+  blocks ordinary retry.
+- Existing66Library plus new regression,22preflight,check,bothbuilds,full governance
+  and distinct review/ready/postmain CI; no hosted/browser acceptance claim.
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+- After immutable CP36, correct only the approved session copy and current language
+  report/matrix/replay semantics; add meaningful definite-rejection/unknown-write
+  regression before copy correction.
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 326f5e4c385644f864348d008c46c1aa54c7b616
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
