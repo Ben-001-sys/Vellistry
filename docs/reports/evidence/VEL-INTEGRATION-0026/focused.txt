@@ -1,0 +1,1 @@
+PASS: exact archive/member hashes;13 retention checks (1positive+12negative);4 SQL/fixture source identities;38 origin entries and6 inherited-change lineages. No SQL execution.
