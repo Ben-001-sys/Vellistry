@@ -1,0 +1,104 @@
+
+> vellistry@ test:library-isolation H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction
+> pnpm --filter @vellistry/api exec tsx --test src/modules/books/book-create-input.spec.ts ../web/src/lib/library/book-library-state.test.ts ../web/src/lib/library/book-library-session.test.ts
+
+✔ author A's unsaved title is cleared when author B signs in (83.3613ms)
+✔ a same-author refresh keeps the unsaved title (2.2143ms)
+✔ same-author SIGNED_IN does not drop an in-flight create outcome (3.6546ms)
+✔ same-author Refresh during create keeps the successful acknowledgement (4.3664ms)
+✔ an author change during create does not apply that create to the next author (2.7471ms)
+✔ a rejected sign-out stays on the page with the list cleared (1.4867ms)
+✔ a sign-out that returns an error does not redirect (2.3854ms)
+✔ a successful sign-out redirects only after Supabase accepts it (1.2132ms)
+✔ failed sign-out during an in-flight create keeps duplicate retry blocked (6.6903ms)
+✔ successful sign-out during an in-flight create clears its private retry state (3.2611ms)
+✔ a successful create followed by a failed owner lookup stays unknown (2.5696ms)
+✔ a failed POST final identity lookup conceals the draft even on HTTP error (2.3577ms)
+✔ a rejected POST does not expose A's draft after a silent switch to B (1.7228ms)
+✔ a rejected POST with unverifiable identity conceals and restores only for A (2.7338ms)
+✔ a lost create response stays unknown until refresh (1.4641ms)
+✔ a delayed server commit stays blocked after an empty refresh (1.5561ms)
+✔ a transient refresh lookup hides the draft and restores it for the same author (5.6034ms)
+✔ a transient refresh lookup does not reveal the draft to the next author (1.3841ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-a (1.7884ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: author-b (0.91ms)
+✔ a stale auth event keeps a concealed draft hidden until verification: lookup-error (1.0145ms)
+✔ an existing same-title row cannot resolve a lost create acknowledgement (1.4281ms)
+✔ a create without a verified list baseline stays uncertain on a same-title GET (1.3936ms)
+✔ identity is verified after a delayed 503 body is consumed (1.4677ms)
+✔ server errors after dispatch preserve unknown save outcomes (1.3915ms)
+✔ successful sign-out discards an already concealed draft (0.8333ms)
+✔ failed sign-out verifies a silent account switch before retaining the draft (0.8896ms)
+✔ failed sign-out conceals the draft when identity cannot be verified (0.8485ms)
+✔ late failed sign-out cannot discard the next author's pending create (1.168ms)
+✔ an explicit risk retry is required before another create (1.0663ms)
+✔ an owner change after an unknown create does not reveal that title (1.4249ms)
+✔ an HTTP create error stays a definite failure (2.3907ms)
+✔ a successful Nest write with a lost upstream acknowledgement stays unknown (4.5622ms)
+✔ a pre-forward 503 stays a definite save failure (1.5398ms)
+✔ an unreadable 503 acknowledgement stays unknown (1.3164ms)
+✔ a create acknowledgement with an unreadable success body still reloads (1.6392ms)
+✔ a lost post and a failed identity lookup keep uncertainty for the same author (1.3838ms)
+✔ a concealed uncertain save stays hidden from the next author (2.3807ms)
+✔ a returned Supabase auth error conceals the draft until the same author is verified (4.196ms)
+✔ a confirmed signed-out user clears the draft and asks for sign-in (0.8925ms)
+✔ a create preflight auth error conceals an uncertain draft instead of signing out (1.3131ms)
+✔ a final load identity check switches from A to B without an auth callback (4.5676ms)
+✔ a final load identity check confirms sign-out without an auth callback (11.0263ms)
+✔ 401 book load transitions A to B without an auth callback (1.9039ms)
+✔ HTTP error book load transitions A to B without an auth callback (1.9774ms)
+✔ rejected book load transitions A to B without an auth callback (1.394ms)
+✔ 401 book load recognizes sign-out without an auth callback (0.7306ms)
+✔ failed-load owner lookup error conceals and restores only the verified author's draft (0.9358ms)
+✖ pre-forward session rejection stays definite while a dispatched lost acknowledgement locks retry (4.9931ms)
+✔ BFF verifies the exact token it forwards rather than a separately read identity (11.5478ms)
+✔ BFF refuses missing, errored, or unverified access tokens (1.0683ms)
+✔ a late response from author A does not repopulate author B (1.7366ms)
+✔ a delayed author A fetch is ignored after author B is already shown (0.547ms)
+✔ 401 and load errors clear book rows and stay distinct from empty (1.3611ms)
+✔ zero books show the empty call to action and nonzero books never do (0.5224ms)
+✔ refresh keeps the latest owner and a stale retry cannot restore the previous list (0.493ms)
+✔ a successful create acknowledgement does not insert a response book (0.6922ms)
+✔ book create failure keeps the current list and does not claim an empty library (0.5359ms)
+✔ a stale or cross-account submission does not create into the visible library (0.5668ms)
+✔ unauthorized create clears rows and a same-owner conflict adds no book (0.6091ms)
+✔ create while empty still shows the call to action after a save failure (0.3205ms)
+✔ malformed book payloads clear the list instead of rendering private fields (0.3074ms)
+✔ book create rejects a stale account and strips client owner_id (0.6679ms)
+✔ a lost upstream acknowledgement is not a pre-forward failure (0.4103ms)
+✔ a returned auth error is not a confirmed signed-out user (1.2697ms)
+✔ client owner_id is ignored and the insert payload is title only (3.5362ms)
+✔ missing or oversized titles are rejected without a payload (0.2996ms)
+ℹ tests 67
+ℹ suites 0
+ℹ pass 66
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1539.8629
+
+✖ failing tests:
+
+test at ..\web\src\lib\library\book-library-session.test.ts:1128:1
+✖ pre-forward session rejection stays definite while a dispatched lost acknowledgement locks retry (4.9931ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /request was rejected/i. Input:
+  
+  'Your session changed. The creation result is unverified and may have completed for the original account.'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction\apps\web\src\lib\library\book-library-session.test.ts:1146:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Your session changed. The creation result is unverified and may have completed for the original account.',
+    expected: /request was rejected/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-language-session-correction\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.

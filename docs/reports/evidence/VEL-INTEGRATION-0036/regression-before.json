@@ -1,0 +1,6 @@
+{
+  "command": "corepack pnpm test:library-isolation",
+  "exit_code": 1,
+  "source_commit": "a552b3cbf42f363fa83e4787bcc90b0991cfb162",
+  "duration_seconds": 3.5790000000270084
+}

@@ -21,7 +21,7 @@ export const LIBRARY_COPY = {
   createError: "Could not create this book. Your title remains in the field.",
   createUnknown: "The book creation result is unknown. Check your books before trying again.",
   createAbsent: "This book creation is not confirmed by the updated list. Creating it again may create a duplicate if the first request is still finishing.",
-  sessionChanged: "Your session changed. The creation result is unverified and may have completed for the original account.",
+  sessionChanged: "Your session changed. This book creation request was rejected.",
   signingOut: "Signing out...",
   signOutError: "Sign-out did not complete. You may still be signed in. Try signing out again.",
 } as const;

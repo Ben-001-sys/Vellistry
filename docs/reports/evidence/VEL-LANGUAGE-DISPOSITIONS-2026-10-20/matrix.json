@@ -52,11 +52,11 @@
   {
     "id": "LANG-P06",
     "current": "Existing Library now uses Create book, Check your books and Create again anyway; uncertain creation remains explicitly unverified.",
-    "recommendation": "Use creation-specific labels and retain the duplicate warning. Unknown acknowledgements and changed-session results must not become definite failure claims.",
+    "recommendation": "Use creation-specific labels and retain the duplicate warning. Pre-forward session mismatch is a rejected request; genuinely unknown dispatched writes remain uncertain and block ordinary retries.",
     "evidence": "book-library-state.ts LIBRARY_COPY/libraryRegion; book-library-session.ts retryUncertainCreate; books/page.tsx",
     "status": "ADOPT",
     "affected_surface": "Existing library controls/status/accessible names",
-    "verification": "Seven-literal/control-flow check,66Library/22preflight regressions, typecheck and both builds PASS at0d08daedf3001d2fdb874e4c952f08f0cbb5c679. Hosted/browser/author acceptance NOT_RUN.",
+    "verification": "Task36 corrects the separate review P2 against Task35. Regression-before:67 tests,66PASS/1FAIL at a552b3cbf42f363fa83e4787bcc90b0991cfb162. Corrected verification is recorded in EB0036; hosted/browser/author acceptance NOT_RUN.",
     "unresolved_authority": "Real hosted persistence is unverified. No new confirmation dialog, receipt, retry behavior or accessibility acceptance is implied."
   },
   {

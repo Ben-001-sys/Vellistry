@@ -24,6 +24,12 @@ for index,mutate in enumerate(mutations,1):
  else:raise AssertionError(f"matrix mutation{index} escaped")
 base="326f5e4c385644f864348d008c46c1aa54c7b616"
 plan=json.loads(Path("docs/agent-workflow/inputs/VEL-TASK-0035/COPY-PLAN.json").read_text())
+# Task35 exact historical plan is preserved; only Task36 approved literal supersedes it.
+correction=json.loads(Path("docs/agent-workflow/inputs/VEL-TASK-0036/CORRECTION-PLAN.json").read_text())
+for pair in plan[correction["path"]]:
+ if correction["before"] in pair[1]:
+  pair[1]=pair[1].replace(correction["before"],correction["after"])
+
 def valid_copy(name,text):
  expected=subprocess.check_output(["git","show",base+":"+name]).decode("utf-8")
  for old,new in plan[name]:
