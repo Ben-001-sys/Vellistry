@@ -107,8 +107,8 @@ inputs:
   role: existing-rejection-unknown-control-contract
 - path: apps/web/src/app/api/books/route.ts
   role: existing-rejection-unknown-control-contract
-- path: apps/web/src/lib/library/book-library-session.test.ts
-  role: existing-rejection-unknown-control-contract
+- path: docs/agent-workflow/inputs/VEL-TASK-0036/EXISTING-TEST-EXCERPTS.md
+  role: bounded-original-test-source-excerpts
 source_gaps:
 - id: PROVENANCE
   limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
