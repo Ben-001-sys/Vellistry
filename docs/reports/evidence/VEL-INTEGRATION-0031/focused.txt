@@ -1,0 +1,1 @@
+PASS: exact 2620689-byte bundle, 43 advertised pins survive owned mirror clone+GC, fsck succeeds, corrupt clone rejected128. Historical source only; no fresh agent or hosted acceptance.

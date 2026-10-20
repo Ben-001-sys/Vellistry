@@ -1,0 +1,10 @@
+{
+  "bundle_sha256": "984a99d0148fe041ee888c0fcc968adf277b7e48be8cd6662a88d3aa07b87465",
+  "bundle_bytes": 2620689,
+  "advertised_required_pins": 43,
+  "pins_available_after_owned_clone_gc": 43,
+  "fsck": "PASS",
+  "corrupt_clone_exit": 128,
+  "scope": "Historical bundle revisions, not latest main or clean OS",
+  "cleanup": "Only owned local copies created and retained for audit; no external resources"
+}
