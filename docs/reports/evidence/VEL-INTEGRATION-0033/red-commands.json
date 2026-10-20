@@ -1,0 +1,14 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_agent_workflow.py -k git_metadata_case_aliases -v",
+    "source_commit": "d5a0c299012c87621a04c86b60d48105d9576875",
+    "exit_code": 1,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/test_agent_workflow.py.red.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -k git_metadata_case_aliases -v",
+    "source_commit": "d5a0c299012c87621a04c86b60d48105d9576875",
+    "exit_code": 1,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0033/test_pr_compliance.py.red.txt"
+  }
+]

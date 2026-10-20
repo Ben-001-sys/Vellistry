@@ -1,0 +1,29 @@
+test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) ... 
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) (path='.GIT/config')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_agent_workflow.py", line 181, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) (path='docs/.Git/HEAD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_agent_workflow.py", line 181, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) (path='nested/.gIt/objects/synthetic')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_agent_workflow.py", line 181, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=3)

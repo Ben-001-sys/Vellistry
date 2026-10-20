@@ -1,0 +1,53 @@
+test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) ... 
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='.GIT/config', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='.GIT/config', scope=['.GIT/config'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='docs/.Git/HEAD', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='docs/.Git/HEAD', scope=['docs/.Git/HEAD'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='nested/.gIt/objects/synthetic', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) (path='nested/.gIt/objects/synthetic', scope=['nested/.gIt/objects/synthetic'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-sensitive-path-cases\tests\test_pr_compliance.py", line 377, in test_git_metadata_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=6)

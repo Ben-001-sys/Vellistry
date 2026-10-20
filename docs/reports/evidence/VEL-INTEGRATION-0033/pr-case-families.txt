@@ -1,0 +1,7 @@
+test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) ... ok
+test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

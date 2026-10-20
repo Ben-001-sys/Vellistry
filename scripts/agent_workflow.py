@@ -81,9 +81,9 @@ def safe_path(name: str) -> str:
     if not isinstance(name, str) or not name or "\\" in name:
         raise ValueError(f"unsafe repository path: {name!r}")
     p = PurePosixPath(name)
-    if p.is_absolute() or ".." in p.parts or ".git" in p.parts or str(p) != name:
+    if p.is_absolute() or ".." in p.parts or ".git" in {part.casefold() for part in p.parts} or str(p) != name:
         raise ValueError(f"unsafe repository path: {name!r}")
-    if any(part.startswith(".env") or part.lower() in {"secrets", "credentials"} for part in p.parts):
+    if any(part.casefold().startswith(".env") or part.lower() in {"secrets", "credentials"} for part in p.parts):
         raise ValueError(f"excluded secret-like repository path: {name!r}")
     return name
 

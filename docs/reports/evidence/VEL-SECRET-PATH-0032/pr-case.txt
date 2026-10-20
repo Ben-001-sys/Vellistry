@@ -1,0 +1,6 @@
+test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK

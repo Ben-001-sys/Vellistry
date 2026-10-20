@@ -1,0 +1,23 @@
+{
+  "base": "8963ace5b8a1d5f08cb55258c82b51e06cc5fb27",
+  "paths": [
+    {
+      "path": "scripts/agent_workflow.py",
+      "blob": "ff23466529b438532c2c1d904d6810fec9f80702",
+      "sha256": "642c7f964dd3be42b48b442cb829785e2b64b40a508e0f76ed2517b85f159d48",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0032/agent_workflow.py.before.txt"
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "blob": "e2eb50a1551aa973eac09c631ec7a947c53ba240",
+      "sha256": "5f88e1af434751bbc1840065620d8111adcc9cdce4724ff9a864da2f5bd051cf",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0032/test_agent_workflow.py.before.txt"
+    },
+    {
+      "path": "tests/test_pr_compliance.py",
+      "blob": "60053254b73ccdcc85e116bb314c88f2d7e9ac72",
+      "sha256": "a13d8f77dc684fca6efe19066c6b1d2291195070cf37990b8f3d445e1933efcd",
+      "snapshot": "docs/agent-workflow/inputs/VEL-TASK-0032/test_pr_compliance.py.before.txt"
+    }
+  ]
+}
