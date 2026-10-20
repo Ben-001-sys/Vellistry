@@ -1,0 +1,81 @@
+[
+  {
+    "command": "Verify10source hashes,exactbrowser,two-helper-literals,originaltestnames and unchangedCI/lock/package/legacyexample",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/source-preservation.txt"
+  },
+  {
+    "command": "corepack pnpm install --frozen-lockfile --offline",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 0.672,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/install.txt"
+  },
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 1.109,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/preflight23.txt"
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 1.782,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/library67.txt"
+  },
+  {
+    "command": "corepack pnpm check",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 4.968,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/check.txt"
+  },
+  {
+    "command": "corepack pnpm build",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 20.125,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/build.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 0.266,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 0.156,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 0.313,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/spec.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "618c18070a2a006b492a383791787f62bd00516e",
+    "duration_seconds": 78.078,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0037/handoff.txt"
+  }
+]

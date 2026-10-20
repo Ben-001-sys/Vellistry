@@ -1,0 +1,35 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-setup-reconciliation
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.5931ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.2215ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1394ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.1841ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.1443ms)
+✔ rejects mismatched Web/API project publishable keys (0.1386ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.1445ms)
+✔ rejects invalid or omitted expected project reference (0.1143ms)
+✔ missing local files are reported without consulting environment or network (1.5973ms)
+✔ reads ignored local files, never emits key values in success output (10.972ms)
+✔ invalid local config never leaks the offending key in diagnostics (4.0463ms)
+✔ does not pass file validation when inherited runtime settings override those files (7.1389ms)
+✔ rejects competing Next env files that the actual runtime would also read (17.115ms)
+✔ rejects test mode because Next does not load the required .env.local there (3.216ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (81.1385ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (146.6122ms)
+✔ actual CLI fails safely with absent env files (69.229ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.2797ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (3.7905ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (70.886ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (71.828ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (67.6145ms)
+✔ missing-file guidance links to existing canonical placeholder instructions (1.2185ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 687.2884
