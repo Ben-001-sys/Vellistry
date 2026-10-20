@@ -1,0 +1,109 @@
+id: VEL-TASK-0026
+title: 'Current-main amendment: integrate PR84 offline readiness and retained PG17
+  proof'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0026
+objective: Selectively integrate exact PR84 remediation source at 8a4e526bdf1f21da68ea4e631e68cbd07d2477bc
+  on actual main 411a9bc0f2d08c8187bc0b1a6eccc5a05d9c2fc4, preserving oldauthorship/evidence
+  and usingnewimmutable currentauthority context.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0019.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0019.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/DEFINITION-DECISION.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/ISSUE81.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/definition-decision.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/issue81-comments.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/issue81.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pg17-artifact.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pr65.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pr68.json
+- docs/agent-workflow/tasks/VEL-TASK-0019.yaml
+- docs/reports/VEL-DB-READINESS-001-OFFLINE-REVIEW.md
+- docs/reports/evidence/VEL-DB-READINESS-001/REPRODUCE.md
+- docs/reports/evidence/VEL-DB-READINESS-001/check-0.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-1.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-2.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-3.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/checks.json
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-commands.json
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-db-push-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-link-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-migration-list-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-version.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/pg17-artifact.zip
+- docs/reports/evidence/VEL-DB-READINESS-001/pg17-result.json
+- docs/reports/evidence/VEL-DB-READINESS-001/retention-checks.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/retention-final-checks.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/retention.json
+- docs/reports/evidence/VEL-DB-READINESS-001/source-map.json
+- docs/agent-workflow/tasks/VEL-TASK-0026.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0026.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0026.md
+- docs/agent-workflow/inputs/VEL-TASK-0026/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0026*
+- docs/reports/evidence/VEL-INTEGRATION-0026/*
+out_of_scope:
+- Unlisted/new appfeatures/SQL/CI/standingpolicy edits; oldContextPack mutation
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0026/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0026/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Everyadoptedpath matches pinnedoriginalGitblob/SHA256; no unauthorizedpath oroldCPmutation
+- Originalauthorship/proposal/evidence status preserved; currentdelegation separatelyreferenced
+- Actualvalidators/focusedsuite and trustedbasecompliance; finalreadyCI anddistinctreview;
+  no fabricatedacceptance
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 411a9bc0f2d08c8187bc0b1a6eccc5a05d9c2fc4
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
