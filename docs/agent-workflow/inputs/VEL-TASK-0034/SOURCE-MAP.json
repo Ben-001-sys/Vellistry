@@ -1,0 +1,97 @@
+{
+  "pr": 89,
+  "source": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+  "base": "9ca7fc90ee642ffcaed927ca1cc792bf47ad14f1",
+  "paths": [
+    {
+      "path": "LANGUAGE.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "062c0648bebaf2738c3d8e1db2bdfe7c7cf46ada",
+      "sha256": "262877813e22178c16c78f65acd63e3d30a50af5836b84544c2da812df3f84bc"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0024.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "916254723bc618e50254ecd53ddaa56cc6e038d0",
+      "sha256": "8a7ec673c760177f82b603bfa3d0694ef73e52907b181f01287a29a086ab6cd5"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0024.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "558e07b7434feb769aa99fb800c12ef61587bf45",
+      "sha256": "83ea92b350a32a1a522dabd089db755cf865eaec7423a405e604c56f3a710217"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0024/ID-SCAN.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "c1fda27666156a1752e01858ab1d28235274fefd",
+      "sha256": "f317527b29983c876e05ed6d0d960a22d16f8d75ea1df1e42367ca5a987d9ba7"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0024/LANGUAGE-EXCERPTS.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "85af3bb9da89b3e8f0e6e91fc84fef6f71e9bef8",
+      "sha256": "64c340e9cf9b8fc8553a65a5e0b2b7587bdd0aad3306213aa6ca63ad7dd1e3f7"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0024/OWNER-SCOPE.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "df5fd17d11d04668f58b4fb26b33ec93b033a7d3",
+      "sha256": "4f5b2dc20cc70728010bc9b90fc75c58a2f831f58d5253ecbf834664d03c6652"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0024.yaml",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "ea69992d19d13c17aeadbcf6246565a41710e052",
+      "sha256": "d22202c0800f4c68ccbd8a3d3fef6b1e96faab4ded322e8bf0b474393919a829"
+    },
+    {
+      "path": "docs/reports/VEL-LANG-P15-2026-10-19.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "ab1000224b1839515e4f6258cf034a77e227188b",
+      "sha256": "b737d4ad167fe4615579a422258cdec55094310e551fb758211756bbfb4d6ad9"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/REPRODUCE.md",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "b9334be3e6d5db1e670593325231f921fb2a6ec4",
+      "sha256": "21bed675cec9f076b0c972b15c72a26216d9dac5da5f7574768815052bc8c5bb"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/commands.json",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "27f022ab82dfa1f5fa1bd9217c584a393d0115c5",
+      "sha256": "1caea21705ba524771248d2ccb9c4f4898cf4178046ebe079d153c2204b5cd71"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/handoff.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "85506f5469105efefda3c4e9bb32bfceba1dbd42",
+      "sha256": "90597c3efad9c7b66974ef6c13f2e70ccb9523145cdc934eb2c14681f696e514"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/metadata.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/readiness.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/source-preservation.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "6806161a4d1c765374c6b4b238598a056c1a2b08",
+      "sha256": "c1bbfdbd1fb228e92ef78107c3f159d966b063dd17c2980a16a6daf419647e7a"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-LANG-P15/spec.txt",
+      "source_commit": "310f96c1bee28fd24999523ae32dacdda4d07b0e",
+      "blob": "c9fd75f35077ea1f3a615adc4bc689bf38f07bdd",
+      "sha256": "eb47c0e32579bde7c78fd5e85c9c541190c0e4322586ef08cd38a457d638a2bd"
+    }
+  ]
+}

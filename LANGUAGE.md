@@ -3,9 +3,9 @@ id: VEL-LANG-001
 title: Vellistry Product Language, Terminology, and UX Content Standard
 type: product-language-standard
 status: proposed-owner-review
-version: 1.0.0-candidate
+version: 1.0.1-candidate
 created_at: 2026-10-17
-updated_at: 2026-10-17
+updated_at: 2026-10-19
 owner: project_owner
 repository: Ben-001-sys/Vellistry
 baseline_main_sha: f371448538dafa92faebbef9bcda2a36c6ca1fa9
@@ -684,6 +684,7 @@ Update terms through a reviewed versioned document change. Record superseded ter
 | Date | Version | Change | Authority |
 |---|---|---|---|
 | 2026-10-17 | 1.0.0-candidate | Initial source-grounded language contract and copy audit for owner review | Analyst proposal; **not adopted** |
+| 2026-10-19 | 1.0.1-candidate | Correct LANG-P15 merged-file presence; original audit baseline and terminology preserved | Codex Task0024 factual maintenance under owner mandate; proposal status and owner adoption/merge gates unchanged |
 
 ## 17. Audit of actual repository language
 
@@ -731,7 +732,7 @@ This audit is a research finding, not an instruction to change code immediately.
 | `LANG-P12` | **Locale, English variant and translation strategy?** Current `<html lang="en">`; no localization system selected. | Use clear source English and locale-aware formatting; defer dialect/translation default. | Audience research, accessibility/IME tests, owner decision. |
 | `LANG-P13` | **What are the canonical account and nested-book settings screen labels/routes?** Current only `/`, `/login`, `/books`. | **Account settings**, **AI settings**, **Export and backup** as proposed labels. | Approved navigation design and actual routes. |
 | `LANG-P14` | **Which model/provider route statuses and cost figures may be displayed?** OpenRouter first adapter chosen; live real-model acceptance not completed. | Unavailable when not verified; label monetary values as estimates with units. | Real provider route/privacy/usage tests and approval. |
-| `LANG-P15` | **Whether the proposed LANGUAGE.md itself is effective:** no `LANGUAGE.md` on verified default branch. | Adopt after owner review; keep `status: proposed-owner-review` meanwhile. | Owner approval and scoped documented repo integration. |
+| `LANG-P15` | **Whether the proposed LANGUAGE.md itself is effective:** `LANGUAGE.md` is present on merged main `fca0d96fd071f1165e3e16658d821a3d36a20293` via PR #80 (rechecked 2026-10-19); metadata remains `proposed-owner-review`. Repository presence is not owner approval of all15 decisions. | Adopt after owner review; keep `status: proposed-owner-review` meanwhile. | Owner approval and scoped documented repo integration. |
 
 ## 19. Research and evidence references
 
