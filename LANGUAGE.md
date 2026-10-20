@@ -3,9 +3,9 @@ id: VEL-LANG-001
 title: Vellistry Product Language, Terminology, and UX Content Standard
 type: product-language-standard
 status: proposed-owner-review
-version: 1.0.1-candidate
+version: 1.0.2-candidate
 created_at: 2026-10-17
-updated_at: 2026-10-19
+updated_at: 2026-10-20
 owner: project_owner
 repository: Ben-001-sys/Vellistry
 baseline_main_sha: f371448538dafa92faebbef9bcda2a36c6ca1fa9
@@ -685,6 +685,7 @@ Update terms through a reviewed versioned document change. Record superseded ter
 |---|---|---|---|
 | 2026-10-17 | 1.0.0-candidate | Initial source-grounded language contract and copy audit for owner review | Analyst proposal; **not adopted** |
 | 2026-10-19 | 1.0.1-candidate | Correct LANG-P15 merged-file presence; original audit baseline and terminology preserved | Codex Task0024 factual maintenance under owner mandate; proposal status and owner adoption/merge gates unchanged |
+| 2026-10-20 | 1.0.2-candidate | Link scoped delegated language dispositions; clarify existing Library creation copy while retaining the proposed contract and historical question rows | Codex Task0035 under one-time owner delegation, 19 October 2026; external factual/security gates remain |
 
 ## 17. Audit of actual repository language
 
@@ -715,6 +716,8 @@ This audit is a research finding, not an instruction to change code immediately.
 **Severity meaning:** Critical = a misleading action or status could cause incorrect/destructive author decisions; High = major trust/semantic or task confusion; Medium = discoverability/clarity; Low = polish. Planned missing terminology isn't a live deployed defect. Some high findings describe an implementation requirement rather than a current author-visible failure.
 
 ## 18. Unresolved decisions — do not silently settle
+
+**Current scoped dispositions (20 October 2026):** [LANG-P01–P15](docs/reports/VEL-LANGUAGE-DISPOSITIONS-2026-10-20.md) records the ordinary terminology and existing Library copy selected under the one-time owner delegation. The table below preserves the original proposal questions as dated history. The whole language contract remains proposed-owner-review; scoped copy integration is not blanket approval, hosted acceptance or implementation of future capabilities.
 
 | ID | Question and evidence | Recommended next decision | Approval condition |
 |---|---|---|---|

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "LANG-P01",
+    "current": "Vellistry is the working name in layout/login; no clearance evidence.",
+    "recommendation": "Keep Vellistry as working name; never assert a registered or legally cleared mark.",
+    "evidence": "LANGUAGE.md §§0/18; apps/web/src/app/layout.tsx and login/page.tsx",
+    "status": "PROVISIONAL",
+    "affected_surface": "Brand/headings",
+    "verification": "Committed labels inspected; legal search/clearance NOT_RUN.",
+    "unresolved_authority": "Commercial legal/trademark/domain clearance requires separate owner evidence."
+  },
+  {
+    "id": "LANG-P02",
+    "current": "ADR0007 preserves260 variant records; deployable active mapping is uncertified.",
+    "recommendation": "Keep raw hash+variant+printed-code identity. Publish no 130/134 active-default claim.",
+    "evidence": "ADR0007 Decision/Implementation status; LANGUAGE.md §13.2",
+    "status": "BLOCKED",
+    "affected_surface": "Future Rules Studio/default-pack help",
+    "verification": "Source policy checked; original source certification/active catalog NOT_VERIFIED.",
+    "unresolved_authority": "Owner-reviewed versioned mapping and frozen-source validation remain required."
+  },
+  {
+    "id": "LANG-P03",
+    "current": "Story Profiles is accepted concept; Story Workspace is proposed shell, no current route.",
+    "recommendation": "Use Story Profiles for records; provisionally reserve Story Workspace for their shell; do not equate all story data with Story Bible.",
+    "evidence": "LANGUAGE.md §§4.2/5/18; actual current routes",
+    "status": "PROVISIONAL",
+    "affected_surface": "Future story navigation/help",
+    "verification": "Source distinctions verified; author naming task tests NOT_RUN.",
+    "unresolved_authority": "Exact shell branding/navigation still needs owner design decision; no screen implemented."
+  },
+  {
+    "id": "LANG-P04",
+    "current": "Storyline/thread terms coexist in approved intent; records/UI absent.",
+    "recommendation": "Provisionally use Story threads for recurring plot records, storyline only as contextual explanation.",
+    "evidence": "LANGUAGE.md §§4.2/18; accepted product meaning retained",
+    "status": "PROVISIONAL",
+    "affected_surface": "Future profile/story navigation",
+    "verification": "No schema rename or usability validation performed.",
+    "unresolved_authority": "Owner design/model clarification and author tests before canonical label adoption."
+  },
+  {
+    "id": "LANG-P05",
+    "current": "Current schema/specification uses chapters; no approved separate scene editing unit.",
+    "recommendation": "Retain chapter as authoritative unit; do not create scene routes/entities from terminology alone.",
+    "evidence": "LANGUAGE.md §§4.1/18; ADR0003; Wave5 chapter context",
+    "status": "ADOPTED",
+    "affected_surface": "Existing domain references; future chapter workspace",
+    "verification": "Accepted chapter meaning preserved; no new chapter CRUD or scene behavior claimed.",
+    "unresolved_authority": "Ordinary terminology retained under mandate; scene model requires separate approved scope."
+  },
+  {
+    "id": "LANG-P06",
+    "current": "Library status has unknown result and duplicate warning; button is Save again anyway; risk retry is distinct from Refresh.",
+    "recommendation": "Prefer Create book and Check your books in a future copy task. Preserve explicit duplicate-risk retry and uncertain-write lock; do not invent an implemented confirmation dialog.",
+    "evidence": "book-library-state.ts LIBRARY_COPY/libraryRegion; book-library-session.ts retryUncertainCreate; books/page.tsx",
+    "status": "PROVISIONAL",
+    "affected_surface": "Existing library controls/status/accessible names",
+    "verification": "Existing66 isolation/unknown-save regressions execute in fullCI. No changed UI copy or new confirmation/accessibility acceptance here.",
+    "unresolved_authority": "Copy implementation needs its own scoped test/review; lost ACK cannot be labelled definite failure or safely absent."
+  },
+  {
+    "id": "LANG-P07",
+    "current": "Login says Account requested. Check your email if confirmation is enabled. Current hosted setting is unknown.",
+    "recommendation": "Retain conditional wording; only show a definite confirmation or sign-in result after actual verified behavior.",
+    "evidence": "apps/web/src/app/login/page.tsx submit(signup)",
+    "status": "BLOCKED",
+    "affected_surface": "Existing signup status/live region",
+    "verification": "Committed source inspected; hosted signup/email confirmation NOT_RUN.",
+    "unresolved_authority": "Separate target-specific hosted/Auth fixture authorization needed; no configured setting inferred."
+  },
+  {
+    "id": "LANG-P08",
+    "current": "Optional BYOK and session-only planned custody are selected intent; production AI settings absent.",
+    "recommendation": "Use your own API key in future UI; disclose actual recipient/transient proxy exposure and any provider cost only after implementation tests. Manual writing needs no key or AI spend.",
+    "evidence": "Owner BYOK HIS20261010-003; Wave5 decision; LANGUAGE.md §13.3",
+    "status": "DEFERRED",
+    "affected_surface": "Future AI settings/consent/privacy",
+    "verification": "Accepted free-or-paid BYOK meaning inspected; actual custody/network retention/cost tests NOT_RUN.",
+    "unresolved_authority": "No provider call, storage guarantee or blanket privacy approval; implementation and owner privacy review remain."
+  },
+  {
+    "id": "LANG-P09",
+    "current": "No production manual editor or persisted AI-acceptance Undo exists.",
+    "recommendation": "Reserve Undo for editor history and Undo accepted change for separately persisted compensated action once implemented.",
+    "evidence": "ADR0003; Wave5 transactional acceptance; LANGUAGE.md §13.4",
+    "status": "DEFERRED",
+    "affected_surface": "Future editor and AI review controls",
+    "verification": "No real editor/acceptance/compensation interaction tested.",
+    "unresolved_authority": "Must preserve later edits and revision ownership; separate transaction/UI acceptance required."
+  },
+  {
+    "id": "LANG-P10",
+    "current": "Book-create acknowledgement is implemented; chapter autosave/recovery receipts are not.",
+    "recommendation": "Condition Unsaved/Saving/Saved/Save status unknown/Conflict/Recovered draft on actual per-document state and receipts. Never call unknown outcome a proven conflict or claim local recovery without persistence evidence.",
+    "evidence": "LANGUAGE.md §10.1–10.2; book-library-state.ts; Wave5 acceptance",
+    "status": "DEFERRED",
+    "affected_surface": "Future chapter save/recovery indicators",
+    "verification": "Library semantics reviewed; chapter browser/database/local-recovery acceptance NOT_RUN.",
+    "unresolved_authority": "IMP003B actual durable transaction/recovery tests before these guarantees appear."
+  },
+  {
+    "id": "LANG-P11",
+    "current": "ADR0004 records interchange/portable recovery intent; complete product export/restore/deletion absent.",
+    "recommendation": "Distinguish Download manuscript from Download book backup. State exact contents and fidelity/retention limits only when implemented and tested.",
+    "evidence": "ADR0004; LANGUAGE.md §§4.4/13.5/18",
+    "status": "DEFERRED",
+    "affected_surface": "Future export/restore/deletion dialogs",
+    "verification": "No product round-trip, deletion or retention acceptance; prior research is not shipping export.",
+    "unresolved_authority": "Owner-reviewed product scope plus fidelity/restore/privacy evidence, no invented guarantee."
+  },
+  {
+    "id": "LANG-P12",
+    "current": "Layout declares html lang=en and source UI is English; no localization system.",
+    "recommendation": "Keep source English. Defer default dialect/translation/IME/RTL support claims and do not infer them from language attribute.",
+    "evidence": "apps/web/src/app/layout.tsx; LANGUAGE.md §18",
+    "status": "ADOPTED",
+    "affected_surface": "Current source copy/language attribute",
+    "verification": "Committed attribute inspected; locale/IME/RTL/screen-reader behavioral acceptance NOT_RUN.",
+    "unresolved_authority": "Ordinary existing source language retained; audience/locale strategy remains owner decision."
+  },
+  {
+    "id": "LANG-P13",
+    "current": "Current implemented routes are /, /login, /books; no account/AI/export settings pages.",
+    "recommendation": "Keep Account settings, AI settings and Export and backup as future labels only; no phantom links or screens.",
+    "evidence": "apps/web/src/app route inventory; LANGUAGE.md §6/18",
+    "status": "DEFERRED",
+    "affected_surface": "Future navigation/settings",
+    "verification": "Tracked route inventory checked; no absent route rendered or new screen implied.",
+    "unresolved_authority": "Owner-approved navigation plus actual implemented route required."
+  },
+  {
+    "id": "LANG-P14",
+    "current": "OpenRouter first adapter is planned; live model menu, availability and cost not accepted.",
+    "recommendation": "Show no actual provider availability or price claims without dated route/usage evidence. Future monetary estimates need units and explicit uncertainty.",
+    "evidence": "Wave5 decision; LANGUAGE.md §18",
+    "status": "BLOCKED",
+    "affected_surface": "Future provider/model/cost indicators",
+    "verification": "No paid calls, current provider-pricing retrieval or live route acceptance.",
+    "unresolved_authority": "Separate verified provider/privacy/usage tests and owner-authorized spend if needed."
+  },
+  {
+    "id": "LANG-P15",
+    "current": "LANGUAGE.md is present on merged main fca0d96 via PR80; metadata remains proposed-owner-review. Original §18 absence claim is stale.",
+    "recommendation": "Use this verified fact in current handoff; preserve original ChatGPT source as a dated proposal. Do not treat merging a document or this matrix as accepting all15 decisions.",
+    "evidence": "Git fca0d96:LANGUAGE.md; PR80 merge; original metadata/§18",
+    "status": "ADOPTED",
+    "affected_surface": "Current onboarding/review evidence",
+    "verification": "Git presence/hash/status verified; no metadata promotion or root-language edit here.",
+    "unresolved_authority": "Adopted factual correction only. Canonical source maintenance and formal vocabulary adoption remain separately reviewed, owner-controlled integration."
+  }
+]

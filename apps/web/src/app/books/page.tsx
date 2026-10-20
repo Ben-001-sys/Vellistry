@@ -66,7 +66,7 @@ export default function Books(){
         <input id="new-book-title" className="mt-1 block w-full rounded border p-2" maxLength={120}
           value={snap.draftTitle} onChange={(event) => session.setDraftTitle(event.target.value)} required disabled={!region.canCreate}/>
       </label>
-      <button type="submit" disabled={!region.canCreate} className="self-end rounded border px-4 py-2">Create</button>
+      <button type="submit" disabled={!region.canCreate} className="self-end rounded border px-4 py-2">Create book</button>
     </form>
     <p role="status" aria-live="polite">{region.status}</p>
     {region.emptyCopy ? <p>{region.emptyCopy}</p> : null}
@@ -75,9 +75,9 @@ export default function Books(){
       {region.books.map((book) => <li key={book.id} className="rounded border p-3">{book.title}</li>)}
     </ul> : null}
     <div className="flex gap-4">
-      {region.showRefresh ? <button type="button" className="underline" onClick={() => { void session.refresh(); }}>Refresh</button> : null}
+      {region.showRefresh ? <button type="button" className="underline" onClick={() => { void session.refresh(); }}>Check your books</button> : null}
       {region.showRetry ? <button type="button" className="underline" onClick={() => { void session.refresh(); }}>Try again</button> : null}
-      {region.showRiskRetry ? <button type="button" className="underline" onClick={() => { void session.retryUncertainCreate(); }}>Save again anyway</button> : null}
+      {region.showRiskRetry ? <button type="button" className="underline" onClick={() => { void session.retryUncertainCreate(); }}>Create again anyway</button> : null}
       <button type="button" className="underline" onClick={() => { void session.signOut(); }}>Sign out</button>
     </div>
   </main>;
