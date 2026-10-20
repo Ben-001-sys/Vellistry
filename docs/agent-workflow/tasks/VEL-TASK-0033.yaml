@@ -1,0 +1,116 @@
+id: VEL-TASK-0033
+title: 'Bounded amendment: reject environment and Git metadata case aliases'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0033
+objective: Preserve PR97 environment-path hardening and close separately demonstrated
+  Git metadata case aliases under a newly pinned amendment, without template exceptions
+  or other policy changes.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0032.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0032.md
+- docs/agent-workflow/inputs/VEL-TASK-0032/GUARD-EXCERPT.md
+- docs/agent-workflow/inputs/VEL-TASK-0032/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0032/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0032/SECRET-PATH-OBSERVATION.json
+- docs/agent-workflow/inputs/VEL-TASK-0032/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0032/agent_workflow.py.before.txt
+- docs/agent-workflow/inputs/VEL-TASK-0032/previous-main-evidence-manifest.yaml
+- docs/agent-workflow/inputs/VEL-TASK-0032/test_agent_workflow.py.before.txt
+- docs/agent-workflow/inputs/VEL-TASK-0032/test_pr_compliance.py.before.txt
+- docs/agent-workflow/tasks/VEL-TASK-0032.yaml
+- docs/reports/VEL-SECRET-PATH-0032.md
+- docs/reports/evidence/VEL-SECRET-PATH-0032/commands.json
+- docs/reports/evidence/VEL-SECRET-PATH-0032/handoff16.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/metadata.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/pr-case.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/preservation.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/readiness.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/red-commands.json
+- docs/reports/evidence/VEL-SECRET-PATH-0032/spec.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/test_agent_workflow.py.red.txt
+- docs/reports/evidence/VEL-SECRET-PATH-0032/test_pr_compliance.py.red.txt
+- scripts/agent_workflow.py
+- tests/test_agent_workflow.py
+- tests/test_pr_compliance.py
+- docs/agent-workflow/tasks/VEL-TASK-0033.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0033.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0033.md
+- docs/agent-workflow/inputs/VEL-TASK-0033/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0033*
+- docs/reports/evidence/VEL-INTEGRATION-0033/*
+out_of_scope:
+- Template exceptions or unlisted app/SQL/CI/dependency/approval changes; historical
+  pack/source rewrites
+- Hosted/credentials/private/paid/admin/production/features/mergeinsideimplementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0033/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0033/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0033/GIT-CASE-OBSERVATION.json
+  role: demonstrated-scope-amendment-and-prior-review
+- path: docs/agent-workflow/inputs/VEL-TASK-0033/PREDECESSOR-REVIEW.txt
+  role: demonstrated-scope-amendment-and-prior-review
+- path: docs/agent-workflow/inputs/VEL-TASK-0033/AMENDMENT-SCOPE.md
+  role: demonstrated-scope-amendment-and-prior-review
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- All predecessor source unchanged except3explicit corrections; preserve original0032Task/CP/EB
+  andauthorship
+- Git metadata case aliases rejected through workflow and PRallow checks; .github/ordinary
+  paths accepted; allENVcase regressions preserved
+- New Git-specific tests fail committed pre-fix guard and pass corrected source; no
+  assertion/CI/security weakening
+- Complete actual governance/compliance CI, distincttrustedreview, ready/mainCI andmergedtree
+  verification; no sensitive file access
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+- 'Correct only3explicit source/test paths after newCP: Git metadata case matching
+  plus new syntheticregressions; preserve prior environment guard'
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 8963ace5b8a1d5f08cb55258c82b51e06cc5fb27
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

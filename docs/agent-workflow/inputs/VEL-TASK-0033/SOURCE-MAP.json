@@ -1,0 +1,168 @@
+{
+  "pr": 97,
+  "source": "da2be99ac00a70609c3791db9deda0237d16bc42",
+  "base": "8963ace5b8a1d5f08cb55258c82b51e06cc5fb27",
+  "paths": [
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0032.md",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "4deae16bc103f11cdc7ccb437296a31d6eeefabd",
+      "sha256": "fb17a1ed13e8663db3f74ebb3f90581c843ca13ae48f67f1492a8a6d1f0550e9"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0032.md",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "8325b8433a38a972cd043672e2f07a19122002e9",
+      "sha256": "c6698c4a5dfbc1357c1aa0cf2dc5a5b7303f2c6bbe2c236378e5cd56c11b8271"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/GUARD-EXCERPT.md",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "fe2643e6f86200429e26d622a5464dab71ea05ed",
+      "sha256": "ac0df789793590394cd1bc30f235c7f725e78b7ea03a325d632728b35450785d"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/ID-SCAN.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "3610fe376ea97d9f70c4c2f2665963d2b00c9772",
+      "sha256": "91b5827fe181d156a140c107b6c3bae57767b24829c0bf1a4900233ee87a1cae"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/OWNER-SCOPE.md",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "5c62b2c4aecef02ef02e2b157059f1c8ba97e650",
+      "sha256": "b27691289b6ea49304fb4cd0cc2c744ba25295fb3df409b279cd7c42b8e0af96"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/SECRET-PATH-OBSERVATION.json",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "926b1b023dd625df0d72b31885746295b10c62dd",
+      "sha256": "ee4003360a53e437b6f09f5f39923791d255ad4a8f851ff794f4ff6c2a9abd5b"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/SOURCE-MAP.json",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "b20409b907c767cc15268aebdfa2026efe4e95a1",
+      "sha256": "4a7135cbbb8982af729ee0f7ac20da0133e891cd3b5d58f3956a4bfe79691739"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/agent_workflow.py.before.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "ff23466529b438532c2c1d904d6810fec9f80702",
+      "sha256": "642c7f964dd3be42b48b442cb829785e2b64b40a508e0f76ed2517b85f159d48"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/previous-main-evidence-manifest.yaml",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "6b403a5328a067b96670f1e06266149222f96b6c",
+      "sha256": "0e54997458e40970acacb697047cbe151a6178fedbb08d5bddfec8660378cdbc"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/test_agent_workflow.py.before.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "e2eb50a1551aa973eac09c631ec7a947c53ba240",
+      "sha256": "5f88e1af434751bbc1840065620d8111adcc9cdce4724ff9a864da2f5bd051cf"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0032/test_pr_compliance.py.before.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "60053254b73ccdcc85e116bb314c88f2d7e9ac72",
+      "sha256": "a13d8f77dc684fca6efe19066c6b1d2291195070cf37990b8f3d445e1933efcd"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0032.yaml",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "9fc46040920bf8291774790cb02ee8740c691464",
+      "sha256": "00b61ffc85ee5ae78297f16b176875acf490c04742d212fd8a3227a08f8a7837"
+    },
+    {
+      "path": "docs/reports/VEL-SECRET-PATH-0032.md",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "ed9f7e9a47e6bd3f874222ac34d32e35752e49e3",
+      "sha256": "f333f57b3d22a7b29302490c8163be28526f9c872505273ba64aa41bc62c5696"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/commands.json",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "d9ed2b9ac0f5c9356678ea29d88cbe43370322f5",
+      "sha256": "764729cfe37641c84d3e371193b0671082212852eb8988d5508c577f8f628f2f"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/handoff16.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "b1a9ae46189e475ebdca3b6a56ec9a4ec5215b74",
+      "sha256": "8067e7990e1d2edc960f433f2e1f162140fbdcfd3c24b8528b714abedfd84ef7"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/metadata.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/pr-case.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "898de0300d93ec94cba0d82297b2e01b2163f5bf",
+      "sha256": "1226c78631066351c8a4e74c4b28ef79298117581622832adf028bf49a1266d0"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/preservation.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "45f6c229f8437db2866ba36a653fb9ad3eeb26c0",
+      "sha256": "110be9e96ef56dd166d510b2169f3a67f5cb486fea0d11e05957a28f4dfdf7e6"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/readiness.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/red-commands.json",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "ecf7026322a943f7b30b260c76af0c6e282c325c",
+      "sha256": "ffc7124489433c4866d8e4b80fee98135a17bd7a042ad41580b3b0d055a7519a"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/spec.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "77d029c339ddf26d849bc2fed09fcf59c7c96748",
+      "sha256": "cc4bade326da114c0dcbc372071e1040f9d04129a29c864413316c7bf31218d8"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/test_agent_workflow.py.red.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "31a99ed56b81959e63868b1ed5268626add33c20",
+      "sha256": "0a164aa1886ae984f21322795f55ec111def98c7f2e66cd06b74212d0521768d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-SECRET-PATH-0032/test_pr_compliance.py.red.txt",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "29116ef23321e8aedc27ff79bc64f01b5a5fbd2e",
+      "sha256": "d262224cc34c02a53200c54761b8655a94dd8bdbb286857c341cd4b1211b8c0b"
+    },
+    {
+      "path": "scripts/agent_workflow.py",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "f90f796062ff8f82c2774ac839669bab14a88e51",
+      "sha256": "36aba83187bc5853c0f8143cd2d31d72398a51cd2017288a4d98c9ea345a3300"
+    },
+    {
+      "path": "tests/test_agent_workflow.py",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "521ea6b45a7d6927b9d6c6a45ecc7d32cc22a991",
+      "sha256": "6f17a81ba054bb2da1076835d4a09ec1e15cb5204c8582aa081fe9c988efc6f7"
+    },
+    {
+      "path": "tests/test_pr_compliance.py",
+      "source_commit": "da2be99ac00a70609c3791db9deda0237d16bc42",
+      "blob": "f9ffac2b772ca3eb1e86ae869bae07ac5d09682f",
+      "sha256": "2d323fe824a84ec23f5bed880ac7375540cfa0c9b685fe54d05517efcfb9b2ed"
+    }
+  ],
+  "correction_paths": [
+    "scripts/agent_workflow.py",
+    "tests/test_agent_workflow.py",
+    "tests/test_pr_compliance.py"
+  ]
+}

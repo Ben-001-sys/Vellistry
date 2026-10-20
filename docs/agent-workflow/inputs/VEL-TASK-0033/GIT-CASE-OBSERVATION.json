@@ -1,0 +1,18 @@
+{
+  "source": "da2be99ac00a70609c3791db9deda0237d16bc42",
+  "observations": [
+    {
+      "synthetic_path": ".git/config",
+      "accepted": false
+    },
+    {
+      "synthetic_path": ".GIT/config",
+      "accepted": true
+    },
+    {
+      "synthetic_path": "docs/.Git/HEAD",
+      "accepted": true
+    }
+  ],
+  "scope": "pure names only; no Git metadata content read"
+}
