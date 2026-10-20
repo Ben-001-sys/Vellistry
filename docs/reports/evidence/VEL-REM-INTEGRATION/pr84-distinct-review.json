@@ -1,0 +1,13 @@
+{
+  "head": "8a4e526bdf1f21da68ea4e631e68cbd07d2477bc",
+  "base": "fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "command": "codex -s read-only -a never -c mcp_servers={} review --base fca0d96fd071f1165e3e16658d821a3d36a20293",
+  "cli_version": "0.163.0-alpha.10.2",
+  "model": "gpt-6.1-sol",
+  "session_id": "01a15843-212e-7301-92b4-68fe8286db97",
+  "exit_code": 0,
+  "authentication": "existing ChatGPT; no API key environment",
+  "authoring_conversation_supplied": false,
+  "findings": "No actionable defects; evidence/metadata/readiness/spec/handoff/compliance checks passed",
+  "limits": "Not human approval or cold-start implementation test; configured composio OAuth startup failed, no project/data operation requested; subsequent reviews disable connector explicitly"
+}
