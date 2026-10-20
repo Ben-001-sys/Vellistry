@@ -1,0 +1,1 @@
+PASS: validated metadata for 28 ADR/history records.

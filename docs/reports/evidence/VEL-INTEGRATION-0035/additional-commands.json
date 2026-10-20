@@ -1,0 +1,49 @@
+[
+  {
+    "command": "Execute current scoped language/copy negative assertions in docs/reports/evidence/VEL-LANGUAGE-DISPOSITIONS-2026-10-20/REPRODUCE.md",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/current-language-checks.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm install --frozen-lockfile",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 9.641,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/frozen-install.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 2.797,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/library66.txt"
+  },
+  {
+    "command": "node --test tests/hosted_supabase_preflight.test.mjs",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 2.125,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/preflight22.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 9.281,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/check.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "source_commit": "0d08daedf3001d2fdb874e4c952f08f0cbb5c679",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 26.828,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0035/build.txt"
+  }
+]

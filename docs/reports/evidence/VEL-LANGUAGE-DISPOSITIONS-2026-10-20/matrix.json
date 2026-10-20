@@ -1,0 +1,152 @@
+[
+  {
+    "id": "LANG-P01",
+    "current": "Vellistry remains the working project name in existing layout/login.",
+    "recommendation": "Retain Vellistry as the working name; make no registered-mark or legal-clearance claim.",
+    "evidence": "LANGUAGE.md §§0/18; apps/web/src/app/layout.tsx and login/page.tsx",
+    "status": "ADOPT",
+    "affected_surface": "Brand/headings",
+    "verification": "Existing source wording inspected; no legal clearance performed.",
+    "unresolved_authority": "Trademark, domain and commercial clearance remain separate external facts."
+  },
+  {
+    "id": "LANG-P02",
+    "current": "ADR0007 preserves260 variant records; deployable active mapping is uncertified.",
+    "recommendation": "Preserve raw hashes, variants and printed codes. Publish no certified130/134active-default mapping.",
+    "evidence": "ADR0007 Decision/Implementation status; LANGUAGE.md §13.2",
+    "status": "BLOCKED",
+    "affected_surface": "Future Rules Studio/default-pack help",
+    "verification": "ADR0007 provenance rules retained; original guidance package certification NOT_VERIFIED.",
+    "unresolved_authority": "Frozen writing-guidance source/version verification and the reviewed active mapping remain required; recovering a raw research export alone does not certify active defaults."
+  },
+  {
+    "id": "LANG-P03",
+    "current": "Story Profiles is accepted concept; Story Workspace is proposed shell, no current route.",
+    "recommendation": "Retain accepted Story Profiles for the capability; Story Workspace remains a proposed view. Story Bible is not an automatic rename.",
+    "evidence": "LANGUAGE.md §§4.2/5/18; actual current routes",
+    "status": "PROVISIONAL",
+    "affected_surface": "Future story navigation/help",
+    "verification": "Source meanings inspected; no story workspace route or author usability acceptance.",
+    "unresolved_authority": "Exact future shell/view and record mapping need the separately dispatched design/implementation evidence, not another routine terminology permission."
+  },
+  {
+    "id": "LANG-P04",
+    "current": "Storyline/thread terms coexist in approved intent; records/UI absent.",
+    "recommendation": "Use Story threads provisionally for recurring plot records; storyline may explain context. Do not rename schemas from terminology alone.",
+    "evidence": "LANGUAGE.md §§4.2/18; accepted product meaning retained",
+    "status": "PROVISIONAL",
+    "affected_surface": "Future profile/story navigation",
+    "verification": "Accepted narrative intent retained; record/schema mapping and author tests NOT_RUN.",
+    "unresolved_authority": "Future record mapping remains uncertain and outside this remediation code scope."
+  },
+  {
+    "id": "LANG-P05",
+    "current": "Current schema/specification uses chapters; no approved separate scene editing unit.",
+    "recommendation": "Retain chapter as the accepted MVP editing unit; a separate scene entity remains deferred.",
+    "evidence": "LANGUAGE.md §§4.1/18; ADR0003; Wave5 chapter context",
+    "status": "ADOPT",
+    "affected_surface": "Existing domain references; future chapter workspace",
+    "verification": "Accepted scope/schema terminology inspected; chapter CRUD/editor implementation is not claimed.",
+    "unresolved_authority": "Any new scene model or chapter feature needs a separate authorized feature task."
+  },
+  {
+    "id": "LANG-P06",
+    "current": "Existing Library now uses Create book, Check your books and Create again anyway; uncertain creation remains explicitly unverified.",
+    "recommendation": "Use creation-specific labels and retain the duplicate warning. Unknown acknowledgements and changed-session results must not become definite failure claims.",
+    "evidence": "book-library-state.ts LIBRARY_COPY/libraryRegion; book-library-session.ts retryUncertainCreate; books/page.tsx",
+    "status": "ADOPT",
+    "affected_surface": "Existing library controls/status/accessible names",
+    "verification": "Seven-literal/control-flow check,66Library/22preflight regressions, typecheck and both builds PASS at0d08daedf3001d2fdb874e4c952f08f0cbb5c679. Hosted/browser/author acceptance NOT_RUN.",
+    "unresolved_authority": "Real hosted persistence is unverified. No new confirmation dialog, receipt, retry behavior or accessibility acceptance is implied."
+  },
+  {
+    "id": "LANG-P07",
+    "current": "Existing signup says Account requested; check email if confirmation is enabled.",
+    "recommendation": "Retain conditional confirmation wording; assert definite delivery/sign-in only after observed behavior.",
+    "evidence": "apps/web/src/app/login/page.tsx submit(signup)",
+    "status": "ADOPT",
+    "affected_surface": "Existing signup status/live region",
+    "verification": "Source conditional wording inspected; hosted settings, signup delivery and Auth fixtures NOT_RUN.",
+    "unresolved_authority": "Only the wording is adopted. The actual hosted confirmation setting and delivery remain unverified and separately authorized."
+  },
+  {
+    "id": "LANG-P08",
+    "current": "Optional BYOK and session-only planned custody are selected intent; production AI settings absent.",
+    "recommendation": "Keep optional BYOK intent and manual writing without an AI key. Future key-recipient/custody/cost copy must match tested implementation.",
+    "evidence": "Owner BYOK HIS20261010-003; Wave5 decision; LANGUAGE.md §13.3",
+    "status": "DEFER",
+    "affected_surface": "Future AI settings/consent/privacy",
+    "verification": "Selected intent inspected; provider, retention, privacy and cost tests NOT_RUN.",
+    "unresolved_authority": "Future AI settings/consent and verified custody/provider behavior are outside this scope."
+  },
+  {
+    "id": "LANG-P09",
+    "current": "No production manual editor or persisted AI-acceptance Undo exists.",
+    "recommendation": "Reserve Undo for editor history and Undo accepted change for verified persisted compensation, once implemented.",
+    "evidence": "ADR0003; Wave5 transactional acceptance; LANGUAGE.md §13.4",
+    "status": "DEFER",
+    "affected_surface": "Future editor and AI review controls",
+    "verification": "No production editor or persisted AI-acceptance Undo tested or implemented here.",
+    "unresolved_authority": "Future transaction/UI evidence must prove later edits and ownership remain safe."
+  },
+  {
+    "id": "LANG-P10",
+    "current": "Book-create acknowledgement is implemented; chapter autosave/recovery receipts are not.",
+    "recommendation": "Tie Unsaved, Saving, Saved, Save status unknown, Conflict and Recovered draft to actual document state and receipts. Existing Library wording concerns book creation only.",
+    "evidence": "LANGUAGE.md §10.1–10.2; book-library-state.ts; Wave5 acceptance",
+    "status": "DEFER",
+    "affected_surface": "Future chapter save/recovery indicators",
+    "verification": "Library creation semantics are source-reviewed; chapter autosave/recovery acceptance NOT_RUN.",
+    "unresolved_authority": "No chapter save, recovery persistence or receipt guarantee is implemented by terminology."
+  },
+  {
+    "id": "LANG-P11",
+    "current": "ADR0004 records interchange/portable recovery intent; complete product export/restore/deletion absent.",
+    "recommendation": "Keep manuscript export distinct from portable book backup; deletion/recovery wording requires proven retention.",
+    "evidence": "ADR0004; LANGUAGE.md §§4.4/13.5/18",
+    "status": "DEFER",
+    "affected_surface": "Future export/restore/deletion dialogs",
+    "verification": "No production export/full-book backup/deletion recovery acceptance here.",
+    "unresolved_authority": "Future export fidelity and actual retention/recovery evidence remain necessary."
+  },
+  {
+    "id": "LANG-P12",
+    "current": "Layout declares html lang=en and source UI is English; no localization system.",
+    "recommendation": "Retain source English and existing lang=en. Make no broader localization, IME or RTL support claim.",
+    "evidence": "apps/web/src/app/layout.tsx; LANGUAGE.md §18",
+    "status": "ADOPT",
+    "affected_surface": "Current source copy/language attribute",
+    "verification": "Current source language inspected; locale/dialect/IME/RTL acceptance NOT_RUN.",
+    "unresolved_authority": "Broader language support and composition/accessibility tests remain future evidence."
+  },
+  {
+    "id": "LANG-P13",
+    "current": "Current implemented routes are /, /login, /books; no account/AI/export settings pages.",
+    "recommendation": "Treat Account settings, AI settings and Export and backup as future headings until actual routes exist.",
+    "evidence": "apps/web/src/app route inventory; LANGUAGE.md §6/18",
+    "status": "DEFER",
+    "affected_surface": "Future navigation/settings",
+    "verification": "No new settings route or active navigation added.",
+    "unresolved_authority": "Future navigation implementation and acceptance remain separately dispatched."
+  },
+  {
+    "id": "LANG-P14",
+    "current": "OpenRouter first adapter is planned; live model menu, availability and cost not accepted.",
+    "recommendation": "Show no certified model route, availability, privacy or cost fact without actual provider evidence.",
+    "evidence": "Wave5 decision; LANGUAGE.md §18",
+    "status": "BLOCKED",
+    "affected_surface": "Future provider/model/cost indicators",
+    "verification": "Production provider route/usage/privacy/cost acceptance NOT_RUN; no provider call made.",
+    "unresolved_authority": "Current provider facts and implementation tests remain missing; no paid call is authorized."
+  },
+  {
+    "id": "LANG-P15",
+    "current": "LANGUAGE.md is merged through PR80, with factual presence corrected through PR99; its whole-contract metadata stays proposed-owner-review.",
+    "recommendation": "Retain the proposed contract and historical baseline; use this separate record for bounded delegated dispositions, not blanket acceptance.",
+    "evidence": "Git fca0d96:LANGUAGE.md; PR80 merge; original metadata/§18",
+    "status": "ADOPT",
+    "affected_surface": "Current onboarding/review evidence",
+    "verification": "Merged-presence correction and seven preservation assertions verified; no whole-contract adoption.",
+    "unresolved_authority": "External facts and future feature acceptance remain governed independently."
+  }
+]
