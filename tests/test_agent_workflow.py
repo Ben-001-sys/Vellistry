@@ -160,5 +160,16 @@ class HandoffWorkflowTests(unittest.TestCase):
         self.assertIsNone(meta["review"]["approved_by"])
 
 
+class SecretPathCaseTests(unittest.TestCase):
+    def test_env_prefix_case_aliases_are_rejected(self):
+        for normal in ("docs/reports/ENVIRONMENT.md", "apps/web/src/app/books/page.tsx"):
+            self.assertEqual(wf.safe_path(normal), normal)
+        # These are synthetic names only; never read or create credential files.
+        for name in (".ENV", ".Env", ".eNv.local", "apps/web/.ENV.local", "docs/.EnV.production.local", "apps/api/.Env.example"):
+            with self.subTest(path=name):
+                with self.assertRaises(ValueError):
+                    wf.safe_path(name)
+
+
 if __name__ == "__main__":
     unittest.main()

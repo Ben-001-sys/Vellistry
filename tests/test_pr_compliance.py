@@ -354,4 +354,16 @@ class WorkflowExecutionContractTests(unittest.TestCase):
             self.rejects_mutation('ignore-compliance-'+job,lambda w,j=job:next(s for s in w['jobs'][j]['steps'] if s.get('id')=='compliance').update({'continue-on-error':'true'}))
 
 
+class SecretPathCaseTests(unittest.TestCase):
+    def test_env_prefix_case_aliases_are_rejected(self):
+        for normal in ("docs/reports/ENVIRONMENT.md", "apps/web/src/app/books/page.tsx"):
+            self.assertTrue(policy.allowed(normal, ["*"]))
+        # Neither a broad wildcard nor an exact scope can waive secret exclusions.
+        for name in (".ENV", ".Env", ".eNv.local", "apps/web/.ENV.local", "docs/.EnV.production.local", "apps/api/.Env.example"):
+            for scope in (["*"], [name]):
+                with self.subTest(path=name, scope=scope):
+                    with self.assertRaises(ValueError):
+                        policy.allowed(name, scope)
+
+
 if __name__=='__main__':unittest.main()
