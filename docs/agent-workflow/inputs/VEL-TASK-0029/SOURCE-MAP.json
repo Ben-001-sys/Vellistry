@@ -1,0 +1,103 @@
+{
+  "pr": 86,
+  "source": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+  "base": "6348c0a4cf276df5c2702fe0d75a25318e39dd86",
+  "paths": [
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0021.md",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "11d71e9fcdc6d8ea1910b6c5ea4b72a8739f3c61",
+      "sha256": "ab0c16f7ee1960128e26903689f784d9c75ccd4cde80ba176cf0b4b8b6e56de6"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0021.md",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "013c04186e17a6b19846dd1aa416f942352c3f04",
+      "sha256": "70cbab76363a65435720f0ab6bc228518094b689061c5ab6e14eea5273b9af20"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0021/ID-SCAN.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "9149333450e115cae7ebbadfbbf36ff8419245b0",
+      "sha256": "5814128d55631e060ef6c005b7994670afdfd448825a42f4a613f8fb0e58bdab"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0021/OWNER-SCOPE.md",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "3fede84e3440fe91eb0efadc716f6906da990a23",
+      "sha256": "fcd23f9c61c6a7423b00352683ac2a8f11d5d96140dc425e84467e6a9af8e50a"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0021/pr59.json",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "52f1b01d3ca4f1f077fff441b257d084e0e0bad9",
+      "sha256": "9130d48033fe1cf16b3d5d273b901585ed3fb50f17f1c67939bf3ceb73369800"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0021/pr66.json",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "562d306c00ccabab4194d5007cced53e0e269f00",
+      "sha256": "7ef2d312949eaedfe1c4ca0cf13e6be591cf20c7c2cec5718d5bb752846daa4b"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0021/pr82.json",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "b043fc241ad0186ead313d47406e19a3ca81e1bb",
+      "sha256": "0cb7f2c5e2e8bf0c37a9bb2789f2b6407c98a95e27a6c91a950679a58d0f4843"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0021.yaml",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "1d8b0668e58c7610cdfa9b2cab50da7a8e1defa3",
+      "sha256": "cf263e2969a41268cdb67a9edcc2544b454a2c2198bab94cd1d53f46452c1c0d"
+    },
+    {
+      "path": "docs/reports/VEL-PR-HYGIENE-DISPOSITIONS.md",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "55423a734908ab228726524f0ec20c6ee2420dcc",
+      "sha256": "984387e9b32b0b49e1d22a7f998a1b5b16c1dd04fb0999b1d0c2979e6abb547d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/check-0.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/check-1.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/check-2.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "77d029c339ddf26d849bc2fed09fcf59c7c96748",
+      "sha256": "cc4bade326da114c0dcbc372071e1040f9d04129a29c864413316c7bf31218d8"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/check-3.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "85506f5469105efefda3c4e9bb32bfceba1dbd42",
+      "sha256": "90597c3efad9c7b66974ef6c13f2e70ccb9523145cdc934eb2c14681f696e514"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/checks.json",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "191bf6322325440fe1b3f3d9ab103a8f6a8747cc",
+      "sha256": "1feeee8251ec33eff1d9a3a54e9599d76dcbfa5a8a47936d7a4b481f74928c98"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/comparison-checks.txt",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "7b07ab9a0e710aa8ae8bf2720b76c3b3f7a48940",
+      "sha256": "87ae8851b7007dc66a8afd5a66f33b6924d4ecf871475ff015d6fd0d932f3770"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PR-HYGIENE/source-comparison.json",
+      "source_commit": "6feb8d84e0bea13aef41a6433e5c4c9076f32733",
+      "blob": "2702b6ab7e987969c60ecc4e3b8e0349dc375b48",
+      "sha256": "a99f5b359b46bcbe15b785d76ff9a717c32c386f0dcfe2166c79027b683ca0ee"
+    }
+  ]
+}
