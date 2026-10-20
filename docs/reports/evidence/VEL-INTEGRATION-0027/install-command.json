@@ -1,0 +1,8 @@
+{
+  "command": "corepack pnpm install --frozen-lockfile",
+  "exit_code": 0,
+  "status": "PASS",
+  "duration_seconds": 8.078,
+  "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+  "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/frozen-install.txt"
+}

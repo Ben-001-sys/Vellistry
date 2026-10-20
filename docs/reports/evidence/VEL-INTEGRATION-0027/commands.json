@@ -1,0 +1,56 @@
+[
+  {
+    "command": "corepack pnpm install --frozen-lockfile",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 8.078,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/frozen-install.txt"
+  },
+  {
+    "command": "Compare all selected predecessor Git blobs and source SHA256 map",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/source-identity.txt"
+  },
+  {
+    "command": "node --test tests/hosted_supabase_preflight.test.mjs",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/preflight19.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/metadata.txt",
+    "duration_seconds": 0.204
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/readiness.txt",
+    "duration_seconds": 0.14
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/spec.txt",
+    "duration_seconds": 0.156
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e",
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0027/handoff.txt",
+    "duration_seconds": 33.141
+  }
+]

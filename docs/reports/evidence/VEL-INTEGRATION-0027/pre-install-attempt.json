@@ -1,0 +1,8 @@
+{
+  "command": "node --test tests/hosted_supabase_preflight.test.mjs",
+  "exit_code": 1,
+  "passed": 18,
+  "failed": 1,
+  "cause": "Fresh worktree missing next/package.json; actual Next runtime precedence test couldnot load dependency",
+  "source_commit": "140ddab6c218e462f96a9366aa95a75ee9ba497e"
+}
