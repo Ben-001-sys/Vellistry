@@ -1,0 +1,1 @@
+PASS: corrected complete-source phase has all recorded commands exit0,43 required immutable/provenance commits recovered,4 SQL/fixture hashes restored, original synthetic artifact ZIP digest recovered. Intended corrupt-clone exit128 and missing-file exit1 detected; initial unexpected handoff exit1 preserved separately. No hosted or independent-runtime acceptance.

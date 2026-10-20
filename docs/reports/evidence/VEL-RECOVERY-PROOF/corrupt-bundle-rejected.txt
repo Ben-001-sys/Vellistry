@@ -1,0 +1,4 @@
+Cloning into 'H:\cursor\cursor\Vellistry\.worktrees\vel-recovery-proof\.recovery-corrupt-clone.log'...
+fatal: pack is corrupted (SHA1 mismatch)
+error: index-pack died
+fatal: remote transport reported error

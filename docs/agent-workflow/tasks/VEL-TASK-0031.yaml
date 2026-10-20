@@ -1,0 +1,146 @@
+id: VEL-TASK-0031
+title: Integrate retained recovery bundle and dated verification evidence on current
+  main
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0031
+objective: Selectively integrate exact PR87 remediation source at e08a3f6e4cfab606f7c45224626d682c9658b81e
+  on actual main 0c42799f32cc75963d31a37e5457fab4905ccdc0, preserving oldauthorship/evidence
+  and usingnewimmutable currentauthority context.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0022.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0022.md
+- docs/agent-workflow/inputs/VEL-TASK-0022/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0022/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0022/SOURCE-REFS.json
+- docs/agent-workflow/tasks/VEL-TASK-0022.yaml
+- docs/reports/VEL-RECOVERY-PROOF-2026-10-19.md
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-clone.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-create.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-bundle-verify.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-clone-gc.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-fsck.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/anchored-handoff-after-gc.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-clone.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-create.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/bundle-verify.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/ci-39320128393.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/ci-39320774241.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/ci-39320829746.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/ci-39321788645.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/clean-frozen-install.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/commands.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-build.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-clone.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-create.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-bundle-verify.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-candidate-handoff.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-entrypoint-tests.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-final-tree.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-frozen-install.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-handoff-tests.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-handoff.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-library66.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-metadata.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-preflight19.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-readiness.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-restore-main.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-restored-fsck.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-reviewed-preflight.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-traceability.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-tree-equality.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/complete-typecheck.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/context-metrics.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/corrupt-bundle-rejected.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/dependency-closure.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/main-handoff.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/main-metadata.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/main-readiness.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/main-traceability.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/main-tree-equality.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/missing-file-restored.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/missing-required-file-detected.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/node-version.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-10.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-11.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-5.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-6.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-7.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-8.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/object-9.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/pnpm-version.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/recovery-assertions.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/recovery-pinned.bundle
+- docs/reports/evidence/VEL-RECOVERY-PROOF/recovery-summary.json
+- docs/reports/evidence/VEL-RECOVERY-PROOF/restore-main.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/restored-fsck.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/restored-source-evidence.txt
+- docs/reports/evidence/VEL-RECOVERY-PROOF/workflow-metrics.json
+- docs/agent-workflow/tasks/VEL-TASK-0031.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0031.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0031.md
+- docs/agent-workflow/inputs/VEL-TASK-0031/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0031*
+- docs/reports/evidence/VEL-INTEGRATION-0031/*
+out_of_scope:
+- Unlisted/new appfeatures/SQL/CI/standingpolicy edits; oldContextPack mutation
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0031/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0031/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Everyadoptedpath matches pinnedoriginalGitblob/SHA256; no unauthorizedpath oroldCPmutation
+- Originalauthorship/proposal/evidence status preserved; currentdelegation separatelyreferenced
+- Actualvalidators/focusedsuite and trustedbasecompliance; finalreadyCI anddistinctreview;
+  no fabricatedacceptance
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 0c42799f32cc75963d31a37e5457fab4905ccdc0
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

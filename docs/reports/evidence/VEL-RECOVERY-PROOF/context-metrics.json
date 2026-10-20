@@ -1,0 +1,26 @@
+[
+  {
+    "context_pack": "VEL-CP-0018",
+    "bytes": 88347,
+    "sha256": "cbc3b15d9390df0309973dceff17a1522fc2579b25b8b5afc4a465d353fe5bb8",
+    "model_token_count": "NOT_MEASURED"
+  },
+  {
+    "context_pack": "VEL-CP-0019",
+    "bytes": 44001,
+    "sha256": "9b4b691c476f768aaa6d35c5f3353b097053d2e24ad8d24c7349f4518cbe4b2d",
+    "model_token_count": "NOT_MEASURED"
+  },
+  {
+    "context_pack": "VEL-CP-0020",
+    "bytes": 48008,
+    "sha256": "f9191da4632f3da941eceee8cbb11e974227e1852131a07364e87732244cd995",
+    "model_token_count": "NOT_MEASURED"
+  },
+  {
+    "context_pack": "VEL-CP-0021",
+    "bytes": 58053,
+    "sha256": "ab0c16f7ee1960128e26903689f784d9c75ccd4cde80ba176cf0b4b8b6e56de6",
+    "model_token_count": "NOT_MEASURED"
+  }
+]

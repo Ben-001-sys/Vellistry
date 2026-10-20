@@ -1,0 +1,2 @@
+Previous HEAD position was fca0d96 Merge PR #80: Vellistry proposed product language standard
+HEAD is now at cb6b5d0 docs(evidence): bind attributed preflight integration to actual85 tests and builds
