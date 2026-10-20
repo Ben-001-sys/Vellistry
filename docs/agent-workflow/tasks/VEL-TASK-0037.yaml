@@ -1,0 +1,111 @@
+id: VEL-TASK-0037
+title: Reconcile offline setup guidance and remaining ChatGPT preflight wording
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0037
+objective: Provide canonical placeholder per-app setup guidance without adding env
+  files or weakening guards, correct missing-file diagnostics, and adopt the exact
+  ChatGPTPR65 cloud-neutral browser error; preserve source-based PR65 disposition.
+in_scope: &id001
+- README.md
+- scripts/hosted_supabase_preflight.mjs
+- tests/hosted_supabase_preflight.test.mjs
+- apps/web/src/lib/supabase/browser.ts
+- docs/agent-workflow/tasks/VEL-TASK-0037.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0037.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0037.md
+- docs/agent-workflow/inputs/VEL-TASK-0037/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0037*
+- docs/reports/evidence/VEL-INTEGRATION-0037/*
+out_of_scope:
+- Any actual env file access, new env templates, SQL/CI/dependency/security/runtime
+  behavior changes, original PR65/68 or ContextPack mutation
+- Hosted/auth/secrets/private/paid/admin/production/newMVP features/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-or-exact-preflight-setup-source
+- path: SOURCE-OF-TRUTH.md
+  role: authority-or-exact-preflight-setup-source
+- path: AGENTS.md
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-or-exact-preflight-setup-source
+- path: README.md
+  role: authority-or-exact-preflight-setup-source
+- path: scripts/hosted_supabase_preflight.mjs
+  role: authority-or-exact-preflight-setup-source
+- path: tests/hosted_supabase_preflight.test.mjs
+  role: authority-or-exact-preflight-setup-source
+- path: apps/web/src/lib/supabase/browser.ts
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0037/OWNER-SCOPE.md
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0037/PR65-SOURCE-MAP.json
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0037/PR65-PLACEHOLDER-AND-BROWSER-SOURCES.md
+  role: authority-or-exact-preflight-setup-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0037/PUBLIC-DOCS.md
+  role: authority-or-exact-preflight-setup-source
+source_gaps:
+- id: HOSTED
+  limitation: No live project state or credentials inspected; setup and preflight
+    are offline only; third SQL planning-only and JWT risks remain.
+- id: APPROVAL
+  limitation: Original ChatGPTPR65 work remains historical; updated owner one-time
+    repository delegation is separate from hosted approval.
+deliverables:
+- Unique committed Task/source and validated committed immutableCP before operative
+  changes
+- Bounded README/helper/browser correction and regression-first evidence
+- Complete EB and PR65source disposition plus exacthead independentreview/CI; delegated
+  integration only after all gates
+acceptance_criteria:
+- Regression-first missing-file message test fails for absent example guidance then
+  passes with an existing README anchor; helper logic unchanged except two message
+  literals
+- Browser source exactly matches original ChatGPTPR65 browser.ts; no API/auth semantics
+  changed
+- One canonical README section documents all7existing variables with obvious placeholders,
+  correct pnpm commands, ignored files, no inherited overrides, separate hosted holds;
+  legacy rootexample explicitly historical only and unchanged
+- Full10-file PR65 disposition maps adopted/current-equivalent/excluded historical
+  source without misleading authorship or missing coverage
+- Actual67Library/updatedpreflight/check/build/frozeninstall and governance validators;
+  independent trusted review and actualready/postmainCI; no hosted claims
+allowed_actions:
+- Read original pinned repository sources and public docs only; commitTask/source
+  and validatedimmutableCP before edits
+- AfterCP, modify only listed README/message literals/browser wording and add synthetic
+  missing-file regression; use only controlled synthetic temporary env fixtures, never
+  owner config
+- Run actual repository checks/builds and produce factual EB/disposition; publish
+  and independentlyreview draft then ready CI; delegated merge is a separate gated
+  operation
+approval_required_for:
+- Hosted target/access/auth/dryrun/migration/fixtures/privatepilot or outside mandate
+  scope
+- Unreviewed head, applicable failures, changed thirdSQL bytes or missing distinctreview
+  prohibit integration
+compliance:
+  change_base: 25f586b5373164dcf7173250300015091dea056e
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

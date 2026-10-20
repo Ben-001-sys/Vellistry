@@ -113,8 +113,8 @@ export function checkLocalEnvironment(root, expectedProjectRef, { environment = 
   const web = readLocalEnv(root, WEB_ENV);
   const api = readLocalEnv(root, API_ENV);
   const errors = runtimeLayoutErrors(root, environment);
-  if (web.missing) errors.push("Missing " + WEB_ENV + " (copy its .env.example locally).");
-  if (api.missing) errors.push("Missing " + API_ENV + " (copy its .env.example locally).");
+  if (web.missing) errors.push("Missing " + WEB_ENV + " (see README.md#desktop-configuration-placeholder-reference).");
+  if (api.missing) errors.push("Missing " + API_ENV + " (see README.md#desktop-configuration-placeholder-reference).");
   if (web.parseError) errors.push("Could not parse " + WEB_ENV + ".");
   if (api.parseError) errors.push("Could not parse " + API_ENV + ".");
   if (errors.length === 0) {

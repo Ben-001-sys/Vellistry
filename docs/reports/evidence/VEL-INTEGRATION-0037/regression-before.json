@@ -1,0 +1,6 @@
+{
+  "command": "corepack pnpm test:hosted-preflight",
+  "exit_code": 1,
+  "source_commit": "dce8d65171f7d15f9f6c760d7b7be39a86e48209",
+  "duration_seconds": 1.2809999999590218
+}
