@@ -1,0 +1,27 @@
+[
+  {
+    "command": "supabase --version",
+    "exit_code": 1,
+    "evidence": "cli-version.txt"
+  },
+  {
+    "command": "supabase --help",
+    "exit_code": 1,
+    "evidence": "cli-help.txt"
+  },
+  {
+    "command": "supabase db push --help",
+    "exit_code": 1,
+    "evidence": "cli-db-push-help.txt"
+  },
+  {
+    "command": "supabase link --help",
+    "exit_code": 1,
+    "evidence": "cli-link-help.txt"
+  },
+  {
+    "command": "supabase migration list --help",
+    "exit_code": 1,
+    "evidence": "cli-migration-list-help.txt"
+  }
+]

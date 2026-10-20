@@ -1,0 +1,13 @@
+{
+  "run_id": 39135149678,
+  "job_id": 117698049994,
+  "artifact_id": 12139701246,
+  "archive_sha256": "d426612fbb1197e8e80b8b5a7cd8cfa97e24c2307af3fe786485cf0e416fbf62",
+  "retained_member_sha256": "fb1fefddde801315d661a6248d138473d0bb2ae9b525f2033c9b8c9d1f3f25cf",
+  "retained_member": "pg17-result.json",
+  "retention_date": "2026-10-19",
+  "original_expiry": "2026-11-01",
+  "classification": "sanitized synthetic-only harness result; raw container startup/environment logs excluded",
+  "redactions": "none needed: structured harness whitelist; scanned secret/URI/JWT patterns and reviewed commands/source inputs",
+  "not_a_new_database_execution": true
+}

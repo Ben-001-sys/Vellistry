@@ -1,0 +1,84 @@
+id: VEL-TASK-0019
+title: Issue81 offline PR68 readiness and durable PG17 evidence
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0019
+objective: Produce exact-source offline integration map, sanitized PG17 retention
+  and separate action-specific owner decision packets without cloud access.
+in_scope: &id001
+- docs/reports/VEL-DB-READINESS-001-*.md
+- docs/reports/evidence/VEL-DB-READINESS-001/*
+- docs/agent-workflow/tasks/VEL-TASK-0019.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0019.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0019.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- App/SQL/CI/tests/settings/accepted authority edits
+- Hosted/credentials/private data/paid/production/merge/PR68 mutation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0019/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0019/ISSUE81.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0019/DEFINITION-DECISION.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0019/pg17-artifact.json
+  role: governing-source
+source_gaps:
+- id: HOSTED
+  limitation: No fresh hosted inventory authorized; synthetic defaults are not real
+    grants.
+- id: AUTHOR
+  limitation: Declared ChatGPT/Codex origins from source records, not model authentication.
+- id: CLI
+  limitation: Only local version/help and public documentation allowed; remote commands
+    proposals only.
+deliverables:
+- CommittedTask and immutableCP before reports
+- Exactfile/blob/hash provenance and exclude/adopt matrix
+- Hash-checked sanitized retained PG17 proof and cleanup summary
+- Exact hosted action packets and factual EB with tests/CI/review
+acceptance_criteria:
+- Exact third SQL blob/SHA256 unchanged; no SQL file integration
+- Artifact archive digest matchesGitHub metadata; retained evidence contains only
+  synthetic data and no credentials
+- Separate BEFORE expectedfail andAFTERpass with version/commands/exits/cleanup
+- Hosted actions remain NOT_RUN and OWNER_DECISION_PENDING; no unapproved merge
+- Actual governance and source-integrity checks with fullCI
+allowed_actions:
+- Read repository andGitHub source/artifact evidence
+- Commit source/task then generate validate commitCP
+- Write only scoped sanitizedreports/evidence; run localhelp/governance andexistingfullCI;
+  draftPR
+approval_required_for:
+- Any hosted access orCLIlogin/dryrun/apply/Authfixture
+- Migration integration, merge, privatepilot, production orscopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/81
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
