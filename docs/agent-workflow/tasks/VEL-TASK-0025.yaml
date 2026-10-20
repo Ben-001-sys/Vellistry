@@ -1,0 +1,76 @@
+id: VEL-TASK-0025
+title: Record the owner one-time remediation integration delegation
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0025
+objective: Represent the exact one-time owner exception with objective merge gates
+  and expiry; preserve all default safeguards and historical source.
+in_scope: &id001
+- docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0025.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0025.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0025.md
+- docs/agent-workflow/inputs/VEL-TASK-0025/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-REM-INTEGRATION-*
+- docs/reports/evidence/VEL-REM-INTEGRATION/*
+out_of_scope:
+- Defaultpolicy/CI/evaluator/app/SQL/newfeatures oroldTask/ContextPackchanges
+- Hosted/auth/credentials/private/paid/admin/production/retroactiveauthority
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: owner-delegation-and-default-boundary
+- path: SOURCE-OF-TRUTH.md
+  role: owner-delegation-and-default-boundary
+- path: AGENTS.md
+  role: owner-delegation-and-default-boundary
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: owner-delegation-and-default-boundary
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: owner-delegation-and-default-boundary
+- path: docs/agent-workflow/inputs/VEL-TASK-0025/DELEGATION-EXCERPTS.md
+  role: owner-delegation-and-default-boundary
+- path: docs/agent-workflow/inputs/VEL-TASK-0025/OWNER-DISPATCH.md
+  role: owner-delegation-and-default-boundary
+source_gaps:
+- id: IDENTITY
+  limitation: Directownerchat authority; no GitHubauthenticatedhumanreview fabricated.
+- id: REVIEW
+  limitation: Distinctsource reviewer and realreadyPRCI required; same-sessionCodexadvice
+    doesnotcount.
+deliverables:
+- CommittedTask/source thenimmutableCP beforeexceptionrecord
+- Single auditableboundedprogramrecord preservingdefaultpolicy and gates
+- Replayable positive/negative guardassertions,actualEB/evidence,readyCI/distinctreview
+acceptance_criteria:
+- Updatedmandate exactbytes/hash retained,appendixnotmisrepresented asoriginalchecklist
+- Scopeonlyexistingremediationandboundedamendments;expirycompletion/formalclosureor2026-11-01
+- Rejectfuturefeature/hosted/unchecked/stalehead/expiredmerges; defaultFORBIDDEN/workflowunchanged
+- No representationfile/selfreview/CI ishumanapproval; realdistinctreview andreadyCI
+  enforcedoperationally
+allowed_actions:
+- ReadliveGitHub/source/owner-namedmandate; commitTask/source and immutablepack
+- Write scopedauthorityrecord/report/evidence,runofflinechecks,publishreadyPR/requesttrustedCodexreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/settings/production/newfeatures
+- Missinggenuineindependentreview/readyCI ornewsecuritydecision remainsblocking
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

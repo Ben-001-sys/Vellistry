@@ -1,0 +1,76 @@
+id: VEL-REM-INTEGRATION-20261019
+type: one-time-owner-delegation
+status: owner-delegated
+title: One-time owner delegation, 19 Oct 2026, remediation-only
+received_on: '2026-10-20'
+mandate_date: '2026-10-19'
+executor: Codex
+owner: project_owner
+authority:
+  kind: direct-owner-message-adopting-exact-attached-mandate
+  archive: docs/agent-workflow/inputs/VEL-TASK-0025/UPDATED-MANDATE.md
+  sha256: 8129384277fe67f3490fd29955e78ded028c035d1dbf43b468b69bf75815e35c
+  github_index: https://github.com/Ben-001-sys/Vellistry/issues/71
+  github_index_is_human_review: false
+  retroactive: false
+program: VEL-REM-001
+existing_prs:
+- 65
+- 68
+- 83
+- 84
+- 85
+- 86
+- 87
+- 88
+- 89
+eligible_successors: Only unique owner-mandated remediation amendment/integration
+  Tasks linking actual predecessor exact sources; no new MVP feature scope.
+allowed_operations:
+- Repository-only remediation decisions and scoped corrections
+- Mark eligible PR ready; obtain actual distinct trusted Codex review and ready-event
+  CI
+- Serial merge/closure/supersession after all objective gates; verify merged tree/postmerge
+  CI
+- Reconcile ledger/current state/issues; do not manufacture acceptance
+merge_gates:
+- Actual live main/head/base and conflict reconciliation
+- Unique authorized bounded Task; immutable pre-edit ContextPack; factual complete
+  EB
+- Original authorship/source snapshots/historical evidence preserved
+- Genuinely separate trusted review process/context at final exact head; selfreview/same-session
+  advice not signoff
+- Actual ready pull_request event all applicable gates PASS at exact head, not only
+  draft/workflow_dispatch
+- No unresolved P1/P2/security findings or unexpected workflow/SQL scope
+- Use provenance-preserving merge; merged tree matches reviewed source; successful
+  postmerge main CI before dependent integration
+forbidden_actions:
+- hosted Supabase including read-only/auth/dry-run/migrations/Authfixtures
+- credentials/private manuscripts/paid model calls
+- billing/account/security/protection settings/deployment/production
+- new IMP-002/IMP-003A/IMP-003B or other MVP features
+- waiving security/private-pilot/release or independent review gates
+- retroactive authority/immutable pack rewriting/unrelated future merges
+default_task_exclusions_unchanged:
+- hosted
+- production
+- private-manuscripts
+- paid-services
+- admin
+- merge
+default_policy_changes: false
+integration_is_separate_owner_delegated_operation: true
+review_channel: Existing trusted Codex only; owner declined CodeRabbit on2026-10-20
+expiry:
+  program_completion_or_formal_closure: true
+  conservative_implementation_cutoff: '2026-11-01'
+  earliest_condition_ends_authority: true
+  future_feature_authority: false
+limitations:
+- Record captures actual owner instruction; file/hash/staticCI cannot authenticate
+  human/GitHub identity
+- No hosted execution or new SQL-content approval; exact planning-only thirddefinition
+  remains separately gated
+- No guarantee review/runtime/access available; unmet actual gates block individual
+  integration

@@ -1,0 +1,41 @@
+[
+  {
+    "command": "Execute fenced Python in evidence/VEL-REM-INTEGRATION/REPRODUCE.md",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "f884f56ad79f1dbe05d8323ca230b4bbff1c0c1b",
+    "evidence": "docs/reports/evidence/VEL-REM-INTEGRATION/assertions.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "f884f56ad79f1dbe05d8323ca230b4bbff1c0c1b",
+    "evidence": "docs/reports/evidence/VEL-REM-INTEGRATION/metadata.txt",
+    "duration_seconds": 0.235
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "f884f56ad79f1dbe05d8323ca230b4bbff1c0c1b",
+    "evidence": "docs/reports/evidence/VEL-REM-INTEGRATION/readiness.txt",
+    "duration_seconds": 0.156
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "f884f56ad79f1dbe05d8323ca230b4bbff1c0c1b",
+    "evidence": "docs/reports/evidence/VEL-REM-INTEGRATION/spec.txt",
+    "duration_seconds": 0.156
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "source_commit": "f884f56ad79f1dbe05d8323ca230b4bbff1c0c1b",
+    "evidence": "docs/reports/evidence/VEL-REM-INTEGRATION/handoff.txt",
+    "duration_seconds": 45.547
+  }
+]
