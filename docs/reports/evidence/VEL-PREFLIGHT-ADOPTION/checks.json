@@ -1,0 +1,66 @@
+[
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.031,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-0.txt"
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.86,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-1.txt"
+  },
+  {
+    "command": "corepack pnpm build",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 17.093,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-2.txt"
+  },
+  {
+    "command": "corepack pnpm check",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 5.907,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-3.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.188,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-0.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.14,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-1.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.157,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-2.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 25.797,
+    "source_commit": "b9f4d3ffc1cc597b19671ec42c3641b584456177",
+    "evidence": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-3.txt"
+  }
+]

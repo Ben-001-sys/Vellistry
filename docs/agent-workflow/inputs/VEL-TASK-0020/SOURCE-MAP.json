@@ -1,0 +1,18 @@
+[
+  {
+    "path": "scripts/hosted_supabase_preflight.mjs",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "0a225d44bc247a8b27ef120fb1e18dd8ace4c152",
+    "sha256": "79dfb0b66217437d20deeaf4a1df42675350abfb70543841fe5988374fbfd66f",
+    "history": "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold\nfe3925cca6791ac7ef2fae3d30baaa4eaf6b85da feat(dev): add no-network hosted Supabase environment preflight\n",
+    "origin": "ChatGPT PR65 initial feature (fe3925c/c04504b), Codex PR68 runtime-precedence correction a6dee3e; exact runtime identity not authenticated"
+  },
+  {
+    "path": "tests/hosted_supabase_preflight.test.mjs",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "dfb48d0c4a7782ebfa0aa2879b29d2ecf4f8716c",
+    "sha256": "074854ef928bb63af0cad000a43d319fdb640e6c0ce120d78278a4e26f5900bf",
+    "history": "a6dee3edd37ab05b2607e716e375f0d216b5066a fix(imp-001b): block unchecked runtime overrides and review migration hold\nb0014647da337635975d447491b24cdf31398e40 test(dev): cover cloud ref, public keys, loopback and redacted diagnostics\n",
+    "origin": "ChatGPT PR65 initial feature (fe3925c/c04504b), Codex PR68 runtime-precedence correction a6dee3e; exact runtime identity not authenticated"
+  }
+]
