@@ -1,0 +1,91 @@
+id: VEL-TASK-0032
+title: Reject mixed-case environment secret paths in governed source and PR checks
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0032
+objective: Close the demonstrated case-sensitive .env-prefix gap using one minimal
+  guard correction and preserved negative coverage, without allowing templates or
+  changing application/security CI.
+in_scope: &id001
+- scripts/agent_workflow.py
+- tests/test_agent_workflow.py
+- tests/test_pr_compliance.py
+- docs/agent-workflow/tasks/VEL-TASK-0032.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0032.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0032.md
+- docs/agent-workflow/inputs/VEL-TASK-0032/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SECRET-PATH-0032.md
+- docs/reports/evidence/VEL-SECRET-PATH-0032/*
+out_of_scope:
+- New environment template exceptions, CI/evaluator/app/SQL/dependency/approval-policy
+  changes
+- Credential content access/creation, hosted/private/paid/admin/production/features/mergeinsideimplementation,
+  historical pack rewrites
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-or-demonstrated-secret-path-finding
+- path: SOURCE-OF-TRUTH.md
+  role: authority-or-demonstrated-secret-path-finding
+- path: AGENTS.md
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/inputs/VEL-TASK-0032/SOURCE-MAP.json
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/inputs/VEL-TASK-0032/SECRET-PATH-OBSERVATION.json
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/inputs/VEL-TASK-0032/OWNER-SCOPE.md
+  role: authority-or-demonstrated-secret-path-finding
+- path: docs/agent-workflow/inputs/VEL-TASK-0032/GUARD-EXCERPT.md
+  role: authority-or-demonstrated-secret-path-finding
+source_gaps:
+- id: STATIC-BOUNDARY
+  limitation: Filename validation is not a universal secret scanner or actor authentication;
+    no real credentials involved.
+deliverables:
+- Committed unique Task/source then validated immutableCP before tests/code
+- Red-before-green regressions, minimal guard correction and factualEB
+- Separate trusted exact-head review, real ready/main CI and source-preserving integration
+  disposition
+acceptance_criteria:
+- Mixed-case .env names rejected by both source validator and PR allow checks, including
+  broad scopes; normal paths accepted
+- Regression-first tests fail old guard and pass corrected guard; all existing assertions/traversal/.git/secret-directory
+  restrictions preserved
+- Only one production guard line changes; no template exception or unrelated source
+  changes
+- Complete handoff/compliance/governance suites actually run in CI; no zero-test success
+  or skipped security gates
+allowed_actions:
+- CommitTask/source and immutableCP before regression/code changes
+- Modify only specified guard and two regression files; run safe synthetic path and
+  complete required tests; publish factualEB/PR/trusted review
+- No actual credential file access or creation; later merge only as separately recorded
+  owner-delegated operation after gates
+approval_required_for:
+- Outside current remediation delegation or scoped paths; hosted/private/paid/admin/deploy/SQL/security-sensitive
+  new scope
+- Missing independent review or failing applicableCI blocks integration
+compliance:
+  change_base: 8963ace5b8a1d5f08cb55258c82b51e06cc5fb27
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
