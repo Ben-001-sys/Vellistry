@@ -1,0 +1,93 @@
+id: VEL-TASK-0034
+title: Integrate factual LANG-P15 merged-presence correction with proposal boundaries
+  intact
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0034
+objective: Selectively integrate exact PR89 remediation source at 310f96c1bee28fd24999523ae32dacdda4d07b0e
+  on actual main 9ca7fc90ee642ffcaed927ca1cc792bf47ad14f1, preserving oldauthorship/evidence
+  and usingnewimmutable currentauthority context.
+in_scope: &id001
+- LANGUAGE.md
+- docs/agent-workflow/context-packs/VEL-CP-0024.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0024.md
+- docs/agent-workflow/inputs/VEL-TASK-0024/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0024/LANGUAGE-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0024/OWNER-SCOPE.md
+- docs/agent-workflow/tasks/VEL-TASK-0024.yaml
+- docs/reports/VEL-LANG-P15-2026-10-19.md
+- docs/reports/evidence/VEL-LANG-P15/REPRODUCE.md
+- docs/reports/evidence/VEL-LANG-P15/commands.json
+- docs/reports/evidence/VEL-LANG-P15/handoff.txt
+- docs/reports/evidence/VEL-LANG-P15/metadata.txt
+- docs/reports/evidence/VEL-LANG-P15/readiness.txt
+- docs/reports/evidence/VEL-LANG-P15/source-preservation.txt
+- docs/reports/evidence/VEL-LANG-P15/spec.txt
+- docs/agent-workflow/tasks/VEL-TASK-0034.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0034.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0034.md
+- docs/agent-workflow/inputs/VEL-TASK-0034/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0034*
+- docs/reports/evidence/VEL-INTEGRATION-0034/*
+out_of_scope:
+- Unlisted/new appfeatures/SQL/CI/standingpolicy edits; oldContextPack mutation
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0034/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0034/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Everyadoptedpath matches pinnedoriginalGitblob/SHA256; no unauthorizedpath oroldCPmutation
+- Originalauthorship/proposal/evidence status preserved; currentdelegation separatelyreferenced
+- Actualvalidators/focusedsuite and trustedbasecompliance; finalreadyCI anddistinctreview;
+  no fabricatedacceptance
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 9ca7fc90ee642ffcaed927ca1cc792bf47ad14f1
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

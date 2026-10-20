@@ -1,0 +1,1 @@
+VEL-TASK-0034/VEL-CP-0034/EB0034 absent from all available refs beforeallocation2026-10-20. Existing0012collisionsandallhistoricalIDs preserved. Main verified 9ca7fc90ee642ffcaed927ca1cc792bf47ad14f1.
