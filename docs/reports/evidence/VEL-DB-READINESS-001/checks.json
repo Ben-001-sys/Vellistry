@@ -1,0 +1,41 @@
+[
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "source_commit": "e2bc93d733c1cebc49d0de3df386d555ab0945d6",
+    "evidence": "docs/reports/evidence/VEL-DB-READINESS-001/check-0.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.094,
+    "source_commit": "e2bc93d733c1cebc49d0de3df386d555ab0945d6",
+    "evidence": "docs/reports/evidence/VEL-DB-READINESS-001/check-1.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.125,
+    "source_commit": "e2bc93d733c1cebc49d0de3df386d555ab0945d6",
+    "evidence": "docs/reports/evidence/VEL-DB-READINESS-001/check-2.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 20.921,
+    "source_commit": "e2bc93d733c1cebc49d0de3df386d555ab0945d6",
+    "evidence": "docs/reports/evidence/VEL-DB-READINESS-001/check-3.txt"
+  },
+  {
+    "command": "Python retained artifact positive/12 mutation and4 source hash checks",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "e2bc93d733c1cebc49d0de3df386d555ab0945d6",
+    "evidence": "docs/reports/evidence/VEL-DB-READINESS-001/retention-checks.txt"
+  }
+]

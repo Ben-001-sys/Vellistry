@@ -1,0 +1,1 @@
+PASS: 13 retention checks (1 positive,12 negative mutations);4 exact SQL/fixture Git blob+SHA256 source matches. No SQL execution.

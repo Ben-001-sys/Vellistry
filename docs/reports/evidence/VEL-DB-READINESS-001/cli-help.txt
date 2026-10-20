@@ -1,0 +1,1 @@
+NOT_RUN: installed CLI wrapper exited1 before help/version output; sandbox denied telemetry file write under user profile. No authentication or hosted command attempted. Raw diagnostic SHA256 e5da55ca40b00d49a96b8d34ad543b7753ea13075233f05900e98423387e1ea0. Minified runtime dump omitted from durable report.
