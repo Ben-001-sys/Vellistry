@@ -67,7 +67,7 @@ class KnowledgeMetadataValidationTests(unittest.TestCase):
 
     def test_duplicate_identifier_is_rejected(self):
         source = next((self.root / "docs/decisions").glob("ADR-0001-*.md"))
-        (source.parent / "ADR-0003-duplicate.md").write_text(source.read_text(encoding="utf-8"))
+        (source.parent / "ADR-0003-duplicate.md").write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
         _, errors = self.audit()
         self.assertTrue(any("duplicate ID" in e for e in errors), errors)
 

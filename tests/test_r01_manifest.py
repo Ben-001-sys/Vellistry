@@ -1,5 +1,6 @@
 """Synthetic-fixture tests. Real original source is never committed to Git."""
 import importlib.util
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,7 +11,9 @@ SPEC.loader.exec_module(mod)
 
 class ManifestTests(unittest.TestCase):
     def test_complete_pair_and_clash_detection(self):
-        path=Path(tempfile.mkstemp(suffix=".md")[1])
+        fd,name=tempfile.mkstemp(suffix=".md")
+        os.close(fd)
+        path=Path(name)
         try:
             lines=[]
             for prefix in mod.DOMAINS:
