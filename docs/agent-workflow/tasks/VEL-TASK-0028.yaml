@@ -1,0 +1,195 @@
+id: VEL-TASK-0028
+title: 'Bounded correction amendment: align preflight parser/override checks with
+  actual runtime'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0028
+objective: Fix demonstrated preflight/runtime dotenv parsing mismatch and unverified
+  override surfaces without changing application behavior, preserving originalPR65/85/92provenance
+  and all prior contexts.
+in_scope: &id001
+- docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0019.md
+- docs/agent-workflow/context-packs/VEL-CP-0020.md
+- docs/agent-workflow/context-packs/VEL-CP-0025.md
+- docs/agent-workflow/context-packs/VEL-CP-0026.md
+- docs/agent-workflow/context-packs/VEL-CP-0027.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0019.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0020.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0025.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0026.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0027.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/DEFINITION-DECISION.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/ISSUE81.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0019/definition-decision.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/issue81-comments.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/issue81.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pg17-artifact.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pr65.json
+- docs/agent-workflow/inputs/VEL-TASK-0019/pr68.json
+- docs/agent-workflow/inputs/VEL-TASK-0020/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0020/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0020/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.mjs.txt
+- docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.test.mjs.txt
+- docs/agent-workflow/inputs/VEL-TASK-0025/DELEGATION-EXCERPTS.md
+- docs/agent-workflow/inputs/VEL-TASK-0025/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0025/OWNER-DISPATCH.md
+- docs/agent-workflow/inputs/VEL-TASK-0025/UPDATED-MANDATE.md
+- docs/agent-workflow/inputs/VEL-TASK-0025/previous-main-evidence-manifest.yaml
+- docs/agent-workflow/inputs/VEL-TASK-0026/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0026/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0026/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0026/previous-main-evidence-manifest.yaml
+- docs/agent-workflow/inputs/VEL-TASK-0027/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0027/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0027/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0027/previous-main-evidence-manifest.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0019.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0020.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0025.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0026.yaml
+- docs/agent-workflow/tasks/VEL-TASK-0027.yaml
+- docs/reports/VEL-DB-READINESS-001-OFFLINE-REVIEW.md
+- docs/reports/VEL-INTEGRATION-0026.md
+- docs/reports/VEL-INTEGRATION-0027.md
+- docs/reports/VEL-PREFLIGHT-ADOPTION-SOURCE.md
+- docs/reports/VEL-REM-INTEGRATION-AUTHORITY-2026-10-20.md
+- docs/reports/evidence/VEL-DB-READINESS-001/REPRODUCE.md
+- docs/reports/evidence/VEL-DB-READINESS-001/check-0.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-1.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-2.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/check-3.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/checks.json
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-commands.json
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-db-push-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-link-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-migration-list-help.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/cli-version.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/pg17-artifact.zip
+- docs/reports/evidence/VEL-DB-READINESS-001/pg17-result.json
+- docs/reports/evidence/VEL-DB-READINESS-001/retention-checks.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/retention-final-checks.txt
+- docs/reports/evidence/VEL-DB-READINESS-001/retention.json
+- docs/reports/evidence/VEL-DB-READINESS-001/source-map.json
+- docs/reports/evidence/VEL-INTEGRATION-0026/commands.json
+- docs/reports/evidence/VEL-INTEGRATION-0026/focused.txt
+- docs/reports/evidence/VEL-INTEGRATION-0026/handoff.txt
+- docs/reports/evidence/VEL-INTEGRATION-0026/metadata.txt
+- docs/reports/evidence/VEL-INTEGRATION-0026/readiness.txt
+- docs/reports/evidence/VEL-INTEGRATION-0026/source-identity.txt
+- docs/reports/evidence/VEL-INTEGRATION-0026/spec.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/commands.json
+- docs/reports/evidence/VEL-INTEGRATION-0027/frozen-install.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/handoff.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/install-command.json
+- docs/reports/evidence/VEL-INTEGRATION-0027/metadata.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/pre-install-attempt.json
+- docs/reports/evidence/VEL-INTEGRATION-0027/preflight19-before-install.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/preflight19.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/readiness.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/source-identity.txt
+- docs/reports/evidence/VEL-INTEGRATION-0027/spec.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/checks.json
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-0.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-1.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-2.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-3.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-0.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-1.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-2.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-3.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/source-integrity.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/REPRODUCE.md
+- docs/reports/evidence/VEL-REM-INTEGRATION/assertions.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/commands.json
+- docs/reports/evidence/VEL-REM-INTEGRATION/handoff.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/metadata.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/pr84-distinct-review.json
+- docs/reports/evidence/VEL-REM-INTEGRATION/pr84-distinct-review.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/readiness.txt
+- docs/reports/evidence/VEL-REM-INTEGRATION/spec.txt
+- package.json
+- scripts/hosted_supabase_preflight.mjs
+- tests/hosted_supabase_preflight.test.mjs
+- docs/agent-workflow/tasks/VEL-TASK-0028.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0028.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0028.md
+- docs/agent-workflow/inputs/VEL-TASK-0028/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0028*
+- docs/reports/evidence/VEL-INTEGRATION-0028/*
+out_of_scope:
+- Newfeatures/SQL/CI/standingpolicy/dependency oroldContextPackmodifications
+- Hosted/auth/private/paid/admin/production/mergeinsideimplementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0028/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0028/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0028/CORRECTION-SCOPE.md
+  role: demonstrated-finding-and-owner-bounded-correction
+- path: docs/agent-workflow/inputs/VEL-TASK-0028/PR92-P2-REVIEW.txt
+  role: demonstrated-finding-and-owner-bounded-correction
+- path: docs/agent-workflow/inputs/VEL-TASK-0028/PR92-REVIEW-COMMAND.json
+  role: demonstrated-finding-and-owner-bounded-correction
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Allpredecessorsource unchanged excepttwoexplicitcorrectionpaths, originals preserved
+  inoldrecords/source-map
+- Newruntime-loader negative regressions FAIL oldvalidator beforefix andPASSnewhead;
+  old19testsremain
+- Helperusesactualpinnedruntimeparsing andfailclosed inheritedconfiguration names;
+  nosafePASSfornonloopback/keyoverride
+- No ownerenv/hosted/SQL/appCI/dependencychanges; actualreadyCI/separatetrustedreview/postmergeverification
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+- Modify only2explicitcorrectionpaths afternewpack; runsyntheticactual-runtime regressions
+  red-before-green and19+newfocusedtests
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 8b2d36acb55f7346ae6eba72b1e7ff83b9f87ea5
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
