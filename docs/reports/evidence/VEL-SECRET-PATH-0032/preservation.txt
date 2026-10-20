@@ -1,0 +1,1 @@
+PASS: all pre-existing test AST nodes are unchanged; only new SecretPathCaseTests classes added. Production guard diff is one casefold-prefix line. PR evaluator, CI workflow, dependencies and old ContextPacks unchanged. Default environment-template denial retained.

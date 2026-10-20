@@ -1,0 +1,53 @@
+test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) ... 
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='.ENV')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='.Env')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='.eNv.local')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='apps/web/.ENV.local')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='docs/.EnV.production.local')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) (path='apps/api/.Env.example')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_agent_workflow.py", line 170, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=6)
