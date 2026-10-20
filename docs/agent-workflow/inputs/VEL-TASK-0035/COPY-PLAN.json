@@ -1,0 +1,34 @@
+{
+  "apps/web/src/app/books/page.tsx": [
+    [
+      ">Create</button>",
+      ">Create book</button>"
+    ],
+    [
+      ">Refresh</button>",
+      ">Check your books</button>"
+    ],
+    [
+      ">Save again anyway</button>",
+      ">Create again anyway</button>"
+    ]
+  ],
+  "apps/web/src/lib/library/book-library-state.ts": [
+    [
+      "Could not save this book. Your title remains in the field.",
+      "Could not create this book. Your title remains in the field."
+    ],
+    [
+      "The save result is unknown. Refresh to check your books before trying again.",
+      "The book creation result is unknown. Check your books before trying again."
+    ],
+    [
+      "This save is not confirmed by the refreshed list. Saving again may create a duplicate if the first save is still finishing.",
+      "This book creation is not confirmed by the updated list. Creating it again may create a duplicate if the first request is still finishing."
+    ],
+    [
+      "Your session changed. The book was not saved to this account.",
+      "Your session changed. The creation result is unverified and may have completed for the original account."
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+version: 1
+task_id: VEL-TASK-0034
+phase: repository-only
+executor: Codex
+pack_commit: 4636898e1d7e7adc613dfb1303f09cb57543db74
+source_commit: 2f298b56b634f0185308ceb06b9d5409293bf8f6
+bundle_id: VEL-EB-0034
+owner_disposition: pending
+commits:
+- commit: 61c0d5429c8a2f5ed522b3337632a8d436687ed2
+  executor: Codex
+  origin: original
+- commit: 4636898e1d7e7adc613dfb1303f09cb57543db74
+  executor: Codex
+  origin: original
+- commit: 2f298b56b634f0185308ceb06b9d5409293bf8f6
+  executor: Codex
+  origin: original
+current_head:
+  executor: Codex
+  origin: original
