@@ -1,0 +1,59 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-setup-reconciliation
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.5764ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.1955ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1312ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.2004ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.1485ms)
+✔ rejects mismatched Web/API project publishable keys (0.1159ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.1227ms)
+✔ rejects invalid or omitted expected project reference (0.1001ms)
+✔ missing local files are reported without consulting environment or network (1.8982ms)
+✔ reads ignored local files, never emits key values in success output (12.6449ms)
+✔ invalid local config never leaks the offending key in diagnostics (4.5889ms)
+✔ does not pass file validation when inherited runtime settings override those files (7.527ms)
+✔ rejects competing Next env files that the actual runtime would also read (12.6622ms)
+✔ rejects test mode because Next does not load the required .env.local there (4.2241ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (76.1243ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (142.1062ms)
+✔ actual CLI fails safely with absent env files (56.7782ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.2976ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (3.7155ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (67.544ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (77.7726ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (71.8682ms)
+✖ missing-file guidance links to existing canonical placeholder instructions (2.1955ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 22
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 706.7788
+
+✖ failing tests:
+
+test at tests\hosted_supabase_preflight.test.mjs:297:1
+✖ missing-file guidance links to existing canonical placeholder instructions (2.1955ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /README\.md#desktop-configuration-placeholder-reference/. Input:
+  
+  'Missing apps/web/.env.local (copy its .env.example locally).'
+  
+      at TestContext.<anonymous> (file:///H:/cursor/cursor/Vellistry/.worktrees/vel-setup-reconciliation/tests/hosted_supabase_preflight.test.mjs:305:14)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Missing apps/web/.env.local (copy its .env.example locally).',
+    expected: /README\.md#desktop-configuration-placeholder-reference/,
+    operator: 'match',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.
