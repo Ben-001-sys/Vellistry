@@ -1,0 +1,77 @@
+id: VEL-TASK-0024
+title: 'LANG-P15 factual maintenance: merged presence without vocabulary adoption'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-19'
+updated_at: '2026-10-19'
+owner: project_owner
+context_pack_id: VEL-CP-0024
+objective: Correct demonstrated stale absent-on-default-branch P15 claim while preserving
+  proposed status, original authorship, sourcebaseline and all language decision boundaries.
+in_scope: &id001
+- LANGUAGE.md
+- docs/reports/VEL-LANG-P15-*
+- docs/reports/evidence/VEL-LANG-P15/*
+- docs/agent-workflow/tasks/VEL-TASK-0024.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0024.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0024.md
+- docs/agent-workflow/inputs/VEL-TASK-0024/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- Terminology/product decisions, app/UI/API/SQL/CI/tests/dependencies and historical
+  source/ContextPack edits
+- Hosted/auth/private/secret/paid/admin/production/merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: factual-language-maintenance-authority
+- path: SOURCE-OF-TRUTH.md
+  role: factual-language-maintenance-authority
+- path: AGENTS.md
+  role: factual-language-maintenance-authority
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: factual-language-maintenance-authority
+- path: docs/agent-workflow/inputs/VEL-TASK-0024/OWNER-SCOPE.md
+  role: factual-language-maintenance-authority
+- path: docs/agent-workflow/inputs/VEL-TASK-0024/LANGUAGE-EXCERPTS.md
+  role: factual-language-maintenance-authority
+source_gaps:
+- id: APPROVAL
+  limitation: Merged document presence is not approval of all15terms; owner alone
+    accepts/integrates.
+- id: RUNTIME
+  limitation: No legal/hosted/AI/locale/revision/backup/user research verification
+    or fresh implementationagent session.
+deliverables:
+- Committed Task/source and validatedimmutableCP before edit
+- Minimal root factualpresence/date/changelog correction, preserved originalbaseline/proposedstatus
+- Actual negative/source-preservation tests, EB/draftPR/fullCI/distinctreview
+acceptance_criteria:
+- RootP15 states actualmainpresence and proposed-owner-review; original priorabsence
+  statement preserved in source/evidence
+- No approval/term/route/UIbehavior/SQLCI change, sourcebaseline/authorship retained
+- Negative tests reject absentfile/acceptedmetadata/approvalflag false/sourcebody
+  loss; meaningful localchecks/exactheadCI
+allowed_actions:
+- Read exactmain/source/owner-named mandate and recordpins
+- CommitTask/source then immutablepack before narrowrootdoc/report edits
+- Run offline source/governance tests, publishdraftPR/fullCI and distinctadvisoryreview
+approval_required_for:
+- Owner adoption/merge or vocabulary/sourceauthoritychanges
+- Any hosted/auth/SQL/private/paid/admin/production/scopeexpansion
+compliance:
+  change_base: fca0d96fd071f1165e3e16658d821a3d36a20293
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
