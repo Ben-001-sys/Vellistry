@@ -1,0 +1,72 @@
+[
+  {
+    "path": ".env.example",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "40028ce40ffd0710c6583ba458158e5b98554605",
+    "sha256": "5e34610415b08c0102654b5a9c8e52756bebab15f21b3f17e7845e69c0be179e",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": ".github/workflows/implementation-foundation.yml",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "2d0005b7546f5a9ad2523012f2ab09467a82221d",
+    "sha256": "2fd9037c04ba5344125de782359a7f52d0f73e3be11ef608650abe7a9765fa01",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "CURRENT-STATE.md",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "48e3cdb03270d87957a660b9fd53c7e4efcf645c",
+    "sha256": "949d4c3acc7becd808b41d4ad07295b0bff180fff314c6ba77d394c2d512d4f5",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "apps/api/.env.example",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "a3c6cb46fea381e005009783e2f2dce10d687fde",
+    "sha256": "80cd162f5a87e00e0c9e89bb61bbc41b21e7cdbb4f299ec18ac190dba29af9ec",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "apps/web/.env.example",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "f91cf4cf16ec59a96774b50b9715d7fdda6f4900",
+    "sha256": "ffc4f869d744774d8c14fe1ac6d61bab8db0a58636b84a95afdac50ccbe0bc8d",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "apps/web/src/lib/supabase/browser.ts",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507",
+    "sha256": "d34a8ec5807c101ebbec1adf8ef4c95e321d5db7b363559bc06b7900b16b9b68",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "docs/plans/VEL-IMP-001B-HOSTED-CLOUD-ACCEPTANCE-2026-10-14.md",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "3d17977aca69e5f16f7634ee08326e2a6fa93438",
+    "sha256": "9c285d34c731d6d524e0c420e760f7ec794cdf1951bf74938d4934319a8a4762",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "package.json",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "df391930b07e1c1ce41d2aa4cb5d3030abd8d824",
+    "sha256": "735428d8dcdb8101e4382bc3815811ac74fe681de49ea358b83b8f8c256ed2a6",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "scripts/hosted_supabase_preflight.mjs",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "b7f4d5a7a1529b4bb67fd84ac9512d9eb0c0caea",
+    "sha256": "d562cd5df21338e7446307db058e0c898d31062bf2146ccb477101330d893f27",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  },
+  {
+    "path": "tests/hosted_supabase_preflight.test.mjs",
+    "source": "604e1ebfd0baab930ee4dc39aecf7289dc64188a",
+    "blob": "9be2a35b0ab7bac972b67ffffe39c80770fdc42d",
+    "sha256": "d2ffb28a40b3e4b0874edb7b11341db21415b4e5f44d7e01f0e720352497fd20",
+    "authorship": "ChatGPT-authored PR65; not Codex original"
+  }
+]
