@@ -1,0 +1,101 @@
+test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) ... 
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.ENV', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.ENV', scope=['.ENV'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.Env', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.Env', scope=['.Env'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.eNv.local', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='.eNv.local', scope=['.eNv.local'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='apps/web/.ENV.local', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='apps/web/.ENV.local', scope=['apps/web/.ENV.local'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='docs/.EnV.production.local', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='docs/.EnV.production.local', scope=['docs/.EnV.production.local'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='apps/api/.Env.example', scope=['*'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) (path='apps/api/.Env.example', scope=['apps/api/.Env.example'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-secret-path-case\tests\test_pr_compliance.py", line 365, in test_env_prefix_case_aliases_are_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=12)

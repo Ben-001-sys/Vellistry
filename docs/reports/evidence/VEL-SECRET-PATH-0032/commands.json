@@ -1,0 +1,49 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_agent_workflow.py -v",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 51.39,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/handoff16.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -k env_prefix_case_aliases -v",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.235,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/pr-case.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.297,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.14,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.141,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/spec.txt"
+  },
+  {
+    "command": "Compare pre-existing test ASTs and unchanged evaluator/workflow/lockfile blobs",
+    "source_commit": "4ebb6f5b7e0844fd685254b1531b5a79339c8b09",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "docs/reports/evidence/VEL-SECRET-PATH-0032/preservation.txt"
+  }
+]
