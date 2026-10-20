@@ -1,0 +1,106 @@
+id: VEL-TASK-0038
+title: Preserve original research bytes and verify a fresh bounded implementation
+  handoff
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0038
+objective: Archive exact original SRC001/2/3 transport bytes, retain precise SRC004
+  gap, and use a genuinely fresh trusted Codex implementation context to create an
+  offline integrity verifier with meaningful negative tests.
+in_scope: &id001
+- docs/research/SOURCE-REGISTER.md
+- scripts/verify_research_archive.py
+- tests/test_research_archive.py
+- docs/agent-workflow/tasks/VEL-TASK-0038.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0038.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0038.md
+- docs/agent-workflow/inputs/VEL-TASK-0038/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SOURCE-PRESERVATION-0038*
+- docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/*
+out_of_scope:
+- Application/SQL/CI/dependency changes or new MVP work
+- Hosted/private manuscripts/secrets/paid/admin/production/merge in implementation
+- Historical ContextPack rewriting or fabricated source/agent/owner acceptance
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-and-exact-source-fingerprint
+- path: SOURCE-OF-TRUTH.md
+  role: authority-and-exact-source-fingerprint
+- path: AGENTS.md
+  role: authority-and-exact-source-fingerprint
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-and-exact-source-fingerprint
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-and-exact-source-fingerprint
+- path: docs/research/SOURCE-REGISTER.md
+  role: authority-and-exact-source-fingerprint
+- path: docs/agent-workflow/inputs/VEL-TASK-0038/OWNER-SCOPE.md
+  role: authority-and-exact-source-fingerprint
+- path: docs/agent-workflow/inputs/VEL-TASK-0038/SOURCE-MANIFEST.json
+  role: authority-and-exact-source-fingerprint
+- path: docs/agent-workflow/inputs/VEL-TASK-0038/SOURCE-GAPS.md
+  role: authority-and-exact-source-fingerprint
+source_gaps:
+- id: SRC004
+  limitation: Exact original ZIP not located in bounded authorized search; retain
+    historical hash and explicit missing status.
+- id: INDEPENDENCE
+  limitation: Record actual fresh process/context inputs/model/output; no claim of
+    independent implementation until it executes; separate Issue18 LevelB remains
+    untouched.
+- id: RESEARCH
+  limitation: Archived research is evidence only, not current external-fact verification
+    or accepted product guidance.
+deliverables:
+- Committed original ZIP/manifest/task then validated committed immutable ContextPack
+- Fresh-worker actual verifier/tests output and identity/input isolation evidence,
+  or honest external blocker
+- Updated source retrieval register, tests, EB, independent review and exact-head
+  ready/postmainCI
+acceptance_criteria:
+- ZIP and all three exact member byte lengths/SHA256 match historical audit; no extraction
+  of unsafe paths or content rewriting
+- Verifier uses Python standard library, offline, no secret/env/network access and
+  fails closed for wrong archive hash/size, malformed manifest, missing/extra/duplicate/unsafe
+  members, wrong member hashes/sizes, invalid ZIP; no extraction
+- Synthetic positive and negative regression tests actually execute, real archive
+  validates, old sources/CPs preserved
+- Fresh trusted worker receives only new approved task/CP and declared fixtures, no
+  authoring conversation/previous EB; record actual output unedited and distinguish
+  subsequent primary integration changes
+- Scoped source register preserves original four identities and research authority;
+  SRC004 remains missing, no certified rule-pack or hosted acceptance
+- Applicable full governance/metadata/readiness/spec and exact-head CI; genuinely
+  separate final review before delegated integration
+allowed_actions:
+- Read exact research sources and historical fingerprints, archive original source
+  ZIP as source snapshot, commit unique Task then immutable validated CP
+- After CP, run fresh trusted Codex implementation with bounded offline workspace/inputs
+  and preserved restrictions; implement verifier/tests only
+- Update source register/evidence/EB/manifest; execute actual tests, publish successor
+  PR and distinct review; merge separately gated by one-time delegation
+approval_required_for:
+- Missing/private/unapproved external source access or changed permission scope
+- Hosted/security-sensitive/newfeature actions remain forbidden; missing review or
+  failed applicable CI blocks integration
+compliance:
+  change_base: 5be04d9d00619f01fe3959a0d2bb92f5d413d99d
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
