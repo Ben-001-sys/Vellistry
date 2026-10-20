@@ -1,0 +1,37 @@
+[
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "status": "FAIL",
+    "exit_code": 1,
+    "duration_seconds": 0.203,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/library66.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "status": "FAIL",
+    "exit_code": 1,
+    "duration_seconds": 0.204,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/check.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "status": "FAIL",
+    "exit_code": 1,
+    "duration_seconds": 0.203,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/build.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -v",
+    "status": "FAIL",
+    "exit_code": 1,
+    "duration_seconds": 13.359,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/compliance-regressions.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py",
+    "status": "FAIL",
+    "exit_code": 1,
+    "duration_seconds": 137.875,
+    "evidence": "docs/reports/evidence/VEL-INTEGRATION-0028/ci-policy.txt"
+  }
+]

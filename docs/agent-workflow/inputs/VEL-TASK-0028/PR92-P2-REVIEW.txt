@@ -1,0 +1,6 @@
+The preflight uses different env parsing semantics from the application, allowing unsafe runtime configuration to pass its loopback checks. The discrepancy was reproduced against the installed dotenv dependency.
+
+Review comment:
+
+- [P2] Match the application's dotenv parsing semantics — H:\cursor\cursor\Vellistry\.worktrees\vel-integrate-85\scripts\hosted_supabase_preflight.mjs:74-74
+  When an env file contains dotenv-supported colon assignments, this parser can report PASS for configuration the application actually overrides. For example, `API_HOST=127.0.0.1` followed by `API_HOST: 0.0.0.0` yields `127.0.0.1` with Node's `parseEnv`, but `0.0.0.0` with the installed dotenv parser used by `apps/api/src/main.ts`, exposing Nest beyond loopback despite a successful preflight. Parse using the runtime's semantics or reject unsupported/ambiguous syntax, and add a regression test comparing the checked values with the actual loader.

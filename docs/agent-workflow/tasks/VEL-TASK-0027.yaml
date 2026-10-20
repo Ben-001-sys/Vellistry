@@ -1,0 +1,100 @@
+id: VEL-TASK-0027
+title: 'Current-main amendment: selectively integrate PR85 safe preflight checks with
+  provenance'
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0027
+objective: Selectively integrate exact PR85 remediation source at cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4
+  on actual main 8b2d36acb55f7346ae6eba72b1e7ff83b9f87ea5, preserving oldauthorship/evidence
+  and usingnewimmutable currentauthority context.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0020.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0020.md
+- docs/agent-workflow/inputs/VEL-TASK-0020/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0020/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0020/SOURCE-MAP.json
+- docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.mjs.txt
+- docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.test.mjs.txt
+- docs/agent-workflow/tasks/VEL-TASK-0020.yaml
+- docs/reports/VEL-PREFLIGHT-ADOPTION-SOURCE.md
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/checks.json
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-0.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-1.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-2.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-3.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-0.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-1.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-2.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-3.txt
+- docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/source-integrity.txt
+- package.json
+- scripts/hosted_supabase_preflight.mjs
+- tests/hosted_supabase_preflight.test.mjs
+- docs/agent-workflow/tasks/VEL-TASK-0027.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0027.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0027.md
+- docs/agent-workflow/inputs/VEL-TASK-0027/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0027*
+- docs/reports/evidence/VEL-INTEGRATION-0027/*
+out_of_scope:
+- Unlisted/new appfeatures/SQL/CI/standingpolicy edits; oldContextPack mutation
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0027/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0027/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Everyadoptedpath matches pinnedoriginalGitblob/SHA256; no unauthorizedpath oroldCPmutation
+- Originalauthorship/proposal/evidence status preserved; currentdelegation separatelyreferenced
+- Actualvalidators/focusedsuite and trustedbasecompliance; finalreadyCI anddistinctreview;
+  no fabricatedacceptance
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 8b2d36acb55f7346ae6eba72b1e7ff83b9f87ea5
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

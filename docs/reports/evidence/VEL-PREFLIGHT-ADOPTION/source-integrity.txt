@@ -1,0 +1,1 @@
+PASS: helper/test adopted Git bytes equal exact pinned PR68 blobs. Original ChatGPT PR65 and Codex continuation provenance retained in source map. Current CI, app/browser, SQL, lockfile unchanged.

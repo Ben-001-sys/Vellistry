@@ -1,0 +1,139 @@
+{
+  "pr": 85,
+  "source": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+  "base": "8b2d36acb55f7346ae6eba72b1e7ff83b9f87ea5",
+  "paths": [
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0020.md",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "6299c11ef66e8a42879afd6b8350aaaa08fb263b",
+      "sha256": "f9191da4632f3da941eceee8cbb11e974227e1852131a07364e87732244cd995"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0020.md",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "347e3dc2051ebc1ec0cccca372d266d62b35292f",
+      "sha256": "9cc8e214ac65d581ce38d30f8131a73362767c2d676a023170e54fc670f22642"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0020/ID-SCAN.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "b5826c803b05f0c314eacd7cf5297cf7e0311716",
+      "sha256": "baa60a75afbaa8452f0d6bdb5886919dc491c2f2097cee0e4b0305fa4ab0cddd"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0020/OWNER-SCOPE.md",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "c30f030ac576a5e4605b81543e1f048dedb39dfd",
+      "sha256": "38530a4fae98c1a04246ac07b2f537ccd848256c959c05c5a89f322934c0c11b"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0020/SOURCE-MAP.json",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "b97bc6585e29c5f7b570d90c43e3e1b40505463e",
+      "sha256": "5d94030c342c04fbc1fe37b839beddbab71e1edc6c216cebecc1b29819728a33"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.mjs.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "0a225d44bc247a8b27ef120fb1e18dd8ace4c152",
+      "sha256": "79dfb0b66217437d20deeaf4a1df42675350abfb70543841fe5988374fbfd66f"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0020/hosted_supabase_preflight.test.mjs.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "dfb48d0c4a7782ebfa0aa2879b29d2ecf4f8716c",
+      "sha256": "074854ef928bb63af0cad000a43d319fdb640e6c0ce120d78278a4e26f5900bf"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0020.yaml",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "58a3d0d038edec153a5dc43b7d5d0b61c179c43c",
+      "sha256": "327d3aee8f691cb0bb108dd9f5692d2a3b392666b7a38b473669dfe69674a617"
+    },
+    {
+      "path": "docs/reports/VEL-PREFLIGHT-ADOPTION-SOURCE.md",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "dd9669978b00bc4d7f276285fc6350316a62a0dd",
+      "sha256": "746eccb0e9f5187704ad65ce3ec69457f09c303ee71707d865f7d8f2649ec801"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/checks.json",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "09686083cf248b5e14026beac97b801cd8bcf5cf",
+      "sha256": "1e71564cea57e0259d99087d8dfd2350b55fed4aa73cff385901291ef42ceb2f"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-0.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "a68924bab0754908418ef7b0758f9fc5124099bc",
+      "sha256": "5dc5e4fbdb5162947a8e0dd4bb8c64e7e75e7993cf4b091bc03bbf3eafc97d18"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-1.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "6604dca2036a39b48a74c5b665fd485f67624226",
+      "sha256": "d0608bb4bc6789aaf230795f4a2aaa1287466a7c5837dac78f9846897a550a40"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-2.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "e197243d66a75e2bfc89a0a80e0ec5a3934a0acf",
+      "sha256": "32d4dfd719bdd5f72d599f27b5d4b0a5db028c6a4b8052c2d96c0c6579f0f67c"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/command-3.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "310c6816a6fa7c18f49ae7f10379cade8d5f805d",
+      "sha256": "44135083b1a217451a49b8022f0f46efef327676d4ebea9ebbcc15f0e783087d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-0.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-1.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-2.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "77d029c339ddf26d849bc2fed09fcf59c7c96748",
+      "sha256": "cc4bade326da114c0dcbc372071e1040f9d04129a29c864413316c7bf31218d8"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/governance-3.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "85506f5469105efefda3c4e9bb32bfceba1dbd42",
+      "sha256": "90597c3efad9c7b66974ef6c13f2e70ccb9523145cdc934eb2c14681f696e514"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-PREFLIGHT-ADOPTION/source-integrity.txt",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "96adc8b985030c3e2ba1b4f380a45b66c8c95f44",
+      "sha256": "a3e9a3fd0632eaf8a91d0ee1c44606a0a315006d14a8e718e82f014ba6d36a4c"
+    },
+    {
+      "path": "package.json",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "11a7b63704267be0b9738fa2790b5a255349908e",
+      "sha256": "ab2bb4c43837b8f90ecf186c28e4346aa71ec90146a1ba8f9d77ffb18d65b2be"
+    },
+    {
+      "path": "scripts/hosted_supabase_preflight.mjs",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "0a225d44bc247a8b27ef120fb1e18dd8ace4c152",
+      "sha256": "79dfb0b66217437d20deeaf4a1df42675350abfb70543841fe5988374fbfd66f"
+    },
+    {
+      "path": "tests/hosted_supabase_preflight.test.mjs",
+      "source_commit": "cb6b5d0ea9fc6861ff50c1e4fea94bb0b9c9fbe4",
+      "blob": "dfb48d0c4a7782ebfa0aa2879b29d2ecf4f8716c",
+      "sha256": "074854ef928bb63af0cad000a43d319fdb640e6c0ce120d78278a4e26f5900bf"
+    }
+  ]
+}
