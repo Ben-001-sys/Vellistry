@@ -1,0 +1,94 @@
+id: VEL-TASK-0029
+title: Current-main selective integration of historical PR dispositions with retained
+  authorship
+type: implementation-task
+status: in-progress
+created_at: '2026-10-20'
+updated_at: '2026-10-20'
+owner: project_owner
+context_pack_id: VEL-CP-0029
+objective: Selectively integrate exact PR86 remediation source at 6feb8d84e0bea13aef41a6433e5c4c9076f32733
+  on actual main 6348c0a4cf276df5c2702fe0d75a25318e39dd86, preserving oldauthorship/evidence
+  and usingnewimmutable currentauthority context.
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0021.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0021.md
+- docs/agent-workflow/inputs/VEL-TASK-0021/ID-SCAN.txt
+- docs/agent-workflow/inputs/VEL-TASK-0021/OWNER-SCOPE.md
+- docs/agent-workflow/inputs/VEL-TASK-0021/pr59.json
+- docs/agent-workflow/inputs/VEL-TASK-0021/pr66.json
+- docs/agent-workflow/inputs/VEL-TASK-0021/pr82.json
+- docs/agent-workflow/tasks/VEL-TASK-0021.yaml
+- docs/reports/VEL-PR-HYGIENE-DISPOSITIONS.md
+- docs/reports/evidence/VEL-PR-HYGIENE/check-0.txt
+- docs/reports/evidence/VEL-PR-HYGIENE/check-1.txt
+- docs/reports/evidence/VEL-PR-HYGIENE/check-2.txt
+- docs/reports/evidence/VEL-PR-HYGIENE/check-3.txt
+- docs/reports/evidence/VEL-PR-HYGIENE/checks.json
+- docs/reports/evidence/VEL-PR-HYGIENE/comparison-checks.txt
+- docs/reports/evidence/VEL-PR-HYGIENE/source-comparison.json
+- docs/agent-workflow/tasks/VEL-TASK-0029.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0029.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0029.md
+- docs/agent-workflow/inputs/VEL-TASK-0029/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-INTEGRATION-0029*
+- docs/reports/evidence/VEL-INTEGRATION-0029/*
+out_of_scope:
+- Unlisted/new appfeatures/SQL/CI/standingpolicy edits; oldContextPack mutation
+- Hosted/auth/credentials/private/paid/admin/production/merge in implementation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: current-authority-exact-predecessor-source
+- path: SOURCE-OF-TRUTH.md
+  role: current-authority-exact-predecessor-source
+- path: AGENTS.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0029/OWNER-SCOPE.md
+  role: current-authority-exact-predecessor-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0029/SOURCE-MAP.json
+  role: current-authority-exact-predecessor-source
+source_gaps:
+- id: PROVENANCE
+  limitation: Original Task/CP/EB remain historical; current source-map is exactselectiveadoption,
+    not originalauthorship or retroactiveapproval.
+- id: GATES
+  limitation: Real separate trusted Codex review and ready/postmerge CI required;
+    nohosted/coldstartimplementation inference.
+deliverables:
+- CommittedcurrentTask/source,validatedimmutableCP beforeadoption
+- Listedpredecessorsource/provenance retained without stale sharedmanifest
+- Actual source/evidence/focused checks and EB; realreadyCI/separatereview; verifiedsuccessor
+  disposition
+acceptance_criteria:
+- Everyadoptedpath matches pinnedoriginalGitblob/SHA256; no unauthorizedpath oroldCPmutation
+- Originalauthorship/proposal/evidence status preserved; currentdelegation separatelyreferenced
+- Actualvalidators/focusedsuite and trustedbasecompliance; finalreadyCI anddistinctreview;
+  no fabricatedacceptance
+allowed_actions:
+- Readlivecurrentmain/predecessor andsourcepins; commitTask/source thenvalidatedimmutableCP
+- Adoptexactlistedsource,runactualsafechecks,writefactualEB/newperPRevidencebinding,publishreadyPR/trustedreview
+approval_required_for:
+- Outsideone-timeprogramorhosted/private/paid/admin/production/newfeatures
+- Unreviewedsecurity/SQLcontent change or missingactualdistinctreview/readyCI remainsblocking
+compliance:
+  change_base: 6348c0a4cf276df5c2702fe0d75a25318e39dd86
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

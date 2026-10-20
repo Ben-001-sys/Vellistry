@@ -1,0 +1,41 @@
+[
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "source_commit": "3abf3a5c6296273ef9511289b6fafbb1ba2f9867",
+    "evidence": "docs/reports/evidence/VEL-PR-HYGIENE/check-0.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.125,
+    "source_commit": "3abf3a5c6296273ef9511289b6fafbb1ba2f9867",
+    "evidence": "docs/reports/evidence/VEL-PR-HYGIENE/check-1.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 0.14,
+    "source_commit": "3abf3a5c6296273ef9511289b6fafbb1ba2f9867",
+    "evidence": "docs/reports/evidence/VEL-PR-HYGIENE/check-2.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "status": "PASS",
+    "exit_code": 0,
+    "duration_seconds": 25.766,
+    "source_commit": "3abf3a5c6296273ef9511289b6fafbb1ba2f9867",
+    "evidence": "docs/reports/evidence/VEL-PR-HYGIENE/check-3.txt"
+  },
+  {
+    "command": "Python exact seven-file archive/ADR/PLAN05 andPR59 scope assertions",
+    "status": "PASS",
+    "exit_code": 0,
+    "source_commit": "3abf3a5c6296273ef9511289b6fafbb1ba2f9867",
+    "evidence": "docs/reports/evidence/VEL-PR-HYGIENE/comparison-checks.txt"
+  }
+]
