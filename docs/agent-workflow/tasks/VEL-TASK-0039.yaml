@@ -1,0 +1,108 @@
+id: VEL-TASK-0039
+title: Reconcile PR68 sources and rerun historical exact-SHA CI evidence
+type: implementation-task
+status: in-progress
+created_at: '2026-10-21'
+updated_at: '2026-10-21'
+owner: project_owner
+context_pack_id: VEL-CP-0039
+objective: Resolve historical PR68 repository source disposition, preserve exact SQL/provenance
+  and rerun the22 reported failed historical workflows at their original heads without
+  modifying old sources or restoring obsolete CI.
+in_scope: &id001
+- docs/agent-workflow/tasks/VEL-TASK-0039.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0039.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0039.md
+- docs/agent-workflow/inputs/VEL-TASK-0039/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PR68-RECONCILIATION-0039*
+- docs/reports/evidence/VEL-PR68-RECONCILIATION-0039/*
+out_of_scope:
+- Any application, SQL, workflow, dependency, branch-protection or standing-policy
+  change
+- Hosted/auth/real data/private manuscripts/paid APIs/billing/settings/production/newMVP
+- Old PR68 branch rewrite, historical evidence overwrite, or base SQL approval self-installation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: SOURCE-OF-TRUTH.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: AGENTS.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/reports/VEL-DB-READINESS-001-OFFLINE-REVIEW.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/PR68-SOURCE-MAP-REFERENCE.json
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/reports/VEL-INTEGRATION-0037-DISPOSITIONS.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/OWNER-SCOPE.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/WORKFLOW-SAFETY-REVIEW.md
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/WORKFLOW-SOURCES.json
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/HISTORICAL-RUNS.json
+  role: authority-historical-source-and-exact-run-disposition
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/PR68.json
+  role: authority-historical-source-and-exact-run-disposition
+source_gaps:
+- id: HISTORICAL
+  limitation: Original failures were reported as runner-start billing restrictions;
+    actual rerun outcomes and checkout identities must be observed, not presumed.
+- id: SQL
+  limitation: Exact third definition planning-only; no operative SQL adoption or hosted
+    access authorization. Hosted and signed-out JWT acceptance remain external gates.
+deliverables:
+- Unique committed Task/source snapshots and validated committed immutableCP before
+  reruns or operative report
+- Attempt1metadata and actual rerun command/exits/results with exact source identities,
+  failures classified honestly
+- Complete38path current disposition preserving original ChatGPT/Codex lineage and
+  exactSQLreferences; precise security-sensitive decision packet
+- EB, negative evidence consistency checks, current validators and distinctreview/ready/postCI
+  before delegated successor integration and obsolete PR disposition
+acceptance_criteria:
+- Only22pinned historical IDs may rerun, sourceSHA/path unchanged, K2serial; preserve
+  attempt1 and record actual attempt2 checkout/steps/conclusions
+- No billing/hosted/settings operation or historical/current workflow modification;
+  obsolete source failures do not become current-head failures or fabricated passes
+- All38PR68paths dispositioned against currentmain as adopted/equivalent/excluded
+  historical or separately gated SQL; source map/blob/SHA256 preserved
+- Exact three migration and fixture hashes retained; explicit separate gates for repo
+  SQL path, target inventory,auth/dryrun,apply,fixtures,JWTpilot and release; no approval
+  inferred
+- Evidence negative checks reject wrong source/missing path/unsupported pass; metadata/readiness/spec/handoff
+  and actualready/postCI pass; distinct trusted review before integration
+allowed_actions:
+- Read pinned historical sources, capture run metadata/workflow snapshots, commitTask
+  and immutableCP first
+- AfterCP rerun onlylisted original GitHubActions runs using disposable services,
+  read sanitized results and classify actual outcomes
+- Write source-disposition/security decision packet and factualEB/manifest; publishreviewed
+  successor and separately delegated integration/obsoletePRclosure after verifiedpostmain
+approval_required_for:
+- Hosted operations, SQLpathadoption, changed migration bytes, privatepilot/deployment
+  or spending/settings remain outside scope
+- Actual independentreview and applicableCI are mandatory; no retroactive approval
+  or fabricated outcomes
+compliance:
+  change_base: ebb214197da2d1c293993cd08976db1627907e64
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

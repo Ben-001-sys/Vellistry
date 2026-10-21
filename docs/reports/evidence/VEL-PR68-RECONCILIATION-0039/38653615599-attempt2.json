@@ -1,0 +1,160 @@
+{
+  "run": {
+    "id": 38653615599,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "push",
+    "path": ".github/workflows/implementation-foundation.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653615599"
+  },
+  "jobs": [
+    {
+      "id": 119272099048,
+      "name": "build",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:58Z",
+      "completed_at": "2026-10-21T14:11:22Z",
+      "runner_id": 1000003294,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        },
+        {
+          "name": "Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:11:02Z",
+          "completed_at": "2026-10-21T14:11:03Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:11:03Z",
+          "completed_at": "2026-10-21T14:11:06Z"
+        },
+        {
+          "name": "Install without hosted secrets or paid APIs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:11:06Z",
+          "completed_at": "2026-10-21T14:11:10Z"
+        },
+        {
+          "name": "Regress Book Library isolation and unknown saves (synthetic)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:11:10Z",
+          "completed_at": "2026-10-21T14:11:11Z"
+        },
+        {
+          "name": "Test hosted Supabase environment guard without keys/network",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:11:11Z",
+          "completed_at": "2026-10-21T14:11:11Z"
+        },
+        {
+          "name": "Compile NestJS backend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:11:11Z",
+          "completed_at": "2026-10-21T14:11:12Z"
+        },
+        {
+          "name": "Type-check NestJS backend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:11:12Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        },
+        {
+          "name": "Build Next.js frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:18Z"
+        },
+        {
+          "name": "Type-check Next.js frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:18Z",
+          "completed_at": "2026-10-21T14:11:19Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-21T14:11:19Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        },
+        {
+          "name": "Post Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-21T14:11:20Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-21T14:11:20Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-21T14:11:20Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "build",
+      "commit": "f29d65ea079cdab9fda7417470f8633331fb16a1"
+    }
+  ],
+  "sanitized_test_lines": [
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:11.1915976Z \u2139 tests 66",
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:11.1916313Z \u2139 pass 66",
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:11.1916879Z \u2139 fail 0",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:11.5500741Z \u2139 tests 19",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:11.5501179Z \u2139 pass 19",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:11.5501370Z \u2139 fail 0"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}

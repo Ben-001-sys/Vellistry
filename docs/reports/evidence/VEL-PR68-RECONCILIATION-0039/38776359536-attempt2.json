@@ -1,0 +1,218 @@
+{
+  "run": {
+    "id": 38776359536,
+    "head_sha": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9",
+    "event": "pull_request",
+    "path": ".github/workflows/agent-workflow.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38776359536"
+  },
+  "jobs": [
+    {
+      "id": 119272277401,
+      "name": "Validate pinned agent handoffs",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:11:19Z",
+      "completed_at": "2026-10-21T14:11:32Z",
+      "runner_id": 1000003309,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:11:19Z",
+          "completed_at": "2026-10-21T14:11:21Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:11:21Z",
+          "completed_at": "2026-10-21T14:11:23Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:11:23Z",
+          "completed_at": "2026-10-21T14:11:23Z"
+        },
+        {
+          "name": "Assert immutable packet source is exact event commit",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:11:23Z",
+          "completed_at": "2026-10-21T14:11:23Z"
+        },
+        {
+          "name": "Install metadata dependency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:11:23Z",
+          "completed_at": "2026-10-21T14:11:24Z"
+        },
+        {
+          "name": "Test agent handoff generation and validation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:11:24Z",
+          "completed_at": "2026-10-21T14:11:24Z"
+        },
+        {
+          "name": "Validate agent task, ContextPack and ExecutionBundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:11:24Z",
+          "completed_at": "2026-10-21T14:11:25Z"
+        },
+        {
+          "name": "Test detached cold-start reconstruction",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:11:25Z",
+          "completed_at": "2026-10-21T14:11:25Z"
+        },
+        {
+          "name": "Test Level B packet export and tamper rejection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:11:25Z",
+          "completed_at": "2026-10-21T14:11:25Z"
+        },
+        {
+          "name": "Test Stage 4 spec traceability and negative cases",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:25Z",
+          "completed_at": "2026-10-21T14:11:25Z"
+        },
+        {
+          "name": "Validate source-to-spec references",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:25Z",
+          "completed_at": "2026-10-21T14:11:25Z"
+        },
+        {
+          "name": "Generate current-scope Stage 4 ContextPack",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-21T14:11:25Z",
+          "completed_at": "2026-10-21T14:11:26Z"
+        },
+        {
+          "name": "Validate generated Stage 4 ContextPack",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-21T14:11:26Z",
+          "completed_at": "2026-10-21T14:11:26Z"
+        },
+        {
+          "name": "Upload proposed Stage 4 ContextPack",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-21T14:11:26Z",
+          "completed_at": "2026-10-21T14:11:27Z"
+        },
+        {
+          "name": "Test independent Stage 4 cold-start packet and tamper rejection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-21T14:11:27Z",
+          "completed_at": "2026-10-21T14:11:27Z"
+        },
+        {
+          "name": "Export reproducible independent Stage 4 cold-start ZIP",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-21T14:11:27Z",
+          "completed_at": "2026-10-21T14:11:27Z"
+        },
+        {
+          "name": "Upload isolated Stage 4 external-agent packet",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-21T14:11:27Z",
+          "completed_at": "2026-10-21T14:11:28Z"
+        },
+        {
+          "name": "Export validated Level B agent packet",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-21T14:11:28Z",
+          "completed_at": "2026-10-21T14:11:28Z"
+        },
+        {
+          "name": "Upload Level B agent packet",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-21T14:11:28Z",
+          "completed_at": "2026-10-21T14:11:29Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-21T14:11:29Z",
+          "completed_at": "2026-10-21T14:11:29Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-21T14:11:29Z",
+          "completed_at": "2026-10-21T14:11:29Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-21T14:11:29Z",
+          "completed_at": "2026-10-21T14:11:29Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "Validate pinned agent handoffs",
+      "commit": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9"
+    }
+  ],
+  "sanitized_test_lines": [
+    "Validate pinned agent handoffs\tTest agent handoff generation and validation\t2026-10-21T14:11:24.8446637Z Ran 15 tests in 0.378s",
+    "Validate pinned agent handoffs\tTest agent handoff generation and validation\t2026-10-21T14:11:24.8447270Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Validate pinned agent handoffs\tValidate agent task, ContextPack and ExecutionBundle\t2026-10-21T14:11:25.0441096Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Validate pinned agent handoffs\tTest detached cold-start reconstruction\t2026-10-21T14:11:25.2981848Z Ran 5 tests in 0.196s",
+    "Validate pinned agent handoffs\tTest Level B packet export and tamper rejection\t2026-10-21T14:11:25.7434805Z Ran 6 tests in 0.263s",
+    "Validate pinned agent handoffs\tTest Stage 4 spec traceability and negative cases\t2026-10-21T14:11:25.8557905Z Ran 11 tests in 0.041s",
+    "Validate pinned agent handoffs\tValidate generated Stage 4 ContextPack\t2026-10-21T14:11:26.2286085Z PASS: 4 task(s), 3 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Validate pinned agent handoffs\tTest independent Stage 4 cold-start packet and tamper rejection\t2026-10-21T14:11:27.4276919Z Ran 6 tests in 0.208s"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}

@@ -1,0 +1,50 @@
+{
+  "run": {
+    "id": 38653713416,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "pull_request",
+    "path": ".github/workflows/k2-supabase-auth-rls.yml",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "failure",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713416",
+    "created_at": "2026-10-14T23:22:55Z"
+  },
+  "jobs": [
+    {
+      "id": 116158383935,
+      "name": "real-supabase-security",
+      "conclusion": "failure",
+      "started_at": "2026-10-14T23:22:56Z",
+      "completed_at": "2026-10-14T23:22:58Z",
+      "runner_id": 0,
+      "steps": [],
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/Ben-001-sys/Vellistry/blob/f29d65ea079cdab9fda7417470f8633331fb16a1/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        },
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/Ben-001-sys/Vellistry/blob/f29d65ea079cdab9fda7417470f8633331fb16a1/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "notice",
+          "title": "",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+          "raw_details": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "path": "supabase/migrations/20261009000000_initial_author_books.sql",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "192a736d1a5d6ffc6f239c74ed61e7b8d2528b3b",
+    "sha256": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74"
+  },
+  {
+    "path": "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "0670a60f1c2e299e9771b9af1c677d97712174d9",
+    "sha256": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65"
+  },
+  {
+    "path": "supabase/migrations/20261015171325_restrict_book_privileges.sql",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "230b1540bb5b8962fd2b797d4f8a467d3c035978",
+    "sha256": "c7c384b6192d31e4e17c4f6e00978a16a4e15e2feeacfe148aaf1e2cd2853e81"
+  },
+  {
+    "path": "tests/book_privileges_regression.sql",
+    "source": "cbb379fa4a4eaa9f576f3abcce2c2258d22cc551",
+    "blob": "5feac95772f93330b29150dbc135d766e7b0392e",
+    "sha256": "bcba9b788151d27ee354f41aa658398f1ed0cbfe86cf0d97f7ae685cb0c54e6b"
+  }
+]

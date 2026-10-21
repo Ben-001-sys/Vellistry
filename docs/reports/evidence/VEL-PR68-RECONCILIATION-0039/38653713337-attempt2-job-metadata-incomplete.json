@@ -1,0 +1,37 @@
+{
+  "run": {
+    "id": 38653713337,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "pull_request",
+    "path": ".github/workflows/implementation-readiness.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713337"
+  },
+  "jobs": [
+    {
+      "id": 119272049143,
+      "name": "Gate-safe DAG, task and negative-case tests",
+      "conclusion": null,
+      "started_at": "2026-10-21T14:10:50Z",
+      "completed_at": null,
+      "runner_id": null,
+      "steps": []
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "Gate-safe DAG, task and negative-case tests",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    }
+  ],
+  "sanitized_test_lines": [
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:10:59.7291773Z PASS: 14 DAG nodes validated, 4 owner gates pending, no cycles, no unauthorized feature dispatch",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:00.1635863Z Ran 19 tests in 0.290s",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:00.4548304Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:01.0788693Z PASS: 4 task(s), 3 ContextPack(s), 2 ExecutionBundle(s) validated"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}

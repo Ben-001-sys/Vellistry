@@ -1,0 +1,239 @@
+{
+  "run": {
+    "id": 38776359432,
+    "head_sha": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9",
+    "event": "pull_request",
+    "path": ".github/workflows/implementation-foundation.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38776359432"
+  },
+  "jobs": [
+    {
+      "id": 119272224706,
+      "name": "build",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:11:13Z",
+      "completed_at": "2026-10-21T14:11:34Z",
+      "runner_id": 1000003305,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:14Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:11:14Z",
+          "completed_at": "2026-10-21T14:11:15Z"
+        },
+        {
+          "name": "Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:11:15Z",
+          "completed_at": "2026-10-21T14:11:16Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:11:16Z",
+          "completed_at": "2026-10-21T14:11:16Z"
+        },
+        {
+          "name": "Install without hosted secrets or paid APIs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:11:16Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        },
+        {
+          "name": "Regress Book Library isolation and unknown saves (synthetic)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:11:20Z",
+          "completed_at": "2026-10-21T14:11:21Z"
+        },
+        {
+          "name": "Test hosted Supabase environment guard without keys/network",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:11:21Z",
+          "completed_at": "2026-10-21T14:11:21Z"
+        },
+        {
+          "name": "Compile NestJS backend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:11:21Z",
+          "completed_at": "2026-10-21T14:11:23Z"
+        },
+        {
+          "name": "Type-check NestJS backend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:11:23Z",
+          "completed_at": "2026-10-21T14:11:24Z"
+        },
+        {
+          "name": "Build Next.js frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:24Z",
+          "completed_at": "2026-10-21T14:11:30Z"
+        },
+        {
+          "name": "Type-check Next.js frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:30Z",
+          "completed_at": "2026-10-21T14:11:31Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-21T14:11:31Z",
+          "completed_at": "2026-10-21T14:11:31Z"
+        },
+        {
+          "name": "Post Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-21T14:11:31Z",
+          "completed_at": "2026-10-21T14:11:31Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-21T14:11:31Z",
+          "completed_at": "2026-10-21T14:11:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-21T14:11:31Z",
+          "completed_at": "2026-10-21T14:11:31Z"
+        }
+      ]
+    },
+    {
+      "id": 119272225236,
+      "name": "book-privileges",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:11:13Z",
+      "completed_at": "2026-10-21T14:11:40Z",
+      "runner_id": 1000003306,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:11:14Z",
+          "completed_at": "2026-10-21T14:11:15Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:11:15Z",
+          "completed_at": "2026-10-21T14:11:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:11:36Z",
+          "completed_at": "2026-10-21T14:11:37Z"
+        },
+        {
+          "name": "Original migrations must reproduce the excess-grant defect",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:11:37Z",
+          "completed_at": "2026-10-21T14:11:37Z"
+        },
+        {
+          "name": "Hardening must preserve the complete privilege matrix and RLS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:11:37Z",
+          "completed_at": "2026-10-21T14:11:37Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:11:37Z",
+          "completed_at": "2026-10-21T14:11:37Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:37Z",
+          "completed_at": "2026-10-21T14:11:38Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:38Z",
+          "completed_at": "2026-10-21T14:11:38Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "build",
+      "commit": "df73df8e8867dced3b7621677e576553d4abb947"
+    },
+    {
+      "job": "book-privileges",
+      "commit": "df73df8e8867dced3b7621677e576553d4abb947"
+    }
+  ],
+  "sanitized_test_lines": [
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:21.3760028Z \u2139 tests 66",
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:21.3760297Z \u2139 pass 66",
+    "build\tRegress Book Library isolation and unknown saves (synthetic)\t2026-10-21T14:11:21.3760570Z \u2139 fail 0",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:21.7788047Z \u2139 tests 19",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:21.7788459Z \u2139 pass 19",
+    "build\tTest hosted Supabase environment guard without keys/network\t2026-10-21T14:11:21.7788633Z \u2139 fail 0",
+    "book-privileges\tHardening must preserve the complete privilege matrix and RLS\t2026-10-21T14:11:37.5458042Z PASS: 48 privilege cases, RLS flags, owned insert, cross-author and TRUNCATE denials"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}

@@ -1,0 +1,151 @@
+{
+  "run": {
+    "id": 38653713337,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "pull_request",
+    "path": ".github/workflows/implementation-readiness.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713337"
+  },
+  "jobs": [
+    {
+      "id": 119272049143,
+      "name": "Gate-safe DAG, task and negative-case tests",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:53Z",
+      "completed_at": "2026-10-21T14:11:05Z",
+      "runner_id": 1000003291,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:54Z",
+          "completed_at": "2026-10-21T14:10:55Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:10:55Z",
+          "completed_at": "2026-10-21T14:10:57Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:10:57Z",
+          "completed_at": "2026-10-21T14:10:58Z"
+        },
+        {
+          "name": "Install metadata parser",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:10:58Z",
+          "completed_at": "2026-10-21T14:10:59Z"
+        },
+        {
+          "name": "Validate DAG and non-waived owner gates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:10:59Z"
+        },
+        {
+          "name": "Test positive and negative gate scenarios",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Validate all historical agent artifacts and new proposed task",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Validate current source/spec traceability",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Generate NEW pinned Stage 5 preparation ContextPack (not an agent run)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Validate generated immutable proposed packet",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:01Z"
+        },
+        {
+          "name": "Upload proposed, non-authorized handoff packet",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:01Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-21T14:11:02Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-21T14:11:02Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-21T14:11:02Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "Gate-safe DAG, task and negative-case tests",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    }
+  ],
+  "sanitized_test_lines": [
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:10:59.7291773Z PASS: 14 DAG nodes validated, 4 owner gates pending, no cycles, no unauthorized feature dispatch",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:00.1635863Z Ran 19 tests in 0.290s",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:00.4548304Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Gate-safe DAG, task and negative-case tests\tUNKNOWN STEP\t2026-10-21T14:11:01.0788693Z PASS: 4 task(s), 3 ContextPack(s), 2 ExecutionBundle(s) validated"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof.",
+  "capture_note": "Refreshed completed job metadata after evidence consistency rejected initial incomplete capture; original capture retained separately."
+}

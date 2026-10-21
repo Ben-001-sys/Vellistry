@@ -1,0 +1,108 @@
+{
+  "run": {
+    "id": 38653713326,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "pull_request",
+    "path": ".github/workflows/knowledge-metadata.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713326"
+  },
+  "jobs": [
+    {
+      "id": 119272032548,
+      "name": "Validate ADR and history metadata",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:51Z",
+      "completed_at": "2026-10-21T14:11:00Z",
+      "runner_id": 1000003290,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:52Z",
+          "completed_at": "2026-10-21T14:10:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:10:53Z",
+          "completed_at": "2026-10-21T14:10:54Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:10:54Z",
+          "completed_at": "2026-10-21T14:10:54Z"
+        },
+        {
+          "name": "Install YAML parser",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:10:54Z",
+          "completed_at": "2026-10-21T14:10:55Z"
+        },
+        {
+          "name": "Run positive and negative regression tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:10:55Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Validate metadata",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "Validate ADR and history metadata",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    }
+  ],
+  "sanitized_test_lines": [
+    "Validate ADR and history metadata\tRun positive and negative regression tests\t2026-10-21T14:10:56.2847389Z Ran 8 tests in 0.396s",
+    "Validate ADR and history metadata\tValidate metadata\t2026-10-21T14:10:56.4141783Z PASS: validated metadata for 25 ADR/history records."
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}
