@@ -1,0 +1,31 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_research_archive.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.718,
+    "evidence": "docs\\reports\\evidence\\VEL-SOURCE-PRESERVATION-0038\\synthetic.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_research_archive.py",
+      "--archive",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/original-research-export.zip",
+      "--manifest",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/SOURCE-MANIFEST.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.125,
+    "evidence": "docs\\reports\\evidence\\VEL-SOURCE-PRESERVATION-0038\\original-archive.txt"
+  }
+]
