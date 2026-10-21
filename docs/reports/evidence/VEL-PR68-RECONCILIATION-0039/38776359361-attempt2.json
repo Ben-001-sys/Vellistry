@@ -1,0 +1,155 @@
+{
+  "run": {
+    "id": 38776359361,
+    "head_sha": "0f41a27a2de879f6d75c86c21b0d47d1d783f0c9",
+    "event": "pull_request",
+    "path": ".github/workflows/k2-supabase-auth-rls.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38776359361"
+  },
+  "jobs": [
+    {
+      "id": 119277194602,
+      "name": "real-supabase-security",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:20:36Z",
+      "completed_at": "2026-10-21T14:22:29Z",
+      "runner_id": 1000003314,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:20:37Z",
+          "completed_at": "2026-10-21T14:20:38Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:20:38Z",
+          "completed_at": "2026-10-21T14:20:39Z"
+        },
+        {
+          "name": "Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:20:39Z",
+          "completed_at": "2026-10-21T14:20:40Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:20:40Z",
+          "completed_at": "2026-10-21T14:20:40Z"
+        },
+        {
+          "name": "Install no-paid-service project dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:20:40Z",
+          "completed_at": "2026-10-21T14:20:46Z"
+        },
+        {
+          "name": "Pick free, temporary CI-only Supabase API/DB ports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:20:46Z",
+          "completed_at": "2026-10-21T14:20:46Z"
+        },
+        {
+          "name": "Start real disposable local Supabase services",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:20:46Z",
+          "completed_at": "2026-10-21T14:22:12Z"
+        },
+        {
+          "name": "Compile genuine NestJS API",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:22:12Z",
+          "completed_at": "2026-10-21T14:22:14Z"
+        },
+        {
+          "name": "Validate actual sign-up, RLS, tokens, cross-author data and logout behavior",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:22:14Z",
+          "completed_at": "2026-10-21T14:22:23Z"
+        },
+        {
+          "name": "Attach synthetic-only results (no token or password)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:22:23Z",
+          "completed_at": "2026-10-21T14:22:24Z"
+        },
+        {
+          "name": "Shut down disposable local Supabase",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:22:24Z",
+          "completed_at": "2026-10-21T14:22:27Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-21T14:22:27Z",
+          "completed_at": "2026-10-21T14:22:27Z"
+        },
+        {
+          "name": "Post Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-21T14:22:27Z",
+          "completed_at": "2026-10-21T14:22:27Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-21T14:22:27Z",
+          "completed_at": "2026-10-21T14:22:28Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-21T14:22:28Z",
+          "completed_at": "2026-10-21T14:22:28Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "real-supabase-security",
+      "commit": "df73df8e8867dced3b7621677e576553d4abb947"
+    }
+  ],
+  "sanitized_test_lines": [
+    "real-supabase-security\tUNKNOWN STEP\t2026-10-21T14:22:27.1558959Z Stopped supabase local development setup."
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted evidence only; historical cleanup step uses ||true so job success alone is not cleanup proof."
+}

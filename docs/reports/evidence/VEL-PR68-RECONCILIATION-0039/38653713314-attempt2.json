@@ -1,0 +1,351 @@
+{
+  "run": {
+    "id": 38653713314,
+    "head_sha": "f29d65ea079cdab9fda7417470f8633331fb16a1",
+    "event": "pull_request",
+    "path": ".github/workflows/combined-main-baseline.yml",
+    "run_attempt": 2,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/38653713314"
+  },
+  "jobs": [
+    {
+      "id": 119272002850,
+      "name": "Merged PostgreSQL CAS and restore contract",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:47Z",
+      "completed_at": "2026-10-21T14:11:22Z",
+      "runner_id": 1000003286,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:48Z",
+          "completed_at": "2026-10-21T14:10:49Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:10:49Z",
+          "completed_at": "2026-10-21T14:11:04Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:11:04Z",
+          "completed_at": "2026-10-21T14:11:05Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:11:05Z",
+          "completed_at": "2026-10-21T14:11:05Z"
+        },
+        {
+          "name": "Install PostgreSQL client binaries",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:11:05Z",
+          "completed_at": "2026-10-21T14:11:15Z"
+        },
+        {
+          "name": "Rerun disposable Pair 06 atomicity and independent restore",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:11:15Z",
+          "completed_at": "2026-10-21T14:11:19Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:11:19Z",
+          "completed_at": "2026-10-21T14:11:19Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-21T14:11:19Z",
+          "completed_at": "2026-10-21T14:11:19Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-21T14:11:19Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-21T14:11:20Z",
+          "completed_at": "2026-10-21T14:11:20Z"
+        }
+      ]
+    },
+    {
+      "id": 119272003124,
+      "name": "Integrated Next and Nest build / typecheck",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:48Z",
+      "completed_at": "2026-10-21T14:11:16Z",
+      "runner_id": 1000003287,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:49Z",
+          "completed_at": "2026-10-21T14:10:50Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:10:50Z",
+          "completed_at": "2026-10-21T14:10:51Z"
+        },
+        {
+          "name": "Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:10:51Z",
+          "completed_at": "2026-10-21T14:10:52Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:10:52Z",
+          "completed_at": "2026-10-21T14:10:53Z"
+        },
+        {
+          "name": "Install merged pnpm workspace (no hosted keys)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:10:53Z",
+          "completed_at": "2026-10-21T14:10:58Z"
+        },
+        {
+          "name": "Build and typecheck Nest API",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:10:58Z",
+          "completed_at": "2026-10-21T14:11:02Z"
+        },
+        {
+          "name": "Build and typecheck Next web",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:11:02Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        },
+        {
+          "name": "Post Run pnpm/action-setup@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-21T14:11:13Z",
+          "completed_at": "2026-10-21T14:11:13Z"
+        }
+      ]
+    },
+    {
+      "id": 119272003257,
+      "name": "Current-gate integrity and merged Python contracts",
+      "conclusion": "success",
+      "started_at": "2026-10-21T14:10:48Z",
+      "completed_at": "2026-10-21T14:11:03Z",
+      "runner_id": 1000003288,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-21T14:10:49Z",
+          "completed_at": "2026-10-21T14:10:50Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-21T14:10:50Z",
+          "completed_at": "2026-10-21T14:10:51Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-21T14:10:51Z",
+          "completed_at": "2026-10-21T14:10:52Z"
+        },
+        {
+          "name": "Install YAML parser",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-21T14:10:52Z",
+          "completed_at": "2026-10-21T14:10:55Z"
+        },
+        {
+          "name": "Validate accepted decision and history metadata",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-21T14:10:55Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Verify six-pair research and approval boundaries",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:56Z"
+        },
+        {
+          "name": "Regress source-preserving R01 mapping gates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-21T14:10:56Z",
+          "completed_at": "2026-10-21T14:10:57Z"
+        },
+        {
+          "name": "Regress Stage 3 agent provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-21T14:10:57Z",
+          "completed_at": "2026-10-21T14:10:58Z"
+        },
+        {
+          "name": "Regress Stage 4 source and synthetic chapter contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-21T14:10:58Z",
+          "completed_at": "2026-10-21T14:10:59Z"
+        },
+        {
+          "name": "Regress merged Pair 03\u201306 offline research evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:10:59Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:10:59Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-21T14:10:59Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-21T14:11:00Z",
+          "completed_at": "2026-10-21T14:11:00Z"
+        }
+      ]
+    }
+  ],
+  "checkout_commits": [
+    {
+      "job": "Merged PostgreSQL CAS and restore contract",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    },
+    {
+      "job": "Integrated Next and Nest build / typecheck",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    },
+    {
+      "job": "Current-gate integrity and merged Python contracts",
+      "commit": "cb38b5f39519138b11ccdf8b140bee6af0ac5b78"
+    }
+  ],
+  "sanitized_test_lines": [
+    "Merged PostgreSQL CAS and restore contract\tRerun disposable Pair 06 atomicity and independent restore\t2026-10-21T14:11:19.3009015Z Ran 12 tests in 3.394s",
+    "Current-gate integrity and merged Python contracts\tValidate accepted decision and history metadata\t2026-10-21T14:10:56.3362819Z Ran 8 tests in 0.401s",
+    "Current-gate integrity and merged Python contracts\tValidate accepted decision and history metadata\t2026-10-21T14:10:56.4410760Z PASS: validated metadata for 25 ADR/history records.",
+    "Current-gate integrity and merged Python contracts\tVerify six-pair research and approval boundaries\t2026-10-21T14:10:56.5786564Z Ran 16 tests in 0.047s",
+    "Current-gate integrity and merged Python contracts\tRegress source-preserving R01 mapping gates\t2026-10-21T14:10:57.1372491Z Ran 24 tests in 0.029s",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 3 agent provenance\t2026-10-21T14:10:57.7993081Z Ran 15 tests in 0.550s",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 3 agent provenance\t2026-10-21T14:10:57.7993882Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 3 agent provenance\t2026-10-21T14:10:58.1613989Z Ran 5 tests in 0.297s",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 3 agent provenance\t2026-10-21T14:10:58.6569144Z Ran 6 tests in 0.388s",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 3 agent provenance\t2026-10-21T14:10:58.9252278Z PASS: 4 task(s), 2 ContextPack(s), 2 ExecutionBundle(s) validated",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 4 source and synthetic chapter contracts\t2026-10-21T14:10:59.0978157Z Ran 11 tests in 0.077s",
+    "Current-gate integrity and merged Python contracts\tRegress Stage 4 source and synthetic chapter contracts\t2026-10-21T14:10:59.2366655Z Ran 13 tests in 0.002s",
+    "Current-gate integrity and merged Python contracts\tRegress merged Pair 03\u201306 offline research evidence\t2026-10-21T14:10:59.3837113Z Ran 18 tests in 0.047s",
+    "Current-gate integrity and merged Python contracts\tRegress merged Pair 03\u201306 offline research evidence\t2026-10-21T14:10:59.4486070Z Ran 20 tests in 0.002s",
+    "Current-gate integrity and merged Python contracts\tRegress merged Pair 03\u201306 offline research evidence\t2026-10-21T14:10:59.5117685Z Ran 14 tests in 0.002s",
+    "Current-gate integrity and merged Python contracts\tRegress merged Pair 03\u201306 offline research evidence\t2026-10-21T14:10:59.5698146Z Ran 12 tests in 0.001s",
+    "Current-gate integrity and merged Python contracts\tRegress merged Pair 03\u201306 offline research evidence\t2026-10-21T14:10:59.6333020Z Ran 8 tests in 0.001s"
+  ],
+  "raw_logs_retained": false,
+  "limits": "Allowlisted test and checkout evidence only; no raw local service startup or credential output retained. Historical cleanup step uses ||true; its job success alone is not cleanup proof."
+}
