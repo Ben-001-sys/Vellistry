@@ -1,0 +1,7 @@
+{
+  "path": "docs/reports/evidence/VEL-DB-READINESS-001/source-map.json",
+  "source_commit": "ebb214197da2d1c293993cd08976db1627907e64",
+  "blob": "1b36c17242f91abab45351026e41e1f85e03be8b",
+  "sha256": "c4bdd90c874863b15f68cfafe91aeb0a6af15666bfad7961036432d89f97ef3f",
+  "purpose": "Exact existing38path map remains committed in base; retrieve by pinned Git blob. Full duplicate omitted only to bound ContextPack size."
+}

@@ -35,7 +35,7 @@ inputs:
   role: authority-historical-source-and-exact-run-disposition
 - path: docs/reports/VEL-DB-READINESS-001-OFFLINE-REVIEW.md
   role: authority-historical-source-and-exact-run-disposition
-- path: docs/reports/evidence/VEL-DB-READINESS-001/source-map.json
+- path: docs/agent-workflow/inputs/VEL-TASK-0039/PR68-SOURCE-MAP-REFERENCE.json
   role: authority-historical-source-and-exact-run-disposition
 - path: docs/reports/VEL-INTEGRATION-0037-DISPOSITIONS.md
   role: authority-historical-source-and-exact-run-disposition
