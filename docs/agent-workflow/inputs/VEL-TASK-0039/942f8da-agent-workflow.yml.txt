@@ -1,0 +1,103 @@
+name: Agent workflow
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'docs/agent-workflow/**'
+      - 'scripts/agent_workflow.py'
+      - 'tests/test_agent_workflow.py'
+      - 'tests/test_handoff_recovery.py'
+      - 'scripts/handoff_recovery.py'
+      - 'scripts/export_level_b_handoff.py'
+      - 'tests/test_level_b_export.py'
+      - 'docs/agent-workflow/LEVEL-B-AGENT-PROMPT.md'
+      - 'docs/specs/**'
+      - 'scripts/spec_traceability.py'
+      - 'tests/test_spec_traceability.py'
+      - 'scripts/export_stage4_independent_packet.py'
+      - 'tests/test_stage4_independent_packet.py'
+      - '.github/workflows/agent-workflow.yml'
+  push:
+    branches: [main, 'feat/agent-workflow-*']
+    paths:
+      - 'docs/agent-workflow/**'
+      - 'scripts/agent_workflow.py'
+      - 'tests/test_agent_workflow.py'
+      - 'tests/test_handoff_recovery.py'
+      - 'scripts/handoff_recovery.py'
+      - 'scripts/export_level_b_handoff.py'
+      - 'tests/test_level_b_export.py'
+      - 'docs/agent-workflow/LEVEL-B-AGENT-PROMPT.md'
+      - 'docs/specs/**'
+      - 'scripts/spec_traceability.py'
+      - 'tests/test_spec_traceability.py'
+      - 'scripts/export_stage4_independent_packet.py'
+      - 'tests/test_stage4_independent_packet.py'
+      - '.github/workflows/agent-workflow.yml'
+permissions:
+  contents: read
+jobs:
+  validate-handoffs:
+    name: Validate pinned agent handoffs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Pin exported task evidence to the stable PR head, never the synthetic
+          # GitHub pull/<id>/merge ref that can disappear after merges.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert immutable packet source is exact event commit
+        env:
+          EXPECTED_PR_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_PR_HEAD"
+          git cat-file -t "$EXPECTED_PR_HEAD" | grep -qx commit
+      - name: Install metadata dependency
+        run: python -m pip install 'PyYAML>=6.0,<7'
+      - name: Test agent handoff generation and validation
+        run: python -m unittest discover -s tests -p 'test_agent_workflow.py' -v
+      - name: Validate agent task, ContextPack and ExecutionBundle
+        run: python scripts/agent_workflow.py validate
+      - name: Test detached cold-start reconstruction
+        run: python -m unittest discover -s tests -p 'test_handoff_recovery.py' -v
+      - name: Test Level B packet export and tamper rejection
+        run: python -m unittest discover -s tests -p 'test_level_b_export.py' -v
+      - name: Test Stage 4 spec traceability and negative cases
+        run: python -m unittest discover -s tests -p 'test_spec_traceability.py' -v
+      - name: Validate source-to-spec references
+        run: python scripts/spec_traceability.py validate
+      - name: Generate current-scope Stage 4 ContextPack
+        run: python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml
+      - name: Validate generated Stage 4 ContextPack
+        run: python scripts/agent_workflow.py validate
+      - name: Upload proposed Stage 4 ContextPack
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-stage4-chapter-context
+          path: docs/agent-workflow/context-packs/VEL-CP-0002.md
+          retention-days: 14
+          if-no-files-found: error
+      - name: Test independent Stage 4 cold-start packet and tamper rejection
+        run: python -m unittest discover -s tests -p 'test_stage4_independent_packet.py' -v
+      - name: Export reproducible independent Stage 4 cold-start ZIP
+        run: python scripts/export_stage4_independent_packet.py --output stage4-independent-agent-packet.zip
+      - name: Upload isolated Stage 4 external-agent packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-stage4-independent-agent-packet
+          path: stage4-independent-agent-packet.zip
+          retention-days: 14
+          if-no-files-found: error
+      - name: Export validated Level B agent packet
+        run: python scripts/export_level_b_handoff.py --output level-b-test-packet.zip
+      - name: Upload Level B agent packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: vellistry-level-b-cold-start
+          path: level-b-test-packet.zip
+          retention-days: 14
+          if-no-files-found: error

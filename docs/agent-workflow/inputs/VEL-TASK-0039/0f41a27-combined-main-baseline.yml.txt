@@ -1,0 +1,126 @@
+name: Combined research and application baseline
+
+# Validates one integrated checkout after rapid research/stack PR merges.
+# This is research-and-build evidence, NOT product security or release certification.
+on:
+  pull_request:
+    paths:
+      - 'CURRENT-STATE.md'
+      - 'docs/research/SIX-PAIR-RESEARCH-TO-DESIGN-GATE-2026-10-09.md'
+      - 'docs/plans/DESIGN-ENTRY-DECISION-2026-10-10.md'
+      - 'docs/plans/RESEARCH-PAIR-AND-PREIMPLEMENTATION-DESIGN-2026-10-09.md'
+      - '.github/workflows/combined-main-baseline.yml'
+      - 'tests/test_research_design_gate.py'
+      - 'apps/**'
+      - 'supabase/**'
+      - 'docs/research/experiments/**'
+      - 'docs/research/spikes/**'
+      - 'docs/specs/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'pnpm-workspace.yaml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  knowledge-and-synthetic:
+    name: Current-gate integrity and merged Python contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install YAML parser
+        run: python -m pip install 'PyYAML>=6,<7'
+      - name: Validate accepted decision and history metadata
+        run: |
+          python -m unittest discover -s tests -p 'test_knowledge_metadata.py' -v
+          python scripts/check_knowledge_metadata.py
+      - name: Verify six-pair research and approval boundaries
+        run: python -m unittest discover -s tests -p 'test_research_design_gate.py' -v
+      - name: Regress source-preserving R01 mapping gates
+        run: |
+          python -m unittest discover -s tests -p 'test_r01_*.py' -v
+      - name: Regress Stage 3 agent provenance
+        run: |
+          python -m unittest discover -s tests -p 'test_agent_workflow.py' -v
+          python -m unittest discover -s tests -p 'test_handoff_recovery.py' -v
+          python -m unittest discover -s tests -p 'test_level_b_export.py' -v
+          python scripts/agent_workflow.py validate
+      - name: Regress Stage 4 source and synthetic chapter contracts
+        run: |
+          python -m unittest discover -s tests -p 'test_spec_traceability.py' -v
+          python scripts/spec_traceability.py validate
+          python -m unittest discover -s tests -p 'test_stage4_chapter_contract.py' -v
+      - name: Regress merged Pair 03–06 offline research evidence
+        run: |
+          python -m unittest discover -s docs/research/experiments -p 'test_pair03_*.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_r07_story_state_contract.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_pair04_offline_provider.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_pair05_synthetic_rules.py' -v
+          python -m unittest discover -s docs/research/experiments -p 'test_pair06_legal_registry.py' -v
+
+  app-build:
+    name: Integrated Next and Nest build / typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install merged pnpm workspace (no hosted keys)
+        run: pnpm install --no-frozen-lockfile
+      - name: Build and typecheck Nest API
+        run: |
+          pnpm --filter @vellistry/api build
+          pnpm --filter @vellistry/api typecheck
+      - name: Build and typecheck Next web
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: |
+          pnpm --filter @vellistry/web build
+          pnpm --filter @vellistry/web typecheck
+
+  postgres-synthetic-recovery:
+    name: Merged PostgreSQL CAS and restore contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: pair06synthetic
+          POSTGRES_DB: pair06db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d pair06db"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      PGPASSWORD: pair06synthetic
+      PAIR06_DATABASE_URL: postgresql://postgres:pair06synthetic@127.0.0.1:5432/pair06db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PostgreSQL client binaries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y postgresql-client
+      - name: Rerun disposable Pair 06 atomicity and independent restore
+        run: python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v
