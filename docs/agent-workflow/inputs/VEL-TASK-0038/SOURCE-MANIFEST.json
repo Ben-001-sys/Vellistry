@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "archive": "original-research-export.zip",
+  "archive_sha256": "7832d584f62e0c159e38d9d85f9da9bb84f721b74404091482dd217fc12af65b",
+  "archive_bytes": 351996,
+  "members": [
+    {
+      "id": "SRC-001",
+      "name": "AI Writing App Blueprint.md",
+      "bytes": 30455,
+      "sha256": "9b2840cd65310802f9495c426ea8820ece4635d7f1ee503a3e055e30bfe2be24"
+    },
+    {
+      "id": "SRC-003",
+      "name": "Branch \u00b7 Research AI Writing Problems.md",
+      "bytes": 986553,
+      "sha256": "fda917550811ccf44fe2fa7993d14a0f4f64d6dde5299d0c5b078865c4f0f965"
+    },
+    {
+      "id": "SRC-002",
+      "name": "Research AI Writing Problems.md",
+      "bytes": 65926,
+      "sha256": "f011fd1e65de076f5f35bda18625dced3627a26968a3a48c9d05700d46355aeb"
+    }
+  ]
+}

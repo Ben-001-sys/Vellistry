@@ -1,0 +1,1 @@
+PASS: three member SHA256 values match historical main source register; committed original ZIP matches recovered bytes; both committed implementation files match unedited fresh-worker output. Source c8c541eb0ff166825c0d6a444180ebfab01cf1c0.

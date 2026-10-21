@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\admin\\AppData\\Local\\OpenAI\\Codex\\bin\\896a0166b774037a\\codex.exe",
+    "-a",
+    "never",
+    "exec",
+    "--ignore-user-config",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "-s",
+    "read-only",
+    "-c",
+    "project_doc_max_bytes=0",
+    "-c",
+    "memories.use_memories=false",
+    "--json",
+    "-C",
+    "C:\\Users\\admin\\AppData\\Local\\Temp\\vellistry-task0038-m60ilpt8",
+    "-"
+  ],
+  "prompt_sha256": "508d2e62a8fd325b32592ae6788eebc1112f591ff397f0cb47e47561481440fb",
+  "cp_sha256": "cc8a7827be4576673d256ff00bf4f813011c532557359593d165c1c782a73965",
+  "manifest_sha256": "12b89e141b1cff3f5e1a8fd8f43e01ce1b3123407746f85ae31f01a53c54d996",
+  "prior_conversation": false,
+  "previous_output": false,
+  "mode": "input-only code handoff; no tools or filesystem execution; not end-to-end independent execution"
+}

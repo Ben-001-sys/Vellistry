@@ -1,0 +1,17 @@
+{
+  "author": "fresh trusted Codex input-only worker",
+  "session": "01a15b66-e8d5-7c62-8ab4-b390ec20d67c",
+  "primary_integrator": "Codex desktop",
+  "primary_edits": [],
+  "files": [
+    {
+      "path": "scripts/verify_research_archive.py",
+      "sha256": "b40c7e5f5934bdd421e4de313c7f3ef4542461939151282b7445c1975b1f87e7"
+    },
+    {
+      "path": "tests/test_research_archive.py",
+      "sha256": "2d57e01caae7eb467af0dde9158048ab472faa1867800d666069ee13ed549560"
+    }
+  ],
+  "limitation": "No worker execution; primary materializes and tests exact returned source. Not end-to-end independent implementation acceptance."
+}

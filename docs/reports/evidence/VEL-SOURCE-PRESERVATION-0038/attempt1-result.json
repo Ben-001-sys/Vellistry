@@ -1,0 +1,9 @@
+{
+  "attempt": 1,
+  "session": "01a15b65-78eb-7823-aa3e-6821ac5d5982",
+  "outcome": "BLOCKED",
+  "cli_exit_code": 0,
+  "implementation_files": [],
+  "tests_executed": 0,
+  "limitation": "Workspace policy rejected directory-listing before input reads. CLI exit0 is not implementation/test success. No end-to-end fresh implementation acceptance."
+}

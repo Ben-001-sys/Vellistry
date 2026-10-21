@@ -1,0 +1,78 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_research_archive.py",
+      "-v"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 1.046,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/archive-tests-source.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_research_archive.py",
+      "--archive",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/original-research-export.zip",
+      "--manifest",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/SOURCE-MANIFEST.json"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 0.172,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/archive-integrity-source.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "install",
+      "--frozen-lockfile",
+      "--offline"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 156.391,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/install-source.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "check"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 27.453,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/check-source.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "build"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 19.203,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/build-source.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/ci_governance.py"
+    ],
+    "source_commit": "c8c541eb0ff166825c0d6a444180ebfab01cf1c0",
+    "exit_code": 0,
+    "seconds": 537.688,
+    "evidence": "docs/reports/evidence/VEL-SOURCE-PRESERVATION-0038/governance-source.txt"
+  }
+]
