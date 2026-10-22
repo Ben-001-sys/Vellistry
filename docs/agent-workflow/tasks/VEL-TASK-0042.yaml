@@ -47,8 +47,6 @@ inputs:
   role: governing-source-and-evidence
 - path: docs/agent-workflow/inputs/VEL-TASK-0041/ORIGINAL-CHECKLIST.md
   role: governing-source-and-evidence
-- path: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/ledger.json
-  role: governing-source-and-evidence
 - path: docs/reports/evidence/VEL-RECOVERY-PROOF/dependency-closure.json
   role: governing-source-and-evidence
 - path: docs/reports/evidence/VEL-INTEGRATION-0031/REPRODUCE.md
