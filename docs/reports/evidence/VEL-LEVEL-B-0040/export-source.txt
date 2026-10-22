@@ -1,0 +1,11 @@
+test_export_is_reproducible (test_level_b_export.HandoffExportTests) ... ok
+test_export_never_overwrites (test_level_b_export.HandoffExportTests) ... ok
+test_missing_parent_directory_or_bad_extension_fails (test_level_b_export.HandoffExportTests) ... ok
+test_mutated_allowed_actions_fail_before_export (test_level_b_export.HandoffExportTests) ... ok
+test_only_historical_pack_and_prompt_in_archive (test_level_b_export.HandoffExportTests) ... ok
+test_prompt_has_no_answers_or_scoring_rubric (test_level_b_export.HandoffExportTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 9.202s
+
+OK
