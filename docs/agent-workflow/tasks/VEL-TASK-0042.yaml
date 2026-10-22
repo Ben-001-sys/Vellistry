@@ -1,0 +1,108 @@
+id: VEL-TASK-0042
+title: Final bounded recovery, reconciliation and remediation closure
+type: implementation-task
+status: in-progress
+created_at: '2026-10-22'
+updated_at: '2026-10-22'
+owner: project_owner
+context_pack_id: VEL-CP-0042
+objective: Verify a dependency-closed repository backup at the PR106 merged cut, reconcile
+  all44 acceptance rows and live issues, and integrate a final readiness report with
+  precise external blockers and conditional delegation closure.
+in_scope: &id001
+- AGENTS.md
+- README.md
+- PROJECT.md
+- SOURCE-OF-TRUTH.md
+- CURRENT-STATE.md
+- docs/agent-workflow/README.md
+- docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
+- tests/test_governance_entrypoints.py
+- tests/test_remediation_ledger.py
+- docs/agent-workflow/tasks/VEL-TASK-0042.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0042.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0042.md
+- docs/agent-workflow/inputs/VEL-TASK-0042/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md
+- docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md
+- docs/reports/VEL-REMEDIATION-COMPLETION-0042.md
+- docs/reports/evidence/VEL-COMPLETION-0042/*
+out_of_scope:
+- Application, SQL, CI workflow, dependencies, repository settings and accepted decision
+  semantics
+- Hosted/auth/private manuscripts/paid services/deployment/newMVP
+- Historical ContextPack or original source rewriting; fabricated acceptance or premature
+  programme completion
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source-and-evidence
+- path: AGENTS.md
+  role: governing-source-and-evidence
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source-and-evidence
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: governing-source-and-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0042/OWNER-SCOPE.md
+  role: governing-source-and-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0041/ORIGINAL-CHECKLIST.md
+  role: governing-source-and-evidence
+- path: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/ledger.json
+  role: governing-source-and-evidence
+- path: docs/reports/evidence/VEL-RECOVERY-PROOF/dependency-closure.json
+  role: governing-source-and-evidence
+- path: docs/reports/evidence/VEL-INTEGRATION-0031/REPRODUCE.md
+  role: governing-source-and-evidence
+- path: CURRENT-STATE.md
+  role: governing-source-and-evidence
+source_gaps:
+- id: EXTERNAL
+  limitation: SRC004 missing; fresh independent filesystem execution blocked; LevelB
+    owner acceptance unset; SQL planning-only and hosted/private/release gates remain
+    excluded
+- id: FINITE_BACKUP
+  limitation: Backup cut cannot include its own future evidence/report commit; final
+    integration is separately attested by exact-head CI and post-main PR ledger
+deliverables:
+- Committed task and immutable ContextPack before edits
+- Owned isolated bundle assembly, restore/GC/fsck, all pinned commits and exact archives;
+  negative corruption evidence; no owner worktree cleanup
+- Final44 ledger preserving original acceptance, complete live PR dispositions and
+  issue outcomes, factual metrics and bounded secret inventory
+- Final report, conditional delegation closure, EB, distinct final-head review, ready
+  CI and exact merged-tree/post-main checks
+acceptance_criteria:
+- All44 original acceptance blocks unchanged; no false hosted/owner/fresh-agent acceptance
+- Backup restores current cut and mandatory historical pins; all commands/exits/hash
+  results preserved; secrets excluded from source selection
+- Only authorized documentation/evidence/tests paths change; historical packs and
+  evidence unchanged
+- Review and actual CI pass before merge; delegation closure takes effect only after
+  final post-main PASS and factual external-blocker disposition
+allowed_actions:
+- Read Git/GitHub, preserve exact evidence; use owned local bare/working clones for
+  backup restore and corruption tests
+- Run existing focused/governance/source checks and frozen tooling setup/build in
+  owned restore; no hosted services
+- Reconcile current ledger, documentation, issue/PR dispositions and conditional closure
+  under existing delegation
+approval_required_for:
+- Allreservedhosted/SQL/private/securityacceptance/settings/paid/featureactionsremainexcluded
+- ActualdistinctreviewandapplicableCI;nohumanacceptancefabrication
+compliance:
+  change_base: 23fd8488df060e1591be70232abd70f4255e814d
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
