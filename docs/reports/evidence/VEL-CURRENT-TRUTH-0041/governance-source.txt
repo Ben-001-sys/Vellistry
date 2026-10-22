@@ -1,0 +1,1285 @@
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0002.md
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0003.md
+COMMAND: C:\Program Files\Python310\python.exe -m unittest discover -s tests -p test_*.py -v
+test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) ... ok
+test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_repository_pilot_validates (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_blob_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_role_spoofing_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_source_snapshot_text_tampering_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_tampered_pinned_task_blob_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_task_preserves_source_gap_and_draft_status (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unapproved_bundle_cannot_claim_accepted (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_unsafe_paths_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_env_prefix_case_aliases_are_rejected (test_agent_workflow.SecretPathCaseTests) ... ok
+test_all_ordinary_draft_activities_are_cheap (test_ci_policy.DraftPolicyTests) ... ok
+test_base_edit_reclassifies_unchanged_ready_head (test_ci_policy.DraftPolicyTests) ... ERROR
+test_cli_draft_advisory_cannot_publish_green_merge_gate (test_ci_policy.DraftPolicyTests) ... ok
+test_cli_recomputes_ready_plan_instead_of_trusting_draft_outputs (test_ci_policy.DraftPolicyTests) ... ok
+test_draft_governance_failure_is_not_an_advisory_pass (test_ci_policy.DraftPolicyTests) ... ok
+test_draft_unknown_security_and_ci_paths_are_advisory_only (test_ci_policy.DraftPolicyTests) ... ok
+test_forged_draft_flags_cannot_hide_a_ready_security_skip (test_ci_policy.DraftPolicyTests) ... ok
+test_gate_distinguishes_advisory_from_merge_eligibility (test_ci_policy.DraftPolicyTests) ... ok
+test_manual_is_explicitly_full_even_on_draft_branch (test_ci_policy.DraftPolicyTests) ... ok
+test_missing_malformed_or_contradictory_draft_metadata_fails (test_ci_policy.DraftPolicyTests) ... ok
+test_ready_for_review_and_ready_updates_require_security (test_ci_policy.DraftPolicyTests) ... ok
+test_every_required_failure_skip_cancel_or_missing_fails (test_ci_policy.FinalGateTests) ... ok
+test_failure_of_nonapplicable_job_is_not_hidden (test_ci_policy.FinalGateTests) ... ok
+test_green_security_cannot_hide_missing_compliance (test_ci_policy.FinalGateTests) ... ok
+test_inconsistent_security_cannot_pass (test_ci_policy.FinalGateTests) ... ok
+test_missing_or_invalid_outputs_and_jobs_fail (test_ci_policy.FinalGateTests) ... ok
+test_security_recovery_cannot_be_skipped (test_ci_policy.FinalGateTests) ... ok
+test_success_and_nonapplicable_skips_pass (test_ci_policy.FinalGateTests) ... ok
+test_bad_git_shas_and_events_fail (test_ci_policy.RoutingTests) ... ok
+test_docs_and_governance_are_lightweight (test_ci_policy.RoutingTests) ... ok
+test_exact_head_and_missing_pr_base_fail (test_ci_policy.RoutingTests) ... ok
+test_frontend_build_without_unrelated_containers (test_ci_policy.RoutingTests) ... ok
+test_full_manual_and_main_baseline (test_ci_policy.RoutingTests) ... ok
+test_git_rename_delete_and_hostile_filename_are_data (test_ci_policy.RoutingTests) ... ERROR
+test_main_manual_and_ready_event (test_ci_policy.RoutingTests) ... ok
+test_proposed_privilege_test_is_not_falsely_claimed (test_ci_policy.RoutingTests) ... ok
+test_security_paths_cannot_evade_integration (test_ci_policy.RoutingTests) ... ok
+test_unknown_executable_and_config_are_conservative (test_ci_policy.RoutingTests) ... ok
+test_unsafe_paths_fail (test_ci_policy.RoutingTests) ... ok
+test_draft_mode_and_verified_linter_are_wired_without_renaming_merge_gate (test_ci_policy.WorkflowContractTests) ... ok
+test_exact_head_no_persisted_credentials_in_all_jobs (test_ci_policy.WorkflowContractTests) ... ok
+test_final_gate_always_includes_every_applicable_result (test_ci_policy.WorkflowContractTests) ... ok
+test_governance_generates_required_pack_before_exporter_tests (test_ci_policy.WorkflowContractTests) ... ok
+test_k2_checks_are_preserved_and_cannot_skip_when_applicable (test_ci_policy.WorkflowContractTests) ... ok
+test_only_one_automatic_workflow_and_original_jobs_intact (test_ci_policy.WorkflowContractTests) ... ok
+test_sql_regression_when_available_is_fail_fast (test_ci_policy.WorkflowContractTests) ... ok
+test_unfiltered_events_and_pr_only_cancellation (test_ci_policy.WorkflowContractTests) ... ok
+test_active_readme_uses_merged_ci_and_cloud_boundary (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_adr_preserves_chatgpt_decision_and_known_source_gap (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_agent_role_and_lightweight_exception_are_explicit (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_archive_preserves_original_git_bytes (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_current_checkpoint_discloses_verified_main_and_security_holds (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_gates_and_bounded_task_exception_do_not_grant_release (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_original_owner_event_is_not_reauthored (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_relative_links_in_active_entrypoints_resolve (test_governance_entrypoints.GovernanceEntrypoints) ... ok
+test_changed_claimed_source_status_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_detached_reader_never_invents_original_source_verification (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_missing_embedded_snapshot_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_missing_permission_field_fails (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_recovers_task_from_packet_with_no_repo_or_chat (test_handoff_recovery.ColdStartHandoffTests) ... ok
+test_canonical_design_dependency_cannot_be_skipped (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_cycle_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_direct_release_or_paid_execution_forbidden (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_duplicate_task_id_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_feature_coding_cannot_be_enabled_without_owner_gates (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_feature_coding_status_cannot_be_promoted_by_yaml (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_private_pilot_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_public_release_also_requires_correct_gate (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_future_release_ids_cannot_masquerade_as_preparation_or_validation (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_missing_dependency_must_fail (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_owner_gate_cannot_be_marked_passed_by_agent (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_owner_gated_acyclic_dag (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_preparation_cannot_request_code_or_migration_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_private_pilot_and_release_both_require_owner_gates (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_source_file_must_exist (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_synthetic_design_cannot_request_code_or_unknown_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_task_is_preparatory_not_implementation_permission (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_unknown_action_and_duplicate_action_are_rejected (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_validation_and_release_cannot_smuggle_coding_actions (test_implementation_readiness.Stage5ReadinessTests) ... ok
+test_accepted_adr_without_approver_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_duplicate_identifier_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_invalid_frontmatter_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ERROR
+test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ERROR
+test_mismatched_history_id_date_is_rejected (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_no_records_fails_closed (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_real_records_pass_when_unmodified (test_knowledge_metadata.KnowledgeMetadataValidationTests) ... ok
+test_export_is_reproducible (test_level_b_export.HandoffExportTests) ... ok
+test_export_never_overwrites (test_level_b_export.HandoffExportTests) ... ok
+test_missing_parent_directory_or_bad_extension_fails (test_level_b_export.HandoffExportTests) ... ok
+test_mutated_allowed_actions_fail_before_export (test_level_b_export.HandoffExportTests) ... ok
+test_only_historical_pack_and_prompt_in_archive (test_level_b_export.HandoffExportTests) ... ok
+test_prompt_has_no_answers_or_scoring_rubric (test_level_b_export.HandoffExportTests) ... ok
+test_exact_manual_contract_passes (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_inventory_rejects_unknown_names_and_historical_job_changes (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ERROR
+test_job_service_and_target_are_exact (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_no_automatic_or_input_events (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_required_commands_cannot_be_skipped_replaced_or_softened (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_token_permissions_and_credentials_cannot_expand (test_pg17_action_harness.ManualWorkflowSafetyTests) ... ok
+test_after_requires_success_and_original_pass_marker (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_all_exact_source_pins_match_immutable_git_data (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_before_requires_exact_failure_and_sqlstate (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_cleanup_absence_is_checked_and_failures_are_not_masked (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_command_failure_and_timeout_are_recorded (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_forbidden_remote_and_credential_overrides_fail (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_independent_storage_cleanup_refuses_unsafe_paths (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_only_manual_service_id_context_is_allowed (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_orchestration_separates_databases_and_always_cleans_failures (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_service_image_health_ports_version_and_digest_guards (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_source_drift_or_missing_fixture_fails_before_sql (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_supplement_preserves_source_and_requires_rollback (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_target_database_and_sql_file_guards (test_pg17_action_harness.SourceAndRuntimeSafetyTests) ... ok
+test_allowed_sql_proposal_still_needs_base_owner_approval (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpbz723cye'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_bad_source_blob_pin (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp5z7k7qep'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_boolean_protocol_version_is_not_integer_one (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp_mvs1jf7'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_changed_code_after_source_cannot_reuse_old_tests (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmph4r1ibs8'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_chatgpt_implementation_cannot_be_labeled_codex (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmppct1bi4i'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_docs_only_exemption_needs_no_manifest (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpp6nq_m_z'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_effective_instruction_and_unknown_docs_never_exempt (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpry7epsdf'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_expired_and_superseded_authorization (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpjskoks7v'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_inherited_commit_preserves_original_chatgpt_provenance (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpj1i49dgr'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_malformed_metadata_and_missing_fields (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp6107a4k8'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_material_allowlist_extension_cannot_be_retroactive (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmput447w57'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_bundle (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpkk9gikdj'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_head_evidence (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp_j9ott99'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_manifest (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmppepb8g8f'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_model_claim (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpon343fo1'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_or_failed_actual_tests (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpvcmo39rf'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_or_mixed_commit_origins (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp1akfris4'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_pack (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpiz9jh94g'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_task (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp9dgmpqx9'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_mutated_pack (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmplqyahgj8'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_no_implementation_before_pack (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpzibpcnm1'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_nonancestor_head (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmprzk4fyka'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_not_run_blocked_not_started_cannot_pass (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp9x2p_zn5'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_owner_acceptance_cannot_be_forged_from_review (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpkz_dpr65'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_owner_disposition_spoof (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpofe5l9yu'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_phase_a_cannot_cover_phase_b (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp7cj8v10x'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_reassignment_requires_reviewed_base_exception (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpvbmu5gpf'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_rename_delete_and_hidden_executable_not_exempt (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpnpgisc4t'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_reviewer_does_not_confer_owner_acceptance (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmphufshz8i'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_sql_ci_app_disallowed (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpjptmhhib'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_task_reuse_from_base_rejected (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpakp3ppi0'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_undeclared_cherry_pick (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpgc_o7_a3'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_valid_bounded_evidence_passes_without_claiming_acceptance (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp_snw8wcf'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_wrong_base (test_pr_compliance.ComplianceGitTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp3pbenozh'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_actual_workflow_contract_includes_both_checks (test_pr_compliance.EventAndTrustTests) ... ok
+test_base_loader_does_not_execute_replaced_candidate_checker (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpsvdqzc38'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_candidate_owner_exception_cannot_self_authorize (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpapxsvfg6'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_deleted_validator_or_empty_test_is_rejected_statically (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpcmo_3ymw'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_draft_ready_and_full_event_modes (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmph3fgasuh'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_loader_uses_base_not_candidate_imports_and_discloses_bootstrap (test_pr_compliance.EventAndTrustTests) ... ok
+test_main_merge_cannot_introduce_unverified_tree (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp85q9f84o'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_main_merge_keeps_owner_merge_distinct_from_agent_head (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp4wex4zru'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_missing_malformed_wrong_head_and_privileged_events_fail (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp5exmjkc0'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_report_python_is_not_unverified_artifact (test_pr_compliance.EventAndTrustTests) ... ok
+test_required_compliance_test_cannot_be_removed_from_discovery (test_pr_compliance.EventAndTrustTests) ... ok
+test_reviewed_owner_exception_has_exact_role_and_scope (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpim6lkfj6'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_skipping_compliance_or_escalating_workflow_fails (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpxxcbblxz'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_unknown_bootstrap_baseline_fails_closed (test_pr_compliance.EventAndTrustTests) ... ERROR
+C:\Program Files\Python310\lib\tempfile.py:860: ResourceWarning: Implicitly cleaning up <TemporaryDirectory 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpppdrsium'>
+  _warnings.warn(warn_message, ResourceWarning)
+test_git_metadata_case_aliases_are_rejected (test_pr_compliance.GitMetadataCaseTests) ... ok
+test_env_prefix_case_aliases_are_rejected (test_pr_compliance.SecretPathCaseTests) ... ok
+test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests) ... ERROR
+test_complete_pair_and_clash_detection (test_r01_manifest.ManifestTests) ... ok
+test_missing_headings_are_not_silently_accepted (test_r01_manifest.ManifestTests) ... ok
+test_bare_code_and_invented_variants_rejected (test_r01_mapping_gate.MappingGateTests) ... ok
+test_exact_identity_allowed_only_with_full_explicit_approval (test_r01_mapping_gate.MappingGateTests) ... ok
+test_unapproved_mapping_rejected (test_r01_mapping_gate.MappingGateTests) ... ok
+test_117_title_matching_pairs_still_need_body_review (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_four_real_distinct_subjects_split (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_mapping_cli_refuses_original_as_output (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_missing_source_code_fails_closed (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_preserves_all_260_and_proposes_134_without_activation (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_remaining_nine_title_differences_not_silently_split (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_title_divergence_change_requires_research_review (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_variant_identity_tamper_fails_closed (test_r01_mapping_proposal.ProposedMappingTests) ... ok
+test_all_130_unresolved_and_260_preserved (test_r01_review_packet.ReviewPacketTests) ... ok
+test_check_failure_does_not_create_output (test_r01_review_packet.ReviewPacketTests) ... ok
+test_complete_candidate_is_structural_only (test_r01_review_packet.ReviewPacketTests) ... ok
+test_existing_destination_cannot_be_clobbered (test_r01_review_packet.ReviewPacketTests) ... ok
+test_manifest_collision_and_missing_code_rejected (test_r01_review_packet.ReviewPacketTests) ... ok
+test_missing_mappings_cannot_pass (test_r01_review_packet.ReviewPacketTests) ... ok
+test_original_never_overwritten_even_when_out_equals_source (test_r01_review_packet.ReviewPacketTests) ... ok
+test_owner_approval_fields_required_but_not_self_authenticating (test_r01_review_packet.ReviewPacketTests) ... ok
+test_separate_aliases_per_distinct_meaning (test_r01_review_packet.ReviewPacketTests) ... ok
+test_symlink_destination_does_not_follow_source (test_r01_review_packet.ReviewPacketTests) ... ERROR
+test_unknown_variant_and_source_hash_rejected (test_r01_review_packet.ReviewPacketTests) ... ok
+test_all_original_requirements_and_evidence (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_all_pr83_original_paths_retained (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_changed_acceptance_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_changed_source_horizon_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_duplicate_feature_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_duplicate_requirement_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_full_feature_inventory_and_original_mapping (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_differentiator_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_evidence_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_requirement_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_planned_test_cannot_be_reported_passed (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_previous_current_state_is_exact_git_source (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_reserved_acceptance_cannot_be_done (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_unsupported_status_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_archive_hash_and_size (test_research_archive.ArchiveTests) ... ok
+test_cli_explicit_paths_success_and_failure (test_research_archive.ArchiveTests) ... ok
+test_corrupted_member_crc_with_matching_whole_archive_hash (test_research_archive.ArchiveTests) ... ok
+test_malformed_json (test_research_archive.ArchiveTests) ... ok
+test_member_hash_and_size (test_research_archive.ArchiveTests) ... ok
+test_missing_extra_duplicate_members (test_research_archive.ArchiveTests) ... ok
+test_missing_input (test_research_archive.ArchiveTests) ... ok
+test_non_zip_and_truncated_zip (test_research_archive.ArchiveTests) ... ok
+test_positive_preserves_files_and_never_extracts (test_research_archive.ArchiveTests) ... ok
+test_resource_limits (test_research_archive.ArchiveTests) ... ok
+test_stored_and_empty_member (test_research_archive.ArchiveTests) ... ok
+test_strict_manifest_schema (test_research_archive.ArchiveTests) ... ok
+test_symlink_rejected (test_research_archive.ArchiveTests) ... ok
+test_unsafe_zip_names (test_research_archive.ArchiveTests) ... ok
+test_all_six_merged_pair_evidence_links_present (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_current_snapshot_precedes_preserved_old_checkpoints (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_design_first_plan_preserved_and_merge_variance_disclosed (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_exact_owner_option_b_decision_and_two_track_research_plan (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_merged_research_artifacts_are_really_in_this_checkout (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_accepted_mvp_and_source_preservation_unchanged (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_free_or_paid_byok_clarification_has_priority (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_owner_option_b_recorded_without_design_authorization (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_post_merge_status_is_authoritative_without_design_approval (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_subsequent_owner_waves_01_03_approval_not_technical_certification (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_five_scoped_mvp_choice_and_blocked_quality_are_explicit (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_one_mapping_proposal_preserves_source_and_owner_gate (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_one_public_author_research_is_not_mislabeled_interviews (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_six_recovery_g10_and_delegated_design_stage_boundaries (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_three_privacy_and_canon_research_keep_live_gaps_open (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_wave_two_research_findings_do_not_certify_at_or_arbitrary_docx (test_research_design_gate.ResearchDesignGateTests) ... ok
+test_acceptance_ref_must_exist_in_source (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_approved_scope_and_draft_plan_are_distinguished (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_draft_acceptance_falsely_labeled_accepted_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_duplicate_scenario_id_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_missing_scenario_heading_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_missing_scenario_source_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_no_unsupported_completed_claim (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_path_escape_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_post_mvp_feature_cannot_be_smuggled_into_slice (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_promotion_to_accepted_rejected (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_refuses_architecture_beyond_eight_areas (test_spec_traceability.SpecTraceabilityTests) ... ok
+test_copy_on_read_does_not_mutate_accepted_document (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_empty_or_unsupported_document_is_not_persisted (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_ownership_checks_precede_version_or_fault_handling (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc001_book_creation_chapter_navigation_and_reopen (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc002_ai_free_format_payload_proxy_not_real_editor (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc003_saving_only_acknowledged_revision (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc004_ambiguous_postcommit_ack_cannot_show_saved (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc004_interruption_before_commit_no_false_saved (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc005_direct_stale_revision_raises (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc005_stale_editor_rejected_without_overwrite (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc006_cross_author_reads_and_writes_denied (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc006_unknown_id_does_not_disclose_title_or_text (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_sc007_cross_book_chapter_id_cannot_be_reinterpreted (test_stage4_chapter_contract.Stage4ChapterContractTests) ... ok
+test_existing_packet_is_not_overwritten (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_only_two_inputs_and_correct_hashes (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_repeatable_export_byte_for_byte (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_stale_git_pinning_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_tampered_contextpack_fails_closed (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+test_wrong_output_suffix_refused (test_stage4_independent_packet.Stage4IndependentPacketTests) ... ok
+
+======================================================================
+ERROR: test_base_edit_reclassifies_unchanged_ready_head (test_ci_policy.DraftPolicyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_ci_policy.py", line 322, in test_base_edit_reclassifies_unchanged_ready_head
+    git('init'); git('config','user.email','synthetic@example.invalid'); git('config','user.name','Synthetic')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_ci_policy.py", line 321, in git
+    def git(*args): return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_git_rename_delete_and_hostile_filename_are_data (test_ci_policy.RoutingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_ci_policy.py", line 91, in test_git_rename_delete_and_hostile_filename_are_data
+    git('init'); git('config','user.email','synthetic@example.invalid'); git('config','user.name','Synthetic test')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_ci_policy.py", line 90, in git
+    def git(*args): return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_malformed_adr_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_knowledge_metadata.py", line 50, in test_malformed_adr_filename_is_not_skipped
+    original.rename(original.parent / "misc-decision.md")
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1234, in rename
+    self._accessor.rename(self, target)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp6_mge08x\\docs\\decisions\\ADR-0001-co-locate-engineering-knowledge-with-application.md' -> 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp6_mge08x\\docs\\decisions\\misc-decision.md'
+
+======================================================================
+ERROR: test_malformed_history_filename_is_not_skipped (test_knowledge_metadata.KnowledgeMetadataValidationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_knowledge_metadata.py", line 57, in test_malformed_history_filename_is_not_skipped
+    original.rename(original.parent / "history_notes.md")
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1234, in rename
+    self._accessor.rename(self, target)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp62o2u54i\\docs\\history\\2026-10-08-adr-0001-owner-reconfirmation.md' -> 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp62o2u54i\\docs\\history\\history_notes.md'
+
+======================================================================
+ERROR: test_inventory_rejects_unknown_names_and_historical_job_changes (test_pg17_action_harness.ManualWorkflowSafetyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pg17_action_harness.py", line 90, in test_inventory_rejects_unknown_names_and_historical_job_changes
+    original.rename(held);held.rename(renamed)
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1234, in rename
+    self._accessor.rename(self, target)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp61u_mpaa\\.github\\workflows\\vel-sec-001-pg17-manual.yml' -> 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmp61u_mpaa\\.github\\workflows\\held.txt'
+
+======================================================================
+ERROR: test_allowed_sql_proposal_still_needs_base_owner_approval (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_bad_source_blob_pin (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_boolean_protocol_version_is_not_integer_one (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_changed_code_after_source_cannot_reuse_old_tests (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_chatgpt_implementation_cannot_be_labeled_codex (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_docs_only_exemption_needs_no_manifest (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_effective_instruction_and_unknown_docs_never_exempt (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_expired_and_superseded_authorization (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_inherited_commit_preserves_original_chatgpt_provenance (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_malformed_metadata_and_missing_fields (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_material_allowlist_extension_cannot_be_retroactive (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_bundle (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_head_evidence (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_manifest (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_model_claim (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_or_failed_actual_tests (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_or_mixed_commit_origins (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_pack (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_task (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_mutated_pack (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_no_implementation_before_pack (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_nonancestor_head (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_not_run_blocked_not_started_cannot_pass (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_owner_acceptance_cannot_be_forged_from_review (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_owner_disposition_spoof (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_phase_a_cannot_cover_phase_b (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_reassignment_requires_reviewed_base_exception (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_rename_delete_and_hidden_executable_not_exempt (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_reviewer_does_not_confer_owner_acceptance (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_sql_ci_app_disallowed (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_task_reuse_from_base_rejected (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_undeclared_cherry_pick (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_valid_bounded_evidence_passes_without_claiming_acceptance (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_wrong_base (test_pr_compliance.ComplianceGitTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 64, in setUp
+    def setUp(self):self.f=Fixture();self.addCleanup(self.f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_base_loader_does_not_execute_replaced_candidate_checker (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 231, in test_base_loader_does_not_execute_replaced_candidate_checker
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_candidate_owner_exception_cannot_self_authorize (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 250, in test_candidate_owner_exception_cannot_self_authorize
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_deleted_validator_or_empty_test_is_rejected_statically (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 216, in test_deleted_validator_or_empty_test_is_rejected_statically
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_draft_ready_and_full_event_modes (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 188, in test_draft_ready_and_full_event_modes
+    f=Fixture();self.addCleanup(f.close);f.git('update-ref','refs/remotes/origin/main',f.base)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_main_merge_cannot_introduce_unverified_tree (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 173, in test_main_merge_cannot_introduce_unverified_tree
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_main_merge_keeps_owner_merge_distinct_from_agent_head (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 165, in test_main_merge_keeps_owner_merge_distinct_from_agent_head
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_missing_malformed_wrong_head_and_privileged_events_fail (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 196, in test_missing_malformed_wrong_head_and_privileged_events_fail
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_reviewed_owner_exception_has_exact_role_and_scope (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 179, in test_reviewed_owner_exception_has_exact_role_and_scope
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_skipping_compliance_or_escalating_workflow_fails (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 224, in test_skipping_compliance_or_escalating_workflow_fails
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_unknown_bootstrap_baseline_fails_closed (test_pr_compliance.EventAndTrustTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 244, in test_unknown_bootstrap_baseline_fails_closed
+    f=Fixture();self.addCleanup(f.close)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 23, in __init__
+    self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 49, in git
+    def git(self,*args):return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_all_job_permission_overrides_are_rejected (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_applicable_security_and_compliance_steps_keep_exact_guards (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_every_required_pull_request_activity_is_preserved (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_final_gate_command_removal_and_replacement (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_final_gate_job_result_input_is_required_and_exact (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_governance_runner_cannot_skip_or_mask_regressions (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_governance_runner_removal_replacement_and_duplicates (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_main_push_verification_cannot_be_redirected_or_filtered (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_required_step_and_job_guards_cannot_soften_failures (test_pr_compliance.WorkflowExecutionContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 275, in setUp
+    self.git('init');self.git('config','user.email','synthetic@example.invalid');self.git('config','user.name','Synthetic workflow fixture')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_pr_compliance.py", line 283, in git
+    return subprocess.check_output(['git',*args],cwd=self.root,stderr=subprocess.DEVNULL).decode().strip()
+  File "C:\Program Files\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_symlink_destination_does_not_follow_source (test_r01_review_packet.ReviewPacketTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\tests\test_r01_review_packet.py", line 96, in test_symlink_destination_does_not_follow_source
+    alias.symlink_to(source)
+  File "C:\Program Files\Python310\lib\pathlib.py", line 1255, in symlink_to
+    self._accessor.symlink(target, self, target_is_directory)
+OSError: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpnp73z_tn\\immutable-source.md' -> 'C:\\Users\\admin\\AppData\\Local\\Packages\\sandbox.{ed957799-29ed-4a99-8038-762637412b7a}\\AC\\Temp\\tmpnp73z_tn\\review.json'
+
+----------------------------------------------------------------------
+Ran 276 tests in 129.847s
+
+FAILED (errors=59)
+PASS: 33 task(s), 33 ContextPack(s), 30 ExecutionBundle(s) validated
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\scripts\ci_governance.py", line 59, in <module>
+    if __name__=='__main__': main()
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\scripts\ci_governance.py", line 30, in main
+    python('-m','unittest','discover','-s','tests','-p','test_*.py','-v')
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\scripts\ci_governance.py", line 12, in python
+    def python(*args): run(sys.executable,*args)
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-current-truth-reconciliation\scripts\ci_governance.py", line 11, in run
+    subprocess.run([str(a) for a in args],cwd=cwd,check=True)
+  File "C:\Program Files\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Program Files\\Python310\\python.exe', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v']' returned non-zero exit status 1.

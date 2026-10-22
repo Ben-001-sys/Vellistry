@@ -1,0 +1,37 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_remediation_ledger.py -v",
+    "source_commit": "1ffe5da87e5e5e02108a12856af08a295934a5e8",
+    "exit_code": 0,
+    "seconds": 0.25,
+    "evidence": "docs/reports/evidence/VEL-CURRENT-TRUTH-0041/ledger-source.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "source_commit": "1ffe5da87e5e5e02108a12856af08a295934a5e8",
+    "exit_code": 0,
+    "seconds": 0.219,
+    "evidence": "docs/reports/evidence/VEL-CURRENT-TRUTH-0041/entrypoints-source.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_research_design_gate.py -v",
+    "source_commit": "1ffe5da87e5e5e02108a12856af08a295934a5e8",
+    "exit_code": 0,
+    "seconds": 0.187,
+    "evidence": "docs/reports/evidence/VEL-CURRENT-TRUTH-0041/research-source.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py",
+    "source_commit": "1ffe5da87e5e5e02108a12856af08a295934a5e8",
+    "exit_code": 1,
+    "seconds": 132.704,
+    "evidence": "docs/reports/evidence/VEL-CURRENT-TRUTH-0041/governance-source.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py (permitted local fixture execution)",
+    "source_commit": "1ffe5da87e5e5e02108a12856af08a295934a5e8",
+    "exit_code": 0,
+    "seconds": 483.562,
+    "evidence": "docs/reports/evidence/VEL-CURRENT-TRUTH-0041/governance-permitted-source.txt"
+  }
+]
