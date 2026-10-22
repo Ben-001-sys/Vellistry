@@ -106,7 +106,7 @@ Record status is **accepted by the owner as a workflow decision**. Repository en
 
 ## Implementation status
 
-### Integration clarification — 2026-10-16 (Codex, Issue #72)
+### Historical integration clarification — 2026-10-16 (Codex, Issue #72)
 
 Original ADR text and owner-history record are **ChatGPT-authored** in draft
 [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66), source
@@ -135,3 +135,7 @@ The signed-out-JWT direct-PostgREST risk and private-pilot/release gates remain.
 See [CURRENT-STATE](../../CURRENT-STATE.md) for the checked active facts and
 [operating model](../agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md) for bounded
 task exceptions and lightweight-governance boundaries.
+
+### Current implementation clarification — 2026-10-22
+
+PR66 was superseded with its ChatGPT-authored decision, alternatives, rationale and owner-history preserved. PR65 and PR68 are closed through separately reviewed successors; PR102 preserves original browser wording and PR104 records every PR68 path and exact SQL references. Static compliance from Issue73 is merged, but is not runtime identity authentication. Third SQL definition remains planning-only and unadopted; hosted acceptance and signed-out JWT mitigation remain unverified. The [temporary owner delegation](../agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only this remediation programme's eligible reviewed repository integrations; it does not change the accepted default role decision. Current status and evidence live in [CURRENT-STATE](../../CURRENT-STATE.md).

@@ -24,14 +24,15 @@ class GovernanceEntrypoints(unittest.TestCase):
     def test_current_checkpoint_discloses_verified_main_and_security_holds(self):
         state = read("CURRENT-STATE.md")
         self.assertLess(len(state.encode()), 11000)
-        for token in (BASE, "PR #70", "MERGED", "38970082388", "38970500477",
+        for token in ("67e48d1fa821fe5e3e94ab7457f554720b676106", "39743512586",
                       "G_DESIGN", "G_CODE", "G_PRIVATE_PILOT", "G_RELEASE",
-                      "NOT_RUN", "JWT", "unapproved", "Issue #73", "Issue #74",
-                      "VEL-TASK-0008", "PR #66", "PR #65", "PR #68", "PR #59"):
+                      "NOT_RUN", "JWT", "unapproved", "VEL-CP-0041",
+                      "PR #83", "PR #65", "PR #68", "PR #59",
+                      "planning-only", "SRC-004", "IN_VERIFICATION"):
             self.assertIn(token, state)
         self.assertNotIn("PR #70, unmerged", state)
         self.assertNotIn("PR #64 remains **Draft and unmerged**", state)
-        self.assertIn(ARCHIVE, state)
+        self.assertIn("docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md", state)
 
     def test_archive_preserves_original_git_bytes(self):
         original = subprocess.check_output(["git", "show", BASE + ":CURRENT-STATE.md"], cwd=ROOT)
@@ -47,7 +48,8 @@ class GovernanceEntrypoints(unittest.TestCase):
                       "ExecutionBundle", "Issue #73"):
             self.assertIn(token, agents)
         self.assertNotIn("This workflow remains a v0.1 proposal until", agents)
-        self.assertIn("No automatic PR-to-task enforcement is claimed", agents)
+        self.assertIn("Automatic PR-to-task compliance is implemented", agents)
+        self.assertIn("not authenticated runtime identity or human approval", agents)
 
     def test_adr_preserves_chatgpt_decision_and_known_source_gap(self):
         old = read(SNAP + ADR)

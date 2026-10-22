@@ -3,122 +3,96 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-17
+updated_at: 2026-10-22
 owner: project_owner
-version: 0.1.63
+version: 0.2.0
 ---
 
-# Vellistry — current facts and next authorized work
+# Vellistry — current verified state
 
-## Issue73 compliance proposal checkpoint — 2026-10-17
+## Verified baseline and active work
 
-**FACT:** checked main is `f371448538dafa92faebbef9bcda2a36c6ca1fa9` after
-owner-merged PR75. Ready run38973835858 and actual main run38974225858 succeeded.
-The a875119 checkpoint below is historical PR70 integration evidence. PR66 remains
-open/draft and owner-disposition-only; PR65/68/59 heads remain unchanged.
+FACT: checked main is `67e48d1fa821fe5e3e94ab7457f554720b676106`, after PR #105.
+[Post-main CI39743512586](https://github.com/Ben-001-sys/Vellistry/actions/runs/39743512586)
+passed governance, application/security and PostgreSQL CAS/restore. Integrated SQL
+privilege regression was SKIPPED because its proposed fixture is absent; no SQL
+acceptance follows. Re-fetch main and open PRs before each new task; this is a dated
+verified baseline, not a claim that a document can embed its own future commit.
 
-Owner directly dispatched Issue73. Unique Task/CP0010 and source/trust design
-were committed/validated before implementation; comment6226100456 is explicitly
-coordinator-relayed authorization. Proposed [compliance policy](docs/agent-workflow/PR-COMPLIANCE.md)
-adds static task/pack/scope/provenance/code checks to existing governance/final gate.
-This is not actual LLM/human identity authentication or malicious-workflow-proof
-protection. Initial fixed-base bootstrap is provisional pending owner adoption;
-read-only main protection returned404 `Branch not protected` and rulesets[]; settings are not changed. The owner explicitly deferred branch protection for the sole-maintainer phase, accepting that enforcement risk; it is not an additional blocker for this bounded review. Independent source/CI review and owner merge decision remain pending. Draft remains red advisory; mandatory
-ready/main security remains intact. [EB0010](docs/agent-workflow/execution-bundles/VEL-EB-0010.md)
-will link actual final SHA/runs; independent review and owner acceptance pending.
-No application/cloud/SQL execution, secret, paid call, merge or other PR edit.
+Task0041 is the active repository-only reconciliation, with committed sources and
+[immutable CP0041](docs/agent-workflow/context-packs/VEL-CP-0041.md). Its changes
+remain IN_VERIFICATION until distinct review, ready-event CI, merge and post-main
+verification. Original draft PR #83 is the only old open PR and will be superseded
+only after this successor passes those gates. PR #65 and PR #68 are CLOSED as
+superseded; their branches, authorship and exact source references remain preserved.
+PR #59, PR #66 and PR #82 are also closed as superseded; Issue58 was closed NOT_PLANNED.
 
-## Historical checked repository checkpoint — 2026-10-16
+Use the [44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
+[PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md) and
+[149-ID observed evidence overlay](docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md).
+Earlier dated claims are retained in the [previous snapshot](docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md),
+not current dispatch instructions.
 
-**FACT:** merged main checked at `a8751190073f682caabdc2897d8f64bc59ac9ebb`.
-[PR #70](https://github.com/Ben-001-sys/Vellistry/pull/70) is **MERGED**;
-[ready CI38970082388](https://github.com/Ben-001-sys/Vellistry/actions/runs/38970082388)
-verified source `fb6eeccef43dce7b44b53f41baabc47d93e3caa8` and
-[post-merge main CI38970500477](https://github.com/Ben-001-sys/Vellistry/actions/runs/38970500477)
-verified the main SHA above, both SUCCESS. These runs started actual steps;
-they are not the historical zero-step runner failures on PR66/68.
-This is a dated inspection checkpoint; re-fetch main/open PRs before new work.
-At that earlier checkpoint the governance PR was not merged; PR75 has since merged as recorded above.
+## Implementation and evidence
 
-**CI:** [.github/workflows/ci.yml](.github/workflows/ci.yml) is the single automatic
-workflow. Drafts run governance/advisory checks with a deliberately blocked stable
-merge gate. Ready PRs run conservative applicable checks; main/manual dispatch run
-full. All25 historical workflows are manual-only. Security before merge remains
-mandatory. SQL privilege regression is SKIPPED because its PR68 source is absent;
-this is not SQL acceptance. Billed minutes and actual classic protection enforcement
-remain unverified. CI is not owner approval, author validation or release acceptance.
+The Next.js/NestJS/Supabase foundation and author-isolated Book Library are merged.
+Current regression coverage includes67 Library and23 preflight cases; synthetic
+Auth/RLS/logout and PostgreSQL CAS/restore run in disposable CI environments.
+These do not establish hosted persistence or complete the149 planned feature tests.
+IMP-002, IMP-003A and IMP-003B are NOT_STARTED under this remediation mandate.
+The accepted Tiptap3/ProseMirror direction does not mean a production editor exists.
 
-## Effective roles and source authority
+[PR68 reconciliation](docs/reports/VEL-PR68-RECONCILIATION-0039.md) records all38
+original paths and22 successful historical reruns at pinned sources. Original
+zero-step infrastructure failures remain historical evidence. No billing repair
+mechanism or savings is inferred. PR104 merged with post-main39661737567 SUCCESS.
 
-**Owner:** decides scope, consequential policy/security/cost/database operations,
-adoption and merge. **ChatGPT:** coordinator and independent source/CI reviewer.
-**Codex:** primary implementer through unique authorized Task → committed sources →
-immutable pinned ContextPack before edits → isolated worktree → actual tests and
-ExecutionBundle → review → owner decision → post-merge reconciliation.
-Coordinator write access is not coding approval. Alternate agents require an
-explicit owner task exception. No second human approval is a standing requirement.
+[Source preservation](docs/reports/VEL-SOURCE-PRESERVATION-0038.md) retains the exact
+original transport ZIP and SRC-001–SRC-003 hashes. SRC-004 remains missing; summaries
+are not its original. [Source register](docs/research/SOURCE-REGISTER.md) is canonical.
+[Level B evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0004.md) has ten
+technical PASS results and unset owner acceptance. Task0038 fresh code generation
+is verified, but independent filesystem execution was blocked. Neither result
+completes checklist item27's end-to-end implementation requirement.
 
-[ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md)
-preserves the owner's2026-10-14 role selection from ChatGPT-authored PR #66;
-its original conversation permalink is still missing. Owner-selected decision
-and repository integration are distinct. The Issue72 reconciliation is now merged through PR75; PR66 is not overwritten, closed or silently accepted.
-See [AGENTS.md](AGENTS.md), [workflow](docs/agent-workflow/README.md), and
-[operating model](docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md).
+## Effective authority and security holds
 
-Authority order: owner-approved constitution/accepted ADRs and scoped owner
-dispatch control; current Git/CI observations supply evidence; proposed plans,
-coordinator issues and AI reviews do not promote decisions. Original sources,
-source gaps and [SOURCE-OF-TRUTH](SOURCE-OF-TRUTH.md) retain their distinctions.
-Commit authorship is not proof of executor identity. Automated task/executor
-compliance remains separate Issue #73 work.
+Default roles remain ChatGPT coordinator/reviewer, Codex implementer and owner
+scope/acceptance authority under [ADR0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md).
+The [one-time owner delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml)
+authorizes only this unfinished remediation's eligible repository integrations and
+supersessions after distinct trusted review and actual CI. It does not authorize
+future features or waive security gates, and ends at completion/formal closure.
+Owner declined CodeRabbit: use existing trusted Codex review channels.
 
-## Active tasks and proposals at inspection
+G_DESIGN and G_CODE remain pending broad gates; explicit bounded task exceptions
+do not promote them. G_PRIVATE_PILOT and G_RELEASE remain unapproved. Branch
+protection was explicitly deferred by the sole maintainer; no setting change or
+technical prevention of a malicious authorized writer is claimed.
 
-| Item | Verified status / next dependency |
-|---|---|
-| [Issue #71](https://github.com/Ben-001-sys/Vellistry/issues/71) | Secondary44-item remediation dependency ledger; original checklist attachment unavailable. No claim all44 are complete. |
-| [Issue #72](https://github.com/Ben-001-sys/Vellistry/issues/72) / VEL-TASK-0008 | Merged governance reconciliation through [PR75](https://github.com/Ben-001-sys/Vellistry/pull/75); [CP0008](docs/agent-workflow/context-packs/VEL-CP-0008.md), [EB0008](docs/agent-workflow/execution-bundles/VEL-EB-0008.md); child Task/CP/EB0009 retains archive-test assertions. Adopted through merged PR75; historical task reports retained. |
-| [Issue #73](https://github.com/Ben-001-sys/Vellistry/issues/73) | PR-to-task compliance enforcement; owner-dispatched Task0010; static evidence checks proposed here with trust limitations and pending review. |
-| [Issue #74](https://github.com/Ben-001-sys/Vellistry/issues/74) | Disposable PG17 privilege proof; not executed here. No migration approval. |
-| [PR #66](https://github.com/Ben-001-sys/Vellistry/pull/66) | ChatGPT-authored DRAFT/OPEN, `36da413fea67179ac8395af1cececd477fd193a2`; owner alone decides adoption/closure after this separate reconciliation. |
-| [PR #65](https://github.com/Ben-001-sys/Vellistry/pull/65) | ChatGPT-authored DRAFT/OPEN, `604e1ebfd0baab930ee4dc39aecf7289dc64188a`; origin preserved, not imported here. |
-| [PR #68](https://github.com/Ben-001-sys/Vellistry/pull/68) / [Issue #67](https://github.com/Ben-001-sys/Vellistry/issues/67) | Codex continuation DRAFT/OPEN, `cbb379fa4a4eaa9f576f3abcce2c2258d22cc551`; distinct task0005, independent review and privileges approval pending. |
-| [PR #59](https://github.com/Ben-001-sys/Vellistry/pull/59) | PAUSED historical Cursor kickoff, DRAFT/OPEN, `5c7c8fb5d14020b2ef7ac3e8705ca06d9918cb85`; do not reactivate. |
-| PR64 / Issue63 | Library isolation merged at `4b3996ef7cda878e1af3d679454bd1bb873a79c2`; hosted acceptance still NOT_RUN. |
+Hosted Supabase access (including read-only), CLI authentication, migration execution,
+Auth users, real private manuscripts, production deployment and paid operations
+remain separately controlled. Third SQL definition is planning-only, not adopted
+into the operative migration tree. [Exact decision packet](docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md)
+separates repository SQL adoption, target inventory, authentication/dry run, migration,
+fixtures, signed-out JWT/direct Data API mitigation and release. Hosted acceptance is
+BLOCKED/NOT_RUN. An unexpired signed-out JWT remains a private-pilot security blocker.
 
-## Security holds and independent gates
+## Next permitted work and readiness
 
-- **Hosted Supabase acceptance NOT_RUN.** Owner-selected dev target is
-  `vellistry-dev`; old observations are historical, not a fresh cloud audit.
-  Original two-migration bounded approval in PR68 does not approve its **third
-  privilege migration**, which remains **unapproved** and unapplied. No migration,
-  fixture user, hosted operation, secret, paid call or real manuscript is authorized here.
-- Signed-out-but-unexpired **JWT** access through direct PostgREST remains a
-  private-manuscript/pilot blocker. Frontend isolation and disposable tests do
-  not prove immediate database token revocation or hosted isolation.
-- **G_DESIGN / G_CODE:** broad gates not promoted by this work; existing bounded
-  owner coding exceptions (Library, CI, this governance task) authorize their
-  slices only. The preparation DAG/validator remain pending and unchanged.
-- **G_PRIVATE_PILOT / G_RELEASE:** separate security/privacy/recovery, product,
-  legal/operational evidence and explicit owner decisions required. No task
-  exception, green CI or merged architecture grants real-manuscript/release permission.
-- Design/writer/accessibility validation, reliable export/recovery, source
-  completeness, billing and protection evidence remain scoped follow-up work.
+Finish Task0041 review/integration and reconcile PR83. Then verify a dependency-closed
+current repository backup and publish final remediation/readiness evidence. Keep
+unmet original-source, independent execution, owner acceptance and hosted gates
+explicit; do not claim44/44 DONE. No new feature implementation is dispatched.
 
-## Dated history and original decision trail
+Continued local implementation: conditional on completion of remediation and a new
+bounded owner-authorized task. Hosted acceptance: NO-GO pending exact separate
+permissions/evidence. Private-author pilot: NO-GO. Production release: NO-GO.
 
-The [historical current-state archive](docs/reports/CURRENT-STATE-ARCHIVE-2026-10-16.md)
-preserves the entire previous main file byte-for-byte. Its old PR64/70 draft,
-setup, billing and design-stage claims are dated history, not active facts or
-instructions. Older immutable packs remain historical inputs, never new approval.
+## Retained product decision references
 
-Accepted background: [stack ADR0006](docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md),
-[Stage4 bounded handoff acceptance](docs/history/2026-10-10-stage4-independent-handoff-owner-accepted.md),
-[Waves1–3 owner recommendations](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
-[Wave6 bounded design entry](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md).
-[BYOK owner clarification HIS-20261010-003](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md): writers supply their own free OR paid provider credentials; manual writing requires none. These approvals retain their original limits; synthetic results are not product acceptance.
-
-**INTERPRETATION:** corrected entrypoints enable bounded implementation and review
-without treating planning or old state as permission. **PROPOSAL:** ChatGPT reviews
-this exact submitted head and evidence; the owner decides reconciliation adoption
-and PR66 disposition, then verifies merged main before dependent Issue73 work.
+[Owner waves01–03 selections](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
+[HIS-20261010-003 writer-owned free-or-paid BYOK clarification](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md)
+and [bounded design-entry delegation](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md)
+retain their original scopes. They do not authorize paid calls, feature execution,
+private manuscripts or deployment under this remediation mandate.

@@ -15,7 +15,7 @@ tasks/PRs, actual CI evidence, security holds and historical links. Then read
 The owner selects scope and approves consequential changes/merges. ChatGPT
 coordinates and independently reviews evidence; Codex implements bounded tasks
 under [ADR0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md).
-Use the existing [Task â†’ immutable ContextPack â†’ ExecutionBundle workflow](docs/agent-workflow/README.md)
+Use the existing [Task → immutable ContextPack → ExecutionBundle workflow](docs/agent-workflow/README.md)
 in an isolated branch, with sources committed and pack validated before edits.
 Planning, write access and passing CI do not grant implementation or release approval.
 Original ChatGPT PR66/65 and Cursor-era work keep their provenance.
@@ -129,3 +129,7 @@ permits only reviewed, verified repository remediation integrations and expires
 at program completion; it grants no future feature or hosted authority.
 
 Historical integration: PR #43 **merged on 2026-10-10**, restoring21 research files. Its seven passing workflows were research evidence; see the [recovery report](docs/reports/REPOSITORY-INTEGRITY-RECOVERY-2026-10-10.md), not a fresh current-head result.
+
+## Current remediation authority
+
+The default owner approval boundaries remain in force. The [recorded one-time delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only eligible repository remediation integrations during this unfinished assignment, with distinct trusted review and actual CI. It grants no hosted, private-manuscript, release or future-feature authority. [CURRENT-STATE.md](CURRENT-STATE.md) and the [original44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md) distinguish verified progress from remaining acceptance.
