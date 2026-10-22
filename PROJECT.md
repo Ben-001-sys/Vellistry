@@ -40,3 +40,7 @@ The engineering knowledge base will be versioned in the same Git repository as t
 See [PROJECT-CONSTITUTION.md](PROJECT-CONSTITUTION.md), [SOURCE-OF-TRUTH.md](SOURCE-OF-TRUTH.md), and [CURRENT-STATE.md](CURRENT-STATE.md).
 
 Current implementation/governance facts live in [CURRENT-STATE.md](CURRENT-STATE.md). [ADR-0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md) records the owner-selected Codex implementer, ChatGPT coordinator/reviewer and owner-only approval/merge boundaries. Bounded coding approvals do not grant private-pilot/release permission.
+
+## Current remediation authority
+
+The default owner approval boundaries remain in force. The [recorded one-time delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only eligible repository remediation integrations during this unfinished assignment, with distinct trusted review and actual CI. It grants no hosted, private-manuscript, release or future-feature authority. [CURRENT-STATE.md](CURRENT-STATE.md) and the [original44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md) distinguish verified progress from remaining acceptance.

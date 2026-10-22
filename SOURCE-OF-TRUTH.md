@@ -63,3 +63,7 @@ archive is evidence, not active dispatch. Original source gaps remain gaps.
 PR66's prior ChatGPT records are adopted with per-file source SHA attribution,
 not relabeled Codex execution. This reconciliation proposes no semantic change
 to accepted architecture or owner authority.
+
+## Current remediation authority
+
+The default owner approval boundaries remain in force. The [recorded one-time delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only eligible repository remediation integrations during this unfinished assignment, with distinct trusted review and actual CI. It grants no hosted, private-manuscript, release or future-feature authority. [CURRENT-STATE.md](CURRENT-STATE.md) and the [original44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md) distinguish verified progress from remaining acceptance.

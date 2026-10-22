@@ -33,8 +33,7 @@ agent/approval contracts. Use unique authorized task, committed source snapshots
 validated immutable ContextPack before edits and an ExecutionBundle afterward.
 **Lightweight governance** covers source-linked triage, indexing, draft tasks and
 review comments only; it cannot modify executable behavior, authority or accepted
-decisions. Commit author metadata alone cannot prove the executor. Automatic
-PR-to-task enforcement is NOT implemented by these docs; see Issue #73.
+decisions. Commit author metadata alone cannot prove the executor. Merged Issue #73 implements static PR-to-task compliance in CI; these docs do not authenticate actual runtime identity.
 
 | Boundary | Effective status / permitted transition |
 |---|---|
@@ -148,3 +147,7 @@ workflows remain manual-only. Required gate identity and mandatory security befo
 merge are preserved. Ready run38970082388 and main run38970500477 succeeded;
 SQL privilege checks were skipped because PR68 source is absent, not passed.
 No billed-minute savings or branch-protection enforcement is asserted.
+
+## Current remediation clarification — 2026-10-22
+
+The pending gate table remains effective. Merged PR76/78/80 and later corrections enforce static evidence and workflow contracts; no broad gate has been promoted. The [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits eligible repository remediation merge/closure after distinct trusted review and actual ready/post-main CI, without a repeated routine merge request. Hosted/security/owner acceptance and future features remain excluded. Historical CI checkpoints above are not current main; use [CURRENT-STATE](../../CURRENT-STATE.md).

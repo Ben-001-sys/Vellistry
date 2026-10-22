@@ -23,7 +23,7 @@ It uses repo-owned artifacts without a new service or orchestrator. Read the
 and [CURRENT-STATE](../../CURRENT-STATE.md) before dispatch. Codex implements
 qualifying changes; ChatGPT coordinates/reviews; only the owner approves scope
 and merge. Commit sources/task, generate/validate/commit the immutable pack
-before implementation. Issue73 proposes [PR compliance evidence validation](PR-COMPLIANCE.md); its bootstrap and protected-owner-review limitations are explicit. CI does not authenticate agents or owners.
+before implementation. Merged Issue73 implements [PR compliance evidence validation](PR-COMPLIANCE.md); its bootstrap and protected-owner-review limitations are explicit. CI does not authenticate agents or owners.
 
 ## Lifecycle (solo maintainer)
 
@@ -93,3 +93,7 @@ The generator refuses to overwrite an existing pack and rejects missing/untracke
 - The bundle transparently distinguishes what was checked from what remains unavailable.
 - An agent reading only repository records can understand this task's objective, evidence constraints, and next action.
 - Owner reviews the workflow before it is treated as the default standard.
+
+## Current implementation evidence
+
+PR76 and subsequent bounded corrections integrated static PR-to-task, immutable-pack, scope, executor-provenance and workflow-contract checks. These do not authenticate runtime agents or humans. The [current state](../../CURRENT-STATE.md) and [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) distinguish default owner approval from this temporary repository-only integration exception. Historical Level B now has technical evidence in [VEL-HO-0004](handoff-evaluations/VEL-HO-0004.md); owner acceptance remains pending. The older pending descriptions above record their original dates.
