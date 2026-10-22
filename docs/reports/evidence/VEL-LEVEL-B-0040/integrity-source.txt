@@ -1,0 +1,1 @@
+PASS: committed exact two-file Git bytes, CRC, dispatch hash and composition, fresh session events without tool calls, verbatim response and exit0. Source 38c0a07042545635b5ea137c090fa88d58a00d48

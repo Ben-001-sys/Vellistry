@@ -1,0 +1,97 @@
+id: VEL-TASK-0040
+title: Verify historical Level B using an isolated fresh trusted agent
+type: implementation-task
+status: in-progress
+created_at: '2026-10-22'
+updated_at: '2026-10-22'
+owner: project_owner
+context_pack_id: VEL-CP-0040
+objective: Execute and evaluate the exact historical two-file Level B handoff without
+  inherited authoring context; distinguish technical evidence from owner acceptance
+  and end-to-end implementation.
+in_scope: &id001
+- docs/agent-workflow/tasks/VEL-TASK-0040.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0040.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0040.md
+- docs/agent-workflow/inputs/VEL-TASK-0040/*
+- docs/agent-workflow/handoff-evaluations/VEL-HO-0004.md
+- docs/agent-workflow/handoff-evaluations/raw/VEL-HO-0004/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-LEVEL-B-0040*
+- docs/reports/evidence/VEL-LEVEL-B-0040/*
+out_of_scope:
+- Any application, SQL, workflow, dependency, branch-protection or standing-policy
+  change
+- Hosted/auth/real data/private manuscripts/paid APIs/billing/settings/production/newMVP
+- Old PR68 branch rewrite, historical evidence overwrite, or base SQL approval self-installation
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: SOURCE-OF-TRUTH.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: AGENTS.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/HANDOFF-REPRODUCIBILITY-PROTOCOL.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/LEVEL-B-AGENT-PROMPT.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/handoff-evaluations/VEL-HO-0002.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+- path: docs/agent-workflow/inputs/VEL-TASK-0040/OWNER-SCOPE.md
+  role: operator-only-governance-and-evaluation; not supplied to evaluated worker
+source_gaps:
+- id: ISOLATION
+  limitation: Fresh process and supplied bytes can be recorded; no forensic guarantee
+    of provider hidden state. Historical pack source gaps remain historical.
+- id: ACCEPTANCE
+  limitation: Owner acceptance remains unset; code review and Level B reasoning are
+    not independent end-to-end implementation.
+deliverables:
+- Committed unique task and validated immutable operator ContextPack before execution
+- Exact validated two-file export, hashes, fresh session metadata and verbatim response
+- Ten-criterion evidence scorecard with factual limitations and unset owner approval
+- ExecutionBundle, actual validators and distinct trusted review with ready/post-main
+  CI before delegated integration
+acceptance_criteria:
+- Evaluated agent receives only exact CP0001 and minimal PROMPT; no current repository,
+  authoring chat, rubric, prior output or Task0040 pack
+- Record actual process/session/model, exact stdin and unedited output; no invented
+  tests, source authentication or human approval
+- Score all ten protocol criteria with quoted evidence and limitations; preserve prior
+  evaluations and item27 restrictions
+- Validate packet provenance, metadata, handoff and applicable CI; no operative source
+  or security policy changes
+allowed_actions:
+- Read approved repository history; create task and immutable operator pack
+- Export validated historical packet and dispatch fresh trusted input-only session
+  in isolated temporary directory with project docs and memories disabled; no tool
+  use requested
+- Preserve exact inputs/output, evaluate after completion, report technical evidence
+  and separately gated acceptance
+- Publish evidence through reviewed repository-only PR under existing delegation
+approval_required_for:
+- Actual owner acceptance of historical Level B; do not populate approval fields from
+  AI evaluation
+- All existing hosted/private/paid/SQL/settings/feature boundaries; independent review
+  and applicable CI mandatory
+compliance:
+  change_base: 4536c3acacbc70265cb1882508c8b510603d0876
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

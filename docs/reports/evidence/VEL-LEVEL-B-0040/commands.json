@@ -1,0 +1,37 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_level_b_export.py -v",
+    "source_commit": "38c0a07042545635b5ea137c090fa88d58a00d48",
+    "exit_code": 0,
+    "seconds": 9.453,
+    "evidence": "docs/reports/evidence/VEL-LEVEL-B-0040/export-source.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "38c0a07042545635b5ea137c090fa88d58a00d48",
+    "exit_code": 0,
+    "seconds": 0.157,
+    "evidence": "docs/reports/evidence/VEL-LEVEL-B-0040/metadata-source.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "38c0a07042545635b5ea137c090fa88d58a00d48",
+    "exit_code": 0,
+    "seconds": 0.109,
+    "evidence": "docs/reports/evidence/VEL-LEVEL-B-0040/readiness-source.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "38c0a07042545635b5ea137c090fa88d58a00d48",
+    "exit_code": 0,
+    "seconds": 0.125,
+    "evidence": "docs/reports/evidence/VEL-LEVEL-B-0040/spec-source.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "source_commit": "38c0a07042545635b5ea137c090fa88d58a00d48",
+    "exit_code": 0,
+    "seconds": 80.671,
+    "evidence": "docs/reports/evidence/VEL-LEVEL-B-0040/handoff-source.txt"
+  }
+]
