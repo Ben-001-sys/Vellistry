@@ -57,12 +57,6 @@ execution:
     seconds: 0.187
     evidence: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/research-source.txt
     status: PASS
-  - command: python scripts/ci_governance.py
-    source_commit: 1ffe5da87e5e5e02108a12856af08a295934a5e8
-    exit_code: 1
-    seconds: 132.704
-    evidence: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/governance-source.txt
-    status: BLOCKED
   - command: python scripts/ci_governance.py (permitted local fixture execution)
     source_commit: 1ffe5da87e5e5e02108a12856af08a295934a5e8
     exit_code: 0
@@ -70,6 +64,13 @@ execution:
     evidence: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/governance-permitted-source.txt
     status: PASS
 owner_disposition: pending
+historical_attempts:
+- command: python scripts/ci_governance.py
+  source_commit: 1ffe5da87e5e5e02108a12856af08a295934a5e8
+  exit_code: 1
+  seconds: 132.704
+  evidence: docs/reports/evidence/VEL-CURRENT-TRUTH-0041/governance-source.txt
+  status: BLOCKED
 ---
 
 # Current truth reconciliation
@@ -97,3 +98,6 @@ SRC004 missing; LevelB owner acceptance pending; independent filesystem implemen
 
 ## Reviewer disposition
 Pending actual distinct final-head trusted review and ready/post-main CI. Structured owner disposition remains pending. Any repository integration is a separately evidenced operation under the existing one-time delegation, not fabricated human approval or acceptance of external gates.
+
+## Evidence classification correction
+Draft run39820914283 correctly refused a BLOCKED historical attempt listed among required current tests. The unsuccessful sandbox attempt remains in historical_attempts, commands.json and its full output; required current execution lists the unchanged successful permitted rerun. No test, validator, ContextPack or permission was changed.
