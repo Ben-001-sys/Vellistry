@@ -1,0 +1,109 @@
+id: VEL-TASK-0041
+title: Reconcile current truth and all44 original remediation requirements
+type: implementation-task
+status: in-progress
+created_at: '2026-10-22'
+updated_at: '2026-10-22'
+owner: project_owner
+context_pack_id: VEL-CP-0041
+objective: Selectively supersede historical PR83 with evidence-backed current entrypoints,
+  individually reconciled original44requirements, complete149-ID observed-evidence
+  mapping and issue/PR dispositions.
+in_scope: &id001
+- AGENTS.md
+- README.md
+- PROJECT.md
+- SOURCE-OF-TRUTH.md
+- CURRENT-STATE.md
+- docs/agent-workflow/README.md
+- docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md
+- docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+- tests/test_governance_entrypoints.py
+- tests/test_remediation_ledger.py
+- docs/agent-workflow/tasks/VEL-TASK-0041.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0041.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0041.md
+- docs/agent-workflow/inputs/VEL-TASK-0041/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md
+- docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md
+- docs/reports/VEL-CURRENT-TRUTH-0041*
+- docs/reports/evidence/VEL-CURRENT-TRUTH-0041/*
+out_of_scope:
+- Application, SQL, CI workflow, dependencies, repository settings and accepted decision
+  semantics
+- Hosted/auth/private manuscripts/paid services/deployment/newMVP
+- Historical ContextPack or original source rewriting; fabricated acceptance or premature
+  programme completion
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: SOURCE-OF-TRUTH.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: AGENTS.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0041/OWNER-SCOPE.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0041/ORIGINAL-CHECKLIST.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/inputs/VEL-TASK-0041/PR83-SOURCES.json
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/reports/VEL-PR68-RECONCILIATION-0039.md
+  role: authority-exact-acceptance-and-source-evidence
+- path: docs/agent-workflow/handoff-evaluations/VEL-HO-0004.md
+  role: authority-exact-acceptance-and-source-evidence
+source_gaps:
+- id: EXTERNAL
+  limitation: SRC004missing; hosted/security/ownerLevelBacceptance and independentfilesystemexecution
+    unfulfilled; noDONEinference
+- id: RECOVERY
+  limitation: Final dependency-closed backup and finalmain checks follow after this
+    integration; finite snapshot cannot contain its own future report
+deliverables:
+- Unique task, committedsource inventory and immutableCP before consequential edits
+- CompletePR83path disposition; original44acceptance blocks preserved; each status/evidence/outstandingcontrol/nextaction
+  explicit
+- Compact current entrypoints, accurate temporarydelegation/defaultroles/securitygates,149-ID
+  evidence overlay, issuePRregister
+- Focusedpositive/negative contracts, actualvalidators/EB, distinctreview,readyCI,exactmergedtree/postCI
+  beforePR83closure
+acceptance_criteria:
+- Every original numbered acceptance block is byte-for-byte retained in source and
+  quoted without weakening;44unique entries with allowedstatus,evidence and nextaction
+- No synthetic/skip/technicalLevelB result promoted to hosted/owner/endtoend acceptance;
+  no unrelatedfeaturecode
+- PR83allpaths inventoried with Gitblob/hash and disposition; acceptedADRdecision/rationale/alternatives
+  and historicalpacks unchanged
+- 149unique included IDs mapped to observed evidence without claiming plannedtest
+  execution;currentstate compact and links resolve
+- Testsrejectmissing/duplicateitems,changedacceptance,unsupportedDONE/securityclaims;allapplicableCIanddistinctreviewpass
+  beforedelegatedintegration
+allowed_actions:
+- ReadliveGitHubandcommittedsources;commitTask/inputsandimmutableCPfirst
+- Editallowlistedcurrentdocumentsandfocusedregressiontests;archiveoldbytesandpreserveprovenance
+- Record factualledger/crosswalk/dispositions/EB;reviewandverifythroughrequiredCI
+- SeparatelydelegatedrepositoryintegrationandPR83supersessiononlyafterpostmainPASS
+approval_required_for:
+- Allreservedhosted/SQL/private/securityacceptance/settings/paid/featureactionsremainexcluded
+- ActualdistinctreviewandapplicableCI;nohumanacceptancefabrication
+compliance:
+  change_base: 67e48d1fa821fe5e3e94ab7457f554720b676106
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/71
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-01'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
