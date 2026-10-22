@@ -1,0 +1,12 @@
+{
+  "VEL-CP-0001.md": {
+    "bytes": 23477,
+    "sha256": "3c65276090030e72029288924b7a56fa7429300b84a74529fe3b116a821c79c0"
+  },
+  "PROMPT.md": {
+    "bytes": 1320,
+    "sha256": "f9909915acfc300ef8249aad2e3ca09bc17fbded5c8b7d422ff9ae76b32b2668"
+  },
+  "archive_sha256": "b2580cf9859e2d98a6e6311eb3d6f4ae4697c6d0e918ed20f250886aa53df870",
+  "note": "Exporter validated pinned historical provenance. Windows CRLF checkout export retained separately. Dispatch archive uses exact Git blob bytes: both member hashes match Issue18 historical fingerprints. Initial whole-ZIP historical hash assertion failed: container bytes differ; no archive-level historical identity claimed. CRC and exact two-member Git byte comparison pass. No tracked source modified."
+}
