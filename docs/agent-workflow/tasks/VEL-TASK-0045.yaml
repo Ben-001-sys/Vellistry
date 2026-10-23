@@ -1,0 +1,91 @@
+id: VEL-TASK-0045
+title: VEL-DEV-001 Phase A synthetic foundation verification and bounded handoff
+type: implementation-task
+status: in-progress
+created_at: '2026-10-23'
+updated_at: '2026-10-23'
+owner: project_owner
+context_pack_id: VEL-CP-0045
+objective: Verify existing merged foundation with no real credentials or hosted calls;
+  prepare precise separately authorizable hosted and IMP-002 proposals.
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0045.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0045.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0045.md
+- docs/agent-workflow/inputs/VEL-TASK-0045/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-DEV-001-PHASE-A.md
+- docs/reports/VEL-DEV-001-HOSTED-PROPOSAL.md
+- docs/reports/VEL-IMP-002-HANDOFF-PROPOSAL.md
+- docs/reports/evidence/VEL-DEV-001/*
+out_of_scope:
+- Feature code, tests, executable tooling, dependencies, SQL, CI and policy changes
+- Hosted access, credentials, private data, deployment, paid services and merge
+- Reopening the expired remediation delegation or broad approval gates
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0045/OWNER-SCOPE.md
+  role: governing-source
+- path: README.md
+  role: governing-source
+- path: docs/plans/VEL-PLAN-02-ARCHITECTURE-DATA-CONTRACTS-2026-10-11.md
+  role: governing-source
+- path: docs/plans/VEL-PLAN-03-UX-NAVIGATION-STATES-2026-10-11.md
+  role: governing-source
+- path: docs/plans/VEL-PLAN-04-TEST-SECURITY-RECOVERY-2026-10-11.md
+  role: governing-source
+- path: docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md
+  role: governing-source
+source_gaps:
+- id: HOSTED
+  limitation: Exact current project reference and hosted state not verified; permission
+    absent.
+- id: DESIGN
+  limitation: PLAN-02/03/04 are proposed contracts, not blanket schema or implementation
+    approval.
+deliverables:
+- Immutable committed ContextPack before reporting changes
+- Actual frozen install, synthetic tests, build/typecheck and governance evidence
+  with exact SHA and exits
+- Source/configuration trace, hosted decision packet and one bounded IMP-002 proposal
+- ExecutionBundle and distinct review; owner retains merge decision
+acceptance_criteria:
+- No credential-bearing file read or hosted request; no feature or SQL changes
+- Actual commands and results distinguish synthetic readiness from hosted acceptance
+- Reuses existing authentication and preserves all security gates
+- Proposed next task specifies scope, negative cases, prerequisites and owner-only
+  authorization
+allowed_actions:
+- Read repository and GitHub source; create isolated worktree
+- Run existing synthetic tests and frozen public dependency installation without real
+  app credentials
+- Write only scoped reports/current-state and task evidence; submit for independent
+  and owner review
+approval_required_for:
+- All hosted, credential configuration, migration, private data and deployment actions
+- Feature implementation, broad gate changes and repository merge
+compliance:
+  change_base: be69e5b249f57253e726bfcca00f5e81c0c60623
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-10-30'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
