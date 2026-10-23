@@ -1,0 +1,67 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_remediation_ledger.py",
+      "-v"
+    ],
+    "source_commit": "d732b3587ca3adbad30426e6ca62f72a5c381cf8",
+    "exit_code": 0,
+    "seconds": 0.203,
+    "evidence": "final-verified-0.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_governance_entrypoints.py",
+      "-v"
+    ],
+    "source_commit": "d732b3587ca3adbad30426e6ca62f72a5c381cf8",
+    "exit_code": 0,
+    "seconds": 0.235,
+    "evidence": "final-verified-1.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/check_knowledge_metadata.py"
+    ],
+    "source_commit": "d732b3587ca3adbad30426e6ca62f72a5c381cf8",
+    "exit_code": 0,
+    "seconds": 0.171,
+    "evidence": "final-verified-2.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/check_implementation_readiness.py"
+    ],
+    "source_commit": "d732b3587ca3adbad30426e6ca62f72a5c381cf8",
+    "exit_code": 0,
+    "seconds": 0.11,
+    "evidence": "final-verified-3.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/spec_traceability.py",
+      "validate"
+    ],
+    "source_commit": "d732b3587ca3adbad30426e6ca62f72a5c381cf8",
+    "exit_code": 0,
+    "seconds": 0.109,
+    "evidence": "final-verified-4.txt"
+  }
+]
