@@ -1,0 +1,96 @@
+"""Bounded owned-copy recovery proof. Run from the Task0042 worktree; no cloud access."""
+from pathlib import Path
+import hashlib
+import json
+import re
+import subprocess
+import time
+import zipfile
+
+ROOT = Path.cwd().resolve()
+CUT = '23fd8488df060e1591be70232abd70f4255e814d'
+OUT = ROOT / 'docs/reports/evidence/VEL-COMPLETION-0042'
+OWNED = ROOT / '.final-recovery.log'
+assert ROOT.name == 'vel-remediation-completion'
+assert not OWNED.exists(), 'Never overwrite a previous recovery attempt'
+OWNED.mkdir()
+records = []
+
+def command(args, cwd=ROOT, expected=0, data=None):
+    start = time.monotonic()
+    p = subprocess.run([str(a) for a in args], cwd=cwd, input=data, capture_output=True)
+    name = f'recovery-command-{len(records):03}.txt'
+    (OUT / name).write_bytes(p.stdout + p.stderr)
+    records.append(dict(command=[str(a) for a in args], cwd=str(cwd), exit_code=p.returncode,
+                        expected_exit=expected, seconds=round(time.monotonic()-start,3), evidence=name))
+    (OUT / 'recovery-commands.json').write_text(json.dumps(records,indent=2)+'\n')
+    assert p.returncode == expected, (args,p.returncode,name)
+    return p.stdout
+
+paths = command(['git','ls-tree','-r','--name-only',CUT]).decode().splitlines()
+references = {CUT}
+for path in paths:
+    if path.endswith(('.md','.yaml','.json','.yml')) and path.startswith(('docs/','AGENTS','CURRENT','SOURCE')):
+        data = subprocess.check_output(['git','show',CUT+':'+path],cwd=ROOT)
+        references.update(re.findall(rb'(?<![0-9a-f])[0-9a-f]{40}(?![0-9a-f])',data))
+references = sorted({x.decode() if isinstance(x,bytes) else x for x in references})
+objects = command(['git','cat-file','--batch-check=%(objectname) %(objecttype)'],data=('\n'.join(references)+'\n').encode()).decode().splitlines()
+pins = sorted({line.split()[0] for line in objects if line.endswith(' commit')})
+unavailable = [line for line in objects if line.endswith(' missing')]
+old = json.loads((ROOT/'docs/reports/evidence/VEL-RECOVERY-PROOF/dependency-closure.json').read_text())['required_commit_pins']
+assert set(old).issubset(pins)
+# All actual pack base commits are mandatory, not optional missing references.
+pack_pins = set()
+for path in paths:
+    if path.startswith('docs/agent-workflow/context-packs/') and path.endswith('.md'):
+        data = subprocess.check_output(['git','show',CUT+':'+path],cwd=ROOT).decode()
+        pack_pins.update(re.findall(r'^base_commit: [\'\"]?([0-9a-f]{40})',data,re.M))
+assert pack_pins.issubset(pins)
+assembler = OWNED/'assembler.git'
+command(['git','init','--bare',assembler])
+for i,pin in enumerate(pins):
+    command(['git','fetch','--no-tags',ROOT,f'{pin}:refs/heads/pin-{i:04}'],cwd=assembler)
+command(['git','update-ref','refs/heads/recovery-main',CUT],cwd=assembler)
+command(['git','symbolic-ref','HEAD','refs/heads/recovery-main'],cwd=assembler)
+bundle = OUT/'recovery-current.bundle'
+assert not bundle.exists()
+command(['git','bundle','create',bundle,'--all'],cwd=assembler)
+command(['git','bundle','verify',bundle])
+restored = OWNED/'restored.git'
+command(['git','clone','--mirror',bundle,restored])
+assert restored.resolve().is_relative_to(OWNED.resolve()) and (restored/'HEAD').is_file()
+command(['git','gc','--prune=now'],cwd=restored)
+actual = command(['git','cat-file','--batch-check=%(objectname) %(objecttype)'],cwd=restored,data=('\n'.join(pins)+'\n').encode()).decode().splitlines()
+assert all(line.endswith(' commit') for line in actual) and len(actual)==len(pins)
+command(['git','fsck','--full'],cwd=restored)
+working = OWNED/'working'
+command(['git','clone',bundle,working])
+assert command(['git','rev-parse','HEAD'],cwd=working).decode().strip()==CUT
+original_tree=command(['git','rev-parse',CUT+'^{tree}']).decode().strip()
+assert command(['git','rev-parse','HEAD^{tree}'],cwd=working).decode().strip()==original_tree
+archive = working/'docs/agent-workflow/inputs/VEL-TASK-0038/original-research-export.zip'
+assert hashlib.sha256(archive.read_bytes()).hexdigest()=='7832d584f62e0c159e38d9d85f9da9bb84f721b74404091482dd217fc12af65b'
+with zipfile.ZipFile(archive) as z: assert z.testzip() is None
+hashes={}
+for p in (working/'docs/reports/evidence/VEL-DB-READINESS-001').rglob('*'):
+    if p.is_file(): hashes[p.relative_to(working).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
+assert 'd426612fbb1197e8e80b8b5a7cd8cfa97e24c2307af3fe786485cf0e416fbf62' in hashes.values()
+assert 'fb1fefddde801315d661a6248d138473d0bb2ae9b525f2033c9b8c9d1f3f25cf' in hashes.values()
+raw=bundle.read_bytes(); bad=OWNED/'corrupted.bundle';bad.write_bytes(raw[:-1]+bytes([raw[-1]^1]))
+command(['git','clone','--mirror',bad,OWNED/'corrupt-restore.git'],expected=128)
+missing=OWNED/'missing-original.zip'
+assert not missing.exists()
+try: missing.read_bytes()
+except FileNotFoundError: missing_rejected=True
+else: raise AssertionError('Missing original accepted')
+# Bounded current tracked-tree inventory. Do not print credential-shaped content.
+patterns=[rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',rb'\bgh[pousr]_[A-Za-z0-9]{30,}\b',rb'\bAKIA[0-9A-Z]{16}\b',rb'\bsk-proj-[A-Za-z0-9_-]{40,}\b']
+findings=[]
+for path in paths:
+    if Path(path).name.lower().startswith('.env') and not path.endswith('.env.example'):
+        findings.append(dict(path=path,kind='tracked-runtime-env'))
+    data=subprocess.check_output(['git','show',CUT+':'+path],cwd=ROOT)
+    if any(re.search(pattern,data) for pattern in patterns): findings.append(dict(path=path,kind='credential-shaped'))
+assert not findings, findings
+(OUT/'recovery-result.json').write_text(json.dumps(dict(source_cut=CUT,tree=original_tree,required_commit_pins=pins,pack_base_pins=sorted(pack_pins),historical43_retained=True,unavailable_reference_objects=unavailable,bundle_bytes=len(raw),bundle_sha256=hashlib.sha256(raw).hexdigest(),restored_pin_count=len(actual),fsck='PASS',corrupt_clone_exit=128,missing_archive_rejected=missing_rejected,pg17_restored_hashes=hashes,tracked_paths_scanned=len(paths),secret_pattern_findings=findings,limitations=['Missing reference objects include hashes that are not required commit pins; see inventory.','Finite backup cut excludes its own future report/backup commit.','Pattern inventory is not exhaustive secret/history or private-manuscript certification.','Same operator/OS; not independent end-to-end implementation or hosted acceptance.'],cleanup='Only new owned local copies created and retained; no external resources or existing worktrees modified.'),indent=2)+'\n')
+print(f'PASS: {len(pins)} commit pins, {len(pack_pins)} pack bases, exact tree, source ZIP and PG17 hashes; corrupt/missing negatives; bounded current-tree inventory.')
