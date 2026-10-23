@@ -1,0 +1,102 @@
+[
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "install",
+      "--frozen-lockfile",
+      "--offline"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 13.156,
+    "evidence": "restored-test-0.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:hosted-preflight"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 1.391,
+    "evidence": "restored-test-1.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:library-isolation"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 2.031,
+    "evidence": "restored-test-2.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "build"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 1,
+    "seconds": 23.219,
+    "evidence": "restored-test-3.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "check"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 4.734,
+    "evidence": "restored-test-4.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_research_archive.py",
+      "--archive",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/original-research-export.zip",
+      "--manifest",
+      "docs/agent-workflow/inputs/VEL-TASK-0038/SOURCE-MANIFEST.json"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 0.125,
+    "evidence": "restored-test-5.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_research_archive.py",
+      "-v"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 0,
+    "seconds": 0.516,
+    "evidence": "restored-test-6.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "exit_code": 1,
+    "seconds": 2.188,
+    "evidence": "restored-test-7.txt"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+  "bundle_sha256": "6a6b4e01bb6fe74ef17f6126b5136db0f8d5f4d4fa5b6d3895fc145f4475db5b",
+  "bundle_bytes": 6776257,
+  "prerequisite": "23fd8488df060e1591be70232abd70f4255e814d from Task0042 full420-pin bundle",
+  "restore": "PASS: patched source, offline frozen install, build, check",
+  "limitation": "Same operator and OS; supplemental finite code cut excludes final reporting commit"
+}

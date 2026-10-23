@@ -1,0 +1,70 @@
+[
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 2.594,
+    "evidence": "patch-test-0.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 1.484,
+    "evidence": "patch-test-1.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:hosted-preflight"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 1.344,
+    "evidence": "patch-test-2.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:library-isolation"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 1.719,
+    "evidence": "patch-test-3.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "build"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 15.234,
+    "evidence": "patch-test-4.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "check"
+    ],
+    "source_commit": "08bc45374f6d203cc5691da2dea07ca131ca95f4",
+    "exit_code": 0,
+    "seconds": 7.453,
+    "evidence": "patch-test-5.txt"
+  }
+]

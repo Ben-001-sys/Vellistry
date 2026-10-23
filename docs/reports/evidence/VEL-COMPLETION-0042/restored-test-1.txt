@@ -1,0 +1,35 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-remediation-completion\.final-recovery.log\working
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (2.417ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.3972ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.2841ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.3371ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.2826ms)
+✔ rejects mismatched Web/API project publishable keys (0.2661ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.2359ms)
+✔ rejects invalid or omitted expected project reference (0.1864ms)
+✔ missing local files are reported without consulting environment or network (2.3963ms)
+✔ reads ignored local files, never emits key values in success output (19.222ms)
+✔ invalid local config never leaks the offending key in diagnostics (4.9793ms)
+✔ does not pass file validation when inherited runtime settings override those files (9.8135ms)
+✔ rejects competing Next env files that the actual runtime would also read (17.7822ms)
+✔ rejects test mode because Next does not load the required .env.local there (4.414ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (95.7536ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (161.6392ms)
+✔ actual CLI fails safely with absent env files (71.823ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.3239ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (8.4438ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (75.1655ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (104.3657ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (87.5569ms)
+✔ missing-file guidance links to existing canonical placeholder instructions (1.146ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 833.2732

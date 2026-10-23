@@ -1,0 +1,2 @@
+From H:\cursor\cursor\Vellistry\.worktrees\vel-remediation-completion
+ * [new ref]         b56f14134039f8e5e09b6fd5a20d0ed5680c1eff -> pin-0290

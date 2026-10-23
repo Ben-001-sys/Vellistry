@@ -24,7 +24,7 @@ class GovernanceEntrypoints(unittest.TestCase):
     def test_current_checkpoint_discloses_verified_main_and_security_holds(self):
         state = read("CURRENT-STATE.md")
         self.assertLess(len(state.encode()), 11000)
-        for token in ("67e48d1fa821fe5e3e94ab7457f554720b676106", "39743512586",
+        for token in ("23fd8488df060e1591be70232abd70f4255e814d", "39868833625",
                       "G_DESIGN", "G_CODE", "G_PRIVATE_PILOT", "G_RELEASE",
                       "NOT_RUN", "JWT", "unapproved", "VEL-CP-0041",
                       "PR #83", "PR #65", "PR #68", "PR #59",

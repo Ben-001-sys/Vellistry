@@ -54,7 +54,7 @@ def validate_features(rows):
 
 class RemediationLedgerTests(unittest.TestCase):
     def setUp(self):
-        self.rows = json.loads((EVIDENCE / 'ledger.json').read_text(encoding='utf-8'))
+        self.rows = json.loads((ROOT / 'docs/reports/evidence/VEL-COMPLETION-0042/ledger.json').read_text(encoding='utf-8'))
         self.original = ORIGINAL.read_text(encoding='utf-8')
         self.features = json.loads((EVIDENCE / 'features.json').read_text(encoding='utf-8'))
 

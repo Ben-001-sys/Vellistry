@@ -1,0 +1,3607 @@
+[
+  {
+    "path": "AGENTS.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3058d51c0e15db54d6271ecbcffcfeb0aaf54e6f",
+    "sha256": "619a9989a8d7d4d50c087ecb903308c57119f295671480d3cb6e23b5cac0f2c8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "CURRENT-STATE.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8b7268588026ad34d41f3f71c7db0c5a9361c74d",
+    "sha256": "e9239d4ec4d044d8554c2f414196066de7b984ce596e4968959262d707db8cfb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "PROJECT.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a30982d3d405746b406795ce0fbb89ff69491db5",
+    "sha256": "530c02ddede4a2904b97a44790a398b3de64020798dcbd728367d77feeaec3d7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "README.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2e54176baf6fbba212193f7b99432e629a94bc92",
+    "sha256": "e83226af287c9b5b4665f5ba2e20d7d1f0a1111de8557116560c25d71c282f66",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "SOURCE-OF-TRUTH.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "50a3034f72727b141ae2c897b1c1424efcc332d5",
+    "sha256": "530a26f2ccbcdbfa37614a79684ecbbf4788506af5936a0c25ad7d74efe5bacb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "apps/web/package.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46a7e911b4034f811ac71b266fb6018234814258",
+    "sha256": "593dfb29e8f2467c26594279a07e63cbb5a953aacb233b22f8e0665391c2319c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "edfec58a2c86dc86c0be9aa1ca4fb657816d7b0c",
+    "sha256": "640c7ab9bab9a3219e0cbcc6cbedb06a37056482a4f5f4117b54eb8e57326bf8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/README.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ac8ece613b6ca4bb977af4cedcf2bd6f7c16cbf3",
+    "sha256": "3b31721a0403877534afcd8d4a5e95c8b43675ebd0ae325f6a9781561200652f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9fa6706c2ca4b110bb9a467ed82378e593da889e",
+    "sha256": "08e4649ed3387c42e6f16f50a0fdb02e41e29e11f6f64085a2840de8a20aeddf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/context-packs/VEL-CP-0042.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3875e76e3af4090a483ab68ee9fee367571132c8",
+    "sha256": "269f9648443fc1015674d5b408067d07e58e561abe467acb30ef7637e3de4797",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/context-packs/VEL-CP-0043.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0e7a90ca45900a295d15e887deec9a8fafc8fef1",
+    "sha256": "30f05993b6eff0e0bacfa491b73a5c967da3af496438be8c19377f7caefe4133",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/execution-bundles/VEL-EB-0042.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e356ebfd6dd6170b68cc1d070d6e8e3b2a14698d",
+    "sha256": "dc0a39244c807df8101cba28fb64552729b9cf40c4ddf0db9e3b10021054cdc6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/execution-bundles/VEL-EB-0043.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cf1662d4b1633d10be4b9a66a3201aa55fd7c5fb",
+    "sha256": "6ac522af8708ed2aab4e04e3a67301c3f6b535bc401d8ee2d08a6f18cf1ef2c9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/inputs/VEL-TASK-0042/OWNER-SCOPE.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "36c865a7d7c9f969094648d204abadce3a7b73be",
+    "sha256": "0bd2a33daea3a0477df1eae2d31061c8ef27d151fbb7d10d90b6b34e211f353b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/inputs/VEL-TASK-0042/issue-dispositions.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b3e6116a224844ca19bdffd7e2d9c383fcec2ddc",
+    "sha256": "5771e0a3fa0c57e2e31d6db43e2f69e157bdd602f18ce0acdc604b21372ec064",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/inputs/VEL-TASK-0042/pr-dispositions.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2092b8630de2b3997f86631da5be774de93567bb",
+    "sha256": "41d6ebd75cc38d93cfb64c44f21406b9c67a71384ea26b49e4edfd99d5360467",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/inputs/VEL-TASK-0043/AMENDMENT.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d46242b22e61d0131dd6d4f53ab4d62e470a5be3",
+    "sha256": "0b1bcc3e58cb7e429159ce18f2675f14b8e948b0c257c5d26b048a3d39340e89",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/tasks/VEL-TASK-0042.yaml",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ff0890ebfdab0fb6973412523bc158b96eac83c1",
+    "sha256": "13f580eefe990bb32981cca8a22c3d05ca7bed4366a859056e126c58c31dab42",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/agent-workflow/tasks/VEL-TASK-0043.yaml",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2ae3da6bc8d7ffed7423601ea228d9806d38acc2",
+    "sha256": "59c7738c63f8f0756a0038c71ec8dabc00a25f53ac221e3f6922baea05abd856",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "af8c41c33874c6000eca383d8680510a13a68086",
+    "sha256": "2071d5b09e462af8f8b2631dd37da7420aecb07511873705d2cdc7f51b29acc8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/VEL-REMEDIATION-COMPLETION-0042.md",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "86f6d1b684cb296a5669b2c7679ff3e0c1b2e477",
+    "sha256": "8e1ca7cfdd054f554d7ad67467a9d2fd2e47bed5c7e41beb0b29536be2884848",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/ledger.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b8d5b8b0acb098e4c3cd351435ff5e1a7d6c0f05",
+    "sha256": "a4df3043f0aa84fc7b8da89b2ca3302cf923a73417da312c29ff24000866b5fd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recover-first-attempt.py.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0d00571f5838625b1ffc6e204524c07fd68ee29b",
+    "sha256": "cb69d2b8d5dff517680510c150f7387b39757e049b3e463b84fd4de49ea91ef5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recover.py",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "01158a9a1bc29ff8e06680f055bc96f718d85d2f",
+    "sha256": "73c52354f776d89b039c302507bfc91f13921e40d54179df072b71692497d9b7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-000.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e456ec3872f448dbb045c0d5ca840adc5f80e681",
+    "sha256": "83ad0db82633557b182430cb34095c423d02de68eccef8bba3a267ea6b97f767",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-001.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68afdfb8e96076f2e734ac6826b873820fa52a9d",
+    "sha256": "0a1efb5241ba81f48fb20b5f8864ad4b22e22dc87c979dedb3d57e9315a1a11f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-002.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "264e634e6d98a2e3e736b78d5580c9f3f4e02588",
+    "sha256": "69ac3da206c5b154f647afab8598f3d85fd9ef8c851ff52b22b523afb0439eef",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-003.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ffecddc02a9305c54de879d3e674a4505eeeac7d",
+    "sha256": "2919078ba775cc524815543d544ea0c6c244cbe535c1e804b8cf8d3311914a49",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-004.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6daaea045f4e150d763d31863234f54959d8fa4b",
+    "sha256": "6ceb17c57ed4b53c76e260b074212e16c156df22261dcdc2fcf08dba2fdbc299",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-005.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cda5972fafebc309488afb435b7f07772f007694",
+    "sha256": "33d3e89165d7a944db5fba427f49c81f2b6ef461fd7206f62a4b7cb504c4d909",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-006.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "006879ac8fcaaea9c461a85e5b9ec5d179d502ee",
+    "sha256": "c732ccceb987cb13997c6297e3708cbf824bfc4624c63337f37f1cd8278ccba1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-007.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d64ca377192a2db8a0e8fa64e9c1d90f5b92fb3a",
+    "sha256": "0151646331218ec4fe3c30abd8ace33409e8ac6fecf3b1ec942efbf51366f131",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-008.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "37a0cb2db5ff468a6564f74548d14e89ee68aea1",
+    "sha256": "c7d4f4e343b0c901af50e98d3c499601c7dcbd38eb774982b35a2cff1e2b9163",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-009.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d5e9b0ee0fdedd0df6a914a48a28a18023f131c5",
+    "sha256": "fce81e2541130e0b12f434336e154c034f0a830e57088da8ebebed28376d0b83",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-010.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d3fe14d542bf9dd7b32a4f9bc2a7f492758c8ae1",
+    "sha256": "df2a6826e1782869b430285f544a0158fa0f27af4e3d5c6bf1164850ad0e2788",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-011.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cfd96f1a683a49033181012685829df5c08eca28",
+    "sha256": "7c2b0c5b7260d52aa16d0f8386e21ff0544ea82d558e09791fdc3543903e2779",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-012.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "460a549e53164d7d255500f268ca6c4835f55f6c",
+    "sha256": "e843be8c92ff561fc490f59bb36fd57731739f86857be64bb4631bce27e0b1b0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-013.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68b8a73fa8919226274c9ef2f0962436fd52b9aa",
+    "sha256": "fc3e2766ac1a851f0aa7924fef9cde22f10beaafca1d8d491843a484612cb724",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-014.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "899579a3321bd236bdfaef36af446b5d72f4555e",
+    "sha256": "e6d68cffd574f7d82fbf411e876e3b0379aa76a07ce129f2205df5b211ce9c74",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-015.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3e9d0a5d0a1f629fc99d76bc68f767246e075f21",
+    "sha256": "ecc180eab28ca81c3a97f7e234bfb1fb645994d8bba0125fdd5aa9d2059de6b9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-016.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "264c0488fbc270dc96a1937f0d08874156cb9135",
+    "sha256": "785be5aa64d2e734ef982d057c94c9e5b241966ebfbc9a71981b7aee5db46136",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-017.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e988a54e60f9b988c2d3a8fd438860ecdbc4f0af",
+    "sha256": "103ab3f90c6be451ef40f52795a2427d087200c15dd16fc8e05e0f25031e514b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-018.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "14735c23527c8f2ef8908d948f7657651f7b5087",
+    "sha256": "d6bf0327da275d5a71ad0c4643422a54ed022594ea2e76fe79dfe68bf2127a2c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-019.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "987ae7434a6acdb024c3572c8c85530817da5d5a",
+    "sha256": "8bbf31dec39ac8579a466165c3ec31f94f06c4832bf7c843ac3b1fb928d00c03",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-020.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d70c95755a720a1c28de5d833235b4dc1adcd36a",
+    "sha256": "9de31c441ce5ce12bf3def412437c8b1286ba63138a42ea6b4b86cd365aa419f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-021.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ec11f3483ae3c1df443c43a354306f9ffa85a458",
+    "sha256": "77dd889ec9c31183e196272709008d97f661ef87e2bb334381ca491b65cbfd05",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-022.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "00891bf49d36323ba129d0ac4d4e1c775b79bdb7",
+    "sha256": "7039d5b77ad830ab37d395632e9defb25e3b3031affd6da705eca1ce9fe37dd7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-023.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "539013d1f7868be308f4e0ccb4c29cdeb3c6746e",
+    "sha256": "ac673059c041354b80d8e728a113001d3f259939a0c59b04ced6d0a6bc3f2d2a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-024.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "43c31a3909d9d67b8408eed0e976de0f02c59bae",
+    "sha256": "b58a63611af73c6221836614752933233a839f5f51aab15f58c37d548ac9b05c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-025.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4ed8e51b682abb9918230a5f2317d46ec71e6655",
+    "sha256": "91f80fe942ad7ae8782b0b100bfc75b7a7687570c3be70b533a133e3117bbf99",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-026.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1f198476430bf409a8e986a1fa4fc4dbd59fe5f2",
+    "sha256": "e65b7fe92dd4bc4ec6f90ee776c90e2a9f3bbc80e69f1f937a3ceed0fd87062e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-027.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "76f14963c2a54cb45f33b70ed3c203f830fdd777",
+    "sha256": "09be5332a5677ef5d545a199c39afe3656e0fd89464045f72421aee0ababae20",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-028.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5bc164be950057ba97c3bc8ebfd4c6f17846485e",
+    "sha256": "2c04087b9d1cb04c5543738f192ce3cc7f61980faf7bdbf7d03a39b129b25d89",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-029.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "01ef2037070727c95c0bf6b04211f1c040531755",
+    "sha256": "7f9cd6e47c0bd39e8e0e86e45dd2254be77ca4cadbc2e129a419555373744ea5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-030.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9c31274fcd1d90087e24058374457bccf6b71045",
+    "sha256": "bdfbba40d962d94daf78692d6493cb1692737a92e43193f7e9ed186357ab5dbf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-031.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "179264bdc90a74c4363b6004fa1354a14214e38f",
+    "sha256": "bc688dfbc3b23b490620ac8b8e1452f2e913b4161220cb0cd75912f49013d130",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-032.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "54f77fa007e65851b88e1a5c6b2d8f57ab95c998",
+    "sha256": "f31bc937ae161d79a4498d192fee6270a40fb7d1ca31fad6071b60ed922c2e45",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-033.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a9b4dac764b335f172314861a5fb08194d108995",
+    "sha256": "2582f75dcae8594a79b16bfd6b2ba65e7b2e23e674c38d8d8ceb0bed4be81170",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-034.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cfc2975df377a5505040b3cff5fb1637b1d415c0",
+    "sha256": "73154830ed5efb9a24aebb7f76b05fa964c5d944a8511a548b179d78d0ffe9ff",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-035.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "05506f4a49a64acc455b555e1be6dbf79345b81d",
+    "sha256": "fb3fa7211cb88a7de639cadced26f3c48f93deb454442083195cc9046431becf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-036.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "053567b6073dbee884f743e0560ef0054c6513ab",
+    "sha256": "5fcbf28151e54da5e173f05066187e3331c9ad4b5bfd04103a31feade2235851",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-037.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "86d79df4ace02f7220655de56205365a2f92fe54",
+    "sha256": "00f17b0d6ecfe84d5aab2baf334d701f30a42a6c5f3cf92b27beab2ca1a71676",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-038.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a3125e30dab55edae4ac52a9784ac24b7a9feb08",
+    "sha256": "3405ee32b91ea760c62b136df5c1c86a61b08ba00c0574c246706f35fe66557a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-039.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "57358f618c824dd4bbfbef733fbf0e1303a26691",
+    "sha256": "500941fdfa8d47703ca2a20dbcd137ba43f4df0cfe714bb472cda3a5247f3e44",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-040.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "aa949e46e98fc65a0e9b61a1ad154cd36a41954f",
+    "sha256": "335df99e516c45094d36faa1679247cb4f600714b6afa2c59950d5775ba99ff7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-041.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6abe3fff89a6238affe8d8eec35d22b0eca27fc1",
+    "sha256": "189e85a1949e6a3e7c2fb218f32b79e3567da05c9304704f30b6ffbe9547f330",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-042.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e842b7b9b9aaaa91dd8c292908628fc1f19468bb",
+    "sha256": "50cf4374df3b458df83597fffea209d6f1cf05ff9c6ac2436dbac2b0150c3340",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-043.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "901d93e97e54f19b7fa090c3be05b2c77c357ce8",
+    "sha256": "6dd360429d012f68dbaad51b8a0f64711aa889ab9dae522ef8643999a9047da2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-044.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "95d431097ab785b0e6cd6dc9a26b2e30cbaa9185",
+    "sha256": "119ee52f494f62ec63eeabf628ddb1f3ff183003f16e68f94daaeb325fddf904",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-045.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46102337c9f8403abab33d30dbd9ff164e0db510",
+    "sha256": "64d137066b5283bbed37aa3c0a11ba9ae72cd0a869900578cbc39c31170d1371",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-046.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a247a3bd09a4723df13b5041ba4a9783fb69bf25",
+    "sha256": "013619c249c6afcde11049b30b4189a860aef1ac94660a50bef1e3e29ce1ccf8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-047.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6fd53cacb5b5a89a79a227439c5417d1a4b17682",
+    "sha256": "604a8572dab21a654fe56457fbce434ee6126f20f501911f3f07646a352097bd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-048.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "aa5b9ccea490b88fdbd2354fd4390a14a145201d",
+    "sha256": "f7cde850ec0d61083b1bf263917a873665ea8938c7fc37bf8c0b70614d62613e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-049.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b9639fff1f85700ab4f340d637b4f17f1cdbe8d2",
+    "sha256": "76b3177ef1b76a02a8809bd12ea5ba906f34ee171eb3b422b9cd92a996e9688a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-050.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ff0856313f9f7fce821bf48f6cf81f945c37276a",
+    "sha256": "6c4b10a08eaca1d97d20a01704e40cb7020139662943da6999d73e875074c971",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-051.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "de129aed9f372e118b2c2220d735ef63557cd7bd",
+    "sha256": "ef8c835a8b000675bc647c2e196a64d5c9100e58519df349cca6c456f98622ed",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-052.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cc66b4dcd221236db676b5bd28766f62d8545f0f",
+    "sha256": "2247390a6213576d7dde05e3d8302d762e4d647f0c115f23bfac449c99f8f15a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-053.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5aa3589a6b13aaeebbae5da74a962d6a9338ac8f",
+    "sha256": "9dc1986f5bd0b0681531d864bdba76545dd9c6c2e1c4f55b2b3a631d6dc4d223",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-054.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c1f3a90724ea5b2034df817a7928306e44e06ef4",
+    "sha256": "105d6066abbccf9bfe3bc083491f0ed1506093fa20a4d2cb317031336a804b4e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-055.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "59ea69f2704e99d5c767edfabb8855d98bb80472",
+    "sha256": "a154133207a562606338089a6fbb5311cb8f24bf8cd6689b89c35d42f39bff14",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-056.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e41b95aa8a1d4c487a1b1cc384fbf627a1b515f8",
+    "sha256": "1715123fd4aa0293778cb0863b5f2d21f4848a6fdcb6e7a29044f02b231f1432",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-057.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "097c1d7af762dacfecd7dbc69b3a509a843b452a",
+    "sha256": "6aee4094e2bbeb8720e2b59c3a9c3397e369c7cf17aafe4c3324004c53edd4e9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-058.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4d54181d48896f10632ea800c7abd9e5dcd37d57",
+    "sha256": "a9fce2fb457fc4382061ecade9163d86e220eaa169f067727c4e7f8205f25a34",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-059.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "659f4b9a95f8d8fa3503bd0faf64b0cf8c7f1d4d",
+    "sha256": "29d58a070f9c03fa03f015a935683d61c7721641c58f7e8e7fae7355835fb780",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-060.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "090023cd5f7cebe40a32b63ae04ea2ee49328212",
+    "sha256": "7ad621faf9f981cc37cb85714fc8715d27dab174e86116e5d14f12d70fd7f65a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-061.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8dfec4b159ab8842d8cea674da8bca0c9406698c",
+    "sha256": "41049eaeb0391da3e949dc1db860c92bac32609b3acae6eeeb9d31a7168e7113",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-062.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "69613a33218b194b067a46a6c2b23d95958a83c3",
+    "sha256": "ae4cc84ff6830adfd542d61504534337048fe09aa23b9bdfe34ec46b9e3669cd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-063.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "194119cac79b01d2ac22bf5e452e25f99c52e0c1",
+    "sha256": "a5f680182da4ebec785330923f493dc5dedd3cc08be8a53e29c2ed329918f079",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-064.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "98888fbfe78c96e1620a99322c1ebe13170db80e",
+    "sha256": "fc8958f025aad3fe49002ccf6fdd0cff127fe7f95ca367863b8151d077809562",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-065.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f814a738a28baf036113cee050b4b9baf6974013",
+    "sha256": "613c06e62efdda55754be9bb244cac89ded8a8850a706001a93ceea7cf7b19b0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-066.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b66b489dc4181123e933188b97193b51460abb58",
+    "sha256": "68463c911c128372f46d8771dbaf9f98a72c6c41a9dc48a766c591cfe2bb1f19",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-067.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c93f99982f43ef4de863f48023c83b30148e58e5",
+    "sha256": "7a27963089529272ed70c12d558f27e7ccf602511437b7217247aaf78dffbf8b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-068.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d6191a25b566342e36560b58dbee8fdbe3c45f87",
+    "sha256": "4719fdca73366aae09c0c3cb11be5f09920ab735a306c2c493a49b94f65d216f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-069.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f31b81cffa6657eb2f6cf99a5ad165d405e46a8a",
+    "sha256": "914c5a7254456edecc3d4e25a4616b5f83ce4794e27cb37ecc92e066a30d4621",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-070.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1b5edb8c8ec21789af55d4bba706bd2da283d92c",
+    "sha256": "83329cb25481407657c20aeff746e8226a67c443d1619fa990a6c4a3cfb0b68c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-071.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "baaa82b9040f27bd3ce7ce14a5377177e9fcaf40",
+    "sha256": "b15bf7d8acc874728af9361c92d92055602a2ffdf56e89ba288c20f9ec0bb409",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-072.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "028f9e4af5e39af671ce9172acfc360e079b4c45",
+    "sha256": "7b7d1c015f8b1b373984fff185fe1101416d0ea741154a2732d0e123a27ba2f7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-073.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9597bb51c1cd496805b56bdfee7a0bb0723c72da",
+    "sha256": "922b76f92a728dc07eaa74a42bf7c56a11355540d9c48e95623480f833ab3b7e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-074.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9914939dc73df7936ef4391f7134a97bdbb57673",
+    "sha256": "42a9a0dd6fa7c97f6b4b1f96601518ce7cdcc90a2878279468c649e2cb12e738",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-075.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "415503f4f5d3e9a8642d9fb28f66c7cfe3f9d71f",
+    "sha256": "a0d3ee67eb2da2624c49410e7458973bc2d8df7835850f3db153f0ec53170d55",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-076.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8aec943547f7fbeadc382ebf50573152c00d73a2",
+    "sha256": "84de9af801a15ba024c3d0b23804e5ff6d2907536065f4f56fb000b10d148ce1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-077.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "62faa78efe672e04d21fae515641b99483bc9568",
+    "sha256": "6636f8b894a15b82de0842e5ced3504830f4bc2f6cc292b76beaf45958379526",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-078.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b72405f907e4ff738c79e133b5353a542e4cf598",
+    "sha256": "1f4db4279b4f525274da7894cdfeadcf50e18c2e0f2d26f18c33efcca4bcfe2f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-079.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b43340616ad35e2abb8b3e99ea05b695ee2188b7",
+    "sha256": "314bf62743d4834b7dcc971e64111a5f3f559a83b327e27c956e39e23c94d270",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-080.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8d9cc2abdc5b9ef3d19dc4e691ad42583c1ab380",
+    "sha256": "39696862757167f255401e713eb8a61e081820673cd8de1744afa8e9f15eebe0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-081.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a0510b52127ee7b8e2459219e72251baef4df4e6",
+    "sha256": "cafd63a5d6030a064d6b1a19699515bcf486c4b6ed44ebf25d67ce18e3d3ffc0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-082.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7bcafacd23abe0f4cf2bb883f0a0f0b330dfebde",
+    "sha256": "d2364f79e1557c1e7273378a3fe5ea096aadef7f26350141fd768ac95f91b073",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-083.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "40baeeb449aadd90c4c139199b00ab2d27afc9e8",
+    "sha256": "5e2f2916e9db5fcc5028653a224b16e09fe1a19740e644189895c6f450a23aa4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-084.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1e3e578dc72e393662518ef3638973d80cd720d3",
+    "sha256": "bb721c15e45cfdf143ad148fbb6cb8f38eace13fa61dc41e31f185a13e3a2cff",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-085.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ad6210f6cf7ba739c8fea3e01c53453eb5deadaa",
+    "sha256": "30a9b0512b05dac7398988854c9adb704c7b3d889069ce674935034483bda81e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-086.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1b1a20f8c51f7c2ebb854eaa108946f6bc0de20f",
+    "sha256": "7e2b17b50abcc2912f778799fc70ff3d27ba8165cfb473f995704da8969a637f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-087.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "321d81460159ad18f9123d3d86e54eca4ae95b45",
+    "sha256": "5ca886ec98cfe3937deb6caa3036128d0f3138c84ef4a708faf2e7b3a9be416f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-088.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c5f3b1ff4b246ff3afbdf1b8371e07b6f5fdda9c",
+    "sha256": "b12fbc8cc64e5c0af830f3c34d66f7b46d8ed2b6bb1748c96c81d2fa854ba983",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-089.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "efbe72429835f6957801b8127c204839f119864a",
+    "sha256": "8e61e2f99be009de981fcf70d896a7e7493ed6380f9d418cbdd6d9efb1c0cc39",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-090.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "366852689e32f242da26b6cc05b9e4d3dc2dcc0c",
+    "sha256": "dae74c661cb23f67ebb1f32b2a1148e7b787754d1114ca01a46e866e50961057",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-091.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "135ea9446f02595748092232f9f8cc948433fd81",
+    "sha256": "f398e7acb28264c5e4f0b8065d9d52f38a2c00ad98fdcd6a99b47d162de5f7a9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-092.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4a9ab595480fef209d8232c6cdcad6560f69c2c4",
+    "sha256": "f136192e0b57da873d999f5dbc8dc9feba88b7b888187158683e99abf3b40533",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-093.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "715bf6cf09ba87c1fde9a42e7ec059075fb4e5ab",
+    "sha256": "8c17def19616e9aacad052f4b0cbf3771dc8b0d4cbef8da972b791af033d55d3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-094.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0507ad09fc82ecb5cd3fdcfca04f4ea7ee4510d8",
+    "sha256": "b16ce7c976ef73bf2d4310208ef0b32837e3d3a21e996d1d4e040654fb2555dc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-095.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c4cfa876155c2e01e00680265ed28000db1272b1",
+    "sha256": "bf5c3491eb2ff635a105bc3d9628c8f1e713d4dd1ce3d3a91458f497b6dfebb7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-096.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "261a52daf634fdd6f32939c1cf87469400d1fdc6",
+    "sha256": "e3e36a125126b466bd86628f1cc00f796153b7903023b667c092311f53b2bf4d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-097.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "bc4ac1206db878a8d7fdfea3c5902aec2c32ee05",
+    "sha256": "bddc7af424d58e13c3c9cd9dbc11155c576904e75d9d23ad0976e034fbd4a4de",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-098.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9d9efac2af8f19d63633ccc5e06ebe2ea8533626",
+    "sha256": "969a6a426ffeb34c75f4b4b92183b87eeb6eee76d9f0d1cb3ba6867e9c039b31",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-099.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e8bb884e6fa585a33d562bfc1af8ee1e96858e71",
+    "sha256": "80f2ee03906baf13c7e72b2db84d76c15701b359978f3078ef49ea2693e4c497",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-100.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "638ababbba145c372c944444b9418e3eee997798",
+    "sha256": "51070c7170816cc7e6413f1029604a838f0680dca9e7f9db604ac8cb85899b04",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-101.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "83966b8986ca073324cf832133d3f53f895d1049",
+    "sha256": "4e5fd21c2bcecaadbd7241049b21ec54e4187cb76638c754132ad5424b1b8fd8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-102.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "45349ab86c65d9ca6a334e0f13abe3459a87bd08",
+    "sha256": "79e1a223a4683b53ff243c89fec057f9f4416adc854d00851f07f5e8f4dc0113",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-103.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "11a0c978c23d7ea6b87996637fd6fc8e1bbf169d",
+    "sha256": "10a3c43f122329dd164eb6c976cd3d772d03f55df156a3177a7d714b82c1ed89",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-104.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2c00cbe4767350109aa98c1845b81c4d84445569",
+    "sha256": "6f50024e536bd04b6a07cf361b52d8b9b8984bc33a72bbd4ac5909b9e6af8407",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-105.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d2cc72010cfa31ccc59307ba31a055dd820f9fee",
+    "sha256": "477665db738d40a5207b929ee54ec666ea1d31bd112bb1f73bc15b2bd39530c9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-106.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "359df938ad3c0215954e290d9d3980783cc993a0",
+    "sha256": "eff9d3601bcefdf40c813fb8f0fdef7354998b4e49fbfc89bcfd865d53d494c7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-107.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f98fe8d798e2e0e7d990aacdf795f3b8a6dc59d4",
+    "sha256": "6abeacd61460536e621a0e02beddd762088e4f8fef5218364e4cd03d1081d2ef",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-108.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8aab53e8143feafe5fc6a2d8cefc42537ef2bc2f",
+    "sha256": "9e60d5349d5ffd93c7a2058df25669e66e53008ef32fe4cf1da1cb7282415377",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-109.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fa4b162a728588cd0dde8b45bc059aba1d52492a",
+    "sha256": "97448c047afc17c707d5cda7c281d0fa74bb35a83166da4480a659aa64954c26",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-110.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "50b68223ecfd34df1f3c5f70e1e501243e681c6f",
+    "sha256": "01fdf6fb2eb643aacb04a4633ec1c0553e000706a0e050ab2c76af89542ef1ab",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-111.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "dfffb2ad8b72e64fbacdb4ad97d473a703b2c48d",
+    "sha256": "36da3ff1656dc946fb41baf2a384347111c08ce22bced8c47e3614463031f1cb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-112.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a1e99a7e3e63299cbd65c7f2c1fb7bafcb900c9e",
+    "sha256": "296a6fce5fc40783c3962cb8a7b24b823a5aafa3e1d2cb058ac1845f47557182",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-113.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c19a5d3c42e61ce18a5f3cd8dc108e785e2d0a21",
+    "sha256": "b57a880977442eda2caf6c336e358e38a29aff0bd49a89b7ab003fb5735c0026",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-114.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2d80e632b73d79792b1be4cd1f270444896c561c",
+    "sha256": "cf98accdfc8457b60d6aa6d95627deaf8becdd720fba73b22e41f520fb92597c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-115.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4ff38d6e7142e19ae18323008d742868b58808ea",
+    "sha256": "8aeadf056aaef94b5f0926cd8ecd8186b69b8a853855cfec2fdecab8d888d201",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-116.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d86a7fe98fae279599ed00aaf5d01ea15f13bd16",
+    "sha256": "dbb93bd6c759566324c72845245d852834fa7660d4de6f37c56d91d8d2051da8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-117.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a4da8d090f91d923eeb65ed6c1afd299db273955",
+    "sha256": "7cd9b928a1f3bcdfb6e1f666433253f239ae80941c3387a6dfed69bdb83d6f2f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-118.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d36ed073aa491b13e75c3ea243f999b9ab8942fb",
+    "sha256": "3b364942746975106f3261d02e37f8d1f25b832482429331b537980ada94838a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-119.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3d7f7c7654e6be5d85e460e76eee0c8e60cf228e",
+    "sha256": "9140178713df8449528cebf64db61ce4a7d6a4aed340f385a458a5e302d762ec",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-120.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5c4ca36ea55c48970cadf6b7e5344fe4818b060f",
+    "sha256": "507622061bc354f016e16409886084765ed2040b3f67fa4047b604e13ec3c5ae",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-121.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "04ba5f3a0c643315490485723c16d81a9010ed88",
+    "sha256": "dcf4bba7fa51d93e377ef82303b554170650d33fc91b52e5377bd694f7dc9e92",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-122.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "198232f0d8eabcdf3306af43b7bbc8c5418b0a45",
+    "sha256": "7bdbc11b5d024e5e7ddc000b8dc93a52513ed93ecce59b956e59d47a991f8b83",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-123.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "65fa749d565cbb3502a97ed8f8226ff52590b8a6",
+    "sha256": "3c6f2ef7da80bf57131f766ae7e69e3547407a4220215d4cabb04fd8ee296fac",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-124.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "91a348f7b143a728fb9eb684d511be3466f9e6c6",
+    "sha256": "e8d1d374c274adf7938bd69fc82c976ba104e78a8592f4d4da396ea147afa34b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-125.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fcc52914f0e9234ceed190524fd8ee05e0a7cbcd",
+    "sha256": "99fc50da73b303db6525a1e55f41a7f23e1b6b11a5133802d288740a5f1585cb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-126.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "62bca2a72aa2e841382a9465cae6333c56d7c907",
+    "sha256": "a2e48db690c45261d0039328a94d9500d81420c8883ba31eb4ccb05b24805aec",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-127.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7d4a82fc57ba774491a1bbeda0a40ae537af7ff0",
+    "sha256": "698477b5df4efb73465d35cc01e9625cbf924c4ce4fec13c48246cf7fb206aa1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-128.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "921f221978c50b6d07a5bec35da3995035299e52",
+    "sha256": "eef3a408ea98b647a0054c6405bfc86cead097134be72ffd86cf369359649846",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-129.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9f781cb64b5c518fc9eed8a23bc6106d79bb83a5",
+    "sha256": "7de48d3d780407b6c66c6e3fa6fe9144f608acf0e2db4d690bec9c30f98bd95b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-130.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c5e8095daf477f59a354dd960b82665043874dd6",
+    "sha256": "146f9ccdf3816849f1e2b35072f7847c02029c4ee7ed073c811625a3ea5b4a37",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-131.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a89fe81cb4b31c47f233b91571f02c024e404f50",
+    "sha256": "2208be631947f16fe93b5e2a16b387af7bbca6a20fe733b6aac2a63956a95126",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-132.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f17a17250e18285dea6cd7c3a10741bdc5b148ef",
+    "sha256": "354bb29baeb2c9bd45ec4e2d38ce9b4ab229f40fbbbaf69e4c024f4455dabbd4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-133.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "80fa7907b49afdccc40567b66ef5596e111bd0fe",
+    "sha256": "2e9ddee71c78733c134128f8d0b741ef7e4b639d8287908d669e688c8cdfbe8a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-134.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c1218565e3d9932ae09418bd6d4f942f1a394863",
+    "sha256": "707dea71065c6756b0601d2688c6bc6ebb699a24233b71de10cd23446773be12",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-135.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c582ae9fcd3fca9b74a2e028dc3daac14d30e8bd",
+    "sha256": "416eef087bbc64dad53228f891f2fefc295dac7846b70048e775d286bd27fb6d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-136.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6fd0e096f00975a167e2b33c12b4dabcf51570f2",
+    "sha256": "3bc2b7a4c67a5fa8c7de64b61b2ed81232bd2f002681d16ada08023c14a08b37",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-137.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f7777cfe9d8e21ebaae939e5b3c63721f3cac30a",
+    "sha256": "2f595dc738aed01f5281890310ae49e88f5632da1461c6eeb0fd1d871f9214cc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-138.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "204d414a542d94c9a7d9c7f7013d39b32adfc6e6",
+    "sha256": "2cf47067263f34f6f3988d14af921ab56390037b24cafb90569f405410c806bd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-139.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "30562da005e0419e7b7c46930cdc8efb54989108",
+    "sha256": "ec7e31cd58f0f2838f351e948f77ed170cc10b4d45c8f7cd3c9e26aab801950c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-140.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b9a9753c40c051656a77915e83228a7888ab1552",
+    "sha256": "5f1578588a553e436ff7523f1ef0897bb16430e6e0f7419b727389679035ec36",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-141.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f7acc1a5df0399357622f833ef78a7a078830167",
+    "sha256": "6728db8ffba635233775cd4e0c58763b21a71c1bdbd84d0a41bfa78d1c84417e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-142.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "41dc59b38e3903059acbf81ed8f731df5e9f9d3e",
+    "sha256": "7794252e01f4a9d9603c1820d5e460609efc21ca6c4f0d3c2a3f5ff7c9077ae2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-143.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f003b431e6b4d9ef2b3b91aec1bdb7db328cccec",
+    "sha256": "140fc4f984e32c0af36507f727b8ec96f1d09c039224076b95236631cb069148",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-144.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "702617d7e5eea63f0803ff28d5b761db369efb38",
+    "sha256": "9cceae0c272a9ecfae1f970233b6b33bd0b85ff8174fe0f342f2dd77b10f8a52",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-145.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "84c269dfd52af998cc601b102eb158d9fa92cbe8",
+    "sha256": "598bdae852f93371abd1e5e5e8eeac49ec43453a8bd440a4e813ae13b12cc22a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-146.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ee397af8e605e254e865cfb63251c07c05cb7e8d",
+    "sha256": "08a35a9e132619762d86463354d1142d0bc55e2c81faf8aa193ffbd03db96498",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-147.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "20e05da57e11405a75f95018e5415148ce94a73c",
+    "sha256": "d17522e4d7ff9908e7bfc63132fb59ce9598fcd2c8dbe1210338fe685711b896",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-148.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "069503e8e5ae8592a451e06a53e6992d016e60ed",
+    "sha256": "7ba2f6034d541fc1e85ba1a3f98dc991f6f50852424cbef41af94875039366b2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-149.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9079203dfd0be233c9e5782e715f1a736459d8b0",
+    "sha256": "440c8ca3d6e126cf151e134b75ecff8241756d3b2f61cf00cf55143cba298c2f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-150.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1b9ec62f501cc65f2893129fa5657bbbb6f77f65",
+    "sha256": "5065049252eb75063128dba287590ccbf85ced663a35ab1104508c569019130e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-151.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "57464a4baca738c367db1ddf390ed87e0586b7ae",
+    "sha256": "fdb8fb3874121330106848bfdcf3ae833b09c414a22ac82bf0a925b0541cd950",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-152.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "75cb3b115f1efb07b97c1339bffcd5db7f9f97ab",
+    "sha256": "98eb01209396b9e30fc65a0fc3288b140a010a15dc4f9a18ae6572af177717db",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-153.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fc6e2d9809d789e6a69eb8be8e208696848ac546",
+    "sha256": "43cb48abaaf11a717a20a1341ae274bd1032d09810ae7701a95377493e868f51",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-154.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a26ec9d7a3514a6c663dae434f98eac6caaf4013",
+    "sha256": "9bb53705b8860f16a93b069a8cff89460271ecd519b6c535b3b05f39aed353ae",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-155.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "90c676d777da6458889cca4a61113466a63287c2",
+    "sha256": "40bb6a8b405d3b3b598cf64f277c5d0320a8381f16ab5c75a6c95e9f83eb31c4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-156.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "96ff8e93b976991cb06d4e7a833b614b7b3019b3",
+    "sha256": "58947b69ff563535e38a934a9d1c529d5219665aacb5c329c8eddf00cb5ae9c5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-157.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b8a642e4a51028266e50949826ef427dfb9ead54",
+    "sha256": "530e983cabf5e2b8163217b38381139d4513b1b2fa83aa430ecfa3032635ef35",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-158.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "079530d8a6a2e7a60f352cc5f110e5980f4fc80a",
+    "sha256": "9f82b19e556db09935ced601128bfbf7bfa14232cf5d480c9080bdba713ba8f8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-159.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "15d1f662c7fbdb30895f9601da6d9e76f7446a70",
+    "sha256": "0cda1fbd854f62e825cb24fe2077bab4bac05fbd07af473c059a3b9288d64d35",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-160.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0a069fa25b50f50a5994802f3242a08e30ecc1ba",
+    "sha256": "c6d4bb6c380b14a5f17f2e20bd19033bbb441b0394b7b3d3addaf8ccbb868eb4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-161.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0246d984e721ebd64b0277fc6647f29ce1c02106",
+    "sha256": "4dc83ee9f82a50d2b52749f1284924e70819a60e1ce78e34c2488cd451f05aea",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-162.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7dc3898d8ee2676d4eaa08aab70560f34aaeb3eb",
+    "sha256": "fc427ebb983d3eaf06d7d366d62f1e7dd2c5734f94ec3e9244844bd1e0d627e5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-163.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "59fb63dd4723a87f9c8364cc5c162af87ec9c869",
+    "sha256": "e257c643dd60ec33197a87f3fc6cdebe86edfaa2fc06057770a5610122f7ba99",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-164.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b7063e6a20ee9267fd048acfc16278ccd0aa7239",
+    "sha256": "9024a5e454571b46e48f817014d85e60b1db529b1df4257baca1039ffcdf623a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-165.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3190754028b5dacbdffa2c79b2c8fd769215b551",
+    "sha256": "778772b2a9f93bfc2f36b6b319a91f26fced34e2b4bd5454c856f75c49ede0d0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-166.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "07c36525adad1372dd41cb6e13261992fc47682f",
+    "sha256": "629e183bd6d93cd859c9f311f790663b95a399097424573f0b1216eb0a72b3bf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-167.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0f4d0633d0f5bfc78f4ad7161f161abcb5979737",
+    "sha256": "f591bedb4020e08179db70767552d8f8be1caf1a83bf419006048a90565018f6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-168.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "48dd6d5802c9da2e8cf58c302046284579912a9f",
+    "sha256": "5a0595dc1fada67e60b41ff2640fc8c903f36016d3748c02da5f26bde2af698b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-169.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fab9a6d306263c6cbd47ea8d39f66d919118d9c4",
+    "sha256": "76e67ab5c883a593f9fab3b894e2ed69f8f800fc32e5ef83f61dfaca061505c6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-170.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ba7d710e3a2cf156784dba1b6712150583c6e293",
+    "sha256": "20dde7ffce48126a17075833ad5f5e19f93dbd05c83fcf538c0e1f9e6d81dc91",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-171.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ce3c3fb4c79f6d2cb15c444751c968d701c1a5f7",
+    "sha256": "9db2211b266ba58b60d01405252c728c0766403e9101a287635b2b2a1187271f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-172.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d2dca3b9a7f6b78b009bb2d8ef4e2f5678e3c115",
+    "sha256": "cfa6accae7d45f6ce9beeb67aaedf10609e516e125c6fffe8195d6f01846b076",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-173.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8d803fe1e3fb7e4ff71ddab1ca96ea17071539e8",
+    "sha256": "53493a08185afcf5d3e5393897ec681c1211e3cd7a87ae8bf36acd4dcc4bd9c0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-174.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "979b5fb11deccc7ea9d498f7efa99b2082961744",
+    "sha256": "e8488a816f978d727cd001fbd0e6121f75a85a0159d87ddca4f223d3013c0953",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-175.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3567d20f8cc91188190094372581b7e3c73c8e5c",
+    "sha256": "bcc7c395467ed95b418df0c5ad5847631d0bc7622707d7aafc39704bea685d8a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-176.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "620ac64625728a7f1ffb973c5e034f7f9bd247c8",
+    "sha256": "e8b69707f697dd4fb94a669f42f0223b22d65b48fa2ebd6a655659c2c98a9572",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-177.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e45237f535525464e0e92faabe88a14755edc522",
+    "sha256": "c1f71b69807e1efd32b9385c229a27c9a9ef36d0042f2e3e14487f69be999274",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-178.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "760a978cad0dcc8ed23fcf19b5514105ce14dba7",
+    "sha256": "0bca825ccccc7f6d7d679eb0cf535f41e6a16ae71d794e8db1cd5596758ce4bd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-179.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ac420348cf26e88cce293495f9cffba420ea29b3",
+    "sha256": "c51a95a28d28f01dcc4cecc9c361b79e76ec90d6902a6d4fa14a2fd3335ef848",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-180.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d540a76f88798231e09d0b54085f2c4d46d569cf",
+    "sha256": "e116eb48d578462c4e351b7179536ab2df5c927867cebaa5ef172c55d2ce679c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-181.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "17b5fd8dfbd55bb6e863bb7bdfead4ef76f9420e",
+    "sha256": "6164b3d1cada455433399d5cc7a252673cfce2ee7c9030cc74a0aee6873b818f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-182.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4c83ccdb1eea9d9daa431b6c46c9b3b572b88e37",
+    "sha256": "e6d2faea7e5c5a4b9887281cf0784b680c31d3599132eb943d6c2a6ffebe46d8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-183.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5c783c02cc336724c1c9a9b8cc4e2e6a1a455c00",
+    "sha256": "f1c878c1c1cd6b1a6da1b5db855276d3ed76e17baaf452b3e70ed0cf7d092a56",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-184.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "66950e5a2ae335c019fce513bc7f42dbfd564d48",
+    "sha256": "331a2c10f5b9a8de8d7558849ae78733aea98daa3207a1fe2252c24687ab7cfd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-185.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a67e582b4384ef45ae2c914cb8ad30619976579b",
+    "sha256": "234e50ace8906ce55922196d55021d341309f1f8e30d203a8465e9b7bdd0ed5c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-186.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e35cf80227fa97604679723735c6866dda7139c4",
+    "sha256": "207bcc5025164054174ef109f8b905924b8c4356c77230ea80c72765d2d90502",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-187.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a23053463a6a198dbf8c3b90453e9f578bd158f5",
+    "sha256": "2bcf708efa9f66705018c85d73c81a933043a58a95dbda6a6bf77cdb2a138326",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-188.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "bd3f0d126ae1c5db0dc04c2a1aae11161b14b1e4",
+    "sha256": "3a6add7997ec18a865a80d48546dd53bba07be758aefffb52503d9977f984e55",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-189.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9d91a28eda078bc3a3493cc6c059bac3522b0675",
+    "sha256": "fcc2ad5f79eea96252368398f401706a32db3b9706056c3c6225c49dd4b5729e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-190.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9e21224ba287da696d6d281406de5277adfc9d4e",
+    "sha256": "870e22840537a214a3a435c7d6c89271f6ff99fd3277664ee52c4631d0fefc8f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-191.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cdbd1bff2edb0633ec4825c8b910f591cb6fed81",
+    "sha256": "43db651af714bb3146c2b63d1601a707678e86f629590562e6977c51cae33a81",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-192.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "74239f7187fc077b798c3241765b7530567d08a1",
+    "sha256": "6ccfa523b0bee997d9840b8937c467ba7159449569249393999e0d9d3368d2fe",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-193.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8e3f69565ebc587592c42b9cf575a93d54b8db96",
+    "sha256": "d697a3606e51734019376eb15919202f3d54d620cbbba5dbb615fc52c4d76607",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-194.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ea1285532672c924a16f26d817bb5d08466303b2",
+    "sha256": "afa16dec070ba0100b588ffc275bbd1facdb42f25481b38eaad7bb85fa59058f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-195.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "72a8ce898d877fcf105563729dd1b69330dba186",
+    "sha256": "96fcc11a086eac8a6f31018275f70dd9050c641157e4590e8c6b559ba689f7bc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-196.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "bcdc549b00e36646809c192f1d6a7ac26cec056f",
+    "sha256": "03ee0453ba8669850ea7c8adef53c5d551a6a8709bb9aa4e46ad62dbc201f6a6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-197.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3bdbe7f56f918a44cc9271aafb34cf9dd9cdef54",
+    "sha256": "a72880761642e8e19eb2f538980c48c9dc6aceec5c5409ef8f4c3b25500c7159",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-198.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a7eb6039da775c76e4c2edd87b238350b6c97c8d",
+    "sha256": "293909e403187be13eefc1be61bdc8e5a3c11cc93b3d0471c10db87c4345363d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-199.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "672f2432f98a18f6ed150c000f403ca7e3799f4c",
+    "sha256": "cf8db263c3ccf09d0b8aabcd71ddba04aca584e67ca38132a78f8d08b774348a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-200.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8ec8ee01a0b0fe320529d5468dc88c311b6bd803",
+    "sha256": "13c4c00c4be611b8765a382057e84e22c7553a58a4dba940030a2b4eb801ca32",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-201.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d5808702391dfab924fbfd87059b7022b7ff710c",
+    "sha256": "217731dca6dbd0bca0ca1c95deea910a19a21b39b6e7c49edc3e935d87d33297",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-202.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ba8e58565bcd5c7bd3c72cd19aca0036a20bd165",
+    "sha256": "56c51baa2595d22a8cb037b8de76686a6180ca7b9da0f97477969fb4c8152006",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-203.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b37651017035da6f7e5e79c91ec943e7d02d8846",
+    "sha256": "31a6e4a0ec21616c5f74645354a4d49930fd4308486ceb9e65710a395858c0f3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-204.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c58d936feb283f372c77847847c5f4eebcd7e30c",
+    "sha256": "475a593071952c979615348281ccac287823a477333686c660928e40d2258ee4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-205.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9a4fe43f68d2cdc88936b97fb7905360174442c0",
+    "sha256": "c6c876affe3d940a53fd41f7b0ae9cf9224900b38f3c7f56f917c6874e082c4b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-206.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "72f5e03a6e8f6b3eb63b80f5701b38d0c557d11e",
+    "sha256": "355b72dd8e65918503e9b148375b54499b806b3ee04506405ac8f30446761b2a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-207.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "40509bc9e0c056d5892946ae4463ca62456b3dc2",
+    "sha256": "b3b2d709f3367907a669ec9d5930eba367278f350937b5a8d9d0157beb8acf7f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-208.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "475bd889bf6ef683eb6c99e818318e4c3f052821",
+    "sha256": "1a386cdd894584db966b3583e1016ea274afa900abe4e6389de80ad463a31ed2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-209.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "adb56d887f07231c4a3989ca2be67b15f7f1ebaa",
+    "sha256": "7d64fd29617fe8c7627a42c6a73542a0ba15df18c3c98fdcdda73fd0e470bfe2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-210.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8d635252ff1961e4c5f878753e6e41f6d7307727",
+    "sha256": "4320edd4306b2af1cd49c2e78b58df6887c3662b93f137f5399ff43dd29c387f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-211.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ce5c9fcb2dae42b4fcc063ba4563de572b05f2e8",
+    "sha256": "aa68befd969dfce00d88f2e31c1e7ddaf48bdd1ffd8e2434de292fe47824c47f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-212.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "63e499e30514086bd2b8791ef041c5f7fc7552b0",
+    "sha256": "b7ccc956a4b724d82ba3f2873f4fbdc560085d59738a32643f1fa8b478fa7605",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-213.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5cd54843e22a95c51552b511011be35fb05f610f",
+    "sha256": "d67a240b27bad327ebe198aa6ade508261db5994a1e54253ef03537643a06d4d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-214.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "130e93023a287abe110017ede6cde234336816ab",
+    "sha256": "8b7403e6ad12cd1da0bd81fd11c268c8c2cbd65ed6d14beaedb6f39992ad059d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-215.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2355af01753579628d37aae772635732a7b0e68a",
+    "sha256": "9487c66c1f3e2f05d6dcfc3089395e21f7821c5deb82c15d9daac39f84df4a41",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-216.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "06e9806a840b3da97b131cba0034937098d7e6a7",
+    "sha256": "63e0a03f0c0b918b84d97a569b68fb15f8f0804fe5432036bd22b0ab75b7b2b4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-217.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b4310e0fd91adf984801e1059fb4757e3399f9d7",
+    "sha256": "46aad7cf3b5083fb908e98fc1757c68c767f683426b842a2f13c7cc8120e6d48",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-218.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6a05c6ed3efa36d098a3d5559cb47f931f4af1ca",
+    "sha256": "03c8d1ca787469a4eb0e89cbaa1334fa259069470bf7fa0f54c1dddad5918ec3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-219.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "372ad452a133d0d7d41157e616bb37c18a7ceaca",
+    "sha256": "8f8c38ee8e5f021709f3aac66bc199e2c71f40ac45b6590b72f7808966b633f3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-220.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c45ad5fdf21597e6caa5968f4ebbf23be45d82cb",
+    "sha256": "3a9f833db4ac3578bc336b5c9d3a0773ceec770806c376ff1cf4094141f8ab98",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-221.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a4ff39142937b40f997299beaa076eb821b6c832",
+    "sha256": "da234756ad250674f4dee424bde4450cffa65e792e8705bc6bc130b5f4e2ac33",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-222.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e92fa210457931d91dff77c520e2ea23c5d5cc04",
+    "sha256": "cb362247079c72efcc92f6c679c5697ea4b9332632a34736f48fad193b44e50a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-223.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0183216b99c04108836909bbdf00feda2544b85c",
+    "sha256": "7d76a510e321c0a87c3917536d4589b0ca78210ef30fa678a9d9cc0dbf35bd6a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-224.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b1cbae8635c738e90e9eab17bb2dee1808470bd2",
+    "sha256": "717898a46c38a8526598a646bc8187ffb643381c9b260bbbd0d27bf33f5a4321",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-225.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3b33d04733fe686b0068bbfcc4d55bbcc8061161",
+    "sha256": "d93badf72ac4fb16ef8c79fa1eeb941085f846fe1fc461d916a930632116e147",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-226.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "de989dd91ff20ad704e8459ee1510077493ada9f",
+    "sha256": "ef4450ecbf24c1fa84b1fadb8ff6d7939c6c43b69b8e876ceae11758784d53d7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-227.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "175fa7c801294f56111b4002da2cd77e9c6bcd04",
+    "sha256": "21885db470ce3cd71e3592ae941162f70a24baee7e3394fb8268bd20ac8ff2ba",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-228.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "df779b720f06ae919cb239e36dd8d858f55fabd6",
+    "sha256": "8ba1071f3e703c29c4710e5fe1d0694e147a75f0bba87c5cf56159c032b0f87a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-229.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "670ed98736c31ad62df81e49749fe3c73d204a9b",
+    "sha256": "ee1dc2228142fda2b62af415115901d023c84814806c6dc3502db4cdd2f43b3a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-230.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e9e4b18110ac9a0a704da47d1120bebd51772178",
+    "sha256": "781d9ff6dd17ee8cb4548b528e75465a41a6de91572f3982af03af9d06f2938e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-231.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "56b079278151907446273fb321beb29cf2f44deb",
+    "sha256": "22f7fc67a883e0b7d3f2be90b9d29ba7dfe4df02133e084addeac0ef7d59213e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-232.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1da565581a9dda41e8351c878484a90dacd41e16",
+    "sha256": "de9cd07f702b3bfa4f6ceccabfbb0ccf8f4403886df101a43c735f7f172c6ca1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-233.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7f67a369d82841128a2ea0a708eef8060d1d46db",
+    "sha256": "524590513767d02a134e3e9f9532f0f43bd266f565db8de99ed38edcebcdeb70",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-234.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "16cb53976e5135ba5dcfffb9e688d8b7bbd0d92a",
+    "sha256": "8641888a72112e3f49395f6be8b3d516b53033398061f66d4e73064196da2ef5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-235.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "92c3b0ab84dc87862d04fcdee50ca4d5eb54dfc0",
+    "sha256": "0e9a255be27a72409fd7b4e7cb8dd32e8b0c1cb5022b00233e1eb0d8e55981eb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-236.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "358d12f862cf4e867ba10928e71495468ddad070",
+    "sha256": "ce47ffd16d4e62bc581fbf9fb453cda7d09cb0228b1ba743f779c834ce1716bc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-237.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ca2758cb6245402432f244716f6cd0ae4cde909c",
+    "sha256": "1335104a6528d356d4d66052bdf2a7a659a5cb9998e7106843014e4e145e799c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-238.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d136f2abbebc8e00aada5d737791f4c2ce29615a",
+    "sha256": "5a77b11c58a5f2e2ad79c59a70fe5233885d41871e5ad662ef1ce8e47d23e74b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-239.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7db70ec731d56bcd126777750eb54aee8801943a",
+    "sha256": "9a2a5e71e398f460e4da3c9fcf3d74219db31dbecefe6dca38060d6ee6bd1646",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-240.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d616a0e6b61bca1cec8addd694529628eea1a675",
+    "sha256": "778363bc348dd3a9894583626542e46d6c7bec8ed7fa626c9db60c2222107329",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-241.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4a5ce9d4d9774c61ae45381498d3e769c9e1a79a",
+    "sha256": "1dcc550af69b9e64ea6fb7dbe10617bcb1ba3bb78c0610a597bb2c727810b409",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-242.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a2a5e8119d004b476d4e17afdd0091fd00e0071c",
+    "sha256": "6d53be9a4f1cbb0541dfa992d049d249a43c166e16d08b14b4e8e4ecf50cc2cd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-243.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3b579647d5c8e8f987c6e815ba65769d0e491422",
+    "sha256": "031fec6ef177f561c03c64a429fa95a009ff8aca8ffdd8f342b760c57b82c7ef",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-244.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1124ab154b7713e56f82462d0bfb537bc859ba0b",
+    "sha256": "cba5b46f416a0ec5e912010b297ad75ced7f73fc781531931f99f156d35ac206",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-245.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8a1e47c863e88b587e587e482271583f503b3957",
+    "sha256": "27ff06d458d2d87956fb70d29155d51a006c47affa56b32f704155794f506de7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-246.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e91930ff3d9405de0d52432694520f82ac3faa71",
+    "sha256": "4357f244c0a3c1eaad9a12f960c55afc6a089e7f7ea7117e0b32834449b28dbc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-247.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b2401831cf02806ba3afd62a097ee77959947035",
+    "sha256": "3232d943d0deba034c95b9b228c564d74e58726065980ed28329d1ab8b32165b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-248.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3bdbec593eeb4224708585c59401decebe5671ee",
+    "sha256": "118f962347b9181cbe323c651bdbe122394279ee181fcc8ad25ae4adae7ac0f0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-249.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f93908faffcd11142a939de2f118d39e233a263a",
+    "sha256": "0af81d3005ebab7da4c4d58198e6c28f9b6ac3ef4caa00daeb5ab2b9b04438ba",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-250.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2f04e716c0fc63f78c10c3fa2e726c7a97964018",
+    "sha256": "98a0145a1a861d2714213ba136652b2d85ab9ef45464c22904fd2b527d7490c3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-251.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "45a4d31e75dbf66ff8bae8a430e94e5d84c9749b",
+    "sha256": "953cef67d87d5b4e62fe0da99e0bd7028a8ada237c03322ed9811265c8d1a9eb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-252.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "32a48f088b453c81f4130f3615da00cdc6fcbbf0",
+    "sha256": "7f30e8b52166bc88101685d84e6923073c6eb04b65f3759c740e6a506408e01e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-253.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5a9c2b960e45047639b800cd80eb4dd3237eb6c0",
+    "sha256": "7573d11adff42e1b4cb4912d5b2bd8a2afc7e07eadb890d9fac956f412464b97",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-254.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "891aab9f752768c74e31fa64e908b0c08b084d20",
+    "sha256": "e79e7680bb57da5059482da8d6456b71d60568834f9a04f7562d23b00edfd111",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-255.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c7fb0f970a866a26f32214fe4e69227a03324209",
+    "sha256": "2146bbc48158aba582fbdcf54962f26a16a0d81a08d52e7be7ed0b7e0526e942",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-256.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1a801c926e19d740d2f031d49b8d4301b4ee1acb",
+    "sha256": "1ba596cd5213725ac66d994d21a2bfb5f6a3fe37ffc5b6a06eefffda06c95dbe",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-257.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "30186684ccc5c71ef5b8eb26c43e41aa6c2f333d",
+    "sha256": "565f2948d97ceddfb0b342d30eb5efefde542f40fc9ebbc4835cb25e8151473f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-258.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9deb00f3635a834c62d01afe6a1d9b8a236f1c28",
+    "sha256": "a471a0f8b0645726eef9395aaa2a1948541e83cb7f84047d60522faa9153ef43",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-259.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f4ad9b8ebe3d2c6141146d41d744d0bd4bcb3705",
+    "sha256": "d174db032d198146237cf413a4deeb86cd8b6a80964120b3e259ebaa1d366608",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-260.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a6788ec1c743aaa81007457c6b4208235b4ba698",
+    "sha256": "8b9969577433fd074cf7786e939b0030a74bad3bc6ee09f5973be3abedd6db61",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-261.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "91403905ad2a009d62fa5949d38bb832c835060f",
+    "sha256": "66fac5191275285bbb15bf5516112dd3b16f0957ff708a107cf9832bd4eee36f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-262.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "78b5b1fab4c9d30f0aa372604f1a6f17dc90883d",
+    "sha256": "ca547b2d01bd55f99d22287b7a1b5a3d7b25ab8d0b50254fc39010fbae859d73",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-263.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0cda6ad3992e6031693e58fb53a94a7f19955bd4",
+    "sha256": "b9e05d9f64339a52941d22db4832d66ee17b1153171c485d32b08ebb3bdd6653",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-264.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6f9ff06469536211e9206bd875bcf7def0a0b6ec",
+    "sha256": "02e38f84c9608fcc006c824d31e0c57edc2d4bb18b7c29784cbac39f2aecff7c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-265.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "79f66dbb981639cf9c08d69445bd32b2887f0891",
+    "sha256": "b95d1a47bc1226c46f57415fe8962e93525266aa518d921c33f91241a870a3c0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-266.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ef7950827e56bd207afad6df9aaade295d26f8b7",
+    "sha256": "c1a48a3a1a3b28322f7df064e6c728a9a754ad445416da8aecf7d60cf9f928cf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-267.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "310baefebe78a34deb4abc1147f993e03c82711c",
+    "sha256": "a2a972e75eb6ca22aa634a89758a19539f67aac8e8a25ac863298d29b6bdba8a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-268.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e8b1809d96fa5e5c6da9560b313ef4e8c880b90f",
+    "sha256": "d6b542b3f7fd236822bdba29449a8bea5b0d5952b4325b379e9c01fc8c9161eb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-269.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "db292e685b6276141beb2032f2c2d569c5b09b5e",
+    "sha256": "e3a69777a293910129d8249a2fbeaa5e4baa7e7b80f64f9318eac5abd8abbabb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-270.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "17a0eab000f54a125f4c18549f4b6be4a0107314",
+    "sha256": "13b3fa1146a95ef1d62f057f95d315cb05804bc67bcd24127cdb9057003278be",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-271.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "88ab7f2584b1ce8640691af77d6d01544c2151d2",
+    "sha256": "501badfdd2f0aeda396757847ccafff3d0dbf0b0b3896776d55628591c7d79be",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-272.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46e80681618c8e50b3f8dc8a7b8c813f617b6df1",
+    "sha256": "c02468cf12524b2b5eeb341ca0dd08cb1d1ed7a18477cc13bbdea003bfc9ab1a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-273.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6598e63b0581a29a4240969aeceba3d8988528e9",
+    "sha256": "e0a8418a081b3878e401a45a9abcc196baddd95d657ea655b6aad31d01bceabc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-274.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "bc73f4555fa1a57298db036b78fd14b7e9ea866a",
+    "sha256": "e2e0d6b658edf6ad94f97fc500d3510daec2c645d697085bf22160dc019edd2a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-275.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a4b7b1f605a706166ac861cbd1c34762c4cca7bf",
+    "sha256": "eb2ad9f6a309c1d8a5abe563ca5a647a00ee97c0d294dc05efc778b465072308",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-276.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "55d4e20559f181513c5269d1a2e9d5dabba7d472",
+    "sha256": "9a39f7e5817ab219c59e95d5d54fbb6302685c5776d8a5fa786fa7aa48cf27ad",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-277.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "dcd5b488ab617502f70d2a3aa54e6ec17202f718",
+    "sha256": "efa212ae75596d7324262a2db1e15ae94dcbed38b83d108f9635122f492c4081",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-278.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5e838069dbe27a7221736889f7e9ebcdbd89470d",
+    "sha256": "040278c4b89fe87f458e8cd2f68d6d358b54e07d751f1ac87e8958825b087319",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-279.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4fdb6d5be4734cdc9e9f4f0c13de81757509ada1",
+    "sha256": "95fd157a1b8c3d7c8193e86f73a15b7731208a88fea686f087b9b8e43c74b5af",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-280.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7eb5e25e7d6c4d7c25074153ff8f7099fbd16f4b",
+    "sha256": "4df4d07695a5aa9fb45073085bdfc24d47f6594e008280a22776f99ce499c8e8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-281.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0386a230a8cf9d9d626d1433712c6cb5e8147bfb",
+    "sha256": "5b43c17a83ffec306232cc12ea9e5bf6f6590bbdc5c9f16ef5eb95c46d3e12eb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-282.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "15ed210c5425dc8e2c2f9c5d71a3bb83c390aedd",
+    "sha256": "f52d6b562ea1b724baf2d7b472e6f7ad7337e83cd6b5755c4ca7e8cdb38ec4a3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-283.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1b6254a9cd9bd28b6e22f957e1f1838c58051501",
+    "sha256": "d57fe6c4aeabfb6dbd604f61ee28e24cd6a5acbd8c69d8d8a881baa3f7c04f8c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-284.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7c408faaf98f9139bf30d1b98ea1a0457ef489e3",
+    "sha256": "efd5bc4ee3471aacdf32c884ab02c2c1a5534990230ac32defb9bc07961d458b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-285.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3aef74181c0a0e90b3472e64fb5e61c4900c1f97",
+    "sha256": "6a981d82b63d431f69d46f66ed9f361196628ceb1eba2efdd04a23c51ed1e781",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-286.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ff65051ff7e358ca52ef1690c53acd877895eb30",
+    "sha256": "d5c1f9ba4eb05290834f55a1d2e13aab7fad5d8ddd01279b43110f38db1162e7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-287.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "faa78b3b96589d6ffbf2ac1585bb433e5aec8cf4",
+    "sha256": "d39fb61f4a6c6cac7f8091ccaa7e1555ad669a9e72b6b9157eba9148f6fd742a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-288.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3fad0cfd73487981c19b773f9940725f19c2e342",
+    "sha256": "833782b14da66b08921fa30a0a2a7765f7139d019fdca4f9fdf8438c6b6a24fc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-289.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9740b2fa5ae5b17eb6bf6492b21f62b517005388",
+    "sha256": "fcc97b1a63c93bd0bb42081f611cb26091ba756cab65cd6b1c9f06d27221a4f4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-290.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6e24098b207047cbdb0f0b3515d9bfcf261c2640",
+    "sha256": "b82aef14442c27d302fcc40c4ec2b83fe7c3dfdc9f27b5bfa3d9c32924044290",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-291.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c9d9ccdcb07fa716a0e824ab944fe5c0cfa9bec6",
+    "sha256": "7795e61926cfdd4ebdb6493d21d19cb016926fd3f038a8e6087277e896bd4902",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-292.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0b1890fb876e54c8b87f293955ca9ad83c6872e9",
+    "sha256": "631e0eb5cd01db20b5682616202c77f873825073adee512ed32299efb06c1a2b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-293.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b1c7d4b393cd24d340f5239fae15af5781d834c1",
+    "sha256": "c8b22eccb0a3861b7b067c0ac23416a2e0b4e100a288bfa3e908427aaa3b1ebc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-294.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5bfa847c83666758d8ceb4a5aed1176fe9f46296",
+    "sha256": "78aec1c9338bea153b53fec9eee7adc1945a7e30ca2136fe5556e952c767a486",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-295.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b92ba4fb1ac2561cacbed9389f88ad0517a15231",
+    "sha256": "2abc0c36a0327ce0253c67e0b2a7883efa48f0b7f4ea26fa700f380d4bf9b7b1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-296.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ebc51d4023e57b0df8cd0c1088ed069d021c2332",
+    "sha256": "9c066a7fdab440d9f0c53e1e391408eccf96079cc70f0efa75331a9c6a07af69",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-297.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b0bf8205ae49ddb51711ab59aabe64f1fc01b3d3",
+    "sha256": "949e2a33041687f5aa388a10d623415847343c8aec96eef82e6b24af6386487d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-298.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "43f940d688fe9eeccd19be076212e262ef129e5f",
+    "sha256": "ab75139ffca8d933477ca17a4496c3fef0929ab59a2726c605755167a39cf0b5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-299.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3c7512e9141167142855d402e6d26c8f373bec70",
+    "sha256": "9dafdab197207c6944354b006830cb646027a7b3ea939deb075f6652218100b0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-300.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8de86c51a6f332135aae179916c44bc610d20a1e",
+    "sha256": "be8906dc80cca2628f0fe43918f15e546ee7ed80d08baca1f33ee2538faf04ee",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-301.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7dd43149caf0a2bfa22b0e66ea60f7e102629ce8",
+    "sha256": "724190757d19e12ce94f2ade653bb29f6bc9e3c57d417b7fc543b7a1c8cfcba1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-302.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e5746be1c432dcc20149dbfec7cf237fe4fd35f4",
+    "sha256": "bbb26db45cc57f7bd71ba645dc7beea67c9504f8a32d6fc680b89f281c7642c6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-303.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "13db09ba5789c75f716ebcf956428e5771503a27",
+    "sha256": "6f828d03c807a1b85cd56ef7070e26b947f22c2e18da11e63acf9a4253783751",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-304.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "38b856892bf3f5931d26eeb5a804a11393057f41",
+    "sha256": "1c0b3fcca1071285fbc9ce939315912da1df15950654050bbb55d2f3450f6780",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-305.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "99ef065cc4243262a94afce401485908a1d7db36",
+    "sha256": "ce37fb3b41c53205889ef1bc44d658898aef86cb17375a528aa0cd431edbed58",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-306.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0f8535770b7be7e01ac8135ed52589f7c7f72258",
+    "sha256": "2e4e42b4969d93ac63255e56c8b074b841e88d9b89acd9488e4f4ea4c8af4608",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-307.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "15346df39284d02a8b613d7d2a21f688618522ac",
+    "sha256": "01b9576414a797f576303c0f8f34d8cba7c4af38bd1916a5be683cf3494fdc5f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-308.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0042034947b16d84e614347bcf195d50f1c24557",
+    "sha256": "0c93ec5698a3bc72310614a8c236c8426f894e63ee75b86dcdf89b473e8a7293",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-309.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fb828b7bd2d67e87da3df0a063dc0a983b8d4240",
+    "sha256": "bdb2fbd7b56dd50b6d778a9888c89fc03865d81feaa7ebebf464aead9a00494d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-310.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "eb8f68a5962fc33806c76d8692df776c23eb9eb8",
+    "sha256": "c4113d6ff8803b457f38ac022369482a1b30e2356cd81e8d9a57f4c967fb2856",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-311.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "edc38e258b1ac0e5a34de6e838d8aec25f7ed2b3",
+    "sha256": "1ae4c5ad50ae2e98a9a9e72ef0fbedefb443615b015738e598b78419dee47413",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-312.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2e0c8e139fa91c2af118357454b34657b2e803b3",
+    "sha256": "1029008be42935b263d0f5f1acf085cdd79f884a6e958aea07f62fd1f7ab982e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-313.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d6bd4a8e153c6ad8d676424f7517ec36ddf33a5d",
+    "sha256": "daff23c812168abad98f65c95dc6c2bc991c0b8229e8fb714fc259213072c62f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-314.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ff5e6464a9059c5481cee230dc8a9c9f01f986a6",
+    "sha256": "ecc842f9121d9c85b0f37ea3cb2f979cf2627c6ebf0eb7e377f4cd7110188b0b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-315.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "949e488094f6c759fe88037ec2b6c70c9db57124",
+    "sha256": "a336da26799d0566134df237afed42f34272a188d9a7ba5d3fc1fa0a74ee6913",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-316.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46a5e9a6300489e17055fc82808f131b9049f2ea",
+    "sha256": "a6c0918afc188f82df35e68973def6cc78ca578817a4fd3e6436173043adbedc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-317.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3204fe4eeb7ee1907b8cf32318f7b24d618ba89f",
+    "sha256": "034840e49b0ca2454ce8ca677d6e79d96382669f0d8a5eb671b93a989cf8e401",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-318.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3408d818dc9c4c6b661870f88d53bf9145dd2b2b",
+    "sha256": "f5b3e7d3de7fc2797f466a5a1ef27064d17ce1bff3f951fd5d9b9c0f8af8da15",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-319.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e9172c6b197ebec1ab4877089318899bffd30109",
+    "sha256": "c7df095ba179ead516f89d5757d19180d06cfd39902ab8f013c640be660eb1ba",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-320.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "542229ce49d64df48c10fe466d35a42ebbd09e99",
+    "sha256": "32ef143327173358b1edc8130a31d65fccdf48628843df3ce388a478017d6e33",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-321.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "babbe8955ad0751046eb6d47f474d296f83517d8",
+    "sha256": "0de343bb7cb14c61c5c1b3ab6f4f7390a9cb626c2a35ed761766fa9730808ad8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-322.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "da2de22026805dcbdc9b9dbad930c618da68cd3a",
+    "sha256": "49cbc94692714b2be30a11e7799c822ed7a2cf43f1300b9ea2dd35b8062f8e2a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-323.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d1cd6730977e8c4019f015c997bc3c1ed90c262f",
+    "sha256": "864e6b838ca17f08c778913ec75a5c49d2958e957bc54f3c0d3dc32df8c73996",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-324.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ef1e482ea6786029c6f50badf9c951bffa67229f",
+    "sha256": "cbe29a9b0126840b5a32a79522c672e2fa85e1ea7327fee936054dceae0b2646",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-325.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "767e1ad101537a6889a5d13d8858244e603aab07",
+    "sha256": "fe5ea6ebcea9c99534d9d1a5b2918274d73f484b380ce33cf678df3e2f268a29",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-326.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2838ee65cee3305c32316204fb6898160b8fd743",
+    "sha256": "779e243094dc03bc339e4f5c0a65e99ad478dae6403563a568039062931a6921",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-327.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e3e5f1d7543eae8d4a070d834cadb212fb70acc3",
+    "sha256": "76730a0863df134e5241df5cc996decf8554ca757265f3875fe886fb920c70cd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-328.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "24878a001617a89476699205c00c4a9a9805d499",
+    "sha256": "e2a4f791c07f3257f7e784f63feca1357f8640625e659fa62b21482c4d2430d1",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-329.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1455ef304294d9b87accfa49834aedc958a59c94",
+    "sha256": "d281436e8518429818f50a4ae07020b22a94bf4de5aa3dfb4b715b84e8da3461",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-330.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0dca14575958c8d68b99f950cb2e8270be89f925",
+    "sha256": "5b4a1f5f15b82fb9e3188766dad3644ee3f6873c7f789adc741fd364398c9d4a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-331.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3767d50aac8f4ed201c0194ffb2c3d7c02590b73",
+    "sha256": "a69baed943a74c5fe46f0d61d56869c8d045c1ad83f9a54c21cd72241022907f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-332.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d570006a11d28d171c00fe9321a1f9da3ef32b2c",
+    "sha256": "fdd884643ad6fa2ae04d9a528df2451d287809f956844c9d037dc7cb8984f1fb",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-333.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8b2b119e6500252252aeaffaafd8f29bfafc1635",
+    "sha256": "0067539cea0a74a2f881aad5bcfb6d425f0447a70f111380c3854b9cc0381615",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-334.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c27bf388012f34227f121cbbcf74358c7c0e4fb3",
+    "sha256": "6fb214ffb40da5749590def16683e24ed11b1399c41e7afcd039c51bd9e641e0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-335.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8693895494b547600b3d9716b86e23367b3b8810",
+    "sha256": "d1c3c679f51f8c4471d51ad7306ab3f0f60c3529833a75bfe7ea1f4cc9123ca2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-336.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5bfe52b661b283e5c6670b35f258e6e646bfd4b1",
+    "sha256": "b9c26683d45d484eeadcc46cab0cbc5e6bafddb897d132a72fdfe895b37bad14",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-337.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "43386b9f54e0ff316a00549dcf6bdaca19701a52",
+    "sha256": "38f68f0674a4f8af1b9256a15ac1002b437ab23cf03716cc96cf12c04e501c92",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-338.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ba9020648edae6bb37ecfe9c3344077fd3bc949e",
+    "sha256": "95118b831990e7e23b8595b6df0f05dbc7e818f45a83aeb0a55848fd630eb7a9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-339.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d76abe8cd60331be828e9808b070a905342cd86d",
+    "sha256": "2b476b29bbefac339dd4fecf8dd11ad98b703c87be0706b3f1d678110a2c7f99",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-340.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "dc61a59d5a61917094cb81c19a19d05141a6d8ad",
+    "sha256": "5a1e1f4008797c5eb62dfc38fb985df7bbd3ebc0058d96ce0362f9c4b00c3700",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-341.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "91673d6178fe6a544a1f5d93bc18d3c631fe1d46",
+    "sha256": "47e02ed04c67767fc3bebfe6639907d0324562b002b3ac20718b4ef215cb10a5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-342.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ddb5f4eda5494cbf73ee82d434022ba93a349517",
+    "sha256": "fbbb8bd962e6f58296b1209cd2bd1e3a92d97e93dce067d50a038f7833d03990",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-343.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "09f8c740ee3a94b8efc29bb05bf156b40ea6f97d",
+    "sha256": "3bbf7664944e40ffe65a8dea35f25cf5a61c12a1da87a18356244545931746fa",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-344.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "379b8917a22361407576d290102d944a8dcb8f14",
+    "sha256": "a24915804ec15e774f27c80faf9c2b4995f5cc8db8eb6bd3b6ca5601005b9090",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-345.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e64a27f56ce242c1718f54d2a874443132290d70",
+    "sha256": "150665f584d77d2ef4150ceb9842b3779f5706f1b615419c43b6ef6e4c0fe792",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-346.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2d750318c028bba03174a801d6b2cb661d8066ee",
+    "sha256": "bf378f47916a9641feab74e279e30990cb1a9a98eac68885340edebf47a091d3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-347.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "3708e566155d3db3cfcf19925384718fd1c382e9",
+    "sha256": "511e4cf25ba1b0a52bd74cb6d47da373727132b56f3b2fe75328337764986460",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-348.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ff923baf2429fec362e6e1cb8954d2ee375485c3",
+    "sha256": "594d22511d64640531aab0a1bebb5b22a02e20b9432663d1f72040cb069a0d5e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-349.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "27441b09c9ea2eb750167b54d86ae334e26d61dd",
+    "sha256": "3baa5f9055444c3d9d5689ddc79f57df2720b9975ae29f9c36c90a8fd7ae8f12",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-350.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f4b24322e9d8f52ea0818e83a96811d7dbbd83f9",
+    "sha256": "617dbdbde3aca524b64777c4a3a9a0c1aaba9cb8a2cf27a67ef5605f8b5815b2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-351.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "70d54d5f8420cbb2c4001ce7db00dd2f4e86bda0",
+    "sha256": "1a611cdfe6dfe2fc74a774187caf1b29d26b2babb46ffead5eec0809c806e8d9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-352.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "139d67bc0df6b9440fa8934882599a94a7960242",
+    "sha256": "7516098d098eaeff2b44682d738db95bd632ea2a36959e0e1a640c05fe4809fd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-353.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a530b1f1a64907224c7c993677e463660b912614",
+    "sha256": "c73dafebdd22a3e9229bca5141711aadef56a1c503402a32b910f35dafb4e90c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-354.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "80fa3a1bc2484c65f5473cece4314026186a656c",
+    "sha256": "16e04ffbea5bfd68cb59653b20e4955d17af619cb4072389d7d354e4f56e12c4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-355.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "acb70aa16892da7ab45709889ac69b5f0420c9b2",
+    "sha256": "f83631d44c90c1c43acfb2f7a7c0ddd18b1e34908eb7e43f0e76c1432bb0e5a4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-356.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0d2a94ae8de90f0d43f0b224e764f6f943542bb3",
+    "sha256": "03aa35dc7f3bbde6d69723ceeec312bdc175171d0f6a50cd28b1bab8a5d6b35e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-357.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "683b1d65824f736f8f12c9f9f6aa4d152675aa52",
+    "sha256": "95e1cded4d2770c5d18441cd6de416808c593eb7e1e881e7f772af35c58df125",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-358.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "273fcf6bac5827f5be4d74271707ecd8dc5d9c57",
+    "sha256": "e1768a0fdf119ff75424ae28786ace017bb6de990d69811e97f215d1e8a7efca",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-359.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d77d3ff37f47f52be5ca12c76ca9ad8b3ed91f9d",
+    "sha256": "46f44595bae5034bf0d452e3456a5cad17a054d40b36384d41f46a7f7370cd1b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-360.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ab0e0df09bf4fbbc425162219a71363a72aab3a0",
+    "sha256": "318f0760b938806a3a22241b5f19fc8a4d4e841f0f212c5cb1fc1dc6504b938c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-361.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1720917929bc4b9478ab0038dfdab34cbb405e99",
+    "sha256": "4a76665ce60118bfd33809a68cd8552f07b5eb55bf1431d1c8a1b1ad4cad3606",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-362.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "87d48433648729a738892cf9a4cc1dedf5f32659",
+    "sha256": "f5eb7a9a8988b189c8d61434bd72ef5e5276fd1dcedad5b559ee222e0f0b9251",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-363.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "75fde2d089253ca5ffd1404c85a49149226426d5",
+    "sha256": "e6c8bc7c2558d278e720a4968c13fadbd36522010ed1ac6d2ffa7dd3f12cc2b6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-364.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "80c8d43f33ee957a508415f395c9398342b5070f",
+    "sha256": "b917c77d40475353afb2e7d60fcafdb8c5fed5a7591f876d8a66cb5138c6752c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-365.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b3907bc3aaa0a55181f24f309eb3e1478be7663c",
+    "sha256": "22e4d1b3b3c6252c3eeeffac7c16be83aca1b6eac6747a1005cf8c3f8ce755e6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-366.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1c56ccf3f46017ade19bd3c57282072195c25298",
+    "sha256": "72d7a35bca4f3d2af1459b1a8e84482464282b338fd7ee229928aeb5ad5b81cd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-367.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "daf53a80b85fca48a401af75a7961ea3feb3ccd0",
+    "sha256": "18ef3a84d5ea26a911d1e1b9d09d53058c93f67329b95b99e6cbc84295245f11",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-368.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cb3a5ef43364efe12ba831c6cf52d7a3e2ecd588",
+    "sha256": "c2d3af648b7eaaf52db96d176b685ecfd6c6f80bb309f6fa6af7b80c84372372",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-369.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "223fdd0a8c9f0076b8a49e2adf1581fdc1142b27",
+    "sha256": "1fdaffca8d17bf9a0fe91c82acde4dc8b0497f1ae8428f0863ae4ef99a5a9f7d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-370.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ef12b711eb2158131558715ad99053332577c349",
+    "sha256": "1820e4c07729256d1f2446ca85a0241d7540893c072ae8981c250925f6b62fb7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-371.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4c8c14feeb6467e4789858691549ce5f68e39697",
+    "sha256": "4ee4fff7266d50b7df777bd774edc436656ffd807aabebb5abeacfb483cc7de2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-372.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "59fa0e7c55ad352d04dc9d43e439ab458ed56506",
+    "sha256": "943fdb6efa9a7bb95a9c2934de9daba951c1a32f97a4666e1aac9ea410c8bbc7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-373.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f25efd8758ab1db82b7ec428ae9925176fe87aad",
+    "sha256": "953e6376a4997c6a4572681e4457a3afc56f353b0ff19b96fd0d062040015740",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-374.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a548826092407aa92740eb0766918e7d257a9e85",
+    "sha256": "e61b2d6077f323d18e85f620ba66fdf8b8940cf1ca02fc79b320f97c6a0258c6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-375.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "54add7698c8cfe9038e997d2088218e21cae7a7d",
+    "sha256": "011bd26548890d0f8224afbb3f05f4028ef7eb3f68e76e58f2c006ba0468dae9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-376.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "21c96b1f8ff0b82fe0fc15a161c4e59236491af8",
+    "sha256": "f94c4504f077728120dc09e9beb08e89463de4e1810b48c1371bfe100fd46331",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-377.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4b94b25b8563c06138beef319d1d75d1af88331f",
+    "sha256": "b05136c42b2bd4f410d4021972c652d73c7d735e72d35752605a4390243d32ee",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-378.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c3b61c2f32f6a28895fc7f5cffa4bc2d5607a933",
+    "sha256": "d1c618f958804759c96d8970ed7eae7337284a1594da29f7a906370bb095aad3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-379.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "11c4db35cfde5141f389325454233b19fa3e767f",
+    "sha256": "57d3094e8c13e6d29a0a90d4241be866d45381141a93bda9d69ccc79bb7c898e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-380.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "05eb37bc35930d6f7fa3cb1634e1f3ff6f21870d",
+    "sha256": "df534d8bdb244eed59dd01aefe5abb260e8e25e6e77cf218d2bb4c33ca7ec02c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-381.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fb1295578f27ce87c9d4ad2f5b53351d030598e5",
+    "sha256": "f5822910df24a2ee789256503ba3787077bd18a1fd3d3104fea4e99483563756",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-382.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6096a2d3406774647c9bfe3bc20a8411cae59718",
+    "sha256": "6a86578c3843921a582aa20f8ed961f6ea6a4835d11987b04b2395b019836aea",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-383.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "4db730b3a0a53fb13635e70033f92fc03c8a5714",
+    "sha256": "94a80520623919fbd1381580c48a2707646891c424452ac8b8acd6028a8083f2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-384.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8d27ef2a01d4457121352ee9c3e62c0bc74bac78",
+    "sha256": "9c95043d09274af667862aa3d71a0ecb2ccf86347683a56a9e9c5dd5004a6f71",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-385.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "886104ca67656f00930de8167687924c23a21a4e",
+    "sha256": "4a8bf6d4e56e1d91c66074aa7b552ba2e6c22536c5296a57d4959b711133de0b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-386.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "80f9a386f64b6478b4ec91107660e0b5c2027fcf",
+    "sha256": "bd222e0a28dab4c43c8132e20b53fc65417e0be91511fe221407bea70c7de700",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-387.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8de25d9ecfe040f8f80bb96db1719a340a682486",
+    "sha256": "092fe2a4854f59f4c67287d9c2b34175c2913913cd2e039703485dbac803fb48",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-388.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "12878b2405c9b961930c08334da8d355b5ca220b",
+    "sha256": "143414c44a2f8f348ac39d1d09f4657cf7fbeace4ef40f5546f0a0279cc889ef",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-389.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "579f2ab4c489781a3aadc0ad154b3648c807dd66",
+    "sha256": "68cf86b8726c46694083e282151a449caa842dbc4a98b968d79e7cf425dadf34",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-390.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "60ee84048d71ba8a0bb92c69e22bff88565399e2",
+    "sha256": "4a499fa69c72160dc224d5edf72166493b92dae2a299c22e0c8220a57b8b794c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-391.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2f4e47daa02486f950c3451c6abaf85e2eb71d32",
+    "sha256": "2429b06e199107f35c1849f1234d8b060e91cb5d9f6db9aa56f988375a645dac",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-392.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0e3cb7b80114f1c8007706c093705e1ee0763e5f",
+    "sha256": "718ebebea30c8fa8ed7f804d29be16e18e0a47b50a16ca60f28b593d90eaee39",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-393.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "71beb1cae618bc946713513f0d9298faf9be6fd6",
+    "sha256": "8dcfb0bb9cfd400cd12a6bed85ca9fdcb1fc15bace7f31bd2afc85dbbe48bf11",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-394.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c35194501b2b2a01d436a48781a9dde7c6a7101c",
+    "sha256": "d6589f3e94cc5d571e90d3e2c4bf27fa544715bad70c84352ab7ea33a5d14175",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-395.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c827d4a5a49690463d65120dd461b31954c99807",
+    "sha256": "c2b4e0700c3389c01c3a99e15ea7b9a6b88a41bd59a1b3dbabf72305c2fc9558",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-396.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1ce057c4a68f4062176149645492da258dae8a20",
+    "sha256": "1bdc88789496d056dacabda53ee539bd495485637bafa48b478136b4e2e21249",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-397.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "08cf4ffe5f87451d4fc9775b44c6225c94ea3c4b",
+    "sha256": "41f9169888c7ea0504108573bb69bf53d750ed2c0153bbb1465f0b2f0aaef806",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-398.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a46dfc720e44c972bf736e1dc954fdd7bb4995b4",
+    "sha256": "cfb9ce893b5fccfa86c90a45f51ed39676ec743547fb4a1c2685b7918c02d656",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-399.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a81bb7e44cc45ab960ca192715790814eac3b4e5",
+    "sha256": "867a47372179a6f5bab3dcfec65474fdc94406375300d49325f2eb6058d5f338",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-400.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7fbf5cb32b4ee60e55b5a56cc4c66da44bb55163",
+    "sha256": "2141d902efa98967b6f6a057012a49c55ac60b7470f38c58d92ae9a04888dad8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-401.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d2e0ffe9ed52223b86c7abd321b406928ed420e7",
+    "sha256": "40200323edf12baf44bbd929b4f9deae70f0913a3a3d1fb7661367036496977a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-402.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "90f0a2a3277f88f999a3fff2c5face335c04515c",
+    "sha256": "59c7a7b23d074480bb3fd062ddc29e579704f8192c44f8099c7a54761a972428",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-403.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ec79074583f8375952d7f292c6dc2431a3323eba",
+    "sha256": "c79ce2f008771b6a12dc35df0ebd599272dab27dc98f6931dba2a170a03293e7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-404.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6acdb5a50fc3bd7d10994b45220264f99ec76cca",
+    "sha256": "5145a12104342bdb1451d800b687317bacd2b995e95c937e5037657bd2ac0cab",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-405.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "62591d83076ea294c9b301163d327611d7546858",
+    "sha256": "a37d170725a87e7545faf6a485bdad7bbcdca34c45f627a2ec871e7bfa9aa5f4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-406.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2cfa73031ff6737986366d3d209b61780a7ba6fe",
+    "sha256": "50f1241903682bc6d8a3557ee36ec10b2ae885bf60e641f1ddbf2b7707d2df7d",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-407.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "862d232dc8b9701062478efeac14574b21f2af65",
+    "sha256": "39b51bcd3c6018dd81dceb38332a9e3857fcefc3e5f37727414fdd76ff9b2ffc",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-408.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "16516fd9ca15b820e0fb37f6ecb6fa2844c3a4de",
+    "sha256": "7e2d18403ec19343f59fcd0d5d49469f556a0500e9bf3bd2b7a2eda0e3b8f681",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-409.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "2f6c85df2fde0327b4bf2e50a95335b6e3b07fa9",
+    "sha256": "ee3760481b6b66d527e89a344474db00ce1d636e7969432a5e91295699a9da80",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-410.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ba2b2a273a54b48b5815a75b873df1dd73399e92",
+    "sha256": "2d62aa651b336fadcdb8ca40ddf17e0a078a893668906431035203c0ab498142",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-411.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "30bb5e493d0b7050dbe60f564c22e344fe743719",
+    "sha256": "619cf55c7ec3e872870600a24e0fa39cfcfd733b7e9cb36184989ba4ffe776aa",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-412.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c11407e33f64a73ca0883ee84c21b093a987af1c",
+    "sha256": "87dac443a8fd35de153f08834965cba9c0d3cf50b5fe817db2df67b86e35a9a2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-413.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cd4bc0b6d69a2ccde04c813cde305a0103e5788a",
+    "sha256": "c8c203e4752726f806c69a18447ea34798f11e1655b35aa20cd7b89fab287bda",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-414.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "35939824c066da5e77e437eccf26ca78afd8882d",
+    "sha256": "0f8c2056baa99bd83e1867e59d13d8c30dba0cd527f37a96464dab87cb77e9d2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-415.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "06ca28238ca0c34d4a1ae88bdd5882caa84c770a",
+    "sha256": "ee3c81a327d6418377901014e3cd7a122bcf27d3117319fa8bba8c065a1f62ee",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-416.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "107c0f720f32586f1886bc4d942b610fce8c2584",
+    "sha256": "ead19eb5e777b7fc96e3341f44e86508ca44a1cf53ef05454fc1d6a3cca07241",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-417.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "543ec85f182a7e88885b17b7802c920c1d39b092",
+    "sha256": "18973290c546610dd45af8c765fef52fcbbff21274c283a6911a369a58447592",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-418.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "f569a833b6ae05ab24a2a250a83c2a9ca21bfebb",
+    "sha256": "b438dbfc770fbd782e70a7c1414135c5ccc8a565c134e14f75ec11913eca052c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-419.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fa9792805514d1b3506ed73b5f78f2ed311ebdda",
+    "sha256": "621dbdba62a19d2e69d7bff96ae360dba2762a4e96b2490242956c76c043969e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-420.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "92ca5a8529c23e8e40f3d02772e938e0bfeb9d05",
+    "sha256": "4d18862f99d25965ba28926020ac5c724e5aa6c2e5aa5e5bb5b00f31b4571b35",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-421.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e58f3f669c7828411b3401a86e21322f9ad28f19",
+    "sha256": "4b8d78131f06e36877ac5187ce8ba2b234d1edcc56576c64af824d72b2f47355",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-422.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "6f7a40235506367f21579d4b287f4a4d10b51d80",
+    "sha256": "ae26633d29ab7daa084bf6021276e56ee128b62d38c5d2cffb2163ff71af9ae0",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-423.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-424.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-425.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-426.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "5ad688961cce429139c76b85c6d2c74c2a161c24",
+    "sha256": "aa6d97d27a9f20c8c4daa618ab0d8ef21e34a7902d40b54e9d33b4b6404eeb64",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-427.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "21167506774773894d83affbf617ad41022785c6",
+    "sha256": "b4590a917b08c1b79b73ca3d7006451906637072b7b473c443673f1884c43420",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-428.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-429.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "58cec25d22eaa1db25e95d9c2f08fbed9ab70976",
+    "sha256": "eb5416b959ebb55874acc45edc7a6c108481bfc70a6e66818f892c00c394f60e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-430.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-431.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "531555f09e9cb84eb7d517fade86121f7f1dda4b",
+    "sha256": "0ee039472ecc5bcf173bd712ea41779982606af2599845583d6924ea94632213",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-432.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "850c9c7028a5d99b0341774e59062edebd3cd2d3",
+    "sha256": "ea57146a22f89c37e8bd78de7be016dc866d3c99f94ac1e5e9f222ca67c4b039",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-433.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68e5faa8bac1a87c497f7045905061e6cafb4e1d",
+    "sha256": "1359cfc594cc2ec295ec00978e9bd611e2c2d3272672caf02f474be07c87c553",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-434.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68e5faa8bac1a87c497f7045905061e6cafb4e1d",
+    "sha256": "1359cfc594cc2ec295ec00978e9bd611e2c2d3272672caf02f474be07c87c553",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-435.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e456ec3872f448dbb045c0d5ca840adc5f80e681",
+    "sha256": "83ad0db82633557b182430cb34095c423d02de68eccef8bba3a267ea6b97f767",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-436.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68afdfb8e96076f2e734ac6826b873820fa52a9d",
+    "sha256": "0a1efb5241ba81f48fb20b5f8864ad4b22e22dc87c979dedb3d57e9315a1a11f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-437.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68e5faa8bac1a87c497f7045905061e6cafb4e1d",
+    "sha256": "1359cfc594cc2ec295ec00978e9bd611e2c2d3272672caf02f474be07c87c553",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-438.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "68e5faa8bac1a87c497f7045905061e6cafb4e1d",
+    "sha256": "1359cfc594cc2ec295ec00978e9bd611e2c2d3272672caf02f474be07c87c553",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-439.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "58cec25d22eaa1db25e95d9c2f08fbed9ab70976",
+    "sha256": "eb5416b959ebb55874acc45edc7a6c108481bfc70a6e66818f892c00c394f60e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-command-440.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7c3628381ad3573cc98e091be1eaedd842184b2e",
+    "sha256": "59b52c5e93d912f2b0c4ea650fc52d41006fab6f37df8fb9c5463d3685c5376f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-commands.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "0bd424a5bd7bdf31f479d01adde0e2a1037d7172",
+    "sha256": "3a643d87602d0c180036412c035e4b8480cdcd93a9f5736b13cecbe48178ed20",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-current.bundle",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b55a039f71e1748eedab106c16b5cec14f2fd601",
+    "sha256": "9c68cb1a4b5fd70b7822f13d5d2c75141aa284edd29fe5f06581d73050e449fe",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-first-attempt.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "c9767c814904f6320a3fc6f67441ac387809ab04",
+    "sha256": "36597767609b78af0fc02bc2dcd1fcc290003d739dfab9983659c5f18a11fdd9",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/recovery-result.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "716173debb763fa81490e9512654676a67dd8d17",
+    "sha256": "ec76220eaf92cbf8a4cda7807e0c32ddd839ece0877782acaf035b9ef8edeb19",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1c9ba82399a0c4c670e6e8c4b44265da9af30db8",
+    "sha256": "d81a05623f16cbf981c416830307a3987e14f5063ba01bdaada1116bc94f0501",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-1.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1f4600ff3d40a474fddb3425a931be595104eb21",
+    "sha256": "76215919c591c97244189a3e6e63aaa9a26362e70ef6bc03a466996ad055bb31",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-2.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ea5afb77cf2a77de98c15939e53e19475fd54720",
+    "sha256": "793cfe9343f18d8e946f55640b73b9c5a5d3c855f2a4adbd1c55a61a65e64b03",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-3.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "26dd3c90d77997be1e889946fcade148a1ce9a4c",
+    "sha256": "c3ec24f2e5fe63348032f89c0b78753b7f96211bab9ddc9233c4ae24685d60f4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-4.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "db99376791639e8310a596056ab0ec1b182f869e",
+    "sha256": "537d1ffc983ec13af6784532899fd85ce6114df301a64dafca86951f9c2a9a13",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-5.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "603128b113f01cafc251262899ad43acb35c3b82",
+    "sha256": "f3d479fd487ca89f6c030881c25b97fa5a17f85421b9ce76aa7b61ad697d7769",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-6.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e3bb9b1bb31e65a1eddba333074c63858671c671",
+    "sha256": "c65023d970a24ebdce059a966d7d5730d44e4e8c90191764f5b0a72d47d59e11",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-test-7.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b07761be04266220f9370b22326632675b903923",
+    "sha256": "f65e27cf40cfd630596d481ae3fbf3e8d7e5f30809caa2be54aea857bef7dfe3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0042/restored-tests.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d078328ad9012c0ae1bed035e4babd243121458a",
+    "sha256": "62eae5c6f709682fdec698e91fe2787d7f9acc1d6c44285c94165a98121487b2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/encoding-correction.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "27fcabd0316f4ce3c4a17bfae90f20b144c0fd06",
+    "sha256": "2f9284bc2a86a5147ac0da89576d55828391efd4575279a6e6b8f630f9a14b33",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-check-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "cac5c91bbf20737e2da952f1d596606c9a674ec0",
+    "sha256": "fe54a7b9c8cbbf5f98425df77a6c27749d6fb9f8172955204735175fd54c9510",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-checks.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "487f4d43bbf68b4ea021596ce7b2858a8e8611cb",
+    "sha256": "443086f565e0fe4aaa73895dd2669b54d9bcbfdc1935c8fa504db078aad13145",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-corrected-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "d6e28a8b8d093f2aa94eece770c81cd05d2566ea",
+    "sha256": "378bd3fccf845598a0c05c338ba09d6288803e0bfb2085bb8d1768a2c6437296",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-corrected.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1bf7bcc075614211842c060ed855c19a42de13a4",
+    "sha256": "feeff714f2c24e9f390c8d492223233ed46b925516ec2a54686d4359dc5b3dcd",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "18e21a2c39af204a21b3e65585e052a6b379e435",
+    "sha256": "36404dc61cd72f59a0f059436787ad1c601edcdbd7d73537f4a1200d1fb10760",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified-1.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "92a72009879edd1613841adeded7040076c4de0d",
+    "sha256": "a30297fbf1206f2152d8d19d860c272b38593d9bce2e719099bf1ad5147f61f7",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified-2.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+    "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified-3.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+    "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified-4.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "77d029c339ddf26d849bc2fed09fcf59c7c96748",
+    "sha256": "cc4bade326da114c0dcbc372071e1040f9d04129a29c864413316c7bf31218d8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/final-verified.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "56d15dca9b842d30641090c1aa1215eb6c1730f2",
+    "sha256": "a61a802c6fdb015c462ce4e3006a1564d442f323177e7290d38c5ad567200d26",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "039c483719df8fb4345e5a50e01945a706656af3",
+    "sha256": "551443383dcc6caf450c22c5db055169720007ada9a5773f5e51257c4381771f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-1.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-10.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "e7b953eb4980b2e9d30b4110e082a391d79a9f0b",
+    "sha256": "8852e2be892b0485dcb13d41c556cfaf8198df20d70b8dda1f81a14ac94e9604",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-11.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "b28634966cbd0e5ca46f8e505317c2fe84e99583",
+    "sha256": "28b3b556b39534a459565f9028c3f0ee580f250536731c2bfad615a836964444",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-12.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "db99376791639e8310a596056ab0ec1b182f869e",
+    "sha256": "537d1ffc983ec13af6784532899fd85ce6114df301a64dafca86951f9c2a9a13",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-2.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "fd472e6c8a0e09d3b99192495468ca9658b8027e",
+    "sha256": "a99ac6b71f2c5b52bf50c8a45467fd27e87e9a15c2ada89b9f489ec29fedd69b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-3.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "9397dbe4ee815bc8854a2afe4b988a890f7e8550",
+    "sha256": "3373fad58366322818ba07ef99d2672a43935721dc9c492ec4f586d3a3db5cc3",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-4.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "84ad90d5f1cd39ee62462644c8db72f5d3803870",
+    "sha256": "1172ebe19967cba7e5e0f510403b3270e3f097322c09b2f293b309f6a322b0cf",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-5.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "039c483719df8fb4345e5a50e01945a706656af3",
+    "sha256": "551443383dcc6caf450c22c5db055169720007ada9a5773f5e51257c4381771f",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-6.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46a7e911b4034f811ac71b266fb6018234814258",
+    "sha256": "593dfb29e8f2467c26594279a07e63cbb5a953aacb233b22f8e0665391c2319c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-7.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "46a7e911b4034f811ac71b266fb6018234814258",
+    "sha256": "593dfb29e8f2467c26594279a07e63cbb5a953aacb233b22f8e0665391c2319c",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-8.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "95fc1358997f668edc37b1220fdbec645a0e085a",
+    "sha256": "3b648c2c51568b028937a9efd14e7eb755dcd3b152f9123c9694b3e28c477c97",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-9.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "95fc1358997f668edc37b1220fdbec645a0e085a",
+    "sha256": "3b648c2c51568b028937a9efd14e7eb755dcd3b152f9123c9694b3e28c477c97",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-result.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7d6b0b2ec363848cafdbbc42118a028fb1ff11cc",
+    "sha256": "90a630947271f8c6aace5aef70236f629759309e36b05eda9d2f882179d686c6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "323923fa175a4f656632bedf6fa465d722cdd8f2",
+    "sha256": "5e655e67721968f4238b6fa7f31e2e566e7fc37a99bf23c1a4904cc821cbcf89",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-0.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "292a9b41f4fca74fafe231f3b8af1b64e7fe382d",
+    "sha256": "47f46057d40a0c905d4192e2c2d85dc4b6c72031957392ee84166859534a790a",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-1.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "36d69f93554c10130bf82ff69915a52dc29790be",
+    "sha256": "ac8cd0cbf2d6e88e9e87d9a97e54e03b5012126c28e5d4779fe377363d3daf7e",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-2.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "61620dc4cf9aa549a4d8ab6bb404f80f63539229",
+    "sha256": "70cc076698c5358a9ec67ef311a986fb8632f1562b01677cbb94f74d698e77a4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-3.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "8d0015ed4b3c355b3c1648641ffca4650c8400ad",
+    "sha256": "32a8048044d2589c1c89858178dd876c60ca339d41a8db0e245eee81be832873",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-4.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "7cbc07312e65ef22a6112f2b8965e9c67e288273",
+    "sha256": "8ddc55435ff7d09253077766a234644a499de4a7e289d44acc38cc0abd15bbe6",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-test-5.txt",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "a875f6a08710c30a447e50578d0ac7a704aefe84",
+    "sha256": "c25c196b49c7a7acbdca528e0c6f8949e3e0933c51686ca0cc0fae3ae4f16ee4",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patch-tests.json",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "1d4c394458988bf623f89f8183bccc689c86839e",
+    "sha256": "43caad14bc1078ea71aa95b17ee0554f667138420268b45627bf72ba5824b3ed",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "docs/reports/evidence/VEL-COMPLETION-0043/patched-source.bundle",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "ae28f4c567b1cbce6216d587ab118265bacc9e33",
+    "sha256": "6a6b4e01bb6fe74ef17f6126b5136db0f8d5f4d4fa5b6d3895fc145f4475db5b",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "pnpm-lock.yaml",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "95fc1358997f668edc37b1220fdbec645a0e085a",
+    "sha256": "3b648c2c51568b028937a9efd14e7eb755dcd3b152f9123c9694b3e28c477c97",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "tests/test_governance_entrypoints.py",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "752a9fba153d24a4f506ec86eaa0c5985b6177d2",
+    "sha256": "41f049abfff89f62d6a7d755202c49b27cf6bd78225cc14475503131ab5dbea8",
+    "original_executor": "Codex"
+  },
+  {
+    "path": "tests/test_remediation_ledger.py",
+    "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+    "blob": "feecef8de96923477acd20abe81376282abe919b",
+    "sha256": "266404fc10e664f85a244dccdbe1e13448bbbd0f6d010dbb34f4af4ebda0a2c8",
+    "original_executor": "Codex"
+  }
+]

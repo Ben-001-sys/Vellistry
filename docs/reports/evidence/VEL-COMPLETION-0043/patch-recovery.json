@@ -1,0 +1,139 @@
+[
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "seconds": 0.047,
+    "evidence": "patch-recovery-0.txt"
+  },
+  {
+    "command": [
+      "git",
+      "bundle",
+      "create",
+      "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-remediation-completion\\docs\\reports\\evidence\\VEL-COMPLETION-0043\\patched-source.bundle",
+      "HEAD",
+      "^23fd8488df060e1591be70232abd70f4255e814d"
+    ],
+    "exit_code": 0,
+    "seconds": 0.203,
+    "evidence": "patch-recovery-1.txt"
+  },
+  {
+    "command": [
+      "git",
+      "bundle",
+      "verify",
+      "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-remediation-completion\\docs\\reports\\evidence\\VEL-COMPLETION-0043\\patched-source.bundle"
+    ],
+    "exit_code": 0,
+    "seconds": 0.14,
+    "evidence": "patch-recovery-2.txt"
+  },
+  {
+    "command": [
+      "git",
+      "fetch",
+      "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-remediation-completion\\docs\\reports\\evidence\\VEL-COMPLETION-0043\\patched-source.bundle",
+      "HEAD:refs/heads/security-patched"
+    ],
+    "exit_code": 0,
+    "seconds": 0.391,
+    "evidence": "patch-recovery-3.txt"
+  },
+  {
+    "command": [
+      "git",
+      "checkout",
+      "security-patched"
+    ],
+    "exit_code": 0,
+    "seconds": 0.453,
+    "evidence": "patch-recovery-4.txt"
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "seconds": 0.047,
+    "evidence": "patch-recovery-5.txt"
+  },
+  {
+    "command": [
+      "git",
+      "show",
+      "08bc45374f6d203cc5691da2dea07ca131ca95f4:apps/web/package.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.047,
+    "evidence": "patch-recovery-6.txt"
+  },
+  {
+    "command": [
+      "git",
+      "show",
+      "HEAD:apps/web/package.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.031,
+    "evidence": "patch-recovery-7.txt"
+  },
+  {
+    "command": [
+      "git",
+      "show",
+      "08bc45374f6d203cc5691da2dea07ca131ca95f4:pnpm-lock.yaml"
+    ],
+    "exit_code": 0,
+    "seconds": 0.047,
+    "evidence": "patch-recovery-8.txt"
+  },
+  {
+    "command": [
+      "git",
+      "show",
+      "HEAD:pnpm-lock.yaml"
+    ],
+    "exit_code": 0,
+    "seconds": 0.046,
+    "evidence": "patch-recovery-9.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "install",
+      "--frozen-lockfile",
+      "--offline"
+    ],
+    "exit_code": 0,
+    "seconds": 5.641,
+    "evidence": "patch-recovery-10.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "build"
+    ],
+    "exit_code": 0,
+    "seconds": 19.734,
+    "evidence": "patch-recovery-11.txt"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "check"
+    ],
+    "exit_code": 0,
+    "seconds": 6.282,
+    "evidence": "patch-recovery-12.txt"
+  }
+]

@@ -3,29 +3,35 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-22
+updated_at: 2026-10-23
 owner: project_owner
-version: 0.2.0
+version: 0.2.1
 ---
 
 # Vellistry — current verified state
 
 ## Verified baseline and active work
 
-FACT: checked main is `67e48d1fa821fe5e3e94ab7457f554720b676106`, after PR #105.
-[Post-main CI39743512586](https://github.com/Ben-001-sys/Vellistry/actions/runs/39743512586)
+FACT: checked main is `23fd8488df060e1591be70232abd70f4255e814d`, after PR #106.
+[Post-main CI39868833625](https://github.com/Ben-001-sys/Vellistry/actions/runs/39868833625)
 passed governance, application/security and PostgreSQL CAS/restore. Integrated SQL
 privilege regression was SKIPPED because its proposed fixture is absent; no SQL
 acceptance follows. Re-fetch main and open PRs before each new task; this is a dated
 verified baseline, not a claim that a document can embed its own future commit.
 
-Task0041 is the active repository-only reconciliation, with committed sources and
-[immutable CP0041](docs/agent-workflow/context-packs/VEL-CP-0041.md). Its changes
-remain IN_VERIFICATION until distinct review, ready-event CI, merge and post-main
-verification. Original draft PR #83 is the only old open PR and will be superseded
-only after this successor passes those gates. PR #65 and PR #68 are CLOSED as
-superseded; their branches, authorship and exact source references remain preserved.
-PR #59, PR #66 and PR #82 are also closed as superseded; Issue58 was closed NOT_PLANNED.
+Task0041/PR106 is integrated; original PR #83 was closed only after its successor’s
+post-main PASS. Its [immutable CP0041](docs/agent-workflow/context-packs/VEL-CP-0041.md)
+and historical evidence remain unchanged. PR #65, PR #68, PR #59, PR #66 and PR #82
+are closed with source-preserving dispositions. Issues69/72/79 are closed for
+repository delivery;18/63/67/74 retain external acceptance requirements.
+
+Task0042 completed bounded420-pin recovery. Its clean restore found new Next16.4.0
+security advisories, so [Task0043/CP0043](docs/agent-workflow/context-packs/VEL-CP-0043.md)
+was pinned before the minimal16.4.1 dependency patch. Audit now reports zero findings;
+23preflight/67Library tests, build/typecheck and patched offline restore passed.
+The final [remediation report](docs/reports/VEL-REMEDIATION-COMPLETION-0042.md) and its
+successor integration remain IN_VERIFICATION until actual final review, ready CI,
+merge and post-main success. Candidate ledger:35DONE,5PARTIAL,4BLOCKED, never44DONE.
 
 Use the [44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
 [PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md) and
@@ -80,14 +86,17 @@ BLOCKED/NOT_RUN. An unexpired signed-out JWT remains a private-pilot security bl
 
 ## Next permitted work and readiness
 
-Finish Task0041 review/integration and reconcile PR83. Then verify a dependency-closed
-current repository backup and publish final remediation/readiness evidence. Keep
-unmet original-source, independent execution, owner acceptance and hosted gates
-explicit; do not claim44/44 DONE. No new feature implementation is dispatched.
+Finish only Task0044’s final exact-head review/integration/CI attestation. No new
+feature implementation is dispatched. The [conditional closure record](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md)
+ends the one-time delegation automatically after final post-main PASS and the exact
+PR/Issue71 attestation. Thereafter ordinary owner-authorized Task/ContextPack,
+review and merge governance applies; no further authority carries to features.
 
-Continued local implementation: conditional on completion of remediation and a new
-bounded owner-authorized task. Hosted acceptance: NO-GO pending exact separate
-permissions/evidence. Private-author pilot: NO-GO. Production release: NO-GO.
+Continued local implementation: conditional GO after those final gates and a new
+bounded owner-authorized task. Hosted acceptance: NO-GO pending separate permissions
+and evidence. Private-author pilot: NO-GO. Production release: NO-GO.
+Original SRC004, independent end-to-end execution, historical LevelB owner acceptance,
+SQL adoption/hosted security and unavailable cost comparison remain explicit blockers.
 
 ## Retained product decision references
 
@@ -96,3 +105,5 @@ permissions/evidence. Private-author pilot: NO-GO. Production release: NO-GO.
 and [bounded design-entry delegation](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md)
 retain their original scopes. They do not authorize paid calls, feature execution,
 private manuscripts or deployment under this remediation mandate.
+
+[Task0044/immutable CP0044](docs/agent-workflow/context-packs/VEL-CP-0044.md) selectively integrates the exact Task0042/0043 sources after a fresh current-main pack. Original source branch and historical packs remain preserved; no compliance rule is changed.

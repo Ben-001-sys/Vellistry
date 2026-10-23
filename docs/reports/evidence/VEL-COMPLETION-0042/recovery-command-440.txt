@@ -1,0 +1,4 @@
+Cloning into bare repository 'H:\cursor\cursor\Vellistry\.worktrees\vel-remediation-completion\.final-recovery.log\corrupt-restore.git'...
+fatal: pack is corrupted (SHA1 mismatch)
+error: index-pack died
+fatal: remote transport reported error

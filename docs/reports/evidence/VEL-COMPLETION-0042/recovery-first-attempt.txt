@@ -1,0 +1,3 @@
+Command: python docs/reports/evidence/VEL-COMPLETION-0042/recover.py
+Exit:1
+Failure: expected PG17 original-member hash among standalone files; restored checkout uses CRLF and the authentic member is retained inside pg17-artifact.zip. Bundle/clone/GC/pins/fsck/tree completed before this assertion. No production regression.

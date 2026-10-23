@@ -1,0 +1,19 @@
+test_all_original_requirements_and_evidence (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_all_pr83_original_paths_retained (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_changed_acceptance_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_changed_source_horizon_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_duplicate_feature_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_duplicate_requirement_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_full_feature_inventory_and_original_mapping (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_differentiator_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_evidence_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_missing_requirement_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_planned_test_cannot_be_reported_passed (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_previous_current_state_is_exact_git_source (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_reserved_acceptance_cannot_be_done (test_remediation_ledger.RemediationLedgerTests) ... ok
+test_unsupported_status_rejected (test_remediation_ledger.RemediationLedgerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.094s
+
+OK

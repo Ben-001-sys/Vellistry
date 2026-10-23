@@ -97,3 +97,5 @@ The generator refuses to overwrite an existing pack and rejects missing/untracke
 ## Current implementation evidence
 
 PR76 and subsequent bounded corrections integrated static PR-to-task, immutable-pack, scope, executor-provenance and workflow-contract checks. These do not authenticate runtime agents or humans. The [current state](../../CURRENT-STATE.md) and [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) distinguish default owner approval from this temporary repository-only integration exception. Historical Level B now has technical evidence in [VEL-HO-0004](handoff-evaluations/VEL-HO-0004.md); owner acceptance remains pending. The older pending descriptions above record their original dates.
+
+The temporary remediation delegation ends under its [recorded closure condition](authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md). After the final merge/post-main attestation, ordinary owner-governed approval resumes; this exception grants no future feature authority.
