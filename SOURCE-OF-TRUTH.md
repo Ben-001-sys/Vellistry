@@ -32,7 +32,7 @@ Future authors' manuscripts, story canon, application settings, credentials, and
 4. Temporary task-local agent context and unapproved hypotheses.
 5. Evidence, provenance, authorship, validity, confidence, and traceability.
 
-## Read â†’ Propose â†’ Review â†’ Commit
+## Read → Propose → Review → Commit
 1. Read the relevant accepted records and source citations.
 2. Clearly label new assumptions, findings, recommendations, and uncertainties.
 3. Review source fidelity and factual verification independently.

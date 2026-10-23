@@ -80,7 +80,7 @@ class GovernanceEntrypoints(unittest.TestCase):
         self.assertIn("Supabase Cloud", text)
         self.assertIn("disposable", text)
         self.assertIn("not required", text)
-        self.assertNotIn("Current development gate â€” updated 2026-10-10", text)
+        self.assertNotIn("Current development gate — updated 2026-10-10", text)
 
     def test_gates_and_bounded_task_exception_do_not_grant_release(self):
         text = read("docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md")

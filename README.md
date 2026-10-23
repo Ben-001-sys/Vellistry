@@ -15,7 +15,7 @@ tasks/PRs, actual CI evidence, security holds and historical links. Then read
 The owner selects scope and approves consequential changes/merges. ChatGPT
 coordinates and independently reviews evidence; Codex implements bounded tasks
 under [ADR0008](docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md).
-Use the existing [Task â†’ immutable ContextPack â†’ ExecutionBundle workflow](docs/agent-workflow/README.md)
+Use the existing [Task → immutable ContextPack → ExecutionBundle workflow](docs/agent-workflow/README.md)
 in an isolated branch, with sources committed and pack validated before edits.
 Planning, write access and passing CI do not grant implementation or release approval.
 Original ChatGPT PR66/65 and Cursor-era work keep their provenance.

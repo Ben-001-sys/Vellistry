@@ -1,1 +1,2 @@
 At91abfd5 ledger test rejected changed acceptance from Windows cp1252 decoding in the reconciliation generator. Exit1;14tests/1error. Original source unchanged. Corrected by explicit UTF8 source reads and restored exact original requirement strings; no acceptance weakening. Initial final-check-0.txt remains preserved.
+Second check rejected the same decoding error in the copied test literal; original test conditions restored via UTF8, without changing assertions. All touched entrypoints audited for the same decoding error.

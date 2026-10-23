@@ -64,7 +64,7 @@ class RemediationLedgerTests(unittest.TestCase):
         ledger = (ROOT / 'docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md').read_text(encoding='utf-8')
         for row in self.rows:
             self.assertIn(row['requirement'], ledger)
-            self.assertIn(f"## {row['number']:02} â€” {row['status']}", ledger)
+            self.assertIn(f"## {row['number']:02} — {row['status']}", ledger)
 
     def test_missing_requirement_rejected(self):
         with self.assertRaises(ValueError): validate_ledger(self.rows[:-1], self.original)

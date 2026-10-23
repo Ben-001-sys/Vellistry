@@ -12,7 +12,7 @@ sources:
   - SRC-003
 ---
 
-# Vellistry â€” Project Definition
+# Vellistry — Project Definition
 
 ## Working identity
 Vellistry is the working name for a proposed author-controlled fiction writing, editing, design, and publishing application with optional AI assistance.

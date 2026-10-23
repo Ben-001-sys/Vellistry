@@ -8,7 +8,7 @@ owner: project_owner
 version: 0.2.1
 ---
 
-# Vellistry â€” current verified state
+# Vellistry — current verified state
 
 ## Verified baseline and active work
 
@@ -54,7 +54,7 @@ zero-step infrastructure failures remain historical evidence. No billing repair
 mechanism or savings is inferred. PR104 merged with post-main39661737567 SUCCESS.
 
 [Source preservation](docs/reports/VEL-SOURCE-PRESERVATION-0038.md) retains the exact
-original transport ZIP and SRC-001â€“SRC-003 hashes. SRC-004 remains missing; summaries
+original transport ZIP and SRC-001–SRC-003 hashes. SRC-004 remains missing; summaries
 are not its original. [Source register](docs/research/SOURCE-REGISTER.md) is canonical.
 [Level B evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0004.md) has ten
 technical PASS results and unset owner acceptance. Task0038 fresh code generation
@@ -100,7 +100,7 @@ SQL adoption/hosted security and unavailable cost comparison remain explicit blo
 
 ## Retained product decision references
 
-[Owner waves01â€“03 selections](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
+[Owner waves01–03 selections](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
 [HIS-20261010-003 writer-owned free-or-paid BYOK clarification](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md)
 and [bounded design-entry delegation](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md)
 retain their original scopes. They do not authorize paid calls, feature execution,

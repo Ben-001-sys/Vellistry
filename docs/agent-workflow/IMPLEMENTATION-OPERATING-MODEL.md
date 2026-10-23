@@ -16,11 +16,11 @@ source_refs:
   - docs/history/2026-10-10-owner-delegated-mvp-design-entry.md
 ---
 
-# Vellistry â€” agentic coding execution and review (proposed)
+# Vellistry — agentic coding execution and review (proposed)
 
 **Accepted tool-role override (2026-10-14):** [ADR-0008](../decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md) selects **Codex as the default implementation agent**. This document's historical Cursor evidence remains valid, but older blanket references to Cursor as the current implementer are superseded. ChatGPT coordinates and reviews, Codex implements bounded approved tasks, GitHub records provenance, and the owner authorizes high-impact changes. This override does not approve cloud database writes, migrations, real author data, paid calls or release.
 
-## Effective bounded permission contract â€” 2026-10-16
+## Effective bounded permission contract — 2026-10-16
 
 Adopted from ChatGPT-authored PR66 `36da413fea67179ac8395af1cececd477fd193a2`,
 with the following Codex reconciliation under owner-dispatched Issue72. This
@@ -51,7 +51,7 @@ Use a separate reviewed governance change for any actual gate-state transition.
 
 **Current-status correction (2026-10-15):** The immediately following preparation-only wording records the earlier project stage. It is **not** a blanket prohibition overriding later explicitly authorized implementation slices such as merged IMP-001 (#64) and the unmerged, Codex-executed IMP-001B (#68). Each new coding or hosted-database action still requires its own bounded authorization, source revision and evidence. This operating-model proposal is not itself an authorization.
 
-**Historical preparation-stage boundary:** This was the **preparation of future agentic implementation**; it did not authorize agents to start shipping features. Research Waves 1â€“6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
+**Historical preparation-stage boundary:** This was the **preparation of future agentic implementation**; it did not authorize agents to start shipping features. Research Waves 1–6 are bounded-closed; a **synthetic-only UI concept exploration** is authorized, followed by editable canonical Figma Design, real consented writer validation and explicit owner design signoff. **Feature coding, new production migrations, paid API calls, real unpublished-manuscript processing and deployment remain blocked.**
 
 Reuse the successful *bounded* Stage 4 clean-room handoff pattern and Git-pinned source authority. The Stage 4 Cursor Grok 4.7 synthetic 17/17 run verifies **one task's reproducible evidence**, not a standing claim that every new task or tool is independent or production-ready. Stage 3 Issue #18 is still separately open.
 
@@ -60,8 +60,8 @@ Reuse the successful *bounded* Stage 4 clean-room handoff pattern and Git-pinned
 | Role | Accountable actions | Boundaries |
 |---|---|---|
 | **Project owner** | Final MVP/design signoff, source-rule and security policy decisions, task approval, PR acceptance and merge, production spend/release | Self-review permitted under accepted constitution; never fabricate another approver |
-| **ChatGPT â€” architect/coordinator** | Parse owner goals, inspect repo/CI, maintain specs, dependency plan and ContextPack proposals, assess agent outputs and risks, prepare PR reviews | No authority to change accepted direction or mark tests/owner decisions PASS without evidence; no background execution claims |
-| **Codex â€” default implementer (ADR-0008)** | Single approved ticket in isolated worktree/branch; implement and test changes, produce actual terminal evidence and ExecutionBundle | No unsolicited migrations/secrets, architecture rewrite, destructive operation, merge or deployment; Cursor only by explicit task reassignment |
+| **ChatGPT — architect/coordinator** | Parse owner goals, inspect repo/CI, maintain specs, dependency plan and ContextPack proposals, assess agent outputs and risks, prepare PR reviews | No authority to change accepted direction or mark tests/owner decisions PASS without evidence; no background execution claims |
+| **Codex — default implementer (ADR-0008)** | Single approved ticket in isolated worktree/branch; implement and test changes, produce actual terminal evidence and ExecutionBundle | No unsolicited migrations/secrets, architecture rewrite, destructive operation, merge or deployment; Cursor only by explicit task reassignment |
 | **Independent reviewer** (can be another model/tool) | Read diff, challenge security/edge cases, independently reproduce checks, report FACT/INTERPRETATION/PROPOSAL | Advisory, not independent human approval; same-agent review is not an independent rerun |
 | **CI runner** | Reproduce deterministic contracts on pinned SHA, compare source and artifacts, show regressions | Green checks are not author usability, privacy certification, original-source inspection or successful release |
 
@@ -80,7 +80,7 @@ Keep Git/Markdown the canonical knowledge store. Do not paste chat summaries int
 
 ## Task lifecycle and strict isolation
 
-`backlog â†’ proposed â†’ owner-ready â†’ approved â†’ dispatched â†’ in-progress â†’ evidence-review â†’ merged/closed` is **planning vocabulary only**. The existing machine-readable task lifecycle remains `proposed|ready|in-progress|verification|completed|blocked|cancelled`. In particular, **a task marked ready does not lift product implementation gates**.
+`backlog → proposed → owner-ready → approved → dispatched → in-progress → evidence-review → merged/closed` is **planning vocabulary only**. The existing machine-readable task lifecycle remains `proposed|ready|in-progress|verification|completed|blocked|cancelled`. In particular, **a task marked ready does not lift product implementation gates**.
 
 - One agent, one bounded objective, one branch/worktree, one Git base SHA. Never let multiple agents edit a shared branch or update the same file without coordination.
 - Task YAML under `docs/agent-workflow/tasks/` follows existing schema, e.g. `VEL-TASK-0002.yaml`; use distinct ID and `context_pack_id` per independently dispatched task. No recycled `VEL-CP-0002`.
@@ -102,14 +102,14 @@ Keep Git/Markdown the canonical knowledge store. Do not paste chat summaries int
 
 | Gate | Before agent dispatch/acceptance |
 |---|---|
-| **D â€” Design** | Two invented-data explorations, canonical editable Figma Design, actual writer walkthroughs and explicit owner design approval. Until then only research/spec/CI/agent-workflow preparation tasks |
-| **A â€” Architecture** | Accepted stack held; proposed API/storage/DB schema and security deviations require owner-reviewed specs/ADR; do not interpret research tests as deployed modules |
-| **S â€” Security** | Acknowledge initial Supabase Auth/RLS/PostgREST and previously observed signed-out-JWT residual exposure; no false instant revocation guarantee; real manuscripts/public pilot blocked pending explicit risk acceptance and appropriate controls |
-| **V â€” Verification** | Required real repo code checks and negative tests, direct Data API boundaries, multi-tab CAS/retry/recovery, client/durable states; simulated/synthetic evidence labeled |
-| **O â€” Operations** | Auth+DB+Storage recovery, backup retention/restore and legal/privacy/provider obligations are outstanding; 24h/48h targets are unverified |
-| **H â€” Human review** | Owner approval on consequential changes; optional independent agent reviewer advisory only |
+| **D — Design** | Two invented-data explorations, canonical editable Figma Design, actual writer walkthroughs and explicit owner design approval. Until then only research/spec/CI/agent-workflow preparation tasks |
+| **A — Architecture** | Accepted stack held; proposed API/storage/DB schema and security deviations require owner-reviewed specs/ADR; do not interpret research tests as deployed modules |
+| **S — Security** | Acknowledge initial Supabase Auth/RLS/PostgREST and previously observed signed-out-JWT residual exposure; no false instant revocation guarantee; real manuscripts/public pilot blocked pending explicit risk acceptance and appropriate controls |
+| **V — Verification** | Required real repo code checks and negative tests, direct Data API boundaries, multi-tab CAS/retry/recovery, client/durable states; simulated/synthetic evidence labeled |
+| **O — Operations** | Auth+DB+Storage recovery, backup retention/restore and legal/privacy/provider obligations are outstanding; 24h/48h targets are unverified |
+| **H — Human review** | Owner approval on consequential changes; optional independent agent reviewer advisory only |
 
-## Stage 5 gate-state transition procedure â€” explicit future review, no CI auto-promotion
+## Stage 5 gate-state transition procedure — explicit future review, no CI auto-promotion
 
 The `IMPLEMENTATION-TASK-DEPENDENCIES.yaml` gate entries are deliberately all `pending`. The preparation validator rejects any non-pending state **even if an agent inserts an `approved_by` field or a green CI URL**. This prevents a preparatory task file from becoming implicit design/coding/release authorization. It does **not** mean the gates can never be opened.
 
@@ -134,9 +134,9 @@ A green preparation CI run confirms that the authorization *boundaries* are pres
 
 ## Entry and exit
 
-**Preparation deliverable:** implementation boundary map, operating protocol, machine-checkable task DAG, first *design-spec* task and GitHub validator/CI. **Done means prepared for owner review, not ready to code product.** Next owner-approved design phase produces canonical Figma specs. Subsequent initial application vertical slice is sign-in â†’ author-owned book/chapter â†’ transactional save/recovery â†’ portable output, followed by profiles, rules and opt-in AI.
+**Preparation deliverable:** implementation boundary map, operating protocol, machine-checkable task DAG, first *design-spec* task and GitHub validator/CI. **Done means prepared for owner review, not ready to code product.** Next owner-approved design phase produces canonical Figma specs. Subsequent initial application vertical slice is sign-in → author-owned book/chapter → transactional save/recovery → portable output, followed by profiles, rules and opt-in AI.
 
-## Merged CI architecture checkpoint â€” 2026-10-16
+## Merged CI architecture checkpoint — 2026-10-16
 
 PR70 is merged at main `a8751190073f682caabdc2897d8f64bc59ac9ebb`.
 The [primary automatic workflow](../../.github/workflows/ci.yml) performs exact-head
@@ -148,7 +148,7 @@ merge are preserved. Ready run38970082388 and main run38970500477 succeeded;
 SQL privilege checks were skipped because PR68 source is absent, not passed.
 No billed-minute savings or branch-protection enforcement is asserted.
 
-## Current remediation clarification â€” 2026-10-22
+## Current remediation clarification — 2026-10-22
 
 The pending gate table remains effective. Merged PR76/78/80 and later corrections enforce static evidence and workflow contracts; no broad gate has been promoted. The [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits eligible repository remediation merge/closure after distinct trusted review and actual ready/post-main CI, without a repeated routine merge request. Hosted/security/owner acceptance and future features remain excluded. Historical CI checkpoints above are not current main; use [CURRENT-STATE](../../CURRENT-STATE.md).
 
