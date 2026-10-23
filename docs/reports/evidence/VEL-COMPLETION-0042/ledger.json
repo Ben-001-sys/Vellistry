@@ -17,7 +17,7 @@
   },
   {
     "number": 2,
-    "requirement": "[ ] 02. Complete the Codex-primary governance transition\n   Review and integrate ADR-0008 in PR #66 after applicable verification. Ensure the effective default workflow is ChatGPT coordinator â†’ Codex implementer â†’ independent review â†’ owner approval, with Cursor retained as an optional alternate.",
+    "requirement": "[ ] 02. Complete the Codex-primary governance transition\n   Review and integrate ADR-0008 in PR #66 after applicable verification. Ensure the effective default workflow is ChatGPT coordinator → Codex implementer → independent review → owner approval, with Cursor retained as an optional alternate.",
     "status": "DONE",
     "evidence_summary": "PR75 adopted original ChatGPT ADR0008; PR94 preserved seven original files and superseded PR66. Default role decision unchanged.",
     "evidence": [
@@ -307,7 +307,7 @@
     "number": 20,
     "requirement": "[ ] 20. Make formal handoffs the normal coding path\n   Require a unique task and ContextPack for consequential coding tasks, plus a traceable ExecutionBundle afterward. PR #68 demonstrates the mechanism; make it standard for future work.",
     "status": "DONE",
-    "evidence_summary": "Merged compliance requires unique Task, committed pre-edit immutable CP and source-bound EB; successive Tasks25â€“40 demonstrate actual chain.",
+    "evidence_summary": "Merged compliance requires unique Task, committed pre-edit immutable CP and source-bound EB; successive Tasks25–40 demonstrate actual chain.",
     "evidence": [
       "docs/agent-workflow/PR-COMPLIANCE.md"
     ],
@@ -321,7 +321,7 @@
   },
   {
     "number": 21,
-    "requirement": "[ ] 21. Prevent task-scope drift\n   When new approval extends a taskâ€”such as Phase B after the Phase A-only VEL-TASK-0005â€”record an approved amendment or create a newly pinned task/ContextPack. Never silently reuse the original permission envelope.",
+    "requirement": "[ ] 21. Prevent task-scope drift\n   When new approval extends a task—such as Phase B after the Phase A-only VEL-TASK-0005—record an approved amendment or create a newly pinned task/ContextPack. Never silently reuse the original permission envelope.",
     "status": "DONE",
     "evidence_summary": "Material source/scope changes used unique amendments; CP0014 and historical packs retained. Task39 oversized input rejected before implementation.",
     "evidence": [
@@ -690,7 +690,7 @@
   },
   {
     "number": 44,
-    "requirement": "[ ] 44. Enforce agentic role boundaries at task dispatch and repository write time (CRITICAL)\n   Prevent ChatGPT, acting as architect/coordinator/reviewer, from directly implementing code or modifying CI/application files just because it has GitHub write access. Require an owner-authorized, uniquely identified task and immutable ContextPack before Codex begins implementation; record the actual executor in the PR and ExecutionBundle. If Codex cannot be dispatched through the available tools, stop at a reviewable handoff and report NOT_STARTEDâ€”do not silently become the implementer. Add a documented exception process for explicitly reassigned tasks or narrowly scoped governance edits; verify role compliance during review and with applicable automated PR-to-task checks. Audit prior coordinator-authored implementation work for provenance and any missing handoff evidence.\n   Acceptance: a coordinator-only session cannot claim Codex execution or merge-ready implementation; a CI/PR check flags missing authorized task/ContextPack/executor evidence for qualifying changes, and a real Codex handoff is independently verified. Related existing items: #20, #21, #23, #28 and #29.",
+    "requirement": "[ ] 44. Enforce agentic role boundaries at task dispatch and repository write time (CRITICAL)\n   Prevent ChatGPT, acting as architect/coordinator/reviewer, from directly implementing code or modifying CI/application files just because it has GitHub write access. Require an owner-authorized, uniquely identified task and immutable ContextPack before Codex begins implementation; record the actual executor in the PR and ExecutionBundle. If Codex cannot be dispatched through the available tools, stop at a reviewable handoff and report NOT_STARTED—do not silently become the implementer. Add a documented exception process for explicitly reassigned tasks or narrowly scoped governance edits; verify role compliance during review and with applicable automated PR-to-task checks. Audit prior coordinator-authored implementation work for provenance and any missing handoff evidence.\n   Acceptance: a coordinator-only session cannot claim Codex execution or merge-ready implementation; a CI/PR check flags missing authorized task/ContextPack/executor evidence for qualifying changes, and a real Codex handoff is independently verified. Related existing items: #20, #21, #23, #28 and #29.",
     "status": "PARTIAL",
     "evidence_summary": "Static unauthorized executor/task/pack/scope bypass checks merged and prior coordinator sources audited. Runtime identity cannot be authenticated by Git and fresh end-to-end implementation remains blocked.",
     "evidence": [

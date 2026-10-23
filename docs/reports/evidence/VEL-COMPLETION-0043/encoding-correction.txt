@@ -1,0 +1,1 @@
+At91abfd5 ledger test rejected changed acceptance from Windows cp1252 decoding in the reconciliation generator. Exit1;14tests/1error. Original source unchanged. Corrected by explicit UTF8 source reads and restored exact original requirement strings; no acceptance weakening. Initial final-check-0.txt remains preserved.
