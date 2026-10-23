@@ -1,0 +1,6 @@
+The bundle contains this ref:
+08bc45374f6d203cc5691da2dea07ca131ca95f4 HEAD
+The bundle requires this ref:
+23fd8488df060e1591be70232abd70f4255e814d 
+The bundle uses this hash algorithm: sha1
+H:/cursor/cursor/Vellistry/.worktrees/vel-remediation-completion/docs/reports/evidence/VEL-COMPLETION-0043/patched-source.bundle is okay

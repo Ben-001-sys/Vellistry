@@ -54,7 +54,7 @@ def validate_features(rows):
 
 class RemediationLedgerTests(unittest.TestCase):
     def setUp(self):
-        self.rows = json.loads((EVIDENCE / 'ledger.json').read_text(encoding='utf-8'))
+        self.rows = json.loads((ROOT / 'docs/reports/evidence/VEL-COMPLETION-0042/ledger.json').read_text(encoding='utf-8'))
         self.original = ORIGINAL.read_text(encoding='utf-8')
         self.features = json.loads((EVIDENCE / 'features.json').read_text(encoding='utf-8'))
 
@@ -64,7 +64,7 @@ class RemediationLedgerTests(unittest.TestCase):
         ledger = (ROOT / 'docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md').read_text(encoding='utf-8')
         for row in self.rows:
             self.assertIn(row['requirement'], ledger)
-            self.assertIn(f"## {row['number']:02} — {row['status']}", ledger)
+            self.assertIn(f"## {row['number']:02} â€” {row['status']}", ledger)
 
     def test_missing_requirement_rejected(self):
         with self.assertRaises(ValueError): validate_ledger(self.rows[:-1], self.original)

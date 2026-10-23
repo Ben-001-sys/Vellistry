@@ -32,7 +32,7 @@ Future authors' manuscripts, story canon, application settings, credentials, and
 4. Temporary task-local agent context and unapproved hypotheses.
 5. Evidence, provenance, authorship, validity, confidence, and traceability.
 
-## Read → Propose → Review → Commit
+## Read â†’ Propose â†’ Review â†’ Commit
 1. Read the relevant accepted records and source citations.
 2. Clearly label new assumptions, findings, recommendations, and uncertainties.
 3. Review source fidelity and factual verification independently.
@@ -67,3 +67,5 @@ to accepted architecture or owner authority.
 ## Current remediation authority
 
 The default owner approval boundaries remain in force. The [recorded one-time delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only eligible repository remediation integrations during this unfinished assignment, with distinct trusted review and actual CI. It grants no hosted, private-manuscript, release or future-feature authority. [CURRENT-STATE.md](CURRENT-STATE.md) and the [original44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md) distinguish verified progress from remaining acceptance.
+
+The temporary remediation delegation ends under its [recorded closure condition](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md). After the final merge/post-main attestation, ordinary owner-governed approval resumes; this exception grants no future feature authority.

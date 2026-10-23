@@ -1,0 +1,707 @@
+[
+  {
+    "number": 1,
+    "requirement": "[ ] 01. Restore GitHub Actions execution\n   Resolve the account payment/spending-limit restriction reported in PR #68's execution evidence. Rerun the failed workflows at their exact commit SHAs; do not classify runner-start failures as code-test failures.",
+    "status": "DONE",
+    "evidence_summary": "Task0039 reran all22 exact-source workflows successfully; original30 zero-step failures retained. Runtime execution is restored; billing repair mechanism and account settings were not inspected.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039.md"
+    ],
+    "outstanding": "None for repository execution; do not infer a billing change.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "None for repository execution; do not infer a billing change."
+  },
+  {
+    "number": 2,
+    "requirement": "[ ] 02. Complete the Codex-primary governance transition\n   Review and integrate ADR-0008 in PR #66 after applicable verification. Ensure the effective default workflow is ChatGPT coordinator â†’ Codex implementer â†’ independent review â†’ owner approval, with Cursor retained as an optional alternate.",
+    "status": "DONE",
+    "evidence_summary": "PR75 adopted original ChatGPT ADR0008; PR94 preserved seven original files and superseded PR66. Default role decision unchanged.",
+    "evidence": [
+      "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md"
+    ],
+    "outstanding": "Maintain explicit task exceptions and provenance.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain explicit task exceptions and provenance."
+  },
+  {
+    "number": 3,
+    "requirement": "[ ] 03. Resolve competing implementation PRs\n   Decide how to supersede or close the ChatGPT-authored PR #65 after reviewing its reuse in Codex PR #68. Preserve authorship and cherry-pick provenance. Do not blindly merge both branches.",
+    "status": "DONE",
+    "evidence_summary": "PR102 adopted exact ChatGPT browser wording and corrected setup; PR65 closed. PR104 mapped all38 PR68 paths, excluded obsolete CI, retained SQL gates and closed68 after post-main PASS.",
+    "evidence": [
+      "docs/reports/VEL-INTEGRATION-0037-DISPOSITIONS.md"
+    ],
+    "outstanding": "No competing implementation PR remains; preserve source branches.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "No competing implementation PR remains; preserve source branches."
+  },
+  {
+    "number": 4,
+    "requirement": "[ ] 04. Independently review Codex PR #68\n   Inspect actual code, SQL, test fixtures, task permissions, evidence and changed paths. Verify that its new Phase B work is separately authorized and reviewed, rather than accepting the Codex report alone.",
+    "status": "DONE",
+    "evidence_summary": "PR91 retained38-path source/security review; PR104 distinct exact-head review and22 historical reruns verified successor evidence. Old PhaseB permission is not reissued.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039.md"
+    ],
+    "outstanding": "Future SQL or hosted work needs the separate decision packet.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Future SQL or hosted work needs the separate decision packet."
+  },
+  {
+    "number": 5,
+    "requirement": "[ ] 05. Verify the database privilege defect\n   Run the proposed PostgreSQL 17 regression on an isolated disposable database. Confirm the original books-table privilege behavior and prove that the proposed grant correction removes inappropriate TRUNCATE and other excess privileges.",
+    "status": "DONE",
+    "evidence_summary": "Disposable PG17.11 run39135149678 records before P0001/exit3 and after48 ACL checks, denied excess privileges, RLS and cleanup. Injected broad grants are explicit.",
+    "evidence": [
+      "docs/reports/VEL-DB-READINESS-001-OFFLINE-REVIEW.md"
+    ],
+    "outstanding": "Do not represent synthetic grants as observed hosted defaults.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Do not represent synthetic grants as observed hosted defaults."
+  },
+  {
+    "number": 6,
+    "requirement": "[ ] 06. Approve the additional privilege-hardening migration\n   Obtain an explicit owner decision for the newly proposed third SQL migration. Earlier authorization for the original two migrations does not automatically approve a new one.",
+    "status": "PARTIAL",
+    "evidence_summary": "Exact third SQL definition has planning-only owner approval. Operative repository SQL paths remain unadopted; no hosted execution approval follows.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md"
+    ],
+    "outstanding": "External owner decision on exact SQL-path adoption and later separate execution gates.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External owner decision on exact SQL-path adoption and later separate execution gates."
+  },
+  {
+    "number": 7,
+    "requirement": "[ ] 07. Establish safe hosted migration access\n   Authenticate the Supabase CLI securely, verify the exact vellistry-dev target, preserve correct migration versions/history, perform a reviewed dry run and exclude unrelated Vault, roles, seed and reset operations.",
+    "status": "BLOCKED",
+    "evidence_summary": "Current mandate forbids hosted access, including read-only inventory, CLI authentication and dry run.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md"
+    ],
+    "outstanding": "External exact-target security-sensitive authorization required.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External exact-target security-sensitive authorization required."
+  },
+  {
+    "number": 8,
+    "requirement": "[ ] 08. Run authorized hosted development acceptance\n   After approval and successful isolated SQL verification, apply the reviewed migrations and test two disposable authors, book persistence, account isolation, forged ownership, RLS and prohibited operations. Clean up fixtures.",
+    "status": "BLOCKED",
+    "evidence_summary": "No authorized hosted two-author migration/persistence acceptance has executed; disposable CI is not that acceptance.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md"
+    ],
+    "outstanding": "External hosted approval, reviewed migration state, synthetic accounts and cleanup authorization.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External hosted approval, reviewed migration state, synthetic accounts and cleanup authorization."
+  },
+  {
+    "number": 9,
+    "requirement": "[ ] 09. Resolve the signed-out JWT security risk\n   Test whether an unexpired access token can still read private data directly through PostgREST after sign-out. Choose and verify a mitigation or explicitly approved security boundary before any real private-manuscript pilot.",
+    "status": "BLOCKED",
+    "evidence_summary": "Unexpired signed-out JWT direct Data API access remains a documented security boundary; no approved verified private-pilot mitigation.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md"
+    ],
+    "outstanding": "External security decision and separately scoped mitigation verification before private manuscripts.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External security decision and separately scoped mitigation verification before private manuscripts."
+  },
+  {
+    "number": 10,
+    "requirement": "[ ] 10. Complete exact-head and merged-main verification\n   Only merge reviewed work after applicable checks actually execute. Verify the final merged file tree and rerun or inspect post-merge checks. Record remaining NOT_RUN/BLOCKED conditions accurately.",
+    "status": "DONE",
+    "evidence_summary": "Serial reviewed integrations throughPR105 had ready CI, exact merged-tree comparisons and successful post-main. Latest baseline67e48d1/post39743512586 verified.",
+    "evidence": [
+      "docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md"
+    ],
+    "outstanding": "Repeat these gates for this successor and final recovery report.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Repeat these gates for this successor and final recovery report."
+  },
+  {
+    "number": 11,
+    "requirement": "[ ] 11. Make CURRENT-STATE.md genuinely current\n   Create a compact authoritative current snapshot. Move dated detail into historical records without deleting evidence; eliminate obsolete statements presented as current.",
+    "status": "DONE",
+    "evidence_summary": "Task0041 replaces stale current snapshot with compact dated verified facts and preserves original Git bytes. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "CURRENT-STATE.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 12,
+    "requirement": "[ ] 12. Reconcile repository entrypoints\n   Update AGENTS.md, README.md, PROJECT.md, SOURCE-OF-TRUTH.md and affected setup documents to reflect merged architecture, hosted Supabase, and the Codex role.",
+    "status": "DONE",
+    "evidence_summary": "Task0041 reconciles six entrypoints, effective compliance and temporary delegation without changing accepted role decisions. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "AGENTS.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 13,
+    "requirement": "[ ] 13. Separate current truth from historical truth\n   Clearly distinguish accepted decisions, active implementation, unmerged proposals, earlier decisions, synthetic results and archived experiments.",
+    "status": "DONE",
+    "evidence_summary": "Current snapshot separates accepted direction, implemented Library, historical proposals, disposable results and hosted holds. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "CURRENT-STATE.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 14,
+    "requirement": "[ ] 14. Create one authoritative onboarding entrypoint\n   A newly connected agent should be able to locate the current SHA, effective instructions, active tasks, accepted ADRs, security holds and task-specific context without reading the entire archive.",
+    "status": "DONE",
+    "evidence_summary": "README routes to compact state, task/pack, ledger, dispositions and security decision packet. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "README.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 15,
+    "requirement": "[ ] 15. Repair contradictory approval and gate states\n   Reconcile G_DESIGN, G_CODE, G_PRIVATE_PILOT and G_RELEASE with explicit owner-approved individual task exceptions. Approval of one slice must never be misrepresented as global product approval.",
+    "status": "DONE",
+    "evidence_summary": "Pending G_DESIGN/G_CODE/G_PRIVATE_PILOT/G_RELEASE remain unchanged; bounded task and temporary repository integration exception are explicit. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "docs/agent-workflow/IMPLEMENTATION-OPERATING-MODEL.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 16,
+    "requirement": "[ ] 16. Finish original research-source preservation\n   Archive or provide immutable, access-controlled retrieval references for SRC-001 through SRC-004; verify hashes and reference the actual original bytes, not only research summaries.",
+    "status": "BLOCKED",
+    "evidence_summary": "Task0038 preserves exact original transport and SRC001/002/003 matching historical hashes; SRC004 exact archive remains missing after bounded search.",
+    "evidence": [
+      "docs/research/SOURCE-REGISTER.md"
+    ],
+    "outstanding": "External original SRC004 bytes or authentic immutable retrieval reference required; do not reconstruct.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External original SRC004 bytes or authentic immutable retrieval reference required; do not reconstruct."
+  },
+  {
+    "number": 17,
+    "requirement": "[ ] 17. Strengthen source-to-requirement traceability\n   Keep original user intent, research findings, proposals, accepted requirements, feature IDs and test evidence separate. Fix missing or ambiguous links.",
+    "status": "DONE",
+    "evidence_summary": "Original author intent, proposed requirement and accepted horizon remain separate; Task0041 adds all149-ID observed-evidence overlay without treating planned tests as executed. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 18,
+    "requirement": "[ ] 18. Maintain ADR lifecycle and supersession\n   Reconcile proposed/accepted/implemented states, dated owner approval, alternatives, implementation references and explicit supersession without rewriting historical decisions.",
+    "status": "DONE",
+    "evidence_summary": "ADR0008 decision/alternatives/rationale and original owner event retained; dated implementation clarification distinguishes closed predecessors and current enforcement. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 19,
+    "requirement": "[ ] 19. Reduce documentation duplication\n   Keep one canonical location per current fact or contract. Use links and generated indexes rather than copying full explanations into many plans, reports and agent prompts.",
+    "status": "DONE",
+    "evidence_summary": "Canonical current facts move to compact state and ledger; historical snapshots retained and linked rather than silently overwritten. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "CURRENT-STATE.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 20,
+    "requirement": "[ ] 20. Make formal handoffs the normal coding path\n   Require a unique task and ContextPack for consequential coding tasks, plus a traceable ExecutionBundle afterward. PR #68 demonstrates the mechanism; make it standard for future work.",
+    "status": "DONE",
+    "evidence_summary": "Merged compliance requires unique Task, committed pre-edit immutable CP and source-bound EB; successive Tasks25â€“40 demonstrate actual chain.",
+    "evidence": [
+      "docs/agent-workflow/PR-COMPLIANCE.md"
+    ],
+    "outstanding": "Continue same chain for41 and any final bounded recovery task.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Continue same chain for41 and any final bounded recovery task."
+  },
+  {
+    "number": 21,
+    "requirement": "[ ] 21. Prevent task-scope drift\n   When new approval extends a taskâ€”such as Phase B after the Phase A-only VEL-TASK-0005â€”record an approved amendment or create a newly pinned task/ContextPack. Never silently reuse the original permission envelope.",
+    "status": "DONE",
+    "evidence_summary": "Material source/scope changes used unique amendments; CP0014 and historical packs retained. Task39 oversized input rejected before implementation.",
+    "evidence": [
+      "docs/agent-workflow/tasks/VEL-TASK-0039.yaml"
+    ],
+    "outstanding": "Maintain immutable permission envelope; no silent scope reuse.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain immutable permission envelope; no silent scope reuse."
+  },
+  {
+    "number": 22,
+    "requirement": "[ ] 22. Standardize task acceptance and permissions\n   Every task should contain a bounded objective, source revision, dependencies, allowed paths/actions, forbidden operations, positive and negative tests, owner checkpoints and clear completion criteria.",
+    "status": "DONE",
+    "evidence_summary": "Task schema and trusted-base compliance validate objective, paths, permissions, authorization expiry and source/pack/bundle binding with negative tests.",
+    "evidence": [
+      "docs/agent-workflow/PR-COMPLIANCE.md"
+    ],
+    "outstanding": "Preserve existing defaults and reserved checkpoints.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Preserve existing defaults and reserved checkpoints."
+  },
+  {
+    "number": 23,
+    "requirement": "[ ] 23. Make agent identity and code provenance reliable\n   Record which tool/model actually performed each action. Preserve original authorship when cherry-picking or adopting code produced by ChatGPT, Codex, Cursor or another contributor.",
+    "status": "DONE",
+    "evidence_summary": "Per-source manifests preserve ChatGPT65/66, Cursor-era and Codex changes; actual fresh sessions recorded with unknown model builds explicitly unknown.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039.md"
+    ],
+    "outstanding": "Do not infer runtime identity from Git author names.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Do not infer runtime identity from Git author names."
+  },
+  {
+    "number": 24,
+    "requirement": "[ ] 24. Enforce branch and worktree isolation\n   One assigned executor per task branch, verified starting SHA, preserved local changes, no silent branch takeover and no simultaneous uncontrolled edits to shared files.",
+    "status": "DONE",
+    "evidence_summary": "Tasks use isolated named branches/worktrees and verified bases; original dirty owner checkout preserved, no silent takeover.",
+    "evidence": [
+      "docs/agent-workflow/execution-bundles/VEL-EB-0038.md"
+    ],
+    "outstanding": "Continue single executor per task and explicit source checks.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Continue single executor per task and explicit source checks."
+  },
+  {
+    "number": 25,
+    "requirement": "[ ] 25. Make ContextPacks immutable and current\n   Validate the task blob and source blob hashes against the pinned commit. Generate a new pack when authoritative inputs or permissions change; do not overwrite dispatched historical packs.",
+    "status": "DONE",
+    "evidence_summary": "Pack validator compares pinned task/source blobs and rendered body; all dispatched packs remain immutable and committed before edits.",
+    "evidence": [
+      "docs/agent-workflow/README.md"
+    ],
+    "outstanding": "New authoritative scope requires a new pack.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "New authoritative scope requires a new pack."
+  },
+  {
+    "number": 26,
+    "requirement": "[ ] 26. Standardize complete ExecutionBundles\n   Require actual commands, exit codes, changed files, environment, exact source/head SHA, test fixtures, security findings, unresolved risks and FACT/INTERPRETATION/PROPOSAL separation.",
+    "status": "DONE",
+    "evidence_summary": "Source-bound bundles retain actual commands, exits, fixtures, limitations and fact/interpretation/proposal sections; historical results separately bound.",
+    "evidence": [
+      "docs/agent-workflow/execution-bundles/VEL-EB-0040.md"
+    ],
+    "outstanding": "Complete EB0041 after actual tests; no copied old results as current.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Complete EB0041 after actual tests; no copied old results as current."
+  },
+  {
+    "number": 27,
+    "requirement": "[ ] 27. Verify genuine agent independence\n   Repeat a real implementation handoff in a fresh Codex or alternative-agent session using only the approved task context. PR #68 proves task packaging and execution, but its own report calls the handoff same-session, not independent cold-start verification.",
+    "status": "PARTIAL",
+    "evidence_summary": "Task0038 fresh filesystem attempt blocked before input reads; separate input-only generation was integrated/tested by primary. Task40 historical reasoning10PASS is not end-to-end implementation.",
+    "evidence": [
+      "docs/reports/VEL-SOURCE-PRESERVATION-0038.md"
+    ],
+    "outstanding": "External usable fresh implementation environment and complete original acceptance; do not mark DONE.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External usable fresh implementation environment and complete original acceptance; do not mark DONE."
+  },
+  {
+    "number": 28,
+    "requirement": "[ ] 28. Prohibit silent implementation-role substitutions\n   Direct feature coding by ChatGPT or switching away from Codex should require an explicit task-specific exception. Planning, reviewing and small governance edits can have proportionate policies.",
+    "status": "DONE",
+    "evidence_summary": "ADR0008 and compliance require Codex unless an explicit task-specific reviewed exception exists; coordinator write access is not permission.",
+    "evidence": [
+      "AGENTS.md"
+    ],
+    "outstanding": "Keep alternate roles explicit and preserve original authorship.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Keep alternate roles explicit and preserve original authorship."
+  },
+  {
+    "number": 29,
+    "requirement": "[ ] 29. Add PR-to-task compliance validation\n   Automatically check task identity, ContextPack reference, ExecutionBundle reference, evidence fields and required owner checkpoints for qualifying implementation PRs; allow documented low-risk exemptions.",
+    "status": "DONE",
+    "evidence_summary": "Merged trusted-base PR-to-task validator checks authorization, pack, EB, source/scope and executor provenance; negative bypass tests retained.",
+    "evidence": [
+      "docs/agent-workflow/PR-COMPLIANCE.md"
+    ],
+    "outstanding": "Static evidence is not human/runtime identity authentication.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Static evidence is not human/runtime identity authentication."
+  },
+  {
+    "number": 30,
+    "requirement": "[ ] 30. Check merged-main artifact integrity\n   Ensure every accepted PR's required files survive integration. Detect missing tests and artifacts, including zero-test discovery, to prevent recurrence of the 21-file research recovery incident.",
+    "status": "DONE",
+    "evidence_summary": "Each integration compares reviewed and merged tree; governance runner rejects missing/zero tests and verifies research/independent artifacts.",
+    "evidence": [
+      "scripts/ci_governance.py"
+    ],
+    "outstanding": "Final dependency-closed backup remains separately IN_VERIFICATION under41.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Final dependency-closed backup remains separately IN_VERIFICATION under41."
+  },
+  {
+    "number": 31,
+    "requirement": "[ ] 31. Audit workflow triggers and test coverage\n   Ensure implementation, SQL, validator, task, metadata and relevant documentation changes trigger applicable checks. Passing unrelated tests must not mask untested changed surfaces.",
+    "status": "DONE",
+    "evidence_summary": "Single automatic workflow, mandatory events/main push, final gate inputs/command, read-only job permissions and unconditional governance runner are protected by negative contracts.",
+    "evidence": [
+      "tests/test_ci_policy.py"
+    ],
+    "outstanding": "Preserve draft-aware behavior and security/recovery gates.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Preserve draft-aware behavior and security/recovery gates."
+  },
+  {
+    "number": 32,
+    "requirement": "[ ] 32. Establish dependable review evidence\n   Make exact-head source inspection, focused negative tests, advisory AI/CodeRabbit review where available and owner disposition explicit. A Draft-skipped CodeRabbit result is not an independent review.",
+    "status": "DONE",
+    "evidence_summary": "Distinct trusted Codex sessions reviewed each successor exact head; review findings produced bounded corrections and red/green tests. Draft-skipped CodeRabbit never counted.",
+    "evidence": [
+      "docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md"
+    ],
+    "outstanding": "Repeat distinct review for41/final recovery; preserve owner acceptance boundaries.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Repeat distinct review for41/final recovery; preserve owner acceptance boundaries."
+  },
+  {
+    "number": 33,
+    "requirement": "[ ] 33. Protect integration against bypass\n   Assess branch-protection/ruleset availability on the private repository. Where GitHub plan limits prevent required checks, use documented owner-controlled merge procedures and verification evidence.",
+    "status": "DONE",
+    "evidence_summary": "Historical protection404/rulesets empty and owner sole-maintainer deferral are documented; serial evidence-controlled merge procedure used.",
+    "evidence": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "outstanding": "Residual authorized-writer bypass risk accepted only within recorded deferral; no setting change.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Residual authorized-writer bypass risk accepted only within recorded deferral; no setting change."
+  },
+  {
+    "number": 34,
+    "requirement": "[ ] 34. Separate CI failures from infrastructure failures\n   Report runner-not-started, account restrictions, unavailable Docker/PostgreSQL, actual failed assertions and missing configuration as distinct conditions. None should be mislabeled PASS.",
+    "status": "DONE",
+    "evidence_summary": "Evidence distinguishes zero-step infrastructure failure, draft gate refusal, skipped SQL, blocked worker filesystem, real assertion failure and PASS.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039.md"
+    ],
+    "outstanding": "Continue exact classifications; no billing or skip-to-PASS inference.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Continue exact classifications; no billing or skip-to-PASS inference."
+  },
+  {
+    "number": 35,
+    "requirement": "[ ] 35. Close and reconcile completed or superseded work\n   Review paused PR #59 and old Issue #58, continuing Issue #63, outstanding Stage 3 Issue #18, and the newer #65/#66/#68. Close, retain or supersede with accurate links and decisions.",
+    "status": "DONE",
+    "evidence_summary": "PR59/65/66/68/82 and obsolete successors closed with source retention; Issue58 NOT_PLANNED, Issue81 offline-only closed. PR83 successor still verifying. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 36,
+    "requirement": "[ ] 36. Apply least-privilege agent permissions\n   Limit repository, credential, filesystem, network, paid API, database and deployment access by task. Preserve explicit owner checkpoints for destructive or high-impact operations.",
+    "status": "DONE",
+    "evidence_summary": "Read-only workflow permissions, job-override rejection, task forbidden actions and scoped isolated operations preserved. No hosted/private/paid/settings work performed.",
+    "evidence": [
+      "docs/agent-workflow/PR-COMPLIANCE.md"
+    ],
+    "outstanding": "Reserved actions need exact separate owner authorization.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Reserved actions need exact separate owner authorization."
+  },
+  {
+    "number": 37,
+    "requirement": "[ ] 37. Strengthen secret and private-data protections\n   Keep local .env files ignored; use secret checks and sanitized logs/artifacts. Never store author manuscripts, access tokens or service-role keys in Git handoff packets.",
+    "status": "DONE",
+    "evidence_summary": "Task0042 scanned1198 committed paths for tracked runtime env files and selected credential patterns with zero findings; backup sources exclude local runtime/untracked files. Existing sensitive-path negative tests and sanitized artifacts remain enforced. This is bounded evidence, not exhaustive historical-secret or manuscript certification.",
+    "evidence": [
+      "docs/reports/evidence/VEL-COMPLETION-0042/recovery-result.json"
+    ],
+    "outstanding": "No known bounded repository finding; ongoing secret hygiene remains required.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Continue sanitized task inputs and logs; do not use private manuscripts."
+  },
+  {
+    "number": 38,
+    "requirement": "[ ] 38. Test full project recovery from a clean environment\n   Clone the repository without prior ChatGPT context, set up the pinned tooling, reconstruct the active project state and execute a synthetic task. Record everything that cannot be recovered.",
+    "status": "PARTIAL",
+    "evidence_summary": "Task31 reconstructed43 pinned commits in owned clone with GC/fsck, frozen install/tests/build; not a new OS or independent implementation environment.",
+    "evidence": [
+      "docs/agent-workflow/execution-bundles/VEL-EB-0031.md"
+    ],
+    "outstanding": "Executable latest-source recovery; external genuinely fresh environment remains unverified.",
+    "control": "mixed",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Executable latest-source recovery; external genuinely fresh environment remains unverified."
+  },
+  {
+    "number": 39,
+    "requirement": "[ ] 39. Make CI reproducible without unsafe cloud dependencies\n   Maintain disposable PostgreSQL/Auth test paths, predictable tool versions, safe fixture cleanup and offline-capable checks. Hosted tests should require their own explicit authorization.",
+    "status": "DONE",
+    "evidence_summary": "Actual disposable Auth/RLS/CAS and PG17 checks remain in consolidated/manual CI; frozen pnpm10.18 lock and Node24/Python3.12 tooling are specified. Task0042 restored offline setup, identified a new advisory, and Task0043 pins Next16.4.1. Runner ubuntu-latest, action major tags and PG image tags remain time-variable; no bit-identical environment claim. Hosted access remains separately prohibited.",
+    "evidence": [
+      ".github/workflows/ci.yml"
+    ],
+    "outstanding": "Maintain version/advisory checks; image variability is disclosed rather than hosted dependency.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Use frozen lock and record actual image/tool versions in each future execution."
+  },
+  {
+    "number": 40,
+    "requirement": "[ ] 40. Link actual implementation to acceptance status\n   Map delivered features and test results back to the 149-ID MVP crosswalk. Update PASS/FAIL/BLOCKED/NOT_RUN only from observed behavior, not from planning documents.",
+    "status": "DONE",
+    "evidence_summary": "Task0041 maps all149 included IDs to observed evidence;67 Library tests do not execute149 named planned acceptance tests or deliver chapters/editor. PR106 merged23fd8488df060e1591be70232abd70f4255e814d with exact-tree equality and post-main39868833625 SUCCESS; PR83 closed after that check. Issues69/72/79 closed;18/63/67/74 retain genuine unmet acceptance.",
+    "evidence": [
+      "docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md"
+    ],
+    "outstanding": "None for the bounded repository acceptance; retained external/product gates are not promoted.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Maintain during future separately authorized changes."
+  },
+  {
+    "number": 41,
+    "requirement": "[ ] 41. Establish repository recovery and backup checks\n   Verify that source, evidence, relevant artifacts and migration history can be recovered, including after bad merges or lost agent worktrees. Keep secrets outside backup copies of the knowledge repository.",
+    "status": "DONE",
+    "evidence_summary": "Task0042 full bundle restores420 referenced commits including31 mandatory pack bases and original43 historical pins, survives owned GC/fsck, matches exact reviewed tree and original research/PG17 archives. Corrupt bundle exits128 and missing archive is rejected. Task0043 supplemental bundle restores the patched code cut. Finite backups exclude their future report commit.",
+    "evidence": [
+      "docs/reports/evidence/VEL-COMPLETION-0042/recovery-result.json",
+      "docs/reports/evidence/VEL-COMPLETION-0043/patch-recovery-result.json"
+    ],
+    "outstanding": "No missing required recovery pin; final report commit retained through normal Git remote and external final merge attestation.",
+    "control": "none",
+    "source_commit": "23fd8488df060e1591be70232abd70f4255e814d",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Restore full bundle then supplemental patched-source bundle; retain final merged Git ref."
+  },
+  {
+    "number": 42,
+    "requirement": "[ ] 42. Measure agentic workflow effectiveness\n   Track compliant handoffs, cold-start success, verification time, escaped defects, context size, review rework, cost and false claims to determine whether the workflow actually improves delivery.",
+    "status": "PARTIAL",
+    "evidence_summary": "Actual command durations, context sizes, review rework, red/green corrections and historical1136 summed job seconds retained. No API/billing cost or causal effectiveness claim.",
+    "evidence": [
+      "docs/reports/VEL-PR68-RECONCILIATION-0039.md"
+    ],
+    "outstanding": "Account billable-cost records and a comparable longitudinal baseline are unavailable/not accessed; causal effectiveness remains unestablished.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Owner may separately supply sanitized cost/baseline data; no billing settings access is requested or assumed."
+  },
+  {
+    "number": 43,
+    "requirement": "[ ] 43. Delay additional orchestration infrastructure\n   Introduce a custom MCP knowledge server, vector search, knowledge graph or automated multi-agent orchestration only if measured retrieval/coordination problems remain after the Git-first workflow is stabilized.",
+    "status": "DONE",
+    "evidence_summary": "Git-first control plane retained without new knowledge server, graph, vector database or orchestration service.",
+    "evidence": [
+      "PROJECT-CONSTITUTION.md"
+    ],
+    "outstanding": "Reconsider only with separately evidenced need; no new service now.",
+    "control": "none",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "Reconsider only with separately evidenced need; no new service now."
+  },
+  {
+    "number": 44,
+    "requirement": "[ ] 44. Enforce agentic role boundaries at task dispatch and repository write time (CRITICAL)\n   Prevent ChatGPT, acting as architect/coordinator/reviewer, from directly implementing code or modifying CI/application files just because it has GitHub write access. Require an owner-authorized, uniquely identified task and immutable ContextPack before Codex begins implementation; record the actual executor in the PR and ExecutionBundle. If Codex cannot be dispatched through the available tools, stop at a reviewable handoff and report NOT_STARTEDâ€”do not silently become the implementer. Add a documented exception process for explicitly reassigned tasks or narrowly scoped governance edits; verify role compliance during review and with applicable automated PR-to-task checks. Audit prior coordinator-authored implementation work for provenance and any missing handoff evidence.\n   Acceptance: a coordinator-only session cannot claim Codex execution or merge-ready implementation; a CI/PR check flags missing authorized task/ContextPack/executor evidence for qualifying changes, and a real Codex handoff is independently verified. Related existing items: #20, #21, #23, #28 and #29.",
+    "status": "PARTIAL",
+    "evidence_summary": "Static unauthorized executor/task/pack/scope bypass checks merged and prior coordinator sources audited. Runtime identity cannot be authenticated by Git and fresh end-to-end implementation remains blocked.",
+    "evidence": [
+      "docs/agent-workflow/PR-COMPLIANCE.md"
+    ],
+    "outstanding": "External fresh implementation verification; preserve static checks and explicit exception process.",
+    "control": "external",
+    "source_commit": "67e48d1fa821fe5e3e94ab7457f554720b676106",
+    "decision_sources": [
+      "docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml"
+    ],
+    "next_action": "External fresh implementation verification; preserve static checks and explicit exception process."
+  }
+]

@@ -12,7 +12,7 @@ sources:
   - SRC-003
 ---
 
-# Vellistry — Project Definition
+# Vellistry â€” Project Definition
 
 ## Working identity
 Vellistry is the working name for a proposed author-controlled fiction writing, editing, design, and publishing application with optional AI assistance.
@@ -44,3 +44,5 @@ Current implementation/governance facts live in [CURRENT-STATE.md](CURRENT-STATE
 ## Current remediation authority
 
 The default owner approval boundaries remain in force. The [recorded one-time delegation](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits only eligible repository remediation integrations during this unfinished assignment, with distinct trusted review and actual CI. It grants no hosted, private-manuscript, release or future-feature authority. [CURRENT-STATE.md](CURRENT-STATE.md) and the [original44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md) distinguish verified progress from remaining acceptance.
+
+The temporary remediation delegation ends under its [recorded closure condition](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md). After the final merge/post-main attestation, ordinary owner-governed approval resumes; this exception grants no future feature authority.

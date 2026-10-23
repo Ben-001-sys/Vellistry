@@ -12,7 +12,7 @@ related_adrs:
   - ADR-0002
 ---
 
-# Agent Workflow v0.1 — Research and Engineering Handoffs
+# Agent Workflow v0.1 â€” Research and Engineering Handoffs
 
 The task/ContextPack/ExecutionBundle mechanism is merged and operational (PR5,
 Stage4 accepted bounded handoff and current PR70 examples). Its historical v0.1
@@ -27,7 +27,7 @@ before implementation. Merged Issue73 implements [PR compliance evidence validat
 
 ## Lifecycle (solo maintainer)
 
-`proposed → ready → in-progress → verification → completed` with optional `blocked` or `cancelled`. Task state is not equivalent to evidence quality. Only the owner promotes consequential project decisions. An AI review is advisory; it is never falsely represented as an independent human approver.
+`proposed â†’ ready â†’ in-progress â†’ verification â†’ completed` with optional `blocked` or `cancelled`. Task state is not equivalent to evidence quality. Only the owner promotes consequential project decisions. An AI review is advisory; it is never falsely represented as an independent human approver.
 
 1. **Plan:** create a YAML task in `docs/agent-workflow/tasks/`. Record objective, constraints, in/out scope, source gaps, accepted governing inputs, permitted actions and acceptance criteria.
 2. **Prepare context:** run `python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0001.yaml`. It pins a Git commit and Git blob IDs for explicitly selected files, and embeds the checked-in contents. No complete-chat dump or implicit source authority.
@@ -41,7 +41,7 @@ before implementation. Merged Issue73 implements [PR compliance evidence validat
 - [Example ContextPack](context-packs/VEL-CP-0001.md): task-scoped immutable Git inputs; records SRC-001 as a known missing original Git archive.
 - [Example ExecutionBundle](execution-bundles/VEL-EB-0001.md): actual assessment of currently committed records; not independent source verification or completion of full migration.
 
-## Stage 3 follow-up — cold-start verification (2026-10-09)
+## Stage 3 follow-up â€” cold-start verification (2026-10-09)
 
 The owner merged the initial operational handoff implementation in [PR #5](https://github.com/Ben-001-sys/Vellistry/pull/5). The current follow-up is the [detached reconstruction and independent-agent protocol](HANDOFF-REPRODUCIBILITY-PROTOCOL.md).
 
@@ -97,3 +97,5 @@ The generator refuses to overwrite an existing pack and rejects missing/untracke
 ## Current implementation evidence
 
 PR76 and subsequent bounded corrections integrated static PR-to-task, immutable-pack, scope, executor-provenance and workflow-contract checks. These do not authenticate runtime agents or humans. The [current state](../../CURRENT-STATE.md) and [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) distinguish default owner approval from this temporary repository-only integration exception. Historical Level B now has technical evidence in [VEL-HO-0004](handoff-evaluations/VEL-HO-0004.md); owner acceptance remains pending. The older pending descriptions above record their original dates.
+
+The temporary remediation delegation ends under its [recorded closure condition](authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md). After the final merge/post-main attestation, ordinary owner-governed approval resumes; this exception grants no future feature authority.
