@@ -1,0 +1,47 @@
+{
+  "base": "be69e5b249f57253e726bfcca00f5e81c0c60623",
+  "files": [
+    {
+      "path": "apps/web/src/lib/supabase/browser.ts",
+      "base_blob": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507",
+      "head_blob": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507"
+    },
+    {
+      "path": "apps/web/src/lib/supabase/server.ts",
+      "base_blob": "861257950cf82fed2cacd4f1d24e24574fe8ea72",
+      "head_blob": "861257950cf82fed2cacd4f1d24e24574fe8ea72"
+    },
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.service.ts",
+      "base_blob": "77bbb0b76943a6a67cbb52beb7b074430753c655",
+      "head_blob": "77bbb0b76943a6a67cbb52beb7b074430753c655"
+    },
+    {
+      "path": "apps/web/src/app/api/books/route.ts",
+      "base_blob": "34b70aed9ae8fd5a4033c9a1db615e03a3902231",
+      "head_blob": "34b70aed9ae8fd5a4033c9a1db615e03a3902231"
+    },
+    {
+      "path": "apps/api/src/modules/books/books.controller.ts",
+      "base_blob": "8055d7fc69dbf8c6e3570a09b2e2f352a9d17940",
+      "head_blob": "8055d7fc69dbf8c6e3570a09b2e2f352a9d17940"
+    },
+    {
+      "path": "apps/api/src/modules/books/books.service.ts",
+      "base_blob": "8090911010e3fa488625d6cff608f1b31e401f04",
+      "head_blob": "8090911010e3fa488625d6cff608f1b31e401f04"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "base_blob": "95fc1358997f668edc37b1220fdbec645a0e085a",
+      "head_blob": "95fc1358997f668edc37b1220fdbec645a0e085a"
+    }
+  ],
+  "installed_versions": {
+    "web:@supabase/supabase-js": "2.117.3",
+    "web:@supabase/ssr": "0.7.0",
+    "web:next": "16.4.1",
+    "api:@supabase/supabase-js": "2.117.3",
+    "api:@nestjs/core": "11.2.7"
+  }
+}

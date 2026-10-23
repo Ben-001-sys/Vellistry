@@ -16,7 +16,7 @@ Owner directly authorized Issue #108 Phase A in this Codex conversation. Its ear
 Live main was fetched at `be69e5b249f57253e726bfcca00f5e81c0c60623`. PR107 and post-main [39961186197](https://github.com/Ben-001-sys/Vellistry/actions/runs/39961186197) are historical foundation evidence, not a new Phase A run. Root owner worktree and existing local configuration were preserved. A new isolated `codex/vel-dev-001-phase-a` worktree contains only tracked source plus generated dependencies/test outputs. No actual env file or credential was opened, printed, changed or copied. App credential/DOTENV/NODE_OPTIONS variables were excluded from child test environments; no local Supabase service or hosted target was contacted by these tests.
 
 ## FACT: actual local verification
-See [machine-readable commands/exits](evidence/VEL-DEV-001/baseline-results.json) and adjacent complete logs. Windows, Node24.13.0, pinned pnpm10.18.0, Python3.10.10. Tested commit `c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d` differs from verified main only in the new task/owner scope; application, tests, package manifests and lockfile are identical.
+See [machine-readable commands/exits](evidence/VEL-DEV-001/baseline-results.json) and adjacent complete logs. Windows, Node24.13.0, pinned pnpm10.18.0, Python3.10.10. Installed Next16.4.1, Nest11.2.7, Supabase JS2.117.3 and SSR0.7.0 are recorded alongside exact base/head Git blobs in [source identity](evidence/VEL-DEV-001/source-identity.json). Tested commit `c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d` differs from verified main only in the new task/owner scope; application, tests, package manifests and lockfile are identical.
 
 | Command | Result | Meaning |
 |---|---|---|
@@ -26,7 +26,7 @@ See [machine-readable commands/exits](evidence/VEL-DEV-001/baseline-results.json
 | corepack pnpm check | PASS exit0 | Nest and Next TypeScript |
 | corepack pnpm build | PASS exit0 | Nest compiler and Next16.4.1 production build |
 
-Governance and report validation results are recorded in EB0045 and its command evidence when complete. No real-browser end-to-end, live disposable Auth/DB or hosted acceptance is inferred from unit tests or compilation. Existing CI security/recovery evidence remains bounded to its recorded source and fixtures. The integrated SQL privilege job was skipped historically; skip is not acceptance.
+Full governance passed415 tests (276current+139archived), metadata, readiness, traceability and pinned artifact validation; exit0. Exact commands and complete evidence are recorded in EB0045. No real-browser end-to-end, live disposable Auth/DB or hosted acceptance is inferred from unit tests or compilation. Existing CI security/recovery evidence remains bounded to its recorded source and fixtures. The integrated SQL privilege job was skipped historically; skip is not acceptance.
 
 ## FACT: existing connection and isolation trace
 All source paths below refer to the verified main baseline; no application source changed.

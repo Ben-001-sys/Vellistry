@@ -1,0 +1,25 @@
+{
+  "base": "be69e5b249f57253e726bfcca00f5e81c0c60623",
+  "source_commit": "a2251cffd8e0b2074966845e494589cbf27855a2",
+  "command": "git diff --name-only BASE HEAD -- apps supabase .github scripts tests package.json pnpm-lock.yaml pnpm-workspace.yaml",
+  "exit_code": 0,
+  "protected_paths_changed": [],
+  "changed_paths": [
+    "CURRENT-STATE.md",
+    "docs/agent-workflow/context-packs/VEL-CP-0045.md",
+    "docs/agent-workflow/inputs/VEL-TASK-0045/OWNER-SCOPE.md",
+    "docs/agent-workflow/tasks/VEL-TASK-0045.yaml",
+    "docs/reports/VEL-DEV-001-HOSTED-PROPOSAL.md",
+    "docs/reports/VEL-DEV-001-PHASE-A.md",
+    "docs/reports/VEL-IMP-002-HANDOFF-PROPOSAL.md",
+    "docs/reports/evidence/VEL-DEV-001/baseline-00.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-01.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-02.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-03.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-04.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-05.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-06.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-07.txt",
+    "docs/reports/evidence/VEL-DEV-001/baseline-results.json"
+  ]
+}
