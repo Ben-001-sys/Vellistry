@@ -1,0 +1,78 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_remediation_ledger.py",
+      "-v"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 0.25,
+    "evidence": "adopted-check-0.txt"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_governance_entrypoints.py",
+      "-v"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 0.203,
+    "evidence": "adopted-check-1.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/check_knowledge_metadata.py"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 0.156,
+    "evidence": "adopted-check-2.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/check_implementation_readiness.py"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 0.11,
+    "evidence": "adopted-check-3.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/spec_traceability.py",
+      "validate"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 0.109,
+    "evidence": "adopted-check-4.txt"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/agent_workflow.py",
+      "validate"
+    ],
+    "source_commit": "a0e44bbde89799be61f9606cd213eefb50b8e657",
+    "exit_code": 0,
+    "seconds": 88.172,
+    "evidence": "adopted-check-5.txt"
+  }
+]
