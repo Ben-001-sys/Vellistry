@@ -151,3 +151,5 @@ No billed-minute savings or branch-protection enforcement is asserted.
 ## Current remediation clarification — 2026-10-22
 
 The pending gate table remains effective. Merged PR76/78/80 and later corrections enforce static evidence and workflow contracts; no broad gate has been promoted. The [one-time delegation](authorizations/VEL-REM-INTEGRATION-20261019.yaml) permits eligible repository remediation merge/closure after distinct trusted review and actual ready/post-main CI, without a repeated routine merge request. Hosted/security/owner acceptance and future features remain excluded. Historical CI checkpoints above are not current main; use [CURRENT-STATE](../../CURRENT-STATE.md).
+
+The temporary remediation delegation ends under its [recorded closure condition](authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md). After the final merge/post-main attestation, ordinary owner-governed approval resumes; this exception grants no future feature authority.

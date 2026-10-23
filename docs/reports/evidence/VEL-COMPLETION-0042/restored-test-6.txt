@@ -1,0 +1,19 @@
+test_archive_hash_and_size (test_research_archive.ArchiveTests) ... ok
+test_cli_explicit_paths_success_and_failure (test_research_archive.ArchiveTests) ... ok
+test_corrupted_member_crc_with_matching_whole_archive_hash (test_research_archive.ArchiveTests) ... ok
+test_malformed_json (test_research_archive.ArchiveTests) ... ok
+test_member_hash_and_size (test_research_archive.ArchiveTests) ... ok
+test_missing_extra_duplicate_members (test_research_archive.ArchiveTests) ... ok
+test_missing_input (test_research_archive.ArchiveTests) ... ok
+test_non_zip_and_truncated_zip (test_research_archive.ArchiveTests) ... ok
+test_positive_preserves_files_and_never_extracts (test_research_archive.ArchiveTests) ... ok
+test_resource_limits (test_research_archive.ArchiveTests) ... ok
+test_stored_and_empty_member (test_research_archive.ArchiveTests) ... ok
+test_strict_manifest_schema (test_research_archive.ArchiveTests) ... ok
+test_symlink_rejected (test_research_archive.ArchiveTests) ... ok
+test_unsafe_zip_names (test_research_archive.ArchiveTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.280s
+
+OK

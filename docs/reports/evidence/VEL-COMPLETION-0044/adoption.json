@@ -1,0 +1,9 @@
+{
+  "source_commit": "1119478a962bc5ac024497164141ff6e489a7522",
+  "pack_commit": "b327011c981d17e3f99e989636515de7679d02e0",
+  "paths": 515,
+  "all_source_hashes_matched": true,
+  "original_executor": "Codex",
+  "historical_tasks_and_packs": "byte-exact",
+  "manifest": "not imported; existing per-PR mapping will be updated with preserved invariant fields"
+}

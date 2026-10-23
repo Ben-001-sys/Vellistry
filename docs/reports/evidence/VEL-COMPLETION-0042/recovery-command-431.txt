@@ -1,0 +1,2 @@
+Cloning into 'H:\cursor\cursor\Vellistry\.worktrees\vel-remediation-completion\.final-recovery.log\working'...
+Updating files:  96% (1155/1198)Updating files:  97% (1163/1198)Updating files:  98% (1175/1198)Updating files:  99% (1187/1198)Updating files: 100% (1198/1198)Updating files: 100% (1198/1198), done.
