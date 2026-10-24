@@ -1,0 +1,1 @@
+Wrapper exited1 while printing traceability stdout to cp1252 console (U+FFFD); all four children exited0 and saved outputs are present. Reconstructed checks.json from observed child exits and saved files without rerunning checks.
