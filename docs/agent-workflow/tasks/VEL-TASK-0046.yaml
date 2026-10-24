@@ -1,0 +1,104 @@
+id: VEL-TASK-0046
+title: Prepare exact-target read-only hosted metadata query packet
+type: implementation-task
+status: in-progress
+created_at: '2026-10-24'
+updated_at: '2026-10-24'
+owner: project_owner
+context_pack_id: VEL-CP-0046
+objective: Submit exact bounded catalog queries, target/access/limits/negative cases
+  and migration comparison for owner review; no hosted execution.
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0046.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0046.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0046.md
+- docs/agent-workflow/inputs/VEL-TASK-0046/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-HOSTED-METADATA-0046-QUERY-PACKET.md
+- docs/reports/evidence/VEL-HOSTED-METADATA-0046/*
+out_of_scope:
+- All hosted calls/queries, credentials/env/CLI login, migrations/SQL adoption, Auth/business
+  rows, users and settings
+- Application, test, tooling, dependency, workflow or policy changes; IMP002, private
+  data or merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0046/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0046/TARGET.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0046/CHANNEL-CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0046/THIRD-MIGRATION-SOURCE.md
+  role: governing-source
+- path: supabase/migrations/20261009000000_initial_author_books.sql
+  role: governing-source
+- path: supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql
+  role: governing-source
+- path: docs/reports/VEL-PR68-RECONCILIATION-0039-DECISION-PACKET.md
+  role: governing-source
+source_gaps:
+- id: CHANNEL
+  limitation: Generic execute_sql has no documented enforced read-only role/limits;
+    isolated channel unverified; do not probe.
+- id: HOSTED_STATE
+  limitation: Target reported by owner/coordinator; live schema/history/ACL/RLS/version/Data
+    API runtime unknown.
+deliverables:
+- Committed source Task then validated committed immutable CP before report edits
+- Exact named catalog SELECT allowlist and SHA256 packet/query hashes, limits/sanitization/stops
+- Pinned two-operative/third-proposed migration comparison without adoption
+- Preparation-only EB and validation/review evidence; exact owner query review before
+  execution
+acceptance_criteria:
+- Pin exact project/organization/region with honest source attribution
+- Only bounded catalog reads proposed; no business/Auth data, bodies, passwords, config
+  dumps or mutating functions
+- Require channel proof and exact packet approval; never assume raw SQL connector
+  safe
+- No migration/feature/policy edits; negative cases stop; ordinary owner merge
+allowed_actions:
+- Read Git/GitHub owner sources/public docs and inspect tool metadata without Supabase
+  calls
+- Commit Task/CP; prepare non-executed embedded query documentation and inert evidence
+- Existing validators/offline static checks and independent/owner submission
+approval_required_for:
+- Owner exact query/hash review and isolated read-only channel before catalog queries
+- Hosted, credentials, migration adoption/execution, users, settings, private data,
+  features and merge
+target:
+  project: vellistry-dev
+  reference: lflkcrnriitrbclangyr
+  organization: pulyacnozzggwfgqdgdl
+  region: eu-west-2
+  reported_status: ACTIVE_HEALTHY
+  source: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6382899950
+  verification: Owner/coordinator-reported get_project; not repeated by this task;
+    no live DB evidence
+compliance:
+  change_base: d13deca2d6762d44f80035c6d89d2cb61d1ab1e8
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6382899950
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
