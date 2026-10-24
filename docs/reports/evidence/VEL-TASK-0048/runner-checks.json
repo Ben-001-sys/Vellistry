@@ -1,0 +1,16 @@
+[
+  {
+    "command": "python tests/test_ci_policy.py -v",
+    "source_commit": "e67f726b7cc51dc6b4e205d813e8d43e3180b76c",
+    "exit_code": 0,
+    "seconds": 7.78,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/direct-final.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+    "source_commit": "e67f726b7cc51dc6b4e205d813e8d43e3180b76c",
+    "exit_code": 0,
+    "seconds": 5.8,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/discovery-final.txt"
+  }
+]

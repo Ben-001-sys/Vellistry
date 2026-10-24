@@ -333,4 +333,45 @@ class DraftPolicyTests(unittest.TestCase):
             self.assertEqual(plan.get('mode'),'full')
             self.assertEqual(plan['security'],'true')
 
+
+
+
+class WorkspaceCoverageTests(unittest.TestCase):
+    STEP = {"name": "Workspace controller and organizer contract regressions", "run": "pnpm test:workspace-contract"}
+
+    def check_workspace_step(self, workflow):
+        job = workflow["jobs"]["application"]
+        self.assertEqual(job["if"], "${{ needs.classify.outputs.application == 'true' }}")
+        steps = job["steps"]
+        matches = [s for s in steps if s.get("name") == self.STEP["name"] or s.get("run") == self.STEP["run"]]
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0], self.STEP)  # no skip, masking, env/shell/directory override
+        self.assertLess(next(i for i, s in enumerate(steps) if s.get("run") == "pnpm install --frozen-lockfile"), steps.index(matches[0]))
+        self.assertLess(steps.index(matches[0]), next(i for i, s in enumerate(steps) if s.get("run") == "pnpm build"))
+
+    def test_workspace_regressions_are_required_by_real_application_ci(self):
+        self.check_workspace_step(yaml.load((ROOT / ".github/workflows/ci.yml").read_text(), Loader=yaml.BaseLoader))
+
+    def test_workspace_removal_and_execution_bypasses_fail(self):
+        import copy
+        baseline = yaml.load((ROOT / ".github/workflows/ci.yml").read_text(), Loader=yaml.BaseLoader)
+        steps = baseline["jobs"]["application"]["steps"]
+        steps[:] = [s for s in steps if s.get("name") != self.STEP["name"] and s.get("run") != self.STEP["run"]]
+        steps.insert(next(i for i, s in enumerate(steps) if s.get("run") == "pnpm install --frozen-lockfile") + 1, dict(self.STEP))
+        self.check_workspace_step(baseline)
+        cases = ["remove", "replace", "duplicate", "before-install", "after-build", "job-skip", "if", "continue-on-error", "shell", "working-directory", "env", "mask"]
+        for case in cases:
+            with self.subTest(case=case):
+                w = copy.deepcopy(baseline); job = w["jobs"]["application"]; ss = job["steps"]
+                step = next(s for s in ss if s.get("run") == self.STEP["run"])
+                if case == "remove": ss.remove(step)
+                elif case == "replace": step["run"] = "pnpm test:library-isolation"
+                elif case == "duplicate": ss.append(dict(step))
+                elif case == "before-install": ss.remove(step); ss.insert(0, step)
+                elif case == "after-build": ss.remove(step); ss.append(step)
+                elif case == "job-skip": job["if"] = "${{ false }}"
+                elif case == "mask": step["run"] += " || true"
+                else: step[case] = {"env": {"NODE_OPTIONS": "--require ./skip.js"}, "if": "${{ false }}", "continue-on-error": "true", "shell": "sh", "working-directory": "tests"}[case]
+                with self.assertRaises(AssertionError): self.check_workspace_step(w)
+
 if __name__=='__main__': unittest.main()

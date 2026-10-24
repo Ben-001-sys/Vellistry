@@ -1,0 +1,44 @@
+[
+  {
+    "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 7.03,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/ci-policy.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm install --frozen-lockfile",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 11.09,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/install.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:workspace-contract",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 2.01,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/workspace.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 0.16,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 0.1,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/readiness.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "source_commit": "aa92cba279058213517e5be2711bb7834f8a25a2",
+    "exit_code": 0,
+    "seconds": 0.18,
+    "evidence": "docs/reports/evidence/VEL-TASK-0048/state.txt"
+  }
+]

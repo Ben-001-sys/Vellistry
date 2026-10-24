@@ -10,20 +10,19 @@ version: 0.2.1
 
 # Vellistry — current verified state
 
-## Current local-only implementation — 2026-10-24
+## Current integration and CI coverage — 2026-10-24
 
-FACT: PR110 merged as18c770ff6fce7401f7529667a37d7fb523cc55d9;
-[post-main40090741803](https://github.com/Ben-001-sys/Vellistry/actions/runs/40090741803)
-SUCCESS. Metadata queries remain unexecuted; remediation delegation EXPIRED.
+FACT: PR111 merged as a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4; reviewed/merged
+tree da9bf02eefadeeeae0156685d92ff2523824c291 matches. [Post-main40111872132](https://github.com/Ben-001-sys/Vellistry/actions/runs/40111872132)
+SUCCESS. Task/CP/EB0047 preserved;41workspace/33browser checks were local evidence.
+Independent runtime EPERM was not PASS. SQL privilege fixture SKIPPED, not accepted.
 
-Owner-authorized Task0047/immutable CP0047 implements only the local controller,
-organizer and synthetic fixture: stable chapter IDs, create/rename/reorder and
-separate notes.41 unit/33 Chromium checks PASS at1ff1098cd73066c8bfd1084b72d076b4284896e1.
-[Report/evidence](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md) retain exact sources.
-No production route, database writes, SQL/Auth/dependency changes or hosted access.
-Persistence needs a separate contract; broad G_DESIGN/G_CODE stay pending outside
-this slice. Final verification/distinct review/CI precede the owner's feature merge
-decision. This is not completed hosted IMP002/JRN001.
+Task0048 adds the focused workspace command to existing applicable application CI;
+its branch awaits separate owner merge, so automatic main coverage is not claimed.
+Task0049 separately prepares a persistence contract, not SQL or feature writes.
+Metadata queries remain unexecuted; remediation delegation EXPIRED. No production
+workspace route or durable persistence. Broad G_DESIGN/G_CODE stay pending outside
+scoped authorizations. [Task0047 report](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md).
 
 ## Historical query preparation — 2026-10-24
 

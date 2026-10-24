@@ -102,6 +102,8 @@ jobs:
       run: pnpm install --frozen-lockfile
     - name: Library isolation and unknown-save negative tests
       run: pnpm test:library-isolation
+    - name: Workspace controller and organizer contract regressions
+      run: pnpm test:workspace-contract
     - name: Hosted preflight regressions when source is integrated
       run: 'if test -f tests/hosted_supabase_preflight.test.mjs; then node --test tests/hosted_supabase_preflight.test.mjs; else echo ''NOTICE:
         PR68 hosted preflight is not on this checkout; not tested''; fi'
