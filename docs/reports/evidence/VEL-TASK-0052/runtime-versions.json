@@ -1,0 +1,36 @@
+{
+  "node": {
+    "command": [
+      "node",
+      "--version"
+    ],
+    "version": "v24.13.0",
+    "exit_code": 0
+  },
+  "pnpm": {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "--version"
+    ],
+    "version": "10.18.0",
+    "exit_code": 0
+  },
+  "python": {
+    "command": [
+      "python",
+      "--version"
+    ],
+    "version": "Python 3.10.10",
+    "exit_code": 0
+  },
+  "pg": {
+    "command": [
+      "node",
+      "-e",
+      "console.log(require(\"./apps/api/node_modules/pg/package.json\").version)"
+    ],
+    "version": "8.23.1",
+    "exit_code": 0
+  }
+}

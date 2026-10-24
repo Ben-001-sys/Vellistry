@@ -1,0 +1,8 @@
+{
+  "command": "python scripts/ci_governance.py",
+  "source_commit": "c0f9634f63d9b37a54f7432aa477023ca29d8f2d",
+  "exit_code": 1,
+  "status": "FAIL",
+  "seconds": 488.69,
+  "evidence": "docs/reports/evidence/VEL-TASK-0052/governance.txt"
+}

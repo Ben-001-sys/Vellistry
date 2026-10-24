@@ -1,0 +1,253 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 0.116,
+    "evidence": {
+      "owned_snapshot": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 0.287,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "PASS",
+    "seconds": 0.184,
+    "evidence": {
+      "no_journal_or_business_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "PASS",
+    "seconds": 0.23,
+    "evidence": {
+      "forged_fields_rejected": 6
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.062,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "PASS",
+    "seconds": 0.107,
+    "evidence": {
+      "chapter_revision_receipt_atomic": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "PASS",
+    "seconds": 0.43,
+    "evidence": {
+      "existing_prose_revisions_sha256": "226e6515d627db5b5e78670a94731406cbca8cc0f23d6bde666e41e3e878efa7"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "PASS",
+    "seconds": 0.292,
+    "evidence": {
+      "stable_duplicate_title_ids": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "PASS",
+    "seconds": 0.431,
+    "evidence": {
+      "immediate_unique_swap": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "PASS",
+    "seconds": 0.358,
+    "evidence": {
+      "bad_permutations": 4
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "PASS",
+    "seconds": 0.195,
+    "evidence": {
+      "legacy_gaps_fail_closed": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "PASS",
+    "seconds": 0.155,
+    "evidence": {
+      "real_lock_barrier": true,
+      "one_cas_winner": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "PASS",
+    "seconds": 0.174,
+    "evidence": {
+      "concurrent_duplicate_one_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "PASS",
+    "seconds": 0.207,
+    "evidence": {
+      "altered_identity_denied": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "PASS",
+    "seconds": 0.159,
+    "evidence": {
+      "real_committed_effect_ack_dropped": true,
+      "no_new_key_dispatch": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "PASS",
+    "seconds": 0.202,
+    "evidence": {
+      "missing_and_rollback_stay_unknown": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "PASS",
+    "seconds": 0.222,
+    "evidence": {
+      "durable_rejection": true,
+      "business_version_unchanged": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "FAIL",
+    "seconds": 0.098,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'ready'\n- 'unavailable'\n"
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "PASS",
+    "seconds": 0.465,
+    "evidence": {
+      "separate_notes_and_prose_invariant": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "PASS",
+    "seconds": 0.263,
+    "evidence": {
+      "server_and_function_validation": true,
+      "unicode_preserved": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "PASS",
+    "seconds": 0.199,
+    "evidence": {
+      "capacity_and_safe_integer_rejected": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "PASS",
+    "seconds": 0.501,
+    "evidence": {
+      "rollback_points": 6,
+      "full_row_identity": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "FAIL",
+    "seconds": 19.113,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "FAIL",
+    "seconds": 0,
+    "error": "Error",
+    "diagnostic": "Client was closed and is not queryable"
+  }
+]

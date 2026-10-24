@@ -1,0 +1,14 @@
+✔ wire rejects forged ownership and unknown fields (1.4294ms)
+✔ Unicode preserves intent and enforces UTF16 (0.4345ms)
+✔ notes are separate, plain and untrimmed (0.9562ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.3845ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.3862ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.2981ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 300.1739
