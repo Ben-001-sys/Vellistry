@@ -62,6 +62,7 @@ export function createSyntheticWorkspace(seed?: readonly SyntheticBook[]) {
       let chapters = [...b.document.chapters];
       let notes = b.document.notes;
       if (command.kind === "create") {
+        if (chapters.length >= 1000) return {kind: "invalid"};
         let id: string;
         do { id = `synthetic-chapter-${++created}`; }
         while ([...books.values()].some(book => book.document.chapters.some(c => c.id === id)));

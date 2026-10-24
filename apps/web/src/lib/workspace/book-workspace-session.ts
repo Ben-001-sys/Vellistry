@@ -9,7 +9,7 @@ export type WorkspaceSnapshot = Readonly<{
 }>;
 type Scope = {owner: string; bookId: string; generation: number; key: string};
 type Cache = {createTitle: string; drafts: Map<string, string>; renames: Map<string, string>; selected: string | null;
-  operation: WorkspaceRequest | null; uncertain: boolean; conflict: boolean};
+  operation: WorkspaceRequest | null; uncertain: boolean; conflict: boolean; minimumVersion: number};
 export type WorkspaceSession = ReturnType<typeof createWorkspaceSession>;
 
 function freeze<T>(value: T): T {
@@ -60,6 +60,7 @@ export function createWorkspaceSession(deps: {
   function publish(document: WorkspaceDocument, scope: Scope, message: string, pending = false) {
     if (!current(scope)) return;
     const cache = cacheFor(scope);
+    cache.minimumVersion = Math.max(cache.minimumVersion, document.version);
     if (!cache.selected || !document.chapters.some(c => c.id === cache.selected)) {
       cache.selected = document.chapters[0]?.id ?? null;
     }
@@ -99,14 +100,16 @@ export function createWorkspaceSession(deps: {
     const scope: Scope = {owner, bookId, generation, key: JSON.stringify([owner, bookId])};
     active = scope;
     if (!caches.has(scope.key)) caches.set(scope.key, {createTitle: "", drafts: new Map(), renames: new Map(),
-      selected: null, operation: null, uncertain: false, conflict: false});
+      selected: null, operation: null, uncertain: false, conflict: false, minimumVersion: 0});
     emit(blank("loading", "Opening the local book..."));
     let result: Awaited<ReturnType<WorkspacePort["read"]>> | null = null;
     try { result = await deps.port.read(owner, bookId); } catch { /* read failure is not write evidence */ }
     if (!current(scope) || !(await verify(scope))) return;
     if (result?.kind === "denied") { emit(blank("denied", "This book is not available to your account.")); return; }
     const document = result?.kind === "ok" ? parseDocument(result.document, bookId) : null;
-    if (!document) { emit(blank("error", "The local book could not be opened. Your notes have not been resent.")); return; }
+    if (!document || document.version < cacheFor(scope).minimumVersion) {
+      emit(blank("error", "The current local book could not be verified. Reload it; your changes have not been resent.")); return;
+    }
     const cache = cacheFor(scope);
     cache.conflict = false;
     publish(document, scope, cache.uncertain
@@ -152,7 +155,7 @@ export function createWorkspaceSession(deps: {
     try { result = await deps.port.mutate(request); } catch { /* a lost reply is unknown */ }
     if (!current(scope) || !(await verify(scope))) return;
     if (result?.kind === "confirmed" && matchingReceipt(result.receipt, request)) {
-      confirmed(cache, request);
+      confirmed(cache, request, result.receipt.version);
       return reloadConfirmed(scope);
     }
     if (result?.kind === "invalid" || result?.kind === "denied" || result?.kind === "conflict") {
@@ -167,15 +170,18 @@ export function createWorkspaceSession(deps: {
     cache.uncertain = true;
     publish(model.document!, scope, "The local result is unknown. Check its result; the change will not be resent.");
   }
-  function confirmed(cache: Cache, request: WorkspaceRequest) {
+  function confirmed(cache: Cache, request: WorkspaceRequest, version: number) {
     cache.operation = null;
     cache.uncertain = false;
     cache.conflict = false;
+    cache.minimumVersion = Math.max(cache.minimumVersion, version);
     if (request.command.kind === "create" && chapterTitle(cache.createTitle) === request.command.title) {
       cache.createTitle = "";
     }
     if (request.command.kind === "rename" && chapterTitle(cache.renames.get(request.command.chapterId)) === request.command.title) {
-      cache.renames.delete(request.command.chapterId);
+      // Keep the acknowledgement while controls still display the older document.
+      // Typing notes/selection changes during readback must not reseed the old title.
+      cache.renames.set(request.command.chapterId, request.command.title);
     }
     // Retain drafts, including any typing newer than an acknowledged notes payload.
   }
@@ -189,7 +195,7 @@ export function createWorkspaceSession(deps: {
       leave(); emit(blank("denied", "This book is not available to your account.")); return false;
     }
     const document = result?.kind === "ok" ? parseDocument(result.document, scope.bookId) : null;
-    if (!document) {
+    if (!document || document.version < cacheFor(scope).minimumVersion) {
       emit(blank("error", "The requested local change was confirmed, but the book could not be refreshed. Reload the local book."));
       return false;
     }
@@ -213,7 +219,7 @@ export function createWorkspaceSession(deps: {
       return;
     }
     if (result?.kind === "confirmed" && matchingReceipt(result.receipt, request)) {
-      confirmed(cache, request);
+      confirmed(cache, request, result.receipt.version);
       await reloadConfirmed(scope);
     } else {
       publish(model.document!, scope, "The local result is still not confirmed. No change has been resent.");
