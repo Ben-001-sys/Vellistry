@@ -23,6 +23,7 @@ const blank = (phase: WorkspaceSnapshot["phase"], message: string): WorkspaceSna
   phase, document: null, selectedChapterId: null, createTitle: "", bookNoteDraft: "", chapterNoteDraft: "",
   pending: false, uncertain: false, conflict: false, message,
 });
+const noteKey = (chapterId?: string) => chapterId === undefined ? "book" : JSON.stringify(["chapter", chapterId]);
 
 export function createWorkspaceSession(deps: {
   /** Independently verified identity, following the existing Auth getUser semantics. */
@@ -64,11 +65,11 @@ export function createWorkspaceSession(deps: {
     }
     if (!cache.drafts.has("book")) cache.drafts.set("book", document.notes);
     document.chapters.forEach(c => {
-      if (!cache.drafts.has(c.id)) cache.drafts.set(c.id, c.notes);
+      if (!cache.drafts.has(noteKey(c.id))) cache.drafts.set(noteKey(c.id), c.notes);
     });
     emit({phase: "ready", document, selectedChapterId: cache.selected,
       createTitle: cache.createTitle, bookNoteDraft: cache.drafts.get("book")!,
-      chapterNoteDraft: cache.selected ? cache.drafts.get(cache.selected)! : "",
+      chapterNoteDraft: cache.selected ? cache.drafts.get(noteKey(cache.selected))! : "",
       pending, uncertain: cache.uncertain, conflict: cache.conflict, message});
   }
   async function verify(scope: Scope): Promise<boolean> {
@@ -124,7 +125,7 @@ export function createWorkspaceSession(deps: {
   function setNotes(value: string, chapterId?: string) {
     if (!validNotes(value)) return;
     if (chapterId !== undefined && !model.document?.chapters.some(c => c.id === chapterId)) return;
-    updateDraft(c => { c.drafts.set(chapterId ?? "book", value); });
+    updateDraft(c => { c.drafts.set(noteKey(chapterId), value); });
   }
   async function apply(command: WorkspaceCommand) {
     const scope = active;
@@ -183,6 +184,12 @@ export function createWorkspaceSession(deps: {
     let result: Awaited<ReturnType<WorkspacePort["receipt"]>> | null = null;
     try { result = await deps.port.receipt(scope.owner, scope.bookId, request.operationId); } catch { /* remain uncertain */ }
     if (!current(scope) || !(await verify(scope))) return;
+    if (result?.kind === "denied") {
+      // Revoked book access conceals the view but cannot prove a prior write failed.
+      leave();
+      emit(blank("denied", "This book is not available to your account."));
+      return;
+    }
     if (result?.kind === "confirmed" && matchingReceipt(result.receipt, request)) {
       confirmed(cache, request);
       await openBook(scope.bookId);
