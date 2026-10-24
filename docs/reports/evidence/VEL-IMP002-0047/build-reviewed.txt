@@ -1,0 +1,40 @@
+SOURCE 9b4f37194129051b812c5cfa1a3551f7018987e9
+COMMAND corepack.cmd pnpm build
+
+> vellistry@ build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\web
+> next build
+
+▲ Next.js 16.4.1 (Turbopack)
+✓ Running next.config.ts took 176ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.7s
+  Running TypeScript ...
+  Finished TypeScript in 3.2s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 925ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

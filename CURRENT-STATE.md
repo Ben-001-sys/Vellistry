@@ -18,7 +18,7 @@ SUCCESS. Metadata queries remain unexecuted; remediation delegation EXPIRED.
 
 Owner-authorized Task0047/immutable CP0047 implements only the local controller,
 organizer and synthetic fixture: stable chapter IDs, create/rename/reorder and
-separate notes.37 unit/33 Chromium checks PASS at389fd0905c94b814e1cdce8641e3d38446c38b28.
+separate notes.40 unit/33 Chromium checks PASS at9b4f37194129051b812c5cfa1a3551f7018987e9.
 [Report/evidence](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md) retain exact sources.
 No production route, database writes, SQL/Auth/dependency changes or hosted access.
 Persistence needs a separate contract; broad G_DESIGN/G_CODE stay pending outside

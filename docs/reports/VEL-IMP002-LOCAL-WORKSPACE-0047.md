@@ -109,3 +109,36 @@ limit, policy, immutable pack or historical source was changed. Raw failed outpu
 and commands remain in governance-before-state-trim.txt and pre-trim-checks.json.
 The corrected guard and full rerun are recorded separately, never substituted for
 the historical failure.
+
+## Distinct code review corrections and current verified feature source
+
+Fresh trusted read-only Codex CLI review of sourcefc7dbae896071d09f5fbbc4f850b2fbf2861cc4a
+returned three P2 findings, preserved verbatim in review-code.stdout.txt with its
+actual command/head/result. New committed regressions at895c9a4139d2d1bfea50cf36a89a27060df522d7
+ran40cases:37PASS/3FAIL, exit1, before corrections. Corrected source
+9b4f37194129051b812c5cfa1a3551f7018987e9 passes40/40, typecheck and build, all exit0.
+
+The rename acknowledgement now remains cached during delayed readback, preventing
+notes typing or selection from reseeding the old title. Author/book-scoped minimum
+versions retain observed/receipt versions across reload/account switches; stale
+readback is concealed and cannot become a writable baseline. Missing receipts
+remain uncertain as before. The synthetic adapter rejects create at1000chapters
+before modifying chapters, accepted markers, version or receipts. No persistence,
+Auth, SQL, workflow, dependency or immutable-pack change was needed.
+
+All33 browser assertions were actually rerun at9b4f371 (13happy,15negative,5focus),
+PASS with0console errors/warnings. Complete invoked code/results are the
+*-reviewed.json artifacts. The owned listener was stopped, transient wrapper
+removed and Windows TCP inventory confirmed zero listeners. Earlier screenshots
+and browser/source records remain historical; no later screenshot is fabricated.
+Human AT/author usability remain NOT_RUN.
+
+The second governance attempt ran276current cases with273PASS/1FAIL/2ERROR. Its
+stage4 exporter correctly rejected scratch CP0002 generated at101680e while HEAD
+had advanced; these were untracked disposable packets, not dispatched ContextPacks.
+The main implementation checkout also advanced during that attempt. This is an
+execution/setup failure, not passing full governance or an application defect.
+Raw governance-stale-scratch.txt and stale-scratch-checks.json preserve it. The
+complete unchanged command is rerun in the now-stationary disposable checkout at
+9b4f371 with fresh scratch packets; its actual result is recorded separately in
+EB0047. No stale packet, test, exporter or governance limit is weakened/committed.

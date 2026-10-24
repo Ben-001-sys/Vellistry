@@ -1,0 +1,21 @@
+{
+  "pid": 22236,
+  "source_commit": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+  "checkout": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-browser-check",
+  "port": 3105,
+  "credential_env_removed": true,
+  "credentials_copied": false,
+  "command": [
+    "corepack.cmd",
+    "pnpm",
+    "--filter",
+    "@vellistry/web",
+    "exec",
+    "next",
+    "dev",
+    "--hostname",
+    "127.0.0.1",
+    "--port",
+    "3105"
+  ]
+}

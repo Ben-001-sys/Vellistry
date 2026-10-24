@@ -1,0 +1,12 @@
+Local, synthetic reproductions demonstrated a rename-cache race, acceptance of stale confirmed readback, and a create boundary that makes the workspace unreadable. This advisory code-only review excludes pending governance finalization and does not constitute owner approval.
+
+Full review comments:
+
+- [P2] Retain the acknowledged rename until readback completes — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-local-workspace/apps/web/src/lib/workspace/book-workspace-session.ts:177-178
+  If the writer types notes or selects another chapter while a confirmed rename's readback is pending, deleting this entry lets `publish()` recreate it from the old document. Reproduced by delaying the second read, renaming Arrival to New name, then calling `setNotes()`: the chapter becomes New name but the rename input returns to Arrival. Submitting that form silently reverses the rename. Update the cached title from the acknowledged command, or defer clearing it until the refreshed document is available.
+
+- [P2] Validate readback against the confirmed receipt version — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-local-workspace/apps/web/src/lib/workspace/book-workspace-session.ts:191-196
+  If readback returns a valid but older same-book document, it is published as confirmed and write controls unlock because only document shape is checked. Reproduced by returning the pre-create version on the second read: the adapter contains one chapter, while the ready snapshot shows zero and announces confirmation. Preserve the receipt version and reject readbacks below it, including subsequent reloads, rather than allowing stale data to become the writable baseline. This also follows the evidence-based status requirement in [AGENTS.md:23](AGENTS.md#L23).
+
+- [P2] Reject creates that exceed the readable chapter limit — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-local-workspace/tests/fixtures/book-workspace-synthetic.ts:64-68
+  With a valid 1,000-chapter synthetic book, creating another chapter commits and returns confirmation, but `parseDocument()` rejects the resulting 1,001-chapter document. Reproduced locally: the controller enters error and every subsequent reload remains unreadable; reorder cannot repair it because commands also cap chapter IDs at 1,000. Enforce the document limit before modifying the adapter and return a definite invalid result.
