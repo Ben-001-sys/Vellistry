@@ -1,0 +1,1 @@
+{"original_blob_and_hash_checks": 16, "original_runtime_cases": "27 NOT_RUN unchanged", "packet_positive": 1, "invalid_authorization_mutations_rejected": 12, "new_runtime_extensions": "4 NOT_RUN", "executable_or_control_changes": 0, "claim": "Offline source/proposal integrity, NOT database/session/security acceptance"}

@@ -1,0 +1,312 @@
+{
+  "id": "VEL-IMP002-PERSISTENCE-EXECUTION-PACKET",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "current_base": "667084ef30ac00a96b205eb2c52c83083db121e3",
+  "original_contract_source": "b1c46df3942809b35f6cf4c650fe6c36f7cc60ab",
+  "original_cases_sha256": "9bd84fa3ed204f11332cdd5622397c523c9123ec0142ad60d546c2db01d2c193",
+  "future_task_id": null,
+  "sql_paths": [
+    "tests/workspace/persistence/sql/00_fixture_auth.sql",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql"
+  ],
+  "implementation_paths": [
+    "apps/api/src/modules/workspace/workspace-contract.ts",
+    "apps/api/src/modules/workspace/workspace.service.ts",
+    "apps/api/src/modules/workspace/workspace-persistence-port.ts",
+    "apps/api/src/modules/workspace/workspace-principal.ts",
+    "apps/api/src/modules/workspace/workspace-contract.spec.ts",
+    "tests/workspace/persistence/workspace-pg-adapter.ts",
+    "tests/workspace/persistence/workspace-pg17.integration.mjs",
+    "tests/workspace/persistence/run_pg17.py"
+  ],
+  "excluded_paths": [
+    "supabase/migrations/*",
+    ".github/workflows/*",
+    "apps/api/src/app.module.ts",
+    "apps/api/src/modules/auth/*",
+    "apps/web/src/app/*",
+    "package.json",
+    "apps/api/package.json",
+    "pnpm-lock.yaml"
+  ],
+  "decisions": [
+    {
+      "id": "GATEWAY",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Private execute-only gateway; restricted NOLOGIN/NOBYPASSRLS owner; fixed qualified objects and RLS; no browser/service-role path"
+    },
+    {
+      "id": "SESSION",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Injected verified principal; token expiry/verifiedAt freshness; matching session row FOR SHARE through transaction, session not_after deadline; synthetic stand-in only, no provider/JWT acceptance"
+    },
+    {
+      "id": "SQL-SCOPE",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Reviewed-base owner migration-path-approval record for four exact local candidate SQL paths before executable Task; not an approval record here"
+    },
+    {
+      "id": "RUNTIME",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Owned loopback disposable PostgreSQL17 image/version/digest recorded at dispatch; synthetic restricted login credentials only inside future test process; fail BLOCKED if unavailable, no cloud substitution"
+    },
+    {
+      "id": "PROTOCOL",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "P01..P06 request/CAS/order/init/notes/journal contracts, DB-verified canonical SHA256 format, book-lifetime replay identity and explicit unknown reconciliation"
+    },
+    {
+      "id": "LOCK-PRIVILEGES",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Isolate required auth.sessions/books UPDATE(id) row-lock capabilities in NOLOGIN/NOBYPASSRLS lock helper owner, with scoped RLS and no runtime role membership; reject implementation if not owner-approved"
+    }
+  ],
+  "roles": {
+    "vellistry_workspace_gateway": "NOLOGIN NOBYPASSRLS; only named private EXECUTE; no direct DML",
+    "vellistry_workspace_owner": "NOLOGIN NOBYPASSRLS; scoped book/chapter SELECT, private lock_owned_context EXECUTE, limited metadata/state/note/journal DML and canonical initializer; no raw session access or book/session UPDATE",
+    "synthetic_fixture_login": "Disposable-only restricted login; gateway membership, no admin/BYPASSRLS/role creation; no production credential provisioning",
+    "vellistry_workspace_lock_owner": "NOLOGIN NOBYPASSRLS; limited session/book SELECT and UPDATE(id) on auth.sessions and public.books solely for locking; no runtime login/membership or generic DML entrypoint"
+  },
+  "entrypoints": [
+    "vellistry_workspace.read_workspace",
+    "vellistry_workspace.apply_workspace_operation",
+    "vellistry_workspace.lookup_workspace_operation"
+  ],
+  "transaction": {
+    "lock_order": [
+      "verified session FOR SHARE",
+      "owned book FOR UPDATE",
+      "exact owner+operation journal reservation"
+    ],
+    "session_check": "Recheck expiry, owner/session match and verification freshness after locks; provider behavior not verified by stand-in",
+    "version": "Compare safe-integer expectedVersion under book lock; advance once only for confirmed fresh operation",
+    "reorder": "Validate dense0..n-1 and exact unique same-book permutation; offset by n then assign0..n-1 atomically",
+    "journal": "Unique verified author+operation ID; DB-verified versioned canonical request hash/book; committed effects/version/receipt or terminal authorized rejection together",
+    "unknown": "Missing/mismatched reply stays unknown, no automatic new-key retry; readback must meet confirmed version floor"
+  },
+  "commands": [
+    {
+      "command": "python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+      "status": "NOT_RUN",
+      "availability": "Proposed future file; must own container, reject non-loopback and clean only its resources"
+    },
+    {
+      "command": "corepack pnpm test:workspace-contract",
+      "status": "FUTURE_REQUIRED_REGRESSION"
+    },
+    {
+      "command": "corepack pnpm test:library-isolation",
+      "status": "FUTURE_REQUIRED_REGRESSION"
+    },
+    {
+      "command": "corepack pnpm test:hosted-preflight",
+      "status": "FUTURE_REQUIRED_REGRESSION"
+    },
+    {
+      "command": "corepack pnpm check",
+      "status": "FUTURE_REQUIRED_REGRESSION"
+    },
+    {
+      "command": "corepack pnpm build",
+      "status": "FUTURE_REQUIRED_REGRESSION"
+    }
+  ],
+  "original_acceptance": [
+    {
+      "id": "IMP002-PERSIST-01",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-02",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-03",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-04",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-05",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-06",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-07",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-08",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-09",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-10",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-11",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-12",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-13",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-14",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-15",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-16",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-17",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-18",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-19",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-20",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-21",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-22",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-23",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-24",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-25",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-26",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "IMP002-PERSIST-27",
+      "status": "NOT_RUN"
+    }
+  ],
+  "extensions": [
+    {
+      "id": "EXEC-SESSION-LOCK-EXPIRY",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EXEC-PROCESS-RESTART-RESTORE",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+      "status": "NOT_RUN"
+    }
+  ],
+  "exclusions": [
+    "hosted",
+    "credentials-real",
+    "live-jwt-probes",
+    "cloud-migrations",
+    "private-manuscripts",
+    "paid-services",
+    "production",
+    "settings",
+    "merge",
+    "broad-gate-promotion"
+  ],
+  "evidence_required": [
+    "exact source/SQL/image hashes and actual PostgreSQL version",
+    "commands/exits/SQLSTATE and concurrent/fault barriers",
+    "all27original cases and5extensions with real runtime outcomes",
+    "unchanged existing manuscript/revisions and note/order/receipt identity",
+    "owned resource cleanup; no token/password/manuscript logs",
+    "fresh Task/immutable CP, EB, distinct review, ready CI, separate owner merge"
+  ],
+  "lock_helper": {
+    "entrypoint": "vellistry_workspace.lock_owned_context",
+    "execute_allowed_roles": [
+      "vellistry_workspace_owner"
+    ],
+    "owner": "vellistry_workspace_lock_owner",
+    "select_columns": {
+      "auth.sessions": [
+        "id",
+        "user_id",
+        "not_after"
+      ],
+      "public.books": [
+        "id",
+        "owner_id"
+      ]
+    },
+    "update_columns": {
+      "auth.sessions": [
+        "id"
+      ],
+      "public.books": [
+        "id"
+      ]
+    },
+    "residual_capability": "UPDATE(id) is actual DML permission; no accepted grant. Confinement depends on private audited fixed helper, NOLOGIN and no runtime membership.",
+    "acceptance": "42501 without either column UPDATE grant; locks succeed only with isolated candidate grants/RLS; gateway/login direct DML/helper/owner-role access still denied;42501without required schema USAGE; scoped SELECT/UPDATE RLS required, no RLS bypass",
+    "status": "OWNER_DECISION_PENDING",
+    "schema_usage": {
+      "vellistry_workspace_gateway": [
+        "vellistry_workspace"
+      ],
+      "vellistry_workspace_owner": [
+        "vellistry_workspace",
+        "public"
+      ],
+      "vellistry_workspace_lock_owner": [
+        "vellistry_workspace",
+        "auth",
+        "public"
+      ]
+    },
+    "runtime_schema_create": false
+  }
+}

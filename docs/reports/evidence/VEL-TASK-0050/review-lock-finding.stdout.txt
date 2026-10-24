@@ -1,0 +1,6 @@
+The proposed execution packet specifies privileges incompatible with its mandatory PostgreSQL row locks. No runtime application changes are introduced, but this contradiction should be resolved before the packet governs implementation.
+
+Review comment:
+
+- [P2] Reconcile locking requirements with the proposed role privileges — H:\cursor\cursor\Vellistry\.worktrees\vel-pr112-reconciliation\docs\agent-workflow\proposals\VEL-IMP002-PERSISTENCE-EXECUTION-AUTHORIZATION.md:86-86
+  With the capabilities listed here, the function owner cannot acquire the required `FOR SHARE` lock on `auth.sessions` or `FOR UPDATE` lock on `books`: PostgreSQL requires UPDATE privilege on at least one column of each locked table, but this role receives only SELECT on those relations. An implementation following this packet would therefore reject valid operations with insufficient-privilege errors before mutation. Specify a narrowly scoped, owner-reviewable locking privilege strategy and reflect it in the JSON packet and restricted-login acceptance checks.

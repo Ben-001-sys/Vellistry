@@ -1,0 +1,7 @@
+COMMAND ["git", "init", "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-pr112-reconciliation\\.submission\\archive-probe"]
+Initialized empty Git repository in H:/cursor/cursor/Vellistry/.worktrees/vel-pr112-reconciliation/.submission/archive-probe/.git/
+COMMAND ["git", "-C", "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-pr112-reconciliation\\.submission\\archive-probe", "remote", "add", "origin", "https://github.com/Ben-001-sys/Vellistry.git"]
+COMMAND ["git", "-C", "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-pr112-reconciliation\\.submission\\archive-probe", "fetch", "--filter=blob:none", "--no-tags", "origin", "refs/heads/codex/archive-pr112-task0049-b1c46df:refs/remotes/origin/archive-source"]
+From https://github.com/Ben-001-sys/Vellistry
+ * [new branch]      codex/archive-pr112-task0049-b1c46df -> origin/archive-source
+ * [new branch]      codex/archive-pr112-task0049-b1c46df -> origin/codex/archive-pr112-task0049-b1c46df

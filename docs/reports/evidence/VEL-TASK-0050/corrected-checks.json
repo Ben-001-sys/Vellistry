@@ -1,0 +1,16 @@
+[
+  {
+    "command": "python .submission/check_source_packet.py",
+    "source_commit": "61aa673c5ab34f458ccbb7c610babb11452a288b",
+    "exit_code": 0,
+    "seconds": 2.52,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/corrected-source.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "61aa673c5ab34f458ccbb7c610babb11452a288b",
+    "exit_code": 0,
+    "seconds": 0.28,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/corrected-metadata.txt"
+  }
+]
