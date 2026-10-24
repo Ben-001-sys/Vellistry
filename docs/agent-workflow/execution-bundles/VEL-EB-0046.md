@@ -30,12 +30,13 @@ evidence:
 - docs/reports/evidence/VEL-HOSTED-METADATA-0046/query-manifest.json
 - docs/reports/evidence/VEL-HOSTED-METADATA-0046/offline-review.json
 - docs/reports/evidence/VEL-HOSTED-METADATA-0046/checks.json
+- docs/reports/evidence/VEL-HOSTED-METADATA-0046/acl-correction.json
 review:
   status: pending
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: b1a10c6a133cd4b496b19f0d2e10ab4bd6b20592
+implementation_source_commit: 564518119f4c56b87990bb4fc2c107b0d5307089
 execution:
   status: completed
   executor: Codex
@@ -71,6 +72,12 @@ execution:
     exit_code: 0
     evidence: docs/reports/evidence/VEL-HOSTED-METADATA-0046/offline-review.txt
     status: PASS
+  - command: python - (previous/current query-shape regressions and NULL/empty/populated
+      ACL counterexamples)
+    source_commit: 564518119f4c56b87990bb4fc2c107b0d5307089
+    exit_code: 0
+    evidence: docs/reports/evidence/VEL-HOSTED-METADATA-0046/acl-correction.txt
+    status: PASS
 ---
 
 # Task0046 preparation evidence
@@ -98,3 +105,6 @@ No verified least-privilege connected channel yet; generic raw SQL is unsafe to 
 
 ## Reviewer disposition
 Pending distinct final-diff advisory review and owner review of the exact query hash. Database execution remains NOT_RUN. A Draft repository PR and its CI provide preparation evidence, not authorization to query or merge. Final review/CI references are appended to the Issue108/PR ledger after the submitted head exists.
+
+## Distinct-review bounded correction
+Initial distinct review at3e8b6e02f731d158cd0edc33f2e1a034e32177fc identified a P2: empty ACL explosion could erase sequences/default overrides. Q08/Q10/Q11/Q12 now use left lateral expansion and explicit ACL-state fields; column ACL presence is recorded. Four previous query shapes fail offline preservation checks and four corrected shapes pass; three ACL-state counterexamples preserve the intended observations. This is source/fixture evidence, not server execution. Review output and prior hashes are preserved. Scope is unchanged; CP0046 is untouched. Exact packet hash was refreshed after correction and must be owner-reviewed.

@@ -1,0 +1,17 @@
+{
+  "head": "3e8b6e02f731d158cd0edc33f2e1a034e32177fc",
+  "command": [
+    "C:\\Users\\admin\\AppData\\Local\\OpenAI\\Codex\\bin\\8925276705115dea\\codex.exe",
+    "-s",
+    "read-only",
+    "-a",
+    "never",
+    "-c",
+    "mcp_servers.composio.enabled=false",
+    "review",
+    "--base",
+    "d13deca2d6762d44f80035c6d89d2cb61d1ab1e8"
+  ],
+  "exit_code": 0,
+  "seconds": 66.26
+}
