@@ -1,0 +1,3 @@
+# Owner scope relay
+
+https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6389512100 relays the direct owner instruction: correct and conditionally merge PR112; authorize actual local NestJS/PG17 persistence implementation under GATEWAY, SESSION, SQL-SCOPE, RUNTIME, PROTOCOL and LOCK-PRIVILEGES decisions. Exact four SQL fixture paths are approved for a disposable experiment, subject to the standing reviewed-base record. This Task0051 implements only that prerequisite record for reserved future Task0052. Owner still decides this prerequisite PR merge. No delegation or feature merge inferred. The relay is secondary evidence, not account authentication.
