@@ -1,0 +1,7 @@
+{
+  "original": "governance.txt",
+  "encoding": "cp1252",
+  "sha256": "b80d9d6a6ab8206cf39258e1dc05a89388501191611f7833d2c2bed2bab8e70a",
+  "readable": "governance-utf8.txt",
+  "note": "Original bytes retained. Auxiliary UTF-8 reader initially failed exit1 on Windows byte0x97; explicit cp1252 decoding succeeded. No test failure."
+}

@@ -1,0 +1,6 @@
+Command: python scripts/agent_workflow.py validate
+Source: c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d; generated CP0045 present
+Exit: 0
+PASS: 37 task(s), 35 ContextPack(s), 34 ExecutionBundle(s) validated
+
+Before committing CP0045, the repository check_pack also passed exact pinned task/source/body validation.

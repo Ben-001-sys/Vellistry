@@ -10,7 +10,31 @@ version: 0.2.1
 
 # Vellistry — current verified state
 
-## Verified baseline and active work
+## Current development dispatch — 2026-10-23
+
+FACT: main `be69e5b249f57253e726bfcca00f5e81c0c60623` integrates PR107;
+[post-main39961186197](https://github.com/Ben-001-sys/Vellistry/actions/runs/39961186197)
+passed. The [final Issue71 attestation](https://github.com/Ben-001-sys/Vellistry/issues/71#issuecomment-6366067398)
+closed repository remediation with35DONE/5PARTIAL/4BLOCKED. The one-time delegation
+is EXPIRED. Historical paragraphs below describe the earlier pre-integration cut,
+not unfinished authority or permission to resume remediation.
+
+Owner directly authorized [Issue108](https://github.com/Ben-001-sys/Vellistry/issues/108)
+Phase A only: Task0045/CP0045 verifies the unchanged foundation locally with synthetic
+data and prepares separately authorizable hosted and IMP-002 proposals.
+[Phase A report](docs/reports/VEL-DEV-001-PHASE-A.md) records actual frozen installation,
+23preflight/67Library tests, typechecks and build PASS. Review and owner acceptance
+remain pending; no feature code, hosted connection or new merge authority follows.
+The original broad G_DESIGN/G_CODE, private-pilot and release gates remain pending.
+
+Next implementation proposal is the bounded local-only
+[IMP-002 workspace handoff](docs/reports/VEL-IMP-002-HANDOFF-PROPOSAL.md), not dispatched.
+Hosted access, local credential configuration, SQL adoption/execution and Auth fixtures
+require the [separate target-specific packet](docs/reports/VEL-DEV-001-HOSTED-PROPOSAL.md).
+Local synthetic preparation is GO within Task0045; hosted acceptance, private pilot
+and production remain NO-GO. Ordinary owner merge governance applies.
+
+## Historical pre-integration checkpoint (retained evidence)
 
 FACT: checked main is `23fd8488df060e1591be70232abd70f4255e814d`, after PR #106.
 [Post-main CI39868833625](https://github.com/Ben-001-sys/Vellistry/actions/runs/39868833625)

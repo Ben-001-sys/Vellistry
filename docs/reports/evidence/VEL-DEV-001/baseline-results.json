@@ -1,0 +1,89 @@
+[
+  {
+    "command": [
+      "node",
+      "--version"
+    ],
+    "exit_code": 0,
+    "seconds": 0.06,
+    "log": "baseline-00.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "--version"
+    ],
+    "exit_code": 0,
+    "seconds": 0.45,
+    "log": "baseline-01.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "python",
+      "--version"
+    ],
+    "exit_code": 0,
+    "seconds": 0.02,
+    "log": "baseline-02.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "exit_code": 0,
+    "seconds": 17.66,
+    "log": "baseline-03.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:hosted-preflight"
+    ],
+    "exit_code": 0,
+    "seconds": 2.52,
+    "log": "baseline-04.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "test:library-isolation"
+    ],
+    "exit_code": 0,
+    "seconds": 4.6,
+    "log": "baseline-05.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "check"
+    ],
+    "exit_code": 0,
+    "seconds": 11.22,
+    "log": "baseline-06.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  },
+  {
+    "command": [
+      "corepack.cmd",
+      "pnpm",
+      "build"
+    ],
+    "exit_code": 0,
+    "seconds": 31.26,
+    "log": "baseline-07.txt",
+    "sha": "c0c691fbc0a5d9ce7528f88cbc7aa7d5af57463d"
+  }
+]

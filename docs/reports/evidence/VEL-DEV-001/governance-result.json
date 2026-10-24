@@ -1,0 +1,7 @@
+{
+  "command": "python scripts/ci_governance.py",
+  "source_commit": "a2251cffd8e0b2074966845e494589cbf27855a2",
+  "exit_code": 0,
+  "seconds": 701.44,
+  "evidence": "docs\\reports\\evidence\\VEL-DEV-001\\governance.txt"
+}
