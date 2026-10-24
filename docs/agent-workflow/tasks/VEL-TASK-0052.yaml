@@ -1,0 +1,146 @@
+id: VEL-TASK-0052
+title: Implement and execute disposable PG17 protected workspace persistence experiment
+type: implementation-task
+status: in-progress
+created_at: '2026-10-24'
+updated_at: '2026-10-24'
+owner: project_owner
+context_pack_id: VEL-CP-0052
+objective: Deliver actual unregistered NestJS workspace service, exact four SQL fixtures
+  and executable acceptance for27original plus5extensions against owned loopback disposable
+  PostgreSQL17 only.
+in_scope: &id001
+- tests/workspace/persistence/sql/00_fixture_auth.sql
+- tests/workspace/persistence/sql/10_workspace_schema.sql
+- tests/workspace/persistence/sql/20_workspace_roles.sql
+- tests/workspace/persistence/sql/30_workspace_functions.sql
+- apps/api/src/modules/workspace/workspace-contract.ts
+- apps/api/src/modules/workspace/workspace.service.ts
+- apps/api/src/modules/workspace/workspace-persistence-port.ts
+- apps/api/src/modules/workspace/workspace-principal.ts
+- apps/api/src/modules/workspace/workspace-contract.spec.ts
+- tests/workspace/persistence/workspace-pg-adapter.ts
+- tests/workspace/persistence/workspace-pg17.integration.mjs
+- tests/workspace/persistence/run_pg17.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0052.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0052.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0052.md
+- docs/agent-workflow/inputs/VEL-TASK-0052/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP002-DISPOSABLE-PERSISTENCE-0052.md
+- docs/reports/evidence/VEL-TASK-0052/*
+out_of_scope:
+- Production routes/module registration/Auth changes, shipping Supabase migrations,
+  real Supabase logout claims
+- Dependencies, package manifests/lock, CI/workflows/settings, hosted/real credentials/JWT/private/paid/deployment
+  and automatic feature merge
+- Original Task49/CP49/contract/cases/evidence edits; historical Task50/51 records
+  and packs edits
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/authorizations/VEL-TASK-0052.yaml
+  role: governing-source
+- path: docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md
+  role: governing-source
+- path: docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-AUTHORIZATION.md
+  role: governing-source
+- path: supabase/migrations/20261009000000_initial_author_books.sql
+  role: governing-source
+- path: supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/books/books.service.ts
+  role: governing-source
+- path: apps/api/package.json
+  role: governing-source
+- path: apps/api/tsconfig.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0052/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0052/BOUNDARY.md
+  role: governing-source
+source_gaps:
+- id: HOSTED-SESSION
+  limitation: Injected synthetic verified principal/session rows do not establish
+    real Supabase logout/JWT/session semantics or hosted security.
+- id: MISSING-RUNTIME
+  limitation: Fail BLOCKED if owned loopback PG17 unavailable; no hosted/CI substitution.
+    Preserve actual failed attempts and cleanup evidence.
+deliverables:
+- Committed and validated immutable Task52/CP52 before code, using exact reviewed-base
+  SQL record
+- Nest service/principal/port/validation and test-only PG adapter; no production registration
+- Four exact candidate SQL fixtures; real restricted synthetic-login operations, no
+  broad author-table writes
+- Executable32case PG17 results, transaction/concurrency/fault/backup/restart/cleanup
+  evidence with exact source/SQL/image/runtime hashes
+- Existing focused regressions, frozen install/build/typechecks/governance; EB/manifest,
+  distinct exact-head review and applicable CI; implementation PR for separate owner
+  merge
+acceptance_criteria:
+- Run every original case and5extensions with actual PASS/FAIL/BLOCKED and subcase
+  evidence, never edit historical NOT_RUN case source
+- Private execute-only gateway; forced/scoped RLS; NOLOGIN/NOBYPASSRLS function and
+  lock owners; narrow UPDATE(id) only for locked tables; runtime direct/helper/role/schema/DML/TRUNCATE/REFERENCES/TRIGGER
+  privileges denied
+- Injected principal verified before and after async operations; session/book locks
+  check expiry/freshness after acquisition; revoked synthetic sessions deny; no provider
+  guarantee
+- P01..P06 strict fields/Unicode/UTF16/bytes/capacity/safe versions; atomic canonical
+  blankchapter+revision1; stable IDs; isolated notes; collision-safe dense reorder;
+  manuscript/revision invariance
+- Exact owner+operation journal with DB-verified canonical SHA256, CAS/conflict/replay
+  and durable rejection; unknown prevents ordinary new-key retry; receipt+minimum-version
+  owned readback required
+- Two restricted clients with real lock barriers/fault rollback; lost acknowledgement,
+  process/database restart and independent restore; own-resource cleanup only; scrub
+  credentials/log content
+- No production routes/Auth/dependency/CI/shipping migrations; original two migrations
+  exact; no third migration adoption. Feature PR never auto-merged
+allowed_actions:
+- Read pinned sources and implement only exact scoped paths after committed CP52 validation
+- Run PostgreSQL17 pinned image postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb
+  in uniquely owned disposable container/volume bound127.0.0.1 ephemeral port; reject
+  external DSNs
+- Generate ephemeral synthetic fixture credentials inside runner; admin setup/teardown/assertions
+  only, actual application operations from restricted login; never print/commit secrets
+- Apply exact two operative migrations plus four approved local fixtures to disposable
+  DB; two-client/fault/restart/restore experiments and verified owned cleanup
+- Use frozen existing pg8.23.1 dev/tsx/Node/Python; tests/build/check/governance;
+  review, submit/promote implementation PR for separate owner decision
+approval_required_for:
+- All hosted/real credentials/users/live JWT/cloud migrations/production/private/paid/deployment/settings
+  and broad gate promotion remain excluded
+- Any unapproved security/scope expansion, dependency/CI changes and feature PR merge
+compliance:
+  change_base: 47de4306bc3fe963afc1aabbf3cebba217f3b24b
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6389512100
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
