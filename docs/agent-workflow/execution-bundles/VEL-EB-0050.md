@@ -33,7 +33,7 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: 61aa673c5ab34f458ccbb7c610babb11452a288b
+implementation_source_commit: f9e460fef9eb7d9c917256ff683f7be072c3864b
 execution:
   status: completed
   executor: Codex
@@ -96,6 +96,18 @@ execution:
     seconds: 0.28
     evidence: docs/reports/evidence/VEL-TASK-0050/corrected-metadata.txt
     status: PASS
+  - command: python .submission/check_source_packet.py
+    source_commit: f9e460fef9eb7d9c917256ff683f7be072c3864b
+    exit_code: 0
+    seconds: 2.95
+    evidence: docs/reports/evidence/VEL-TASK-0050/locking-packet.txt
+    status: PASS
+  - command: python scripts/check_knowledge_metadata.py
+    source_commit: f9e460fef9eb7d9c917256ff683f7be072c3864b
+    exit_code: 0
+    seconds: 0.3
+    evidence: docs/reports/evidence/VEL-TASK-0050/locking-metadata.txt
+    status: PASS
 ---
 
 # Source-preserving reconciliation evidence
@@ -126,3 +138,6 @@ Pending distinct completed-diff advisory review and ordinary owner PR112 merge. 
 
 ## Source wording correction and validation scope
 First whole handoff validation at742553bc30fb7da144ef8ef0e900814c8cbb3776 passed42tasks/40packs/40bundles, exit0 in118.99seconds; first distinct review found no actionable defect. The packet then corrected a declared-versus-resolved pg version: range^8.16.3, unchanged frozen resolution8.23.1. Dependency observation, prior review and corrected source/metadata checks are retained; no package/lock or oldTask49 evidence changed. Final selected Task/pack/bundle is checked by trusted-base evaluation and actual new-head CI.
+
+## Distinct review P2 correction: locking privileges
+Review at871beaa6570efab78711596a370d1184d5d01ee1 identified SELECT-only session/book privileges as insufficient for required row locks. The new packet explicitly proposes a separate NOLOGIN/NOBYPASSRLS lock helper owner with narrow SELECT and UPDATE(id), schema USAGE and scoped RLS, callable only by workspace function owner. Real UPDATE capability and its confinement risks are named; acceptance is a sixth OWNER_DECISION_PENDING choice, never a grant. A fifth NOT_RUN extension requires42501without prerequisites, successful isolated locks only after candidate grants, and continued runtime-role denial. Corrected offline packet validation rejects14forged variants; original16blob hashes and27NOT_RUN cases still match. No SQL/runtime behavior is claimed verified.

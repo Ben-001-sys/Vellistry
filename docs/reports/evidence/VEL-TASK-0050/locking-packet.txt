@@ -1,0 +1,34 @@
+import pathlib,subprocess,json,hashlib,copy,sys
+root=pathlib.Path.cwd();inventory=json.loads((root/'docs/agent-workflow/inputs/VEL-TASK-0050/ORIGINAL49-INVENTORY.json').read_text());packet=json.loads((root/'docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json').read_text());old=inventory['source_head'];expected=[r['path'] for r in inventory['paths']];checked=[]
+for r in inventory['paths']:
+ target='docs/agent-workflow/inputs/VEL-TASK-0050/ORIGINAL49-PR-COMPLIANCE.yaml' if r['path']=='docs/agent-workflow/PR-COMPLIANCE.yaml' else r['path'];raw=subprocess.check_output(['git','show','HEAD:'+target]);assert hashlib.sha256(raw).hexdigest()==r['sha256'];assert subprocess.check_output(['git','rev-parse','HEAD:'+target],text=True).strip()==r['git_blob'];checked.append(target)
+cases=json.loads((root/'docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json').read_text());assert len(cases['cases'])==27 and all(c['status']=='NOT_RUN' for c in cases['cases'])
+sql=['tests/workspace/persistence/sql/00_fixture_auth.sql','tests/workspace/persistence/sql/10_workspace_schema.sql','tests/workspace/persistence/sql/20_workspace_roles.sql','tests/workspace/persistence/sql/30_workspace_functions.sql']
+def check(p):
+ assert p['status']=='PROPOSED_NOT_AUTHORIZED' and p['future_task_id'] is None
+ assert p['current_base']=='667084ef30ac00a96b205eb2c52c83083db121e3' and p['original_contract_source']==old
+ assert p['sql_paths']==sql and len(set(p['implementation_paths']))==8
+ assert all(not (root/x).exists() for x in p['sql_paths'])
+ assert len(p['decisions'])==6 and all(d['status']=='OWNER_DECISION_PENDING' for d in p['decisions'])
+ assert p['original_acceptance']==[{'id':c['id'],'status':'NOT_RUN'} for c in cases['cases']]
+ assert len(p['extensions'])==5 and all(x['status']=='NOT_RUN' for x in p['extensions'])
+ assert p['commands'][0]['status']=='NOT_RUN' and p['commands'][0]['command'].startswith('python tests/workspace/persistence/run_pg17.py --disposable')
+ assert set(['hosted','credentials-real','live-jwt-probes','cloud-migrations','merge'])<=set(p['exclusions'])
+ assert 'NOLOGIN NOBYPASSRLS' in p['roles']['vellistry_workspace_gateway']
+ assert 'UPDATE(id) on auth.sessions and public.books' in p['roles']['vellistry_workspace_lock_owner']
+ assert p['lock_helper']['execute_allowed_roles']==['vellistry_workspace_owner']
+ assert p['lock_helper']['status']=='OWNER_DECISION_PENDING'
+ assert p['lock_helper']['schema_usage']['vellistry_workspace_lock_owner']==['vellistry_workspace','auth','public']
+ assert p['lock_helper']['runtime_schema_create'] is False
+check(packet)
+mutations=[lambda p:p.update(status='AUTHORIZED'),lambda p:p.update(future_task_id='VEL-TASK-0051'),lambda p:p['decisions'][0].update(status='APPROVED'),lambda p:p['original_acceptance'][0].update(status='PASS'),lambda p:p['extensions'][0].update(status='PASS'),lambda p:p['commands'][0].update(status='PASS'),lambda p:p.update(sql_paths=['supabase/migrations/approved.sql']),lambda p:p.update(original_contract_source='0'*40),lambda p:p.update(current_base='0'*40),lambda p:p.update(exclusions=[]),lambda p:p['roles'].update(vellistry_workspace_gateway='admin'),lambda p:p.update(implementation_paths=[]),lambda p:p['roles'].update(vellistry_workspace_lock_owner='SELECT only'),lambda p:p['lock_helper'].update(execute_allowed_roles=['PUBLIC'])]
+for mutation in mutations:
+ p=copy.deepcopy(packet);mutation(p)
+ try:check(p)
+ except (AssertionError,KeyError,TypeError):pass
+ else:raise AssertionError('Invalid authorization mutation accepted')
+assert not subprocess.check_output(['git','diff','--name-only','667084ef30ac00a96b205eb2c52c83083db121e3','HEAD','--','.github','apps','supabase','package.json','pnpm-lock.yaml'])
+print(json.dumps({'original_blob_and_hash_checks':len(checked),'original_runtime_cases':'27 NOT_RUN unchanged','packet_positive':1,'invalid_authorization_mutations_rejected':len(mutations),'new_runtime_extensions':'5 NOT_RUN','executable_or_control_changes':0,'claim':'Offline source/proposal integrity, NOT database/session/security acceptance'}))
+
+ACTUAL RESULT
+{"original_blob_and_hash_checks": 16, "original_runtime_cases": "27 NOT_RUN unchanged", "packet_positive": 1, "invalid_authorization_mutations_rejected": 14, "new_runtime_extensions": "5 NOT_RUN", "executable_or_control_changes": 0, "claim": "Offline source/proposal integrity, NOT database/session/security acceptance"}
