@@ -56,12 +56,18 @@
       "id": "PROTOCOL",
       "status": "OWNER_DECISION_PENDING",
       "proposal": "P01..P06 request/CAS/order/init/notes/journal contracts, DB-verified canonical SHA256 format, book-lifetime replay identity and explicit unknown reconciliation"
+    },
+    {
+      "id": "LOCK-PRIVILEGES",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Isolate required auth.sessions/books UPDATE(id) row-lock capabilities in NOLOGIN/NOBYPASSRLS lock helper owner, with scoped RLS and no runtime role membership; reject implementation if not owner-approved"
     }
   ],
   "roles": {
     "vellistry_workspace_gateway": "NOLOGIN NOBYPASSRLS; only named private EXECUTE; no direct DML",
-    "vellistry_workspace_owner": "NOLOGIN NOBYPASSRLS; scoped RLS SELECT, limited metadata/state/note/journal DML and canonical chapter/revision1 initializer only",
-    "synthetic_fixture_login": "Disposable-only restricted login; gateway membership, no admin/BYPASSRLS/role creation; no production credential provisioning"
+    "vellistry_workspace_owner": "NOLOGIN NOBYPASSRLS; scoped book/chapter SELECT, private lock_owned_context EXECUTE, limited metadata/state/note/journal DML and canonical initializer; no raw session access or book/session UPDATE",
+    "synthetic_fixture_login": "Disposable-only restricted login; gateway membership, no admin/BYPASSRLS/role creation; no production credential provisioning",
+    "vellistry_workspace_lock_owner": "NOLOGIN NOBYPASSRLS; limited session/book SELECT and UPDATE(id) on auth.sessions and public.books solely for locking; no runtime login/membership or generic DML entrypoint"
   },
   "entrypoints": [
     "vellistry_workspace.read_workspace",
@@ -233,6 +239,10 @@
     {
       "id": "EXEC-PROCESS-RESTART-RESTORE",
       "status": "NOT_RUN"
+    },
+    {
+      "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+      "status": "NOT_RUN"
     }
   ],
   "exclusions": [
@@ -254,5 +264,34 @@
     "unchanged existing manuscript/revisions and note/order/receipt identity",
     "owned resource cleanup; no token/password/manuscript logs",
     "fresh Task/immutable CP, EB, distinct review, ready CI, separate owner merge"
-  ]
+  ],
+  "lock_helper": {
+    "entrypoint": "vellistry_workspace.lock_owned_context",
+    "execute_allowed_roles": [
+      "vellistry_workspace_owner"
+    ],
+    "owner": "vellistry_workspace_lock_owner",
+    "select_columns": {
+      "auth.sessions": [
+        "id",
+        "user_id",
+        "not_after"
+      ],
+      "public.books": [
+        "id",
+        "owner_id"
+      ]
+    },
+    "update_columns": {
+      "auth.sessions": [
+        "id"
+      ],
+      "public.books": [
+        "id"
+      ]
+    },
+    "residual_capability": "UPDATE(id) is actual DML permission; no accepted grant. Confinement depends on private audited fixed helper, NOLOGIN and no runtime membership.",
+    "acceptance": "42501 without either column UPDATE grant; locks succeed only with isolated candidate grants/RLS; gateway/login direct DML/helper/owner-role access still denied",
+    "status": "OWNER_DECISION_PENDING"
+  }
 }

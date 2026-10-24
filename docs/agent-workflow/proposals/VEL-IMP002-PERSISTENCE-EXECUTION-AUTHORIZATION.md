@@ -56,6 +56,37 @@ logout always deletes that row or covers every revocation mode. Current getUser 
 is not immediate logout enforcement. Provider integration and any live JWT probe require
 separate authorization and acceptance; production writes remain closed until then.
 
+### Explicit pending lock-privilege decision
+
+[PostgreSQL17 SELECT privileges](https://www.postgresql.org/docs/17/sql-select.html)
+require UPDATE permission on at least one column of each row-locked table. SELECT
+alone cannot implement the proposed session FOR SHARE or books FOR UPDATE. This is
+a security-sensitive capability, not an implicit grant covered by the word read-only.
+
+Proposed isolation: a separate NOLOGIN/NOBYPASSRLS
+`vellistry_workspace_lock_owner` owns only private `lock_owned_context`. It receives
+SELECT(id,user_id,not_after) on fixture auth.sessions, SELECT(id,owner_id) on books,
+and UPDATE(id) on each solely to satisfy the locking prerequisite, with explicit
+author-scoped RLS policies. The column choice is itself pending owner review:
+UPDATE(id) is a real DML capability, not merely a lock flag. Its confinement depends
+on NOLOGIN, no runtime membership in this role, no generic DML entrypoint and an
+audited fixed function body that performs only checks/row-locking SELECTs.
+
+Only the workspace function-owner role may EXECUTE this helper; gateway, fixture
+login, PUBLIC, anon and authenticated cannot call it or SET ROLE to either owner.
+The workspace owner receives helper EXECUTE rather than raw session access or
+book/session UPDATE privileges. The helper locks session then owned book, checks
+identity/expiry/RLS and retains locks in the caller transaction. No token/password
+or foreign session result is returned. Fixed qualified objects/search_path and
+revoked default EXECUTE apply equally to this helper.
+
+Future disposable tests must demonstrate SQLSTATE42501 when either required column
+UPDATE grant is absent, then successful row locks with the isolated candidate grants
+and applicable RLS. Still prove the runtime gateway/login cannot directly read/update
+sessions, update books, invoke the helper, inherit/SET ROLE to an owner or alter its
+function. This proposed strategy requires explicit owner acceptance; if rejected,
+leave mutation unavailable and revise the contract rather than silently escalating.
+
 ## Decision B — exact candidate SQL and capability (proposed)
 
 Only these LOCAL test-candidate SQL paths are requested:
@@ -83,10 +114,12 @@ Proposed private schema `vellistry_workspace`, never Data API-exposed. Capabilit
 |---|---|
 | anon/authenticated/PUBLIC | No new schema use, table writes or function EXECUTE; retain existing chapter/revision revocations |
 | vellistry_workspace_gateway | NOLOGIN/NOBYPASSRLS, EXECUTE only on named private entrypoints; no direct table DML |
-| vellistry_workspace_owner | NOLOGIN/NOBYPASSRLS function owner; SELECT scoped book/session/chapter data, INSERT canonical empty chapter/revision1, UPDATE chapter title/position/permitted metadata, DML only on private state/notes/journal |
+| vellistry_workspace_owner | NOLOGIN/NOBYPASSRLS function owner; SELECT scoped book/chapter data, EXECUTE lock_owned_context, INSERT canonical empty chapter/revision1, UPDATE chapter title/position/permitted metadata, DML only on private state/notes/journal; no raw session or book UPDATE |
+| vellistry_workspace_lock_owner | NOLOGIN/NOBYPASSRLS helper owner; limited session/book SELECT plus UPDATE(id) on each for locking; no runtime login/membership or generic DML interface; explicit owner decision required |
 | synthetic fixture login | Ephemeral disposable-only credential, membership only in gateway; no admin, service_role, BYPASSRLS or role-creation privileges |
 
 Candidate entrypoints: read_workspace, apply_workspace_operation, lookup_workspace_operation.
+Internal helper lock_owned_context is not a gateway/public entrypoint.
 Elevated execution is an explicitly unapproved security choice. If accepted, functions
 must use fixed pg_catalog search_path and qualified relations, no dynamic SQL, explicit
 PUBLIC/anon/authenticated EXECUTE revocation, restricted owner role and forced RLS on
@@ -175,6 +208,8 @@ actual tests/EB, independent review, ready CI and separate owner merge decision.
 
 1. Accept/revise private capability and transaction-scoped session-lock proposal; accept
    that stand-in tests do not establish provider logout/JWT security.
+   Separately accept/reject the isolated lock-owner UPDATE(id) capability and its
+   confinement/negative tests; no grant is implied by this packet.
 2. Authorize the exact local candidate paths, disposable17 resource/fixture envelope
    and restricted ephemeral test credential handling; adopt the SQL-path record in
    reviewed base before implementation.

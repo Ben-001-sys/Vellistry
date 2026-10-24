@@ -80,3 +80,15 @@ package.json declares^8.16.3 while the unchanged lock resolves8.23.1. It now req
 reuse of that exact test-only resolution, not an upgrade or production dependency.
 The actual source observation and earlier review are preserved. No Task49 artifact,
 ContextPack, dependency, permission or runtime acceptance status changed.
+
+## Distinct review P2: row-lock privileges
+
+Review at871beaa6570efab78711596a370d1184d5d01ee1 found the proposed SELECT-only
+session/book privileges could not perform required row locks. PostgreSQL17 requires
+UPDATE privilege on at least one column of each locked table. The packet now makes
+an isolated NOLOGIN lock-helper owner, limited SELECT/UPDATE(id), scoped RLS and
+runtime-role denial an explicit additional OWNER_DECISION_PENDING choice. UPDATE(id)
+is acknowledged as real DML capability; nothing is granted. A fifth NOT_RUN extension
+requires42501without grants, valid locks after approved isolated grants, and continued
+runtime-role denial. Original Task49 contract/27cases remain byte-identical. This
+is a proposal correction, not executed SQL or accepted session/security policy.

@@ -1,0 +1,19 @@
+{
+  "head": "871beaa6570efab78711596a370d1184d5d01ee1",
+  "source": "61aa673c5ab34f458ccbb7c610babb11452a288b",
+  "exit_code": 0,
+  "seconds": 65.27,
+  "command": [
+    "C:/Users/admin/AppData/Local/OpenAI/Codex/bin/8925276705115dea/codex.exe",
+    "-s",
+    "read-only",
+    "-a",
+    "never",
+    "-c",
+    "mcp_servers.composio.enabled=false",
+    "review",
+    "--base",
+    "667084ef30ac00a96b205eb2c52c83083db121e3"
+  ],
+  "distinctness": "Fresh trusted read-only Codex CLI, no resume/fork; advisory, not owner approval"
+}
