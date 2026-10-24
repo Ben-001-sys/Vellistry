@@ -1,0 +1,108 @@
+{
+  "packet_path": "docs/reports/VEL-HOSTED-METADATA-0046-QUERY-PACKET.md",
+  "source_commit": "564518119f4c56b87990bb4fc2c107b0d5307089",
+  "packet_sha256": "dbae331cd58a7c5524d77fda8380233f19c25b3d0e8520a4b984bc3d58db4f08",
+  "canonicalization": "Exact UTF-8 Git blob; per-query bytes strictly between sql fence newline and closing fence, including final LF",
+  "target": {
+    "reference": "lflkcrnriitrbclangyr",
+    "organization": "pulyacnozzggwfgqdgdl",
+    "region": "eu-west-2"
+  },
+  "query_count": 15,
+  "queries": [
+    {
+      "id": "Q01",
+      "sha256": "cbfbbe10182146d34ee33650d9925a2a72213e0eb5e021004dd0ef1f0e2991ab",
+      "limit": 2,
+      "bytes": 577
+    },
+    {
+      "id": "Q02",
+      "sha256": "3274ca07764f768a0c33e9336fdb68771447f65ce6f0bbf0619f4b59bc06a1ab",
+      "limit": 9,
+      "bytes": 955
+    },
+    {
+      "id": "Q03",
+      "sha256": "cfb0d9c0ffe944915abcb2d655eeafeaf86bf6baaa0e618b1feaa87c00daae10",
+      "limit": 101,
+      "bytes": 705
+    },
+    {
+      "id": "Q04",
+      "sha256": "031bca63d037f77a747a01bf9de85021357a46419046c8bd4c802c7b4f383b5a",
+      "limit": 101,
+      "bytes": 732
+    },
+    {
+      "id": "Q05",
+      "sha256": "9b59c11c405aa2e374a9e30a770d174f81bc77bfe87a7e191d916b5111941151",
+      "limit": 101,
+      "bytes": 718
+    },
+    {
+      "id": "Q06",
+      "sha256": "84fea4786281371c1a1130bc981077d12f0d41ac536afc67f0dc43a2a2332887",
+      "limit": 101,
+      "bytes": 633
+    },
+    {
+      "id": "Q07",
+      "sha256": "cd6371465619bf0584109a5680718a5775eea9d440369b6b2bb0c49b4556606d",
+      "limit": 201,
+      "bytes": 861
+    },
+    {
+      "id": "Q08",
+      "sha256": "c68db0e2226af469dc449ff3278931c8647fcdb464848434728e34bbb82270d3",
+      "limit": 201,
+      "bytes": 1434
+    },
+    {
+      "id": "Q09",
+      "sha256": "73a1a86b4eb42a681b9b214364f1bacb69df85f15ae69a57fd513b5df8e86314",
+      "limit": 201,
+      "bytes": 905
+    },
+    {
+      "id": "Q10",
+      "sha256": "80a0482e3122de1b5c452d12e1b843d62483002ee56b79948af3f1a05b4ba38e",
+      "limit": 101,
+      "bytes": 1093
+    },
+    {
+      "id": "Q11",
+      "sha256": "7c96e9a211e650070a775aa378263d569ba8779b2d924da2fec2908d85dc44ae",
+      "limit": 201,
+      "bytes": 1282
+    },
+    {
+      "id": "Q12",
+      "sha256": "60abcea8ce0d67ff07764562f29786cc38c6e40fe32f229531065586d19301c6",
+      "limit": 101,
+      "bytes": 1549
+    },
+    {
+      "id": "Q13",
+      "sha256": "28dc3c940b4dd5b1fb2a6bf7b09a35bd8721e71c901bef73a7e37fc24250e285",
+      "limit": 201,
+      "bytes": 1118
+    },
+    {
+      "id": "Q14",
+      "sha256": "d7522975e90d4fa31904906b3a5eb39953f59fd5a3abc1f72ddc207a4f09397d",
+      "limit": 201,
+      "bytes": 1394
+    },
+    {
+      "id": "Q15",
+      "sha256": "4f34bd455d3961f2b2a68a21bf76b48abf4d42bd73915cd88e584760e04935a0",
+      "limit": 33,
+      "bytes": 1098
+    }
+  ],
+  "executed_queries": 0,
+  "execution_status": "NOT_RUN",
+  "channel_status": "NOT_VERIFIED; generic execute_sql not approved",
+  "owner_exact_query_review": "PENDING"
+}

@@ -3,14 +3,36 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-23
+updated_at: 2026-10-24
 owner: project_owner
 version: 0.2.1
 ---
 
 # Vellistry — current verified state
 
-## Current development dispatch — 2026-10-23
+## Current bounded task — 2026-10-24
+
+FACT: PR109 merged under explicit ordinary owner approval. Main
+`d13deca2d6762d44f80035c6d89d2cb61d1ab1e8` exactly matches its reviewed tree;
+[post-main40083949671](https://github.com/Ben-001-sys/Vellistry/actions/runs/40083949671)
+passed governance, application/security and disposable PostgreSQL CAS/restore.
+SQL privilege fixture was SKIPPED, not accepted. Task0045 evidence is integrated;
+its earlier pending-review wording below remains historical submission evidence.
+
+Owner [confirmed the development target](https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6382899950):
+project vellistry-dev, reference lflkcrnriitrbclangyr, organization
+pulyacnozzggwfgqdgdl, region eu-west-2; prior connected metadata lookup reportedly
+ACTIVE_HEALTHY. Task0046 has not repeated that lookup or observed the database.
+Task0046/CP0046 prepares the [exact catalog query packet](docs/reports/VEL-HOSTED-METADATA-0046-QUERY-PACKET.md)
+for owner review. No catalog queries may run before exact packet/hash approval
+and proof of a least-privilege bounded read-only channel. Generic execute_sql
+capabilities do not establish that proof; owner-sanitized export is an alternative.
+
+Ordinary owner merge rules apply. The remediation delegation remains EXPIRED.
+No credentials, hosted SQL, migration/source adoption, Auth fixtures, settings,
+private data or IMP002 implementation is authorized by this preparation.
+
+## Historical Phase A dispatch — 2026-10-23
 
 FACT: main `be69e5b249f57253e726bfcca00f5e81c0c60623` integrates PR107;
 [post-main39961186197](https://github.com/Ben-001-sys/Vellistry/actions/runs/39961186197)

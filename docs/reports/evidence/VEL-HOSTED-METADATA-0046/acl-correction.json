@@ -1,0 +1,15 @@
+{
+  "source_commit": "564518119f4c56b87990bb4fc2c107b0d5307089",
+  "reviewed_defective_head": "3e8b6e02f731d158cd0edc33f2e1a034e32177fc",
+  "corrected_queries": [
+    "Q08",
+    "Q10",
+    "Q11",
+    "Q12"
+  ],
+  "negative_old_shapes_rejected": 4,
+  "positive_new_shapes": 4,
+  "null_empty_nonempty_fixture_cases": 3,
+  "exit_code": 0,
+  "limitation": "Offline structural checks and relational counterexamples only; no SQL parser or server execution. Owner exact query review still required."
+}

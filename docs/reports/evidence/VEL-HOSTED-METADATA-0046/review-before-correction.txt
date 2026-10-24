@@ -1,0 +1,6 @@
+The proposed inventory queries can silently omit objects with empty ACLs, producing misleading metadata observations. Packet and query hashes match their manifest; no hosted queries were executed.
+
+Review comment:
+
+- [P2] Preserve objects with empty ACLs in the inventory — H:\cursor\cursor\Vellistry\.worktrees\vel-hosted-metadata-packet\docs\reports\VEL-HOSTED-METADATA-0046-QUERY-PACKET.md:375-376
+  If a dependency-linked sequence has an explicitly empty ACL (`relacl = '{}'`), `aclexplode` returns no rows and this cross join removes the sequence entirely. Q12 then returns zero rows, which its instructions incorrectly interpret as no linked sequence found, concealing schema drift. Preserve the sequence with a left lateral join and explicitly represent its empty ACL. Q11 has the same issue for empty default ACLs, where losing the record also hides the distinction between explicitly revoked defaults and absent overrides.

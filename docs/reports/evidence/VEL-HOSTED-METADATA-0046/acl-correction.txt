@@ -1,0 +1,1 @@
+PASS: previous-head Q08/Q10/Q11/Q12 fail empty-ACL-preservation shape checks; corrected queries pass. Three NULL/empty/populated offline ACL fixtures retain objects and classify state. All15 SELECT structures/limits rechecked. Not a PostgreSQL execution claim; no database query performed.
