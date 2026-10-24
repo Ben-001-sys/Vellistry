@@ -260,7 +260,7 @@
   "evidence_required": [
     "exact source/SQL/image hashes and actual PostgreSQL version",
     "commands/exits/SQLSTATE and concurrent/fault barriers",
-    "all27original cases and4extensions with real runtime outcomes",
+    "all27original cases and5extensions with real runtime outcomes",
     "unchanged existing manuscript/revisions and note/order/receipt identity",
     "owned resource cleanup; no token/password/manuscript logs",
     "fresh Task/immutable CP, EB, distinct review, ready CI, separate owner merge"
