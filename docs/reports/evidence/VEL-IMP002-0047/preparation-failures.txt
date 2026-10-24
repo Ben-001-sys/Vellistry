@@ -1,0 +1,1 @@
+Before feature edits or ContextPack dispatch: initial source selection exceeded90000bytes; exact relevant excerpts reduced it. First generated pack failed source validation because a GitHub body contained doubled CR transport endings. Invalid undispatched pack retained here; source capture normalized line endings without changing permissions. No standing validator changed.

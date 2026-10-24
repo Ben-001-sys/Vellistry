@@ -1,0 +1,37 @@
+[
+  {
+    "command": "corepack.cmd pnpm test:workspace-contract",
+    "source_commit": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+    "exit_code": 0,
+    "seconds": 1.7,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/workspace.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "source_commit": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+    "exit_code": 0,
+    "seconds": 4.34,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/library.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:hosted-preflight",
+    "source_commit": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+    "exit_code": 0,
+    "seconds": 2.06,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/preflight.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "source_commit": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+    "exit_code": 0,
+    "seconds": 21.4,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/build.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "source_commit": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+    "exit_code": 0,
+    "seconds": 6.7,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/typecheck.txt"
+  }
+]

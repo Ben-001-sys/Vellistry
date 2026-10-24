@@ -1,0 +1,7 @@
+{
+  "command": "corepack pnpm install --frozen-lockfile",
+  "exit_code": 0,
+  "seconds": 11.39,
+  "source_commit": "8119c0b9d077e9b7126ded6a6483a77e320f99e7",
+  "note": "Post-pack uncommitted feature work in progress; package/lock unchanged at install"
+}

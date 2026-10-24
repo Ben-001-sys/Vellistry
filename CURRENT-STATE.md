@@ -10,7 +10,29 @@ version: 0.2.1
 
 # Vellistry — current verified state
 
-## Current bounded task — 2026-10-24
+## Current local-only implementation — 2026-10-24
+
+FACT: PR110 is merged as18c770ff6fce7401f7529667a37d7fb523cc55d9, exact reviewed
+Git tree314df6ff61f0f63f50770baab1871d8413f2a73d; [post-main40090741803](https://github.com/Ben-001-sys/Vellistry/actions/runs/40090741803)
+SUCCESS. Its metadata packet remains unexecuted; integration did not authorize
+hosted queries or credentials. The remediation delegation remains EXPIRED.
+
+The owner separately authorized Task0047's bounded IMP002 local-only workspace
+controller/component and synthetic fixture slice. Immutable CP0047 was validated
+and committed before feature code. Owned opening, chapter create/rename/reorder,
+stable IDs, separate notes and scoped draft/uncertainty behavior are implemented
+in the isolated feature branch.37 focused tests and33 real Chromium assertions
+passed at corrected source389fd0905c94b814e1cdce8641e3d38446c38b28. This is not a
+production workspace route, hosted persistence or completed IMP002/JRN001.
+See [implementation report](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md).
+
+Actual final validation, distinct review and ready-state CI precede the owner's
+separate feature merge decision. No SQL/API/auth architecture, dependency, hosted,
+private-data or deployment change is authorized. Existing chapter/revision direct
+writes remain restricted; a persistence contract and integration evidence are
+separate prerequisites. Broad G_DESIGN/G_CODE remain pending outside this slice.
+
+## Historical query preparation — 2026-10-24
 
 FACT: PR109 merged under explicit ordinary owner approval. Main
 `d13deca2d6762d44f80035c6d89d2cb61d1ab1e8` exactly matches its reviewed tree;

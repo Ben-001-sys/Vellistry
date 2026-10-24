@@ -1,0 +1,49 @@
+
+> vellistry@ test:workspace-contract H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/workspace/book-workspace-session.test.ts
+
+✔ owned book opens with selected chapter and separately scoped notes (6.3259ms)
+✔ empty book is a valid ready result, never a read error (1.7303ms)
+✔ signed-out and unverified identities expose no book, title or drafts (1.7073ms)
+✔ cross-author and guessed book reads are denied without foreign data (0.976ms)
+✔ invalid identifiers and malformed documents fail closed (1.0473ms)
+✔ duplicate chapter IDs and wrong nested book IDs are rejected on read (0.6025ms)
+✔ snapshot references are stable and nested document data is frozen (0.6116ms)
+✔ same-title creates get distinct stable IDs and clear only the confirmed title (2.0578ms)
+✔ title and notes validators reject invalid values and forged ownership fields (0.4578ms)
+✔ rename retains stable ID, notes and accepted prose/revision markers (1.4966ms)
+✔ reorder moves stable chapter records without moving notes or prose to another ID (0.934ms)
+✔ adapter independently denies foreign rename (0.3657ms)
+✔ adapter independently denies wrong-book rename (0.2004ms)
+✔ adapter independently denies foreign chapter notes (0.2111ms)
+✔ forged owner and cross-author mutations cannot grant access (0.2794ms)
+✔ invalid reorder a-one/a-two does not mutate any book (0.2873ms)
+✔ invalid reorder a-one/a-one/a-two does not mutate any book (0.246ms)
+✔ invalid reorder a-one/a-two/b-one does not mutate any book (0.2175ms)
+✔ book/chapter notes remain separate and drafts survive chapter navigation (1.2178ms)
+✔ typing newer notes during pending confirmation is not erased by its older acknowledgement (33.7048ms)
+✔ known version conflict never reorders or resends and retains drafts for explicit reload (2.0614ms)
+✔ duplicate submission while identity checks/pending overlap sends one create (4.8122ms)
+✔ lost reply after commit stays unknown; ordinary retries and refresh never create duplicates (1.2936ms)
+✔ missing receipt cannot convert an unknown-before-commit result to definite failure or safe retry (0.4578ms)
+✔ wrong receipt scope cannot unlock an uncertain create (0.5219ms)
+✔ idempotency replay returns its first receipt; changed payload with same operation ID rejects (0.496ms)
+✔ A→B→A hides private drafts and retains the old pending-write uncertainty lock (7.2551ms)
+✔ late successful read cannot publish after switching books (1.923ms)
+✔ late failed read cannot publish after switching books (0.7736ms)
+✔ post-read silent identity change conceals successful response before publication (0.5773ms)
+✔ post-write failed verification conceals response and preserves uncertainty for the same owner (2.6353ms)
+✔ failed pre-write identity verification dispatches nothing (0.4575ms)
+✔ dispose conceals state and ignores pending replies (3.199ms)
+✔ opaque chapter ID cannot collide with the book-notes draft slot (0.6806ms)
+✔ denied receipt check hides the previously visible book without making retry safe (0.8364ms)
+✔ confirmed change refresh retains the verified form while newer notes are being typed (2.382ms)
+✔ rename drafts are chapter-scoped and never appear under a different author/book (0.8584ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.7774

@@ -1,0 +1,16 @@
+{
+  "task": "VEL-TASK-0047",
+  "branch": "codex/vel-imp002-local-workspace",
+  "worktree": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-local-workspace",
+  "head": "389fd0905c94b814e1cdce8641e3d38446c38b28",
+  "pack_commit": "8119c0b9d077e9b7126ded6a6483a77e320f99e7",
+  "main": "18c770ff6fce7401f7529667a37d7fb523cc55d9",
+  "main_ci": 40090741803,
+  "pr110": "MERGED exact tree/post-main PASS",
+  "implementation": "Actual scoped controller/component/test adapter implemented; four regression failures corrected with before/after evidence",
+  "passing": "37workspace and typecheck at389fd090;33browser assertions at same code; earlier67Library/23preflight/build at a0b896a",
+  "next_action": "Commit authorized source/report/browser evidence; corrected-source build and full governance; EB/manifest; distinct review; Draft/Ready CI; owner feature merge decision",
+  "feature_pr": null,
+  "restrictions": "No hosted/SQL/auth changes; no automatic feature merge; broad gates pending; expired remediation remains closed",
+  "browser_cleanup": "PASS: listener stopped, transient wrapper removed, no production route"
+}
