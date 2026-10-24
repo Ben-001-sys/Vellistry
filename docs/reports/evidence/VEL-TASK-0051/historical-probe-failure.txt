@@ -1,0 +1,1 @@
+Initial inline source comparison at359ffa1 exited1: AssertionError comparing Git LF blobs to Windows checkout CRLF bytes. No source regression. Corrected probe uses git show for both canonical revisions; original files were unchanged. This failure is retained, never relabelled PASS.
