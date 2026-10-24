@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSED_NOT_EXECUTED",
+  "task": "VEL-TASK-0049",
+  "base_commit": "a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4",
+  "contract": "docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md",
+  "requirements": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "sources": [
+    {
+      "path": "supabase/migrations/20261009000000_initial_author_books.sql",
+      "commit": "a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4",
+      "sha256": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74"
+    },
+    {
+      "path": "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql",
+      "commit": "a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4",
+      "sha256": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65"
+    }
+  ],
+  "cases": [
+    {
+      "id": "IMP002-PERSIST-01",
+      "name": "owned-read",
+      "requirements": [
+        "P01",
+        "P02"
+      ],
+      "given": "Verified A owns bookA",
+      "action": "Read one consistent snapshot",
+      "expected": "Only A book/chapters/notes with coherent version",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-02",
+      "name": "foreign-book",
+      "requirements": [
+        "P01"
+      ],
+      "given": "B requests guessed A book/receipt",
+      "action": "Read or mutate",
+      "expected": "Neutral denial; no titles/notes/receipt/existence leak",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-03",
+      "name": "foreign-chapter",
+      "requirements": [
+        "P01",
+        "P04"
+      ],
+      "given": "A owns two books",
+      "action": "Rename/note bookA using chapter from bookA2 or B",
+      "expected": "Deny, no state/journal/version effects",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-04",
+      "name": "forged-ownership",
+      "requirements": [
+        "P01",
+        "P02"
+      ],
+      "given": "Untrusted actor/owner_id/x-user-id fields",
+      "action": "Submit owned and foreign commands",
+      "expected": "Reject payload fields; verified server principal remains sole authority",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-05",
+      "name": "unverified",
+      "requirements": [
+        "P01"
+      ],
+      "given": "Signed out, failed verification, or missing writable-session proof",
+      "action": "Read/write/lookup",
+      "expected": "Deny or unavailable; no dispatch/data; no getUser-only revocation claim",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-06",
+      "name": "create",
+      "requirements": [
+        "P03",
+        "P04"
+      ],
+      "given": "Empty owned book at version0",
+      "action": "Create with invented title",
+      "expected": "Stable generated UUID position0; canonical empty doc/current_revision1 plus matching revision1 and receipt atomically; version1",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-07",
+      "name": "rename",
+      "requirements": [
+        "P03"
+      ],
+      "given": "Owned existing chapter with revisions/notes",
+      "action": "Rename twice with distinct operations",
+      "expected": "Only title/metadata/global version change; old accepted JSON/revisions/notes remain equivalent",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-08",
+      "name": "duplicate-title",
+      "requirements": [
+        "P02",
+        "P03"
+      ],
+      "given": "Two same-title chapters",
+      "action": "Create/rename/select",
+      "expected": "IDs remain distinct and stable, never keyed by title",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-09",
+      "name": "reorder-swap",
+      "requirements": [
+        "P04"
+      ],
+      "given": "Dense positions0,1,2 under immediate uniqueness",
+      "action": "Swap first/last via offset then final pass",
+      "expected": "No collision; same stable IDs/note/prose associations, one version increment",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-10",
+      "name": "bad-permutation",
+      "requirements": [
+        "P02",
+        "P04"
+      ],
+      "given": "Existing three chapters",
+      "action": "Duplicate/omit/add foreign/guess ID or nonarray/null",
+      "expected": "Reject before effects; unchanged version/order/revisions/notes",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-11",
+      "name": "legacy-order",
+      "requirements": [
+        "P04"
+      ],
+      "given": "Gapped/invalid positions",
+      "action": "Attempt reorder",
+      "expected": "Fail closed; no silent repair or destructive replacement",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-12",
+      "name": "concurrent-cas",
+      "requirements": [
+        "P04"
+      ],
+      "given": "Two clients share expectedVersion",
+      "action": "Concurrent reorder/create/note operations",
+      "expected": "One confirms; stale client conflicts without overwrite; drafts retained for explicit review",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-13",
+      "name": "duplicate-key",
+      "requirements": [
+        "P04",
+        "P05"
+      ],
+      "given": "Concurrent identical owner+operationId",
+      "action": "Send identical create twice including lost response",
+      "expected": "One durable chapter/revision/version advance; replay original receipt",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-14",
+      "name": "altered-key",
+      "requirements": [
+        "P04",
+        "P05"
+      ],
+      "given": "Existing operation identity",
+      "action": "Reuse with altered command/book/expectedVersion",
+      "expected": "Reject without applying; never disclose another author journal",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-15",
+      "name": "lost-commit",
+      "requirements": [
+        "P05"
+      ],
+      "given": "Commit succeeded, response lost",
+      "action": "Check receipt then consistent readback",
+      "expected": "Unknown blocks ordinary new-key retry; same terminal receipt resolves exactly once",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-16",
+      "name": "missing-receipt",
+      "requirements": [
+        "P05"
+      ],
+      "given": "No visible journal, in-flight or rolled-back transaction",
+      "action": "Receipt lookup/reload",
+      "expected": "Remain unknown; no inference that no write committed; no automatic mutation replay",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-17",
+      "name": "rejected-receipt",
+      "requirements": [
+        "P05"
+      ],
+      "given": "Authorized stale/invalid command rejection recorded atomically",
+      "action": "Drop response and reconcile",
+      "expected": "Terminal rejected result permits deliberate corrected retry; business version unchanged",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-18",
+      "name": "stale-readback",
+      "requirements": [
+        "P02",
+        "P05"
+      ],
+      "given": "Receipt versionN, replica/snapshot older than N",
+      "action": "Readback, reload, A->B->A",
+      "expected": "Do not publish older writable baseline or another actor cache; reconcile only in verified original scope",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-19",
+      "name": "notes-separation",
+      "requirements": [
+        "P03"
+      ],
+      "given": "Book note and two chapter notes plus manuscript histories",
+      "action": "Edit/reorder/navigate",
+      "expected": "Only intended note row changes; distinct book/chapter keys; prose/revisions invariant",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-20",
+      "name": "validation",
+      "requirements": [
+        "P02"
+      ],
+      "given": "Null/nonstring/whitespace/astral/lone-surrogate/NUL and oversized payloads",
+      "action": "Validate on client/server/function boundary",
+      "expected": "Agreed UTF16/title/note and128KiB bounds; reject invalid strings without truncating or normalizing writer intent",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-21",
+      "name": "capacity-version",
+      "requirements": [
+        "P02",
+        "P04"
+      ],
+      "given": "1000chapters or maximum safe version",
+      "action": "Create/increment",
+      "expected": "Reject before any journal confirmation/business mutation; no unreadable1001st document or overflow",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-22",
+      "name": "rollback-injection",
+      "requirements": [
+        "P03",
+        "P04",
+        "P05"
+      ],
+      "given": "Inject after reservation, rank pass, chapter/revision insert or notes write",
+      "action": "Abort before commit at every fault point",
+      "expected": "No partial chapter/revision/order/note/version/terminal receipt survives",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-23",
+      "name": "restart-restore",
+      "requirements": [
+        "P05",
+        "P06"
+      ],
+      "given": "Durable committed receipt and notes/order",
+      "action": "Restart adapter; restore disposable backup",
+      "expected": "Original operation result and relationships survive; no replay duplication",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-24",
+      "name": "privileges",
+      "requirements": [
+        "P01",
+        "P03",
+        "P06"
+      ],
+      "given": "anon/authenticated/PUBLIC/inherited roles and private gateway",
+      "action": "Try direct DML/TRUNCATE/REFERENCES/TRIGGER/function EXECUTE/schema access",
+      "expected": "No new author chapter/revision writes or public elevated function; gateway only named execute, no direct DML",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-25",
+      "name": "book-delete",
+      "requirements": [
+        "P01",
+        "P04"
+      ],
+      "given": "Owned book deletion races pending operation",
+      "action": "Delete competes for same book row lock",
+      "expected": "Serializable outcome; deleted book unavailable; no implicit recreation, foreign receipt or new-key duplicate",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-26",
+      "name": "timeout",
+      "requirements": [
+        "P04",
+        "P05"
+      ],
+      "given": "Blocked duplicate/lock timeout/deadlock/disconnection",
+      "action": "Lose terminal response",
+      "expected": "Unknown until authorized terminal reconciliation; no automatic failure/new-key retry",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    },
+    {
+      "id": "IMP002-PERSIST-27",
+      "name": "retention",
+      "requirements": [
+        "P05"
+      ],
+      "given": "Pending operation across long interruption/account switch",
+      "action": "Attempt journal expiry/purge or new identity replay",
+      "expected": "Book-lifetime identity guarantee preserved; no silent TTL permits duplicate; deletion does not recreate book",
+      "status": "NOT_RUN",
+      "required_environment": "disposable PostgreSQL17 and synthetic verified-principal fixtures; no hosted target"
+    }
+  ]
+}
