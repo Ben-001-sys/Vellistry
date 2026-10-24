@@ -242,3 +242,22 @@ test("denied receipt check hides the previously visible book without making retr
   assert.equal(f.session.snapshot().document, null); assert.equal(f.session.snapshot().phase, "denied");
   await f.session.openBook("book-a"); assert.equal(f.session.snapshot().uncertain, true);
 });
+
+test("confirmed change refresh retains the verified form while newer notes are being typed", async () => {
+  const delayed = deferred<ReadResult>(); let reads = 0; let real!: WorkspacePort;
+  const f = setup(p => { real = p; return {...p, read: (actor, book) => ++reads === 2 ? delayed.promise : p.read(actor, book)}; });
+  await f.session.openBook("book-a"); f.session.setNotes("First notes");
+  const pending = f.session.applyNotes(); await until(() => reads === 2);
+  assert.equal(f.session.snapshot().phase, "ready"); assert.equal(f.session.snapshot().pending, true);
+  f.session.setNotes("Newer notes during receipt refresh");
+  delayed.resolve(await real.read("author-a", "book-a")); await pending;
+  assert.equal(f.session.snapshot().bookNoteDraft, "Newer notes during receipt refresh");
+});
+test("rename drafts are chapter-scoped and never appear under a different author/book", async () => {
+  const f = setup(); await f.session.openBook("book-a");
+  f.session.setRenameTitle("A-only rename draft"); f.session.selectChapter("a-two");
+  assert.equal(f.session.snapshot().renameTitle, "The bridge"); f.session.selectChapter("a-one");
+  assert.equal(f.session.snapshot().renameTitle, "A-only rename draft");
+  f.owner("author-b"); const p = f.session.openBook("book-b"); assert.equal(f.session.snapshot().renameTitle, ""); await p;
+  assert.equal(f.session.snapshot().renameTitle, "B-only chapter");
+});
