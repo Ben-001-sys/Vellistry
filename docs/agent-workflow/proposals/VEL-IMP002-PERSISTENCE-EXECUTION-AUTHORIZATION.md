@@ -141,8 +141,9 @@ client adapter must handle that variant explicitly, never cast it to confirmed.
 ## Proposed executable acceptance and source envelope
 
 At dispatch, resolve and record an approved PostgreSQL17 image digest/version and
-existing pinned Node/pnpm/Python runtimes; no dependency upgrade. The API already has
-pg8.16.3 as a devDependency, sufficient for a test-only PG adapter. Production dependency
+existing pinned Node/pnpm/Python runtimes; no dependency upgrade. The API declares
+pg^8.16.3 as a devDependency; the current frozen lock resolves8.23.1. Reuse that exact
+resolution for a test-only PG adapter. Production dependency
 promotion is NOT authorized. Bind container only to loopback on an ephemeral port;
 reject non-loopback connection targets. Use invented IDs/text and temporary local
 roles/passwords generated inside the test process, never print or commit them.

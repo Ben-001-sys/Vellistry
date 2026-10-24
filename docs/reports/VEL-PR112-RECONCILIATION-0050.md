@@ -71,3 +71,12 @@ mandatory in CI. Pending/failed attempts are not relabelled passing.
 No application, SQL, Auth, dependency, workflow/control, settings, hosted, credential,
 liveJWT, private manuscript or deployment change. Ordinary owner PR112 merge remains
 required; remediation delegation EXPIRED. Broad gates unchanged; Issue108 stays OPEN.
+
+## Bounded dependency-description correction
+
+The first distinct review found no actionable defect and all whole handoff records
+validated at742553b. Primary source inspection then corrected the packet's pg wording:
+package.json declares^8.16.3 while the unchanged lock resolves8.23.1. It now requests
+reuse of that exact test-only resolution, not an upgrade or production dependency.
+The actual source observation and earlier review are preserved. No Task49 artifact,
+ContextPack, dependency, permission or runtime acceptance status changed.

@@ -1,0 +1,6 @@
+{
+  "base_commit": "667084ef30ac00a96b205eb2c52c83083db121e3",
+  "api_pg_specifier": "^8.16.3",
+  "locked_pg_version": "8.23.1",
+  "dependency_changes": false
+}
