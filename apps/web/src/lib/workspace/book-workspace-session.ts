@@ -4,11 +4,11 @@ import {chapterTitle, matchingReceipt, parseCommand, parseDocument, validId, val
 export type WorkspaceSnapshot = Readonly<{
   phase: "idle" | "checking" | "loading" | "ready" | "denied" | "error" | "unverified";
   document: WorkspaceDocument | null; selectedChapterId: string | null;
-  createTitle: string; bookNoteDraft: string; chapterNoteDraft: string;
+  createTitle: string; renameTitle: string; bookNoteDraft: string; chapterNoteDraft: string;
   pending: boolean; uncertain: boolean; conflict: boolean; message: string;
 }>;
 type Scope = {owner: string; bookId: string; generation: number; key: string};
-type Cache = {createTitle: string; drafts: Map<string, string>; selected: string | null;
+type Cache = {createTitle: string; drafts: Map<string, string>; renames: Map<string, string>; selected: string | null;
   operation: WorkspaceRequest | null; uncertain: boolean; conflict: boolean};
 export type WorkspaceSession = ReturnType<typeof createWorkspaceSession>;
 
@@ -20,7 +20,7 @@ function freeze<T>(value: T): T {
   return value;
 }
 const blank = (phase: WorkspaceSnapshot["phase"], message: string): WorkspaceSnapshot => ({
-  phase, document: null, selectedChapterId: null, createTitle: "", bookNoteDraft: "", chapterNoteDraft: "",
+  phase, document: null, selectedChapterId: null, createTitle: "", renameTitle: "", bookNoteDraft: "", chapterNoteDraft: "",
   pending: false, uncertain: false, conflict: false, message,
 });
 const noteKey = (chapterId?: string) => chapterId === undefined ? "book" : JSON.stringify(["chapter", chapterId]);
@@ -66,9 +66,11 @@ export function createWorkspaceSession(deps: {
     if (!cache.drafts.has("book")) cache.drafts.set("book", document.notes);
     document.chapters.forEach(c => {
       if (!cache.drafts.has(noteKey(c.id))) cache.drafts.set(noteKey(c.id), c.notes);
+      if (!cache.renames.has(c.id)) cache.renames.set(c.id, c.title);
     });
     emit({phase: "ready", document, selectedChapterId: cache.selected,
-      createTitle: cache.createTitle, bookNoteDraft: cache.drafts.get("book")!,
+      createTitle: cache.createTitle, renameTitle: cache.selected ? cache.renames.get(cache.selected)! : "",
+      bookNoteDraft: cache.drafts.get("book")!,
       chapterNoteDraft: cache.selected ? cache.drafts.get(noteKey(cache.selected))! : "",
       pending, uncertain: cache.uncertain, conflict: cache.conflict, message});
   }
@@ -96,7 +98,7 @@ export function createWorkspaceSession(deps: {
     }
     const scope: Scope = {owner, bookId, generation, key: JSON.stringify([owner, bookId])};
     active = scope;
-    if (!caches.has(scope.key)) caches.set(scope.key, {createTitle: "", drafts: new Map(),
+    if (!caches.has(scope.key)) caches.set(scope.key, {createTitle: "", drafts: new Map(), renames: new Map(),
       selected: null, operation: null, uncertain: false, conflict: false});
     emit(blank("loading", "Opening the local book..."));
     let result: Awaited<ReturnType<WorkspacePort["read"]>> | null = null;
@@ -122,6 +124,10 @@ export function createWorkspaceSession(deps: {
     updateDraft(c => { c.selected = id; });
   }
   function setCreateTitle(value: string) { updateDraft(c => { c.createTitle = value.slice(0, 180); }); }
+  function setRenameTitle(value: string) {
+    const id = model.selectedChapterId;
+    if (id) updateDraft(c => { c.renames.set(id, value.slice(0, 180)); });
+  }
   function setNotes(value: string, chapterId?: string) {
     if (!validNotes(value)) return;
     if (chapterId !== undefined && !model.document?.chapters.some(c => c.id === chapterId)) return;
@@ -129,13 +135,13 @@ export function createWorkspaceSession(deps: {
   }
   async function apply(command: WorkspaceCommand) {
     const scope = active;
-    if (!scope || model.phase !== "ready" || !model.document) return;
+    if (!scope || model.phase !== "ready" || !model.document || model.pending) return false;
     const cache = cacheFor(scope);
     if (cache.operation || cache.uncertain || cache.conflict) return;
     const normalized = parseCommand(command);
     if (!normalized) { publish(model.document, scope, "Check the chapter title or notes before applying the change."); return; }
     // The identity lookup is asynchronous: recheck the lock after it, too.
-    if (!(await verify(scope)) || cache.operation || cache.uncertain || cache.conflict || !model.document) return;
+    if (!(await verify(scope)) || cache.operation || cache.uncertain || cache.conflict || !model.document || model.pending) return false;
     const operationId = deps.operationId?.() ?? crypto.randomUUID();
     if (!validId(operationId)) { publish(model.document, scope, "The local change could not be prepared."); return; }
     const request: WorkspaceRequest = {actor: scope.owner, bookId: scope.bookId, operationId,
@@ -147,11 +153,7 @@ export function createWorkspaceSession(deps: {
     if (!current(scope) || !(await verify(scope))) return;
     if (result?.kind === "confirmed" && matchingReceipt(result.receipt, request)) {
       confirmed(cache, request);
-      await openBook(scope.bookId);
-      if (active?.key === scope.key && model.phase === "ready" && model.document) {
-        publish(model.document, active, "The requested change was confirmed in this local test session only.");
-      }
-      return;
+      return reloadConfirmed(scope);
     }
     if (result?.kind === "invalid" || result?.kind === "denied" || result?.kind === "conflict") {
       cache.operation = null;
@@ -172,14 +174,34 @@ export function createWorkspaceSession(deps: {
     if (request.command.kind === "create" && chapterTitle(cache.createTitle) === request.command.title) {
       cache.createTitle = "";
     }
+    if (request.command.kind === "rename" && chapterTitle(cache.renames.get(request.command.chapterId)) === request.command.title) {
+      cache.renames.delete(request.command.chapterId);
+    }
     // Retain drafts, including any typing newer than an acknowledged notes payload.
+  }
+  async function reloadConfirmed(scope: Scope): Promise<boolean> {
+    // Keep verified same-scope controls mounted while a receipt's readback is
+    // pending. Explicit scope changes still conceal immediately in openBook.
+    let result: Awaited<ReturnType<WorkspacePort["read"]>> | null = null;
+    try { result = await deps.port.read(scope.owner, scope.bookId); } catch { /* receipt remains confirmed */ }
+    if (!current(scope) || !(await verify(scope))) return false;
+    if (result?.kind === "denied") {
+      leave(); emit(blank("denied", "This book is not available to your account.")); return false;
+    }
+    const document = result?.kind === "ok" ? parseDocument(result.document, scope.bookId) : null;
+    if (!document) {
+      emit(blank("error", "The requested local change was confirmed, but the book could not be refreshed. Reload the local book."));
+      return false;
+    }
+    publish(document, scope, "The requested change was confirmed in this local test session only.");
+    return true;
   }
   async function checkOutcome() {
     const scope = active;
     if (!scope || model.phase !== "ready" || model.pending) return;
     const cache = cacheFor(scope);
     const request = cache.operation;
-    if (!cache.uncertain || !request || !(await verify(scope))) return;
+    if (!cache.uncertain || !request || !(await verify(scope)) || model.pending) return;
     publish(model.document!, scope, "Checking the local result without resending the change...", true);
     let result: Awaited<ReturnType<WorkspacePort["receipt"]>> | null = null;
     try { result = await deps.port.receipt(scope.owner, scope.bookId, request.operationId); } catch { /* remain uncertain */ }
@@ -192,7 +214,7 @@ export function createWorkspaceSession(deps: {
     }
     if (result?.kind === "confirmed" && matchingReceipt(result.receipt, request)) {
       confirmed(cache, request);
-      await openBook(scope.bookId);
+      await reloadConfirmed(scope);
     } else {
       publish(model.document!, scope, "The local result is still not confirmed. No change has been resent.");
     }
@@ -201,7 +223,7 @@ export function createWorkspaceSession(deps: {
     snapshot: () => model,
     subscribe: (listener: () => void) => { listeners.add(listener); return () => { listeners.delete(listener); }; },
     openBook, refresh: () => wantedBook ? openBook(wantedBook) : Promise.resolve(),
-    selectChapter, setCreateTitle, setNotes, apply, checkOutcome,
+    selectChapter, setCreateTitle, setRenameTitle, setNotes, apply, checkOutcome,
     createChapter: () => apply({kind: "create", title: model.createTitle}),
     renameChapter: (id: string, title: string) => apply({kind: "rename", chapterId: id, title}),
     reorder: (ids: readonly string[]) => apply({kind: "reorder", chapterIds: ids}),

@@ -7,13 +7,15 @@ export function BookWorkspaceOrganizer({session}: {session: WorkspaceSession}) {
   const state = useSyncExternalStore(session.subscribe, session.snapshot, session.snapshot);
   const document = state.document;
   const selected = document?.chapters.find(c => c.id === state.selectedChapterId);
-  const [rename, setRename] = useState("");
   const [focusChapter, setFocusChapter] = useState<string | null>(null);
   const buttons = useRef(new Map<string, HTMLButtonElement>());
-  useEffect(() => { setRename(selected?.title ?? ""); }, [selected?.id, selected?.title, document?.bookId]);
   useEffect(() => {
     if (!state.pending && focusChapter && state.phase === "ready") {
-      buttons.current.get(focusChapter)?.focus();
+      // A receipt arriving while the writer types must not steal their caret.
+      const element = window.document.activeElement;
+      if (!(element instanceof HTMLTextAreaElement) && !(element instanceof HTMLInputElement)) {
+        buttons.current.get(focusChapter)?.focus();
+      }
       setFocusChapter(null);
     }
   }, [state.pending, state.phase, document?.version, focusChapter]);
@@ -24,12 +26,13 @@ export function BookWorkspaceOrganizer({session}: {session: WorkspaceSession}) {
     const from = ids.indexOf(id), to = from + delta;
     if (from < 0 || to < 0 || to >= ids.length) return;
     [ids[from], ids[to]] = [ids[to], ids[from]];
-    await session.reorder(ids);
-    setFocusChapter(id);
+    const confirmed = await session.reorder(ids);
+    if (confirmed && session.snapshot().document?.bookId === document.bookId) setFocusChapter(id);
   }
   async function create() {
     const previous = new Set(document?.chapters.map(c => c.id));
-    await session.createChapter();
+    const bookId = document?.bookId;
+    if (!(await session.createChapter()) || session.snapshot().document?.bookId !== bookId) return;
     const added = session.snapshot().document?.chapters.find(c => !previous.has(c.id));
     if (added) { session.selectChapter(added.id); setFocusChapter(added.id); }
   }
@@ -65,10 +68,16 @@ export function BookWorkspaceOrganizer({session}: {session: WorkspaceSession}) {
           onChange={event => session.setCreateTitle(event.target.value)} className="rounded border p-2"/>
         <button type="submit" disabled={locked} className="rounded border px-3 py-2">Add chapter</button>
       </form>
-      {selected ? <form onSubmit={event => { event.preventDefault(); void session.renameChapter(selected.id, rename); }} className="space-x-2">
+      {selected ? <form onSubmit={event => {
+        event.preventDefault();
+        const id = selected.id, bookId = document.bookId;
+        void session.renameChapter(id, state.renameTitle).then(confirmed => {
+          if (confirmed && session.snapshot().document?.bookId === bookId) setFocusChapter(id);
+        });
+      }} className="space-x-2">
         <label htmlFor="workspace-rename-title">Selected chapter title</label>
-        <input id="workspace-rename-title" required maxLength={180} disabled={locked} value={rename}
-          onChange={event => setRename(event.target.value)} className="rounded border p-2"/>
+        <input id="workspace-rename-title" required maxLength={180} disabled={locked} value={state.renameTitle}
+          onChange={event => session.setRenameTitle(event.target.value)} className="rounded border p-2"/>
         <button type="submit" disabled={locked} className="rounded border px-3 py-2">Rename chapter</button>
       </form> : null}
       <fieldset className="space-y-2">
