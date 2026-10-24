@@ -304,3 +304,14 @@ test("create at the readable chapter limit is rejected without changing version 
   assert.ok(parseDocument(a.inspect("author-a", "book-a")?.document, "book-a"));
   assert.equal((await a.port.receipt("author-a", "book-a", "direct-operation")).kind, "missing");
 });
+
+
+test("null chapter title from an adapter is rejected before any ready view is published", async () => {
+  const f = setup(p => ({...p, read: async (actor, book) => {
+    const r = await p.read(actor, book);
+    return r.kind === "ok" ? {kind: "ok", document: {...r.document,
+      chapters: r.document.chapters.map((c, i) => i === 0 ? {...c, title: null as unknown as string} : c)}} : r;
+  }}));
+  await f.session.openBook("book-a"); assert.equal(f.session.snapshot().phase, "error");
+  assert.equal(f.session.snapshot().document, null); assert.equal(f.session.snapshot().renameTitle, "");
+});
