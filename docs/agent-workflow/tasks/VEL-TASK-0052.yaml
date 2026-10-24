@@ -54,8 +54,6 @@ inputs:
   role: governing-source
 - path: docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json
   role: governing-source
-- path: docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-AUTHORIZATION.md
-  role: governing-source
 - path: supabase/migrations/20261009000000_initial_author_books.sql
   role: governing-source
 - path: supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql
