@@ -333,7 +333,7 @@ class DraftPolicyTests(unittest.TestCase):
             self.assertEqual(plan.get('mode'),'full')
             self.assertEqual(plan['security'],'true')
 
-if __name__=='__main__': unittest.main()
+
 
 
 class WorkspaceCoverageTests(unittest.TestCase):
@@ -373,3 +373,5 @@ class WorkspaceCoverageTests(unittest.TestCase):
                 elif case == "mask": step["run"] += " || true"
                 else: step[case] = {"env": {"NODE_OPTIONS": "--require ./skip.js"}, "if": "${{ false }}", "continue-on-error": "true", "shell": "sh", "working-directory": "tests"}[case]
                 with self.assertRaises(AssertionError): self.check_workspace_step(w)
+
+if __name__=='__main__': unittest.main()

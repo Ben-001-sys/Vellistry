@@ -42,3 +42,12 @@ or bypass; existing lack-of-protected-settings limits are not changed or solved 
 Review exact diff/EB/provenance and actual draft/ready CI, then separately decide merge.
 Owner authority is ordinary governance; remediation delegation stays expired. No hosted
 acceptance, persistence capability, broad gate promotion or automatic merge follows.
+
+## Direct-runner correction
+
+First distinct source review found no actionable CI defect; its read-only fixture
+limitations are preserved. Primary inspection found the existing unittest.main guard
+preceded the appended class: direct execution ran37old tests, while CI discovery
+correctly ran39. Move the guard after all classes so both invocation forms execute
+the new coverage contract. Raw before/after outputs retain actual counts. This
+changes no workflow behavior, security gate, task scope or immutable pack.
