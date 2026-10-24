@@ -33,7 +33,7 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f
+implementation_source_commit: 61aa673c5ab34f458ccbb7c610babb11452a288b
 execution:
   status: completed
   executor: Codex
@@ -84,6 +84,18 @@ execution:
     - b1c46df3942809b35f6cf4c650fe6c36f7cc60ab
     cp49_sha256: f5c37c2678918b90e833cc8190af6b6a91541ebe6d7458c51ec411adb9ba7887
     status: PASS
+  - command: python .submission/check_source_packet.py
+    source_commit: 61aa673c5ab34f458ccbb7c610babb11452a288b
+    exit_code: 0
+    seconds: 2.52
+    evidence: docs/reports/evidence/VEL-TASK-0050/corrected-source.txt
+    status: PASS
+  - command: python scripts/check_knowledge_metadata.py
+    source_commit: 61aa673c5ab34f458ccbb7c610babb11452a288b
+    exit_code: 0
+    seconds: 0.28
+    evidence: docs/reports/evidence/VEL-TASK-0050/corrected-metadata.txt
+    status: PASS
 ---
 
 # Source-preserving reconciliation evidence
@@ -111,3 +123,6 @@ No application/SQL/Auth/CI/dependency/settings change. No hosted access/credenti
 
 ## Reviewer disposition
 Pending distinct completed-diff advisory review and ordinary owner PR112 merge. Bundle remains proposed-for-review/owner pending; actual final review and CI references belong to PR ledger after submission. The new branch and source must pass trusted-base evaluator before lease publication; no automatic merge authorized.
+
+## Source wording correction and validation scope
+First whole handoff validation at742553bc30fb7da144ef8ef0e900814c8cbb3776 passed42tasks/40packs/40bundles, exit0 in118.99seconds; first distinct review found no actionable defect. The packet then corrected a declared-versus-resolved pg version: range^8.16.3, unchanged frozen resolution8.23.1. Dependency observation, prior review and corrected source/metadata checks are retained; no package/lock or oldTask49 evidence changed. Final selected Task/pack/bundle is checked by trusted-base evaluation and actual new-head CI.
