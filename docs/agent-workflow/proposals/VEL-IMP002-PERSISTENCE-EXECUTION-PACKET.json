@@ -291,7 +291,22 @@
       ]
     },
     "residual_capability": "UPDATE(id) is actual DML permission; no accepted grant. Confinement depends on private audited fixed helper, NOLOGIN and no runtime membership.",
-    "acceptance": "42501 without either column UPDATE grant; locks succeed only with isolated candidate grants/RLS; gateway/login direct DML/helper/owner-role access still denied",
-    "status": "OWNER_DECISION_PENDING"
+    "acceptance": "42501 without either column UPDATE grant; locks succeed only with isolated candidate grants/RLS; gateway/login direct DML/helper/owner-role access still denied;42501without required schema USAGE; scoped SELECT/UPDATE RLS required, no RLS bypass",
+    "status": "OWNER_DECISION_PENDING",
+    "schema_usage": {
+      "vellistry_workspace_gateway": [
+        "vellistry_workspace"
+      ],
+      "vellistry_workspace_owner": [
+        "vellistry_workspace",
+        "public"
+      ],
+      "vellistry_workspace_lock_owner": [
+        "vellistry_workspace",
+        "auth",
+        "public"
+      ]
+    },
+    "runtime_schema_create": false
   }
 }

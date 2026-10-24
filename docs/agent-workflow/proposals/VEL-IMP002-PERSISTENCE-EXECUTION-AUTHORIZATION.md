@@ -71,6 +71,12 @@ author-scoped RLS policies. The column choice is itself pending owner review:
 UPDATE(id) is a real DML capability, not merely a lock flag. Its confinement depends
 on NOLOGIN, no runtime membership in this role, no generic DML entrypoint and an
 audited fixed function body that performs only checks/row-locking SELECTs.
+Schema privileges are explicit too: gateway/workspace owner/lock owner need USAGE
+on vellistry_workspace; workspace owner needs public USAGE; lock owner needs
+auth/public USAGE for its qualified relations. Only lock owner gains this new auth
+schema/column capability; runtime login/gateway get none. No runtime role gets CREATE
+on these schemas. Applicable SELECT/UPDATE RLS policies must permit the helper's
+owned row lock, not bypass RLS. The restricted fixture login uses only gateway rights.
 
 Only the workspace function-owner role may EXECUTE this helper; gateway, fixture
 login, PUBLIC, anon and authenticated cannot call it or SET ROLE to either owner.
@@ -82,7 +88,7 @@ revoked default EXECUTE apply equally to this helper.
 
 Future disposable tests must demonstrate SQLSTATE42501 when either required column
 UPDATE grant is absent, then successful row locks with the isolated candidate grants
-and applicable RLS. Still prove the runtime gateway/login cannot directly read/update
+and applicable RLS. Also prove failure without required schema USAGE. Still prove the runtime gateway/login cannot directly read/update
 sessions, update books, invoke the helper, inherit/SET ROLE to an owner or alter its
 function. This proposed strategy requires explicit owner acceptance; if rejected,
 leave mutation unavailable and revise the contract rather than silently escalating.
