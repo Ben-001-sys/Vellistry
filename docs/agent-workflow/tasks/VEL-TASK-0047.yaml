@@ -51,8 +51,6 @@ inputs:
   role: governing-source
 - path: docs/reports/VEL-LANGUAGE-DISPOSITIONS-2026-10-20.md
   role: governing-source
-- path: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
-  role: governing-source
 source_gaps:
 - id: PERSISTENCE
   limitation: Only local synthetic adapter; protected hosted chapter/reorder/notes

@@ -211,3 +211,26 @@ Git base18c770ff6fce7401f7529667a37d7fb523cc55d9; blob 99d016a057617b71c0810bc04
 ### Library / account
 `checking-session→loading→empty|populated|error|unauthenticated`. On auth identity change, clear or partition **all** account-scoped caches, pending requests and local context (books, chapters, profiles, facts, rules, proposals, recovery); late responses from A are ignored when B is current. On sign-out with unsynced draft, show an explicit retain/delete-on-device choice based on approved local-draft policy instead of silently destroying work.
 
+
+## Exact acceptance/journey rows
+Source docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md; blob b61aef6b9748382e1b173e52caf598178c389962; selected lines containing ACC-M1-, ACC-M8- or **VEL-JRN-.
+
+| **VEL-JRN-001** | Start a book and move between chapters without losing writing | M1 M2 M3 M8 | 01-004, 01-006, 02-001, 02-015, 02-019 | R05 R15 R16 |
+| **VEL-JRN-002** | Write and format normally with no model/account key configured | M2 M3 M8 | 02-001, 02-002, 02-013, 02-017, 02-021 | R05 R16 |
+| **VEL-JRN-003** | Close, reopen, recover and export an author's manuscript | M3 M8 | 02-018, 02-019, 14-003, 14-015, 17-015 | R11 R15 R19 |
+| **VEL-JRN-004** | Manually create and revise a visible character/storyline profile | M4 M8 | 08-021, 08-022, 08-023, 08-024, 08-025 | R07 R15 |
+| **VEL-JRN-005** | After drafting, inspect and approve/revise/dismiss candidate profile changes | M2 M4 M7 | 08-026, 08-027, 09-025, 09-027, 09-030 | R07 R10 R19 |
+| **VEL-JRN-006** | Browse, disable, restore and add an author creative rule | M5 M8 | 04-001..009; 04-011, 04-023 | R01 R06 |
+| **VEL-JRN-007** | Connect an evaluated provider, preview context and request Continue | M5 M6 M7 M8 | 05-007, 06-001, 06-002, 11-001, 11-002 | R06 R08 R15 |
+| **VEL-JRN-008** | Select prose, obtain a Rewrite suggestion, reject or accept it, and undo | M2 M5 M6 M7 | 05-008, 11-001..011 (bounded) | R05 R06 R08 R10 |
+| **VEL-JRN-009** | Accept AI prose and review separate new profile candidates | M4 M6 M7 | 08-026, 09-026, 09-027, 09-029 | R07 R10 |
+| **VEL-JRN-010** | Make edits while an AI request is pending, then handle stale suggestions safely | M2 M3 M7 | 11-011, 11-012; 02-017..019 | R05 R10 R19 |
+| **VEL-JRN-011** | Verify two accounts/books remain isolated and author data can be retrieved/deleted | M3 M8 | 17-003, 17-004, 17-013..017 | R14 R15 R19 |
+- **ACC-M1-01**: Given an authenticated author with no books, when they create a book and two chapters, then each item appears in that author's book navigation and can be reopened.
+- **ACC-M1-02**: Given three differently titled chapters with saved content, when the author reorders them, then chapter order changes **without** moving prose to the wrong chapter or discarding an existing edit.
+- **ACC-M1-03**: Given a note attached to a chapter, when the author navigates elsewhere and returns, then the note remains separate from accepted manuscript text.
+- **ACC-M8-01**: Given Author A and Author B with separate books, when A attempts to access B's manuscript, approved profiles, exports or API-key state directly or through nested document endpoints, then unauthorized read/write is denied; tests cover guessed IDs and cross-account mutation.
+- **ACC-M8-02**: Given manuscript text is about to be sent to an external AI provider, when the author has not permitted that provider/task transfer, then Vellistry does not send the manuscript.
+- **ACC-M8-03**: Given secrets, logs, screenshots and backups, when an audit runs, then API credentials and private content are not exposed to unauthorized users or repository artifacts.
+- **ACC-M8-04**: Given a keyboard-only writer, when navigating the primary editor, chapter list, profile panel, Rules Studio and accept/reject actions, then primary tasks can be completed without mouse-only controls.
+- **ACC-M8-05**: Given degraded provider/network/storage states, when the application reports progress, then it does not falsely claim a successful write/generation/backup.
