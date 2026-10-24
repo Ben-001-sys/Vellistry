@@ -13,7 +13,8 @@
     "supabase:status": "supabase status",
     "supabase:reset": "supabase db reset",
     "test:hosted-preflight": "node --test tests/hosted_supabase_preflight.test.mjs",
-    "check:hosted-config": "node scripts/hosted_supabase_preflight.mjs"
+    "check:hosted-config": "node scripts/hosted_supabase_preflight.mjs",
+    "test:workspace-contract": "pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/workspace/book-workspace-session.test.ts"
   },
   "devDependencies": {
     "supabase": "^2.0.0",

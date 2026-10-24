@@ -1,0 +1,9 @@
+{
+  "command": "python scripts/ci_governance.py",
+  "source_commit": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+  "checkout": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-browser-check",
+  "exit_code": 0,
+  "seconds": 701.57,
+  "evidence": "docs/reports/evidence/VEL-IMP002-0047/governance-stationary.txt",
+  "head_unchanged_during_run": true
+}

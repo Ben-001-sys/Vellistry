@@ -10,7 +10,22 @@ version: 0.2.1
 
 # Vellistry — current verified state
 
-## Current bounded task — 2026-10-24
+## Current local-only implementation — 2026-10-24
+
+FACT: PR110 merged as18c770ff6fce7401f7529667a37d7fb523cc55d9;
+[post-main40090741803](https://github.com/Ben-001-sys/Vellistry/actions/runs/40090741803)
+SUCCESS. Metadata queries remain unexecuted; remediation delegation EXPIRED.
+
+Owner-authorized Task0047/immutable CP0047 implements only the local controller,
+organizer and synthetic fixture: stable chapter IDs, create/rename/reorder and
+separate notes.41 unit/33 Chromium checks PASS at1ff1098cd73066c8bfd1084b72d076b4284896e1.
+[Report/evidence](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md) retain exact sources.
+No production route, database writes, SQL/Auth/dependency changes or hosted access.
+Persistence needs a separate contract; broad G_DESIGN/G_CODE stay pending outside
+this slice. Final verification/distinct review/CI precede the owner's feature merge
+decision. This is not completed hosted IMP002/JRN001.
+
+## Historical query preparation — 2026-10-24
 
 FACT: PR109 merged under explicit ordinary owner approval. Main
 `d13deca2d6762d44f80035c6d89d2cb61d1ab1e8` exactly matches its reviewed tree;

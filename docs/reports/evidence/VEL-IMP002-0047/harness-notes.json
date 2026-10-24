@@ -1,0 +1,15 @@
+{
+  "initial_source": "a0b896ad62325edc072cbc21753dec60208dc5a4",
+  "corrected_source": "389fd0905c94b814e1cdce8641e3d38446c38b28",
+  "initial_http": 404,
+  "cause": "Next treats underscore-prefixed app folders as private",
+  "fix": "Only disposable checkout uses %5F_workspace_fixture/page.tsx to serve same approved /__workspace_fixture URL",
+  "route_wrapper": "export {default} from \"../../../../../tests/workspace/book-workspace-fixture-page\";",
+  "source_route_added": false,
+  "dependencies_changed": false,
+  "production_route": false,
+  "identity_or_hosted_config_used": false,
+  "browser": "Chromium155.0.8059.85",
+  "final_cases": 33,
+  "human_AT_or_screenreader": "NOT_RUN"
+}

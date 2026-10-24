@@ -1,0 +1,35 @@
+{
+  "tested_source": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+  "adopted_source": "c6659a5045c8388f714aa2ebcef060f2d42ceccc",
+  "exact_blob_equivalence": [
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-contract.ts",
+      "blob": "57465d82c341a320b608658517543ff740a0eb75"
+    },
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-session.ts",
+      "blob": "9264cceaea7341ed3eec7d642680025ba4c947b8"
+    },
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-session.test.ts",
+      "blob": "659d894662df8ba8610d1887182abd1e4d57fe72"
+    },
+    {
+      "path": "apps/web/src/components/workspace/book-workspace-organizer.tsx",
+      "blob": "48904cb78a581c00fd6f61b0db8f8aed447b35b0"
+    },
+    {
+      "path": "tests/fixtures/book-workspace-synthetic.ts",
+      "blob": "bff647b99035fb4b4f5fa5a5579557d87ad6e152"
+    },
+    {
+      "path": "tests/workspace/book-workspace-fixture-page.tsx",
+      "blob": "45f1031f6e2895f3c31e4c2836f1274ec1a41e71"
+    },
+    {
+      "path": "package.json",
+      "blob": "198ed5ba86f87396405d9bd0a7de9f20fb22c15d"
+    }
+  ],
+  "actual_tests": "40workspace,33browser,typechecks,build at9b4f371; complete governance stationary checkout tracked separately"
+}

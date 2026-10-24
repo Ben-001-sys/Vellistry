@@ -1,0 +1,18 @@
+▲ Next.js 16.4.1 (Turbopack)
+- Local:         http://127.0.0.1:3105
+- Network:       http://127.0.0.1:3105
+✓ Ready in 1470ms
+✓ Running next.config.ts took 93ms
+
+ GET /__workspace_fixture 200 in 616ms (next.js: 321ms, application-code: 295ms)
+ GET /__workspace_fixture 200 in 48ms (next.js: 2ms, application-code: 46ms)
+ GET /__workspace_fixture 200 in 52ms (next.js: 1.6ms, application-code: 50ms)
+ GET /__workspace_fixture 200 in 89ms (next.js: 1.9ms, application-code: 87ms)
+ GET /__workspace_fixture 200 in 83ms (next.js: 3ms, application-code: 80ms)
+ GET /__workspace_fixture 200 in 75ms (next.js: 1.8ms, application-code: 73ms)
+ GET /__workspace_fixture 200 in 70ms (next.js: 2ms, application-code: 68ms)
+ GET /__workspace_fixture 200 in 50ms (next.js: 1.7ms, application-code: 48ms)
+[?25h
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-browser-check\apps\web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "next" not found

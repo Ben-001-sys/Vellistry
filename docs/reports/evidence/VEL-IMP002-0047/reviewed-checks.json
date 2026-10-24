@@ -1,0 +1,23 @@
+[
+  {
+    "source_commit": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+    "command": "corepack.cmd pnpm test:workspace-contract",
+    "exit_code": 0,
+    "seconds": 2.49,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/workspace-reviewed.txt"
+  },
+  {
+    "source_commit": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+    "command": "corepack.cmd pnpm check",
+    "exit_code": 0,
+    "seconds": 9.43,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/typecheck-reviewed.txt"
+  },
+  {
+    "source_commit": "9b4f37194129051b812c5cfa1a3551f7018987e9",
+    "command": "corepack.cmd pnpm build",
+    "exit_code": 0,
+    "seconds": 13.95,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/build-reviewed.txt"
+  }
+]

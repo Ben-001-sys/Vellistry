@@ -1,0 +1,16 @@
+[
+  {
+    "command": "corepack.cmd pnpm build",
+    "source_commit": "101680e260decaf52810280f1a3d6609059fab2e",
+    "exit_code": 0,
+    "seconds": 10.3,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/build-final.txt"
+  },
+  {
+    "command": "python scripts/ci_governance.py",
+    "source_commit": "fc7dbae896071d09f5fbbc4f850b2fbf2861cc4a",
+    "exit_code": 1,
+    "seconds": 402.24,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/governance-final.txt"
+  }
+]

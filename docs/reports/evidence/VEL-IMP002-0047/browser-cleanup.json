@@ -1,0 +1,17 @@
+{
+  "port": 3105,
+  "connect_exit": 10035,
+  "listening": false,
+  "transient_wrapper_removed": true,
+  "implementation_route_absent": true,
+  "fixture_sha256": "ca220275e7f6491c31e7e6990c002a2313057c25a8e7b33fa37e13699332cb04",
+  "browser_source": "389fd0905c94b814e1cdce8641e3d38446c38b28",
+  "followup_socket_check": "TimeoutError:timed out",
+  "followup_utc": "2026-10-24T15:19:54.596277+00:00",
+  "followup_listener_inventory": {
+    "command": "Get-NetTCPConnection -LocalPort 3105 -State Listen -ErrorAction SilentlyContinue",
+    "listener_count": 0,
+    "status": "PASS"
+  },
+  "socket_limitation": "Socket timeout/Winsock result alone is not cleanup proof; Windows TCP listener inventory confirms zero listeners after verified owned PID termination."
+}

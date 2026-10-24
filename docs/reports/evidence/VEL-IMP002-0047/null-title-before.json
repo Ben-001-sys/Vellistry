@@ -1,0 +1,6 @@
+{
+  "source_commit": "b2a86146a748711d2b3265aea59efc0a6cf92145",
+  "command": "corepack pnpm test:workspace-contract",
+  "exit_code": 1,
+  "seconds": 2.59
+}

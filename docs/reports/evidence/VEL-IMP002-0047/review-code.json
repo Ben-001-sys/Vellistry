@@ -1,0 +1,18 @@
+{
+  "head": "fc7dbae896071d09f5fbbc4f850b2fbf2861cc4a",
+  "base": "18c770ff6fce7401f7529667a37d7fb523cc55d9",
+  "command": [
+    "C:/Users/admin/AppData/Local/OpenAI/Codex/bin/8925276705115dea/codex.exe",
+    "-s",
+    "read-only",
+    "-a",
+    "never",
+    "-c",
+    "mcp_servers.composio.enabled=false",
+    "review",
+    "Review the actual application/test code diff from 18c770ff6fce7401f7529667a37d7fb523cc55d9 to fc7dbae896071d09f5fbbc4f850b2fbf2861cc4a for demonstrated correctness/security/accessibility defects. Read the pinned Task0047 contract. Focus on async identity, stale responses/readback, unknown outcomes, scoped drafts, chapter operations and test-only boundaries. This is an early code-only review while the unchanged full governance suite runs; EB0047/manifest finalization and complete final-head review are still pending, so do not report those known pending paperwork steps as code defects. Do not edit files, run hosted/database/network operations, obtain credentials or contact external review services. Return actionable findings with file/line, trigger and consequence, or explicitly no findings. Review is advisory, never owner approval."
+  ],
+  "exit_code": 0,
+  "seconds": 99.83,
+  "scope": "Early code-only advisory review; final completed-diff review still required"
+}

@@ -1,0 +1,100 @@
+id: VEL-TASK-0047
+title: IMP002 local-only Book Workspace controller, organizer and synthetic verification
+type: implementation-task
+status: in-progress
+created_at: '2026-10-24'
+updated_at: '2026-10-24'
+owner: project_owner
+context_pack_id: VEL-CP-0047
+objective: Implement and verify the specifically owner-authorized local-only organizer
+  slice, not another proposal; submit independently reviewed feature PR for owner
+  merge.
+in_scope: &id001
+- CURRENT-STATE.md
+- apps/web/src/lib/workspace/book-workspace-contract.ts
+- apps/web/src/lib/workspace/book-workspace-session.ts
+- apps/web/src/lib/workspace/book-workspace-session.test.ts
+- apps/web/src/components/workspace/book-workspace-organizer.tsx
+- tests/fixtures/book-workspace-synthetic.ts
+- tests/workspace/book-workspace-fixture-page.tsx
+- tests/workspace/book-workspace-browser-checks.md
+- package.json
+- docs/agent-workflow/tasks/VEL-TASK-0047.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0047.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0047.md
+- docs/agent-workflow/inputs/VEL-TASK-0047/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md
+- docs/reports/evidence/VEL-IMP002-0047/*
+out_of_scope:
+- Hosted operations/config/credentials/SQL/migrations/grants/RLS and direct chapter/revision
+  writes
+- Production fixture routes, API/auth architecture, dependencies/CI/policy changes
+- Private data, paid services/deployments, feature merge and broad G_DESIGN/G_CODE
+  promotion
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0047/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0047/APPROVED-HANDOFF.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0047/SOURCE-EXCERPTS.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0047/WORKSPACE-CONTRACT.md
+  role: governing-source
+- path: docs/reports/VEL-LANGUAGE-DISPOSITIONS-2026-10-20.md
+  role: governing-source
+source_gaps:
+- id: PERSISTENCE
+  limitation: Only local synthetic adapter; protected hosted chapter/reorder/notes
+    persistence and security acceptance require separate contracts/permissions.
+deliverables:
+- Committed Task/inputs and validated committed immutable pack before feature edits
+- Headless controller/contract, reusable organizer, synthetic adapter and browser
+  fixture with focused tests
+- Actual unit/browser/build/type/governance evidence and honest local confirmation
+  copy
+- EB, distinct final-head review, applicable Draft/Ready CI and feature PR for owner
+  decision
+acceptance_criteria:
+- All scoped positive and negative cases in WORKSPACE-CONTRACT pass with actual evidence
+- No production fixture route, hosted calls/credentials, SQL or accepted-document/revision
+  mutation
+- Pre/post identity verification, stale-response guards, scoped drafts and unknown-write
+  retry lock retained
+- Keyboard/focus/labels/status behavior checked in real local browser; no fake persistence
+- Owner retains feature merge; broad gates pending; remediation authority expired
+allowed_actions:
+- Read pinned sources and implement only allowed files in isolated worktree
+- Use frozen existing dependencies and synthetic unit tests/build/type/governance
+- Create owned disposable browser checkout; transient test route only there, loopback3105,
+  installed Playwright, stripped credential env; stop owned service
+- Update scoped evidence/current-state/manifest; distinct review and submit/promote
+  PR for owner decision
+approval_required_for:
+- All hosted/credential/SQL/private/paid/deployment/settings actions remain excluded
+- Any scope expansion and feature PR merge
+compliance:
+  change_base: 18c770ff6fce7401f7529667a37d7fb523cc55d9
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6383802475
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

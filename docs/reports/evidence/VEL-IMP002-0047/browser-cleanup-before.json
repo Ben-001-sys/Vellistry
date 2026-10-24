@@ -1,0 +1,19 @@
+{
+  "recorded_command_pid": 9360,
+  "listener_pid": 13500,
+  "checkout": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-browser-check",
+  "action": "Stop verified owned fixture listener subtree only",
+  "verified_descendant_chain": [
+    13500,
+    10008,
+    21356,
+    30432,
+    9360,
+    21280,
+    3720,
+    17600,
+    17044,
+    19140
+  ],
+  "source_commit": "389fd0905c94b814e1cdce8641e3d38446c38b28"
+}

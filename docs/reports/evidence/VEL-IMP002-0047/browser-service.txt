@@ -1,0 +1,39 @@
+▲ Next.js 16.4.1 (Turbopack)
+- Local:         http://127.0.0.1:3105
+- Network:       http://127.0.0.1:3105
+✓ Ready in 1229ms
+✓ Running next.config.ts took 89ms
+
+✓ Generated AGENTS.md for AI agents. Set `agentRules: false` in next.config to disable.
+○ Compiling /_not-found/page ...
+ GET /__workspace_fixture 404 in 7.6s (next.js: 6.9s, application-code: 715ms)
+ GET /__workspace_fixture 404 in 162ms (next.js: 107ms, application-code: 55ms)
+ GET / 200 in 127ms (next.js: 13ms, application-code: 115ms)
+ GET /books 200 in 68ms (next.js: 20ms, application-code: 47ms)
+ GET / 200 in 33ms (next.js: 3ms, application-code: 30ms)
+ GET /login 200 in 42ms (next.js: 11ms, application-code: 32ms)
+ GET /login 200 in 46ms (next.js: 4ms, application-code: 42ms)
+ GET /__workspace_fixture 200 in 82ms (next.js: 11ms, application-code: 71ms)
+ GET /__workspace_fixture 200 in 51ms (next.js: 2ms, application-code: 48ms)
+ GET /__workspace_fixture 200 in 53ms (next.js: 2ms, application-code: 51ms)
+ GET /__workspace_fixture 200 in 40ms (next.js: 1.7ms, application-code: 38ms)
+ GET /__workspace_fixture 200 in 56ms (next.js: 1.6ms, application-code: 55ms)
+ GET /__workspace_fixture 200 in 60ms (next.js: 1.7ms, application-code: 58ms)
+ GET /__workspace_fixture 200 in 81ms (next.js: 1.6ms, application-code: 80ms)
+ GET /__workspace_fixture 200 in 57ms (next.js: 1.8ms, application-code: 55ms)
+ GET /__workspace_fixture 200 in 57ms (next.js: 2ms, application-code: 54ms)
+ GET /__workspace_fixture 200 in 35ms (next.js: 1.0ms, application-code: 34ms)
+✓ Compiled in 116ms
+ GET /__workspace_fixture 200 in 112ms (next.js: 11ms, application-code: 100ms)
+ GET /__workspace_fixture 200 in 56ms (next.js: 1.7ms, application-code: 54ms)
+ GET /__workspace_fixture 200 in 52ms (next.js: 1.3ms, application-code: 51ms)
+ GET /__workspace_fixture 200 in 42ms (next.js: 1.9ms, application-code: 40ms)
+ GET /__workspace_fixture 200 in 49ms (next.js: 1.7ms, application-code: 48ms)
+ GET /__workspace_fixture 200 in 47ms (next.js: 1.8ms, application-code: 45ms)
+ GET /__workspace_fixture 200 in 61ms (next.js: 1.8ms, application-code: 59ms)
+ GET /__workspace_fixture 200 in 43ms (next.js: 0.9ms, application-code: 42ms)
+ GET /__workspace_fixture 200 in 59ms (next.js: 1.4ms, application-code: 58ms)
+[?25h
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-browser-check\apps\web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "next" not found

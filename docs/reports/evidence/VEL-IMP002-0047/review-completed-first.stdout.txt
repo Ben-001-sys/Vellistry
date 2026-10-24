@@ -1,0 +1,6 @@
+The document validator accepts null chapter titles despite declaring them valid strings. All 40 existing tests passed using an in-process TypeScript loader; a separate reproduction confirmed this validation gap.
+
+Review comment:
+
+- [P2] Reject null chapter titles when parsing documents — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-local-workspace/apps/web/src/lib/workspace/book-workspace-contract.ts:71-73
+  If an adapter returns a chapter with `title: null`, `chapterTitle(null)` also returns `null`, so this comparison accepts the malformed chapter. The controller then publishes a ready snapshot containing a null title, producing an empty chapter button and an invalid controlled rename value instead of rejecting the document. Explicitly require a valid string title before comparing its normalized value, and add a null-title read regression test.

@@ -1,0 +1,23 @@
+[
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "72ccfbed8a1b254c46d47c6b5d9d16c908c0d00e",
+    "exit_code": 0,
+    "seconds": 0.17,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/metadata-final.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "72ccfbed8a1b254c46d47c6b5d9d16c908c0d00e",
+    "exit_code": 0,
+    "seconds": 0.09,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/readiness-final.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "source_commit": "72ccfbed8a1b254c46d47c6b5d9d16c908c0d00e",
+    "exit_code": 0,
+    "seconds": 0.2,
+    "evidence": "docs/reports/evidence/VEL-IMP002-0047/state-final.txt"
+  }
+]
