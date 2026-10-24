@@ -1,0 +1,1 @@
+The patch adds the workspace regression command to the existing application CI job without changing routing or security gates. Both new policy tests pass; four existing tests could not run because the read-only sandbox prevents temporary-directory creation. No actionable defects were identified.

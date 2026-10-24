@@ -1,0 +1,5 @@
+{
+  "source_commit": "c565a14e09452bd810f37a92c41589263f45f640",
+  "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+  "exit_code": 1
+}
