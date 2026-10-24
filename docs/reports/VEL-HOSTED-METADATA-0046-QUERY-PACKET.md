@@ -43,7 +43,7 @@ its owner/connector operator first demonstrates exact-project routing, an isolat
 observation role, enforced read-only transactions, and the limits below. The role
 must be NOSUPERUSER/NOBYPASSRLS/NOCREATEDB/NOCREATEROLE/NOREPLICATION, have no business
 or Auth row-reading privilege or inherited write/SET ROLE escalation, and have only
-catalog visibility plus column-level SELECT on
+CONNECT to this database, pg_catalog visibility, a fixed pg_catalog-only search_path, and column-level SELECT on
 `supabase_migrations.schema_migrations(version,name)` with schema USAGE. Ordinary
 `pg_roles` visibility is enough; no access to `pg_authid`, passwords, Vault, Auth
 relations, manuscript tables or management/service-role keys is required.
@@ -97,12 +97,13 @@ Task0046's repository-only forbidden-action controls remain unchanged.
 
 The transport assertion binds project/organization/region; this query cannot.
 Timeout text must be interpreted as a duration, never compared lexically. Require
-transaction_read_only=on, statement_timeout in(0,5s], lock_timeout in(0,1s].
+transaction_read_only=on, search_path exactly pg_catalog, statement_timeout in(0,5s], lock_timeout in(0,1s]. The channel must establish this before execution without this Task issuing SET statements; the fixed path prevents untrusted operator/function resolution.
 
 ```sql
 SELECT pg_catalog.current_setting('server_version_num')::integer AS server_version_num,
        CURRENT_USER AS observation_role,
        pg_catalog.current_setting('transaction_read_only') AS transaction_read_only,
+       pg_catalog.current_setting('search_path') AS search_path,
        pg_catalog.current_setting('statement_timeout') AS statement_timeout,
        pg_catalog.current_setting('lock_timeout') AS lock_timeout,
        r.rolsuper, r.rolbypassrls, r.rolcreatedb, r.rolcreaterole, r.rolreplication
