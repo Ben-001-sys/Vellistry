@@ -10,19 +10,19 @@ version: 0.2.1
 
 # Vellistry — current verified state
 
-## Current integration and CI coverage — 2026-10-24
+## Current CI integration and persistence preparation — 2026-10-24
 
-FACT: PR111 merged as a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4; reviewed/merged
-tree da9bf02eefadeeeae0156685d92ff2523824c291 matches. [Post-main40111872132](https://github.com/Ben-001-sys/Vellistry/actions/runs/40111872132)
-SUCCESS. Task/CP/EB0047 preserved;41workspace/33browser checks were local evidence.
-Independent runtime EPERM was not PASS. SQL privilege fixture SKIPPED, not accepted.
+FACT: PR113 merged as667084ef30ac00a96b205eb2c52c83083db121e3; reviewed/merged tree
+f25a00c603e107e95dc3a0776207e4e5b359074e equal. [Post-main40126909449](https://github.com/Ben-001-sys/Vellistry/actions/runs/40126909449)
+SUCCESS. Workspace tests are integrated in application CI; Task47's33browser checks
+remain local, and its independent runtime EPERM was not PASS. SQL privilege fixture
+SKIPPED, not acceptance. Original Task/CP/EB0047–0049 evidence is preserved.
 
-Task0048 adds the focused workspace command to existing applicable application CI;
-its branch awaits separate owner merge, so automatic main coverage is not claimed.
-Task0049 separately prepares a persistence contract, not SQL or feature writes.
-Metadata queries remain unexecuted; remediation delegation EXPIRED. No production
-workspace route or durable persistence. Broad G_DESIGN/G_CODE stay pending outside
-scoped authorizations. [Task0047 report](docs/reports/VEL-IMP002-LOCAL-WORKSPACE-0047.md).
+Task0050 reconciles PR112 on current main with original Task49 bytes unchanged,
+including27NOT_RUN persistence cases. Its executable authorization packet remains
+PROPOSED, not SQL/security approval or implementation. Ordinary owner PR112 merge
+required; remediation delegation EXPIRED. Hosted metadata queries unexecuted, no
+durable workspace route/writer. Broad G_DESIGN/G_CODE and pilot/release gates unchanged.
 
 ## Historical query preparation — 2026-10-24
 
