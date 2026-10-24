@@ -1,0 +1,23 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "node --version": {
+      "exit_code": 0,
+      "output": "v24.13.0"
+    },
+    "python --version": {
+      "exit_code": 0,
+      "output": "Python 3.10.10"
+    },
+    "corepack.cmd pnpm --version": {
+      "exit_code": 0,
+      "output": "10.18.0"
+    }
+  },
+  "browser": "Chromium155.0.8059.85",
+  "note": "Runtime observation only; initial sandboxed pnpm version query could not access the external Corepack cache/registry; permitted query is separate. No package/dependency changes.",
+  "sandboxed_version_query": {
+    "exit_code": 1,
+    "output": "H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22063\n    throw new Error(\n          ^\n\nError: Error when performing the request to https://registry.npmjs.org/pnpm/-/pnpm-10.18.0.tgz; for troubleshooting help, see https://github.com/nodejs/corepack#troubleshooting\n    at fetch (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22063:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async fetchUrlStream (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22093:20)\n    ... 4 lines matching cause stack trace ...\n    at async Object.runMain (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:23684:7) {\n  [cause]: TypeError: fetch failed\n      at node:internal/deps/undici/undici:16416:13\n      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n      at async fetch (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22057:16)\n      at async fetchUrlStream (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22093:20)\n      at async download (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22264:18)\n      at async installVersion (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22360:55)\n      at async Engine.ensurePackageManager (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22873:32)\n      at async Engine.executePackageManagerRequest (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:22984:25)\n      at async Object.runMain (H:\\BEN\\program files\\node_modules\\corepack\\dist\\lib\\corepack.cjs:23684:7) {\n    [cause]: Error: getaddrinfo ENOTFOUND registry.npmjs.org\n        at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {\n      errno: -3008,\n      code: 'ENOTFOUND',\n      syscall: 'getaddrinfo',\n      hostname: 'registry.npmjs.org'\n    }\n  }\n}\n\nNode.js v24.13.0"
+  }
+}

@@ -2,15 +2,18 @@
   "task": "VEL-TASK-0047",
   "branch": "codex/vel-imp002-local-workspace",
   "worktree": "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-local-workspace",
-  "head": "389fd0905c94b814e1cdce8641e3d38446c38b28",
+  "head": "c6659a5045c8388f714aa2ebcef060f2d42ceccc",
   "pack_commit": "8119c0b9d077e9b7126ded6a6483a77e320f99e7",
   "main": "18c770ff6fce7401f7529667a37d7fb523cc55d9",
   "main_ci": 40090741803,
   "pr110": "MERGED exact tree/post-main PASS",
   "implementation": "Actual scoped controller/component/test adapter implemented; four regression failures corrected with before/after evidence",
-  "passing": "37workspace and typecheck at389fd090;33browser assertions at same code; earlier67Library/23preflight/build at a0b896a",
-  "next_action": "Commit authorized source/report/browser evidence; corrected-source build and full governance; EB/manifest; distinct review; Draft/Ready CI; owner feature merge decision",
+  "passing": "40workspace/33browser/typecheck/build at9b4f371; feature blob equivalence to adopted source; complete stationary governance PASS; earlier67Library/23preflight PASS",
+  "next_action": "Trusted-base compliance then distinct completed-diff review; Draft/Ready PR CI; owner feature merge decision",
   "feature_pr": null,
   "restrictions": "No hosted/SQL/auth changes; no automatic feature merge; broad gates pending; expired remediation remains closed",
-  "browser_cleanup": "PASS: listener stopped, transient wrapper removed, no production route"
+  "browser_cleanup": "PASS: listener stopped, transient wrapper removed, no production route",
+  "checkpoint_meaning": "Recorded implementation source before subsequent report/manifest-only commits; obtain final PR head from ledger.",
+  "source_commit": "c6659a5045c8388f714aa2ebcef060f2d42ceccc",
+  "historical_failure": "276 current tests at101680e:275PASS/1FAIL current-state11426bytes; shortened to10884bytes without changing guard"
 }

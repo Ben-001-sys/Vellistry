@@ -1,6 +1,6 @@
 {
   "tested_source": "389fd0905c94b814e1cdce8641e3d38446c38b28",
-  "adopted_source": "101680e260decaf52810280f1a3d6609059fab2e",
+  "adopted_source": "fc7dbae896071d09f5fbbc4f850b2fbf2861cc4a",
   "exact_blob_equivalence": [
     {
       "path": "apps/web/src/lib/workspace/book-workspace-contract.ts",
@@ -31,5 +31,6 @@
       "blob": "198ed5ba86f87396405d9bd0a7de9f20fb22c15d"
     }
   ],
-  "claim": "37unit/33browser/typecheck tested same code; final corrected-source build and governance tracked separately"
+  "claim": "37unit/33browser/typecheck tested same code; final corrected-source build and governance tracked separately",
+  "previous_adopted_source": "101680e260decaf52810280f1a3d6609059fab2e"
 }
