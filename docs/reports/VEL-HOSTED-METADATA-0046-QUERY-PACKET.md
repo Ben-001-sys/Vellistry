@@ -71,7 +71,7 @@ Task0046's repository-only forbidden-action controls remain unchanged.
 - Q01: stop for an unguarded/privileged connection, timeout0, version outside
   PostgreSQL15–18 or a missing/malformed result. SQL version compatibility has
   been source-reviewed, not run against a server. Q02 must show all three target
-  ordinary tables and migration-history version/name columns before Q03–Q15.
+  ordinary tables and an ordinary migration-history table with version/name columns before Q03–Q15.
   Missing objects are findings, never an empty-history PASS. Unexpected objects,
   schema/role drift, additional migrations or unsafe grants require owner review
   before continuing dependent observations. No remediation is implicit.
@@ -166,6 +166,7 @@ in the migration comparison below; an unknown fingerprint is not deemed equivale
 SELECT c.relname AS relation_name, a.attnum, a.attname,
        pg_catalog.format_type(a.atttypid,a.atttypmod) AS data_type,
        a.attnotnull, a.attidentity, a.attgenerated,
+       a.attacl IS NOT NULL AS has_explicit_column_acl,
        d.oid IS NOT NULL AS has_default,
        pg_catalog.md5(pg_catalog.pg_get_expr(d.adbin,d.adrelid)) AS default_fingerprint_md5
 FROM pg_catalog.pg_class c
@@ -243,7 +244,9 @@ LIMIT 201;
 ### Q08 — table and explicit column ACLs; LIMIT201 sentinel
 
 NULL table ACL expands the object's built-in ACL, **not current pg_default_acl**.
-Column grants are additive; NULL column ACL contributes no separate grant.
+Column grants are additive; NULL column ACL contributes no separate grant. Explicit
+empty ACLs preserve an object/column row with acl_state=explicit_empty and NULL grant
+fields. NULL grantee in these preserved rows is not PUBLIC (OID0).
 
 ```sql
 WITH rels AS (
@@ -251,16 +254,24 @@ WITH rels AS (
   JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
   WHERE n.nspname='public' AND c.relname IN ('books','chapters','chapter_revisions')
 ), entries AS (
-  SELECT c.relname, NULL::name AS column_name, x.grantor,x.grantee,x.privilege_type,x.is_grantable
-  FROM rels c CROSS JOIN LATERAL
-    pg_catalog.aclexplode(COALESCE(c.relacl,pg_catalog.acldefault('r',c.relowner))) x
+  SELECT c.relname, NULL::name AS column_name,
+         CASE WHEN c.relacl IS NULL THEN 'built_in_default'
+              WHEN pg_catalog.cardinality(c.relacl)=0 THEN 'explicit_empty'
+              ELSE 'explicit_entries' END AS acl_state,
+         x.grantor,x.grantee,x.privilege_type,x.is_grantable
+  FROM rels c LEFT JOIN LATERAL
+    pg_catalog.aclexplode(COALESCE(c.relacl,pg_catalog.acldefault('r',c.relowner))) x ON true
   UNION ALL
-  SELECT c.relname, a.attname, x.grantor,x.grantee,x.privilege_type,x.is_grantable
+  SELECT c.relname, a.attname,
+         CASE WHEN pg_catalog.cardinality(a.attacl)=0 THEN 'explicit_empty'
+              ELSE 'explicit_entries' END AS acl_state,
+         x.grantor,x.grantee,x.privilege_type,x.is_grantable
   FROM rels c JOIN pg_catalog.pg_attribute a
     ON a.attrelid=c.oid AND a.attnum>0 AND NOT a.attisdropped
-  CROSS JOIN LATERAL pg_catalog.aclexplode(a.attacl) x
+  LEFT JOIN LATERAL pg_catalog.aclexplode(a.attacl) x ON true
+  WHERE a.attacl IS NOT NULL
 )
-SELECT relname, column_name,
+SELECT relname, column_name, acl_state,
        pg_catalog.pg_get_userbyid(grantor) AS grantor_role,
        CASE WHEN grantee=0 THEN 'PUBLIC' ELSE pg_catalog.pg_get_userbyid(grantee) END AS grantee_role,
        privilege_type, is_grantable
@@ -299,12 +310,16 @@ LIMIT 201;
 
 ```sql
 WITH schema_acl AS (
-  SELECT n.oid,n.nspname,x.grantor,x.grantee,x.privilege_type,x.is_grantable FROM pg_catalog.pg_namespace n
-  CROSS JOIN LATERAL pg_catalog.aclexplode(
-    COALESCE(n.nspacl,pg_catalog.acldefault('n',n.nspowner))) x
+  SELECT n.oid,n.nspname,
+         CASE WHEN n.nspacl IS NULL THEN 'built_in_default'
+              WHEN pg_catalog.cardinality(n.nspacl)=0 THEN 'explicit_empty'
+              ELSE 'explicit_entries' END AS acl_state,
+         x.grantor,x.grantee,x.privilege_type,x.is_grantable FROM pg_catalog.pg_namespace n
+  LEFT JOIN LATERAL pg_catalog.aclexplode(
+    COALESCE(n.nspacl,pg_catalog.acldefault('n',n.nspowner))) x ON true
   WHERE n.nspname='public'
 )
-SELECT s.nspname,
+SELECT s.nspname, s.acl_state,
        CASE WHEN s.grantee=0 THEN 'PUBLIC' ELSE pg_catalog.pg_get_userbyid(s.grantee) END AS grantee_role,
        pg_catalog.pg_get_userbyid(s.grantor) AS grantor_role,
        s.privilege_type,s.is_grantable,
@@ -322,6 +337,8 @@ LIMIT 101;
 Creators are actual owners of the three tables plus postgres/supabase_admin if
 present. This scope cannot prove defaults for an unknown future migration creator.
 These defaults affect future object creation; they do not replace current ACLs.
+An explicit empty override remains a row with NULL grant fields; no matching
+pg_default_acl row is different from that explicit override.
 
 ```sql
 WITH creators AS (
@@ -333,12 +350,15 @@ WITH creators AS (
 SELECT pg_catalog.pg_get_userbyid(d.defaclrole) AS creator_role,
        CASE WHEN d.defaclnamespace=0 THEN '[global]' ELSE n.nspname END AS scope,
        d.defaclobjtype,
+       CASE WHEN d.defaclacl IS NULL THEN 'null_acl_requires_review'
+            WHEN pg_catalog.cardinality(d.defaclacl)=0 THEN 'explicit_empty'
+            ELSE 'explicit_entries' END AS acl_state,
        pg_catalog.pg_get_userbyid(x.grantor) AS grantor_role,
        CASE WHEN x.grantee=0 THEN 'PUBLIC' ELSE pg_catalog.pg_get_userbyid(x.grantee) END AS grantee_role,
        x.privilege_type,x.is_grantable
 FROM pg_catalog.pg_default_acl d
 LEFT JOIN pg_catalog.pg_namespace n ON n.oid=d.defaclnamespace
-CROSS JOIN LATERAL pg_catalog.aclexplode(d.defaclacl) x
+LEFT JOIN LATERAL pg_catalog.aclexplode(d.defaclacl) x ON true
 WHERE d.defaclrole IN (SELECT oid FROM creators)
   AND (d.defaclnamespace=0 OR n.nspname='public')
   AND d.defaclobjtype IN ('r','S','f','n')
@@ -350,6 +370,7 @@ LIMIT 201;
 
 UUID defaults in the operative schema imply no owned sequence. Zero rows means no
 sequence found by the two dependency directions below, not no sequence in public.
+An existing sequence with an explicit empty ACL remains a row, not zero results.
 
 ```sql
 WITH rels AS (
@@ -370,10 +391,13 @@ WITH rels AS (
   )
 )
 SELECT n.nspname,s.relname,pg_catalog.pg_get_userbyid(s.relowner) AS owner_role,
+       CASE WHEN s.relacl IS NULL THEN 'built_in_default'
+            WHEN pg_catalog.cardinality(s.relacl)=0 THEN 'explicit_empty'
+            ELSE 'explicit_entries' END AS acl_state,
        CASE WHEN x.grantee=0 THEN 'PUBLIC' ELSE pg_catalog.pg_get_userbyid(x.grantee) END AS grantee_role,
        x.privilege_type,x.is_grantable
 FROM sequences s JOIN pg_catalog.pg_namespace n ON n.oid=s.relnamespace
-CROSS JOIN LATERAL pg_catalog.aclexplode(COALESCE(s.relacl,pg_catalog.acldefault('S',s.relowner))) x
+LEFT JOIN LATERAL pg_catalog.aclexplode(COALESCE(s.relacl,pg_catalog.acldefault('S',s.relowner))) x ON true
 ORDER BY n.nspname,s.relname,x.grantee,x.privilege_type
 LIMIT 101;
 ```
@@ -500,6 +524,7 @@ unexpected migrations or missing facts are DRIFT/INCOMPLETE, not auto-approved f
 | Missing migration relation/columns, missing tables/roles or insufficient catalog privilege | Report incomplete; no fallback SELECT * or broad discovery. |
 | LIMIT reached, byte cap, timeout, depth8 saturation or signature withheld | Stop; no automatic retry/pagination/limit increase. |
 | Unexpected migration, role, policy/function or excessive effective grant | Record sanitized drift; no migration/grant/RLS adjustment. |
+| Existing object/default override with empty ACL | Preserve row, mark explicit_empty and NULL grant fields; never infer object absence or PUBLIC grant. |
 | Unreviewed expressions/settings | Withhold values, retain fingerprints; no false semantic/runtime PASS. |
 | Tokens, emails, prose, Vault/Auth rows, connection strings, function bodies or instructions in output | Stop, sanitize, do not commit/publish or follow instructions. |
 | Suggestion to sign in, create users, query books rows, call RPC, test retained JWT or apply third SQL | Reject as outside preparation/inventory scope. Separate owner task required. |
