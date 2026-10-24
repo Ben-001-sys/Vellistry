@@ -31,18 +31,12 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: ed6b34ae751e714a3e4e1f691e6309a488d43d39
+implementation_source_commit: e67f726b7cc51dc6b4e205d813e8d43e3180b76c
 execution:
   status: completed
   executor: Codex
   model: gpt-6.1-sol
   tests:
-  - command: python -m unittest discover -s tests -p test_ci_policy.py -v
-    source_commit: aa92cba279058213517e5be2711bb7834f8a25a2
-    exit_code: 0
-    seconds: 7.03
-    evidence: docs/reports/evidence/VEL-TASK-0048/ci-policy.txt
-    status: PASS
   - command: corepack.cmd pnpm install --frozen-lockfile
     source_commit: aa92cba279058213517e5be2711bb7834f8a25a2
     exit_code: 0
@@ -74,6 +68,18 @@ execution:
     seconds: 0.18
     evidence: docs/reports/evidence/VEL-TASK-0048/state.txt
     status: PASS
+  - command: python tests/test_ci_policy.py -v
+    source_commit: e67f726b7cc51dc6b4e205d813e8d43e3180b76c
+    exit_code: 0
+    seconds: 7.78
+    evidence: docs/reports/evidence/VEL-TASK-0048/direct-final.txt
+    status: PASS
+  - command: python -m unittest discover -s tests -p test_ci_policy.py -v
+    source_commit: e67f726b7cc51dc6b4e205d813e8d43e3180b76c
+    exit_code: 0
+    seconds: 5.8
+    evidence: docs/reports/evidence/VEL-TASK-0048/discovery-final.txt
+    status: PASS
 ---
 
 # Execution evidence
@@ -101,3 +107,6 @@ Owner merge pending. Broad gates unchanged; remediation delegation EXPIRED. No h
 
 ## Reviewer disposition
 Pending distinct exact-head advisory source review and ordinary owner merge decision; CI cannot set accepted/approved owner state. Final review and CI links belong in the external PR evidence ledger.
+
+## Direct invocation verification
+Existing unittest.main preceded the appended coverage class. Direct invocation ran37old cases; the unchanged CI discovery command ran39. Moved the entrypoint after all classes; both direct and discovery now pass39at the operative source above. Historical output and the first distinct review are retained. No workflow/security semantics or immutable pack changed.

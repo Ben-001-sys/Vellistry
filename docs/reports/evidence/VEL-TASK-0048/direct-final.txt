@@ -1,0 +1,44 @@
+test_all_ordinary_draft_activities_are_cheap (__main__.DraftPolicyTests) ... ok
+test_base_edit_reclassifies_unchanged_ready_head (__main__.DraftPolicyTests) ... ok
+test_cli_draft_advisory_cannot_publish_green_merge_gate (__main__.DraftPolicyTests) ... ok
+test_cli_recomputes_ready_plan_instead_of_trusting_draft_outputs (__main__.DraftPolicyTests) ... ok
+test_draft_governance_failure_is_not_an_advisory_pass (__main__.DraftPolicyTests) ... ok
+test_draft_unknown_security_and_ci_paths_are_advisory_only (__main__.DraftPolicyTests) ... ok
+test_forged_draft_flags_cannot_hide_a_ready_security_skip (__main__.DraftPolicyTests) ... ok
+test_gate_distinguishes_advisory_from_merge_eligibility (__main__.DraftPolicyTests) ... ok
+test_manual_is_explicitly_full_even_on_draft_branch (__main__.DraftPolicyTests) ... ok
+test_missing_malformed_or_contradictory_draft_metadata_fails (__main__.DraftPolicyTests) ... ok
+test_ready_for_review_and_ready_updates_require_security (__main__.DraftPolicyTests) ... ok
+test_every_required_failure_skip_cancel_or_missing_fails (__main__.FinalGateTests) ... ok
+test_failure_of_nonapplicable_job_is_not_hidden (__main__.FinalGateTests) ... ok
+test_green_security_cannot_hide_missing_compliance (__main__.FinalGateTests) ... ok
+test_inconsistent_security_cannot_pass (__main__.FinalGateTests) ... ok
+test_missing_or_invalid_outputs_and_jobs_fail (__main__.FinalGateTests) ... ok
+test_security_recovery_cannot_be_skipped (__main__.FinalGateTests) ... ok
+test_success_and_nonapplicable_skips_pass (__main__.FinalGateTests) ... ok
+test_bad_git_shas_and_events_fail (__main__.RoutingTests) ... ok
+test_docs_and_governance_are_lightweight (__main__.RoutingTests) ... ok
+test_exact_head_and_missing_pr_base_fail (__main__.RoutingTests) ... ok
+test_frontend_build_without_unrelated_containers (__main__.RoutingTests) ... ok
+test_full_manual_and_main_baseline (__main__.RoutingTests) ... ok
+test_git_rename_delete_and_hostile_filename_are_data (__main__.RoutingTests) ... ok
+test_main_manual_and_ready_event (__main__.RoutingTests) ... ok
+test_proposed_privilege_test_is_not_falsely_claimed (__main__.RoutingTests) ... ok
+test_security_paths_cannot_evade_integration (__main__.RoutingTests) ... ok
+test_unknown_executable_and_config_are_conservative (__main__.RoutingTests) ... ok
+test_unsafe_paths_fail (__main__.RoutingTests) ... ok
+test_draft_mode_and_verified_linter_are_wired_without_renaming_merge_gate (__main__.WorkflowContractTests) ... ok
+test_exact_head_no_persisted_credentials_in_all_jobs (__main__.WorkflowContractTests) ... ok
+test_final_gate_always_includes_every_applicable_result (__main__.WorkflowContractTests) ... ok
+test_governance_generates_required_pack_before_exporter_tests (__main__.WorkflowContractTests) ... ok
+test_k2_checks_are_preserved_and_cannot_skip_when_applicable (__main__.WorkflowContractTests) ... ok
+test_only_one_automatic_workflow_and_original_jobs_intact (__main__.WorkflowContractTests) ... ok
+test_sql_regression_when_available_is_fail_fast (__main__.WorkflowContractTests) ... ok
+test_unfiltered_events_and_pr_only_cancellation (__main__.WorkflowContractTests) ... ok
+test_workspace_regressions_are_required_by_real_application_ci (__main__.WorkspaceCoverageTests) ... ok
+test_workspace_removal_and_execution_bypasses_fail (__main__.WorkspaceCoverageTests) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 7.583s
+
+OK
