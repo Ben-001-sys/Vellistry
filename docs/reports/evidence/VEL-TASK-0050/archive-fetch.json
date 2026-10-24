@@ -1,0 +1,15 @@
+{
+  "command": "fresh git init/fetch archived PR112 source with blob:none; verify original Task49/CP49/head commits and CP bytes",
+  "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+  "exit_code": 0,
+  "seconds": 4.1,
+  "evidence": "docs/reports/evidence/VEL-TASK-0050/archive-fetch.txt",
+  "archive_ref": "codex/archive-pr112-task0049-b1c46df",
+  "archive_head": "b1c46df3942809b35f6cf4c650fe6c36f7cc60ab",
+  "original_pins_verified": [
+    "59371c80abeb640d8eb9004c6d1bf6de37e6cc54",
+    "afbaf279a68d23fa4ed500021efa8c79aea078b2",
+    "b1c46df3942809b35f6cf4c650fe6c36f7cc60ab"
+  ],
+  "cp49_sha256": "f5c37c2678918b90e833cc8190af6b6a91541ebe6d7458c51ec411adb9ba7887"
+}

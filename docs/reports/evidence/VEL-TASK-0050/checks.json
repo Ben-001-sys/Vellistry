@@ -1,0 +1,37 @@
+[
+  {
+    "command": "python .submission/check_source_packet.py",
+    "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+    "exit_code": 0,
+    "seconds": 2.72,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/source-packet.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+    "exit_code": 0,
+    "seconds": 0.31,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+    "exit_code": 0,
+    "seconds": 0.2,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+    "exit_code": 0,
+    "seconds": 0.23,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/traceability.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "source_commit": "f13dbbe3f9a942004fe12f13a964fd5f7d26dd2f",
+    "exit_code": 0,
+    "seconds": 0.37,
+    "evidence": "docs/reports/evidence/VEL-TASK-0050/entrypoints.txt"
+  }
+]
