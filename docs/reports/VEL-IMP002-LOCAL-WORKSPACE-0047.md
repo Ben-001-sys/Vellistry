@@ -142,3 +142,24 @@ Raw governance-stale-scratch.txt and stale-scratch-checks.json preserve it. The
 complete unchanged command is rerun in the now-stationary disposable checkout at
 9b4f371 with fresh scratch packets; its actual result is recorded separately in
 EB0047. No stale packet, test, exporter or governance limit is weakened/committed.
+
+## Final parser correction and current verification
+
+Completed-diff distinct review atc103fbc7ef128bbc002394f1beb1550feeb8e027
+returned one P2: null chapter titles passed the normalization equality test.
+review-completed-first.stdout.txt/json preserve the actual finding and exact head.
+The new regression atb2a8614 (resolve the full SHA in null-title-before.json)
+ran41cases:40PASS/1FAIL, exit1. The one-line explicit string check at
+1ff1098cd73066c8bfd1084b72d076b4284896e1 passes41/41, typechecks and builds, exit0.
+All33 real browser assertions were rerun at that exact corrected source and PASS,
+with0console errors/warnings; final-parser.json records invoked code/results.
+The owned fixture listener and transient route were removed again.
+
+The complete unchanged governance command passed415cases plus metadata,
+readiness, traceability, immutable handoff and archived provenance checks at
+stationary source9b4f371, exit0 in701.57seconds. Python suites/control files are
+unchanged by the later one-line parser/test correction. This is accurately retained
+as earlier-source local governance evidence; final exact-head CI must validate the
+submitted tree. Do not substitute a skipped SQL-privilege job for acceptance.
+The bundle's stale final-checks.json narrative reference is corrected to the
+actual final-feature-checks.json and governance-stationary.json records.

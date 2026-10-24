@@ -1,0 +1,14 @@
+SOURCE 1ff1098cd73066c8bfd1084b72d076b4284896e1
+COMMAND corepack.cmd pnpm check
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\web
+> tsc --noEmit
+

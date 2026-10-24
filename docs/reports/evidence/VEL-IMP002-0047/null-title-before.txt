@@ -1,0 +1,78 @@
+
+> vellistry@ test:workspace-contract H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/workspace/book-workspace-session.test.ts
+
+✔ owned book opens with selected chapter and separately scoped notes (4.964ms)
+✔ empty book is a valid ready result, never a read error (1.6051ms)
+✔ signed-out and unverified identities expose no book, title or drafts (1.1624ms)
+✔ cross-author and guessed book reads are denied without foreign data (0.8959ms)
+✔ invalid identifiers and malformed documents fail closed (0.6445ms)
+✔ duplicate chapter IDs and wrong nested book IDs are rejected on read (0.3735ms)
+✔ snapshot references are stable and nested document data is frozen (0.591ms)
+✔ same-title creates get distinct stable IDs and clear only the confirmed title (2.3311ms)
+✔ title and notes validators reject invalid values and forged ownership fields (0.4665ms)
+✔ rename retains stable ID, notes and accepted prose/revision markers (1.1818ms)
+✔ reorder moves stable chapter records without moving notes or prose to another ID (1.0334ms)
+✔ adapter independently denies foreign rename (0.4238ms)
+✔ adapter independently denies wrong-book rename (0.228ms)
+✔ adapter independently denies foreign chapter notes (0.2439ms)
+✔ forged owner and cross-author mutations cannot grant access (0.303ms)
+✔ invalid reorder a-one/a-two does not mutate any book (0.3677ms)
+✔ invalid reorder a-one/a-one/a-two does not mutate any book (0.2297ms)
+✔ invalid reorder a-one/a-two/b-one does not mutate any book (0.2402ms)
+✔ book/chapter notes remain separate and drafts survive chapter navigation (2.1558ms)
+✔ typing newer notes during pending confirmation is not erased by its older acknowledgement (27.1764ms)
+✔ known version conflict never reorders or resends and retains drafts for explicit reload (0.8112ms)
+✔ duplicate submission while identity checks/pending overlap sends one create (2.8708ms)
+✔ lost reply after commit stays unknown; ordinary retries and refresh never create duplicates (0.8574ms)
+✔ missing receipt cannot convert an unknown-before-commit result to definite failure or safe retry (0.3633ms)
+✔ wrong receipt scope cannot unlock an uncertain create (0.4993ms)
+✔ idempotency replay returns its first receipt; changed payload with same operation ID rejects (0.349ms)
+✔ A→B→A hides private drafts and retains the old pending-write uncertainty lock (4.3624ms)
+✔ late successful read cannot publish after switching books (4.9398ms)
+✔ late failed read cannot publish after switching books (0.8168ms)
+✔ post-read silent identity change conceals successful response before publication (0.5855ms)
+✔ post-write failed verification conceals response and preserves uncertainty for the same owner (1.6373ms)
+✔ failed pre-write identity verification dispatches nothing (0.3837ms)
+✔ dispose conceals state and ignores pending replies (3.896ms)
+✔ opaque chapter ID cannot collide with the book-notes draft slot (0.6796ms)
+✔ denied receipt check hides the previously visible book without making retry safe (0.673ms)
+✔ confirmed change refresh retains the verified form while newer notes are being typed (1.7482ms)
+✔ rename drafts are chapter-scoped and never appear under a different author/book (0.5566ms)
+✔ acknowledged rename cannot be reseeded from the old document during delayed readback (1.7386ms)
+✔ confirmed receipt version rejects stale readback and later reloads across owner switches (0.6916ms)
+✔ create at the readable chapter limit is rejected without changing version or accepted data (8.9781ms)
+✖ null chapter title from an adapter is rejected before any ready view is published (1.7807ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 40
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 970.6866
+
+✖ failing tests:
+
+test at ..\web\src\lib\workspace\book-workspace-session.test.ts:309:1
+✖ null chapter title from an adapter is rejected before any ready view is published (1.7807ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'ready' !== 'error'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\web\src\lib\workspace\book-workspace-session.test.ts:315:46)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ready',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-local-workspace\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.
