@@ -33,7 +33,7 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: f9e460fef9eb7d9c917256ff683f7be072c3864b
+implementation_source_commit: e5669fd65ebcf24f3c85a3062d56440c31561bf5
 execution:
   status: completed
   executor: Codex
@@ -141,3 +141,7 @@ First whole handoff validation at742553bc30fb7da144ef8ef0e900814c8cbb3776 passed
 
 ## Distinct review P2 correction: locking privileges
 Review at871beaa6570efab78711596a370d1184d5d01ee1 identified SELECT-only session/book privileges as insufficient for required row locks. The new packet explicitly proposes a separate NOLOGIN/NOBYPASSRLS lock helper owner with narrow SELECT and UPDATE(id), schema USAGE and scoped RLS, callable only by workspace function owner. Real UPDATE capability and its confinement risks are named; acceptance is a sixth OWNER_DECISION_PENDING choice, never a grant. A fifth NOT_RUN extension requires42501without prerequisites, successful isolated locks only after candidate grants, and continued runtime-role denial. Corrected offline packet validation rejects14forged variants; original16blob hashes and27NOT_RUN cases still match. No SQL/runtime behavior is claimed verified.
+
+## Owner-requested evidence-count correction — 2026-10-25
+
+FACT: source e5669fd65ebcf24f3c85a3062d56440c31561bf5 changes only the execution packet evidence requirement from four to five extensions. Original Task0049/CP0049/contract/cases/evidence remain byte-identical. Historical earlier counts above describe earlier checkpoints. On the updated source, python .submission/check_source_packet.py passed16original blob/hash checks,27unchanged NOT_RUN cases,1positive packet and14rejected forged variants; all5extensions remain NOT_RUN. python scripts/check_knowledge_metadata.py passed28records. Both commands exit0. Distinct exact-head review and ready-state CI will be recorded in the PR ledger. Owner authorized conditional ordinary-governance merge, not hosted execution or shipping SQL.
