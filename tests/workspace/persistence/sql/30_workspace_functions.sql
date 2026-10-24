@@ -7,7 +7,10 @@ declare a uuid:=nullif(current_setting('vellistry.author_id',true),'')::uuid;
  verified double precision:=nullif(current_setting('vellistry.verified_at',true),'')::double precision;
  now_ms double precision;
 begin
- if a is null or s is null or expiry is null or verified is null then raise exception 'Not available' using errcode='42501';end if;
+ if a is null or s is null or expiry is null or verified is null
+ or expiry in ('Infinity'::double precision,'-Infinity'::double precision,'NaN'::double precision)
+ or verified in ('Infinity'::double precision,'-Infinity'::double precision,'NaN'::double precision)
+ then raise exception 'Not available' using errcode='42501';end if;
  select not_after into deadline from auth.sessions where id=s and user_id=a for share;
  if not found then raise exception 'Not available' using errcode='42501';end if;
  perform id from public.books where id=book and owner_id=a for update;
@@ -150,4 +153,8 @@ revoke all on all functions in schema vellistry_workspace from public,anon,authe
 -- The previous revoke also covers helper, then reinstate only the internal owner.
 grant execute on function vellistry_workspace.lock_owned_context(uuid) to vellistry_workspace_owner;
 grant execute on function vellistry_workspace.read_workspace(uuid),vellistry_workspace.lookup_workspace_operation(uuid,uuid),vellistry_workspace.apply_workspace_operation(uuid,jsonb,text) to vellistry_workspace_gateway;
-alter default privileges in schema vellistry_workspace revoke execute on functions from public;
+-- A schema-local REVOKE cannot subtract the global default PUBLIC EXECUTE grant.
+-- These role defaults affect only this owned disposable cluster, never Supabase.
+alter default privileges for role postgres revoke execute on functions from public;
+alter default privileges for role vellistry_workspace_owner revoke execute on functions from public;
+alter default privileges for role vellistry_workspace_lock_owner revoke execute on functions from public;

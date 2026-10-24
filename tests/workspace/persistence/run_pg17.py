@@ -35,7 +35,7 @@ def main():
     def command(argv, data=None, check=True, timeout=120):
         started = time.monotonic()
         r = subprocess.run(argv, input=data, capture_output=True, cwd=ROOT, env=env, timeout=timeout)
-        commands.append(dict(argv=argv, exit_code=r.returncode, seconds=round(time.monotonic()-started,3)))
+        commands.append(dict(argv=argv, exit_code=r.returncode, seconds=round(time.monotonic()-started,3), stderr=r.stderr.decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-1200:] if r.returncode else ""))
         if check and r.returncode:
             # Never include SQL strings/passwords in diagnostic reports.
             raise RuntimeError("Disposable command failed: " + argv[0])
@@ -44,7 +44,8 @@ def main():
         return command(["docker","exec","-i",name,"psql","-X","-v","ON_ERROR_STOP=1","-U","postgres","-d",database,"-At"],sql.encode())
     cases = json.loads((ROOT / args.cases).read_text())["cases"]
     extensions = json.loads((ROOT / "docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json").read_text())["extensions"]
-    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, source_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
+    implementation = ["apps/api/src/modules/workspace/"+p for p in ["workspace-contract.ts","workspace-principal.ts","workspace-persistence-port.ts","workspace.service.ts","workspace-contract.spec.ts"]]+["tests/workspace/persistence/"+p for p in ["workspace-pg-adapter.ts","workspace-pg17.integration.mjs","run_pg17.py"]]
+    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
     exit_code = 1
     try:
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
@@ -62,7 +63,9 @@ def main():
         result["postgres_version"]=admin("select version()").decode().strip()
         if not result["postgres_version"].startswith("PostgreSQL 17."):raise RuntimeError("Wrong PostgreSQL major")
         result["image_id"]=info["Image"]
-        for path in SQL:admin((ROOT/path).read_text(encoding="utf-8"))
+        for path in SQL:
+            admin((ROOT/path).read_text(encoding="utf-8"))
+            commands[-1]["sql_source"] = path
         # Only generated hexadecimal credentials enter this stdin; never command args/logs.
         admin("create role workspace_test login password '"+fixture_password+"'; grant vellistry_workspace_gateway to workspace_test; create role workspace_author_test login password '"+fixture_password+"'; grant authenticated to workspace_author_test; create role workspace_anon_test login password '"+fixture_password+"'; grant anon to workspace_anon_test;")
         admin("alter table fixture_probe.gateway owner to workspace_test; alter table fixture_probe.author owner to workspace_author_test; alter table fixture_probe.anonymous owner to workspace_anon_test; grant usage on schema fixture_probe to workspace_test,workspace_author_test,workspace_anon_test;")
@@ -81,7 +84,10 @@ def main():
         result["runtime_error"]=str(e).replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[:300]
     finally:
         for kind,resource in [("container",name),("volume",volume)]:
-            inspect=subprocess.run(["docker",kind,"inspect",resource],capture_output=True)
+            try:
+                inspect=subprocess.run(["docker",kind,"inspect",resource],capture_output=True)
+            except OSError:
+                result["cleanup"][kind]="BLOCKED: Docker unavailable; absence unconfirmed";exit_code=1;continue
             if inspect.returncode==0:
                 item=json.loads(inspect.stdout)[0]
                 labels=item["Config"].get("Labels",{}) if kind=="container" else item.get("Labels",{})
