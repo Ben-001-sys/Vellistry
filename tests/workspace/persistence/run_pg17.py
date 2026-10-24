@@ -14,6 +14,12 @@ ROOT = Path(__file__).resolve().parents[3]
 IMAGE = "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb"
 SQL = ["tests/workspace/persistence/sql/00_fixture_auth.sql", "supabase/migrations/20261009000000_initial_author_books.sql", "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql", *["tests/workspace/persistence/sql/" + name for name in ["10_workspace_schema.sql", "20_workspace_roles.sql", "30_workspace_functions.sql"]]]
 
+def local_engine(endpoint):
+    return isinstance(endpoint,str) and endpoint.startswith(("npipe://", "unix:///"))
+
+def loopback_binding(ports):
+    return isinstance(ports,list) and len(ports)==1 and ports[0].get("HostIp")=="127.0.0.1" and str(ports[0].get("HostPort", "")).isdigit() and 0<int(ports[0]["HostPort"])<=65535
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--disposable", action="store_true", required=True)
@@ -27,7 +33,7 @@ def main():
     name = "vel-imp002-" + run_id
     volume = name + "-data"
     label = "vellistry.disposable.owner"
-    env = {k:v for k,v in os.environ.items() if not any(s in k.upper() for s in ["SUPABASE", "PGPASSWORD", "DATABASE_URL", "PGHOST", "PGUSER", "PGPORT", "SERVICE_ROLE"])}
+    env = {k:v for k,v in os.environ.items() if not k.upper().startswith(("PG", "DOCKER_", "VEL_")) and not any(s in k.upper() for s in ["SUPABASE", "DATABASE", "TOKEN", "SECRET", "PASSWORD", "CREDENTIAL", "SERVICE_ROLE"])}
     password = secrets.token_hex(24)
     fixture_password = secrets.token_hex(24)
     env["POSTGRES_PASSWORD"] = password
@@ -48,6 +54,14 @@ def main():
     result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
     exit_code = 1
     try:
+        assert local_engine("unix:///var/run/docker.sock") and local_engine("npipe:////./pipe/dockerDesktopLinuxEngine")
+        assert all(not local_engine(e) for e in ["ssh://remote", "tcp://127.0.0.1:2375", "https://remote", None])
+        assert loopback_binding([dict(HostIp="127.0.0.1",HostPort="54321")])
+        assert all(not loopback_binding(b) for b in [[],[dict(HostIp="0.0.0.0",HostPort="5432")],[dict(HostIp="::",HostPort="5432")],[dict(HostIp="127.0.0.1",HostPort="0")]])
+        result["guard_probes"] = dict(positive=3,negative=8)
+        endpoint=json.loads(command(["docker","context","inspect","--format","{{json .Endpoints.docker.Host}}"],timeout=30))
+        if not local_engine(endpoint):raise RuntimeError("Remote Docker endpoint rejected")
+        result["docker_endpoint"]=endpoint
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
         command(["docker","volume","create","--label",label+"="+run_id,volume])
         command(["docker","run","-d","--name",name,"--label",label+"="+run_id,"-e","POSTGRES_PASSWORD","-e","POSTGRES_DB=workspace","-p","127.0.0.1::5432","-v",volume+":/var/lib/postgresql/data",IMAGE])
@@ -59,7 +73,7 @@ def main():
         else:raise RuntimeError("Owned PostgreSQL startup timeout")
         info=json.loads(command(["docker","inspect",name]))[0]
         ports=info["NetworkSettings"]["Ports"]["5432/tcp"]
-        if len(ports)!=1 or ports[0]["HostIp"]!="127.0.0.1":raise RuntimeError("Non-loopback binding rejected")
+        if not loopback_binding(ports):raise RuntimeError("Non-loopback binding rejected")
         result["postgres_version"]=admin("select version()").decode().strip()
         if not result["postgres_version"].startswith("PostgreSQL 17."):raise RuntimeError("Wrong PostgreSQL major")
         result["image_id"]=info["Image"]
@@ -95,10 +109,15 @@ def main():
                     result["cleanup"][kind]="REFUSED: owner label mismatch";exit_code=1;continue
                 argv=["docker","rm","-f","-v",resource] if kind=="container" else ["docker","volume","rm",resource]
                 removed=subprocess.run(argv,capture_output=True)
-                gone=subprocess.run(["docker",kind,"inspect",resource],capture_output=True).returncode!=0
+                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True)
+                gone=listing.returncode==0 and resource not in listing.stdout.splitlines()
                 result["cleanup"][kind]=dict(exit_code=removed.returncode,verified_absent=gone)
                 if removed.returncode or not gone:exit_code=1
-            else:result["cleanup"][kind]="not created/already absent"
+            else:
+                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True)
+                gone=listing.returncode==0 and resource not in listing.stdout.splitlines()
+                result["cleanup"][kind]=dict(created=False,verified_absent=gone)
+                if not gone:exit_code=1
         result["exit_code"]=exit_code
         (evidence/(run_id+"-runtime.json")).write_text(json.dumps(result,indent=2),encoding="utf-8")
         print(json.dumps(dict(run_id=run_id,exit_code=exit_code,passed=sum(c["status"]=="PASS" for c in result["cases"]),cases=len(result["cases"]),cleanup=result["cleanup"])))
