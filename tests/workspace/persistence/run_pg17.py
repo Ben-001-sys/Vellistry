@@ -62,12 +62,14 @@ def main():
         endpoint=json.loads(command(["docker","context","inspect","--format","{{json .Endpoints.docker.Host}}"],timeout=30))
         if not local_engine(endpoint):raise RuntimeError("Remote Docker endpoint rejected")
         result["docker_endpoint"]=endpoint
+        # Pin the validated local endpoint, even if the user's default context changes.
+        env["DOCKER_HOST"]=endpoint
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
         command(["docker","volume","create","--label",label+"="+run_id,volume])
         command(["docker","run","-d","--name",name,"--label",label+"="+run_id,"-e","POSTGRES_PASSWORD","-e","POSTGRES_DB=workspace","-p","127.0.0.1::5432","-v",volume+":/var/lib/postgresql/data",IMAGE])
         deadline = time.monotonic()+90
         while time.monotonic()<deadline:
-            r=subprocess.run(["docker","exec",name,"pg_isready","-U","postgres","-d","workspace"],capture_output=True)
+            r=subprocess.run(["docker","exec",name,"pg_isready","-U","postgres","-d","workspace"],capture_output=True,env=env)
             if r.returncode==0:break
             time.sleep(0.4)
         else:raise RuntimeError("Owned PostgreSQL startup timeout")
@@ -99,7 +101,7 @@ def main():
     finally:
         for kind,resource in [("container",name),("volume",volume)]:
             try:
-                inspect=subprocess.run(["docker",kind,"inspect",resource],capture_output=True)
+                inspect=subprocess.run(["docker",kind,"inspect",resource],capture_output=True,env=env)
             except OSError:
                 result["cleanup"][kind]="BLOCKED: Docker unavailable; absence unconfirmed";exit_code=1;continue
             if inspect.returncode==0:
@@ -108,13 +110,13 @@ def main():
                 if labels.get(label)!=run_id:
                     result["cleanup"][kind]="REFUSED: owner label mismatch";exit_code=1;continue
                 argv=["docker","rm","-f","-v",resource] if kind=="container" else ["docker","volume","rm",resource]
-                removed=subprocess.run(argv,capture_output=True)
-                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True)
+                removed=subprocess.run(argv,capture_output=True,env=env)
+                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True,env=env)
                 gone=listing.returncode==0 and resource not in listing.stdout.splitlines()
                 result["cleanup"][kind]=dict(exit_code=removed.returncode,verified_absent=gone)
                 if removed.returncode or not gone:exit_code=1
             else:
-                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True)
+                listing=subprocess.run(["docker",kind,"ls", "--all", "--format", "{{.Names}}"] if kind=="container" else ["docker","volume","ls","--format","{{.Name}}"],capture_output=True,text=True,env=env)
                 gone=listing.returncode==0 and resource not in listing.stdout.splitlines()
                 result["cleanup"][kind]=dict(created=False,verified_absent=gone)
                 if not gone:exit_code=1

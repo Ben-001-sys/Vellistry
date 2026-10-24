@@ -20,6 +20,7 @@ export class WorkspaceService {
   try{book=uuid(book);const p=await this.principal();if(!p)return {status:"denied"};const key=this.key(p,book);
    const result=workspace(await this.port.read(p,book),book);if(!await this.still(p))return {status:"unavailable"};
    if(result.version<(this.floors.get(key)??0))return {status:"unavailable"};
+   this.floors.set(key,Math.max(this.floors.get(key)??0,result.version));
    const pending=this.pending.get(key);if(pending?.terminal?.outcome==="confirmed"&&result.version>=pending.terminal.version)this.pending.delete(key);
    return {status:"ready",workspace:result};
   }catch{return {status:"unavailable"};}
@@ -46,6 +47,8 @@ export class WorkspaceService {
   }catch{return {status:"unknown"};}
  }
  private terminal(key:string,pending:Pending,r:Receipt):WorkspaceResult {
+  // A delayed response must not mutate a newer operation's reconciliation lock.
+  if(this.pending.get(key)!==pending)return {status:"unknown"};
   pending.terminal=r;if(r.outcome==="rejected")this.pending.delete(key);
   else this.floors.set(key,Math.max(this.floors.get(key)??0,r.version));
   return {status:r.outcome,receipt:r};
