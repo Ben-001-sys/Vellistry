@@ -44,8 +44,6 @@ inputs:
   role: governing-source
 - path: CURRENT-STATE.md
   role: governing-source
-- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
-  role: governing-source
 - path: docs/agent-workflow/PR-COMPLIANCE.md
   role: governing-source
 - path: docs/agent-workflow/authorizations/VEL-TASK-0052.yaml
