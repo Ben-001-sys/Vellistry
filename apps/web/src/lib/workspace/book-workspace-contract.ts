@@ -68,7 +68,7 @@ export function parseDocument(value: unknown, bookId: string): WorkspaceDocument
       !Array.isArray(d.chapters) || d.chapters.length > 1000) return null;
   const chapters: WorkspaceChapter[] = [];
   for (const row of d.chapters) {
-    if (!row || typeof row !== "object" || !validId(row.id) || row.bookId !== bookId ||
+    if (!row || typeof row !== "object" || !validId(row.id) || row.bookId !== bookId || typeof row.title !== "string" ||
         chapterTitle(row.title) !== row.title || !validNotes(row.notes)) return null;
     chapters.push({id: row.id, bookId, title: row.title, notes: row.notes});
   }
