@@ -261,3 +261,46 @@ test("rename drafts are chapter-scoped and never appear under a different author
   f.owner("author-b"); const p = f.session.openBook("book-b"); assert.equal(f.session.snapshot().renameTitle, ""); await p;
   assert.equal(f.session.snapshot().renameTitle, "B-only chapter");
 });
+
+
+test("acknowledged rename cannot be reseeded from the old document during delayed readback", async () => {
+  const delayed = deferred<ReadResult>(); let reads = 0; let real!: WorkspacePort;
+  const f = setup(p => { real = p; return {...p, read: (actor, book) => ++reads === 2 ? delayed.promise : p.read(actor, book)}; });
+  await f.session.openBook("book-a"); f.session.setRenameTitle("New name");
+  const pending = f.session.renameChapter("a-one", "New name"); await until(() => reads === 2);
+  f.session.setNotes("Typed while rename readback is pending");
+  f.session.selectChapter("a-two"); f.session.selectChapter("a-one");
+  delayed.resolve(await real.read("author-a", "book-a")); await pending;
+  assert.equal(f.session.snapshot().document?.chapters[0].title, "New name");
+  assert.equal(f.session.snapshot().renameTitle, "New name");
+});
+
+test("confirmed receipt version rejects stale readback and later reloads across owner switches", async () => {
+  let stale: ReadResult | null = null; let returnStale = false;
+  const f = setup(p => ({...p, read: async (actor, book) => {
+    const result = await p.read(actor, book);
+    if (book === "book-empty") {
+      if (!stale) stale = structuredClone(result);
+      if (returnStale) return structuredClone(stale);
+    }
+    return result;
+  }}));
+  await f.session.openBook("book-empty"); returnStale = true; f.session.setCreateTitle("Created once");
+  await f.session.createChapter(); assert.equal(f.session.snapshot().phase, "error");
+  assert.equal(f.session.snapshot().document, null); await f.session.refresh();
+  assert.equal(f.session.snapshot().phase, "error"); await f.session.createChapter(); assert.equal(f.adapter.calls(), 1);
+  f.owner("author-b"); await f.session.openBook("book-b"); f.owner("author-a"); await f.session.openBook("book-empty");
+  assert.equal(f.session.snapshot().phase, "error"); returnStale = false; await f.session.refresh();
+  assert.equal(f.session.snapshot().phase, "ready"); assert.equal(f.session.snapshot().document?.chapters.length, 1);
+  assert.equal(f.session.snapshot().document?.version, 1);
+});
+
+test("create at the readable chapter limit is rejected without changing version or accepted data", async () => {
+  const chapters = Array.from({length: 1000}, (_, i) => ({id: `limit-${i}`, bookId: "book-a", title: `Chapter ${i}`, notes: ""}));
+  const a = createSyntheticWorkspace([{owner: "author-a", document: {bookId: "book-a", bookTitle: "Boundary fixture", version: 0, notes: "", chapters}, accepted: {}}]);
+  const before = a.inspect("author-a", "book-a");
+  assert.equal((await a.port.mutate(request({kind: "create", title: "Over limit"}))).kind, "invalid");
+  assert.deepEqual(a.inspect("author-a", "book-a"), before);
+  assert.ok(parseDocument(a.inspect("author-a", "book-a")?.document, "book-a"));
+  assert.equal((await a.port.receipt("author-a", "book-a", "direct-operation")).kind, "missing");
+});
