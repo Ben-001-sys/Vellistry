@@ -1,0 +1,35 @@
+{
+  "tested_source": "1ff1098cd73066c8bfd1084b72d076b4284896e1",
+  "adopted_source": "72ccfbed8a1b254c46d47c6b5d9d16c908c0d00e",
+  "exact_blob_equivalence": [
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-contract.ts",
+      "blob": "63b6a79d36cbfb253ba2fbd1e2ea5984b16c4734"
+    },
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-session.ts",
+      "blob": "9264cceaea7341ed3eec7d642680025ba4c947b8"
+    },
+    {
+      "path": "apps/web/src/lib/workspace/book-workspace-session.test.ts",
+      "blob": "37249b6ff20f876a2662532f4e8651c74ddff195"
+    },
+    {
+      "path": "apps/web/src/components/workspace/book-workspace-organizer.tsx",
+      "blob": "48904cb78a581c00fd6f61b0db8f8aed447b35b0"
+    },
+    {
+      "path": "tests/fixtures/book-workspace-synthetic.ts",
+      "blob": "bff647b99035fb4b4f5fa5a5579557d87ad6e152"
+    },
+    {
+      "path": "tests/workspace/book-workspace-fixture-page.tsx",
+      "blob": "45f1031f6e2895f3c31e4c2836f1274ec1a41e71"
+    },
+    {
+      "path": "package.json",
+      "blob": "198ed5ba86f87396405d9bd0a7de9f20fb22c15d"
+    }
+  ],
+  "actual_tests": "41workspace,33browser,typecheck,build at1ff1098; unchanged Python governance415cases at stationary9b4f371; later current-state/metadata checks recorded separately"
+}
