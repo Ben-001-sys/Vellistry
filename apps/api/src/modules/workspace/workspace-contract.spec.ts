@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {test} from "node:test";
+import {randomUUID} from "node:crypto";
+import {operation,text,requestDigest} from "./workspace-contract";
+import {checkedPrincipal} from "./workspace-principal";
+const op=(command:unknown)=>({schemaVersion:1,operationId:randomUUID(),expectedVersion:0,command});
+test("wire rejects forged ownership and unknown fields",()=>{assert.throws(()=>operation({...op({kind:"create",title:"A"}),owner_id:randomUUID()}));assert.throws(()=>operation(op({kind:"create",title:"A",accepted_document:{}})));});
+test("Unicode preserves intent and enforces UTF16",()=>{assert.equal(text("e\u0301",10),"e\u0301");assert.equal(text("😀".repeat(90),180,true).length,180);for(const s of ["\uD800","\uDC00","\u0000"])assert.throws(()=>text(s,180));assert.throws(()=>text("😀".repeat(91),180,true));});
+test("notes are separate, plain and untrimmed",()=>{assert.deepEqual(operation(op({kind:"book-notes",body:" \n"})).command,{kind:"book-notes",body:" \n"});assert.throws(()=>operation(op({kind:"chapter-notes",chapterId:randomUUID(),body:null})));});
+test("reorder rejects duplicate IDs and invalid versions",()=>{const id=randomUUID();assert.throws(()=>operation(op({kind:"reorder",chapterIds:[id,id]})));for(const value of [-1,0.1,Number.MAX_SAFE_INTEGER+1,NaN])assert.throws(()=>operation({...op({kind:"create",title:"A"}),expectedVersion:value}));});
+test("canonical digest ignores object key order but preserves Unicode",()=>{const book=randomUUID(),id=randomUUID();const a=operation({schemaVersion:1,operationId:id,expectedVersion:0,command:{kind:"create",title:" A "}});const b=operation({command:{title:"A",kind:"create"},expectedVersion:0,operationId:id,schemaVersion:1});assert.equal(requestDigest(book,a),requestDigest(book,b));});
+test("synthetic principal expiry and verification freshness fail closed",()=>{const now=100000,p={authorId:randomUUID(),sessionId:randomUUID(),tokenExpiresAt:now+1,verifiedAt:now};assert.ok(checkedPrincipal(p,now));assert.equal(checkedPrincipal({...p,verifiedAt:now+1},now),null);assert.equal(checkedPrincipal({...p,verifiedAt:now-30001},now),null);assert.equal(checkedPrincipal({...p,tokenExpiresAt:now},now),null);});
