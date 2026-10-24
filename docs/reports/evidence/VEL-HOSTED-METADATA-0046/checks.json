@@ -1,0 +1,30 @@
+[
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "ffefde5d8b34e09b4805ecd5fdb69e629182f935",
+    "exit_code": 0,
+    "seconds": 0.16,
+    "evidence": "docs/reports/evidence/VEL-HOSTED-METADATA-0046/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "ffefde5d8b34e09b4805ecd5fdb69e629182f935",
+    "exit_code": 0,
+    "seconds": 0.1,
+    "evidence": "docs/reports/evidence/VEL-HOSTED-METADATA-0046/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "ffefde5d8b34e09b4805ecd5fdb69e629182f935",
+    "exit_code": 0,
+    "seconds": 0.12,
+    "evidence": "docs/reports/evidence/VEL-HOSTED-METADATA-0046/traceability.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py validate",
+    "source_commit": "ffefde5d8b34e09b4805ecd5fdb69e629182f935",
+    "exit_code": 0,
+    "seconds": 94.04,
+    "evidence": "docs/reports/evidence/VEL-HOSTED-METADATA-0046/workflow.txt"
+  }
+]
