@@ -1,0 +1,89 @@
+id: VEL-TASK-0048
+title: Execute workspace contract tests in the existing application CI job
+type: implementation-task
+status: in-progress
+created_at: '2026-10-24'
+updated_at: '2026-10-24'
+owner: project_owner
+context_pack_id: VEL-CP-0048
+objective: Execute workspace contract tests in the existing application CI job; preserve
+  ordinary owner approval boundaries.
+in_scope: &id001
+- .github/workflows/ci.yml
+- tests/test_ci_policy.py
+- CURRENT-STATE.md
+- docs/reports/VEL-WORKSPACE-CI-0048.md
+- docs/agent-workflow/tasks/VEL-TASK-0048.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0048.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0048.md
+- docs/agent-workflow/inputs/VEL-TASK-0048/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/evidence/VEL-TASK-0048/*
+out_of_scope:
+- Hosted/credentials/private/paid/deployment/settings/merge and unrelated product
+  work
+- Application/SQL/Auth/dependency changes; CI changes excluded from0049
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0048/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0048/BOUNDARY.md
+  role: governing-source
+- path: .github/workflows/ci.yml
+  role: governing-source
+- path: tests/test_ci_policy.py
+  role: governing-source
+- path: package.json
+  role: governing-source
+source_gaps:
+- id: HOSTED
+  limitation: Hosted metadata/schema/session and SQL acceptance remain separately
+    gated.
+deliverables:
+- Committed Task and validated immutable ContextPack before implementation
+- .github/workflows/ci.yml
+- tests/test_ci_policy.py
+- CURRENT-STATE.md
+- docs/reports/VEL-WORKSPACE-CI-0048.md
+- Actual applicable tests/EB/provenance, distinct exact-head review and submitted
+  PR; no merge
+acceptance_criteria:
+- Exactly one unconditional pnpm test:workspace-contract step after frozen install
+  and before build in existing applicable application job
+- Positive and negative regressions reject removal/replacement/duplicate/skip/masking/shell/environment/directory
+  overrides
+- Preserve single automatic workflow, all existing manual workflows, draft routing,
+  read-only permissions and security/recovery/final gates
+- Actual focused tests and draft/ready exact-head CI; owner separately decides merge
+allowed_actions:
+- Read pinned sources and implement only authorized paths in isolated worktree
+- Run existing synthetic tests, governance/metadata validators and actual GitHub draft/ready
+  CI
+- Use a fresh trusted read-only Codex CLI source review and submit/promote PR for
+  owner decision
+approval_required_for:
+- Any scope expansion, hosted/security-sensitive operation and successor PR merge
+compliance:
+  change_base: a9e7c48bc7198f6f23f7be5bb77ad54f1f27e2e4
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6386727275
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
