@@ -98,3 +98,14 @@ EB0047 and the per-PR manifest bind actual source/test identities. Distinct sour
 review and passing ready-state CI are required before the owner's separate feature
 merge decision. Broad G_DESIGN/G_CODE, pilot/release gates and ordinary owner merge
 rules remain unchanged. No automatic feature merge is authorized.
+
+## Bounded documentation correction
+
+The first full governance run at101680e260decaf52810280f1a3d6609059fab2e ran276
+current tests:275PASS/1FAIL, exit1. The existing current-state entrypoint guard
+rejected11426UTF8 bytes (limit less than11000). The new Task0047 summary was
+shortened; detailed source/evidence stays in this report and Git history. No test,
+limit, policy, immutable pack or historical source was changed. Raw failed output
+and commands remain in governance-before-state-trim.txt and pre-trim-checks.json.
+The corrected guard and full rerun are recorded separately, never substituted for
+the historical failure.
