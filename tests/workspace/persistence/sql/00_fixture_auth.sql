@@ -12,3 +12,9 @@ grant execute on function auth.uid() to authenticated;
 revoke all on auth.users,auth.sessions from public,anon,authenticated;
 alter table auth.sessions enable row level security;
 alter table auth.sessions force row level security;
+
+-- Owned throwaway tables permit a real REFERENCES denial probe (TEMP FKs cannot target persistent tables).
+create schema fixture_probe;
+create table fixture_probe.gateway(id uuid);
+create table fixture_probe.author(id uuid);
+create table fixture_probe.anonymous(id uuid);
