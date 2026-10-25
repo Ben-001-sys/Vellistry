@@ -72,7 +72,9 @@ def main():
         command(["docker","run","-d","--name",name,"--label",label+"="+run_id,"-e","POSTGRES_PASSWORD","-e","POSTGRES_DB=workspace","-p","127.0.0.1::5432","-v",volume+":/var/lib/postgresql/data",IMAGE])
         deadline = time.monotonic()+90
         while time.monotonic()<deadline:
-            r=subprocess.run(["docker","exec",name,"pg_isready","-U","postgres","-d","workspace"],capture_output=True,env=env)
+            # The official image briefly starts a Unix-socket-only init server.
+            # TCP readiness avoids racing its shutdown before the real server.
+            r=subprocess.run(["docker","exec",name,"pg_isready","-h","127.0.0.1","-U","postgres","-d","workspace"],capture_output=True,env=env)
             if r.returncode==0:break
             time.sleep(0.4)
         else:raise RuntimeError("Owned PostgreSQL startup timeout")

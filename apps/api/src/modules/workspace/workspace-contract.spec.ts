@@ -38,6 +38,8 @@ def safe(tree):
  calls=[n for n in ast.walk(tree) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and isinstance(n.func.value,ast.Name) and n.func.value.id=='subprocess' and n.func.attr=='run']
  return bool(calls) and all(any(k.arg=='env' and isinstance(k.value,ast.Name) and k.value.id=='env' for k in c.keywords) for c in calls)
 assert safe(t),'All subprocesses must receive the same validated env'
+readiness=[n for n in ast.walk(t) if isinstance(n,ast.Call) and n.args and isinstance(n.args[0],ast.List) and any(isinstance(e,ast.Constant) and e.value=='pg_isready' for e in n.args[0].elts)]
+assert readiness and all(any(isinstance(e,ast.Constant) and e.value=='-h' for e in n.args[0].elts) and any(isinstance(e,ast.Constant) and e.value=='127.0.0.1' for e in n.args[0].elts) for n in readiness),'Readiness must await the final TCP server, not the temporary init socket'
 bad=copy.deepcopy(t)
 c=next(n for n in ast.walk(bad) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='run')
 c.keywords=[k for k in c.keywords if k.arg!='env']
