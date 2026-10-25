@@ -1,0 +1,35 @@
+{
+  "source_commit": "2b44e2937bcc3f937126fa880446622325d2583c",
+  "governance_counts": [
+    282,
+    18,
+    20,
+    14,
+    12,
+    8,
+    18,
+    12,
+    20,
+    17
+  ],
+  "exit_code": 0,
+  "negative_proof": "Previous exact-base validator missed10 real workflow mutations; corrected current validator rejects them",
+  "historical_setup_attempts": [
+    {
+      "evidence": "vel53-before-workflow.txt",
+      "exit_code": 1,
+      "cause": "Initial new test module import path missing; corrected"
+    },
+    {
+      "evidence": "vel53-before-workflow-fixed.txt",
+      "exit_code": 1,
+      "cause": "Before workflow integration: new required commands/runtime absent; expected failures plus mutation setup missing-step errors. Not the valid negative proof."
+    }
+  ],
+  "canonical_candidate_sha256": {
+    ".github/workflows/ci.yml": "15f3f82c7bcd5a7087ec47ff87f7bf65973b05abfe89fc54dd6f07b496bce868",
+    "scripts/pr_compliance.py": "51087dfded4de544396731762b3de3c0861bfd237891734466ee52c4a192a3a2",
+    "tests/test_ci_policy.py": "c0520247bb54fe0aa4489513a54c31f314713865d65235e69adb4c012ac5544b",
+    "tests/test_pr_compliance.py": "f0397ca86b83222cd18827f31368403ba3a1466d159e9cd0bdbee04d1dfba0aa"
+  }
+}

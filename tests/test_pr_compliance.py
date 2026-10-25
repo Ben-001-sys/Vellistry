@@ -291,6 +291,19 @@ class WorkflowExecutionContractTests(unittest.TestCase):
             policy.workflow_contract(self.root,self.git('rev-parse','HEAD'))
     def governance_step(self,w):
         return next(s for s in w['jobs']['governance']['steps'] if s.get('name')=='Run all current governance and negative contracts once')
+    def test_persistence_commands_cannot_be_omitted_or_masked(self):
+        for expected in policy.PERSISTENCE_STEPS:
+            for mode in ('remove','replace','skip','mask','duplicate'):
+                def mutate(w, e=expected, m=mode):
+                    steps=w['jobs']['application']['steps']
+                    step=next(s for s in steps if s.get('name')==e['name'])
+                    if m=='remove': steps.remove(step)
+                    elif m=='replace': step['run']='echo PASS'
+                    elif m=='skip': step['if']='false'
+                    elif m=='mask': step['continue-on-error']='true'
+                    else: steps.append(dict(step))
+                self.rejects_mutation(expected['name']+'-'+mode,mutate)
+
     def test_all_job_permission_overrides_are_rejected(self):
         for job in self.original['jobs']:
             for label,permissions in (('contents-write',{'contents':'write'}),('oidc-write',{'id-token':'write'}),('read-only',{'contents':'read'}),('empty',{}),('read-all','read-all')):

@@ -109,6 +109,42 @@ def owner_record(repo, base, task_id, kind, url, paths=None, executor=None):
     return record
 
 
+
+PERSISTENCE_STEPS = (
+    {'name': 'Protected workspace persistence unit regressions',
+     'run': 'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts'},
+    {'name': 'Disposable PostgreSQL17 protected workspace acceptance',
+     'run': 'python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json'},
+)
+
+
+def persistence_coverage_contract(workflow):
+    """Exact mandatory commands in the existing draft-aware application job."""
+    job = workflow['jobs']['application']
+    require(job.get('if') == "${{ needs.classify.outputs.application == 'true' }}"
+            and job.get('needs') == ['classify'] and 'env' not in job,
+            'Persistence application execution guard changed')
+    steps = job['steps']
+    positions = []
+    for expected in PERSISTENCE_STEPS:
+        matches = [s for s in steps if s.get('name') == expected['name'] or s.get('run') == expected['run']]
+        require(len(matches) == 1 and matches[0] == expected,
+                'Exactly one unconditional persistence regression step required: '+expected['name'])
+        positions.append(steps.index(matches[0]))
+    python = [s for s in steps if str(s.get('uses', '')).startswith('actions/setup-python@')]
+    require(python == [{'uses': 'actions/setup-python@v5', 'with': {'python-version': '3.12'}}],
+            'Persistence Python runtime contract changed')
+    def at(command):
+        matches = [i for i, s in enumerate(steps) if s.get('run') == command]
+        require(len(matches) == 1, 'Persistence prerequisite missing: '+command)
+        return matches[0]
+    security = [i for i,s in enumerate(steps) if s.get('name') == 'Pick free, temporary CI-only Supabase API/DB ports']
+    require(len(security) == 1 and steps.index(python[0]) < positions[0]
+            and at('pnpm install --frozen-lockfile') < positions[0] < at('pnpm build')
+            < at('pnpm check') < positions[1] < security[0],
+            'Persistence regression/prerequisite/security ordering changed')
+
+
 def workflow_contract(repo, head):
     for path in REQUIRED:
         blob(repo, head, path)
@@ -146,6 +182,7 @@ def workflow_contract(repo, head):
         matching = [step for step in jobs[name]['steps'] if step.get('id') == 'compliance']
         require(len(matching) == 1, 'Missing unconditional compliance step')
         execution_step(matching[0], 'python -I scripts/run_pr_compliance.py', {}, 'Missing unconditional compliance step')
+    persistence_coverage_contract(workflow)
     regression_command = 'python scripts/ci_governance.py'
     regression = [step for step in jobs['governance']['steps']
                   if step.get('name') == 'Run all current governance and negative contracts once'

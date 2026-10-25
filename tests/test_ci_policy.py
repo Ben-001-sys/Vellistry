@@ -4,12 +4,14 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 import yaml
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
 spec=importlib.util.spec_from_file_location('ci_policy',ROOT/'scripts/ci_policy.py')
 policy=importlib.util.module_from_spec(spec); spec.loader.exec_module(policy)
 
@@ -373,5 +375,47 @@ class WorkspaceCoverageTests(unittest.TestCase):
                 elif case == "mask": step["run"] += " || true"
                 else: step[case] = {"env": {"NODE_OPTIONS": "--require ./skip.js"}, "if": "${{ false }}", "continue-on-error": "true", "shell": "sh", "working-directory": "tests"}[case]
                 with self.assertRaises(AssertionError): self.check_workspace_step(w)
+
+class PersistenceCoverageTests(unittest.TestCase):
+    def baseline(self):
+        return yaml.load((ROOT / '.github/workflows/ci.yml').read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
+
+    def test_persistence_commands_and_runtime_are_required(self):
+        import pr_compliance
+        pr_compliance.persistence_coverage_contract(self.baseline())
+
+    def test_persistence_execution_bypasses_are_rejected(self):
+        import copy
+        import pr_compliance as pc
+        for expected in pc.PERSISTENCE_STEPS:
+            for case in ('remove','replace','duplicate','rename-duplicate','if','continue-on-error','shell','working-directory','env','mask','before-install','after-security'):
+                with self.subTest(command=expected['name'], case=case):
+                    w=copy.deepcopy(self.baseline()); steps=w['jobs']['application']['steps']
+                    step=next(s for s in steps if s.get('name')==expected['name'])
+                    if case=='remove': steps.remove(step)
+                    elif case=='replace': step['run']='echo PASS'
+                    elif case=='duplicate': steps.append(dict(step))
+                    elif case=='rename-duplicate': steps.append(dict(step,name='Other runner'))
+                    elif case=='mask': step['run']+=' || true'
+                    elif case=='before-install': steps.remove(step); steps.insert(0,step)
+                    elif case=='after-security': steps.remove(step); steps.append(step)
+                    else: step[case]={'if':'false','continue-on-error':'true','shell':'sh','working-directory':'other','env':{'NODE_OPTIONS':'--require ./skip.js'}}[case]
+                    with self.assertRaises(ValueError): pc.persistence_coverage_contract(w)
+
+    def test_persistence_job_and_python_overrides_are_rejected(self):
+        import copy
+        import pr_compliance as pc
+        for case in ('job-if','job-env','python-remove','python-replace','python-if','python-version'):
+            with self.subTest(case=case):
+                w=copy.deepcopy(self.baseline()); job=w['jobs']['application'];steps=job['steps']
+                py=next(s for s in steps if s.get('uses')=='actions/setup-python@v5')
+                if case=='job-if': job['if']='false'
+                elif case=='job-env': job['env']={'PYTHONPATH':'other'}
+                elif case=='python-remove': steps.remove(py)
+                elif case=='python-replace': py['uses']='other/setup@main'
+                elif case=='python-if': py['if']='false'
+                else: py['with']['python-version']='2.7'
+                with self.assertRaises(ValueError): pc.persistence_coverage_contract(w)
+
 
 if __name__=='__main__': unittest.main()
