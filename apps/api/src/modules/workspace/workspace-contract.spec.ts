@@ -45,3 +45,27 @@ assert not safe(bad),'Omitting env must fail'
 print('PASS explicit environment and omission negative probe')`;
  const result=spawnSync("python",["-c",script,path.resolve(__dirname,"../../../../../tests/workspace/persistence/run_pg17.py")],{encoding:"utf8"});assert.equal(result.status,0,result.stderr);
 });
+test("rejecting a remote Docker context makes no daemon calls, including cleanup",()=>{
+ const script=`import importlib.util,pathlib,shutil,subprocess,sys,tempfile,json
+spec=importlib.util.spec_from_file_location('runner',sys.argv[1]);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+original=m.ROOT
+with tempfile.TemporaryDirectory(prefix='vel-no-remote-probe-') as directory:
+ root=pathlib.Path(directory)
+ files=set(m.SQL+['docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json','docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json'])
+ for folder in ['apps/api/src/modules/workspace','tests/workspace/persistence']:
+  files.update(p.relative_to(original).as_posix() for p in (original/folder).iterdir() if p.suffix in {'.ts','.mjs','.py'})
+ for name in files:
+  destination=root/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original/name,destination)
+ m.ROOT=root;calls=[]
+ def fake(argv,**kwargs):
+  if argv[0]=='git':return subprocess.CompletedProcess(argv,0,b'0'*40+b'\\n',b'')
+  calls.append(argv)
+  if argv[1:3]==['context','inspect']:return subprocess.CompletedProcess(argv,0,b'"ssh://forbidden.invalid"',b'')
+  return subprocess.CompletedProcess(argv,1,b'',b'Mocked: no daemon access')
+ m.subprocess.run=fake
+ sys.argv=['runner','--disposable','--cases','docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json']
+ assert m.main()==1
+ assert len(calls)==1 and calls[0][1:3]==['context','inspect'],'Rejected context still attempted daemon access during cleanup'
+ print('PASS mocked remote context rejected without daemon access')`;
+ const result=spawnSync("python",["-c",script,path.resolve(__dirname,"../../../../../tests/workspace/persistence/run_pg17.py")],{encoding:"utf8"});assert.equal(result.status,0,result.stderr);
+});
