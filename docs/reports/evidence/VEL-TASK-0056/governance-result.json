@@ -1,0 +1,20 @@
+{
+  "command": "python scripts/ci_governance.py",
+  "source_commit": "b63128262c6440cec3a20488ee4327292c177732",
+  "exit_code": 0,
+  "status": "PASS",
+  "counts": [
+    282,
+    18,
+    20,
+    14,
+    12,
+    8,
+    18,
+    12,
+    20,
+    17
+  ],
+  "total": 421,
+  "interruption": "Tool turn interrupted while process continued; original session52637 recovered exit0, final PASS and complete output; no rerun required"
+}

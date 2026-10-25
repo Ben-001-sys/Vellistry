@@ -1,0 +1,22 @@
+{
+  "command": "Inline PB09/PB10 exact scope/history/mandatory workflow integrity assertions",
+  "source_commit": "b63128262c6440cec3a20488ee4327292c177732",
+  "exit_code": 0,
+  "status": "PASS",
+  "application_additions": [
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.ts"
+  ],
+  "existing_auth_routes_sql_dependencies_ci_unchanged": true,
+  "task54_task55_history_unchanged": true,
+  "production_decisions": "OWNER_DECISION_PENDING",
+  "new_adapter_ci_selection": false,
+  "source_sha256": {
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts": "de128557a892180e58ca0a787e97468bb972487e39e433be9d1f6cc0abf18242",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.ts": "386a763ef30939c25149ed6e96845699f6a3158f733af86f12bbbdd22a2aa8c9"
+  },
+  "historical_attempt": {
+    "exit_code": 1,
+    "cause": "Initial diagnostic assumed apps/api/src/app.module.ts; actual existing entrypoint is src/modules/app.module.ts. Corrected assertion path only; no application change or production regression."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "command": "corepack.cmd pnpm install --frozen-lockfile",
+  "source_commit": "32bf568463fde3423f210d94072a2661ea17daa9",
+  "exit_code": 0,
+  "status": "PASS",
+  "pnpm": "10.18.0",
+  "packages": 176,
+  "seconds_reported_by_pnpm": 13.7,
+  "output": "Lockfile is up to date, resolution step is skipped; Done in13.7s using pnpm v10.18.0; no lockfile/dependency edit"
+}
