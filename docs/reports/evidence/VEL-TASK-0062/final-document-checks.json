@@ -1,0 +1,8 @@
+{
+  "command": "Inline final R06 classification,8NOT_RUN/assurance/status/source-scope assertions",
+  "source_commit": "01d5bc9490eb4773a7cc2b607022530550296319",
+  "exit_code": 0,
+  "status": "PASS",
+  "N12": "BLOCKED",
+  "R01_R08": "NOT_RUN"
+}
