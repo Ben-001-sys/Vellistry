@@ -10,17 +10,17 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Persistence CI integration and readiness reconciliation — 2026-10-25
+## Local principal binding candidate — 2026-10-25
 
-FACT: PR117 merged at fd85deb9a31af8663c85977df896e79b0e370eec with exact
-reviewed-tree equality. Task53's mandatory12unit+32PG coverage is inherited unchanged;
-[post-main40188047497](https://github.com/Ben-001-sys/Vellistry/actions/runs/40188047497) SUCCESS verifies actual execution.
-Task52's synthetic experiment and independently BLOCKED runtime history are preserved.
-Task0055/CP0055 reconciles PR116, preserving Task54/CP54/EB54,8source/15query hashes
-and six OWNER_DECISION_PENDING choices. [Report](docs/reports/VEL-PR116-RECONCILIATION-0055.md).
-The next request-isolated synthetic principal-binding adapter is PROPOSED, not authorized.
-No hosted observations, Auth/SQL/route/dependency/CI changes or real logout acceptance.
-PR116 owner merge remains pending; broad gates unchanged; delegation EXPIRED; Issue108 OPEN.
+FACT: PR116 merged at e2862c38d03e2bbb6fe4365c3c9074ee0c53e972 with exact
+reviewed-tree equality; [post-main40189902635](https://github.com/Ben-001-sys/Vellistry/actions/runs/40189902635) SUCCESS.
+Task54/55 source/hash/history remains preserved. Task0056/CP0056 adds only a synthetic
+request-isolated principal adapter/test; [report](docs/reports/VEL-PRINCIPAL-BINDING-0056.md).
+Immutable token, same-token proof validation and per-provider identity/time checks;
+no real JWT/session proof. Six production decisions remain OWNER_DECISION_PENDING.
+Inherited12unit/32PG CI is unchanged; new adapter tests run explicitly locally.
+No Auth/route/SQL/dependency/CI/hosted change. Feature owner merge pending;
+Issue108 OPEN, remediation delegation EXPIRED; broad gates unchanged.
 
 ## Historical query preparation — 2026-10-24
 
