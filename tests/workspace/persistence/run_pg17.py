@@ -53,6 +53,7 @@ def main():
     implementation = ["apps/api/src/modules/workspace/"+p for p in ["workspace-contract.ts","workspace-principal.ts","workspace-persistence-port.ts","workspace.service.ts","workspace-contract.spec.ts"]]+["tests/workspace/persistence/"+p for p in ["workspace-pg-adapter.ts","workspace-pg17.integration.mjs","run_pg17.py"]]
     result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
     exit_code = 1
+    local_validated = False
     try:
         assert local_engine("unix:///var/run/docker.sock") and local_engine("npipe:////./pipe/dockerDesktopLinuxEngine")
         assert all(not local_engine(e) for e in ["ssh://remote", "tcp://127.0.0.1:2375", "https://remote", None])
@@ -65,6 +66,7 @@ def main():
         result["inherited_docker_overrides_removed"]=dict(host_present="DOCKER_HOST" in os.environ, context_present="DOCKER_CONTEXT" in os.environ)
         # Pin the validated local endpoint, even if the user's default context changes.
         env["DOCKER_HOST"]=endpoint
+        local_validated = True
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
         command(["docker","volume","create","--label",label+"="+run_id,volume])
         command(["docker","run","-d","--name",name,"--label",label+"="+run_id,"-e","POSTGRES_PASSWORD","-e","POSTGRES_DB=workspace","-p","127.0.0.1::5432","-v",volume+":/var/lib/postgresql/data",IMAGE])
@@ -101,6 +103,11 @@ def main():
         result["runtime_error"]=str(e).replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[:300]
     finally:
         for kind,resource in [("container",name),("volume",volume)]:
+            if not local_validated:
+                # Validation precedes every creation command. Do not even inspect
+                # an unvalidated daemon in the rejected-startup cleanup path.
+                result["cleanup"][kind]=dict(created_by_run=False,reason="No creation dispatched: local daemon not validated")
+                continue
             try:
                 inspect=subprocess.run(["docker",kind,"inspect",resource],capture_output=True,env=env)
             except OSError:
