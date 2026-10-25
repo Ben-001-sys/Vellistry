@@ -13,7 +13,7 @@ version: 0.2.2
 ## Real Auth handoff preparation — 2026-10-25
 
 FACT: PR122 mergeddb3c7e92375c984f2730e720b1a23cadb5437934 with reviewed-tree
-match; post-main40220684442 outcome recorded in Task0061 evidence/PR ledger.
+match; [post-main40220684442](https://github.com/Ben-001-sys/Vellistry/actions/runs/40220684442) SUCCESS, artifact/source/cleanup verified.
 52adapter/12unit/32PG remain mandatory; Task60/CP60/EB60/history preserved.
 Task0061/CP0061 prepares [real-Auth handoff](docs/reports/VEL-REAL-AUTH-HANDOFF-0061.md).
 Smallest next decision: explicit trusted PRINCIPAL policy, then separately

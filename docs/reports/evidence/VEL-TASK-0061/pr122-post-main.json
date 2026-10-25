@@ -1,0 +1,22 @@
+{
+  "run_id": "f4685adc2b9b461f98934e28295200c0",
+  "source_commit": "db3c7e92375c984f2730e720b1a23cadb5437934",
+  "postgres_version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "exit_code": 0,
+  "cleanup": {
+    "container": {
+      "exit_code": 0,
+      "verified_absent": true
+    },
+    "volume": {
+      "exit_code": 0,
+      "verified_absent": true
+    }
+  },
+  "runtime_sha256": "32a031085e36d34a69b49c344625e4d6f33693e22098f496425f41518cf8e275",
+  "workflow_run": 40220684442,
+  "cases": 32,
+  "passed": 32,
+  "source_hashes_verified": 15,
+  "conclusion": "success"
+}
