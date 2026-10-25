@@ -10,17 +10,18 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Principal boundary preparation — 2026-10-25
+## Synthetic claim policy — 2026-10-25
 
-FACT: PR120 merged atacf7f796014907cc08dfc25ccab5763caa002d1b with exact tree
-match; [post-main40204760911](https://github.com/Ben-001-sys/Vellistry/actions/runs/40204760911) SUCCESS.36adapter/12unit/32PG remain mandatory.
-Task58 history/failures and independent runtime BLOCKED preserved. Task0059/CP0059
-prepares the real-principal [decision packet](docs/reports/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.md):
-cryptography, Auth-server identity and authoritative active-session/write checks
-are distinct. Exact local policy-helper next task is proposed, NOT_AUTHORIZED.
-No Auth/app/CI/SQL/dependency/hosted change; all six production choices pending,
-hosted data UNVERIFIED. Preparation PR owner merge pending; Issue108 OPEN,
-remediation delegation EXPIRED, broad gates unchanged.
+FACT: PR121 merged9b492262026287152af7fb0a5981efda1524d059 with tree equality;
+[post-main40215639714](https://github.com/Ben-001-sys/Vellistry/actions/runs/40215639714) SUCCESS.
+Task59/CP59/EB59/history preserved. Owner separately authorized Task0060/CP0060:
+pure unregistered synthetic claim-policy helper plus mandatory adapter spec.
+Explicit fixture issuer/audience/role only; unsupported AAL/time fields deny.
+No Auth/client/network/JWT/SQL/grants/routes/CI/dependency change. New evidence
+and acceptance map: [report](docs/reports/VEL-SYNTHETIC-CLAIM-POLICY-0060.md).
+N12 BLOCKED; identity policy is not active-session or writable authorization.
+All six production choices pending; historical BLOCKED/NOT_RUN preserved.
+Feature review/CI/owner merge pending; Issue108 OPEN; delegation EXPIRED.
 
 ## Historical query preparation — 2026-10-24
 
