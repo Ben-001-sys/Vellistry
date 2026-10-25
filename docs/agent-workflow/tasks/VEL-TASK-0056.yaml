@@ -1,0 +1,107 @@
+id: VEL-TASK-0056
+title: Implement request-isolated synthetic principal-binding adapter
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0056
+objective: Implement and test PB01-10 in exactly two new application files with injected same-token
+  verified responses only; no Auth/production integration
+in_scope: &id001
+- apps/api/src/modules/workspace/workspace-principal-adapter.ts
+- apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0056.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0056.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0056.md
+- docs/agent-workflow/inputs/VEL-TASK-0056/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PRINCIPAL-BINDING-0056.md
+- docs/reports/evidence/VEL-TASK-0056/*
+out_of_scope:
+- Existing Auth/service/module/controller/route/SQL/grant/CI/dependency changes
+- Hosted access/credentials/liveJWT/users/private/paid/deployment/settings and production persistence
+- Six pending production security decisions and automatic feature merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-IMP002-PRINCIPAL-BINDING-HANDOFF-0055.json
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace.service.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-contract.ts
+  role: governing-source
+- path: apps/api/package.json
+  role: governing-source
+- path: apps/api/tsconfig.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0056/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: SYNTHETIC-ONLY
+  limitation: Injected response correlation is not JWT verification, real session revocation, writable-session
+    proof or hosted acceptance.
+- id: CI-SELECTION
+  limitation: Existing fixed-file CI does not select the new adapter spec; explicit local execution
+    required, no CI change authorized.
+deliverables:
+- Committed validated immutable Task56/CP56 before code
+- Two-file adapter and synthetic tests with PB01-10 evidence
+- Actual frozen install/focused/regressions/build/typecheck/governance checks, EB/provenance
+- Distinct exact-head review, actual readyCI and new PR for separate owner merge
+acceptance_criteria:
+- 'PB-01: Valid injected same-token user/claims produces immutable principal under existing types/freshness
+  policy'
+- 'PB-02: Missing token or verification failure/errors/malformed response denies; no decoded token
+  fallback'
+- 'PB-03: Verified userId must equal verified claims subject; invalid/missing session id denies'
+- 'PB-04: Expired token, stale/future verifiedAt and invalid/nonfinite timestamps deny without relaxing
+  existing checkedPrincipal'
+- 'PB-05: Concurrent and out-of-order requests for two authors remain isolated; verifier receives
+  only its own immutable request token'
+- 'PB-06: Token switch/mismatched verification correlation denies; refresh creates a new request-scoped
+  provider, never mutates another'
+- 'PB-07: Post-async verification rechecks time and identity; caller cannot mutate returned principal
+  or influence another request'
+- 'PB-08: Unit tests use injected synthetic verification responses and clock only, no network/database/environment
+  credentials/JWT signing'
+- 'PB-09: No module registration/controller/route/pool/SQL/managed-session privileges/real Auth implementation;
+  no dependency or CI changes'
+- 'PB-10: Existing12focused/32PG and all applicable governance/security/recovery gates remain unchanged;
+  distinct review and separate owner feature merge'
+- All existing production/application/Auth/SQL/CI/dependency sources unchanged; original54/55 and
+  all historical evidence preserved
+allowed_actions:
+- Read pinned sources and implement only scoped files after committed validated pack and successful
+  post-main CI
+- Run frozen tools, injected synthetic tests, builds/typechecks/governance; actual inherited disposable
+  CI only
+- Submit Draft PR, obtain distinct trusted review, promote Ready and verify exact-head CI; no merge
+approval_required_for:
+- Any Auth/production/hosted/SQL/CI/dependency/scope change; real security choices; feature PR merge
+compliance:
+  change_base: e2862c38d03e2bbb6fe4365c3c9074ee0c53e972
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6397184398
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
