@@ -1,0 +1,18 @@
+{
+  "command": "Inline exact approved-path,18old-case prefix, Auth/CI/SQL/dependency/history preservation assertions",
+  "source_commit": "2fffad89d0b0ced568f90adcb38b59ec297b35d0",
+  "exit_code": 0,
+  "status": "PASS",
+  "old_adapter_tests_preserved": 18,
+  "app_changes": [
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts"
+  ],
+  "ci_unchanged": true,
+  "no_real_sdk_import_or_initialization": true,
+  "production_decisions": "OWNER_DECISION_PENDING",
+  "source_sha256": {
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts": "e396f9d6ce144f20a1b6b61629cbca11929a7473afe110f0104331da63708c9f",
+    "apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts": "d28da0510f46339e7f3f5e8a0235a9f66e5707e67e6ddab544adad3fa86b8b7d"
+  }
+}

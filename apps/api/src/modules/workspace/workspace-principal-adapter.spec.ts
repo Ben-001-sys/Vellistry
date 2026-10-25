@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {test} from "node:test";
+import {createWorkspaceSupabaseResponseBridge, MockSupabaseAuthClient} from "./workspace-supabase-response-bridge";
 import {checkedPrincipal} from "./workspace-principal";
 import {createWorkspacePrincipalProvider, SyntheticWorkspaceVerificationPort} from "./workspace-principal-adapter";
 
@@ -170,5 +171,151 @@ test("PB-07: errors and rejected proofs never clear a previously bound identity"
 test("PB-08/PB-09: successful binding uses only injected synthetic responses, never a network fallback",async(t)=>{
  const mock=t.mock.method(globalThis,"fetch",()=>{throw new Error("Network forbidden by synthetic test");});
  try{assert.ok(await provider(proof()).verify());assert.equal(mock.mock.callCount(),0);}
+ finally{t.mock.restoreAll();}
+});
+
+// SDK-shaped mock composition only: these objects never instantiate an SDK client.
+function sdkUser(id=AUTHOR_A){return {data:{user:{id,email:"synthetic@example.invalid",user_metadata:{sub:AUTHOR_B}}},error:null};}
+function sdkClaims(id=AUTHOR_A,session=SESSION_A,exp=200){return {data:{claims:{sub:id,session_id:session,exp,role:"authenticated"},header:{alg:"synthetic"},signature:new Uint8Array()},error:null};}
+function mockClient(user:unknown=sdkUser(),claims:unknown=sdkClaims()):MockSupabaseAuthClient {
+ return {getUser:async()=>user,getClaims:async()=>claims};
+}
+const tick=()=>new Promise<void>(resolve=>setImmediate(resolve));
+
+test("SB-01: complete SDK-shaped responses compose into the existing frozen principal",async()=>{
+ const bridge=createWorkspaceSupabaseResponseBridge(mockClient(),()=>NOW);
+ const result=await createWorkspacePrincipalProvider(bridge,TOKEN_A,()=>NOW).verify();
+ assert.deepEqual(result,{authorId:AUTHOR_A,sessionId:SESSION_A,tokenExpiresAt:200000,verifiedAt:NOW});
+ assert.ok(Object.isFrozen(result));
+});
+
+test("SB-02: both injected operations receive exactly the same explicit token and no options",async()=>{
+ const calls:unknown[][]=[];
+ const bridge=createWorkspaceSupabaseResponseBridge({getUser:async(...args)=>{calls.push(args);return sdkUser();},getClaims:async(...args)=>{calls.push(args);return sdkClaims();}},()=>NOW);
+ const result=await bridge.verify(TOKEN_A);assert.ok(result);
+ assert.deepEqual(calls,[[TOKEN_A],[TOKEN_A]]);
+});
+
+test("SB-03: invalid tokens and incomplete clients deny without a session or network fallback",async()=>{
+ let calls=0;const client={getUser:async()=>{calls++;return sdkUser();},getClaims:async()=>{calls++;return sdkClaims();}};
+ for(const token of [null,undefined,[],123,""," ","x".repeat(8193)])assert.equal(await createWorkspaceSupabaseResponseBridge(client,()=>NOW).verify(token as string),null);
+ assert.equal(calls,0);
+ for(const invalid of [null,{}, {getUser:client.getUser},{getClaims:client.getClaims}]){
+  assert.equal(await createWorkspaceSupabaseResponseBridge(invalid as unknown as MockSupabaseAuthClient,()=>NOW).verify(TOKEN_A),null);
+ }
+});
+
+test("SB-04: either SDK error, including falsy non-null errors, rejects the whole proof",async()=>{
+ for(const error of [{message:"synthetic authentication error"},false,undefined,0,""]){
+  assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient({...sdkUser(),error}),()=>NOW).verify(TOKEN_A),null);
+  assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient(sdkUser(),{...sdkClaims(),error}),()=>NOW).verify(TOKEN_A),null);
+ }
+});
+
+test("SB-05: missing, partial and malformed SDK responses fail closed",async()=>{
+ for(const value of [null,undefined,[],"response",{}, {data:{},error:null},{data:null,error:null},{data:{user:null},error:null},{data:{claims:null},error:null}]){
+  assert.equal(await createWorkspaceSupabaseResponseBridge({getUser:async()=>value,getClaims:async()=>sdkClaims()},()=>NOW).verify(TOKEN_A),null);
+  assert.equal(await createWorkspaceSupabaseResponseBridge({getUser:async()=>sdkUser(),getClaims:async()=>value},()=>NOW).verify(TOKEN_A),null);
+ }
+});
+
+test("SB-06: contradictory subjects and invalid session or expiry cannot produce a proof",async()=>{
+ const claims=sdkClaims();
+ for(const value of [sdkClaims(AUTHOR_B),{...claims,data:{claims:{...claims.data.claims,session_id:"bad"}}},
+  {...claims,data:{claims:{...claims.data.claims,session_id:undefined}}},
+  {...claims,data:{claims:{...claims.data.claims,sub:[AUTHOR_A]}}},
+  ...[null,undefined,"200",true,0,100,200.5,Infinity,NaN,Number.MAX_SAFE_INTEGER].map(exp=>({...claims,data:{claims:{...claims.data.claims,exp}}}))]){
+  assert.equal(await createWorkspaceSupabaseResponseBridge({getUser:async()=>sdkUser(),getClaims:async()=>value},()=>NOW).verify(TOKEN_A),null);
+ }
+ assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient(sdkUser("bad")),()=>NOW).verify(TOKEN_A),null);
+});
+
+test("SB-07: required accessors and inherited response data are rejected without invoking them",async()=>{
+ let reads=0;const user=sdkUser();Object.defineProperty(user.data.user,"id",{get(){reads++;return AUTHOR_A;}});
+ assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient(user),()=>NOW).verify(TOKEN_A),null);assert.equal(reads,0);
+ assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient(Object.create(sdkUser())),()=>NOW).verify(TOKEN_A),null);
+});
+
+test("SB-08: claims may complete before user without mixing or trusting metadata",async()=>{
+ const u=deferred(),c=deferred();
+ const result=createWorkspaceSupabaseResponseBridge({getUser:()=>u.promise,getClaims:()=>c.promise},()=>NOW).verify(TOKEN_A);
+ c.resolve(sdkClaims());await tick();u.resolve(sdkUser());
+ assert.deepEqual(await result,{token:TOKEN_A,userId:AUTHOR_A,claims:{sub:AUTHOR_A,session_id:SESSION_A,exp:200},verifiedAt:NOW});
+});
+
+test("SB-09: the user response is snapshotted before a later claims response",async()=>{
+ const u=deferred(),c=deferred(),user=sdkUser();
+ const result=createWorkspaceSupabaseResponseBridge({getUser:()=>u.promise,getClaims:()=>c.promise},()=>NOW).verify(TOKEN_A);
+ u.resolve(user);await tick();user.data.user.id=AUTHOR_B;c.resolve(sdkClaims());
+ assert.equal((await result as {userId:string}).userId,AUTHOR_A);
+});
+
+test("SB-10: early claims and returned proof are immutable snapshots",async()=>{
+ const u=deferred(),c=deferred(),claims=sdkClaims();
+ const result=createWorkspaceSupabaseResponseBridge({getUser:()=>u.promise,getClaims:()=>c.promise},()=>NOW).verify(TOKEN_A);
+ c.resolve(claims);await tick();claims.data.claims.sub=AUTHOR_B;u.resolve(sdkUser());
+ const value=await result as {claims:{sub:string}};assert.equal(value.claims.sub,AUTHOR_A);
+ assert.ok(Object.isFrozen(value));assert.ok(Object.isFrozen(value.claims));assert.equal(Reflect.set(value.claims,"sub",AUTHOR_B),false);
+});
+
+test("SB-11: reversed completions for concurrent authors stay request-isolated",async()=>{
+ const ua=deferred(),ub=deferred(),ca=deferred(),cb=deferred();const seen:string[]=[];
+ const bridge=createWorkspaceSupabaseResponseBridge({getUser:t=>{seen.push("user:"+t);return t===TOKEN_A?ua.promise:ub.promise;},getClaims:t=>{seen.push("claims:"+t);return t===TOKEN_A?ca.promise:cb.promise;}},()=>NOW);
+ const a=createWorkspacePrincipalProvider(bridge,TOKEN_A,()=>NOW).verify(),b=createWorkspacePrincipalProvider(bridge,TOKEN_B,()=>NOW).verify();
+ cb.resolve(sdkClaims(AUTHOR_B,SESSION_B));ua.resolve(sdkUser());await tick();ub.resolve(sdkUser(AUTHOR_B));ca.resolve(sdkClaims());
+ assert.equal((await a)?.authorId,AUTHOR_A);assert.equal((await b)?.sessionId,SESSION_B);
+ assert.deepEqual(seen.sort(),["user:"+TOKEN_A,"user:"+TOKEN_B,"claims:"+TOKEN_A,"claims:"+TOKEN_B].sort());
+});
+
+test("SB-12: thrown/rejected clients never yield partial proof or unhandled fallback",async()=>{
+ for(const side of ["getUser","getClaims"] as const){
+  for(const sync of [true,false]){
+   const client=mockClient();client[side]=()=>{if(sync)throw new Error("synthetic throw");return Promise.reject(new Error("synthetic rejection"));};
+   assert.equal(await createWorkspaceSupabaseResponseBridge(client,()=>NOW).verify(TOKEN_A),null);
+  }
+ }
+});
+
+test("SB-13: expiry is checked after both async responses",async()=>{
+ let now=NOW;const user=deferred();const bridge=createWorkspaceSupabaseResponseBridge({getUser:()=>user.promise,getClaims:async()=>sdkClaims()},()=>now);
+ const result=bridge.verify(TOKEN_A);await tick();now=200000;user.resolve(sdkUser());assert.equal(await result,null);
+});
+
+test("SB-14: waiting cannot launder stale verification into a fresh timestamp",async()=>{
+ for(const delay of [30000,30001]){
+  let now=NOW;const claims=deferred();
+  const result=createWorkspaceSupabaseResponseBridge({getUser:async()=>sdkUser(),getClaims:()=>claims.promise},()=>now).verify(TOKEN_A);
+  await tick();now=NOW+delay;claims.resolve(sdkClaims());
+  const value=await result as {verifiedAt:number}|null;
+  if(delay===30000)assert.equal(value?.verifiedAt,NOW);else assert.equal(value,null);
+ }
+});
+
+test("SB-15: invalid or regressing clocks deny after asynchronous composition",async()=>{
+ for(const end of [NaN,Infinity,-1,NOW-1,NOW+0.5]){
+  let now=NOW;const user=deferred();const result=createWorkspaceSupabaseResponseBridge({getUser:()=>user.promise,getClaims:async()=>sdkClaims()},()=>now).verify(TOKEN_A);
+  await tick();now=end;user.resolve(sdkUser());assert.equal(await result,null);
+ }
+ assert.equal(await createWorkspaceSupabaseResponseBridge(mockClient(),()=>NaN).verify(TOKEN_A),null);
+});
+
+test("SB-16: token reassignment/method replacement cannot redirect an in-flight bridge request",async()=>{
+ let token=TOKEN_A;const u=deferred(),c=deferred(),seen:string[]=[];
+ const client={getUser:(t:string)=>{seen.push(t);return u.promise;},getClaims:(t:string)=>{seen.push(t);return c.promise;}};
+ const bridge=createWorkspaceSupabaseResponseBridge(client,()=>NOW),result=bridge.verify(token);token=TOKEN_B;
+ client.getUser=async()=>sdkUser(AUTHOR_B);client.getClaims=async()=>sdkClaims(AUTHOR_B,SESSION_B);
+ u.resolve(sdkUser());c.resolve(sdkClaims());assert.equal((await result as {token:string}).token,TOKEN_A);assert.deepEqual(seen,[TOKEN_A,TOKEN_A]);
+});
+
+test("SB-17: composition preserves existing immutable session binding and does not cache proofs",async()=>{
+ let session=SESSION_A,calls=0;const bridge=createWorkspaceSupabaseResponseBridge({getUser:async()=>{calls++;return sdkUser();},getClaims:async()=>sdkClaims(AUTHOR_A,session)},()=>NOW);
+ const p=createWorkspacePrincipalProvider(bridge,TOKEN_A,()=>NOW);assert.ok(await p.verify());session=SESSION_B;assert.equal(await p.verify(),null);
+ session=SESSION_A;assert.ok(await p.verify());assert.equal(calls,3);
+});
+
+test("SB-18: SDK-shaped composition never calls fetch/getSession or initializes a real client",async(t)=>{
+ let sessions=0;const client={...mockClient(),getSession(){sessions++;throw new Error("No session fallback");}};
+ const mock=t.mock.method(globalThis,"fetch",()=>{throw new Error("Network forbidden");});
+ try{assert.ok(await createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,()=>NOW),TOKEN_A,()=>NOW).verify());assert.equal(sessions,0);assert.equal(mock.mock.callCount(),0);}
  finally{t.mock.restoreAll();}
 });
