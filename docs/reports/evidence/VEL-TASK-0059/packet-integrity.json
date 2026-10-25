@@ -1,0 +1,11 @@
+{
+  "source_commit": "8a3f8f85cbf01e5bbad994c6aed048d667b54f3d",
+  "command": "python docs/reports/evidence/VEL-TASK-0059/verify_packet.py",
+  "exit_code": 0,
+  "positive_packet": 1,
+  "negative_document_mutations_rejected": 18,
+  "source_hashes_verified": 9,
+  "historical_records_unchanged": 3,
+  "application_ci_dependency_sql_changes": 0,
+  "proposed_security_runtime_cases": "NOT_RUN_PROPOSED; document integrity checks are not runtime security acceptance"
+}

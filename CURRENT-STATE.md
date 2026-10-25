@@ -10,17 +10,17 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Local SDK-response composition candidate — 2026-10-25
+## Principal boundary preparation — 2026-10-25
 
-FACT: PR119 merged at55690e9b707bc1bb9af6cadd761a916d6e5a6a37 with exact tree
-match; [post-main40199221516](https://github.com/Ben-001-sys/Vellistry/actions/runs/40199221516) SUCCESS. Mandatory adapter/12unit/32PG CI is inherited.
-Task0058/CP0058 adds an unregistered mock SDK-response bridge and extends the
-mandatory spec:18old+18new cases. [Report](docs/reports/VEL-SDK-RESPONSE-BRIDGE-0058.md).
-No real SDK client/Auth request, JWT signature/revocation or active-session proof.
-Six production decisions remain OWNER_DECISION_PENDING; hosted data UNVERIFIED.
-Auth/guard/route/SQL/deps/CI unchanged; separate owner feature merge pending.
-Old independent runtime BLOCKED preserved; Issue108 OPEN, delegation EXPIRED;
-broad gates unchanged.
+FACT: PR120 merged atacf7f796014907cc08dfc25ccab5763caa002d1b with exact tree
+match; [post-main40204760911](https://github.com/Ben-001-sys/Vellistry/actions/runs/40204760911) SUCCESS.36adapter/12unit/32PG remain mandatory.
+Task58 history/failures and independent runtime BLOCKED preserved. Task0059/CP0059
+prepares the real-principal [decision packet](docs/reports/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.md):
+cryptography, Auth-server identity and authoritative active-session/write checks
+are distinct. Exact local policy-helper next task is proposed, NOT_AUTHORIZED.
+No Auth/app/CI/SQL/dependency/hosted change; all six production choices pending,
+hosted data UNVERIFIED. Preparation PR owner merge pending; Issue108 OPEN,
+remediation delegation EXPIRED, broad gates unchanged.
 
 ## Historical query preparation — 2026-10-24
 
