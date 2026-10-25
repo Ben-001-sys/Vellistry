@@ -1,0 +1,21 @@
+{
+  "command": "Inline handoff scope/source/pending-decision/proposed-case/immutable-pack assertions",
+  "source_commit": "1f72022039b92d3bee8ef46fabaf31927000f3a8",
+  "exit_code": 0,
+  "status": "PASS",
+  "unchanged_source_sha256": {
+    "apps/api/src/modules/auth/supabase-auth.service.ts": "e2ddcdf05608019b3d5aa22e94113a9816731bbf5f870c62071f4f831e0097e5",
+    "apps/api/src/modules/auth/supabase-auth.guard.ts": "e0dbe26a885ba14d7f15ec6c4401b1ad51ae49c2d4386d784e56820870979474",
+    "apps/api/src/modules/workspace/workspace-principal-verification-policy.ts": "5ed5c58a09ce04ac51663238b9d978c457126245d7627161e9f7156eca641303",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts": "042dd68dc6ab02f89428f43c2a28be9bde8681b779245b53179f1d2b92c5f951",
+    ".github/workflows/ci.yml": "8610367d7222f40ce203dd347e8bbef9621178caf5c5753a4c2b3d75ad3aa0c4",
+    "pnpm-lock.yaml": "3b648c2c51568b028937a9efd14e7eb755dcd3b152f9123c9694b3e28c477c97",
+    "docs/agent-workflow/tasks/VEL-TASK-0060.yaml": "513991123a6d81fd620894d83ed89200a64b50332530fc8d89880f6ef78e5df7",
+    "docs/agent-workflow/context-packs/VEL-CP-0060.md": "27bd0dd39a11974f54e5b00a7ca38479a7dfe746e7f02c0a581643c5c9344956",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0060.md": "cd4beaae1d0aeca1a7c474ebf001b94a0733ddbf29a735e1181be37c16295740"
+  },
+  "future_runtime_R01_R08": "NOT_RUN_PROPOSED",
+  "N12": "BLOCKED",
+  "six_production_decisions": "OWNER_DECISION_PENDING",
+  "implementation_changes": 0
+}
