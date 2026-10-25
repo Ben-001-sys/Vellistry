@@ -1,0 +1,307 @@
+{
+  "id": "VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059",
+  "task_id": "VEL-TASK-0059",
+  "status": "PROPOSAL_ONLY",
+  "base_commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+  "owner_merge": "PENDING",
+  "hosted_observations": "UNVERIFIED",
+  "real_auth_implemented": false,
+  "hosted_queries_executed": false,
+  "credentials_obtained": false,
+  "jwt_experiments_executed": false,
+  "sources": [
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.service.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "e2ddcdf05608019b3d5aa22e94113a9816731bbf5f870c62071f4f831e0097e5"
+    },
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.guard.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "e0dbe26a885ba14d7f15ec6c4401b1ad51ae49c2d4386d784e56820870979474"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "d28da0510f46339e7f3f5e8a0235a9f66e5707e67e6ddab544adad3fa86b8b7d"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-principal-adapter.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "386a763ef30939c25149ed6e96845699f6a3158f733af86f12bbbdd22a2aa8c9"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-principal.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "dd7ef61f110b7863638720a3d686550a94a3ee6b423543224ec2d7c183bad272"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace.service.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "670621f4867e43b6391dde6afb75ecf8596ea8e24365385a18473e3e259e72d4"
+    },
+    {
+      "path": "apps/api/src/modules/app.module.ts",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "eaacae3e617bafcde86acc5156c207f138704aa3db623907db745edd107aafd0"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "commit": "acf7f796014907cc08dfc25ccab5763caa002d1b",
+      "sha256": "3b648c2c51568b028937a9efd14e7eb755dcd3b152f9123c9694b3e28c477c97"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0059/SDK-BOUNDARY-SOURCES.md",
+      "commit": "d52b01358988ac8426e294a75cfbe692998a362c",
+      "sha256": "38fa3e412dac40b57c5596fab07577d8413222e7f635f5798d5b256c9cf6bf3a"
+    }
+  ],
+  "verification_axes": [
+    {
+      "id": "CRYPTOGRAPHIC",
+      "meaning": "Signature integrity/key provenance plus explicit claim validation; cached verification can outlive session revocation",
+      "does_not_prove": [
+        "Auth-server current user response",
+        "Active writable session or atomic write authorization"
+      ]
+    },
+    {
+      "id": "AUTH_SERVER",
+      "meaning": "Configured trusted Auth server accepts the exact bearer and returns user identity; may report server session errors depending deployed behavior",
+      "does_not_prove": [
+        "Application issuer/audience/author policy without checks",
+        "Race-free active session at later DB commit"
+      ]
+    },
+    {
+      "id": "ACTIVE_SESSION",
+      "meaning": "Separate authoritative session/user/deadline/revocation and transaction-race contract",
+      "does_not_prove": [
+        "JWT signature without verification",
+        "Owner authorization to deploy SQL/grants or register writes"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "PV-01",
+      "title": "Token provenance",
+      "requirement": "Use exact request-local bearer already extracted by existing guard, never mutable client session state, body identity, user_metadata or decoded-only JWT. Explicit token argument to both owner-configured verification operations; no omitted token/getSession fallback."
+    },
+    {
+      "id": "PV-02",
+      "title": "Trusted verification channel",
+      "requirement": "Future live client must reuse existing Auth service configuration/architecture and trusted project endpoint. No token-derived issuer/JWKS URL, client-supplied keys, service-role author path, allowExpired override, or caller verification bypass. No real client authorized here."
+    },
+    {
+      "id": "PV-03",
+      "title": "Subject/session/expiry evidence",
+      "requirement": "Require successful complete getUser user.id and verified getClaims sub/session_id/exp for same token. Normalize/compare user.id==sub; validate UUIDs, finite safe integral NumericDate conversion and expiry after async work. Current mock bridge only composes assertions, not signatures."
+    },
+    {
+      "id": "PV-04",
+      "title": "Policy before projection",
+      "requirement": "Explicit trusted issuer/audiences and acceptable token role/algorithm/anonymous/AAL/time policy are owner decisions. Validate required policy before bridge drops issuer/aud/nbf/header fields; no implicit defaults or policy derived from token. Reject missing policy, wrong project/audience/service credentials and malformed claims."
+    },
+    {
+      "id": "PV-05",
+      "title": "Clock and scope",
+      "requirement": "Preserve per-request immutable token/author/session/expiry binding, response-arrival snapshots and conservative start-time freshness. Recheck after awaits, expiry/stale/future proof, nbf/iat per explicitly approved policy; retain current30000ms bound without silently relaxing it."
+    },
+    {
+      "id": "PV-06",
+      "title": "SDK path accountability",
+      "requirement": "Record whether evidence used local asymmetric signature or Auth-server fallback. getClaims may perform network/key lookup; no assumed offline success. Signing mode/key rotation/cache trust remain unobserved. Successful method result alone does not prove application issuer/audience policy or session status."
+    },
+    {
+      "id": "PV-07",
+      "title": "Independent session authority",
+      "requirement": "Active/revoked state is separate: authoritative matching session+user, expiry/inactivity/not_after semantics and failure-closed policy require catalog/provider acceptance. SDK may surface server SessionMissing errors, but no target behavior is inferred and successful getUser is not atomic session/write authorization."
+    },
+    {
+      "id": "PV-08",
+      "title": "Atomic protected write boundary",
+      "requirement": "For future writes, session/revocation check must have reviewed race/linearization semantics with book ownership in same protected transaction (session then book lock candidate). No auth.sessions UPDATE/grant/helper deployment approved; registry alternative also needs owner review. Auth calls outside a DB transaction leave a TOCTOU gap."
+    },
+    {
+      "id": "PV-09",
+      "title": "Error and privacy contract",
+      "requirement": "Reject Auth errors, absent/partial/contradictory proof and disallowed policy. Distinguish invalid evidence from provider/configuration/timeouts internally; external response mapping is TRANSPORT decision. No sensitive token/claims/user/manuscript logs or cached foreign receipts. No fail-open offline fallback when required Auth verification unavailable."
+    },
+    {
+      "id": "PV-10",
+      "title": "Reuse architecture and durable safety",
+      "requirement": "Existing verify(token)->{id}, AuthGuard and Book routes remain unchanged. Future additive service method plus unregistered request-bound provider may reuse publicClient; no replacement Auth stack. Do not make current stateful WorkspaceService request-scoped and lose pending maps without a reviewed durable operation/outbox contract. Module/routes/writes remain separately gated."
+    }
+  ],
+  "owner_choices": [
+    {
+      "id": "P-API",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Proposed reuse getUser(explicitToken)+getClaims(sameToken) for principal evidence, after policy checks. Alternative verified-claims-only cannot satisfy currently required Auth-server user check without new owner decision. Possible duplicate getUser fallback cost remains unverified.",
+      "owner_action": "Approve only a future local fixture protocol now if desired; real API/client wiring requires separate scope."
+    },
+    {
+      "id": "P-TARGET",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Trusted endpoint/issuer/audience, allowed signer/key origin and credential channel. Historical vellistry-dev reference is not validated issuer/key configuration.",
+      "owner_action": "Owner confirms exact expected values via separately authorized metadata/export; no production defaults."
+    },
+    {
+      "id": "P-CLAIMS",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Author-role/anonymous/AAL/nbf/iat/expiry/clock-skew requirements and malformed/unknown-value policy.",
+      "owner_action": "Owner selects actual production policy; proposed next tests use synthetic fixture values only."
+    },
+    {
+      "id": "P-SESSION",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Authoritative revoked-session semantics, lock/grant confinement, timing/races and source availability.",
+      "owner_action": "Separate SESSION/provider review and target-specific acceptance; no privileges approved here."
+    },
+    {
+      "id": "P-ERRORS",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Fail-closed errors vs unavailable, timeout/retry/cache/rotation policy and public error mapping.",
+      "owner_action": "Owner reviews with TRANSPORT/GATEWAY; no implementation now."
+    },
+    {
+      "id": "P-LIFETIME",
+      "status": "OWNER_DECISION_PENDING",
+      "proposal": "Request-isolated verification provider, client lifetime and preservation of process pending/durable reconciliation state.",
+      "owner_action": "Owner reviews future DI wiring and RECONCILIATION; no module registration now."
+    }
+  ],
+  "production_decisions": {
+    "PRINCIPAL": "OWNER_DECISION_PENDING",
+    "SESSION": "OWNER_DECISION_PENDING",
+    "GATEWAY": "OWNER_DECISION_PENDING",
+    "PACKAGING": "OWNER_DECISION_PENDING",
+    "RECONCILIATION": "OWNER_DECISION_PENDING",
+    "TRANSPORT": "OWNER_DECISION_PENDING"
+  },
+  "negative_security_cases": [
+    {
+      "id": "N-01",
+      "requirement": "Absent/wrong trusted policy or token-derived issuer/JWKS target denies"
+    },
+    {
+      "id": "N-02",
+      "requirement": "Wrong issuer/project, audience mismatch/malformed audience array denies"
+    },
+    {
+      "id": "N-03",
+      "requirement": "Missing/malformed UUID subject/session or user.id!=sub denies"
+    },
+    {
+      "id": "N-04",
+      "requirement": "Service-role/anonymous/AAL outside explicit fixture policy denies; metadata cannot elevate"
+    },
+    {
+      "id": "N-05",
+      "requirement": "Expired/nonfinite/unsafe/coerced exp, future nbf/iat beyond explicit fixture tolerance denies"
+    },
+    {
+      "id": "N-06",
+      "requirement": "Auth error/null/partial claims or user, thrown/rejected SDK method denies without fallback"
+    },
+    {
+      "id": "N-07",
+      "requirement": "Both operations receive exact same token, no getSession/options/key override"
+    },
+    {
+      "id": "N-08",
+      "requirement": "Concurrent authors, reversed completions, token switch and same-token subject/session changes deny or isolate"
+    },
+    {
+      "id": "N-09",
+      "requirement": "Slow response/stale proof/clock rollback cannot refresh evidence age; preserve current freshness bound"
+    },
+    {
+      "id": "N-10",
+      "requirement": "Invalid signature/key/algorithm/JWKS scenarios represented as injected failed-verification outcomes only; no real JWT generation or verification in next task"
+    },
+    {
+      "id": "N-11",
+      "requirement": "A synthetic unexpired verified JWT with a mocked revoked session must never be labelled writable merely because identity checks pass; session evidence stays UNKNOWN, no write route"
+    },
+    {
+      "id": "N-12",
+      "requirement": "Pool/session ownership/TOCTOU/rollback/revocation races remain BLOCKED until separately authorized gateway/session integration tests; do not fake them with a passed identity unit"
+    },
+    {
+      "id": "N-13",
+      "requirement": "No raw token/user/claim/private payload retained or logged, no real SDK/client/network init"
+    },
+    {
+      "id": "N-14",
+      "requirement": "Existing36test bodies,12unit/32PG/security/recovery and Auth ABI remain intact"
+    }
+  ],
+  "next_task": {
+    "id": null,
+    "status": "PROPOSED_NOT_AUTHORIZED",
+    "title": "Local explicit principal-claim policy contract on injected SDK evidence",
+    "exact_application_paths": [
+      "apps/api/src/modules/workspace/workspace-principal-verification-policy.ts",
+      "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts"
+    ],
+    "scope": "Pure unregistered policy helper and append mandatory spec cases; mock SDK evidence only, retain36old cases. Tests compose fixture-policy checked mock getClaims response through existing bridge/provider; no real client/crypto/session implementation.",
+    "fixture_policy": {
+      "issuer": "https://synthetic.invalid/auth/v1",
+      "audiences": [
+        "synthetic-author"
+      ],
+      "roles": [
+        "authenticated"
+      ],
+      "note": "Synthetic test values only, NOT target defaults or approved production policy"
+    },
+    "acceptance_ids": [
+      "N-01",
+      "N-02",
+      "N-03",
+      "N-04",
+      "N-05",
+      "N-06",
+      "N-07",
+      "N-08",
+      "N-09",
+      "N-10",
+      "N-11",
+      "N-13",
+      "N-14"
+    ],
+    "blocked_acceptance_ids": [
+      "N-12"
+    ],
+    "owner_approval_required": [
+      "Explicit exact two-file local scope and synthetic fixture-policy behavior",
+      "New unique Task and committed validated immutable ContextPack at then-current main before code",
+      "Separate feature PR merge after focused/regressions/build/check/governance/distinct review/actual readyCI"
+    ],
+    "forbidden": [
+      "Real SDK/Auth/guard integration",
+      "JWT signing or real verification experiments",
+      "Hosted/credentials/users/JWKS fetch",
+      "SQL/RLS/grants/session locking/routes/gateway/writable authorization",
+      "Dependencies/CI changes",
+      "Production policy adoption or automatic merge"
+    ]
+  },
+  "future_integration": {
+    "status": "NOT_AUTHORIZED",
+    "candidate_additive_paths": [
+      "apps/api/src/modules/auth/supabase-auth.service.ts",
+      "apps/api/src/modules/auth/supabase-auth.guard.ts"
+    ],
+    "note": "Candidate discussion only, not next-task permissions. Existing verify/guard contracts remain untouched; routes/modules/gateway require separate scope."
+  },
+  "evidence_limits": [
+    "Frozen SDK source inspection is not deployed target acceptance",
+    "SDK SessionMissing handling does not prove current target logout behavior",
+    "getClaims success has no explicit issuer/aud/nbf checks in inspected method body; future application policy required",
+    "Mocks do not verify signatures, server identity or real session rows",
+    "No locked-session/writable guarantee or actual production policy chosen"
+  ]
+}
