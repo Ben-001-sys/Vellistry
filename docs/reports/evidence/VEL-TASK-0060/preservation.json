@@ -1,0 +1,16 @@
+{
+  "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+  "exit_code": 0,
+  "old36test_bodies_preserved": true,
+  "new_policy_tests": 16,
+  "total_mandatory_tests": 52,
+  "approved_app_paths": [
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "apps/api/src/modules/workspace/workspace-principal-verification-policy.ts"
+  ],
+  "Auth_SQL_CI_dependencies_unchanged": true,
+  "Task59_CP59_EB59_unchanged": true,
+  "N12": "BLOCKED",
+  "production_decisions": "all six OWNER_DECISION_PENDING",
+  "limits": "static preservation assertions, not real Auth or session acceptance"
+}
