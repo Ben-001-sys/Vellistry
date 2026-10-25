@@ -1,0 +1,101 @@
+id: VEL-TASK-0058
+title: Implement local mock Supabase SDK-response bridge
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0058
+objective: Compose injected mock SDK responses into existing synthetic verification port, validate
+  complete same-token proof and preserve immutable isolated principal binding
+in_scope: &id001
+- apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts
+- apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0058.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0058.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0058.md
+- docs/agent-workflow/inputs/VEL-TASK-0058/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SDK-RESPONSE-BRIDGE-0058.md
+- docs/reports/evidence/VEL-TASK-0058/*
+out_of_scope:
+- Real Auth/client initialization/network/credentials/JWT signing/hosted probes
+- Existing Auth/guard/adapter implementation/module/route/SQL/grants/RLS/dependency/CI changes
+- Production principal/session/gateway/writable authorization or automatic merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-contract.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/package.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0058/SDK-CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0058/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: MOCK-ONLY
+  limitation: SDK-shaped mocks do not verify real JWT signatures, live SDK/network behavior, revocation
+    or active sessions. Production decisions remain pending.
+deliverables:
+- Unique committed Task and validated immutable CP before code
+- One unregistered bridge, extended existing mandatory spec retaining18old cases
+- Actual focused/12unit/regressions/frozen/build/check/governance/32PG readyCI evidence and EB/provenance
+- Distinct exact-head review and new Ready PR for separate owner merge
+acceptance_criteria:
+- Both injected methods receive exact same request-local immutable token; no getSession/decoded fallback,
+  options override or real SDK init
+- Require successful complete SDK-shaped own-data user/claims responses; reject mismatch/invalid
+  UUID session/expiry/errors/partial/contradictory proof without coercion
+- Snapshot each arriving response, handle reversed completion/client throw/rejection/mutation and
+  concurrent authors without shared request state
+- Validate expiry/freshness after both responses, retain conservative verification start timestamp;
+  existing provider immutable author/session/expiry binding preserved
+- All18existing cases unchanged except new import; append bridge mocks/negative async cases in mandatory
+  spec; no real network/JWT/credential operations
+- Only approved app paths change; Auth/guard/module/route/SQL/deps/CI and historical task/pack/bundle
+  evidence unchanged
+- Actual extended mandatory tests,12unit/32PG, existing app/security/recovery/governance/build/check
+  pass; distinct final-head review and no auto merge
+allowed_actions:
+- Read pinned repository/frozen SDK source and public official docs, edit only approved paths after
+  committed validated pack
+- Run injected mock/synthetic tests, frozen install/build/check/governance and inherited disposable
+  CI; no live verifier
+- Publish Draft, obtain distinct trusted read-only source review, promote Ready and verify exact-head
+  CI; no merge
+approval_required_for:
+- Any real client/Auth/hosted/credential/JWT/SQL/session grant/route/dependency/CI or scope change
+- Any production decision or feature PR merge
+compliance:
+  change_base: 55690e9b707bc1bb9af6cadd761a916d6e5a6a37
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6398753206
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
