@@ -4,7 +4,7 @@ title: Actual bounded workspace persistence experiment on disposable PostgreSQL1
 type: execution-bundle
 status: proposed-for-review
 created_at: '2026-10-24'
-version: 0.1.1
+version: 0.1.2
 task_id: VEL-TASK-0052
 context_pack_id: VEL-CP-0052
 base_commit: b98d2d0b0bed68a7cc0a65f6ed639def3540170e
@@ -40,7 +40,7 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: 5f8e0254c8664dafeb6d74b05e1465d848d14281
+implementation_source_commit: 5887db7525b2f37619d562345a1970b6ca8304ac
 execution:
   status: completed
   executor: Codex
@@ -186,6 +186,30 @@ execution:
     status: PASS
     test_count: 32
     evidence: docs/reports/evidence/VEL-TASK-0052/6cf33351aa624104ba28def20b034560-runtime.json
+  - command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
+    source_commit: 5887db7525b2f37619d562345a1970b6ca8304ac
+    exit_code: 0
+    status: PASS
+    seconds: 7.4
+    evidence: docs/reports/evidence/VEL-TASK-0052/receipt-fixed-unit.txt
+  - command: corepack.cmd pnpm build
+    source_commit: 5887db7525b2f37619d562345a1970b6ca8304ac
+    exit_code: 0
+    status: PASS
+    seconds: 28.84
+    evidence: docs/reports/evidence/VEL-TASK-0052/receipt-fixed-build.txt
+  - command: corepack.cmd pnpm check
+    source_commit: 5887db7525b2f37619d562345a1970b6ca8304ac
+    exit_code: 0
+    status: PASS
+    seconds: 11.01
+    evidence: docs/reports/evidence/VEL-TASK-0052/receipt-fixed-types.txt
+  - command: python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json
+    source_commit: 5887db7525b2f37619d562345a1970b6ca8304ac
+    exit_code: 0
+    status: PASS
+    test_count: 32
+    evidence: docs/reports/evidence/VEL-TASK-0052/2d2b081ca9d64a07850f7751f8400774-runtime.json
 historical_failures:
 - evidence: docs/reports/evidence/VEL-TASK-0052/governance.txt
   exit_code: 1
@@ -214,6 +238,12 @@ historical_failures:
 - evidence: docs/reports/evidence/VEL-TASK-0052/d7c24cefa8814e129a2d979a358ec716-runtime.json
   exit_code: 1
   cause: All32 BLOCKED at temporary init-server readiness; fixed by final TCP readiness
+- command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
+  source_commit: b70222dfbb89ec764cabe23dd5e8f4cae8f7f664
+  exit_code: 1
+  evidence: docs/reports/evidence/VEL-TASK-0052/receipt-negative-before-fix.txt
+  cause: Two additional independent P2 receipt regressions reproduced10PASS2FAIL before
+    correction
 updated_at: '2026-10-25'
 ---
 
@@ -282,3 +312,25 @@ checks. All before-fix failures and all BLOCKED attempts remain in raw evidence.
 Final exact-head review/CI references will be in PR115's external ledger. No immutable
 pack, original Task49 evidence, production routes/Auth/dependencies/CI or hosted
 scope changed. Separate owner feature merge remains required.
+
+## Renewed review correction, 2026-10-25
+
+## Second independent exact-head review and correction
+
+A new trusted read-only review at1cfa08fcfb414534e7d81f5e6513889cfa039c30 independently
+reproduced two remaining P2 issues: array-valued outcome/reason could pass String
+coercion and release an unknown lock; rejected terminal receipts did not raise the
+observed-version floor. Original review output/metadata is preserved. Atb70222d,
+new regressions demonstrate10PASS/2FAIL before correction. Fix5887db7 requires real
+string enums and updates the floor for every valid terminal receipt, while preserving
+the pending-object identity guard. The actual database rejection case now also
+corrupts a persisted rejection's reason and checks apply/lookup floor enforcement.
+
+Current evidence:12focused tests PASS, fresh API/web builds/typechecks PASS, and
+32genuine PostgreSQL17 cases PASS at the current matrix source. Run2d2b081ca9d64a07850f7751f8400774
+verifies the new subcases plus all original recovery/privilege/concurrency checks,
+with conflicting local-only Docker environment values and verified owned cleanup.
+All12current CPU tests are local execution evidence, not newly added automatic CI.
+Final exact-head source review and actual ready-state CI remain required and are
+recorded in PR115's ledger after final SHA publication. No new scope/amended pack,
+Auth/shipping SQL/dependency/workflow changes, hosted activity or feature merge.

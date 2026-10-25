@@ -1,0 +1,9 @@
+Two independently reproduced service-boundary defects remain: malformed receipts can bypass unknown-outcome locking, and conflict receipts do not prevent stale readback. Both undermine the experiment's acknowledgement and reconciliation guarantees.
+
+Full review comments:
+
+- [P2] Validate receipt discriminants without string coercion — H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.ts:54-56
+  For malformed acknowledgements, coercion accepts values outside the receipt contract: `reason: ["conflict"]` passes validation on a rejected receipt, releases the pending lock, and permits another dispatch instead of preserving `unknown`. Likewise, `outcome: ["confirmed"]` passes validation but produces an invalid result status. Require actual string enum values for both fields before treating a receipt as authoritative.
+
+- [P2] Advance the observed-version floor for rejected receipts — H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace.service.ts:52-53
+  When a stale mutation receives a conflict receipt at version 5, this branch removes its pending entry without recording that observed version. A subsequent snapshot at version 4 is therefore returned as `ready`, despite already knowing it is stale. This occurs through both `apply()` and pending-operation reconciliation. Update the floor for rejected terminal receipts as well as confirmations so conflict recovery cannot accept an older baseline.

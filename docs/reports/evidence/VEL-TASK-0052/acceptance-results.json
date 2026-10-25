@@ -1,15 +1,15 @@
 {
   "task": "VEL-TASK-0052",
   "kind": "actual-disposable-PostgreSQL17",
-  "source_commit": "5f8e0254c8664dafeb6d74b05e1465d848d14281",
-  "runtime_run_id": "6cf33351aa624104ba28def20b034560",
+  "source_commit": "5887db7525b2f37619d562345a1970b6ca8304ac",
+  "runtime_run_id": "2d2b081ca9d64a07850f7751f8400774",
   "postgres_version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
   "image": "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb",
   "cases": [
     {
       "id": "IMP002-PERSIST-01",
       "status": "PASS",
-      "seconds": 0.39,
+      "seconds": 0.668,
       "evidence": {
         "owned_snapshot": true,
         "both_authors_mutate_own_book": true
@@ -18,7 +18,7 @@
     {
       "id": "IMP002-PERSIST-02",
       "status": "PASS",
-      "seconds": 0.386,
+      "seconds": 1.251,
       "evidence": {
         "foreign_and_missing_neutral_sqlstate": "42501"
       }
@@ -26,7 +26,7 @@
     {
       "id": "IMP002-PERSIST-03",
       "status": "PASS",
-      "seconds": 0.89,
+      "seconds": 2.866,
       "evidence": {
         "no_journal_or_business_effect": true
       }
@@ -34,7 +34,7 @@
     {
       "id": "IMP002-PERSIST-04",
       "status": "PASS",
-      "seconds": 0.456,
+      "seconds": 0.51,
       "evidence": {
         "forged_fields_rejected": 6
       }
@@ -42,7 +42,7 @@
     {
       "id": "IMP002-PERSIST-05",
       "status": "PASS",
-      "seconds": 0.078,
+      "seconds": 0.11,
       "evidence": {
         "unverified_dispatches": 0,
         "missing_session_sqlstate": "42501"
@@ -51,7 +51,7 @@
     {
       "id": "IMP002-PERSIST-06",
       "status": "PASS",
-      "seconds": 0.274,
+      "seconds": 0.292,
       "evidence": {
         "chapter_revision_receipt_atomic": true
       }
@@ -59,15 +59,15 @@
     {
       "id": "IMP002-PERSIST-07",
       "status": "PASS",
-      "seconds": 0.63,
+      "seconds": 1.285,
       "evidence": {
-        "existing_prose_revisions_sha256": "f7f40a1efbd9f1c543132530908c5d49901e1c4fcaa8c3889df15cc5f4132d4e"
+        "existing_prose_revisions_sha256": "fd6dcdb2f14bfa94c249785202d9c36ad911c785bf52cb375951c935d123eed8"
       }
     },
     {
       "id": "IMP002-PERSIST-08",
       "status": "PASS",
-      "seconds": 0.478,
+      "seconds": 0.728,
       "evidence": {
         "stable_duplicate_title_ids": true
       }
@@ -75,7 +75,7 @@
     {
       "id": "IMP002-PERSIST-09",
       "status": "PASS",
-      "seconds": 0.689,
+      "seconds": 0.934,
       "evidence": {
         "immediate_unique_swap": true
       }
@@ -83,7 +83,7 @@
     {
       "id": "IMP002-PERSIST-10",
       "status": "PASS",
-      "seconds": 0.744,
+      "seconds": 0.959,
       "evidence": {
         "bad_permutations": 4
       }
@@ -91,7 +91,7 @@
     {
       "id": "IMP002-PERSIST-11",
       "status": "PASS",
-      "seconds": 0.513,
+      "seconds": 0.455,
       "evidence": {
         "legacy_gaps_fail_closed": true
       }
@@ -99,7 +99,7 @@
     {
       "id": "IMP002-PERSIST-12",
       "status": "PASS",
-      "seconds": 0.601,
+      "seconds": 0.244,
       "evidence": {
         "real_lock_barrier": true,
         "one_cas_winner": true
@@ -108,7 +108,7 @@
     {
       "id": "IMP002-PERSIST-13",
       "status": "PASS",
-      "seconds": 0.922,
+      "seconds": 0.312,
       "evidence": {
         "concurrent_duplicate_one_effect": true
       }
@@ -116,7 +116,7 @@
     {
       "id": "IMP002-PERSIST-14",
       "status": "PASS",
-      "seconds": 0.562,
+      "seconds": 0.496,
       "evidence": {
         "altered_identity_denied": true
       }
@@ -124,7 +124,7 @@
     {
       "id": "IMP002-PERSIST-15",
       "status": "PASS",
-      "seconds": 1.989,
+      "seconds": 2.458,
       "evidence": {
         "child_process_exited_after_commit": 79,
         "real_committed_effect_ack_dropped": true,
@@ -135,7 +135,7 @@
     {
       "id": "IMP002-PERSIST-16",
       "status": "PASS",
-      "seconds": 0.405,
+      "seconds": 0.266,
       "evidence": {
         "missing_and_rollback_stay_unknown": true
       }
@@ -143,17 +143,19 @@
     {
       "id": "IMP002-PERSIST-17",
       "status": "PASS",
-      "seconds": 1.096,
+      "seconds": 0.842,
       "evidence": {
         "durable_rejection": true,
         "business_version_unchanged": true,
-        "delayed_rejection_does_not_clear_newer_unknown": true
+        "delayed_rejection_does_not_clear_newer_unknown": true,
+        "malformed_reason_retains_unknown": true,
+        "rejected_apply_and_lookup_floor": true
       }
     },
     {
       "id": "IMP002-PERSIST-18",
       "status": "PASS",
-      "seconds": 1.335,
+      "seconds": 0.959,
       "evidence": {
         "actual_old_snapshot_floor": true,
         "read_to_read_observed_floor": true,
@@ -163,7 +165,7 @@
     {
       "id": "IMP002-PERSIST-19",
       "status": "PASS",
-      "seconds": 0.828,
+      "seconds": 2.226,
       "evidence": {
         "separate_notes_and_prose_invariant": true
       }
@@ -171,7 +173,7 @@
     {
       "id": "IMP002-PERSIST-20",
       "status": "PASS",
-      "seconds": 1.051,
+      "seconds": 1.211,
       "evidence": {
         "server_and_function_validation": true,
         "unicode_preserved": true,
@@ -182,7 +184,7 @@
     {
       "id": "IMP002-PERSIST-21",
       "status": "PASS",
-      "seconds": 0.288,
+      "seconds": 0.261,
       "evidence": {
         "capacity_and_safe_integer_rejected": true
       }
@@ -190,7 +192,7 @@
     {
       "id": "IMP002-PERSIST-22",
       "status": "PASS",
-      "seconds": 0.71,
+      "seconds": 0.655,
       "evidence": {
         "rollback_points": 6,
         "full_row_identity": true
@@ -199,18 +201,18 @@
     {
       "id": "IMP002-PERSIST-23",
       "status": "PASS",
-      "seconds": 7.104,
+      "seconds": 4.707,
       "evidence": {
         "fresh_process": true,
         "database_restart": true,
         "independent_database_restore": true,
-        "full_rows_sha256": "77f206d2582b25dd2eb48bc3c193b7361221543bd39e24c74fea572503a26d1d"
+        "full_rows_sha256": "c1006c709ddb59b3f750ac67322c8b9fe6880cb3db10695cce8c28bca0e0117a"
       }
     },
     {
       "id": "IMP002-PERSIST-24",
       "status": "PASS",
-      "seconds": 0.152,
+      "seconds": 0.15,
       "evidence": {
         "real_restricted_logins": 3,
         "dml_helper_role_schema_denials": true
@@ -219,7 +221,7 @@
     {
       "id": "IMP002-PERSIST-25",
       "status": "PASS",
-      "seconds": 0.228,
+      "seconds": 0.272,
       "evidence": {
         "row_lock_delete_serialization": true,
         "no_recreation": true
@@ -228,7 +230,7 @@
     {
       "id": "IMP002-PERSIST-26",
       "status": "PASS",
-      "seconds": 1.452,
+      "seconds": 1.453,
       "evidence": {
         "real_lock_timeout_sqlstate": "55P03",
         "real_deadlock_sqlstate": "40P01",
@@ -239,7 +241,7 @@
     {
       "id": "IMP002-PERSIST-27",
       "status": "PASS",
-      "seconds": 0.155,
+      "seconds": 0.214,
       "evidence": {
         "no_ttl_replay_identity": true
       }
@@ -247,7 +249,7 @@
     {
       "id": "EXEC-SESSION-LOCK-EXPIRY",
       "status": "PASS",
-      "seconds": 0.61,
+      "seconds": 0.706,
       "evidence": {
         "expiry_and_session_match": true,
         "revocation_waits_for_share_lock": true,
@@ -258,7 +260,7 @@
     {
       "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
       "status": "PASS",
-      "seconds": 0.115,
+      "seconds": 0.13,
       "evidence": {
         "restricted_gateway_confinement": true
       }
@@ -266,7 +268,7 @@
     {
       "id": "EXEC-CANONICAL-DIGEST-VECTORS",
       "status": "PASS",
-      "seconds": 0.102,
+      "seconds": 0.09,
       "evidence": {
         "node_postgresql_vectors": 3,
         "altered_digest_denied": true
@@ -275,18 +277,18 @@
     {
       "id": "EXEC-PROCESS-RESTART-RESTORE",
       "status": "PASS",
-      "seconds": 6.245,
+      "seconds": 4.337,
       "evidence": {
         "fresh_process": true,
         "database_restart": true,
         "independent_database_restore": true,
-        "full_rows_sha256": "877e93171015b39d38edb9ef8439855e9071eba2bdac88df5791369534190df5"
+        "full_rows_sha256": "3c798a1b5b55993608dc6a46daeca6a05441a2bb1c1b7e480ecd4e228a7f530e"
       }
     },
     {
       "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
       "status": "PASS",
-      "seconds": 0.333,
+      "seconds": 0.312,
       "evidence": {
         "missing_lock_prerequisites_sqlstate": "42501",
         "grants_restored_lock_succeeds": true,

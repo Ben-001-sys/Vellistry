@@ -98,8 +98,8 @@ same-book replay duplication; book deletion ends that book's identity lifetime.
 The [acceptance matrix](evidence/VEL-TASK-0052/acceptance-results.json) contains all
 **27 original cases plus five extensions:32PASS**. Original Task0049 case bytes and
 historical NOT_RUN statuses are unchanged; actual outcomes are separate evidence.
-Current database-code source: `5f8e0254c8664dafeb6d74b05e1465d848d14281`. Current run ID:
-`6cf33351aa624104ba28def20b034560`. Initial run3f1b78/3b557ec below is historical, not final-head evidence.
+Current database-code source: `5887db7525b2f37619d562345a1970b6ca8304ac`. Current run ID:
+`2d2b081ca9d64a07850f7751f8400774`. Initial run3f1b78/3b557ec below is historical, not final-head evidence.
 
 Actual engine: PostgreSQL17.11, x86_64-pc-linux-musl, Alpine GCC15.2.0.
 Pinned image:
@@ -211,9 +211,9 @@ Docker settings. Run d7c24c was BLOCKED before any case because pg_isready obser
 the official image's temporary init socket before shutdown. Readiness now waits for
 the final127.0.0.1 TCP listener; its regression guard is included in the focused suite.
 
-Final corrected acceptance:32PASS at the source/run in the current matrix, including
+First corrected checkpoint:32PASS at5f8e025/6cf333; current acceptance is the matrix below, including
 two real post-reconciliation races and identical owned cleanup with deliberately
-conflicting local-only inherited Docker settings. Final focused tests:10PASS. Renewed
+conflicting local-only inherited Docker settings. First corrected focused suite:10PASS. Renewed
 builds at ea83e7d and final typechecks pass; shipping application files/dependencies
 are byte-identical to that build. The41workspace/67Library/23preflight source assets
 are unchanged from their recorded successful run; final ready CI reruns applicable
@@ -221,3 +221,24 @@ checks. All before-fix failures and all BLOCKED attempts remain in raw evidence.
 Final exact-head review/CI references will be in PR115's external ledger. No immutable
 pack, original Task49 evidence, production routes/Auth/dependencies/CI or hosted
 scope changed. Separate owner feature merge remains required.
+
+
+## Second independent exact-head review and correction
+
+A new trusted read-only review at1cfa08fcfb414534e7d81f5e6513889cfa039c30 independently
+reproduced two remaining P2 issues: array-valued outcome/reason could pass String
+coercion and release an unknown lock; rejected terminal receipts did not raise the
+observed-version floor. Original review output/metadata is preserved. Atb70222d,
+new regressions demonstrate10PASS/2FAIL before correction. Fix5887db7 requires real
+string enums and updates the floor for every valid terminal receipt, while preserving
+the pending-object identity guard. The actual database rejection case now also
+corrupts a persisted rejection's reason and checks apply/lookup floor enforcement.
+
+Current evidence:12focused tests PASS, fresh API/web builds/typechecks PASS, and
+32genuine PostgreSQL17 cases PASS at the current matrix source. Run2d2b081ca9d64a07850f7751f8400774
+verifies the new subcases plus all original recovery/privilege/concurrency checks,
+with conflicting local-only Docker environment values and verified owned cleanup.
+All12current CPU tests are local execution evidence, not newly added automatic CI.
+Final exact-head source review and actual ready-state CI remain required and are
+recorded in PR115's ledger after final SHA publication. No new scope/amended pack,
+Auth/shipping SQL/dependency/workflow changes, hosted activity or feature merge.
