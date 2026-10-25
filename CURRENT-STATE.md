@@ -3,26 +3,24 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-24
+updated_at: 2026-10-25
 owner: project_owner
 version: 0.2.2
 ---
 
 # Vellistry — current verified state
 
-## Disposable persistence experiment — 2026-10-24
+## Protected persistence integration readiness — 2026-10-25
 
-FACT: PR112/114 merged with exact reviewed-tree equality; post-main40132823005/
-40133719513 SUCCESS. Main47de4306bc3fe963afc1aabbf3cebba217f3b24b contains the
-owner-reviewed Task0052 four-path LOCAL SQL record. SQL privilege CI skip is not acceptance.
-
-Task0052/CP0052 adds an unregistered Nest service and disposable PG17.11 private
-capability. Actual27original+5extension cases PASS, with verified owned cleanup.
-[Report](docs/reports/VEL-IMP002-DISPOSABLE-PERSISTENCE-0052.md). Original Task49
-cases remain historical NOT_RUN. Distinct final review/CI and separate owner feature
-merge pending. No production route/Auth/CI/dependency/migration or hosted change;
-synthetic sessions do not establish Supabase logout. Broad gates unchanged;
-remediation delegation EXPIRED. Issue108 stays OPEN.
+FACT: PR115 merged at c577cc5ecf5fb92fda63977bade60ce4cf2d45df with exact
+reviewed-tree equality; [post-main40184254095](https://github.com/Ben-001-sys/Vellistry/actions/runs/40184254095) SUCCESS.
+Task52's unregistered PG17 experiment passed27original+5extensions; historical
+[report](docs/reports/VEL-IMP002-DISPOSABLE-PERSISTENCE-0052.md) and independent
+runtime BLOCKED preserved. Task0054/CP0054 prepares real-principal/session,
+gateway, packaging and reconciliation [decisions](docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md),
+all separately reserved; no hosted/Auth/SQL/route implementation. Task0053 CI coverage
+is a separate candidate. Owner successor merges pending; synthetic sessions are not
+hosted logout acceptance. Broad gates unchanged; delegation EXPIRED; Issue108 OPEN.
 
 ## Historical query preparation — 2026-10-24
 

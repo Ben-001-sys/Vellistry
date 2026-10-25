@@ -1,0 +1,119 @@
+{
+  "id": "VEL-SUPABASE-WORKSPACE-READINESS-0054",
+  "status": "PROPOSAL_ONLY",
+  "task_id": "VEL-TASK-0054",
+  "base_commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+  "owner_merge": "PENDING",
+  "target": {
+    "name": "vellistry-dev",
+    "reference": "lflkcrnriitrbclangyr",
+    "organization": "pulyacnozzggwfgqdgdl",
+    "region": "eu-west-2",
+    "observation": "Historical owner-confirmed metadata only; no current target inspection"
+  },
+  "hosted_queries_executed": false,
+  "credentials_obtained": false,
+  "production_routes_registered": false,
+  "shipping_sql_paths": [],
+  "metadata_packet_sha256": "dbae331cd58a7c5524d77fda8380233f19c25b3d0e8520a4b984bc3d58db4f08",
+  "sources": [
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.service.ts",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "e2ddcdf05608019b3d5aa22e94113a9816731bbf5f870c62071f4f831e0097e5"
+    },
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.guard.ts",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "e0dbe26a885ba14d7f15ec6c4401b1ad51ae49c2d4386d784e56820870979474"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-principal.ts",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "dd7ef61f110b7863638720a3d686550a94a3ee6b423543224ec2d7c183bad272"
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace.service.ts",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "670621f4867e43b6391dde6afb75ecf8596ea8e24365385a18473e3e259e72d4"
+    },
+    {
+      "path": "apps/web/src/app/api/books/route.ts",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "bbb830fd18e318097853f3b3009d194070cd5509648a980f669f768d51a06208"
+    },
+    {
+      "path": "docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "154ca1697a4cda5d8efbb71a0662efdf1ab7d11ef9c25313cf867229062ac90b"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "c87b2e8825663ce9b6a6c3f82c9ea3e791fdcb3225ed4bc4b9064e96366a5749"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-HOSTED-METADATA-0046/query-manifest.json",
+      "commit": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+      "sha256": "14d638f3bdd5a418b7b5faa1e3d517f3e1e21681b1a921b63c492fe73b0fb4de"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "PRINCIPAL",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "Reuse existing server-side SupabaseAuthService/guard. Verify exact bearer token with existing Auth; derive subject/session_id/expiry from cryptographically verified claims bound to the same token. Never trust decoded-only claims, headers, user_metadata, a caller-selected session or body author. Request-isolated immutable principal, pre/post async verification.",
+      "decision_required": "Select existing-SDK verified-claims binding and failure mapping after local tests; no Auth replacement or dependency change.",
+      "acceptance": "Wrong subject/session, expired/future/stale proof, mismatched token, malformed UUID, concurrent requests cannot cross-contaminate."
+    },
+    {
+      "id": "SESSION",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "A valid JWT/getUser alone does not establish an active writable session. Missing or unproven session must fail closed. Check matching session/user and expiry after lock acquisition, before book lock and operation commit.",
+      "decision_required": "Owner/provider review is required before any real auth.sessions UPDATE(id) or locking grant. Evaluate managed-schema row-lock compatibility versus separately designed app-owned revocation registry; no option is approved here. Define inactivity/not_after semantics, clock policy, timeouts and revoke/commit linearization.",
+      "acceptance": "Local/global/others logout, password/user revocation, expired sessions and cleanup lag, revoke-before-lock and revoke-after-lock, provider outage, refresh/key rotation, pool reuse. Hosted synthetic users/JWT probes need separate target authorization."
+    },
+    {
+      "id": "GATEWAY",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "Private server-only SQL capability executes named entry points; no broad author-table writes, browser SQL credentials, service-role author path or public Data API RPC. NOLOGIN/NOBYPASSRLS function/lock owners remain experimental.",
+      "decision_required": "Choose reviewed connection/pool/TLS/secret provisioning channel and exact role membership, scoped default ACL/ownership/search_path/RLS after metadata review. Never provision credentials now.",
+      "acceptance": "Deny direct DML/TRUNCATE/REFERENCES/TRIGGER, role escalation and helper calls; verify forced RLS and cross-author/book isolation through each entry point and reused connections."
+    },
+    {
+      "id": "PACKAGING",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "The four local SQL fixtures are not shipping migrations; preserve both operative migrations and separately retained third proposal.",
+      "decision_required": "Shipping SQL paths UNALLOCATED. First review sanitized metadata via the existing15-query packet, then exact migration names/content and a separate reviewed-base owner SQL-path record before a new executable task. No third-migration deployment approval follows from this packet.",
+      "acceptance": "Exclude synthetic auth.users/auth.sessions definitions, fixture users/passwords, fixture_probe/test_fault hooks and fixture-wide default ACL modifications; atomic function ownership/revoke setup and rollback/upgrade from both operative migrations."
+    },
+    {
+      "id": "RECONCILIATION",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "Retain owner+book+operation idempotency identity, request hash, receipts and minimum-version owned readback. Unknown outcomes cannot become definite failures or new-key retries. Process-local pending state does not survive browser/server restart.",
+      "decision_required": "Choose a durable per-author/book operation outbox with data-minimal metadata and explicit retention/privacy/encryption decision for any note payload; preserve book-lifetime server journal and rejection receipts. No unreviewed in-progress committed row or TTL.",
+      "acceptance": "Lost ACK after commit, unknown-not-found, same key/different hash, restart/restore, multi-instance concurrency, stale reads/receipts, account switch and cancellation do not duplicate or leak operations."
+    },
+    {
+      "id": "TRANSPORT",
+      "status": "OWNER_DECISION_PENDING",
+      "required_contract": "Preserve current Next BFF verified-token forwarding and Nest verification, no-store responses and identity isolation; workspace service remains unregistered.",
+      "decision_required": "Future production controller/routes require separately scoped owner authorization after principal/session/gateway/reconciliation decisions. Define bounded body parsing, validation/errors/unknown acknowledgements, request-scoped provider and adapter lifetime. Do not register a route in this task.",
+      "acceptance": "Cross-book routes, forged ownership, pre/post identity switch, upstream partial body/timeouts, no-store caching, rate/body limits, keyboard/focus existing UI behavior and manuscript/revision invariance."
+    }
+  ],
+  "next_local_task": {
+    "status": "PROPOSED_NOT_AUTHORIZED",
+    "title": "Real-principal binding adapter contract with injected verified Auth responses only",
+    "paths": [
+      "apps/api/src/modules/workspace/workspace-principal-adapter.ts",
+      "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts"
+    ],
+    "requirements": [
+      "New unique task and immutable pack before code; owner chooses token-to-verified-claims binding API under frozen SDK",
+      "No network, credentials, production registration, SQL or managed-session grants",
+      "Synthetic verified-response tests cover wrong subject/session/token, expiry/freshness, concurrent request isolation and fail-closed provider errors",
+      "Still cannot establish real revoked-session enforcement or authorize workspace writes until managed-session decision reviewed"
+    ]
+  }
+}
