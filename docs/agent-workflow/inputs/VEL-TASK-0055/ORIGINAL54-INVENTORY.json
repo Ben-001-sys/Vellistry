@@ -1,0 +1,100 @@
+{
+  "original_pr": 116,
+  "head": "3ea34b518b4e5d6fac6b4051389dac51c2af9272",
+  "base": "c577cc5ecf5fb92fda63977bade60ce4cf2d45df",
+  "archive_ref": "codex/archive-pr116-task0054-3ea34b5",
+  "original_executor": "Codex",
+  "new_executor": "Codex",
+  "source_commits": [
+    "6fa1cb3c6dd4aba2ae732ab6664e455a9e327ee1",
+    "c61fc0567bb6febb2c55564bce85617a8e6940a8",
+    "57222edaaf29d203cee3f69d0de7045e18ba6627",
+    "3ea34b518b4e5d6fac6b4051389dac51c2af9272"
+  ],
+  "paths": [
+    {
+      "path": "CURRENT-STATE.md",
+      "git_blob": "9ed0a0b3b942ea51c0da32206ea6168b23baec33",
+      "sha256": "6c732942594f3fa037e7336b0696701c44a9870a5d74ada2a8e48bb32e6ae9d2",
+      "disposition": "historical snapshot in new task inputs",
+      "destination": "docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-CURRENT-STATE.md"
+    },
+    {
+      "path": "docs/agent-workflow/PR-COMPLIANCE.yaml",
+      "git_blob": "6f2bf9df547aadb57062c197dd0965db4f61473b",
+      "sha256": "1450613fdd3fa4f60ea7456daf537a044ddb50d6887757412e593c3ca44c95b5",
+      "disposition": "historical snapshot in new task inputs",
+      "destination": "docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-PR-COMPLIANCE.yaml"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0054.md",
+      "git_blob": "91a613dd368238f63cc54e9f8de0de1b8e9f83c9",
+      "sha256": "6188e07a67c45abfb888349fa9da3232b046c8bb5374ca8b6de2a7e283604672",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/agent-workflow/context-packs/VEL-CP-0054.md"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0054.md",
+      "git_blob": "8cef0df7da92e6fd458ca5253c1474cad53ea1c8",
+      "sha256": "8ae82e2773da001fe1cb6fcad99560b50b7b327f23501c338f99f72f15ff5c03",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/agent-workflow/execution-bundles/VEL-EB-0054.md"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0054/OWNER-SCOPE.md",
+      "git_blob": "d5cca086e626e7898cd5e54474877d7cc796e2a5",
+      "sha256": "1d1a4f0072b2d9f85b380a8cb7b8af0b9dd91730dfebe64f0963e8b735cc2c62",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/agent-workflow/inputs/VEL-TASK-0054/OWNER-SCOPE.md"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-SUPABASE-WORKSPACE-READINESS-0054.json",
+      "git_blob": "a964e42067da33e4b3662d6d04adf81088d9a05b",
+      "sha256": "37af89741613bd4b77056fea501938561f1eea39baebf753f04f61c4c37ce2d4",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/agent-workflow/proposals/VEL-SUPABASE-WORKSPACE-READINESS-0054.json"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0054.yaml",
+      "git_blob": "66a775115b84649ad98e0d2bcc5ca10a44332ff8",
+      "sha256": "b7bf0d1c10cd88c0e5ce2bddef97ca123af88a3660dc40f78762e7525bd9439c",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/agent-workflow/tasks/VEL-TASK-0054.yaml"
+    },
+    {
+      "path": "docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md",
+      "git_blob": "e79d87819c8c300288af91251bf1624d7ea8b137",
+      "sha256": "49c4220112a3e8e5512f07a7f8784ba6ab000193ef1b7fab142f00a7dc1732ee",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0054/metadata.txt",
+      "git_blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/reports/evidence/VEL-TASK-0054/metadata.txt"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0054/packet-integrity.json",
+      "git_blob": "ca96de64fb32f07625d8c63ff1c2cca53b11b52a",
+      "sha256": "84bec392683a3bd7982cb1c4bb9c7f00aa2f00547e12a42702f0c49f31158e1e",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/reports/evidence/VEL-TASK-0054/packet-integrity.json"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0054/readiness.txt",
+      "git_blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/reports/evidence/VEL-TASK-0054/readiness.txt"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0054/traceability.txt",
+      "git_blob": "9e33ebab684d8b9bbc38e7a9f8438de99fbfc1dd",
+      "sha256": "841d7d51e3519d10cd1c021082c02b85421ce1ebd48f615c335da901891a5900",
+      "disposition": "exact canonical preservation after CP55",
+      "destination": "docs/reports/evidence/VEL-TASK-0054/traceability.txt"
+    }
+  ]
+}

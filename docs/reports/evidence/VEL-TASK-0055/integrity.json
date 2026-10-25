@@ -1,0 +1,16 @@
+{
+  "source_commit": "ce292f1d4a2e912fb8c764d3c86eb26d651b3405",
+  "command": "Inline offline exact source/pack/query/decision/scope/workflow integrity checks",
+  "exit_code": 0,
+  "status": "PASS",
+  "original_paths": 12,
+  "canonical_blobs": 10,
+  "archived_snapshots": 2,
+  "source_hashes": 8,
+  "query_hashes": 15,
+  "packs_validated": 2,
+  "positive_integrity": 1,
+  "negative_mutations": 14,
+  "mandatory_ci_unchanged": true,
+  "limitation": "Offline integrity and synthetic document attacks, not real Auth/JWT/hosted verification"
+}
