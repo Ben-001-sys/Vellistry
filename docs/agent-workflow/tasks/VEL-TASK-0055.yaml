@@ -1,0 +1,104 @@
+id: VEL-TASK-0055
+title: Reconcile PR116 on mandatory persistence CI base preserving Task54 sources
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0055
+objective: Linear current-main PR116 provenance reconciliation and proposed smallest synthetic principal-binding
+  dispatch, no feature implementation or security approval
+in_scope: &id001
+- docs/agent-workflow/context-packs/VEL-CP-0054.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0054.md
+- docs/agent-workflow/inputs/VEL-TASK-0054/OWNER-SCOPE.md
+- docs/agent-workflow/proposals/VEL-SUPABASE-WORKSPACE-READINESS-0054.json
+- docs/agent-workflow/tasks/VEL-TASK-0054.yaml
+- docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md
+- docs/reports/evidence/VEL-TASK-0054/metadata.txt
+- docs/reports/evidence/VEL-TASK-0054/packet-integrity.json
+- docs/reports/evidence/VEL-TASK-0054/readiness.txt
+- docs/reports/evidence/VEL-TASK-0054/traceability.txt
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0055.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0055.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0055.md
+- docs/agent-workflow/inputs/VEL-TASK-0055/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PR116-RECONCILIATION-0055.md
+- docs/reports/evidence/VEL-TASK-0055/*
+- docs/agent-workflow/proposals/VEL-IMP002-PRINCIPAL-BINDING-HANDOFF-0055.json
+out_of_scope:
+- Original Task54/CP54/EB54/packet/report/evidence modification
+- Application/Auth/SQL/dependency/CI/control implementation
+- PR116 merge; hosted/credential/JWT/private/paid/deployment/settings and broad gate promotion
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0055/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-INVENTORY.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-PR-COMPLIANCE.yaml
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-PACKET.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0055/ORIGINAL54-REPORT.md
+  role: governing-source
+source_gaps:
+- id: HOSTED-UNVERIFIED
+  limitation: No target catalog/session/JWT/privilege observation. Historical metadata and query
+    hashes are preserved, not hosted acceptance.
+deliverables:
+- New Task/committed validated immutable CP55 before adoption
+- Exact all-path source disposition, old active snapshots preserved, new-base manifest and EB55
+- Proposed local adapter task specification only, six existing security decisions remain pending
+- Offline preservation/hash/negative checks, distinct final source review, actual ready CI on unchanged
+  mandatory12/32 pipeline; owner separate merge
+acceptance_criteria:
+- All12originalPR116 paths inventoried;10canonical blobs and2archived snapshots byte-identical, source
+  commits reachable through non-overwriting remote archive
+- New change_base exact fd85deb9a31af8663c85977df896e79b0e370eec and linear range; new CP before
+  operative adoption; no standing control change
+- All8source hashes and15query hashes retain exact original values; six decisions OWNER_DECISION_PENDING,
+  target observations unverified
+- New smallest local adapter dispatch uses injected synthetic verified Auth responses, exact two
+  proposed files, request isolation/token binding and fail-closed negative cases; NOT_AUTHORIZED,
+  no code/privileges/routes/SQL
+- Old independent runtime remains BLOCKED; current readyCI including mandatory12unit+32PG and security/recovery
+  must actually pass; do not relabel historical results
+- Archive first, only expected-old-head lease PR116 ref replacement after source review/checks; stop
+  on drift; PR116 never auto-merged
+allowed_actions:
+- Read pinned sources and adopt only exact inventoried blobs after immutable pack commit
+- Write scoped reconciliation/report/proposed dispatch/current-state and evidence
+- Use frozen tooling for offline integrity, metadata/governance and actual CI; distinct trusted read-only
+  Codex review
+- Preserve old archive and original local worktree; publish only PR116 branch through expected-old-head
+  lease after review, promote ready and verify final head
+approval_required_for:
+- PR116 merge, principal adapter implementation or unresolved security choice
+- Any hosted/Auth/SQL/CI/dependency/scope change and externally sensitive operations
+compliance:
+  change_base: fd85deb9a31af8663c85977df896e79b0e370eec
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6396942291
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
