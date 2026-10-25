@@ -1,0 +1,16 @@
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\api
+> tsc --noEmit -p tsconfig.json
+
+src/modules/workspace/workspace-principal-adapter.spec.ts(204,60): error TS2352: Conversion of type '{ getUser?: undefined; getClaims?: undefined; } | { getUser: () => Promise<{ data: { user: { id: string; email: string; user_metadata: { sub: string; }; }; }; error: null; }>; getClaims?: undefined; } | { ...; } | null' to type 'MockSupabaseAuthClient' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ getClaims: () => Promise<{ data: { claims: { sub: string; session_id: string; exp: number; role: string; }; header: { alg: string; }; signature: Uint8Array<ArrayBuffer>; }; error: null; }>; getUser?: undefined; }' is not comparable to type 'MockSupabaseAuthClient'.
+    Types of property 'getUser' are incompatible.
+      Type 'undefined' is not comparable to type '(token: string) => Promise<unknown>'.
+H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @vellistry/api@0.0.1 typecheck: `tsc --noEmit -p tsconfig.json`
+Exit status 2
+ ELIFECYCLE  Command failed with exit code 2.

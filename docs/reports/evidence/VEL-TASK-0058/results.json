@@ -1,0 +1,44 @@
+{
+  "source_commit": "2fffad89d0b0ced568f90adcb38b59ec297b35d0",
+  "governance_exit": 0,
+  "governance_counts": [
+    284,
+    18,
+    20,
+    14,
+    12,
+    8,
+    18,
+    12,
+    20,
+    17
+  ],
+  "governance_total": 423,
+  "mandatory_adapter_cases": 36,
+  "old_adapter_cases_retained": 18,
+  "new_bridge_cases": 18,
+  "historical_failures": [
+    {
+      "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "exit_code": 1,
+      "evidence": "docs/reports/evidence/VEL-TASK-0058/before-bridge.txt",
+      "cause": "Test-first missing bridge module"
+    },
+    {
+      "command": "same focused spec command",
+      "exit_code": 1,
+      "tests": 36,
+      "passed": 35,
+      "failed": 1,
+      "evidence": "docs/reports/evidence/VEL-TASK-0058/adapter-initial.txt",
+      "cause": "Mock helper default converted explicit undefined into successful response; corrected test injects value directly"
+    },
+    {
+      "command": "corepack.cmd pnpm check",
+      "exit_code": 2,
+      "evidence": "docs/reports/evidence/VEL-TASK-0058/check-initial.txt",
+      "cause": "Intentional malformed mock-client cast needed unknown intermediary; corrected tests"
+    }
+  ],
+  "historical_source_state": "Initial failures ran on uncommitted candidate at CP58 head; no immutable failed-tree SHA was recorded or inferred. Bridge implementation was unchanged by harness correction. Corrected/pinned source is explicit above."
+}

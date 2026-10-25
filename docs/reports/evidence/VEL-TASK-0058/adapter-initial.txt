@@ -1,0 +1,79 @@
+✔ PB-01: valid synthetic same-token proof yields the existing immutable principal shape (2.3994ms)
+✔ PB-02: invalid tokens deny without consulting the injected verifier (0.3326ms)
+✔ PB-02: rejected, throwing and malformed verifier dependencies fail closed (0.2588ms)
+✔ PB-02: malformed proofs never fall back to caller or decoded identity (0.7055ms)
+✔ PB-02: accessors and inherited fields are not accepted as verification data (0.2838ms)
+✔ PB-03: verified user, subject and session must be valid matching UUID identities (0.4415ms)
+✔ PB-04: expiry is integral JWT seconds and cannot be coerced or overflow milliseconds (0.3384ms)
+✔ PB-04: existing freshness boundary is preserved without future-skew tolerance (0.3382ms)
+✔ PB-04: invalid, throwing or regressing injected clocks deny (0.307ms)
+✔ PB-05: separate requests and reversed async completions cannot exchange authors (0.3089ms)
+✔ PB-05/PB-07: overlapping calls on one provider pin identity at first valid completion (0.178ms)
+✔ PB-06: caller token reassignment and verifier method replacement do not redirect an existing provider (0.1934ms)
+✔ PB-06/PB-07: same-token correlation, author, session or expiry changes deny (0.8385ms)
+✔ PB-07: an async response is denied if its token expires during verification (0.1755ms)
+✔ PB-07: an async response is denied when its verification becomes stale (0.1316ms)
+✔ PB-07: proof snapshots and returned principals cannot be mutated across requests (0.1253ms)
+✔ PB-07: errors and rejected proofs never clear a previously bound identity (0.2074ms)
+✔ PB-08/PB-09: successful binding uses only injected synthetic responses, never a network fallback (0.4319ms)
+✔ SB-01: complete SDK-shaped responses compose into the existing frozen principal (0.6979ms)
+✔ SB-02: both injected operations receive exactly the same explicit token and no options (0.2371ms)
+✔ SB-03: invalid tokens and incomplete clients deny without a session or network fallback (0.2131ms)
+✔ SB-04: either SDK error, including falsy non-null errors, rejects the whole proof (0.7122ms)
+✖ SB-05: missing, partial and malformed SDK responses fail closed (1.7008ms)
+✔ SB-06: contradictory subjects and invalid session or expiry cannot produce a proof (0.6672ms)
+✔ SB-07: required accessors and inherited response data are rejected without invoking them (0.2458ms)
+✔ SB-08: claims may complete before user without mixing or trusting metadata (15.3924ms)
+✔ SB-09: the user response is snapshotted before a later claims response (2.8201ms)
+✔ SB-10: early claims and returned proof are immutable snapshots (3.3975ms)
+✔ SB-11: reversed completions for concurrent authors stay request-isolated (0.9649ms)
+✔ SB-12: thrown/rejected clients never yield partial proof or unhandled fallback (0.531ms)
+✔ SB-13: expiry is checked after both async responses (0.7248ms)
+✔ SB-14: waiting cannot launder stale verification into a fresh timestamp (1.7773ms)
+✔ SB-15: invalid or regressing clocks deny after asynchronous composition (1.1262ms)
+✔ SB-16: token reassignment/method replacement cannot redirect an in-flight bridge request (0.352ms)
+✔ SB-17: composition preserves existing immutable session binding and does not cache proofs (0.3087ms)
+✔ SB-18: SDK-shaped composition never calls fetch/getSession or initializes a real client (0.2474ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 35
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 455.2681
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-principal-adapter.spec.ts:215:1
+✖ SB-05: missing, partial and malformed SDK responses fail closed (1.7008ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   claims: {
+  +     exp: 200,
+  +     session_id: '11111111-1111-1111-1111-111111111111',
+  +     sub: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+  +   },
+  +   token: 'synthetic-token-A',
+  +   userId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+  +   verifiedAt: 100000
+  + }
+  - null
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\api\src\modules\workspace\workspace-principal-adapter.spec.ts:217:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { token: 'synthetic-token-A', userId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', claims: { sub: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', session_id: '11111111-1111-1111-1111-111111111111', exp: 200 }, verifiedAt: 100000 },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

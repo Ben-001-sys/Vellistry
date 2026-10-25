@@ -1,0 +1,12 @@
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-supabase-response-bridge\apps\web
+> tsc --noEmit
+
