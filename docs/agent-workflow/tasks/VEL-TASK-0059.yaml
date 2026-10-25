@@ -1,0 +1,103 @@
+id: VEL-TASK-0059
+title: Prepare real Supabase principal verification boundary decision packet
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0059
+objective: Prepare source-pinned real-principal boundary requirements and smallest proposed local
+  policy test task, no Auth implementation or security decision approval
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0059.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0059.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0059.md
+- docs/agent-workflow/inputs/VEL-TASK-0059/*
+- docs/agent-workflow/proposals/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.json
+- docs/reports/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.md
+- docs/reports/evidence/VEL-TASK-0059/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- All app/Auth/dependency/CI/SQL/RLS/grant/route implementation
+- Hosted/credential/real Auth/JWT/signing/JWKS/users/private/paid/deployment/settings operations
+- Production decision resolution or automatic PR merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.guard.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-SUPABASE-WORKSPACE-READINESS-0054.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0059/SDK-BOUNDARY-SOURCES.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0059/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: TARGET-UNVERIFIED
+  limitation: Target signing mode, issuer/audience, deployed Auth/session semantics and catalog remain
+    unobserved; no real token experiment permitted.
+deliverables:
+- Committed validated immutable Task59/CP59 before packet
+- Exact source/hash observations, three-evidence distinction and same-token trust/policy/session
+  requirements
+- Owner-decision table and implementation-ready local-only next Task proposal with exact paths/negative
+  tests, NOT_AUTHORIZED
+- Actual offline integrity/metadata/governance evidence, EB/provenance and distinct review; preparation
+  PR for separate owner merge
+acceptance_criteria:
+- Reverify merged-tree/post-main success,36/12/32 mandatory and unchanged, preserveTask58/CP58/EB58/failures/blocked
+  runtime
+- Analyze pinned SDK local signature/fallback/error/cache and existing Auth user-only/guard/bridge
+  limits with exact source references, no broad live claims
+- Require same exact token and subject/session/exp binding, trusted configuration/issuer/audience/claim
+  schema and fail-closed errors; identify unresolved owner values without choosing production policy
+- Explicitly distinguish cryptographic integrity, Auth-server identity and authoritative session/revocation/atomic
+  write gating; no getUser/getClaims success conflation
+- Recommend smallest unregistered local policy contract harness using injected mocks, exact two proposed
+  app paths and negative cases; no app/Auth implementation now
+- All six decisions OWNER_DECISION_PENDING, target UNVERIFIED, next TaskID unallocated/NOT_AUTHORIZED;
+  separate owner scope before new code
+- Run source/hash/packet integrity positives/negatives, metadata/readiness/traceability/trusted-base
+  validation; distinct completed-head review and actual applicable readyCI, no merge
+allowed_actions:
+- Read Git/public official docs/frozen SDK source only; commit/validate immutable pack before preparation
+  docs
+- Write only scoped packet/report/evidence/current-state and workflow artifacts; offline assertions
+  and inherited actual CI
+- Submit Draft, obtain distinct trusted source review, promote Ready and record exact-head CI; no
+  merge
+approval_required_for:
+- Any real principal/Auth/hosted/SDK/JWT/security implementation or production choice
+- Any app/CI/SQL/dependency/scope change or new PR merge
+compliance:
+  change_base: acf7f796014907cc08dfc25ccab5763caa002d1b
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6399215201
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
