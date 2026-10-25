@@ -1,0 +1,107 @@
+id: VEL-TASK-0061
+title: Prepare bounded real Auth identity decision and implementation handoff
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0061
+objective: Prepare production identity policy decisions and smallest additive existing-Auth
+  service handoff, without code or live verification
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0061.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0061.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0061.md
+- docs/agent-workflow/inputs/VEL-TASK-0061/*
+- docs/reports/VEL-REAL-AUTH-HANDOFF-0061.md
+- docs/reports/evidence/VEL-TASK-0061/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- All app/Auth/dependency/CI/SQL/RLS/grant/route implementation
+- Hosted/credential/real Auth/JWT/signing/JWKS/users/private/paid/deployment/settings
+  operations
+- Production decision resolution or automatic PR merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.guard.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-verification-policy.ts
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0059/SDK-BOUNDARY-SOURCES.md
+  role: governing-source
+- path: docs/reports/VEL-SYNTHETIC-CLAIM-POLICY-0060.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0061/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: TARGET-UNVERIFIED
+  limitation: Target signing mode, issuer/audience, deployed Auth/session semantics
+    and catalog remain unobserved; no real token experiment permitted.
+deliverables:
+- Unique Task and committed validated immutable CP before preparation edits
+- Bounded real-Auth policy decisions, trust/failure/same-token and active-session
+  evidence contract
+- Smallest separately authorizable existing-service additive method/spec handoff;
+  no new implementation layer or scope implied
+- Actual source/scope/metadata/readiness/traceability/pack/compliance evidence, EB
+  and distinct completed-head review/actual CI; separate owner merge
+acceptance_criteria:
+- Verify PR122 merged tree/post-main and mandatory52/12/32; preserve all Task60/CP60/EB60
+  failures/history
+- Reuse pinned Task59 SDK observations and Task60 acceptance limits, no repeated research
+  or runtime claims
+- Separate trusted signer verification, Auth-server user identity and writable-session
+  authority; no conflation
+- Specify non-secret endpoint/issuer/aud/role/key policy owner choices; no invented
+  target observations or production defaults
+- Specify same-token user+claims/errors/freshness and reuse existing Auth service/guard
+  contracts, fixture-only helper not production reuse
+- Propose exact minimal existing Auth service/spec paths and negative tests, no implementation/client/network/JWT/SQL/routes
+  authorized
+- Identify source/catalog/provider/race evidence for session choice without selecting
+  privileges; N12 and independent runtime BLOCKED
+- All six decisions pending; validate source/hash/scope/metadata/governance records;
+  distinct review/actual readyCI; no auto merge
+allowed_actions:
+- Read pinned repository/source evidence, prepare scoped documents after committed
+  validated immutable pack
+- Run offline document/source assertions and validators; inherit mandatory actual
+  CI, no live operations
+- Publish Draft, distinct trusted source review, promote Ready/verify exact-head CI;
+  no merge
+approval_required_for:
+- Any real principal/Auth/hosted/SDK/JWT/security implementation or production choice
+- Any app/CI/SQL/dependency/scope change or new PR merge
+compliance:
+  change_base: db3c7e92375c984f2730e720b1a23cadb5437934
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6401384767
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
