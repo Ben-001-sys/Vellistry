@@ -1,0 +1,8 @@
+{
+  "command": "python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+  "source_commit": "5f8e0254c8664dafeb6d74b05e1465d848d14281",
+  "exit_code": 0,
+  "seconds": 48.76,
+  "inherited_environment": "Conflicting unreachable-loopback Docker host and nonexistent context; no remote daemon configured",
+  "synthetic_verification_age_ms": 1000
+}

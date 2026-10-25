@@ -1,15 +1,15 @@
 {
   "task": "VEL-TASK-0052",
   "kind": "actual-disposable-PostgreSQL17",
-  "source_commit": "3b557ec1a00feeb91e640d0611adf40360a4b506",
-  "runtime_run_id": "3f1b78dd3ff34440800df8ac43933b1a",
+  "source_commit": "5f8e0254c8664dafeb6d74b05e1465d848d14281",
+  "runtime_run_id": "6cf33351aa624104ba28def20b034560",
   "postgres_version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
   "image": "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb",
   "cases": [
     {
       "id": "IMP002-PERSIST-01",
       "status": "PASS",
-      "seconds": 0.185,
+      "seconds": 0.39,
       "evidence": {
         "owned_snapshot": true,
         "both_authors_mutate_own_book": true
@@ -18,7 +18,7 @@
     {
       "id": "IMP002-PERSIST-02",
       "status": "PASS",
-      "seconds": 0.218,
+      "seconds": 0.386,
       "evidence": {
         "foreign_and_missing_neutral_sqlstate": "42501"
       }
@@ -26,7 +26,7 @@
     {
       "id": "IMP002-PERSIST-03",
       "status": "PASS",
-      "seconds": 0.293,
+      "seconds": 0.89,
       "evidence": {
         "no_journal_or_business_effect": true
       }
@@ -34,7 +34,7 @@
     {
       "id": "IMP002-PERSIST-04",
       "status": "PASS",
-      "seconds": 0.204,
+      "seconds": 0.456,
       "evidence": {
         "forged_fields_rejected": 6
       }
@@ -42,7 +42,7 @@
     {
       "id": "IMP002-PERSIST-05",
       "status": "PASS",
-      "seconds": 0.045,
+      "seconds": 0.078,
       "evidence": {
         "unverified_dispatches": 0,
         "missing_session_sqlstate": "42501"
@@ -51,7 +51,7 @@
     {
       "id": "IMP002-PERSIST-06",
       "status": "PASS",
-      "seconds": 0.092,
+      "seconds": 0.274,
       "evidence": {
         "chapter_revision_receipt_atomic": true
       }
@@ -59,15 +59,15 @@
     {
       "id": "IMP002-PERSIST-07",
       "status": "PASS",
-      "seconds": 0.729,
+      "seconds": 0.63,
       "evidence": {
-        "existing_prose_revisions_sha256": "6e7709876d676b586ef1672b931646d397d6c6206ed6fb5b98cec6ee547bafb9"
+        "existing_prose_revisions_sha256": "f7f40a1efbd9f1c543132530908c5d49901e1c4fcaa8c3889df15cc5f4132d4e"
       }
     },
     {
       "id": "IMP002-PERSIST-08",
       "status": "PASS",
-      "seconds": 0.423,
+      "seconds": 0.478,
       "evidence": {
         "stable_duplicate_title_ids": true
       }
@@ -75,7 +75,7 @@
     {
       "id": "IMP002-PERSIST-09",
       "status": "PASS",
-      "seconds": 0.801,
+      "seconds": 0.689,
       "evidence": {
         "immediate_unique_swap": true
       }
@@ -83,7 +83,7 @@
     {
       "id": "IMP002-PERSIST-10",
       "status": "PASS",
-      "seconds": 0.618,
+      "seconds": 0.744,
       "evidence": {
         "bad_permutations": 4
       }
@@ -91,7 +91,7 @@
     {
       "id": "IMP002-PERSIST-11",
       "status": "PASS",
-      "seconds": 0.263,
+      "seconds": 0.513,
       "evidence": {
         "legacy_gaps_fail_closed": true
       }
@@ -99,7 +99,7 @@
     {
       "id": "IMP002-PERSIST-12",
       "status": "PASS",
-      "seconds": 0.186,
+      "seconds": 0.601,
       "evidence": {
         "real_lock_barrier": true,
         "one_cas_winner": true
@@ -108,7 +108,7 @@
     {
       "id": "IMP002-PERSIST-13",
       "status": "PASS",
-      "seconds": 0.225,
+      "seconds": 0.922,
       "evidence": {
         "concurrent_duplicate_one_effect": true
       }
@@ -116,7 +116,7 @@
     {
       "id": "IMP002-PERSIST-14",
       "status": "PASS",
-      "seconds": 0.275,
+      "seconds": 0.562,
       "evidence": {
         "altered_identity_denied": true
       }
@@ -124,7 +124,7 @@
     {
       "id": "IMP002-PERSIST-15",
       "status": "PASS",
-      "seconds": 1.163,
+      "seconds": 1.989,
       "evidence": {
         "child_process_exited_after_commit": 79,
         "real_committed_effect_ack_dropped": true,
@@ -135,7 +135,7 @@
     {
       "id": "IMP002-PERSIST-16",
       "status": "PASS",
-      "seconds": 0.202,
+      "seconds": 0.405,
       "evidence": {
         "missing_and_rollback_stay_unknown": true
       }
@@ -143,25 +143,27 @@
     {
       "id": "IMP002-PERSIST-17",
       "status": "PASS",
-      "seconds": 0.332,
+      "seconds": 1.096,
       "evidence": {
         "durable_rejection": true,
-        "business_version_unchanged": true
+        "business_version_unchanged": true,
+        "delayed_rejection_does_not_clear_newer_unknown": true
       }
     },
     {
       "id": "IMP002-PERSIST-18",
       "status": "PASS",
-      "seconds": 0.541,
+      "seconds": 1.335,
       "evidence": {
         "actual_old_snapshot_floor": true,
+        "read_to_read_observed_floor": true,
         "account_switch_and_post_read_write_lookup_verification": true
       }
     },
     {
       "id": "IMP002-PERSIST-19",
       "status": "PASS",
-      "seconds": 0.689,
+      "seconds": 0.828,
       "evidence": {
         "separate_notes_and_prose_invariant": true
       }
@@ -169,7 +171,7 @@
     {
       "id": "IMP002-PERSIST-20",
       "status": "PASS",
-      "seconds": 1.109,
+      "seconds": 1.051,
       "evidence": {
         "server_and_function_validation": true,
         "unicode_preserved": true,
@@ -180,7 +182,7 @@
     {
       "id": "IMP002-PERSIST-21",
       "status": "PASS",
-      "seconds": 0.229,
+      "seconds": 0.288,
       "evidence": {
         "capacity_and_safe_integer_rejected": true
       }
@@ -188,7 +190,7 @@
     {
       "id": "IMP002-PERSIST-22",
       "status": "PASS",
-      "seconds": 0.779,
+      "seconds": 0.71,
       "evidence": {
         "rollback_points": 6,
         "full_row_identity": true
@@ -197,12 +199,12 @@
     {
       "id": "IMP002-PERSIST-23",
       "status": "PASS",
-      "seconds": 5.511,
+      "seconds": 7.104,
       "evidence": {
         "fresh_process": true,
         "database_restart": true,
         "independent_database_restore": true,
-        "full_rows_sha256": "8c97200c572ee34335712f5e63e570c76c61dd0278da9929b55daf80f13ffd88"
+        "full_rows_sha256": "77f206d2582b25dd2eb48bc3c193b7361221543bd39e24c74fea572503a26d1d"
       }
     },
     {
@@ -226,7 +228,7 @@
     {
       "id": "IMP002-PERSIST-26",
       "status": "PASS",
-      "seconds": 1.422,
+      "seconds": 1.452,
       "evidence": {
         "real_lock_timeout_sqlstate": "55P03",
         "real_deadlock_sqlstate": "40P01",
@@ -245,7 +247,7 @@
     {
       "id": "EXEC-SESSION-LOCK-EXPIRY",
       "status": "PASS",
-      "seconds": 0.658,
+      "seconds": 0.61,
       "evidence": {
         "expiry_and_session_match": true,
         "revocation_waits_for_share_lock": true,
@@ -256,7 +258,7 @@
     {
       "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
       "status": "PASS",
-      "seconds": 0.117,
+      "seconds": 0.115,
       "evidence": {
         "restricted_gateway_confinement": true
       }
@@ -264,7 +266,7 @@
     {
       "id": "EXEC-CANONICAL-DIGEST-VECTORS",
       "status": "PASS",
-      "seconds": 0.072,
+      "seconds": 0.102,
       "evidence": {
         "node_postgresql_vectors": 3,
         "altered_digest_denied": true
@@ -273,18 +275,18 @@
     {
       "id": "EXEC-PROCESS-RESTART-RESTORE",
       "status": "PASS",
-      "seconds": 5.148,
+      "seconds": 6.245,
       "evidence": {
         "fresh_process": true,
         "database_restart": true,
         "independent_database_restore": true,
-        "full_rows_sha256": "f4bc154ae9f0e75f095ecacca82e42e04649ed83a53813dc8eef3c0fd02324a7"
+        "full_rows_sha256": "877e93171015b39d38edb9ef8439855e9071eba2bdac88df5791369534190df5"
       }
     },
     {
       "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
       "status": "PASS",
-      "seconds": 0.292,
+      "seconds": 0.333,
       "evidence": {
         "missing_lock_prerequisites_sqlstate": "42501",
         "grants_restored_lock_succeeds": true,
@@ -302,6 +304,11 @@
       "verified_absent": true
     }
   },
+  "inherited_docker_overrides_removed": {
+    "host_present": true,
+    "context_present": true
+  },
+  "synthetic_verification_age_ms": 1000,
   "original_case_source_unchanged": true,
   "provider_logout_acceptance": "NOT_TESTED",
   "hosted_acceptance": "NOT_RUN"

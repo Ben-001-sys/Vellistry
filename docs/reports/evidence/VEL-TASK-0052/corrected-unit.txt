@@ -1,0 +1,18 @@
+✔ wire rejects forged ownership and unknown fields (3.809ms)
+✔ Unicode preserves intent and enforces UTF16 (0.9876ms)
+✔ notes are separate, plain and untrimmed (2.4069ms)
+✔ reorder rejects duplicate IDs and invalid versions (12.2053ms)
+✔ canonical digest ignores object key order but preserves Unicode (3.4425ms)
+✔ synthetic principal expiry and verification freshness fail closed (10.3776ms)
+✔ delayed rejection cannot release a newer unknown operation (43.8069ms)
+✔ an observed read establishes a monotonic minimum baseline (14.6764ms)
+✔ every runner subprocess uses the validated Docker environment (457.7653ms)
+✔ rejecting a remote Docker context makes no daemon calls, including cleanup (1168.4012ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3518.3236

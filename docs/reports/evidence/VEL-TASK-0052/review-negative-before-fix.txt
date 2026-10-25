@@ -1,0 +1,84 @@
+✔ wire rejects forged ownership and unknown fields (3.0672ms)
+✔ Unicode preserves intent and enforces UTF16 (1.4783ms)
+✔ notes are separate, plain and untrimmed (1.9646ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.6848ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.9205ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.5061ms)
+✖ delayed rejection cannot release a newer unknown operation (32.3258ms)
+✖ an observed read establishes a monotonic minimum baseline (8.0183ms)
+✖ every runner subprocess uses the validated Docker environment (177.3123ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 6
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1975.0077
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-contract.spec.ts:18:1
+✖ delayed rejection cannot release a newer unknown operation (32.3258ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:27:96)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\workspace\workspace-contract.spec.ts:29:1
+✖ an observed read establishes a monotonic minimum baseline (8.0183ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'ready'
+  - 'unavailable'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:31:70)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ready',
+    expected: 'unavailable',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\workspace\workspace-contract.spec.ts:33:1
+✖ every runner subprocess uses the validated Docker environment (177.3123ms)
+  AssertionError [ERR_ASSERTION]: Traceback (most recent call last):
+    File "<string>", line 6, in <module>
+  AssertionError: All subprocesses must receive the same validated env
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:46:155)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

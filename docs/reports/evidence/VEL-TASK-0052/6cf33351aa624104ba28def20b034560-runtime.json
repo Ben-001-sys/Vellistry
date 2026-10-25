@@ -1,0 +1,610 @@
+{
+  "run_id": "6cf33351aa624104ba28def20b034560",
+  "source_commit": "5f8e0254c8664dafeb6d74b05e1465d848d14281",
+  "image": "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb",
+  "checkout_sha256": {
+    "tests/workspace/persistence/sql/00_fixture_auth.sql": "7693d380208bc3772f3b4505c0fffaf735718c38e66eacb56b9ce34490f8045b",
+    "supabase/migrations/20261009000000_initial_author_books.sql": "17d544949d81b937eb4d21287c7fbfb6bbaa9c220ac2f4d33a04119616fb4c39",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "cae63e488455928a41bb4e2882a7273efa133f6b7af30a2d75ca22ad70f9635c",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql": "1f4bb80e1a3d79638c788cc18bb6be18deadd86a3fdb633a536e7b7f8e564d06",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql": "f9de63258603f4f9bcfb9131d4d3f1b198688d66976161be715c4af3ddaa06cd",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql": "a91bfd56718a487d947c38e15563ca892100ea10df4739bfc1ddfcbea5416078",
+    "docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json": "d4cab1940eaa7b546a3b379997814b5f5a51d72d9ab5c7416be1f317833c0edb",
+    "apps/api/src/modules/workspace/workspace-contract.ts": "a80e6b3356c31ea356f01015420f3e978214fe11584bd4132073cb898ef4a61a",
+    "apps/api/src/modules/workspace/workspace-principal.ts": "dd7ef61f110b7863638720a3d686550a94a3ee6b423543224ec2d7c183bad272",
+    "apps/api/src/modules/workspace/workspace-persistence-port.ts": "e9810ebca69eea1c87bb6ec4239d61553446578b1a0baa2a70352e6ad1ea857e",
+    "apps/api/src/modules/workspace/workspace.service.ts": "653a8c247d7b3d52922c54e9fc7214bc5f9c1229a2ae439cd2c07eed009e6ac3",
+    "apps/api/src/modules/workspace/workspace-contract.spec.ts": "e39682d0a740bd4718e8873d9d049d911b68a5586afb3bb23c511a2a86056170",
+    "tests/workspace/persistence/workspace-pg-adapter.ts": "16482cd7d5d49303fc8d595df89459fad8768ec4ab80c9db5c3983d501e9a8c9",
+    "tests/workspace/persistence/workspace-pg17.integration.mjs": "0173396c08e6aac73a1c581ee7a0b9cb7ddd90344bb02aa1bbdb1da9e0cb94cf",
+    "tests/workspace/persistence/run_pg17.py": "0b653326c7cda2c341a533d1874a77e02e3c7e9818355d9283b78aff0e81f292"
+  },
+  "applied_sql_sha256": {
+    "tests/workspace/persistence/sql/00_fixture_auth.sql": "f81f39d36c2dc79a5e75f9c6db9bb2adf7eefa20c5561714c0a5cfaf28f8fd37",
+    "supabase/migrations/20261009000000_initial_author_books.sql": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql": "1f4bb80e1a3d79638c788cc18bb6be18deadd86a3fdb633a536e7b7f8e564d06",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql": "f9de63258603f4f9bcfb9131d4d3f1b198688d66976161be715c4af3ddaa06cd",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql": "a91bfd56718a487d947c38e15563ca892100ea10df4739bfc1ddfcbea5416078"
+  },
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "context",
+        "inspect",
+        "--format",
+        "{{json .Endpoints.docker.Host}}"
+      ],
+      "exit_code": 0,
+      "seconds": 0.344,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Server.Version}}"
+      ],
+      "exit_code": 0,
+      "seconds": 0.609,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "vellistry.disposable.owner=6cf33351aa624104ba28def20b034560",
+        "vel-imp002-6cf33351aa624104ba28def20b034560-data"
+      ],
+      "exit_code": 0,
+      "seconds": 0.469,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "--label",
+        "vellistry.disposable.owner=6cf33351aa624104ba28def20b034560",
+        "-e",
+        "POSTGRES_PASSWORD",
+        "-e",
+        "POSTGRES_DB=workspace",
+        "-p",
+        "127.0.0.1::5432",
+        "-v",
+        "vel-imp002-6cf33351aa624104ba28def20b034560-data:/var/lib/postgresql/data",
+        "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb"
+      ],
+      "exit_code": 0,
+      "seconds": 1.375,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "vel-imp002-6cf33351aa624104ba28def20b034560"
+      ],
+      "exit_code": 0,
+      "seconds": 0.078,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.171,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.219,
+      "stderr": "",
+      "sql_source": "tests/workspace/persistence/sql/00_fixture_auth.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.25,
+      "stderr": "",
+      "sql_source": "supabase/migrations/20261009000000_initial_author_books.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.453,
+      "stderr": "",
+      "sql_source": "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.422,
+      "stderr": "",
+      "sql_source": "tests/workspace/persistence/sql/10_workspace_schema.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.406,
+      "stderr": "",
+      "sql_source": "tests/workspace/persistence/sql/20_workspace_roles.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.313,
+      "stderr": "",
+      "sql_source": "tests/workspace/persistence/sql/30_workspace_functions.sql"
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.234,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "-i",
+        "vel-imp002-6cf33351aa624104ba28def20b034560",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "postgres",
+        "-d",
+        "workspace",
+        "-At"
+      ],
+      "exit_code": 0,
+      "seconds": 0.282,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "corepack.cmd",
+        "pnpm",
+        "--filter",
+        "@vellistry/api",
+        "exec",
+        "tsx",
+        "H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp002-disposable-persistence\\tests\\workspace\\persistence\\workspace-pg17.integration.mjs"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "cases": [
+    {
+      "id": "IMP002-PERSIST-01",
+      "status": "PASS",
+      "seconds": 0.39,
+      "evidence": {
+        "owned_snapshot": true,
+        "both_authors_mutate_own_book": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-02",
+      "status": "PASS",
+      "seconds": 0.386,
+      "evidence": {
+        "foreign_and_missing_neutral_sqlstate": "42501"
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-03",
+      "status": "PASS",
+      "seconds": 0.89,
+      "evidence": {
+        "no_journal_or_business_effect": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-04",
+      "status": "PASS",
+      "seconds": 0.456,
+      "evidence": {
+        "forged_fields_rejected": 6
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-05",
+      "status": "PASS",
+      "seconds": 0.078,
+      "evidence": {
+        "unverified_dispatches": 0,
+        "missing_session_sqlstate": "42501"
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-06",
+      "status": "PASS",
+      "seconds": 0.274,
+      "evidence": {
+        "chapter_revision_receipt_atomic": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-07",
+      "status": "PASS",
+      "seconds": 0.63,
+      "evidence": {
+        "existing_prose_revisions_sha256": "f7f40a1efbd9f1c543132530908c5d49901e1c4fcaa8c3889df15cc5f4132d4e"
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-08",
+      "status": "PASS",
+      "seconds": 0.478,
+      "evidence": {
+        "stable_duplicate_title_ids": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-09",
+      "status": "PASS",
+      "seconds": 0.689,
+      "evidence": {
+        "immediate_unique_swap": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-10",
+      "status": "PASS",
+      "seconds": 0.744,
+      "evidence": {
+        "bad_permutations": 4
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-11",
+      "status": "PASS",
+      "seconds": 0.513,
+      "evidence": {
+        "legacy_gaps_fail_closed": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-12",
+      "status": "PASS",
+      "seconds": 0.601,
+      "evidence": {
+        "real_lock_barrier": true,
+        "one_cas_winner": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-13",
+      "status": "PASS",
+      "seconds": 0.922,
+      "evidence": {
+        "concurrent_duplicate_one_effect": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-14",
+      "status": "PASS",
+      "seconds": 0.562,
+      "evidence": {
+        "altered_identity_denied": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-15",
+      "status": "PASS",
+      "seconds": 1.989,
+      "evidence": {
+        "child_process_exited_after_commit": 79,
+        "real_committed_effect_ack_dropped": true,
+        "malformed_receipt_stays_unknown": true,
+        "no_new_key_dispatch": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-16",
+      "status": "PASS",
+      "seconds": 0.405,
+      "evidence": {
+        "missing_and_rollback_stay_unknown": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-17",
+      "status": "PASS",
+      "seconds": 1.096,
+      "evidence": {
+        "durable_rejection": true,
+        "business_version_unchanged": true,
+        "delayed_rejection_does_not_clear_newer_unknown": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-18",
+      "status": "PASS",
+      "seconds": 1.335,
+      "evidence": {
+        "actual_old_snapshot_floor": true,
+        "read_to_read_observed_floor": true,
+        "account_switch_and_post_read_write_lookup_verification": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-19",
+      "status": "PASS",
+      "seconds": 0.828,
+      "evidence": {
+        "separate_notes_and_prose_invariant": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-20",
+      "status": "PASS",
+      "seconds": 1.051,
+      "evidence": {
+        "server_and_function_validation": true,
+        "unicode_preserved": true,
+        "actual_astral_utf16_boundaries": true,
+        "invalid_utf8_sqlstate": "22021"
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-21",
+      "status": "PASS",
+      "seconds": 0.288,
+      "evidence": {
+        "capacity_and_safe_integer_rejected": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-22",
+      "status": "PASS",
+      "seconds": 0.71,
+      "evidence": {
+        "rollback_points": 6,
+        "full_row_identity": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-23",
+      "status": "PASS",
+      "seconds": 7.104,
+      "evidence": {
+        "fresh_process": true,
+        "database_restart": true,
+        "independent_database_restore": true,
+        "full_rows_sha256": "77f206d2582b25dd2eb48bc3c193b7361221543bd39e24c74fea572503a26d1d"
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-24",
+      "status": "PASS",
+      "seconds": 0.152,
+      "evidence": {
+        "real_restricted_logins": 3,
+        "dml_helper_role_schema_denials": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-25",
+      "status": "PASS",
+      "seconds": 0.228,
+      "evidence": {
+        "row_lock_delete_serialization": true,
+        "no_recreation": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-26",
+      "status": "PASS",
+      "seconds": 1.452,
+      "evidence": {
+        "real_lock_timeout_sqlstate": "55P03",
+        "real_deadlock_sqlstate": "40P01",
+        "terminated_before_commit_rolled_back": true,
+        "unknown_no_retry": true
+      }
+    },
+    {
+      "id": "IMP002-PERSIST-27",
+      "status": "PASS",
+      "seconds": 0.155,
+      "evidence": {
+        "no_ttl_replay_identity": true
+      }
+    },
+    {
+      "id": "EXEC-SESSION-LOCK-EXPIRY",
+      "status": "PASS",
+      "seconds": 0.61,
+      "evidence": {
+        "expiry_and_session_match": true,
+        "revocation_waits_for_share_lock": true,
+        "non_key_expiry_update_waits": true,
+        "provider_logout": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+      "status": "PASS",
+      "seconds": 0.115,
+      "evidence": {
+        "restricted_gateway_confinement": true
+      }
+    },
+    {
+      "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+      "status": "PASS",
+      "seconds": 0.102,
+      "evidence": {
+        "node_postgresql_vectors": 3,
+        "altered_digest_denied": true
+      }
+    },
+    {
+      "id": "EXEC-PROCESS-RESTART-RESTORE",
+      "status": "PASS",
+      "seconds": 6.245,
+      "evidence": {
+        "fresh_process": true,
+        "database_restart": true,
+        "independent_database_restore": true,
+        "full_rows_sha256": "877e93171015b39d38edb9ef8439855e9071eba2bdac88df5791369534190df5"
+      }
+    },
+    {
+      "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+      "status": "PASS",
+      "seconds": 0.333,
+      "evidence": {
+        "missing_lock_prerequisites_sqlstate": "42501",
+        "grants_restored_lock_succeeds": true,
+        "confinement_retained": true
+      }
+    }
+  ],
+  "cleanup": {
+    "container": {
+      "exit_code": 0,
+      "verified_absent": true
+    },
+    "volume": {
+      "exit_code": 0,
+      "verified_absent": true
+    }
+  },
+  "guard_probes": {
+    "positive": 3,
+    "negative": 8
+  },
+  "docker_endpoint": "npipe:////./pipe/dockerDesktopLinuxEngine",
+  "inherited_docker_overrides_removed": {
+    "host_present": true,
+    "context_present": true
+  },
+  "postgres_version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "image_id": "sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb",
+  "exit_code": 0
+}

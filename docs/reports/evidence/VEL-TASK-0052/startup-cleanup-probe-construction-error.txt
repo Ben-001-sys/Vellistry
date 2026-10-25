@@ -1,0 +1,63 @@
+✔ wire rejects forged ownership and unknown fields (2.5997ms)
+✔ Unicode preserves intent and enforces UTF16 (0.7818ms)
+✔ notes are separate, plain and untrimmed (1.9124ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.8225ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.7668ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.8075ms)
+✔ delayed rejection cannot release a newer unknown operation (19.4019ms)
+✔ an observed read establishes a monotonic minimum baseline (1.3738ms)
+✔ every runner subprocess uses the validated Docker environment (219.156ms)
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (461.4935ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3629.7448
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-contract.spec.ts:48:1
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (461.4935ms)
+  AssertionError [ERR_ASSERTION]: Traceback (most recent call last):
+    File "<string>", line 19, in <module>
+    File "H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\tests\workspace\persistence\run_pg17.py", line 125, in main
+      (evidence/(run_id+"-runtime.json")).write_text(json.dumps(result,indent=2),encoding="utf-8")
+    File "C:\Program Files\Python310\lib\json\__init__.py", line 238, in dumps
+      **kw).encode(obj)
+    File "C:\Program Files\Python310\lib\json\encoder.py", line 201, in encode
+      chunks = list(chunks)
+    File "C:\Program Files\Python310\lib\json\encoder.py", line 431, in _iterencode
+      yield from _iterencode_dict(o, _current_indent_level)
+    File "C:\Program Files\Python310\lib\json\encoder.py", line 405, in _iterencode_dict
+      yield from chunks
+    File "C:\Program Files\Python310\lib\json\encoder.py", line 438, in _iterencode
+      o = _default(o)
+    File "C:\Program Files\Python310\lib\json\encoder.py", line 179, in default
+      raise TypeError(f'Object of type {o.__class__.__name__} '
+  TypeError: Object of type bytes is not JSON serializable
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:70:155)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

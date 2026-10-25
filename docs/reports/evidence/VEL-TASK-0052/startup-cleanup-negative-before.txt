@@ -1,0 +1,49 @@
+✔ wire rejects forged ownership and unknown fields (2.9239ms)
+✔ Unicode preserves intent and enforces UTF16 (0.9633ms)
+✔ notes are separate, plain and untrimmed (3.5032ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.9873ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.4787ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.5359ms)
+✔ delayed rejection cannot release a newer unknown operation (20.7951ms)
+✔ an observed read establishes a monotonic minimum baseline (5.4038ms)
+✔ every runner subprocess uses the validated Docker environment (288.3767ms)
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (688.4423ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2363.6299
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-contract.spec.ts:48:1
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (688.4423ms)
+  AssertionError [ERR_ASSERTION]: Traceback (most recent call last):
+    File "<string>", line 20, in <module>
+  AssertionError: Rejected context still attempted daemon access during cleanup
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:70:155)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

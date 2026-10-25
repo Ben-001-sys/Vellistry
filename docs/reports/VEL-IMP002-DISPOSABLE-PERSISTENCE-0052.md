@@ -4,6 +4,7 @@ title: Protected workspace persistence — disposable PostgreSQL experiment
 type: execution-report
 status: proposed-for-review
 created_at: 2026-10-24
+updated_at: 2026-10-25
 owner: project_owner
 ---
 
@@ -97,8 +98,8 @@ same-book replay duplication; book deletion ends that book's identity lifetime.
 The [acceptance matrix](evidence/VEL-TASK-0052/acceptance-results.json) contains all
 **27 original cases plus five extensions:32PASS**. Original Task0049 case bytes and
 historical NOT_RUN statuses are unchanged; actual outcomes are separate evidence.
-Final database-code source: `3b557ec1` (full SHA in the matrix). Final run ID:
-`3f1b78dd3ff34440800df8ac43933b1a`.
+Current database-code source: `5f8e0254c8664dafeb6d74b05e1465d848d14281`. Current run ID:
+`6cf33351aa624104ba28def20b034560`. Initial run3f1b78/3b557ec below is historical, not final-head evidence.
 
 Actual engine: PostgreSQL17.11, x86_64-pc-linux-musl, Alpine GCC15.2.0.
 Pinned image:
@@ -181,3 +182,42 @@ approve production packaging, real verified principal/session integration, secur
 credentials/connection provisioning, protected routes/client adapter and hosted
 metadata/migration/RLS/security acceptance. No broad gate, private pilot or production
 release is promoted. Issue108 stays open; the remediation delegation remains expired.
+
+
+# Bounded independent-review correction — 2026-10-25
+
+A fresh trusted read-only review at08cbe453451844a774b7476bbe8eed181b43ce62
+reported three P2 defects. Its original output/metadata is preserved in evidence.
+New regressions at9fcb3a4 demonstrated6PASS/3FAIL before correction: delayed rejection
+could delete a newer unknown operation lock; observed reads did not advance the
+minimum version; some readiness/cleanup Docker subprocesses inherited a different
+environment. Fixee47558 checks pending-object identity, advances authorized read
+floors, and uses/pins the validated local environment for every subprocess. The
+actual database rejection/readback cases now also exercise those races.
+
+A mocked-only negative test then proved rejected local-context validation could
+still reach cleanup daemon calls (9PASS/1FAIL at481df0b). The startup guard now makes
+no daemon calls if validation fails. Its initial mock construction error is separately
+preserved, not mistaken for that demonstrated failure. No remote daemon was contacted.
+
+After the interrupted session Docker restarted with host time24–28ms ahead of the
+VM. Stricter legitimate-operation42501 failures are retained in runse64428/9d9a32,
+with measured clocks. Synthetic principals now explicitly represent verification
+completed1second before dispatch; expired-token fixtures use a clear1second-old
+expiry. Strict future/stale/session checks in service/SQL were NOT relaxed. This is
+fixture timing, not an approved production clock-tolerance policy. A subsequent
+32PASS run543c05 verified the corrections with conflicting unreachable-loopback
+Docker settings. Run d7c24c was BLOCKED before any case because pg_isready observed
+the official image's temporary init socket before shutdown. Readiness now waits for
+the final127.0.0.1 TCP listener; its regression guard is included in the focused suite.
+
+Final corrected acceptance:32PASS at the source/run in the current matrix, including
+two real post-reconciliation races and identical owned cleanup with deliberately
+conflicting local-only inherited Docker settings. Final focused tests:10PASS. Renewed
+builds at ea83e7d and final typechecks pass; shipping application files/dependencies
+are byte-identical to that build. The41workspace/67Library/23preflight source assets
+are unchanged from their recorded successful run; final ready CI reruns applicable
+checks. All before-fix failures and all BLOCKED attempts remain in raw evidence.
+Final exact-head review/CI references will be in PR115's external ledger. No immutable
+pack, original Task49 evidence, production routes/Auth/dependencies/CI or hosted
+scope changed. Separate owner feature merge remains required.
