@@ -10,18 +10,18 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Synthetic claim policy — 2026-10-25
+## Real Auth handoff preparation — 2026-10-25
 
-FACT: PR121 merged9b492262026287152af7fb0a5981efda1524d059 with tree equality;
-[post-main40215639714](https://github.com/Ben-001-sys/Vellistry/actions/runs/40215639714) SUCCESS.
-Task59/CP59/EB59/history preserved. Owner separately authorized Task0060/CP0060:
-pure unregistered synthetic claim-policy helper plus mandatory adapter spec.
-Explicit fixture issuer/audience/role only; unsupported AAL/time fields deny.
-No Auth/client/network/JWT/SQL/grants/routes/CI/dependency change. New evidence
-and acceptance map: [report](docs/reports/VEL-SYNTHETIC-CLAIM-POLICY-0060.md).
-N12 BLOCKED; identity policy is not active-session or writable authorization.
-All six production choices pending; historical BLOCKED/NOT_RUN preserved.
-Feature review/CI/owner merge pending; Issue108 OPEN; delegation EXPIRED.
+FACT: PR122 mergeddb3c7e92375c984f2730e720b1a23cadb5437934 with reviewed-tree
+match; post-main40220684442 outcome recorded in Task0061 evidence/PR ledger.
+52adapter/12unit/32PG remain mandatory; Task60/CP60/EB60/history preserved.
+Task0061/CP0061 prepares [real-Auth handoff](docs/reports/VEL-REAL-AUTH-HANDOFF-0061.md).
+Smallest next decision: explicit trusted PRINCIPAL policy, then separately
+scope an additive existing Auth-service method and mandatory spec extension.
+No new synthetic layer or app/Auth/SQL/CI/dependency implementation here.
+All six production choices pending; hosted UNVERIFIED; N12 and independent
+runtime EPERM BLOCKED. Preparation owner merge/next code authorization pending.
+Issue108 OPEN; delegation EXPIRED; broad design/pilot/release gates unchanged.
 
 ## Historical query preparation — 2026-10-24
 
