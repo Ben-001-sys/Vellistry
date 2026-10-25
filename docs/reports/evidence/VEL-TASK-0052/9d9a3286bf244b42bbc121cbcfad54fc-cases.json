@@ -1,0 +1,367 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 0.49,
+    "evidence": {
+      "owned_snapshot": true,
+      "both_authors_mutate_own_book": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 0.358,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "FAIL",
+    "seconds": 0.201,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730066,
+      "db": 1792912730041.981,
+      "hostAfter": 1792912730070
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "FAIL",
+    "seconds": 0.075,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nerror: Not available",
+    "clock": {
+      "hostBefore": 1792912730145,
+      "db": 1792912730119.181,
+      "hostAfter": 1792912730147
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.062,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "FAIL",
+    "seconds": 0.095,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730305,
+      "db": 1792912730278.378,
+      "hostAfter": 1792912730307
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "FAIL",
+    "seconds": 0.075,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730383,
+      "db": 1792912730355.439,
+      "hostAfter": 1792912730384
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "FAIL",
+    "seconds": 0.067,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730451,
+      "db": 1792912730423.822,
+      "hostAfter": 1792912730453
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "FAIL",
+    "seconds": 0.1,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730553,
+      "db": 1792912730525.168,
+      "hostAfter": 1792912730555
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "FAIL",
+    "seconds": 0.069,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730624,
+      "db": 1792912730595.367,
+      "hostAfter": 1792912730626
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "FAIL",
+    "seconds": 0.068,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730693,
+      "db": 1792912730664.206,
+      "hostAfter": 1792912730695
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "FAIL",
+    "seconds": 0.072,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730766,
+      "db": 1792912730736.771,
+      "hostAfter": 1792912730768
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "FAIL",
+    "seconds": 0.074,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730841,
+      "db": 1792912730811.578,
+      "hostAfter": 1792912730843
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "FAIL",
+    "seconds": 0.065,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912730908,
+      "db": 1792912730877.939,
+      "hostAfter": 1792912730910
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "FAIL",
+    "seconds": 1.008,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912731917,
+      "db": 1792912731883.133,
+      "hostAfter": 1792912731919
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "FAIL",
+    "seconds": 0.148,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732066,
+      "db": 1792912732031.657,
+      "hostAfter": 1792912732068
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "FAIL",
+    "seconds": 0.07,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732138,
+      "db": 1792912732102.719,
+      "hostAfter": 1792912732140
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "FAIL",
+    "seconds": 0.071,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732211,
+      "db": 1792912732175.709,
+      "hostAfter": 1792912732212
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "FAIL",
+    "seconds": 0.064,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732277,
+      "db": 1792912732241.579,
+      "hostAfter": 1792912732278
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "FAIL",
+    "seconds": 0.085,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nerror: Not available",
+    "clock": {
+      "hostBefore": 1792912732363,
+      "db": 1792912732327.66,
+      "hostAfter": 1792912732365
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "FAIL",
+    "seconds": 0.125,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732491,
+      "db": 1792912732454.805,
+      "hostAfter": 1792912732492
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "FAIL",
+    "seconds": 0.059,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732552,
+      "db": 1792912732516.49,
+      "hostAfter": 1792912732554
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "FAIL",
+    "seconds": 0.076,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732630,
+      "db": 1792912732594.084,
+      "hostAfter": 1792912732632
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "PASS",
+    "seconds": 0.19,
+    "evidence": {
+      "real_restricted_logins": 3,
+      "dml_helper_role_schema_denials": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "FAIL",
+    "seconds": 0.074,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732897,
+      "db": 1792912732860.164,
+      "hostAfter": 1792912732899
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "FAIL",
+    "seconds": 0.069,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912732967,
+      "db": 1792912732930.306,
+      "hostAfter": 1792912732969
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "FAIL",
+    "seconds": 0.094,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912733063,
+      "db": 1792912733025.732,
+      "hostAfter": 1792912733065
+    }
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "FAIL",
+    "seconds": 0.373,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912733437,
+      "db": 1792912733399.748,
+      "hostAfter": 1792912733439
+    }
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "PASS",
+    "seconds": 0.199,
+    "evidence": {
+      "restricted_gateway_confinement": true
+    }
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "FAIL",
+    "seconds": 0.097,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nerror: Not available",
+    "clock": {
+      "hostBefore": 1792912733737,
+      "db": 1792912733699.406,
+      "hostAfter": 1792912733739
+    }
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "FAIL",
+    "seconds": 0.079,
+    "error": "42501",
+    "diagnostic": "Not available",
+    "clock": {
+      "hostBefore": 1792912733817,
+      "db": 1792912733779.01,
+      "hostAfter": 1792912733819
+    }
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "PASS",
+    "seconds": 0.734,
+    "evidence": {
+      "missing_lock_prerequisites_sqlstate": "42501",
+      "grants_restored_lock_succeeds": true,
+      "confinement_retained": true
+    }
+  }
+]

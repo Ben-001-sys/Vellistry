@@ -1,0 +1,11 @@
+{
+  "current_source": "581f8be7c9d1b83835d2690eae477e3350812506",
+  "final_db_source": "3b557ec1a00feeb91e640d0611adf40360a4b506",
+  "database_assets_identical": true,
+  "application_build_test_source": "c0f9634f63d9b37a54f7432aa477023ca29d8f2d",
+  "application_assets_dependencies_identical": true,
+  "exact_operative_sql_hashes": {
+    "supabase/migrations/20261009000000_initial_author_books.sql": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65"
+  }
+}

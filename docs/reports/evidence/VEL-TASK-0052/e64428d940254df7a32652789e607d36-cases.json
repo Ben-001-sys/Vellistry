@@ -1,0 +1,244 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 2.91,
+    "evidence": {
+      "owned_snapshot": true,
+      "both_authors_mutate_own_book": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 2.267,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "FAIL",
+    "seconds": 0.452,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "PASS",
+    "seconds": 0.785,
+    "evidence": {
+      "forged_fields_rejected": 6
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.147,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "PASS",
+    "seconds": 0.575,
+    "evidence": {
+      "chapter_revision_receipt_atomic": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "PASS",
+    "seconds": 4.606,
+    "evidence": {
+      "existing_prose_revisions_sha256": "c7def5ec7679a57e0f1d694f99ebcc1b0100e8e67629cc648e1f341a2417b591"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "PASS",
+    "seconds": 3.108,
+    "evidence": {
+      "stable_duplicate_title_ids": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "PASS",
+    "seconds": 3.935,
+    "evidence": {
+      "immediate_unique_swap": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "PASS",
+    "seconds": 1.647,
+    "evidence": {
+      "bad_permutations": 4
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "PASS",
+    "seconds": 0.648,
+    "evidence": {
+      "legacy_gaps_fail_closed": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "PASS",
+    "seconds": 1.008,
+    "evidence": {
+      "real_lock_barrier": true,
+      "one_cas_winner": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "PASS",
+    "seconds": 6.88,
+    "evidence": {
+      "concurrent_duplicate_one_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "FAIL",
+    "seconds": 0.405,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "FAIL",
+    "seconds": 6.234,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "FAIL",
+    "seconds": 0.455,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "FAIL",
+    "seconds": 0.317,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "FAIL",
+    "seconds": 0.25,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "FAIL",
+    "seconds": 0.228,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "FAIL",
+    "seconds": 0.169,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nerror: Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "FAIL",
+    "seconds": 0.371,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "FAIL",
+    "seconds": 0.147,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "FAIL",
+    "seconds": 0.142,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "PASS",
+    "seconds": 0.44,
+    "evidence": {
+      "real_restricted_logins": 3,
+      "dml_helper_role_schema_denials": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "FAIL",
+    "seconds": 0.156,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "FAIL",
+    "seconds": 0.171,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "FAIL",
+    "seconds": 0.178,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "FAIL",
+    "seconds": 0.635,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "PASS",
+    "seconds": 0.443,
+    "evidence": {
+      "restricted_gateway_confinement": true
+    }
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "FAIL",
+    "seconds": 0.306,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nerror: Not available"
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "FAIL",
+    "seconds": 0.261,
+    "error": "42501",
+    "diagnostic": "Not available"
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "FAIL",
+    "seconds": 0.348,
+    "error": "42501",
+    "diagnostic": "Not available"
+  }
+]

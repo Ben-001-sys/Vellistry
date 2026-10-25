@@ -1,0 +1,1 @@
+{"run_id": "6cf33351aa624104ba28def20b034560", "exit_code": 0, "passed": 32, "cases": 32, "cleanup": {"container": {"exit_code": 0, "verified_absent": true}, "volume": {"exit_code": 0, "verified_absent": true}}}

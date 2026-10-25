@@ -1,0 +1,270 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 0.088,
+    "evidence": {
+      "owned_snapshot": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 0.218,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "PASS",
+    "seconds": 0.166,
+    "evidence": {
+      "no_journal_or_business_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "PASS",
+    "seconds": 0.21,
+    "evidence": {
+      "forged_fields_rejected": 6
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.045,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "PASS",
+    "seconds": 0.102,
+    "evidence": {
+      "chapter_revision_receipt_atomic": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "PASS",
+    "seconds": 0.35,
+    "evidence": {
+      "existing_prose_revisions_sha256": "2dd9be1648192bcb367ae0acd039bb96e6d5df98140723cb0789dce7c738df51"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "PASS",
+    "seconds": 0.271,
+    "evidence": {
+      "stable_duplicate_title_ids": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "PASS",
+    "seconds": 0.39,
+    "evidence": {
+      "immediate_unique_swap": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "PASS",
+    "seconds": 0.361,
+    "evidence": {
+      "bad_permutations": 4
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "PASS",
+    "seconds": 0.198,
+    "evidence": {
+      "legacy_gaps_fail_closed": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "PASS",
+    "seconds": 0.171,
+    "evidence": {
+      "real_lock_barrier": true,
+      "one_cas_winner": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "PASS",
+    "seconds": 0.18,
+    "evidence": {
+      "concurrent_duplicate_one_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "PASS",
+    "seconds": 0.198,
+    "evidence": {
+      "altered_identity_denied": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "PASS",
+    "seconds": 0.142,
+    "evidence": {
+      "real_committed_effect_ack_dropped": true,
+      "no_new_key_dispatch": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "PASS",
+    "seconds": 0.137,
+    "evidence": {
+      "missing_and_rollback_stay_unknown": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "PASS",
+    "seconds": 0.172,
+    "evidence": {
+      "durable_rejection": true,
+      "business_version_unchanged": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "PASS",
+    "seconds": 0.175,
+    "evidence": {
+      "actual_old_snapshot_floor": true,
+      "account_switch_and_post_verification": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "PASS",
+    "seconds": 0.484,
+    "evidence": {
+      "separate_notes_and_prose_invariant": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "PASS",
+    "seconds": 0.234,
+    "evidence": {
+      "server_and_function_validation": true,
+      "unicode_preserved": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "PASS",
+    "seconds": 0.171,
+    "evidence": {
+      "capacity_and_safe_integer_rejected": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "PASS",
+    "seconds": 0.453,
+    "evidence": {
+      "rollback_points": 6,
+      "full_row_identity": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "PASS",
+    "seconds": 4.582,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "f7dd45bcb6df721034d6a610a5537ae4456243cf4e140a2016b9f7da7fe79d6a"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "FAIL",
+    "seconds": 0.108,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "Default PUBLIC execute must be revoked\n\ntrue !== false\n"
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "PASS",
+    "seconds": 0.216,
+    "evidence": {
+      "row_lock_delete_serialization": true,
+      "no_recreation": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "PASS",
+    "seconds": 0.23,
+    "evidence": {
+      "real_lock_timeout_sqlstate": "55P03",
+      "unknown_no_retry": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "PASS",
+    "seconds": 0.151,
+    "evidence": {
+      "no_ttl_replay_identity": true
+    }
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "FAIL",
+    "seconds": 0.073,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "Missing expected rejection."
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "FAIL",
+    "seconds": 0.107,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "Default PUBLIC execute must be revoked\n\ntrue !== false\n"
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "PASS",
+    "seconds": 0.061,
+    "evidence": {
+      "node_postgresql_vectors": 3,
+      "altered_digest_denied": true
+    }
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "PASS",
+    "seconds": 4.43,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "adfc623fabb59da13bf7b80ff18d3c3476ce461bc7848e41141069c0de1ceedb"
+    }
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "FAIL",
+    "seconds": 0.291,
+    "error": "ERR_ASSERTION",
+    "diagnostic": "Default PUBLIC execute must be revoked\n\ntrue !== false\n"
+  }
+]

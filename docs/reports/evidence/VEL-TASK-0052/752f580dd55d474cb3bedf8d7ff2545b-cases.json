@@ -1,0 +1,279 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 0.098,
+    "evidence": {
+      "owned_snapshot": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 0.219,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "PASS",
+    "seconds": 0.172,
+    "evidence": {
+      "no_journal_or_business_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "PASS",
+    "seconds": 0.215,
+    "evidence": {
+      "forged_fields_rejected": 6
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.044,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "PASS",
+    "seconds": 0.092,
+    "evidence": {
+      "chapter_revision_receipt_atomic": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "PASS",
+    "seconds": 0.349,
+    "evidence": {
+      "existing_prose_revisions_sha256": "2d14d1f17c688a16648fb65fa5912f4ea9920185b8409e77c426f51117b3aa2e"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "PASS",
+    "seconds": 0.324,
+    "evidence": {
+      "stable_duplicate_title_ids": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "PASS",
+    "seconds": 0.516,
+    "evidence": {
+      "immediate_unique_swap": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "PASS",
+    "seconds": 0.477,
+    "evidence": {
+      "bad_permutations": 4
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "PASS",
+    "seconds": 0.271,
+    "evidence": {
+      "legacy_gaps_fail_closed": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "PASS",
+    "seconds": 0.189,
+    "evidence": {
+      "real_lock_barrier": true,
+      "one_cas_winner": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "PASS",
+    "seconds": 0.192,
+    "evidence": {
+      "concurrent_duplicate_one_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "PASS",
+    "seconds": 0.245,
+    "evidence": {
+      "altered_identity_denied": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "PASS",
+    "seconds": 0.191,
+    "evidence": {
+      "real_committed_effect_ack_dropped": true,
+      "no_new_key_dispatch": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "PASS",
+    "seconds": 0.17,
+    "evidence": {
+      "missing_and_rollback_stay_unknown": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "PASS",
+    "seconds": 0.259,
+    "evidence": {
+      "durable_rejection": true,
+      "business_version_unchanged": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "PASS",
+    "seconds": 0.25,
+    "evidence": {
+      "actual_old_snapshot_floor": true,
+      "account_switch_and_post_verification": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "PASS",
+    "seconds": 0.648,
+    "evidence": {
+      "separate_notes_and_prose_invariant": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "PASS",
+    "seconds": 0.313,
+    "evidence": {
+      "server_and_function_validation": true,
+      "unicode_preserved": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "PASS",
+    "seconds": 0.25,
+    "evidence": {
+      "capacity_and_safe_integer_rejected": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "PASS",
+    "seconds": 0.612,
+    "evidence": {
+      "rollback_points": 6,
+      "full_row_identity": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "PASS",
+    "seconds": 4.916,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "4abbe0ea5a449dda924f7de03ea604ea64975b43a31fe5cda25b6c272d79d2fd"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "PASS",
+    "seconds": 0.154,
+    "evidence": {
+      "real_restricted_logins": 3,
+      "dml_helper_role_schema_denials": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "PASS",
+    "seconds": 0.228,
+    "evidence": {
+      "row_lock_delete_serialization": true,
+      "no_recreation": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "PASS",
+    "seconds": 0.25,
+    "evidence": {
+      "real_lock_timeout_sqlstate": "55P03",
+      "unknown_no_retry": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "PASS",
+    "seconds": 0.163,
+    "evidence": {
+      "no_ttl_replay_identity": true
+    }
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "PASS",
+    "seconds": 0.453,
+    "evidence": {
+      "expiry_and_session_match": true,
+      "revocation_waits_for_share_lock": true,
+      "provider_logout": "NOT_TESTED"
+    }
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "PASS",
+    "seconds": 0.145,
+    "evidence": {
+      "restricted_gateway_confinement": true
+    }
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "PASS",
+    "seconds": 0.079,
+    "evidence": {
+      "node_postgresql_vectors": 3,
+      "altered_digest_denied": true
+    }
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "PASS",
+    "seconds": 4.678,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "4fde04fbaa9fd61bce45ce424a74baac4df08f4fec9b6915dad62389e288d4fd"
+    }
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "PASS",
+    "seconds": 0.329,
+    "evidence": {
+      "missing_lock_prerequisites_sqlstate": "42501",
+      "grants_restored_lock_succeeds": true,
+      "confinement_retained": true
+    }
+  }
+]

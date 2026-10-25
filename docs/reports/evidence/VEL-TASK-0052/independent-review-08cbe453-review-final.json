@@ -1,0 +1,18 @@
+{
+  "head": "08cbe453451844a774b7476bbe8eed181b43ce62",
+  "command": [
+    "C:/Users/admin/AppData/Local/OpenAI/Codex/bin/8925276705115dea/codex.exe",
+    "-s",
+    "read-only",
+    "-a",
+    "never",
+    "-c",
+    "mcp_servers.composio.enabled=false",
+    "review",
+    "--base",
+    "47de4306bc3fe963afc1aabbf3cebba217f3b24b"
+  ],
+  "exit_code": 0,
+  "seconds": 138.5,
+  "distinctness": "Fresh read-only trusted Codex process; before/after HEAD equality; advisory, not owner acceptance"
+}

@@ -1,0 +1,6 @@
+{
+  "source_commit": "9fcb3a4f71827e7007fa863c2e49d9a328e8c9af",
+  "exit_code": 1,
+  "seconds": 3.96,
+  "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts"
+}

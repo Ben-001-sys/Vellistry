@@ -1,0 +1,26 @@
+[
+  {
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "ea83e7d6bbaa671cbe7f9b2b13d17cc2b78a645d",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 5.72,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/corrected-unit.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "source_commit": "ea83e7d6bbaa671cbe7f9b2b13d17cc2b78a645d",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 24.93,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/corrected-build.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "source_commit": "ea83e7d6bbaa671cbe7f9b2b13d17cc2b78a645d",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 9.72,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/corrected-check.txt"
+  }
+]

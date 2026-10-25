@@ -1,0 +1,65 @@
+✔ wire rejects forged ownership and unknown fields (1.743ms)
+✔ Unicode preserves intent and enforces UTF16 (0.7007ms)
+✔ notes are separate, plain and untrimmed (1.6462ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.655ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.6184ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.5271ms)
+✔ delayed rejection cannot release a newer unknown operation (24.1349ms)
+✔ an observed read establishes a monotonic minimum baseline (1.2877ms)
+✔ every runner subprocess uses the validated Docker environment (146.633ms)
+✔ rejecting a remote Docker context makes no daemon calls, including cleanup (216.8128ms)
+✖ nonstring receipt enums preserve unknown and prohibit a new-key dispatch (1.5725ms)
+✖ rejected apply and reconciliation receipts establish the observed version floor (0.4613ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 10
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2032.58
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-contract.spec.ts:74:1
+✖ nonstring receipt enums preserve unknown and prohibit a new-key dispatch (1.5725ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'rejected'
+  - 'unknown'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:78:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'rejected',
+    expected: 'unknown',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\workspace\workspace-contract.spec.ts:81:1
+✖ rejected apply and reconciliation receipts establish the observed version floor (0.4613ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'ready'
+  - 'unavailable'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api\src\modules\workspace\workspace-contract.spec.ts:85:133)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ready',
+    expected: 'unavailable',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

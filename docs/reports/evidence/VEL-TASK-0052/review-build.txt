@@ -1,0 +1,38 @@
+
+> vellistry@ build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp002-disposable-persistence\apps\web
+> next build
+
+▲ Next.js 16.4.1 (Turbopack)
+✓ Running next.config.ts took 274ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.4s
+  Running TypeScript ...
+  Finished TypeScript in 7.0s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/5) ...
+  Generating static pages using 7 workers (1/5) 
+  Generating static pages using 7 workers (2/5) 
+  Generating static pages using 7 workers (3/5) 
+✓ Generating static pages using 7 workers (5/5) in 4.8s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

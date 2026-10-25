@@ -1,0 +1,284 @@
+[
+  {
+    "id": "IMP002-PERSIST-01",
+    "status": "PASS",
+    "seconds": 0.302,
+    "evidence": {
+      "owned_snapshot": true,
+      "both_authors_mutate_own_book": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-02",
+    "status": "PASS",
+    "seconds": 0.349,
+    "evidence": {
+      "foreign_and_missing_neutral_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-03",
+    "status": "PASS",
+    "seconds": 0.433,
+    "evidence": {
+      "no_journal_or_business_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-04",
+    "status": "PASS",
+    "seconds": 0.306,
+    "evidence": {
+      "forged_fields_rejected": 6
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-05",
+    "status": "PASS",
+    "seconds": 0.068,
+    "evidence": {
+      "unverified_dispatches": 0,
+      "missing_session_sqlstate": "42501"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-06",
+    "status": "PASS",
+    "seconds": 0.157,
+    "evidence": {
+      "chapter_revision_receipt_atomic": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-07",
+    "status": "PASS",
+    "seconds": 0.467,
+    "evidence": {
+      "existing_prose_revisions_sha256": "2e7ccada92c0ed5d0eea11f275e060c53a21628620adf8e2b56488cb7f50a4b3"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-08",
+    "status": "PASS",
+    "seconds": 0.382,
+    "evidence": {
+      "stable_duplicate_title_ids": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-09",
+    "status": "PASS",
+    "seconds": 0.599,
+    "evidence": {
+      "immediate_unique_swap": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-10",
+    "status": "PASS",
+    "seconds": 0.506,
+    "evidence": {
+      "bad_permutations": 4
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-11",
+    "status": "PASS",
+    "seconds": 0.292,
+    "evidence": {
+      "legacy_gaps_fail_closed": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-12",
+    "status": "PASS",
+    "seconds": 0.188,
+    "evidence": {
+      "real_lock_barrier": true,
+      "one_cas_winner": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-13",
+    "status": "PASS",
+    "seconds": 0.264,
+    "evidence": {
+      "concurrent_duplicate_one_effect": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-14",
+    "status": "PASS",
+    "seconds": 0.334,
+    "evidence": {
+      "altered_identity_denied": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-15",
+    "status": "PASS",
+    "seconds": 0.962,
+    "evidence": {
+      "child_process_exited_after_commit": 79,
+      "real_committed_effect_ack_dropped": true,
+      "no_new_key_dispatch": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-16",
+    "status": "PASS",
+    "seconds": 0.224,
+    "evidence": {
+      "missing_and_rollback_stay_unknown": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-17",
+    "status": "PASS",
+    "seconds": 0.273,
+    "evidence": {
+      "durable_rejection": true,
+      "business_version_unchanged": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-18",
+    "status": "PASS",
+    "seconds": 0.264,
+    "evidence": {
+      "actual_old_snapshot_floor": true,
+      "account_switch_and_post_verification": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-19",
+    "status": "PASS",
+    "seconds": 0.696,
+    "evidence": {
+      "separate_notes_and_prose_invariant": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-20",
+    "status": "PASS",
+    "seconds": 0.475,
+    "evidence": {
+      "server_and_function_validation": true,
+      "unicode_preserved": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-21",
+    "status": "PASS",
+    "seconds": 0.229,
+    "evidence": {
+      "capacity_and_safe_integer_rejected": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-22",
+    "status": "PASS",
+    "seconds": 0.672,
+    "evidence": {
+      "rollback_points": 6,
+      "full_row_identity": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-23",
+    "status": "PASS",
+    "seconds": 5.633,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "9b90e1f177463a1c4fd9093675262880ca9700b297b3faf4292b9967c73f3e61"
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-24",
+    "status": "PASS",
+    "seconds": 0.168,
+    "evidence": {
+      "real_restricted_logins": 3,
+      "dml_helper_role_schema_denials": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-25",
+    "status": "PASS",
+    "seconds": 0.275,
+    "evidence": {
+      "row_lock_delete_serialization": true,
+      "no_recreation": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-26",
+    "status": "PASS",
+    "seconds": 1.487,
+    "evidence": {
+      "real_lock_timeout_sqlstate": "55P03",
+      "real_deadlock_sqlstate": "40P01",
+      "terminated_before_commit_rolled_back": true,
+      "unknown_no_retry": true
+    }
+  },
+  {
+    "id": "IMP002-PERSIST-27",
+    "status": "PASS",
+    "seconds": 0.206,
+    "evidence": {
+      "no_ttl_replay_identity": true
+    }
+  },
+  {
+    "id": "EXEC-SESSION-LOCK-EXPIRY",
+    "status": "PASS",
+    "seconds": 0.723,
+    "evidence": {
+      "expiry_and_session_match": true,
+      "revocation_waits_for_share_lock": true,
+      "non_key_expiry_update_waits": true,
+      "provider_logout": "NOT_TESTED"
+    }
+  },
+  {
+    "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+    "status": "PASS",
+    "seconds": 0.157,
+    "evidence": {
+      "restricted_gateway_confinement": true
+    }
+  },
+  {
+    "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+    "status": "PASS",
+    "seconds": 0.107,
+    "evidence": {
+      "node_postgresql_vectors": 3,
+      "altered_digest_denied": true
+    }
+  },
+  {
+    "id": "EXEC-PROCESS-RESTART-RESTORE",
+    "status": "PASS",
+    "seconds": 5.603,
+    "evidence": {
+      "fresh_process": true,
+      "database_restart": true,
+      "independent_database_restore": true,
+      "full_rows_sha256": "0b6883f812fd9c41e8d8e7db8d75a913af98886249b2feedc60b3c6079a952d6"
+    }
+  },
+  {
+    "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+    "status": "PASS",
+    "seconds": 0.382,
+    "evidence": {
+      "missing_lock_prerequisites_sqlstate": "42501",
+      "grants_restored_lock_succeeds": true,
+      "confinement_retained": true
+    }
+  }
+]

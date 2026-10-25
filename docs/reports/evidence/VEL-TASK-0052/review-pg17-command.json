@@ -1,0 +1,7 @@
+{
+  "command": "python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+  "source_commit": "19ff82d510797a49bae2c1d74612208413d0cc4d",
+  "exit_code": 1,
+  "seconds": 110.83,
+  "inherited_environment": "Unreachable loopback Docker override plus nonexistent context; runner must strip both, pin validated local endpoint, use it through cleanup. No remote endpoint configured."
+}

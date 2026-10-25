@@ -1,0 +1,18 @@
+{
+  "base": "47de4306bc3fe963afc1aabbf3cebba217f3b24b",
+  "unchanged_original_paths": [
+    "docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+    "docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md",
+    "docs/agent-workflow/tasks/VEL-TASK-0049.yaml",
+    "docs/agent-workflow/context-packs/VEL-CP-0049.md",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0049.md"
+  ],
+  "sql_paths": [
+    "tests/workspace/persistence/sql/00_fixture_auth.sql",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql"
+  ],
+  "immutable_cp52_commit": "6967ea31b418caf75defaf57a56b1d78eabdb640",
+  "source_preparation_failures": "Two size-cap failures before pack existed; all preparation commits retained."
+}

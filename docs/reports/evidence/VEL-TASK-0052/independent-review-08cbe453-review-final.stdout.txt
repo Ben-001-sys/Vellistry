@@ -1,0 +1,12 @@
+The service permits a delayed rejection to clear another operation's safety lock and fails to enforce monotonic observed versions. The runner also inconsistently selects its Docker daemon, undermining cleanup guarantees. The six contract unit tests pass, but do not cover these scenarios.
+
+Full review comments:
+
+- [P2] Guard pending-state deletion against delayed responses — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-disposable-persistence/apps/api/src/modules/workspace/workspace.service.ts:48-50
+  If an in-flight operation is reconciled as rejected, a subsequent operation can start before the original response arrives. When that delayed rejection reaches `terminal()`, the unconditional deletion removes the newer operation's pending lock—even if its outcome is unknown—allowing another new-key dispatch. This is reproducible with deferred port responses. Only modify or delete pending state when the map still contains the same `Pending` instance.
+
+- [P2] Advance the version floor after successful reads — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-disposable-persistence/apps/api/src/modules/workspace/workspace.service.ts:22-24
+  When the service observes a newer snapshot without having confirmed a write itself, it never records that version in `floors`. Consequently, reading version 5 followed by a stale version 4 returns `ready` both times, contrary to P02's requirement that an observed version establish the minimum writable baseline. Record the maximum authorized snapshot version before returning it; add coverage for read-to-read regression, not only post-write readback.
+
+- [P2] Use the validated Docker environment during cleanup — H:/cursor/cursor/Vellistry/.worktrees/vel-imp002-disposable-persistence/tests/workspace/persistence/run_pg17.py:100-102
+  If the inherited environment contains `DOCKER_HOST` or `DOCKER_CONTEXT`, setup uses the sanitized `env`, but this inspection and the readiness/removal/listing subprocesses inherit the original environment. They can therefore contact a different, potentially remote daemon. The local container and volume remain allocated, while listings on the other daemon can incorrectly report verified absence. Pass the same validated environment to every Docker subprocess, including readiness and cleanup.

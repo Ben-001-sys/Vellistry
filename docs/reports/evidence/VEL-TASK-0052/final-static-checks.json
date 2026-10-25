@@ -1,0 +1,50 @@
+[
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 0.21,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/final-metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 0.14,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/final-readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 0.14,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/final-traceability.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 0.24,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/final-entrypoints.txt"
+  },
+  {
+    "command": "python scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 0.96,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/scratch-pack.txt"
+  },
+  {
+    "command": "python -m unittest discover -s tests -p test_stage4_independent_packet.py -v",
+    "source_commit": "581f8be7c9d1b83835d2690eae477e3350812506",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 8.01,
+    "evidence": "docs/reports/evidence/VEL-TASK-0052/final-exporter.txt"
+  }
+]
