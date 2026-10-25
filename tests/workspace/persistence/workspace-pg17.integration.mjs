@@ -99,7 +99,7 @@ if(process.argv[2]==='--commit-no-ack'){
  const original=JSON.parse(readFileSync(path.join(root,'docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json'),'utf8')).cases;
  const extensions=JSON.parse(readFileSync(path.join(root,'docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json'),'utf8')).extensions;
  const results=[];admin=await connection('postgres');
- try{for(const {id} of [...original,...extensions]){const started=Date.now();try{await reset();const evidence=await tests[id]();results.push({id,status:'PASS',seconds:(Date.now()-started)/1000,evidence});}catch(e){results.push({id,status:'FAIL',seconds:(Date.now()-started)/1000,error:e.code??e.name,diagnostic:String(e.message).slice(0,180)});}writeFileSync(process.env.VEL_CASE_RESULT,JSON.stringify(results,null,2));console.log(JSON.stringify(results.at(-1)));}}
+ try{for(const {id} of [...original,...extensions]){const started=Date.now();try{await reset();const evidence=await tests[id]();results.push({id,status:'PASS',seconds:(Date.now()-started)/1000,evidence});}catch(e){let clock;try{const hostBefore=Date.now();const db=Number((await admin.query('select extract(epoch from clock_timestamp())*1000 db_ms')).rows[0].db_ms);clock={hostBefore,db,hostAfter:Date.now()};}catch{}results.push({id,status:'FAIL',seconds:(Date.now()-started)/1000,error:e.code??e.name,diagnostic:String(e.message).slice(0,180),clock});}writeFileSync(process.env.VEL_CASE_RESULT,JSON.stringify(results,null,2));console.log(JSON.stringify(results.at(-1)));}}
  finally{await admin.end();}
  process.exitCode=results.some(r=>r.status!=='PASS')?1:0;
 }
