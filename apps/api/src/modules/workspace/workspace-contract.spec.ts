@@ -71,3 +71,17 @@ with tempfile.TemporaryDirectory(prefix='vel-no-remote-probe-') as directory:
  print('PASS mocked remote context rejected without daemon access')`;
  const result=spawnSync("python",["-c",script,path.resolve(__dirname,"../../../../../tests/workspace/persistence/run_pg17.py")],{encoding:"utf8"});assert.equal(result.status,0,result.stderr);
 });
+test("nonstring receipt enums preserve unknown and prohibit a new-key dispatch",async()=>{
+ for(const bad of [{outcome:"rejected",reason:["conflict"],version:0},{outcome:["confirmed"],version:1}]){
+  const book=randomUUID(),request=operation(op({kind:"create",title:"Synthetic"}));let calls=0;
+  const s=new WorkspaceService(provider,{read:async()=>({}),lookup:async()=>({}),apply:async()=>{calls++;return {schemaVersion:1,operationId:request.operationId,bookId:book,...bad};}});
+  assert.equal((await s.apply(book,request)).status,"unknown");assert.equal((await s.apply(book,op({kind:"create",title:"No duplicate"}))).status,"unknown");assert.equal(calls,1);
+ }
+});
+test("rejected apply and reconciliation receipts establish the observed version floor",async()=>{
+ for(const throughLookup of [false,true]){
+  const book=randomUUID(),request=operation(op({kind:"create",title:"Conflict"}));const rejected={schemaVersion:1,operationId:request.operationId,bookId:book,outcome:"rejected",reason:"conflict",version:5};
+  const s=new WorkspaceService(provider,{read:async()=>({bookId:book,bookTitle:"Synthetic",version:4,notes:"",chapters:[]}),lookup:async()=>rejected,apply:async()=>{if(throughLookup)throw new Error("Lost rejection");return rejected;}});
+  await s.apply(book,request);if(throughLookup)assert.equal((await s.reconcile(book,request.operationId)).status,"rejected");assert.equal((await s.read(book)).status,"unavailable");
+ }
+});
