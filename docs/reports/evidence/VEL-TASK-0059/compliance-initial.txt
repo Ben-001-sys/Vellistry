@@ -1,0 +1,4 @@
+Command: trusted-base pr_compliance.evaluate(repo, acf7f796014907cc08dfc25ccab5763caa002d1b, 8a3f8f85cbf01e5bbad994c6aed048d667b54f3d)
+Exit: 1
+ValueError: Head changed after source evidence: docs/reports/evidence/VEL-TASK-0059/verify_packet.py
+Correction: pin source commit containing executable verifier, preserve immutable pack and validators.

@@ -40,14 +40,14 @@ review:
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: e6d1353985a7c12d601170378bb7a085ce4970c6
+implementation_source_commit: 8a3f8f85cbf01e5bbad994c6aed048d667b54f3d
 execution:
   status: completed
   executor: Codex
   model: Codex runtime model not independently reported
   tests:
   - command: python docs/reports/evidence/VEL-TASK-0059/verify_packet.py
-    source_commit: e6d1353985a7c12d601170378bb7a085ce4970c6
+    source_commit: 8a3f8f85cbf01e5bbad994c6aed048d667b54f3d
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0059/packet-integrity.json
@@ -96,3 +96,5 @@ No hosted queries/credentials/JWT experiments/Auth changes/SQL/grants/routes/pri
 
 ## Reviewer disposition
 Distinct completed-head advisory source review and actual readyCI required before presenting preparation PR for separate owner merge. Source review is not independent runtime acceptance or owner approval. New implementation requires new authorization and immutable pack.
+
+Historical trusted-base evaluation at 8a3f8f85cbf01e5bbad994c6aed048d667b54f3d failed exit1 because verify_packet.py is executable source and had not been included in the operative source commit. Corrected source pin includes the unchanged verifier; no validator or scope changes.
