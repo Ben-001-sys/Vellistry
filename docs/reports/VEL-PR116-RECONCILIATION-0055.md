@@ -10,7 +10,7 @@ version: 0.1.0
 
 # FACT: new base and preserved history
 
-Owner-approved PR117 exact head82176e809f45612c0d70aaf68c3f99e655033c2d merged as `fd85deb9a31af8663c85977df896e79b0e370eec`; both complete trees equal `6dce4b1aa7f91071909fc7eba25199a584442899` (git diff exit0). Post-main [40188047497](https://github.com/Ben-001-sys/Vellistry/actions/runs/40188047497) is checked separately; no passing conclusion inferred from a queued run. Mandatory12focused units and32 disposable PG17 cases, all existing application/security/recovery checks, draft routing, readonly token and single automatic workflow are inherited without change.
+Owner-approved PR117 exact head82176e809f45612c0d70aaf68c3f99e655033c2d merged as `fd85deb9a31af8663c85977df896e79b0e370eec`; both complete trees equal `6dce4b1aa7f91071909fc7eba25199a584442899` (git diff exit0). Post-main [40188047497](https://github.com/Ben-001-sys/Vellistry/actions/runs/40188047497) SUCCESS, including actual12unit+32/32PG17.11 execution and verified owned container/volume removal. The downloaded artifact names the exact main SHA; its hash and sanitized summary are preserved in Task55 evidence. Mandatory12focused units and32 disposable PG17 cases, all existing application/security/recovery checks, draft routing, readonly token and single automatic workflow are inherited without change.
 
 Original PR116 reviewed head `3ea34b518b4e5d6fac6b4051389dac51c2af9272` is preserved in the original worktree/branch and remote `codex/archive-pr116-task0054-3ea34b5`. Its distinct review and [ready40185842753](https://github.com/Ben-001-sys/Vellistry/actions/runs/40185842753) remain historical, not evidence for this new head. Task0055 and validated immutable CP0055 were committed before adoption.
 
