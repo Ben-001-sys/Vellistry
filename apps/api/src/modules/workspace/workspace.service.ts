@@ -49,8 +49,8 @@ export class WorkspaceService {
  private terminal(key:string,pending:Pending,r:Receipt):WorkspaceResult {
   // A delayed response must not mutate a newer operation's reconciliation lock.
   if(this.pending.get(key)!==pending)return {status:"unknown"};
-  pending.terminal=r;if(r.outcome==="rejected")this.pending.delete(key);
-  else this.floors.set(key,Math.max(this.floors.get(key)??0,r.version));
+  pending.terminal=r;this.floors.set(key,Math.max(this.floors.get(key)??0,r.version));
+  if(r.outcome==="rejected")this.pending.delete(key);
   return {status:r.outcome,receipt:r};
  }
 }

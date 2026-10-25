@@ -51,9 +51,9 @@ export function requestDigest(bookId:string,op:Operation):string {return createH
 export function receipt(value:unknown,bookId:string,operationId:string):Receipt {
  const r=object(value);const expected=["schemaVersion","operationId","bookId","outcome","version"];
  if(r.createdChapterId!==undefined)expected.push("createdChapterId");if(r.reason!==undefined)expected.push("reason");keys(r,expected);
- if(r.schemaVersion!==1||r.bookId!==bookId||r.operationId!==operationId||!["confirmed","rejected"].includes(String(r.outcome)))throw new InvalidWorkspaceInput("Invalid acknowledgement");
+ if(r.schemaVersion!==1||r.bookId!==bookId||r.operationId!==operationId||typeof r.outcome!=="string"||!["confirmed","rejected"].includes(r.outcome))throw new InvalidWorkspaceInput("Invalid acknowledgement");
  version(r.version);if(r.createdChapterId!==undefined)uuid(r.createdChapterId);
- if(r.outcome==="rejected"&&!["invalid","conflict"].includes(String(r.reason)))throw new InvalidWorkspaceInput("Invalid rejection");
+ if(r.outcome==="rejected"&&(typeof r.reason!=="string"||!["invalid","conflict"].includes(r.reason)))throw new InvalidWorkspaceInput("Invalid rejection");
  if(r.outcome==="confirmed"&&r.reason!==undefined)throw new InvalidWorkspaceInput("Invalid confirmation");
  return r as unknown as Receipt;
 }
