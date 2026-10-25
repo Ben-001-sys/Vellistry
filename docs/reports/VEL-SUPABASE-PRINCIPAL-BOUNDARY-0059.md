@@ -89,6 +89,8 @@ A later real integration should reuse existing SupabaseAuthService configuration
 
 # Negative security acceptance catalogue
 
+Every N01-N14 case is NOT_RUN_PROPOSED for a future authorized task. Offline document-integrity mutations below are distinct from executing these security cases. No real JWT is created, signed or verified.
+
 - N-01: Absent/wrong trusted policy or token-derived issuer/JWKS target denies
 - N-02: Wrong issuer/project, audience mismatch/malformed audience array denies
 - N-03: Missing/malformed UUID subject/session or user.id!=sub denies
@@ -99,7 +101,7 @@ A later real integration should reuse existing SupabaseAuthService configuration
 - N-08: Concurrent authors, reversed completions, token switch and same-token subject/session changes deny or isolate
 - N-09: Slow response/stale proof/clock rollback cannot refresh evidence age; preserve current freshness bound
 - N-10: Invalid signature/key/algorithm/JWKS scenarios represented as injected failed-verification outcomes only; no real JWT generation or verification in next task
-- N-11: A synthetic unexpired verified JWT with a mocked revoked session must never be labelled writable merely because identity checks pass; session evidence stays UNKNOWN, no write route
+- N-11: An injected unexpired token-claims object (not an encoded/signed JWT) with a mocked revoked session must never be labelled writable merely because identity checks pass; session evidence stays UNKNOWN, no write route
 - N-12: Pool/session ownership/TOCTOU/rollback/revocation races remain BLOCKED until separately authorized gateway/session integration tests; do not fake them with a passed identity unit
 - N-13: No raw token/user/claim/private payload retained or logged, no real SDK/client/network init
 - N-14: Existing36test bodies,12unit/32PG/security/recovery and Auth ABI remain intact

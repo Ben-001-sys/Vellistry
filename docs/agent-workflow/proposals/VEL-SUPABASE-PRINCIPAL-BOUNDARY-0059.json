@@ -183,59 +183,73 @@
   "negative_security_cases": [
     {
       "id": "N-01",
-      "requirement": "Absent/wrong trusted policy or token-derived issuer/JWKS target denies"
+      "requirement": "Absent/wrong trusted policy or token-derived issuer/JWKS target denies",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-02",
-      "requirement": "Wrong issuer/project, audience mismatch/malformed audience array denies"
+      "requirement": "Wrong issuer/project, audience mismatch/malformed audience array denies",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-03",
-      "requirement": "Missing/malformed UUID subject/session or user.id!=sub denies"
+      "requirement": "Missing/malformed UUID subject/session or user.id!=sub denies",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-04",
-      "requirement": "Service-role/anonymous/AAL outside explicit fixture policy denies; metadata cannot elevate"
+      "requirement": "Service-role/anonymous/AAL outside explicit fixture policy denies; metadata cannot elevate",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-05",
-      "requirement": "Expired/nonfinite/unsafe/coerced exp, future nbf/iat beyond explicit fixture tolerance denies"
+      "requirement": "Expired/nonfinite/unsafe/coerced exp, future nbf/iat beyond explicit fixture tolerance denies",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-06",
-      "requirement": "Auth error/null/partial claims or user, thrown/rejected SDK method denies without fallback"
+      "requirement": "Auth error/null/partial claims or user, thrown/rejected SDK method denies without fallback",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-07",
-      "requirement": "Both operations receive exact same token, no getSession/options/key override"
+      "requirement": "Both operations receive exact same token, no getSession/options/key override",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-08",
-      "requirement": "Concurrent authors, reversed completions, token switch and same-token subject/session changes deny or isolate"
+      "requirement": "Concurrent authors, reversed completions, token switch and same-token subject/session changes deny or isolate",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-09",
-      "requirement": "Slow response/stale proof/clock rollback cannot refresh evidence age; preserve current freshness bound"
+      "requirement": "Slow response/stale proof/clock rollback cannot refresh evidence age; preserve current freshness bound",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-10",
-      "requirement": "Invalid signature/key/algorithm/JWKS scenarios represented as injected failed-verification outcomes only; no real JWT generation or verification in next task"
+      "requirement": "Invalid signature/key/algorithm/JWKS scenarios represented as injected failed-verification outcomes only; no real JWT generation or verification in next task",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-11",
-      "requirement": "A synthetic unexpired verified JWT with a mocked revoked session must never be labelled writable merely because identity checks pass; session evidence stays UNKNOWN, no write route"
+      "requirement": "An injected unexpired token-claims object (not an encoded/signed JWT) with a mocked revoked session must never be labelled writable merely because identity checks pass; session evidence stays UNKNOWN, no write route",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-12",
-      "requirement": "Pool/session ownership/TOCTOU/rollback/revocation races remain BLOCKED until separately authorized gateway/session integration tests; do not fake them with a passed identity unit"
+      "requirement": "Pool/session ownership/TOCTOU/rollback/revocation races remain BLOCKED until separately authorized gateway/session integration tests; do not fake them with a passed identity unit",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-13",
-      "requirement": "No raw token/user/claim/private payload retained or logged, no real SDK/client/network init"
+      "requirement": "No raw token/user/claim/private payload retained or logged, no real SDK/client/network init",
+      "status": "NOT_RUN_PROPOSED"
     },
     {
       "id": "N-14",
-      "requirement": "Existing36test bodies,12unit/32PG/security/recovery and Auth ABI remain intact"
+      "requirement": "Existing36test bodies,12unit/32PG/security/recovery and Auth ABI remain intact",
+      "status": "NOT_RUN_PROPOSED"
     }
   ],
   "next_task": {
