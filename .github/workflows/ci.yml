@@ -109,6 +109,8 @@ jobs:
       run: pnpm test:workspace-contract
     - name: Protected workspace persistence unit regressions
       run: pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
+    - name: Principal adapter binding regressions
+      run: pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts
     - name: Hosted preflight regressions when source is integrated
       run: 'if test -f tests/hosted_supabase_preflight.test.mjs; then node --test tests/hosted_supabase_preflight.test.mjs; else echo ''NOTICE:
         PR68 hosted preflight is not on this checkout; not tested''; fi'

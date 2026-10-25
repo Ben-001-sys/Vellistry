@@ -304,6 +304,28 @@ class WorkflowExecutionContractTests(unittest.TestCase):
                     else: steps.append(dict(step))
                 self.rejects_mutation(expected['name']+'-'+mode,mutate)
 
+    def test_principal_adapter_runner_bypasses_are_rejected(self):
+        expected={'name':'Principal adapter binding regressions',
+                  'run':'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts'}
+        steps=self.original['jobs']['application']['steps']
+        if not any(s.get('name')==expected['name'] for s in steps):
+            index=next(i for i,s in enumerate(steps) if s.get('name')=='Protected workspace persistence unit regressions')
+            steps.insert(index+1,dict(expected))
+        for mode in ('remove','replace','skip','mask','shell','working-directory','env','duplicate','command-mask','after-build'):
+            def mutate(w,m=mode):
+                ss=w['jobs']['application']['steps'];step=next(s for s in ss if s.get('name')==expected['name'])
+                if m=='remove':ss.remove(step)
+                elif m=='replace':step['run']='echo PASS'
+                elif m=='skip':step['if']='false'
+                elif m=='mask':step['continue-on-error']='true'
+                elif m=='shell':step['shell']='sh'
+                elif m=='working-directory':step['working-directory']='other'
+                elif m=='env':step['env']={'NODE_OPTIONS':'--require ./skip.js'}
+                elif m=='duplicate':ss.append(dict(step))
+                elif m=='command-mask':step['run']+=' || true'
+                else:ss.remove(step);ss.append(step)
+            self.rejects_mutation('principal-adapter-'+mode,mutate)
+
     def test_all_job_permission_overrides_are_rejected(self):
         for job in self.original['jobs']:
             for label,permissions in (('contents-write',{'contents':'write'}),('oidc-write',{'id-token':'write'}),('read-only',{'contents':'read'}),('empty',{}),('read-all','read-all')):
