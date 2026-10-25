@@ -1,0 +1,91 @@
+id: VEL-TASK-0053
+title: Mandatory existing workspace persistence regressions in consolidated application CI
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0053
+objective: Mandatory existing workspace persistence regressions in consolidated application CI
+in_scope: &id001
+- .github/workflows/ci.yml
+- scripts/pr_compliance.py
+- tests/test_ci_policy.py
+- tests/test_pr_compliance.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0053.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0053.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0053.md
+- docs/agent-workflow/inputs/VEL-TASK-0053/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PERSISTENCE-CI-0053.md
+- docs/reports/evidence/VEL-TASK-0053/*
+out_of_scope:
+- Hosted operations/credentials/cloud migrations/real users/private data/paid/deployment/settings
+- Successor merge, expired remediation delegation and broad gate promotion
+- SQL/Auth/application/dependency changes; no production registration
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: .github/workflows/ci.yml
+  role: governing-source
+- path: scripts/ci_policy.py
+  role: governing-source
+- path: tests/workspace/persistence/run_pg17.py
+  role: governing-source
+- path: apps/api/package.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0053/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: HOSTED-BOUNDARY
+  limitation: Synthetic tests do not prove real Supabase logout/hosted acceptance; access channel
+    and target-specific operations remain separately gated.
+deliverables:
+- Committed validated immutable pack before implementation
+- docs/reports/VEL-PERSISTENCE-CI-0053.md
+- ExecutionBundle, exact source/test evidence, manifest and distinct review; successor PR without
+  merge
+acceptance_criteria:
+- Exactly one unconditional 12-unit and32-case command inside existing applicable application job,
+  after frozen install; PG after build/typecheck before existing Supabase security steps
+- Preserve six jobs, single automatic workflow, draft advisory, readonly permissions, mandatory security/recovery/final
+  governance gates
+- Static positive and negative regressions reject removed/replaced/conditional/duplicated/masked
+  commands and alternate shell/directory/environment/runtime/order bypasses
+- Capture actual current-head synthetic PG evidence and verified owned cleanup without secrets or
+  relabeling historical results
+- Run policy/compliance/governance and actual applicable ready CI; distinct final-head review and
+  separate owner merge
+allowed_actions:
+- Read repository and public official documentation; edit only scoped files after committed validated
+  pack
+- Run synthetic local and GitHub Actions disposable tests, owned loopback PG17 only; preserve original
+  checks
+- Publish draft, obtain review, promote ready and verify exact-head CI; no merge
+approval_required_for:
+- Any hosted or security-sensitive operation; unresolved production security decisions; dependencies
+  or scope expansion; successor PR merge
+compliance:
+  change_base: c577cc5ecf5fb92fda63977bade60ce4cf2d45df
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6396483689
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
