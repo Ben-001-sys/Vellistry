@@ -1,0 +1,100 @@
+acceptance_criteria:
+- Implement exact pinned POLICY-CONTRACT.md fail-closed synthetic schema with no production
+  defaults
+- Snapshot before projection; no mutable response/policy retention; preserve immutable
+  per-request binding and30000msfreshness after awaits
+- Retain all36old tests unchanged except new import; execute positive and negative
+  claims/composition cases with mock failure only for crypto
+- Only two approved app paths; Auth/guard/SQL/routes/CI/dependencies/history unchanged
+- All six production decisions pending; N12BLOCKED; no production session/write inference
+- Focused/regression/build/check/governance/actual32PG readyCI and completed-head
+  distinct review; no automatic merge
+allowed_actions:
+- Read pinned repository/frozen SDK source and public official docs, edit only approved
+  paths after committed validated pack
+- Run injected mock/synthetic tests, frozen install/build/check/governance and inherited
+  disposable CI; no live verifier
+- Publish Draft, obtain distinct trusted read-only source review, promote Ready and
+  verify exact-head CI; no merge
+approval_required_for:
+- Any real client/Auth/hosted/credential/JWT/SQL/session grant/route/dependency/CI
+  or scope change
+- Any production decision or feature PR merge
+compliance:
+  allow_paths: &id001
+  - apps/api/src/modules/workspace/workspace-principal-verification-policy.ts
+  - apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts
+  - CURRENT-STATE.md
+  - docs/agent-workflow/tasks/VEL-TASK-0060.yaml
+  - docs/agent-workflow/context-packs/VEL-CP-0060.md
+  - docs/agent-workflow/execution-bundles/VEL-EB-0060.md
+  - docs/agent-workflow/inputs/VEL-TASK-0060/*
+  - docs/agent-workflow/PR-COMPLIANCE.yaml
+  - docs/reports/VEL-SYNTHETIC-CLAIM-POLICY-0060.md
+  - docs/reports/evidence/VEL-TASK-0060/*
+  authorization:
+    expires_on: '2026-10-31'
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6400695011
+  change_base: 9b492262026287152af7fb0a5981efda1524d059
+  executor: Codex
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
+  phase: repository-only
+context_pack_id: VEL-CP-0060
+created_at: '2026-10-25'
+deliverables:
+- Unique Task and committed validated immutable CP before app edits
+- Pure unregistered helper and mandatory spec extension retaining all36existing tests
+- Actual mock N01-N11/N13-N14 evidence; N12BLOCKED; frozen/build/check/governance
+  and inherited32PG CI
+- EB/provenance and distinct exact-head review; ReadyPR for separate owner merge
+id: VEL-TASK-0060
+in_scope: *id001
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-contract.ts
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0060/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0060/POLICY-CONTRACT.md
+  role: governing-source
+objective: Evaluate explicit trusted synthetic claim policy before existing bridge
+  projection; mock-only helper and mandatory test extension
+out_of_scope:
+- Real Auth/client initialization/network/credentials/JWT signing/hosted probes
+- Existing Auth/guard/adapter implementation/module/route/SQL/grants/RLS/dependency/CI
+  changes
+- Production principal/session/gateway/writable authorization or automatic merge
+owner: project_owner
+source_gaps:
+- id: MOCK-ONLY
+  limitation: SDK-shaped mocks do not verify real JWT signatures, live SDK/network
+    behavior, revocation or active sessions. Production decisions remain pending.
+status: in-progress
+title: Implement pure synthetic principal-claim fixture policy
+type: implementation-task
+updated_at: '2026-10-25'

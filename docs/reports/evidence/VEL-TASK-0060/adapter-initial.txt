@@ -1,0 +1,91 @@
+✔ PB-01: valid synthetic same-token proof yields the existing immutable principal shape (4.9623ms)
+✔ PB-02: invalid tokens deny without consulting the injected verifier (0.7284ms)
+✔ PB-02: rejected, throwing and malformed verifier dependencies fail closed (0.6411ms)
+✔ PB-02: malformed proofs never fall back to caller or decoded identity (1.3136ms)
+✔ PB-02: accessors and inherited fields are not accepted as verification data (0.4115ms)
+✔ PB-03: verified user, subject and session must be valid matching UUID identities (0.6031ms)
+✔ PB-04: expiry is integral JWT seconds and cannot be coerced or overflow milliseconds (0.5859ms)
+✔ PB-04: existing freshness boundary is preserved without future-skew tolerance (0.314ms)
+✔ PB-04: invalid, throwing or regressing injected clocks deny (0.5868ms)
+✔ PB-05: separate requests and reversed async completions cannot exchange authors (0.4586ms)
+✔ PB-05/PB-07: overlapping calls on one provider pin identity at first valid completion (0.2708ms)
+✔ PB-06: caller token reassignment and verifier method replacement do not redirect an existing provider (0.293ms)
+✔ PB-06/PB-07: same-token correlation, author, session or expiry changes deny (0.3642ms)
+✔ PB-07: an async response is denied if its token expires during verification (0.2214ms)
+✔ PB-07: an async response is denied when its verification becomes stale (0.2358ms)
+✔ PB-07: proof snapshots and returned principals cannot be mutated across requests (0.2947ms)
+✔ PB-07: errors and rejected proofs never clear a previously bound identity (0.4556ms)
+✔ PB-08/PB-09: successful binding uses only injected synthetic responses, never a network fallback (1.0159ms)
+✔ SB-01: complete SDK-shaped responses compose into the existing frozen principal (1.1577ms)
+✔ SB-02: both injected operations receive exactly the same explicit token and no options (0.4757ms)
+✔ SB-03: invalid tokens and incomplete clients deny without a session or network fallback (0.6863ms)
+✔ SB-04: either SDK error, including falsy non-null errors, rejects the whole proof (1.3636ms)
+✔ SB-05: missing, partial and malformed SDK responses fail closed (1.5603ms)
+✔ SB-06: contradictory subjects and invalid session or expiry cannot produce a proof (1.0601ms)
+✔ SB-07: required accessors and inherited response data are rejected without invoking them (0.2427ms)
+✔ SB-08: claims may complete before user without mixing or trusting metadata (21.8337ms)
+✔ SB-09: the user response is snapshotted before a later claims response (2.231ms)
+✔ SB-10: early claims and returned proof are immutable snapshots (0.825ms)
+✔ SB-11: reversed completions for concurrent authors stay request-isolated (1.1813ms)
+✔ SB-12: thrown/rejected clients never yield partial proof or unhandled fallback (0.5532ms)
+✔ SB-13: expiry is checked after both async responses (1.2968ms)
+✔ SB-14: waiting cannot launder stale verification into a fresh timestamp (1.0082ms)
+✔ SB-15: invalid or regressing clocks deny after asynchronous composition (0.9144ms)
+✔ SB-16: token reassignment/method replacement cannot redirect an in-flight bridge request (0.4442ms)
+✔ SB-17: composition preserves existing immutable session binding and does not cache proofs (0.4213ms)
+✔ SB-18: SDK-shaped composition never calls fetch/getSession or initializes a real client (0.3233ms)
+✔ N-01/N-14: explicit fixture policy composes through unchanged bridge and principal (0.8694ms)
+✔ N-01: absent, malformed or token-derived policy cannot supply trusted defaults (0.2691ms)
+✔ N-02: wrong issuer, malformed or expanded audience denies before projection (0.8865ms)
+✔ N-03: malformed subject/session or mismatched Auth-server user denies (0.8396ms)
+✔ N-04: roles, anonymous, unapproved AAL and metadata cannot elevate (0.841ms)
+✔ N-05: unsafe, expired or coerced expiry denies (0.7732ms)
+✔ N-05: unsupported/malformed/future or inconsistent time claims deny (1.0774ms)
+✖ N-06/N-10: partial results and injected signature/key/algorithm failures deny (1.7174ms)
+✔ N-07: composition preserves exact captured token and never adds SDK options (0.2679ms)
+✔ N-08: reversed policy responses for concurrent authors stay isolated (8.9972ms)
+✔ N-08: policy success cannot reset pinned subject/session/expiry binding (0.8702ms)
+✔ N-09: policy checks cannot launder 30-second freshness or expiry after await (1.4489ms)
+✔ N-11: passing identity policy never supplies session or writable authorization (0.4467ms)
+✔ N-13: immutable snapshots retain neither caller policy mutation nor response references (0.2906ms)
+✔ N-13: accessors, inherited fields, symbols and sparse audience cannot execute policy data (0.4789ms)
+✔ N-13: mock-only composition performs no network and logs no token or claims (0.6125ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 51
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 546.3315
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-principal-adapter.spec.ts:356:1
+✖ N-06/N-10: partial results and injected signature/key/algorithm failures deny (1.7174ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   authorId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+  +   sessionId: '11111111-1111-1111-1111-111111111111',
+  +   tokenExpiresAt: 200000,
+  +   verifiedAt: 100000
+  + }
+  - null
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-synthetic-claim-policy\apps\api\src\modules\workspace\workspace-principal-adapter.spec.ts:357:267)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { authorId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', sessionId: '11111111-1111-1111-1111-111111111111', tokenExpiresAt: 200000, verifiedAt: 100000 },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-synthetic-claim-policy\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

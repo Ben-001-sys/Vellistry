@@ -1,0 +1,58 @@
+[
+  {
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 1.12,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/adapter.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 2.0,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/persistence-unit.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:workspace-contract",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 1.92,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/workspace.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 2.05,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/library.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm test:hosted-preflight",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 1.64,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/preflight.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm build",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 25.06,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/build.txt"
+  },
+  {
+    "command": "corepack.cmd pnpm check",
+    "source_commit": "ad7919dbc99c36e4f0474956fdac2960f4145702",
+    "exit_code": 0,
+    "status": "PASS",
+    "seconds": 9.41,
+    "evidence": "docs/reports/evidence/VEL-TASK-0060/check.txt"
+  }
+]

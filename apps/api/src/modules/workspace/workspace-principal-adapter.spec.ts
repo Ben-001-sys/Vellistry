@@ -1,3 +1,4 @@
+import {evaluateSyntheticPrincipalClaimPolicy} from "./workspace-principal-verification-policy";
 import assert from "node:assert/strict";
 import {test} from "node:test";
 import {createWorkspaceSupabaseResponseBridge, MockSupabaseAuthClient} from "./workspace-supabase-response-bridge";
@@ -318,4 +319,78 @@ test("SB-18: SDK-shaped composition never calls fetch/getSession or initializes 
  const mock=t.mock.method(globalThis,"fetch",()=>{throw new Error("Network forbidden");});
  try{assert.ok(await createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,()=>NOW),TOKEN_A,()=>NOW).verify());assert.equal(sessions,0);assert.equal(mock.mock.callCount(),0);}
  finally{t.mock.restoreAll();}
+});
+
+// Policy fixtures are deliberately not production issuer/audience/role defaults.
+const fixturePolicy=()=>({issuer:"https://synthetic.invalid/auth/v1",audiences:["synthetic-author"],roles:["authenticated"]});
+function policyResponse(patch:Record<string,unknown>={}){return {data:{claims:{sub:AUTHOR_A,session_id:SESSION_A,exp:200,iss:"https://synthetic.invalid/auth/v1",aud:"synthetic-author",role:"authenticated",is_anonymous:false,...patch}},error:null};}
+function policyProvider(response:unknown,policy:unknown=fixturePolicy(),clock=()=>NOW,user:unknown=sdkUser()){
+ const client={getUser:async()=>user,getClaims:async()=>evaluateSyntheticPrincipalClaimPolicy(response,policy,clock())};
+ return createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,clock),TOKEN_A,clock);
+}
+
+test("N-01/N-14: explicit fixture policy composes through unchanged bridge and principal",async()=>{
+ const p=await policyProvider(policyResponse()).verify();assert.deepEqual(p,{authorId:AUTHOR_A,sessionId:SESSION_A,tokenExpiresAt:200000,verifiedAt:NOW});assert.ok(Object.isFrozen(p));
+ assert.ok(evaluateSyntheticPrincipalClaimPolicy(policyResponse({aud:["synthetic-author"],iat:90,nbf:99}),fixturePolicy(),NOW));
+});
+test("N-01: absent, malformed or token-derived policy cannot supply trusted defaults",async()=>{
+ for(const policy of [null,undefined,{},[],{...fixturePolicy(),issuer:"https://another.invalid/auth/v1"},{...fixturePolicy(),audiences:[]},{...fixturePolicy(),roles:["service_role"]},{...fixturePolicy(),extra:true},Object.create(fixturePolicy())])assert.equal(evaluateSyntheticPrincipalClaimPolicy(policyResponse(),policy,NOW),null);
+});
+test("N-02: wrong issuer, malformed or expanded audience denies before projection",async()=>{
+ for(const patch of [{iss:undefined},{iss:"https://evil.invalid"},{aud:undefined},{aud:1},{aud:[]},{aud:["synthetic-author","other"]},{aud:["synthetic-author","synthetic-author"]},{aud:[1]},{aud:"other"}])assert.equal(await policyProvider(policyResponse(patch)).verify(),null);
+});
+test("N-03: malformed subject/session or mismatched Auth-server user denies",async()=>{
+ for(const patch of [{sub:"bad"},{sub:null},{session_id:undefined},{session_id:[]},{session_id:"bad"},{sub:AUTHOR_B}])assert.equal(await policyProvider(policyResponse(patch)).verify(),null);
+ assert.equal(await policyProvider(policyResponse(),fixturePolicy(),()=>NOW,sdkUser(AUTHOR_B)).verify(),null);
+});
+test("N-04: roles, anonymous, unapproved AAL and metadata cannot elevate",async()=>{
+ for(const patch of [{role:"service_role"},{role:undefined},{role:["authenticated"]},{is_anonymous:true},{is_anonymous:undefined},{is_anonymous:"false"},{aal:"aal1"},{aal:"aal2"},{aal:undefined},{user_metadata:{role:"authenticated"}},{app_metadata:{role:"authenticated"}}])assert.equal(await policyProvider(policyResponse(patch)).verify(),null);
+});
+test("N-05: unsafe, expired or coerced expiry denies",async()=>{
+ for(const exp of [undefined,null,"200",true,0,-1,100,200.5,NaN,Infinity,Number.MAX_SAFE_INTEGER])assert.equal(await policyProvider(policyResponse({exp})).verify(),null);
+});
+test("N-05: unsupported/malformed/future or inconsistent time claims deny",async()=>{
+ for(const patch of [{iat:undefined},{iat:null},{iat:"90"},{iat:100.1},{iat:101},{iat:-1},{nbf:101},{nbf:NaN},{iat:100,nbf:99},{auth_time:90},{expires_at:200}])assert.equal(await policyProvider(policyResponse(patch)).verify(),null);
+ for(const now of [NaN,Infinity,-1,100000.1])assert.equal(evaluateSyntheticPrincipalClaimPolicy(policyResponse(),fixturePolicy(),now),null);
+});
+test("N-06/N-10: partial results and injected signature/key/algorithm failures deny",async()=>{
+ for(const response of [null,undefined,[],{}, {data:null,error:null},{data:{claims:null},error:null},...['signature','key','algorithm'].map(reason=>({...policyResponse(),error:{reason}})),... [false,undefined,0,""] .map(error=>({...policyResponse(),error}))])assert.equal(await policyProvider(response).verify(),null);
+ for(const method of ['getUser','getClaims'] as const){const client={getUser:async()=>sdkUser(),getClaims:async()=>evaluateSyntheticPrincipalClaimPolicy(policyResponse(),fixturePolicy(),NOW)};client[method]=async()=>{throw new Error('injected failed verification');};assert.equal(await createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,()=>NOW),TOKEN_A,()=>NOW).verify(),null);}
+});
+test("N-07: composition preserves exact captured token and never adds SDK options",async()=>{
+ const seen:unknown[][]=[];let token=TOKEN_A;
+ const client={getUser:async(...args:unknown[])=>{seen.push(args);return sdkUser();},getClaims:async(...args:unknown[])=>{seen.push(args);return evaluateSyntheticPrincipalClaimPolicy(policyResponse(),fixturePolicy(),NOW);}};
+ const p=createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,()=>NOW),token,()=>NOW);token=TOKEN_B;assert.ok(await p.verify());assert.deepEqual(seen,[[TOKEN_A],[TOKEN_A]]);
+});
+test("N-08: reversed policy responses for concurrent authors stay isolated",async()=>{
+ const ua=deferred(),ub=deferred(),ca=deferred(),cb=deferred();
+ const client={getUser:(t:string)=>t===TOKEN_A?ua.promise:ub.promise,getClaims:async(t:string)=>evaluateSyntheticPrincipalClaimPolicy(await(t===TOKEN_A?ca.promise:cb.promise),fixturePolicy(),NOW)};
+ const bridge=createWorkspaceSupabaseResponseBridge(client,()=>NOW);const a=createWorkspacePrincipalProvider(bridge,TOKEN_A,()=>NOW).verify(),b=createWorkspacePrincipalProvider(bridge,TOKEN_B,()=>NOW).verify();
+ cb.resolve(policyResponse({sub:AUTHOR_B,session_id:SESSION_B}));ua.resolve(sdkUser());await tick();ub.resolve(sdkUser(AUTHOR_B));ca.resolve(policyResponse());assert.equal((await a)?.authorId,AUTHOR_A);assert.equal((await b)?.sessionId,SESSION_B);
+});
+test("N-08: policy success cannot reset pinned subject/session/expiry binding",async()=>{
+ let response=policyResponse();let user=sdkUser();const p=createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge({getUser:async()=>user,getClaims:async()=>evaluateSyntheticPrincipalClaimPolicy(response,fixturePolicy(),NOW)},()=>NOW),TOKEN_A,()=>NOW);
+ assert.ok(await p.verify());response=policyResponse({sub:AUTHOR_B,session_id:SESSION_B});user=sdkUser(AUTHOR_B);assert.equal(await p.verify(),null);response=policyResponse({exp:201});user=sdkUser();assert.equal(await p.verify(),null);response=policyResponse();assert.ok(await p.verify());
+});
+test("N-09: policy checks cannot launder 30-second freshness or expiry after await",async()=>{
+ for(const end of [NOW+30000,NOW+30001,200000,NOW-1]){
+  let now=NOW;const u=deferred();const client={getUser:()=>u.promise,getClaims:async()=>evaluateSyntheticPrincipalClaimPolicy(policyResponse(),fixturePolicy(),now)};
+  const result=createWorkspacePrincipalProvider(createWorkspaceSupabaseResponseBridge(client,()=>now),TOKEN_A,()=>now).verify();await tick();now=end;u.resolve(sdkUser());const p=await result;if(end===NOW+30000)assert.equal(p?.verifiedAt,NOW);else assert.equal(p,null);
+ }
+});
+test("N-11: passing identity policy never supplies session or writable authorization",async()=>{
+ const mockedSession={revoked:true};const p=await policyProvider(policyResponse()).verify();assert.ok(p);assert.equal(mockedSession.revoked,true);assert.deepEqual(Object.keys(p).sort(),['authorId','sessionId','tokenExpiresAt','verifiedAt'].sort());assert.equal('writable' in p,false);assert.equal('activeSession' in p,false);
+ // Active/revoked state remains UNKNOWN to this identity helper. N-12 is BLOCKED.
+});
+test("N-13: immutable snapshots retain neither caller policy mutation nor response references",async()=>{
+ const policy=fixturePolicy(),response=policyResponse({aud:["synthetic-author"]});const result=evaluateSyntheticPrincipalClaimPolicy(response,policy,NOW);assert.ok(result);response.data.claims.sub=AUTHOR_B;policy.audiences[0]='other';assert.equal(result.data.claims.sub,AUTHOR_A);assert.deepEqual(result.data.claims.aud,['synthetic-author']);assert.ok(Object.isFrozen(result)&&Object.isFrozen(result.data)&&Object.isFrozen(result.data.claims)&&Object.isFrozen(result.data.claims.aud));assert.equal(Reflect.set(result.data.claims,'sub',AUTHOR_B),false);
+});
+test("N-13: accessors, inherited fields, symbols and sparse audience cannot execute policy data",async()=>{
+ let reads=0;const response=policyResponse();Object.defineProperty(response.data.claims,'iss',{get(){reads++;return 'https://synthetic.invalid/auth/v1';}});assert.equal(evaluateSyntheticPrincipalClaimPolicy(response,fixturePolicy(),NOW),null);assert.equal(reads,0);
+ const policy=fixturePolicy();Object.defineProperty(policy,'issuer',{get(){reads++;return 'https://synthetic.invalid/auth/v1';}});assert.equal(evaluateSyntheticPrincipalClaimPolicy(policyResponse(),policy,NOW),null);assert.equal(reads,0);
+ for(const response of [Object.create(policyResponse()),policyResponse({[Symbol('extra')]:true}),policyResponse({aud:new Array(1)})])assert.equal(evaluateSyntheticPrincipalClaimPolicy(response,fixturePolicy(),NOW),null);
+});
+test("N-13: mock-only composition performs no network and logs no token or claims",async(t)=>{
+ const fetch=t.mock.method(globalThis,'fetch',()=>{throw new Error('Network prohibited');});const log=t.mock.method(console,'log',()=>{});const error=t.mock.method(console,'error',()=>{});
+ try{assert.ok(await policyProvider(policyResponse()).verify());assert.equal(await policyProvider(policyResponse({iss:'wrong'})).verify(),null);assert.equal(fetch.mock.callCount(),0);assert.equal(log.mock.callCount(),0);assert.equal(error.mock.callCount(),0);}finally{t.mock.restoreAll();}
 });
