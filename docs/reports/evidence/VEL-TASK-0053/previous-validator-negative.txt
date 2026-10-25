@@ -1,0 +1,87 @@
+Previous exact-base workflow_contract; new10 Git mutations expected to expose missing detection.
+test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) ... 
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Protected workspace persistence unit regressions-remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Protected workspace persistence unit regressions-replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Protected workspace persistence unit regressions-skip')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Protected workspace persistence unit regressions-mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Protected workspace persistence unit regressions-duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Disposable PostgreSQL17 protected workspace acceptance-remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Disposable PostgreSQL17 protected workspace acceptance-replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Disposable PostgreSQL17 protected workspace acceptance-skip')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Disposable PostgreSQL17 protected workspace acceptance-mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_persistence_commands_cannot_be_omitted_or_masked (test_pr_compliance.WorkflowExecutionContractTests) (mutation='Disposable PostgreSQL17 protected workspace acceptance-duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-persistence-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 13.613s
+
+FAILED (failures=10)
+Expected runner failure: True; failures=10; errors=0
