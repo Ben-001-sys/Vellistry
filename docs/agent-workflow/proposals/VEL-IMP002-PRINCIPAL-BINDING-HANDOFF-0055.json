@@ -1,0 +1,93 @@
+{
+  "id": "VEL-IMP002-PRINCIPAL-BINDING-HANDOFF-0055",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "next_task_id": null,
+  "title": "Request-isolated synthetic verified-principal binding adapter",
+  "authorization_required": true,
+  "source_base": "fd85deb9a31af8663c85977df896e79b0e370eec",
+  "prerequisites": [
+    "Owner authorizes exact two implementation files and synthetic scope",
+    "Allocate new unique Task and commit/validate immutable ContextPack before code",
+    "Recheck then-current main and preserve accepted Task52 contract and Auth architecture"
+  ],
+  "implementation_paths": [
+    "apps/api/src/modules/workspace/workspace-principal-adapter.ts",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts"
+  ],
+  "supporting_paths": "New task/pack/EB/inputs, report/evidence and PR manifest only; no existing production file changes",
+  "design_proposal": {
+    "factory": "createWorkspacePrincipalProvider(verificationPort, requestToken, clock)",
+    "lifetime": "One immutable provider closure per request; no singleton actor/token state or mutable global request slot",
+    "injected_verifier": "Trusted synthetic verificationPort.verify(exactToken) returns verified userId plus verified claims sub/session_id/exp and verification time from same-token verification. No caller-supplied identity; correlation with that exact request token is explicit at seam.",
+    "validation": "Fail closed on absent/error/malformed proof, subject disagreement, invalid UUID/session, expired/future/stale evidence and nonfinite values; return immutable VerifiedPrincipal compatible with existing checkedPrincipal",
+    "limits": "This is binding and validation of injected verification responses only, not JWT cryptography/getClaims/getUser integration or real session validation. The production verifier API remains OWNER_DECISION_PENDING; arbitrary JSON does not authenticate a user."
+  },
+  "acceptance": [
+    {
+      "id": "PB-01",
+      "requirement": "Valid injected same-token user/claims produces immutable principal under existing types/freshness policy"
+    },
+    {
+      "id": "PB-02",
+      "requirement": "Missing token or verification failure/errors/malformed response denies; no decoded token fallback"
+    },
+    {
+      "id": "PB-03",
+      "requirement": "Verified userId must equal verified claims subject; invalid/missing session id denies"
+    },
+    {
+      "id": "PB-04",
+      "requirement": "Expired token, stale/future verifiedAt and invalid/nonfinite timestamps deny without relaxing existing checkedPrincipal"
+    },
+    {
+      "id": "PB-05",
+      "requirement": "Concurrent and out-of-order requests for two authors remain isolated; verifier receives only its own immutable request token"
+    },
+    {
+      "id": "PB-06",
+      "requirement": "Token switch/mismatched verification correlation denies; refresh creates a new request-scoped provider, never mutates another"
+    },
+    {
+      "id": "PB-07",
+      "requirement": "Post-async verification rechecks time and identity; caller cannot mutate returned principal or influence another request"
+    },
+    {
+      "id": "PB-08",
+      "requirement": "Unit tests use injected synthetic verification responses and clock only, no network/database/environment credentials/JWT signing"
+    },
+    {
+      "id": "PB-09",
+      "requirement": "No module registration/controller/route/pool/SQL/managed-session privileges/real Auth implementation; no dependency or CI changes"
+    },
+    {
+      "id": "PB-10",
+      "requirement": "Existing12focused/32PG and all applicable governance/security/recovery gates remain unchanged; distinct review and separate owner feature merge"
+    }
+  ],
+  "commands": [
+    "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "corepack pnpm test:workspace-contract",
+    "corepack pnpm check",
+    "corepack pnpm build",
+    "python scripts/ci_governance.py",
+    "Existing applicable ready-state CI including unchanged32-case disposable PG17 runner"
+  ],
+  "reserved_decisions": {
+    "PRINCIPAL": "OWNER_DECISION_PENDING",
+    "SESSION": "OWNER_DECISION_PENDING",
+    "GATEWAY": "OWNER_DECISION_PENDING",
+    "PACKAGING": "OWNER_DECISION_PENDING",
+    "RECONCILIATION": "OWNER_DECISION_PENDING",
+    "TRANSPORT": "OWNER_DECISION_PENDING"
+  },
+  "hosted_observations": "UNVERIFIED",
+  "forbidden": [
+    "Hosted queries/credentials/real Auth users/live JWT probes",
+    "Real session UPDATE/lock grants and production credential provisioning",
+    "Shipping SQL/migrations/grants/RLS",
+    "Production routes/Auth rewiring",
+    "Private manuscripts/paid APIs/deployment",
+    "Automatic merge/broad gate promotion"
+  ]
+}

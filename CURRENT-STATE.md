@@ -10,17 +10,17 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Protected persistence and mandatory CI candidate — 2026-10-25
+## Persistence CI integration and readiness reconciliation — 2026-10-25
 
-FACT: PR115 merged at c577cc5ecf5fb92fda63977bade60ce4cf2d45df with exact
-reviewed-tree equality; [post-main40184254095](https://github.com/Ben-001-sys/Vellistry/actions/runs/40184254095) SUCCESS.
-Task52's unregistered service/private PG17 experiment passed27original+5extensions;
-[historical evidence](docs/reports/VEL-IMP002-DISPOSABLE-PERSISTENCE-0052.md) and
-blocked independent runtime are preserved. Synthetic sessions are not hosted logout acceptance.
-Task0053/CP0053 proposes mandatory12unit+32PG cases in the existing application job,
-with negative bypass checks; [report](docs/reports/VEL-PERSISTENCE-CI-0053.md).
-Owner successor merge remains pending. No Auth/SQL/dependency/route/hosted change.
-Broad gates unchanged; remediation delegation EXPIRED; Issue108 OPEN.
+FACT: PR117 merged at fd85deb9a31af8663c85977df896e79b0e370eec with exact
+reviewed-tree equality. Task53's mandatory12unit+32PG coverage is inherited unchanged;
+[post-main40188047497](https://github.com/Ben-001-sys/Vellistry/actions/runs/40188047497) records actual verification.
+Task52's synthetic experiment and independently BLOCKED runtime history are preserved.
+Task0055/CP0055 reconciles PR116, preserving Task54/CP54/EB54,8source/15query hashes
+and six OWNER_DECISION_PENDING choices. [Report](docs/reports/VEL-PR116-RECONCILIATION-0055.md).
+The next request-isolated synthetic principal-binding adapter is PROPOSED, not authorized.
+No hosted observations, Auth/SQL/route/dependency/CI changes or real logout acceptance.
+PR116 owner merge remains pending; broad gates unchanged; delegation EXPIRED; Issue108 OPEN.
 
 ## Historical query preparation — 2026-10-24
 

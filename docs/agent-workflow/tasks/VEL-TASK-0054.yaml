@@ -1,0 +1,95 @@
+id: VEL-TASK-0054
+title: Prepare protected workspace Supabase integration security decision packet
+type: implementation-task
+status: in-progress
+created_at: '2026-10-25'
+updated_at: '2026-10-25'
+owner: project_owner
+context_pack_id: VEL-CP-0054
+objective: Prepare protected workspace Supabase integration security decision packet
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0054.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0054.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0054.md
+- docs/agent-workflow/inputs/VEL-TASK-0054/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md
+- docs/reports/evidence/VEL-TASK-0054/*
+- docs/agent-workflow/proposals/VEL-SUPABASE-WORKSPACE-READINESS-0054.json
+out_of_scope:
+- Hosted operations/credentials/cloud migrations/real users/private data/paid/deployment/settings
+- Successor merge, expired remediation delegation and broad gate promotion
+- SQL/Auth/application/dependency changes; no production registration
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.guard.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace.service.ts
+  role: governing-source
+- path: apps/web/src/app/api/books/route.ts
+  role: governing-source
+- path: docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json
+  role: governing-source
+- path: docs/reports/evidence/VEL-HOSTED-METADATA-0046/query-manifest.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0054/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: HOSTED-BOUNDARY
+  limitation: Synthetic tests do not prove real Supabase logout/hosted acceptance; access channel
+    and target-specific operations remain separately gated.
+deliverables:
+- Committed validated immutable pack before implementation
+- docs/reports/VEL-SUPABASE-WORKSPACE-READINESS-0054.md
+- ExecutionBundle, exact source/test evidence, manifest and distinct review; successor PR without
+  merge
+acceptance_criteria:
+- Document existing source facts separately from interpretations and unapproved proposals with exact
+  source SHAs
+- Pin historical target and reviewed15query manifest; no new observations or hosted execution
+- Specify fail-closed real principal/session, revoked-session locking, private capability and managed-schema
+  privilege decisions pending owner/provider review
+- Exclude synthetic Auth/users/fault hooks and global fixture ACL operations from future shipping
+  migration; future exact SQL paths require reviewed-base owner record
+- Specify durable unknown-outcome/idempotency/restart/reconciliation and transport security acceptance;
+  smallest separately authorized next local task, no code
+allowed_actions:
+- Read repository and public official documentation; edit only scoped files after committed validated
+  pack
+- Run synthetic local and GitHub Actions disposable tests, owned loopback PG17 only; preserve original
+  checks
+- Publish draft, obtain review, promote ready and verify exact-head CI; no merge
+approval_required_for:
+- Any hosted or security-sensitive operation; unresolved production security decisions; dependencies
+  or scope expansion; successor PR merge
+compliance:
+  change_base: c577cc5ecf5fb92fda63977bade60ce4cf2d45df
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6396483689
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

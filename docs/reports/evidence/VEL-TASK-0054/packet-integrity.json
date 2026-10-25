@@ -1,0 +1,11 @@
+{
+  "source_commit": "57222edaaf29d203cee3f69d0de7045e18ba6627",
+  "command": "Inline offline packet/source/hash/decision integrity assertions;11 synthetic negative mutations",
+  "exit_code": 0,
+  "status": "PASS",
+  "positive": 1,
+  "negative": 11,
+  "query_hashes_verified": 15,
+  "source_hashes_verified": 8,
+  "limitation": "Document structure/integrity only, not runtime security or hosted behavior"
+}
