@@ -62,6 +62,7 @@ def main():
         endpoint=json.loads(command(["docker","context","inspect","--format","{{json .Endpoints.docker.Host}}"],timeout=30))
         if not local_engine(endpoint):raise RuntimeError("Remote Docker endpoint rejected")
         result["docker_endpoint"]=endpoint
+        result["inherited_docker_overrides_removed"]=dict(host_present="DOCKER_HOST" in os.environ, context_present="DOCKER_CONTEXT" in os.environ)
         # Pin the validated local endpoint, even if the user's default context changes.
         env["DOCKER_HOST"]=endpoint
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
