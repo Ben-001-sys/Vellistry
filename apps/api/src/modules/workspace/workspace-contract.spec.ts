@@ -58,7 +58,7 @@ with tempfile.TemporaryDirectory(prefix='vel-no-remote-probe-') as directory:
   destination=root/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original/name,destination)
  m.ROOT=root;calls=[]
  def fake(argv,**kwargs):
-  if argv[0]=='git':return subprocess.CompletedProcess(argv,0,b'0'*40+b'\\n',b'')
+  if argv[0]=='git':return subprocess.CompletedProcess(argv,0,('0'*40+'\\n') if kwargs.get('text') else b'0'*40+b'\\n',b'')
   calls.append(argv)
   if argv[1:3]==['context','inspect']:return subprocess.CompletedProcess(argv,0,b'"ssh://forbidden.invalid"',b'')
   return subprocess.CompletedProcess(argv,1,b'',b'Mocked: no daemon access')
