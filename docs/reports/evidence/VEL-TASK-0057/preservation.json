@@ -1,0 +1,10 @@
+{
+  "command": "Inline exact workflow-minus-new-step equality, scope and historical preservation assertions",
+  "source_commit": "1e1af3b37a0f5f12a8b9b0163dd89f95eb297ac5",
+  "exit_code": 0,
+  "status": "PASS",
+  "all_original_workflow_jobs_steps_guards_preserved": true,
+  "app_auth_sql_deps_unchanged": true,
+  "task54_55_56_packs_bundles_unchanged": true,
+  "production_decisions": "OWNER_DECISION_PENDING"
+}

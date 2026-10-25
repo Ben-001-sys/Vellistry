@@ -10,16 +10,16 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Local principal binding candidate — 2026-10-25
+## Principal binding integration and CI coverage candidate — 2026-10-25
 
-FACT: PR116 merged at e2862c38d03e2bbb6fe4365c3c9074ee0c53e972 with exact
-reviewed-tree equality; [post-main40189902635](https://github.com/Ben-001-sys/Vellistry/actions/runs/40189902635) SUCCESS.
-Task54/55 source/hash/history remains preserved. Task0056/CP0056 adds only a synthetic
-request-isolated principal adapter/test; [report](docs/reports/VEL-PRINCIPAL-BINDING-0056.md).
-Immutable token, same-token proof validation and per-provider identity/time checks;
-no real JWT/session proof. Six production decisions remain OWNER_DECISION_PENDING.
-Inherited12unit/32PG CI is unchanged; new adapter tests run explicitly locally.
-No Auth/route/SQL/dependency/CI/hosted change. Feature owner merge pending;
+FACT: PR118 merged at4792628b309560e7bd0fdebf371b939163733364 with exact
+reviewed-tree equality; [post-main40195269872](https://github.com/Ben-001-sys/Vellistry/actions/runs/40195269872) SUCCESS.
+Task56/CP56/EB56 and source-bound18local tests preserved; independent runtime
+spawnEPERM remains BLOCKED. No production JWT/session verification is established.
+Task0057/CP0057 proposes mandatory18adapter tests in existing application CI;
+[report](docs/reports/VEL-PRINCIPAL-ADAPTER-CI-0057.md). Existing12unit/32PG and
+security/recovery/governance checks are preserved. Successor owner merge pending.
+No app/Auth/SQL/dependency/hosted change; six production choices remain pending.
 Issue108 OPEN, remediation delegation EXPIRED; broad gates unchanged.
 
 ## Historical query preparation — 2026-10-24

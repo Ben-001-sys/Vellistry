@@ -1,0 +1,32 @@
+{
+  "source_commit": "1e1af3b37a0f5f12a8b9b0163dd89f95eb297ac5",
+  "command": "python scripts/ci_governance.py",
+  "exit_code": 0,
+  "status": "PASS",
+  "counts": [
+    284,
+    18,
+    20,
+    14,
+    12,
+    8,
+    18,
+    12,
+    20,
+    17
+  ],
+  "total": 423,
+  "focused_suites": {
+    "test_ci_policy": 43,
+    "test_pr_compliance": 61
+  },
+  "previous_validator_missed": 10,
+  "previous_validator_errors": 0,
+  "before_coverage": {
+    "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+    "exit_code": 1,
+    "tests": 43,
+    "failures": 1,
+    "cause": "New adapter requirement absent before coverage change; expected TDD failure"
+  }
+}

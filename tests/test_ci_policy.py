@@ -380,6 +380,13 @@ class PersistenceCoverageTests(unittest.TestCase):
     def baseline(self):
         return yaml.load((ROOT / '.github/workflows/ci.yml').read_text(encoding='utf-8'), Loader=yaml.BaseLoader)
 
+    def test_principal_adapter_is_a_mandatory_real_workflow_step(self):
+        import pr_compliance as pc
+        expected={'name':'Principal adapter binding regressions',
+                  'run':'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts'}
+        self.assertIn(expected, pc.PERSISTENCE_STEPS)
+        pc.persistence_coverage_contract(self.baseline())
+
     def test_persistence_commands_and_runtime_are_required(self):
         import pr_compliance
         pr_compliance.persistence_coverage_contract(self.baseline())
