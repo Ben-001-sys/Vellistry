@@ -98,12 +98,17 @@ jobs:
         node-version: '24'
         cache: pnpm
         cache-dependency-path: pnpm-lock.yaml
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
     - name: Install one frozen workspace
       run: pnpm install --frozen-lockfile
     - name: Library isolation and unknown-save negative tests
       run: pnpm test:library-isolation
     - name: Workspace controller and organizer contract regressions
       run: pnpm test:workspace-contract
+    - name: Protected workspace persistence unit regressions
+      run: pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
     - name: Hosted preflight regressions when source is integrated
       run: 'if test -f tests/hosted_supabase_preflight.test.mjs; then node --test tests/hosted_supabase_preflight.test.mjs; else echo ''NOTICE:
         PR68 hosted preflight is not on this checkout; not tested''; fi'
@@ -113,6 +118,34 @@ jobs:
       run: pnpm build
     - name: Typecheck both applications once
       run: pnpm check
+    - name: Disposable PostgreSQL17 protected workspace acceptance
+      run: python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json
+    - name: Stage only current-head disposable persistence evidence
+      if: ${{ always() }}
+      run: |
+        python - <<'PY'
+        import json, os, shutil, subprocess
+        from pathlib import Path
+        head = subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip()
+        dest = Path(os.environ['RUNNER_TEMP']) / 'workspace-persistence'
+        dest.mkdir(exist_ok=True)
+        for path in Path('docs/reports/evidence/VEL-TASK-0052').glob('*-runtime.json'):
+            data = json.loads(path.read_text(encoding='utf-8'))
+            if data.get('source_commit') != head:
+                continue
+            shutil.copyfile(path, dest/path.name)
+            cases = path.with_name(data['run_id']+'-cases.json')
+            if cases.exists():
+                shutil.copyfile(cases, dest/cases.name)
+        PY
+    - name: Attach current-head synthetic persistence results
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: workspace-persistence-results
+        path: ${{ runner.temp }}/workspace-persistence/*.json
+        if-no-files-found: ignore
+        retention-days: '7'
     - name: Pick free, temporary CI-only Supabase API/DB ports
       run: |
         python3 - <<'PY'
