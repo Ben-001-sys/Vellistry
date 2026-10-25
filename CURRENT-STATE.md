@@ -10,18 +10,19 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Real Auth handoff preparation — 2026-10-25
+## Conditional PRINCIPAL readiness — 2026-10-25
 
-FACT: PR122 mergeddb3c7e92375c984f2730e720b1a23cadb5437934 with reviewed-tree
-match; [post-main40220684442](https://github.com/Ben-001-sys/Vellistry/actions/runs/40220684442) SUCCESS, artifact/source/cleanup verified.
-52adapter/12unit/32PG remain mandatory; Task60/CP60/EB60/history preserved.
-Task0061/CP0061 prepares [real-Auth handoff](docs/reports/VEL-REAL-AUTH-HANDOFF-0061.md).
-Smallest next decision: explicit trusted PRINCIPAL policy, then separately
-scope an additive existing Auth-service method and mandatory spec extension.
-No new synthetic layer or app/Auth/SQL/CI/dependency implementation here.
-All six production choices pending; hosted UNVERIFIED; N12 and independent
-runtime EPERM BLOCKED. Preparation owner merge/next code authorization pending.
-Issue108 OPEN; delegation EXPIRED; broad design/pilot/release gates unchanged.
+FACT: PR123 merged88d8dbcb9e6ec21baf60deebb7004f7e2194b276; reviewed tree equals
+merge; [post-main40222904201](https://github.com/Ben-001-sys/Vellistry/actions/runs/40222904201) SUCCESS. Task59-61 history preserved.
+Owner6404172728 conditionally approves MVP PRINCIPAL DESIGN, not target trust
+completion or implementation. Task0062/CP0062 [readiness matrix](docs/reports/VEL-PRINCIPAL-READINESS-0062.md)
+separates owner-observed Dashboard settings from unverified claims/key paths.
+Conditional aal1/aal2 needs authoritative complete factor state; AAL alone is
+insufficient. Previous HS256 cannot silently become current-key assurance.
+PRINCIPAL target/implementation gate and other five production decisions pending.
+No app/Auth/SQL/CI/dependency/hosted change; N12 and independent EPERM BLOCKED;
+R01-R08 NOT_RUN. Docs review/CI/owner merge pending. Issue108 OPEN; expired
+remediation delegation closed; broad gates unchanged.
 
 ## Historical query preparation — 2026-10-24
 
