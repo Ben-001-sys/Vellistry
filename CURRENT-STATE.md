@@ -87,34 +87,16 @@ require the [separate target-specific packet](docs/reports/VEL-DEV-001-HOSTED-PR
 Local synthetic preparation is GO within Task0045; hosted acceptance, private pilot
 and production remain NO-GO. Ordinary owner merge governance applies.
 
-## Historical pre-integration checkpoint (retained evidence)
+## Historical pre-integration checkpoint
 
-FACT: checked main is `23fd8488df060e1591be70232abd70f4255e814d`, after PR #106.
-[Post-main CI39868833625](https://github.com/Ben-001-sys/Vellistry/actions/runs/39868833625)
-passed governance, application/security and PostgreSQL CAS/restore. Integrated SQL
-privilege regression was SKIPPED because its proposed fixture is absent; no SQL
-acceptance follows. Re-fetch main and open PRs before each new task; this is a dated
-verified baseline, not a claim that a document can embed its own future commit.
-
-Task0041/PR106 is integrated; original PR #83 was closed only after its successor’s
-post-main PASS. Its [immutable CP0041](docs/agent-workflow/context-packs/VEL-CP-0041.md)
-and historical evidence remain unchanged. PR #65, PR #68, PR #59, PR #66 and PR #82
-are closed with source-preserving dispositions. Issues69/72/79 are closed for
-repository delivery;18/63/67/74 retain external acceptance requirements.
-
-Task0042 completed bounded420-pin recovery. Its clean restore found new Next16.4.0
-security advisories, so [Task0043/CP0043](docs/agent-workflow/context-packs/VEL-CP-0043.md)
-was pinned before the minimal16.4.1 dependency patch. Audit now reports zero findings;
-23preflight/67Library tests, build/typecheck and patched offline restore passed.
-The final [remediation report](docs/reports/VEL-REMEDIATION-COMPLETION-0042.md) and its
-successor integration remain IN_VERIFICATION until actual final review, ready CI,
-merge and post-main success. Candidate ledger:35DONE,5PARTIAL,4BLOCKED, never44DONE.
-
-Use the [44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
-[PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md) and
-[149-ID observed evidence overlay](docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md).
-Earlier dated claims are retained in the [previous snapshot](docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md),
-not current dispatch instructions.
+The exact pre-Task0064 state is retained in the
+[main33812 snapshot](docs/reports/evidence/VEL-TASK-0064/CURRENT-STATE-main33812.txt),
+Git and earlier immutable packs. Its Task0041-0044 pending-integration statements
+are historical: PR106/107 merged, repository remediation closed and delegation
+expired. See the [completion report](docs/reports/VEL-REMEDIATION-COMPLETION-0042.md),
+[44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
+[PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md)
+and [149-ID overlay](docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md).
 
 ## Implementation and evidence
 
