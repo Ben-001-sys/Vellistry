@@ -1,0 +1,99 @@
+id: VEL-TASK-0065
+title: Require existing Next.js MFA regressions in consolidated application CI
+type: implementation-task
+status: in-progress
+created_at: '2026-10-26'
+updated_at: '2026-10-26'
+owner: project_owner
+context_pack_id: VEL-CP-0065
+objective: Require existing55MFA tests in applicable application CI, with source routing/failure-gate
+  and strict bypass regressions while preserving all prior controls
+in_scope: &id001
+- .github/workflows/ci.yml
+- scripts/pr_compliance.py
+- tests/test_ci_policy.py
+- tests/test_pr_compliance.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0065.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0065.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0065.md
+- docs/agent-workflow/inputs/VEL-TASK-0065/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-MFA-CI-0065.md
+- docs/reports/evidence/VEL-TASK-0065/*
+out_of_scope:
+- Application/Auth/backend policy/SQL/Supabase/dependency changes
+- Hosted operations/MFA enrollment/credentials/JWT/JWKS/private/paid/deploy/settings
+- Task64 or earlier immutable/history rewriting and automatic merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: .github/workflows/ci.yml
+  role: governing-source
+- path: scripts/pr_compliance.py
+  role: governing-source
+- path: scripts/ci_policy.py
+  role: governing-source
+- path: package.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0065/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0065/SCOPE.md
+  role: governing-source
+source_gaps:
+- id: SYNTHETIC-ONLY
+  limitation: MFA suite uses mock SDK results, not hosted Auth acceptance; R01-R08
+    NOT_RUN, N12/independent EPERM BLOCKED, production decisions unchanged.
+deliverables:
+- Unique Task/source and validated committed immutable CP before edits
+- Exactly one mandatory existing MFA command plus strict positive/negative contract,
+  source-trigger and final-gate tests
+- Actual offline/current CI evidence, EB/per-commit provenance, distinct source review
+  and PR for owner merge decision
+acceptance_criteria:
+- Existing pnpm test:auth-mfa command runs once unconditionally in application after
+  frozen install/principal tests, before build/check/PG/security
+- Reject missing/replaced/skipped/softened/masked/duplicated/reordered MFA step and
+  shell/directory/env overrides; show old-contract negative gap then corrected PASS
+- Every approved Next.js Auth source/test path selects required app/security/recovery
+  verification in ready mode; application failure blocks final gate; Draft advisory
+  unchanged
+- Preserve single automatic workflow, six jobs, read-only permissions, existing tests/security/32PG/recovery/governance/final
+  gate
+- Auth source/package/dependencies/SQL/settings and Task59-64 histories unchanged;
+  all unresolved gates and Issue108OPEN retained
+- Actual focused/full governance and unchanged55MFA tests, distinct completed-head
+  review and actual Draft/Ready CI; separate owner merge
+allowed_actions:
+- Prepare Task/source/immutable pack in isolated worktree and validate/commit before
+  operative edits
+- Scoped workflow/static-contract/regression edits and offline synthetic verification;
+  existing disposable CI fixtures only
+- Publish Draft, obtain distinct trusted read-only source review, promote Ready after
+  evidence/CI and verify exact-head results; no merge
+approval_required_for:
+- Any app/backend/SQL/dependency/hosted/security decision scope extension
+- PR merge or successor work
+compliance:
+  change_base: a902fdb36bb51e17a5c567787c6886b171ca50fe
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6428746261
+    provenance: direct-owner-dispatch-recorded-by-Codex
+    status: authorized
+    expires_on: '2026-11-02'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
