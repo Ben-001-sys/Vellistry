@@ -188,3 +188,20 @@ test("concurrent authors use independent immutable snapshots and token bindings"
   await Promise.all([a.flow.check(), b.flow.check()]); assert.equal(a.flow.snapshot().phase, "choice"); assert.equal(b.flow.snapshot().phase, "challenge");
   assert(Object.isFrozen(a.flow.snapshot())); assert(a.h.calls.every(t => t === a.h.token)); assert(b.h.calls.every(t => t === b.h.token));
 });
+test("uncertainty is scoped to the initiating author across account switches", async () => {
+  const f = fixture(); await f.flow.check(); f.auth.mfa.enroll = bad;
+  await f.flow.enroll(); await f.flow.signOut();
+  f.h.owner = "synthetic-b"; f.h.token = "synthetic-token-b";
+  await f.flow.signIn("", ""); assert.equal(f.flow.snapshot().phase, "choice");
+  await f.flow.continueToBooks(); assert.equal(f.h.visits, 1);
+});
+test("another author's successful enrollment cannot clear earlier uncertain setup", async () => {
+  const f = fixture(); const enroll = f.auth.mfa.enroll;
+  await f.flow.check(); f.auth.mfa.enroll = bad; await f.flow.enroll(); await f.flow.signOut();
+  f.h.owner = "synthetic-b"; f.h.token = "synthetic-token-b";
+  await f.flow.signIn("", ""); f.auth.mfa.enroll = enroll; await f.flow.enroll();
+  assert.equal(f.h.enrolls, 1);
+  await f.flow.signOut(); f.h.owner = "synthetic-author"; f.h.token = "synthetic-not-a-jwt";
+  await f.flow.signIn("", ""); assert.equal(f.flow.snapshot().phase, "blocked");
+  assert.equal(f.flow.snapshot().message, MFA_COPY.unknown);
+});

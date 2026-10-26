@@ -44,7 +44,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
   let disposed = false;
   let verifying = false;
   let signingOut = false;
-  let enrollmentUncertain = false;
+  const uncertainOwners = new Set<string>();
   let knownSetup: {owner: string; factor: string} | null = null;
   const listeners = new Set<(s: MfaSnapshot) => void>();
   function publish(patch: Partial<MfaSnapshot>) {
@@ -89,7 +89,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
         aal.nextLevel !== (verified.length ? "aal2" : "aal1") ||
         (!verified.length && aal.currentLevel !== "aal1")) throw new Error("contradictory assurance");
     binding = expected;
-    if (!verified.length && enrollmentUncertain) { block(MFA_COPY.unknown); return; }
+    if (!verified.length && uncertainOwners.has(expected.owner)) { block(MFA_COPY.unknown); return; }
     if (!verified.length && factors.length) {
       // After an uncertain code response, resume only this flow's known factor.
       // Never infer a setup key or resume an unrelated incomplete enrollment.
@@ -152,7 +152,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
         await inspect(expected, ticket);
         if (state.phase !== "choice") return;
         // A lost acknowledgement may have created a factor; empty rechecks do not prove absence.
-        enrollmentUncertain = true;
+        uncertainOwners.add(expected.owner);
         const enrolled = data(await auth.mfa.enroll({factorType: "totp", friendlyName: "Vellistry authenticator"})); alive(ticket);
         await same(expected, ticket);
         const totp = record(enrolled.totp);
@@ -161,7 +161,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
             /<script|<foreignObject|\bon\w+\s*=|\b(?:href|src)\s*=|url\s*\(/i.test(totp.qr_code)) throw new Error("invalid enrollment");
         factorId = enrolled.id;
         knownSetup = {owner: expected.owner, factor: enrolled.id};
-        enrollmentUncertain = false;
+        uncertainOwners.delete(expected.owner);
         publish({phase: "enrollment", qr: "data:image/svg+xml," + encodeURIComponent(totp.qr_code.slice("data:image/svg+xml;utf-8,".length)),
           secret: totp.secret, message: "Scan this code with your authenticator app, then enter its six-digit code. Setup is not complete yet."});
       }, MFA_COPY.unknown);

@@ -56,7 +56,7 @@ export function AuthPanel({enrollment = false, flow: supplied}: {enrollment?: bo
     else await flow.signUp(email.trim(), captured);
   }
   const button = "rounded border px-4 py-2 disabled:opacity-50";
-  return <main className="mx-auto max-w-md p-8 space-y-5" aria-busy={busy}>
+  return <main className="mx-auto max-w-md p-8 space-y-5" aria-busy={snapshot.pending}>
     <h1 ref={heading} tabIndex={-1} className="text-2xl font-semibold">
       {enrollment ? "Authenticator app" : "Sign in to Vellistry"}
     </h1>
