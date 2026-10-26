@@ -165,6 +165,16 @@ test("own SDK sign-out event completes correctly and erases setup", async () => 
 test("signup stays at sign-in even if SDK supplies a session", async () => {
   const f = fixture(); await f.flow.signUp("", ""); assert.equal(f.h.visits, 0); assert.equal(f.flow.snapshot().phase, "signed-out");
 });
+test("failed setup code can resume only its known same-author unverified factor without reenrollment", async () => {
+  const f = fixture(); await f.flow.check(); await f.flow.enroll();
+  f.h.factors = [{...verified, status: "unverified"}];
+  const verify = f.auth.mfa.verify; f.auth.mfa.verify = bad;
+  await f.flow.verify("123456"); assert.equal(f.flow.snapshot().phase, "blocked");
+  await f.flow.check(); assert.equal(f.flow.snapshot().phase, "enrollment");
+  assert.equal(f.flow.snapshot().secret, ""); assert.equal(f.flow.snapshot().qr, "");
+  f.auth.mfa.verify = verify; await f.flow.verify("123456");
+  assert.equal(f.flow.snapshot().phase, "complete"); assert.equal(f.h.enrolls, 1);
+});
 test("stale or future observation cannot complete UI verification", async () => {
   for (const change of [31000, -1]) {
     const f = fixture(); f.auth.mfa.getAuthenticatorAssuranceLevel = async () => {

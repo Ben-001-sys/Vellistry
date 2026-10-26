@@ -45,6 +45,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
   let verifying = false;
   let signingOut = false;
   let enrollmentUncertain = false;
+  let knownSetup: {owner: string; factor: string} | null = null;
   const listeners = new Set<(s: MfaSnapshot) => void>();
   function publish(patch: Partial<MfaSnapshot>) {
     if (disposed) return;
@@ -90,6 +91,15 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
     binding = expected;
     if (!verified.length && enrollmentUncertain) { block(MFA_COPY.unknown); return; }
     if (!verified.length && factors.length) {
+      // After an uncertain code response, resume only this flow's known factor.
+      // Never infer a setup key or resume an unrelated incomplete enrollment.
+      if (knownSetup?.owner === expected.owner && factors.length === 1 && factors[0].id === knownSetup.factor &&
+          factors[0].factor_type === "totp" && factors[0].status === "unverified") {
+        factorId = knownSetup.factor;
+        publish({phase: "enrollment", qr: "", secret: "",
+          message: "Setup isn't confirmed yet. If you added this setup to your authenticator app, enter a new code to try again."});
+        return;
+      }
       block(MFA_COPY.incomplete); return;
     }
     factorId = verified[0]?.id ?? null;
@@ -150,6 +160,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
             !text(totp.qr_code) || totp.qr_code.length > 200000 || !totp.qr_code.startsWith("data:image/svg+xml;utf-8,<svg") ||
             /<script|<foreignObject|\bon\w+\s*=|\b(?:href|src)\s*=|url\s*\(/i.test(totp.qr_code)) throw new Error("invalid enrollment");
         factorId = enrolled.id;
+        knownSetup = {owner: expected.owner, factor: enrolled.id};
         enrollmentUncertain = false;
         publish({phase: "enrollment", qr: "data:image/svg+xml," + encodeURIComponent(totp.qr_code.slice("data:image/svg+xml;utf-8,".length)),
           secret: totp.secret, message: "Scan this code with your authenticator app, then enter its six-digit code. Setup is not complete yet."});
@@ -177,6 +188,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
         await inspect(upgraded, ticket, factor);
         if (state.phase !== "complete") throw new Error("incomplete step-up");
         await same(upgraded, ticket);
+        knownSetup = null;
       }, MFA_COPY.verification);
       // A failure discards setup secrets and requires rechecking; never blindly enroll again.
     },
@@ -188,7 +200,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
         finally { signingOut = false; }
         alive(ticket);
         if (result.error != null) throw new Error("sign-out");
-        binding = null; factorId = null;
+        binding = null; factorId = null; knownSetup = null;
         publish({phase: "signed-out", qr: "", secret: "", message: "Signed out on this device."});
       }, "Couldn't complete sign-out. You may still be signed in. Try again.");
     },
@@ -198,7 +210,7 @@ export function createMfaFlow(auth: MfaAuthPort, goToBooks: () => void, now = Da
         ++epoch; block(MFA_COPY.changed); publish({pending: false});
       }
     },
-    dispose() { disposed = true; ++epoch; binding = null; factorId = null; state = Object.freeze({...state, qr: "", secret: ""}); listeners.clear(); },
+    dispose() { disposed = true; ++epoch; binding = null; factorId = null; knownSetup = null; state = Object.freeze({...state, qr: "", secret: ""}); listeners.clear(); },
   };
 }
 export type MfaFlow = ReturnType<typeof createMfaFlow>;
