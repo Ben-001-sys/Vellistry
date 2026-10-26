@@ -37,7 +37,7 @@ inputs:
   role: governing-source
 - path: CURRENT-STATE.md
   role: governing-source
-- path: LANGUAGE.md
+- path: docs/agent-workflow/inputs/VEL-TASK-0064/LANGUAGE-CONTEXT.md
   role: governing-source
 - path: docs/agent-workflow/PR-COMPLIANCE.md
   role: governing-source
