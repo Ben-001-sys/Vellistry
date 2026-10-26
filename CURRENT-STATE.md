@@ -10,6 +10,24 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
+## Bounded Next.js authentication/MFA UI — 2026-10-26
+
+FACT: verified main33812f87a896574f245d37793d8d7f74403a2aea integrates PR125;
+[post-main40294984494](https://github.com/Ben-001-sys/Vellistry/actions/runs/40294984494)
+SUCCESS. Task0064/immutableCP0064 implements only the separately owner-authorized
+Next.js password-sign-in continuation, TOTP step-up and explicit optional
+`/account/mfa` enrollment UI with synthetic offline tests. Review/CI/owner merge
+remain pending; no hosted Auth/enrollment was performed. See the
+[report](docs/reports/VEL-NEXTJS-MFA-0064.md).
+
+Frontend factor/AAL routing is not backend authorization. Existing `/books` and
+NestJS Auth are unchanged; enrolled AAL1 backend acceptance is not approved or
+fixed here. PRINCIPAL_DESIGN_APPROVED_CONDITIONAL and other production decisions
+remain pending; R01-R08 NOT_RUN; N12/historical independent spawn EPERM BLOCKED.
+All3 hosted fixture prerequisites UNKNOWN and G1-G4 unsatisfied; Issue108 OPEN;
+remediation delegation EXPIRED. Prior paragraphs below are dated historical
+submission records, not current merge authority or hosted permission.
+
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26
 
 FACT: PR124 merged17adbf96ae0a9187732ad3a7837ec0d2d9b62d03; tree match and
