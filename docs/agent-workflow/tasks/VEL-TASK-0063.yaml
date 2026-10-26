@@ -1,0 +1,105 @@
+id: VEL-TASK-0063
+title: Prepare gated owner-only synthetic Auth evidence protocol
+type: implementation-task
+status: in-progress
+created_at: '2026-10-26'
+updated_at: '2026-10-26'
+owner: project_owner
+context_pack_id: VEL-CP-0063
+objective: Prepare exact owner-only probe protocol, endpoints/redaction/cleanup/evidence
+  schema while unknown fixtures and pre-execution review block hosted work
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0063.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0063.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0063.md
+- docs/agent-workflow/inputs/VEL-TASK-0063/*
+- docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md
+- docs/reports/evidence/VEL-TASK-0063/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- All app/Auth/dependency/CI/SQL/RLS/grant/route implementation
+- Hosted/credential/real Auth/JWT/signing/JWKS/users/private/paid/deployment/settings
+  operations
+- Production decision resolution or automatic PR merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/reports/VEL-PRINCIPAL-READINESS-0062.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0059/SDK-BOUNDARY-SOURCES.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0062/FACTOR-SOURCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0063/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0063/SDK-PROTOCOL-SOURCE.md
+  role: governing-source
+source_gaps:
+- id: FIXTURES-UNKNOWN
+  limitation: Owner confirms all three fixture prerequisites UNKNOWN26October2026;
+    no fixture existence/control/session evidence. Hosted probe blocked.
+- id: EXECUTION-NOT-REVIEWED
+  limitation: Exact protocol not yet reviewed; no executable runner or live operation
+    authorized by this documentation Task.
+deliverables:
+- Unique Task and committed validated immutable CP before operative prep
+- Exact owner-only target/endpoint/operation/case protocol with fixture and review
+  gates
+- Credential/token isolation, allowlist-only sanitization/schema, resource bounds,
+  stop and cleanup rules
+- Explicit UNKNOWN/BLOCKED/no hosted findings and no implementation/gate approval
+- EB/provenance/actual offline docs/source validators, distinct source review, applicable
+  CI and reviewable PR, no merge
+acceptance_criteria:
+- Verify main17adbf9 and uniqueTask63, preserve all historical sources
+- Pin owner conditional permission and UNKNOWN fixture response before operative preparation
+- Only owner acts after fixture and exact protocol/runner review; no agent credentials/Auth/JWT/JWKS/hosted
+  operations
+- Allow fixed HTTPS origin and exact endpoints/methods only, deny redirects/arbitrary
+  origins/privileged/list/create/enroll/recovery/SQL
+- Same captured token user/claims per case; no automatic token refresh/legacy experiments;
+  label SDK path/factor completeness UNKNOWN unless proven
+- No raw JWT/password/user/session/factor IDs/API keys/secrets/key material in outputs/repo/logs;
+  closed sanitized scalar schema and manual owner audit
+- Define no-creation/reenrollment/session-change boundaries, cleanup/stop gates, no
+  false memory erasure claims or unapproved logout
+- All three fixture preconditions UNKNOWN => hosted BLOCKED; findings NOT_OBSERVED,
+  R01-R08 NOT_RUN, N12/EPERM BLOCKED
+- Actual offline source/scope/schema/document checks, distinct final source review
+  and applicable CI; no automatic merge or production approval
+allowed_actions:
+- Read pinned repository/source evidence, prepare scoped documents after committed
+  validated immutable pack
+- Run offline document/source assertions and validators; inherit mandatory actual
+  CI, no live operations
+- Publish Draft, distinct trusted source review, promote Ready/verify exact-head CI;
+  no merge
+approval_required_for:
+- Any real principal/Auth/hosted/SDK/JWT/security implementation or production choice
+- Any app/CI/SQL/dependency/scope change or new PR merge
+compliance:
+  change_base: 17adbf96ae0a9187732ad3a7837ec0d2d9b62d03
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6411355004
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-10-31'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
