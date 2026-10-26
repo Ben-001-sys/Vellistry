@@ -3,26 +3,25 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-25
+updated_at: 2026-10-26
 owner: project_owner
 version: 0.2.2
 ---
 
 # Vellistry — current verified state
 
-## Conditional PRINCIPAL readiness — 2026-10-25
+## Owner-only PRINCIPAL probe preparation — 2026-10-26
 
-FACT: PR123 merged88d8dbcb9e6ec21baf60deebb7004f7e2194b276; reviewed tree equals
-merge; [post-main40222904201](https://github.com/Ben-001-sys/Vellistry/actions/runs/40222904201) SUCCESS. Task59-61 history preserved.
-Owner6404172728 conditionally approves MVP PRINCIPAL DESIGN, not target trust
-completion or implementation. Task0062/CP0062 [readiness matrix](docs/reports/VEL-PRINCIPAL-READINESS-0062.md)
-separates owner-observed Dashboard settings from unverified claims/key paths.
-Conditional aal1/aal2 needs authoritative complete factor state; AAL alone is
-insufficient. Previous HS256 cannot silently become current-key assurance.
-PRINCIPAL target/implementation gate and other five production decisions pending.
-No app/Auth/SQL/CI/dependency/hosted change; N12 and independent EPERM BLOCKED;
-R01-R08 NOT_RUN. Docs review/CI/owner merge pending. Issue108 OPEN; expired
-remediation delegation closed; broad gates unchanged.
+FACT: PR124 merged17adbf96ae0a9187732ad3a7837ec0d2d9b62d03; tree match and
+[post-main40289823029](https://github.com/Ben-001-sys/Vellistry/actions/runs/40289823029) SUCCESS. Task59-62 history preserved.
+Owner conditionally authorizes an owner-executed two-existing-synthetic-fixture
+probe after prerequisites/exact protocol review. Task0063/CP0063 prepares the
+[protocol](docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md), not executable Auth code.
+All3fixture prerequisites UNKNOWN26October2026; HOSTED_EXECUTION_BLOCKED.
+No account creation/enrollment change or agent credentials/hosted operations.
+Conditional PRINCIPAL design remains separate from target/implementation trust;
+other production gates pending; R01-R08 NOT_RUN; N12/independent EPERM BLOCKED.
+Docs review/CI/owner merge pending; Issue108 OPEN; delegation EXPIRED.
 
 ## Historical query preparation — 2026-10-24
 
