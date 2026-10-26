@@ -47,12 +47,15 @@ evidence:
 - docs/reports/evidence/VEL-TASK-0064/check-review-final.txt
 - docs/reports/evidence/VEL-TASK-0064/build-review-final.txt
 - docs/reports/evidence/VEL-TASK-0064/browser-review-final.txt
+- docs/reports/evidence/VEL-TASK-0064/governance.txt
+- docs/reports/evidence/VEL-TASK-0064/governance-failure-analysis.txt
+- docs/reports/evidence/VEL-TASK-0064/checkpoint-regression-at-source.txt
 review:
   status: pending
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
+implementation_source_commit: 321abb7749bdd672366d05221970d6eda9f5aea4
 execution:
   status: completed
   executor: Codex
@@ -104,6 +107,12 @@ execution:
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0064/browser-review-final.txt
+  - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
+      -v
+    source_commit: 321abb7749bdd672366d05221970d6eda9f5aea4
+    exit_code: 0
+    status: PASS
+    evidence: docs/reports/evidence/VEL-TASK-0064/checkpoint-regression-at-source.txt
 ---
 
 ## Work performed
@@ -134,3 +143,10 @@ Pending distinct completed-head source review, actual applicable draft/ready CI 
 Distinct read-only Codex source review of aab603c478dd96b32653f036de4ce91f32c36502 found P2: uncertain enrollment from A incorrectly blocked B. Reviewer reproduced it with synthetic inputs. Its full raw review is retained; attempted independent tsx rerun hit spawn EPERM and remains BLOCKED, not PASS. Independent small VM-transpiled synthetic reproduction succeeded and demonstrated the defect; this is not a full independent suite pass.
 
 Added2regressions before correction:55tests,53PASS/2FAIL, exit1 against unchanged prior controller (only new tests uncommitted). ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079 scopes uncertain outcomes by author; B can continue/enroll without clearing A's unresolved outcome. Also corrected terminal configuration aria-busy state. Final55tests/typechecks/builds PASS at that source; browser23assertions PASS, including unavailable-state announcement/disabled submission;0external request attempts. Prior52/53 and21 browser evidence is historical, not overwritten. No change to pinned scope/authority, CP0064 unchanged. New completed-head review and exact-head CI required.
+
+### Governance correction and superseding verification checkpoint
+First full governance returned exit1:284current tests,280PASS/2FAIL/2ERROR. One genuine defect was CURRENT-STATE11976bytes above11000; three stale scratch-pack failures were caused by HEAD advancing during the initial run. Preserved complete failed output, analysis and intermediate checkpoint-test failure. Corrected state is10874bytes and retains all required historical references plus exact pre-task main snapshot. Unchanged checkpoint suite now8PASS at321abb7749bdd672366d05221970d6eda9f5aea4. No control/test weakened. All application/test/build inputs are Git-identical to tested ab75be7. Source binding advances only for compact current-state; no need to repeat unchanged app tests/builds.
+
+Complete governance rerun is now isolated at unchanged detached321abb7, with fresh owned scratch packs and raw/exit capture; its result is PENDING at this bundle cut, not PASS. Actual final result and final-head GitHub governance/application/security/32PG/recovery CI are required and recorded in the PR ledger. Prior RUNNING statements are dated cuts, superseded by this actual failure/rerun record.
+
+Second distinct source review of c332d07 found no actionable browser-scope defects; independent full runtime remained spawn EPERM BLOCKED. New final-head review includes these governance/evidence corrections. ImmutableCP0064 and Task59-63 retained.
