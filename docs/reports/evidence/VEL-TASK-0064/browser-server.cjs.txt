@@ -1,0 +1,4 @@
+const esbuild=require('../node_modules/.pnpm/esbuild@0.28.2/node_modules/esbuild');
+esbuild.buildSync({entryPoints:['.submission/browser-entry.tsx'],outfile:'.submission/browser-bundle.js',bundle:true,nodePaths:['apps/web/node_modules'],platform:'browser',jsx:'automatic',define:{'process.env':'{}','process.env.NODE_ENV':'"development"'}});
+const http=require('http'),fs=require('fs');
+http.createServer((req,res)=>{res.setHeader('Cache-Control','no-store');if(req.url.startsWith('/bundle.js')){res.setHeader('Content-Type','application/javascript');res.end(fs.readFileSync('.submission/browser-bundle.js'));}else{res.setHeader('Content-Type','text/html');res.end('<!doctype html><html lang="en"><title>Synthetic offline MFA fixture</title><div id="root"></div><script src="/bundle.js"></script></html>');}}).listen(3074,'127.0.0.1',()=>console.log('Synthetic mock-only fixture on127.0.0.1:3074'));

@@ -1,0 +1,8 @@
+Command: corepack pnpm install --frozen-lockfile
+Isolated clean Task0064 worktree, unchanged existing pnpm-lock.yaml
+Lockfile is up to date, resolution step is skipped
+Packages: +176
+Progress: resolved176,reused176,downloaded0,added176,done
+Done in23.5s using pnpm10.18.0
+Actual exit_code:0 (execution session37717)
+No dependency or lockfile change. This is a captured installation summary, not a fabricated full raw transcript.

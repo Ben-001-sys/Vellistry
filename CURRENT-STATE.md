@@ -10,6 +10,24 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
+## Bounded Next.js authentication/MFA UI — 2026-10-26
+
+FACT: verified main33812f87a896574f245d37793d8d7f74403a2aea integrates PR125;
+[post-main40294984494](https://github.com/Ben-001-sys/Vellistry/actions/runs/40294984494)
+SUCCESS. Task0064/immutableCP0064 implements only the separately owner-authorized
+Next.js password-sign-in continuation, TOTP step-up and explicit optional
+`/account/mfa` enrollment UI with synthetic offline tests. Review/CI/owner merge
+remain pending; no hosted Auth/enrollment was performed. See the
+[report](docs/reports/VEL-NEXTJS-MFA-0064.md).
+
+Frontend factor/AAL routing is not backend authorization. Existing `/books` and
+NestJS Auth are unchanged; enrolled AAL1 backend acceptance is not approved or
+fixed here. PRINCIPAL_DESIGN_APPROVED_CONDITIONAL and other production decisions
+remain pending; R01-R08 NOT_RUN; N12/historical independent spawn EPERM BLOCKED.
+All3 hosted fixture prerequisites UNKNOWN and G1-G4 unsatisfied; Issue108 OPEN;
+remediation delegation EXPIRED. Prior paragraphs below are dated historical
+submission records, not current merge authority or hosted permission.
+
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26
 
 FACT: PR124 merged17adbf96ae0a9187732ad3a7837ec0d2d9b62d03; tree match and
@@ -69,34 +87,18 @@ require the [separate target-specific packet](docs/reports/VEL-DEV-001-HOSTED-PR
 Local synthetic preparation is GO within Task0045; hosted acceptance, private pilot
 and production remain NO-GO. Ordinary owner merge governance applies.
 
-## Historical pre-integration checkpoint (retained evidence)
+## Historical pre-integration checkpoint
 
-FACT: checked main is `23fd8488df060e1591be70232abd70f4255e814d`, after PR #106.
-[Post-main CI39868833625](https://github.com/Ben-001-sys/Vellistry/actions/runs/39868833625)
-passed governance, application/security and PostgreSQL CAS/restore. Integrated SQL
-privilege regression was SKIPPED because its proposed fixture is absent; no SQL
-acceptance follows. Re-fetch main and open PRs before each new task; this is a dated
-verified baseline, not a claim that a document can embed its own future commit.
+Historical base `23fd8488df060e1591be70232abd70f4255e814d`, CI39868833625; VEL-CP-0041; PR #83, PR #65, PR #68, PR #59 were IN_VERIFICATION/superseded. Earlier snapshot: docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md.
 
-Task0041/PR106 is integrated; original PR #83 was closed only after its successor’s
-post-main PASS. Its [immutable CP0041](docs/agent-workflow/context-packs/VEL-CP-0041.md)
-and historical evidence remain unchanged. PR #65, PR #68, PR #59, PR #66 and PR #82
-are closed with source-preserving dispositions. Issues69/72/79 are closed for
-repository delivery;18/63/67/74 retain external acceptance requirements.
-
-Task0042 completed bounded420-pin recovery. Its clean restore found new Next16.4.0
-security advisories, so [Task0043/CP0043](docs/agent-workflow/context-packs/VEL-CP-0043.md)
-was pinned before the minimal16.4.1 dependency patch. Audit now reports zero findings;
-23preflight/67Library tests, build/typecheck and patched offline restore passed.
-The final [remediation report](docs/reports/VEL-REMEDIATION-COMPLETION-0042.md) and its
-successor integration remain IN_VERIFICATION until actual final review, ready CI,
-merge and post-main success. Candidate ledger:35DONE,5PARTIAL,4BLOCKED, never44DONE.
-
-Use the [44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
-[PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md) and
-[149-ID observed evidence overlay](docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md).
-Earlier dated claims are retained in the [previous snapshot](docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md),
-not current dispatch instructions.
+The exact pre-Task0064 state is retained in the
+[main33812 snapshot](docs/reports/evidence/VEL-TASK-0064/CURRENT-STATE-main33812.txt),
+Git and earlier immutable packs. Its Task0041-0044 pending-integration statements
+are historical: PR106/107 merged, repository remediation closed and delegation
+expired. See the [completion report](docs/reports/VEL-REMEDIATION-COMPLETION-0042.md),
+[44-item ledger](docs/reports/VEL-MASTER-REMEDIATION-LEDGER.md),
+[PR/source dispositions](docs/reports/VEL-CURRENT-TRUTH-0041-DISPOSITIONS.md)
+and [149-ID overlay](docs/reports/VEL-CURRENT-TRUTH-0041-FEATURES.md).
 
 ## Implementation and evidence
 

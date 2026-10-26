@@ -1,0 +1,35 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-nextjs-mfa
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (2.5453ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.374ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.2257ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.3061ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.2252ms)
+✔ rejects mismatched Web/API project publishable keys (0.1462ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.167ms)
+✔ rejects invalid or omitted expected project reference (0.1421ms)
+✔ missing local files are reported without consulting environment or network (3.1178ms)
+✔ reads ignored local files, never emits key values in success output (47.5595ms)
+✔ invalid local config never leaks the offending key in diagnostics (18.5081ms)
+✔ does not pass file validation when inherited runtime settings override those files (13.5143ms)
+✔ rejects competing Next env files that the actual runtime would also read (28.1922ms)
+✔ rejects test mode because Next does not load the required .env.local there (8.7865ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (170.784ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (267.2432ms)
+✔ actual CLI fails safely with absent env files (96.3528ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.6726ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (5.7377ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (117.8456ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (137.1406ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (103.2976ms)
+✔ missing-file guidance links to existing canonical placeholder instructions (3.0422ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1678.011

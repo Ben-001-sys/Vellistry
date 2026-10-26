@@ -1,0 +1,23 @@
+[
+  {
+    "command": "corepack pnpm test:auth-mfa",
+    "source_commit": "e050267acaa1803cef65e78b67b8d2ab616c4c3e",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/mfa-final.txt"
+  },
+  {
+    "command": "corepack pnpm check",
+    "source_commit": "e050267acaa1803cef65e78b67b8d2ab616c4c3e",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/check-final.txt"
+  },
+  {
+    "command": "corepack pnpm build",
+    "source_commit": "e050267acaa1803cef65e78b67b8d2ab616c4c3e",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/build-final.txt"
+  }
+]

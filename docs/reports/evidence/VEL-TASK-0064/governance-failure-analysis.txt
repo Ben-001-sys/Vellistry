@@ -1,0 +1,4 @@
+Command: python scripts/ci_governance.py, exit1. Started at dd1dfdc3d17f566d53b393782ad11253c41a8790. HEAD advanced during this first run, so it is not final-head certification.
+284 current tests ran723.641s:280PASS,2FAIL,2ERROR. Genuine failure: current-state11976bytes exceeded existing11000byte compactness contract. Corrected by moving redundant preintegration text into a source-preserving link to exact main33812 snapshot, not weakening the test.
+Other3failures/errors: generated untracked CP0002 was pinned to starting dd1dfdc while fixture tests later inspected c332d07. These are stale scratch fixture pins, not production regressions; preserve their files outside committed source and regenerate at a fixed final HEAD before rerun.
+Full raw output retained as governance.txt. No archivals/exports after the failing current suite are claimed. Final unchanged-head rerun and actual GitHub CI required. No previously failed check relabeled PASS.

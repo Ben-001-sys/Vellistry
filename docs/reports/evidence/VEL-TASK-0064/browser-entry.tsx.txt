@@ -1,0 +1,20 @@
+import React from '../apps/web/node_modules/react';
+import {createRoot} from '../apps/web/node_modules/react-dom/client';
+import {AuthPanel} from '../apps/web/src/components/auth/auth-panel';
+import {createMfaFlow} from '../apps/web/src/lib/auth/mfa-flow';
+const qp=new URLSearchParams(location.search); const mode=qp.get('case');
+let enrolled=mode==='enrolled', token='synthetic-token', aal='aal1', owner='synthetic-author', enrolls=0, visits=0;
+let release:any; const factor={id:'synthetic-factor',factor_type:'totp',status:'verified'};
+const user=()=>({id:owner,is_anonymous:false,factors:enrolled?[factor]:[]});
+const session=()=>({user:user(),access_token:token,expires_at:Math.floor(Date.now()/1000)+3600});
+const ok=(data:any)=>Promise.resolve({data,error:null});
+const auth:any={signInWithPassword:async()=>{if(mode==='pending')await new Promise(r=>release=r);return {data:{user:user(),session:session()},error:null};},
+signUp:()=>ok({user:user(),session:null}),getSession:()=>ok({session:session()}),
+getUser:()=>mode==='unavailable'?ok({user:{id:owner}}):ok({user:user()}),signOut:async()=>({error:null}),
+mfa:{getAuthenticatorAssuranceLevel:()=>ok({currentLevel:aal,nextLevel:enrolled?'aal2':'aal1'}),
+enroll:()=>{enrolls++;return ok({id:factor.id,type:'totp',totp:{secret:'JBSWY3DPEHPK3PXP',qr_code:'data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg"></svg>'}});},
+challenge:()=>ok({id:'synthetic-challenge',expires_at:Math.floor(Date.now()/1000)+60}),
+verify:()=>{enrolled=true;aal='aal2';token='synthetic-upgraded';return ok({...session(),user:user()});}}};
+const flow=createMfaFlow(auth,()=>{visits++;});
+Object.assign(window,{synthetic:{flow,stats:()=>({enrolls,visits}),release:()=>release?.()}});
+createRoot(document.getElementById('root')!).render(<AuthPanel flow={mode==='configuration'?undefined:flow} enrollment={mode==='settings'}/>);

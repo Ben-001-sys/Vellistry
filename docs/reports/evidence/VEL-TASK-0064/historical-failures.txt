@@ -1,0 +1,8 @@
+Task0064 historical local evidence, 26 October 2026
+Before CP generation: LANGUAGE.md exceeded35000 source bytes; next total exceeded90000 bytes. Both generation commands exit1, no CP created. Corrected committed inputs before immutable generation, never rewrote a dispatched pack.
+First component test command corepack pnpm test:auth-mfa on precommit working source: exit1,51tests,43PASS,8FAIL. All8 rendered component tests ReferenceError: React is not defined under tsx from API project. Explicit React import fixed runner compatibility; later source-bound52tests PASS. This was an actual test harness failure, not hosted Auth acceptance.
+First un-escalated corepack pnpm check: exit1, Corepack registry fetch ENOTFOUND under sandbox. Pinned-runtime permitted rerun passed typechecks; no dependency change.
+First scratch browser bundle: exit1, could not resolve react/jsx-runtime from repository-root fixture. Fixed web nodePaths, no product/dependency change.
+First browser launch: exit1, bundled chromium_headless_shell1234 executable absent. Switched to already-installed Microsoft Edge, no download.
+Second/diagnostic browser attempts: exit1, heading wait timeout; pageerror process is not defined in standalone bundled Next Link. Added browser environment stub in scratch fixture. Final Edge fixture21assertionsPASS,0external requests attempted.
+Historical independent spawn EPERM is a distinct prior check and remains BLOCKED, not replaced by these local passes.
