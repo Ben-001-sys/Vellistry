@@ -33,8 +33,6 @@ inputs:
   role: governing-source
 - path: AGENTS.md
   role: governing-source
-- path: SOURCE-OF-TRUTH.md
-  role: governing-source
 - path: CURRENT-STATE.md
   role: governing-source
 - path: docs/agent-workflow/inputs/VEL-TASK-0064/LANGUAGE-CONTEXT.md
@@ -54,8 +52,6 @@ inputs:
 - path: apps/api/src/modules/auth/supabase-auth.guard.ts
   role: governing-source
 - path: docs/agent-workflow/inputs/VEL-TASK-0062/FACTOR-SOURCE.md
-  role: governing-source
-- path: docs/reports/VEL-PRINCIPAL-READINESS-0062.md
   role: governing-source
 - path: docs/agent-workflow/inputs/VEL-TASK-0064/OWNER-AUTHORIZATION.json
   role: governing-source
