@@ -1,0 +1,112 @@
+id: VEL-TASK-0064
+title: Implement bounded Next.js password and TOTP MFA interface
+type: implementation-task
+status: in-progress
+created_at: '2026-10-26'
+updated_at: '2026-10-26'
+owner: project_owner
+context_pack_id: VEL-CP-0064
+objective: Implement approved browser-only login/MFA continuation and explicit optional
+  enrollment, with offline synthetic tests and no backend security approval
+in_scope: &id001
+- apps/web/src/app/login/page.tsx
+- apps/web/src/app/account/mfa/page.tsx
+- apps/web/src/components/auth/auth-panel.tsx
+- apps/web/src/lib/auth/mfa-flow.ts
+- apps/web/src/lib/auth/mfa-flow.test.ts
+- apps/web/src/lib/auth/auth-panel.test.tsx
+- package.json
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0064.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0064.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0064.md
+- docs/agent-workflow/inputs/VEL-TASK-0064/*
+- docs/reports/VEL-NEXTJS-MFA-0064.md
+- docs/reports/evidence/VEL-TASK-0064/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- Hosted Auth/accounts/enrollment/JWT/JWKS/credentials/SQL/migrations/settings
+- Backend/Auth policy/API/books behavior/manuscript writes/dependency/CI changes
+- Production gate decisions, deployment, paid/private operations and merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: LANGUAGE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: apps/web/src/app/login/page.tsx
+  role: governing-source
+- path: apps/web/src/lib/supabase/browser.ts
+  role: governing-source
+- path: apps/web/src/lib/supabase/server.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.guard.ts
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0062/FACTOR-SOURCE.md
+  role: governing-source
+- path: docs/reports/VEL-PRINCIPAL-READINESS-0062.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0064/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0064/BOUNDED-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: BACKEND-TRUST
+  limitation: Frontend MFA is not authorization. PRINCIPAL conditional; SESSION/N12
+    blocked; target configuration/factor completeness unverified.
+- id: HOSTED-NOT-RUN
+  limitation: No hosted execution or fixtures; all3 prerequisites UNKNOWN; R01-R08
+    NOT_RUN, historical EPERM BLOCKED.
+deliverables:
+- Scoped controller, reused login, explicit enrollment screen and synthetic tests
+- Immutable CP before code, EB/provenance/raw execution/source review and Draft PR
+- Ready only after actual evidence and CI; separate owner merge
+acceptance_criteria:
+- Reuse existing browser client and preserve signup/library/backend/auth boundaries
+- Enrolled AAL1 must challenge and verify; unsupported/malformed/unavailable/contradictory
+  state fails closed
+- Explicit TOTP enrollment and challenge/verify, transient QR/secret only; no raw
+  errors or unsafe SVG insertion
+- Handle duplicate submission, pending, errors, incomplete/unknown enrollment and
+  stale identity/session responses
+- Deterministic offline controller/component tests including accessibility/focus/copy
+  and negative cases
+- Run focused/existing tests, frozen install/build/typechecks/governance, distinct
+  exact-head source review and actual CI
+- Keep R01-R08 NOT_RUN, N12/historical EPERM BLOCKED, Issue108 OPEN, owner merge required
+allowed_actions:
+- Implement only approved paths after committed validated CP
+- Run offline synthetic tests and existing CI disposable fixtures; public docs/source
+  reads only
+- Distinct trusted source review, publish Draft and promote Ready after evidence/CI
+approval_required_for:
+- PR merge and successor scope
+- Any hosted/actual Auth operation or backend policy/security decision
+compliance:
+  change_base: 33812f87a896574f245d37793d8d7f74403a2aea
+  phase: local-ui-implementation
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6427502671
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-02'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
