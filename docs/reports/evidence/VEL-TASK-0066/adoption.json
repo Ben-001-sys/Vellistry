@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "source": "1028670b29b6c47cad12fdaf99fae25c95b7ba43",
+  "unchanged_operative_blobs": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "original_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "blob": "aaca687e9a2efd1e922a6f6978f9522a42957bc3"
+    },
+    {
+      "path": "scripts/pr_compliance.py",
+      "original_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "blob": "6091b7cf02d24c81a3d1925cdf1aa887f07fe949"
+    },
+    {
+      "path": "tests/test_ci_policy.py",
+      "original_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "blob": "1b7887a1265f911ddecfb3dc90ceb0c9d71c6eb9"
+    },
+    {
+      "path": "tests/test_pr_compliance.py",
+      "original_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "blob": "08ffda791ad35427bd9f274225f54ff94053143c"
+    }
+  ],
+  "original_task65_material_fields_preserved": true,
+  "original_cp65_unchanged": true,
+  "both_immutable_packs_valid": true,
+  "app_sql_dependency_classifier_unchanged": true,
+  "state_bytes": 10813
+}
