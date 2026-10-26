@@ -89,6 +89,8 @@ and production remain NO-GO. Ordinary owner merge governance applies.
 
 ## Historical pre-integration checkpoint
 
+Historical base `23fd8488df060e1591be70232abd70f4255e814d`, CI39868833625; VEL-CP-0041; PR #83, PR #65, PR #68, PR #59 were IN_VERIFICATION/superseded. Earlier snapshot: docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md.
+
 The exact pre-Task0064 state is retained in the
 [main33812 snapshot](docs/reports/evidence/VEL-TASK-0064/CURRENT-STATE-main33812.txt),
 Git and earlier immutable packs. Its Task0041-0044 pending-integration statements
