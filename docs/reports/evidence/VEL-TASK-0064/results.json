@@ -1,0 +1,58 @@
+[
+  {
+    "command": "corepack pnpm test:auth-mfa",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/mfa.txt"
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/library.txt"
+  },
+  {
+    "command": "corepack pnpm test:workspace-contract",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/workspace.txt"
+  },
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/preflight.txt"
+  },
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/persistence-units.txt"
+  },
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/principal.txt"
+  },
+  {
+    "command": "corepack pnpm check",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/check.txt"
+  },
+  {
+    "command": "corepack pnpm build",
+    "source_commit": "dd1dfdc3d17f566d53b393782ad11253c41a8790",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0064/build.txt"
+  }
+]

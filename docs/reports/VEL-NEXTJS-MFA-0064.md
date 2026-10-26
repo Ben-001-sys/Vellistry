@@ -83,3 +83,5 @@ R01-R08 remain NOT_RUN. N12/historical independent spawn EPERM remain BLOCKED.
 All3 hosted fixture prerequisites UNKNOWN; G1-G4 unsatisfied. Six production
 security decisions remain pending/conditional as recorded. Issue108 stays OPEN.
 Owner separately decides PR merge and any live UI verification. No automatic merge.
+
+A focused correction permits retrying the code only for a known same-author setup after explicit status recheck, without re-enrolling or redisplaying its secret. Its regression raises the final focused count to53. Final offline Edge rerun passes21assertions. Full governance was still running at this source/evidence cut; final actual outcome is appended to the PR ledger.
