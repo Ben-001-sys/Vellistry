@@ -41,12 +41,18 @@ evidence:
 - docs/reports/evidence/VEL-TASK-0064/browser-final.txt
 - docs/reports/evidence/VEL-TASK-0064/historical-failures.txt
 - docs/reports/evidence/VEL-TASK-0064/install.txt
+- docs/reports/evidence/VEL-TASK-0064/review-round1.txt
+- docs/reports/evidence/VEL-TASK-0064/review-regression-before.txt
+- docs/reports/evidence/VEL-TASK-0064/mfa-review-final.txt
+- docs/reports/evidence/VEL-TASK-0064/check-review-final.txt
+- docs/reports/evidence/VEL-TASK-0064/build-review-final.txt
+- docs/reports/evidence/VEL-TASK-0064/browser-review-final.txt
 review:
   status: pending
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: e050267acaa1803cef65e78b67b8d2ab616c4c3e
+implementation_source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
 execution:
   status: completed
   executor: Codex
@@ -78,26 +84,26 @@ execution:
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0064/principal.txt
   - command: corepack pnpm test:auth-mfa
-    source_commit: e050267acaa1803cef65e78b67b8d2ab616c4c3e
+    source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0064/mfa-final.txt
+    evidence: docs/reports/evidence/VEL-TASK-0064/mfa-review-final.txt
   - command: corepack pnpm check
-    source_commit: e050267acaa1803cef65e78b67b8d2ab616c4c3e
+    source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0064/check-final.txt
+    evidence: docs/reports/evidence/VEL-TASK-0064/check-review-final.txt
   - command: corepack pnpm build
-    source_commit: e050267acaa1803cef65e78b67b8d2ab616c4c3e
+    source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0064/build-final.txt
-  - command: node .submission/browser-check.cjs (synthetic loopback fixture, external
-      traffic blocked)
-    source_commit: e050267acaa1803cef65e78b67b8d2ab616c4c3e
+    evidence: docs/reports/evidence/VEL-TASK-0064/build-review-final.txt
+  - command: node .submission/browser-check.cjs (mock-only loopback UI, external traffic
+      denied)
+    source_commit: ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0064/browser-final.txt
+    evidence: docs/reports/evidence/VEL-TASK-0064/browser-review-final.txt
 ---
 
 ## Work performed
@@ -123,3 +129,8 @@ Frontend-only milestone; no backend MFA enforcement or writable session. Target 
 
 ## Reviewer disposition
 Pending distinct completed-head source review, actual applicable draft/ready CI and separate owner merge. Exact-head review/run links appended externally after final head exists; no self-referential SHA or fabricated human approval. Keep owner_disposition pending in candidate.
+
+### Review correction — actual results preserved
+Distinct read-only Codex source review of aab603c478dd96b32653f036de4ce91f32c36502 found P2: uncertain enrollment from A incorrectly blocked B. Reviewer reproduced it with synthetic inputs. Its full raw review is retained; attempted independent tsx rerun hit spawn EPERM and remains BLOCKED, not PASS. Independent small VM-transpiled synthetic reproduction succeeded and demonstrated the defect; this is not a full independent suite pass.
+
+Added2regressions before correction:55tests,53PASS/2FAIL, exit1 against unchanged prior controller (only new tests uncommitted). ab75be7e8f1a886f0bc1be0b2ffb1dcaaa6c0079 scopes uncertain outcomes by author; B can continue/enroll without clearing A's unresolved outcome. Also corrected terminal configuration aria-busy state. Final55tests/typechecks/builds PASS at that source; browser23assertions PASS, including unavailable-state announcement/disabled submission;0external request attempts. Prior52/53 and21 browser evidence is historical, not overwritten. No change to pinned scope/authority, CP0064 unchanged. New completed-head review and exact-head CI required.

@@ -35,6 +35,9 @@ check('Pending disables sign-in',await page.getByRole('button',{name:'Sign in',e
 check('Pending announces busy',await page.getByRole('main').getAttribute('aria-busy')==='true');
 await page.evaluate(()=>window.synthetic.release());await page.getByRole('button',{name:'Set up authenticator app'}).waitFor();
 check('Pending resolves to explicit choice',await page.getByRole('button',{name:'Continue to your books'}).count()===1);
+await load('configuration'); await page.getByRole('status').filter({hasText:'Sign-in is unavailable'}).waitFor();
+check('Unavailable configuration clears busy announcement',await page.getByRole('main').getAttribute('aria-busy')==='false');
+check('Unavailable configuration cannot submit',await page.getByRole('button',{name:'Sign in',exact:true}).isDisabled());
 check('No external requests attempted',external.length===0);
 console.log(JSON.stringify({status:'PASS',assertions:count,passed,externalRequests:external,hostedOperations:0},null,2));
 }finally{await browser?.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

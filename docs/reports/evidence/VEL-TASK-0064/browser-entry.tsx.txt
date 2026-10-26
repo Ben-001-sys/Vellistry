@@ -17,4 +17,4 @@ challenge:()=>ok({id:'synthetic-challenge',expires_at:Math.floor(Date.now()/1000
 verify:()=>{enrolled=true;aal='aal2';token='synthetic-upgraded';return ok({...session(),user:user()});}}};
 const flow=createMfaFlow(auth,()=>{visits++;});
 Object.assign(window,{synthetic:{flow,stats:()=>({enrolls,visits}),release:()=>release?.()}});
-createRoot(document.getElementById('root')!).render(<AuthPanel flow={flow} enrollment={mode==='settings'}/>);
+createRoot(document.getElementById('root')!).render(<AuthPanel flow={mode==='configuration'?undefined:flow} enrollment={mode==='settings'}/>);

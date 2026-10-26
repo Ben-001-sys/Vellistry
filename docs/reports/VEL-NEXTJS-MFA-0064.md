@@ -85,3 +85,5 @@ security decisions remain pending/conditional as recorded. Issue108 stays OPEN.
 Owner separately decides PR merge and any live UI verification. No automatic merge.
 
 A focused correction permits retrying the code only for a known same-author setup after explicit status recheck, without re-enrolling or redisplaying its secret. Its regression raises the final focused count to53. Final offline Edge rerun passes21assertions. Full governance was still running at this source/evidence cut; final actual outcome is appended to the PR ledger.
+
+Distinct first review found cross-author uncertainty leakage; two negative regressions failed before correction and final55MFA tests pass afterward. ab75be7 scopes uncertainty by author and fixes terminal unavailable aria-busy. Final offline browser23assertions PASS with0external requests. Historical review/reproduction/failures retained; independent full tsx rerun remains spawn EPERM BLOCKED. Full local governance ongoing at the evidence cut, final actual CI/review recorded externally.

@@ -1,0 +1,111 @@
+
+> vellistry@ test:auth-mfa H:\cursor\cursor\Vellistry\.worktrees\vel-nextjs-mfa
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/auth/mfa-flow.test.ts ../web/src/lib/auth/auth-panel.test.tsx
+
+✔ login retains labeled email/password, sign-in, signup and home navigation (23.9048ms)
+✔ enrolled challenge exposes a labeled native six-digit OTP form and no continue control (2.4141ms)
+✔ pending challenge disables verification and announces progress (2.7821ms)
+✔ enrollment offers private QR image and manual setup without raw SVG insertion or continuation (2.7715ms)
+✔ unknown/blocked enrollment hides credentials, setup material and continuation (3.8718ms)
+✔ unenrolled choice offers explicit opt-in and existing library continuation (1.9215ms)
+✔ completed UI does not expose setup secret, OTP or a new enrollment action (1.845ms)
+✔ status text is escaped rather than interpreted as HTML (2.2443ms)
+✔ unenrolled password sign-in offers optional setup and rechecks before library (6.6929ms)
+✔ enrolled AAL1 cannot continue until challenge, verification and post-response checks (2.1456ms)
+✔ existing enrolled AAL2 does not enroll or challenge again (0.8694ms)
+✔ enrollment is explicit, stays incomplete until verified, and clears secret on success (1.4221ms)
+✔ fail closed: missing factors (0.7217ms)
+✔ fail closed: malformed factor (0.4303ms)
+✔ fail closed: duplicate factor (0.4731ms)
+✔ fail closed: unverified setup (0.5464ms)
+✔ fail closed: unsupported verified phone (0.6107ms)
+✔ fail closed: unsupported verified passkey (0.7789ms)
+✔ fail closed: contradictory AAL2 without factors (0.5893ms)
+✔ fail closed: contradictory next AAL (0.6139ms)
+✔ fail closed: unavailable AAL (0.5652ms)
+✔ fail closed: unknown AAL (0.5048ms)
+✔ fail closed: expired session (0.4123ms)
+✔ fail closed: nonfinite expiry (0.3108ms)
+✔ fail closed: anonymous identity (0.3978ms)
+✔ fail closed: mismatched user (0.3098ms)
+✔ fail closed: missing session (0.2818ms)
+✔ SDK failure is sanitized: signInWithPassword (0.4504ms)
+✔ SDK failure is sanitized: getSession (0.2553ms)
+✔ SDK failure is sanitized: getUser (0.4573ms)
+✔ incomplete password response cannot navigate (0.5498ms)
+✔ pending operation cannot duplicate login or enrollment (0.4284ms)
+✔ identity switch during factor response blocks stale completion (0.3771ms)
+✔ token switch during AAL response blocks stale completion (0.3917ms)
+✔ factor added before Continue requires step-up (0.3733ms)
+✔ unknown enrollment cannot be blindly retried (0.5878ms)
+✔ partial enrollment and unsafe QR are rejected without displaying secrets (1.0088ms)
+✔ code format is validated before challenge (0.3785ms)
+✔ verification fails closed: challenge (0.5531ms)
+✔ verification fails closed: verify (0.4079ms)
+✔ verification fails closed: expired challenge (0.3605ms)
+✔ verification fails closed: incomplete verification (0.4615ms)
+✔ verification fails closed: wrong factor (0.521ms)
+✔ verification fails closed: wrong identity (0.3908ms)
+✔ verification fails closed: expiry during verification (0.4032ms)
+✔ auth change erases secret and invalidates late enrollment (46.2409ms)
+✔ dispose erases setup material and ignores stale responses (0.9716ms)
+✔ local sign-out failure is not described as signed out (0.6626ms)
+✔ own SDK sign-out event completes correctly and erases setup (0.5259ms)
+✔ signup stays at sign-in even if SDK supplies a session (0.3888ms)
+✔ failed setup code can resume only its known same-author unverified factor without reenrollment (0.6236ms)
+✔ stale or future observation cannot complete UI verification (0.3754ms)
+✔ concurrent authors use independent immutable snapshots and token bindings (0.3161ms)
+✖ uncertainty is scoped to the initiating author across account switches (2.8548ms)
+✖ another author's successful enrollment cannot clear earlier uncertain setup (1.2698ms)
+ℹ tests 55
+ℹ suites 0
+ℹ pass 53
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1133.6479
+
+✖ failing tests:
+
+test at ..\web\src\lib\auth\mfa-flow.test.ts:191:1
+✖ uncertainty is scoped to the initiating author across account switches (2.8548ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'blocked'
+  - 'choice'
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-nextjs-mfa\apps\web\src\lib\auth\mfa-flow.test.ts:195:39)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'blocked',
+    expected: 'choice',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\web\src\lib\auth\mfa-flow.test.ts:198:1
+✖ another author's successful enrollment cannot clear earlier uncertain setup (1.2698ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-nextjs-mfa\apps\web\src\lib\auth\mfa-flow.test.ts:203:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-nextjs-mfa\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.
