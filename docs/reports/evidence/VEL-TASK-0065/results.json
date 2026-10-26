@@ -1,0 +1,91 @@
+{
+  "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+  "tests": [
+    {
+      "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/policy.txt",
+      "count": 46
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_pr_compliance.py -v",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/compliance.txt",
+      "count": 62
+    },
+    {
+      "command": "corepack pnpm test:auth-mfa",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/mfa.txt",
+      "count": 55
+    },
+    {
+      "command": "Inline workflow-minus-new-step equality, unchanged source/history and Task/pack assertions",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/preservation.json",
+      "count": null
+    },
+    {
+      "command": "Actual ci_policy.py gate CLI with synthetic exact-source ready-event/application-result matrix",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/gate-cli.json",
+      "count": 5
+    },
+    {
+      "command": "python scripts/check_knowledge_metadata.py",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/metadata.txt",
+      "count": null
+    },
+    {
+      "command": "python scripts/check_implementation_readiness.py",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/readiness.txt",
+      "count": null
+    },
+    {
+      "command": "python scripts/spec_traceability.py validate",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/traceability.txt",
+      "count": null
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_governance_entrypoints.py -v",
+      "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0065/checkpoint.txt",
+      "count": 8
+    }
+  ],
+  "prior_negative": {
+    "validator_base": "a902fdb36bb51e17a5c567787c6886b171ca50fe",
+    "new_test_in_working_tree": true,
+    "command": "python -m unittest discover -s tests -p test_pr_compliance.py -k test_mfa_runner_bypasses_are_rejected -v",
+    "exit_code": 1,
+    "observed_failures": 14,
+    "meaning": "Expected rejection missing in prior contract; never relabelled a passing command"
+  },
+  "corrected_negative": {
+    "exit_code": 0,
+    "test_methods": 1,
+    "mutation_subcases": 14,
+    "timing": "After pack dispatch, pre-source-commit working tree; same operative content later committed4549a72"
+  }
+}

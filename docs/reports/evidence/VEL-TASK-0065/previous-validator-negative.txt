@@ -1,0 +1,117 @@
+test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) ... 
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-skip')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-shell')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-working-directory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-env')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-rename-duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-command-mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-before-install')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-before-principal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-after-build')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) (mutation='mfa-after-security')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "H:\cursor\cursor\Vellistry\.worktrees\vel-mfa-ci-coverage\tests\test_pr_compliance.py", line 290, in rejects_mutation
+    with self.subTest(mutation=label),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 15.531s
+
+FAILED (failures=14)

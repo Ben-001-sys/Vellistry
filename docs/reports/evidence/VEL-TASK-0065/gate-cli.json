@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+  "command": "Actual ci_policy.py gate with exact-source synthetic ready-event and job-result inputs",
+  "cases": [
+    {
+      "synthetic_application_result": "success",
+      "actual_gate_exit": 0,
+      "expected_exit": 0,
+      "output": "PASS: merge-eligible applicable required CI jobs succeeded at 4549a72025ab367b623072de9bceded957ee0463\r\n"
+    },
+    {
+      "synthetic_application_result": "failure",
+      "actual_gate_exit": 1,
+      "expected_exit": 1,
+      "output": "Traceback (most recent call last):\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 180, in <module>\r\n    raise SystemExit(main())\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 160, in main\r\n    result=check_gate(json.loads(os.environ['CI_NEEDS']), expected_plan=outputs)\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 149, in check_gate\r\n    raise ValueError(f'Applicable or failed {job}: {result}')\r\nValueError: Applicable or failed application: failure\r\n"
+    },
+    {
+      "synthetic_application_result": "cancelled",
+      "actual_gate_exit": 1,
+      "expected_exit": 1,
+      "output": "Traceback (most recent call last):\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 180, in <module>\r\n    raise SystemExit(main())\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 160, in main\r\n    result=check_gate(json.loads(os.environ['CI_NEEDS']), expected_plan=outputs)\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 149, in check_gate\r\n    raise ValueError(f'Applicable or failed {job}: {result}')\r\nValueError: Applicable or failed application: cancelled\r\n"
+    },
+    {
+      "synthetic_application_result": "skipped",
+      "actual_gate_exit": 1,
+      "expected_exit": 1,
+      "output": "Traceback (most recent call last):\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 180, in <module>\r\n    raise SystemExit(main())\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 160, in main\r\n    result=check_gate(json.loads(os.environ['CI_NEEDS']), expected_plan=outputs)\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 149, in check_gate\r\n    raise ValueError(f'Applicable or failed {job}: {result}')\r\nValueError: Applicable or failed application: skipped\r\n"
+    },
+    {
+      "synthetic_application_result": "timed_out",
+      "actual_gate_exit": 1,
+      "expected_exit": 1,
+      "output": "Traceback (most recent call last):\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 180, in <module>\r\n    raise SystemExit(main())\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 160, in main\r\n    result=check_gate(json.loads(os.environ['CI_NEEDS']), expected_plan=outputs)\r\n  File \"H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-mfa-ci-coverage\\scripts\\ci_policy.py\", line 149, in check_gate\r\n    raise ValueError(f'Applicable or failed {job}: {result}')\r\nValueError: Applicable or failed application: timed_out\r\n"
+    }
+  ],
+  "limitation": "Synthetic job results, not a deliberately failing live GitHub Actions run; no app/test source mutated"
+}
