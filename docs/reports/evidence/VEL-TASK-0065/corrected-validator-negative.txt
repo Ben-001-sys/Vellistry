@@ -1,0 +1,6 @@
+test_mfa_runner_bypasses_are_rejected (test_pr_compliance.WorkflowExecutionContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 13.890s
+
+OK

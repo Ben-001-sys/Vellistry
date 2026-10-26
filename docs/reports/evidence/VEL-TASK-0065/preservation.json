@@ -1,0 +1,130 @@
+{
+  "source_commit": "4549a72025ab367b623072de9bceded957ee0463",
+  "workflow_minus_only_mfa_step_equals_base": true,
+  "application_sql_dependency_classifier_inputs_unchanged": true,
+  "old_history_preserved": [
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0059.yaml",
+      "object": "f67abf66e6b5cff2e8fc924ab0ce52db18b8463f"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0059.md",
+      "object": "07c50e98457c3ce56d788fc83128a9be9733b486"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0059.md",
+      "object": "59d4aa91aa77f7757f7a194366c9312c4a39441b"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0059",
+      "object": "72a298737585a018afaf7a817913c90d122b03ef"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0059",
+      "object": "8b7c31bb49c6cadb6dff6f21c0beb95e40d43e09"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0060.yaml",
+      "object": "a331ddee76930845f6f14625f115f3fb6c946a8c"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0060.md",
+      "object": "ee0a2c974ce2ac568305b5fb7ffbf98d4e6cdadb"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0060.md",
+      "object": "d18e531d09b53a7ca62c04506fe309cbc8e5e8fe"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0060",
+      "object": "c3746099e55b62ecfd5fff3c9cd4d42ac320080d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0060",
+      "object": "807f21ba554bda0dafa40bcba60ccf7af81d2b73"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0061.yaml",
+      "object": "3d77c9ac8221b28bb73935b7636d809c5f973309"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0061.md",
+      "object": "1c428ebed43b8d302d5cae34960516d901b60dff"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0061.md",
+      "object": "40c0a076ff5749f6e79810dd9e78cd820036adb2"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0061",
+      "object": "260420f3cb88c553aacca9af24ab049e2f4a4674"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0061",
+      "object": "8a4e02060b05d3f3d23f6730849b6a08c8bb019f"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0062.yaml",
+      "object": "3096f367083d3aff725f3e042d020f42e126c45d"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0062.md",
+      "object": "1670e2533c4a09b2495b164cbfa816cc91761baf"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0062.md",
+      "object": "ae864364be8ebad0abb0948feda3f456577cb923"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0062",
+      "object": "da0b99042804ace02a768f8a6145e8a029e92fbc"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0062",
+      "object": "1f535bf0dd2f6478d8a429aa02932d87d9489166"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0063.yaml",
+      "object": "d24fcbc091d1327eea66cdaf3c0c77b778e1686e"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0063.md",
+      "object": "ffbd1bb6264530dd11d292520e67df87b49ac458"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0063.md",
+      "object": "3d967fd4ffa46b2e60bd1b406215b059235796e0"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0063",
+      "object": "4d8cdbfc0b1c29c5c5b9ba3b21458cf68148280e"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0063",
+      "object": "0819bee801e91458f49d5252e513c98208a90609"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0064.yaml",
+      "object": "263348d942037fea35b7f0d7514018b2f0b2074d"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0064.md",
+      "object": "c9bc31cfefc03f6fbc70b7fa551b502fa0d38621"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0064.md",
+      "object": "e3cb7db98a3a59167e41857724fbf0c1021fd884"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0064",
+      "object": "3781313b9f829ba9636f6b0ea5208de8b6f87d95"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0064",
+      "object": "ac7e864a34f22ef8dcf1afdced6d88236d74cc77"
+    }
+  ],
+  "own_task_pack_valid": true,
+  "state_bytes": 10772,
+  "status": "PASS"
+}
