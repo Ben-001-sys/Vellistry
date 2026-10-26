@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-26",
+  "source": "Owner direct response in current conversation, relayed in Issue108; no account inspection",
+  "unenrolled_fixture_exists_and_owner_controlled": "UNKNOWN",
+  "verified_totp_fixture_exists_and_owner_controlled": "UNKNOWN",
+  "enrolled_fixture_aal1_aal2_obtainable": "UNKNOWN",
+  "status": "FIXTURE_PREREQUISITE_BLOCKED",
+  "hosted_probe_executed": false
+}

@@ -1,0 +1,26 @@
+{
+  "command": "Inline fixture/status/protocol/source-scope/history/immutablepack assertions",
+  "source_commit": "c84d27a319366cec0b9da634fcd4c6902d48fa4e",
+  "status": "PASS",
+  "exit_code": 0,
+  "preserved_blob_or_tree": {
+    "docs/agent-workflow/context-packs/VEL-CP-0059.md": "07c50e98457c3ce56d788fc83128a9be9733b486",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0059.md": "59d4aa91aa77f7757f7a194366c9312c4a39441b",
+    "docs/reports/evidence/VEL-TASK-0059": "8b7c31bb49c6cadb6dff6f21c0beb95e40d43e09",
+    "docs/agent-workflow/context-packs/VEL-CP-0060.md": "ee0a2c974ce2ac568305b5fb7ffbf98d4e6cdadb",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0060.md": "d18e531d09b53a7ca62c04506fe309cbc8e5e8fe",
+    "docs/reports/evidence/VEL-TASK-0060": "807f21ba554bda0dafa40bcba60ccf7af81d2b73",
+    "docs/agent-workflow/context-packs/VEL-CP-0061.md": "1c428ebed43b8d302d5cae34960516d901b60dff",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0061.md": "40c0a076ff5749f6e79810dd9e78cd820036adb2",
+    "docs/reports/evidence/VEL-TASK-0061": "8a4e02060b05d3f3d23f6730849b6a08c8bb019f",
+    "docs/agent-workflow/context-packs/VEL-CP-0062.md": "1670e2533c4a09b2495b164cbfa816cc91761baf",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0062.md": "ae864364be8ebad0abb0948feda3f456577cb923",
+    "docs/reports/evidence/VEL-TASK-0062": "1f535bf0dd2f6478d8a429aa02932d87d9489166"
+  },
+  "fixture_prerequisites": "all3 UNKNOWN",
+  "hosted_execution": "BLOCKED",
+  "probe_findings": "NOT_OBSERVED",
+  "R01_R08": "NOT_RUN",
+  "runtime_sanitizer_test": "NOT_RUN; no executable runner",
+  "N12_EPERM": "BLOCKED"
+}
