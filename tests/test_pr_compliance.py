@@ -326,6 +326,39 @@ class WorkflowExecutionContractTests(unittest.TestCase):
                 else:ss.remove(step);ss.append(step)
             self.rejects_mutation('principal-adapter-'+mode,mutate)
 
+    def test_mfa_runner_bypasses_are_rejected(self):
+        expected = {'name': 'Next.js authentication and MFA regressions', 'run': 'pnpm test:auth-mfa'}
+        steps = self.original['jobs']['application']['steps']
+        # Also exercises the newly proposed step against the unchanged previous validator.
+        if expected not in steps:
+            index = next(i for i, s in enumerate(steps) if s.get('name') == 'Principal adapter binding regressions')
+            steps.insert(index + 1, dict(expected))
+        for mode in ('remove', 'replace', 'skip', 'mask', 'shell', 'working-directory', 'env',
+                     'duplicate', 'rename-duplicate', 'command-mask', 'before-install',
+                     'before-principal', 'after-build', 'after-security'):
+            def mutate(w, m=mode):
+                ss = w['jobs']['application']['steps']
+                step = next(s for s in ss if s.get('name') == expected['name'])
+                if m == 'remove': ss.remove(step)
+                elif m == 'replace': step['run'] = 'echo PASS'
+                elif m == 'skip': step['if'] = 'false'
+                elif m == 'mask': step['continue-on-error'] = 'true'
+                elif m == 'shell': step['shell'] = 'sh'
+                elif m == 'working-directory': step['working-directory'] = 'other'
+                elif m == 'env': step['env'] = {'NODE_OPTIONS': '--require ./skip.js'}
+                elif m == 'duplicate': ss.append(dict(step))
+                elif m == 'rename-duplicate': ss.append(dict(step, name='Other MFA runner'))
+                elif m == 'command-mask': step['run'] += ' || true'
+                elif m == 'before-install': ss.remove(step); ss.insert(0, step)
+                elif m == 'before-principal':
+                    ss.remove(step)
+                    ss.insert(next(i for i, s in enumerate(ss) if s.get('name') == 'Principal adapter binding regressions'), step)
+                elif m == 'after-build':
+                    ss.remove(step)
+                    ss.insert(next(i for i, s in enumerate(ss) if s.get('run') == 'pnpm build') + 1, step)
+                else: ss.remove(step); ss.append(step)
+            self.rejects_mutation('mfa-' + mode, mutate)
+
     def test_all_job_permission_overrides_are_rejected(self):
         for job in self.original['jobs']:
             for label,permissions in (('contents-write',{'contents':'write'}),('oidc-write',{'id-token':'write'}),('read-only',{'contents':'read'}),('empty',{}),('read-all','read-all')):

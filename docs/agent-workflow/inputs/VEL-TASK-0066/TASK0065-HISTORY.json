@@ -1,0 +1,34 @@
+{
+  "original_history_head": "86770b23fd341422f9df5394c49b601a3164d8d6",
+  "original_branch": "codex/vel-mfa-ci-coverage",
+  "original_source": "4549a72025ab367b623072de9bceded957ee0463",
+  "original_pack_commit": "ebc3fa036dd1fefc79ccf3fa495a523bc9e3c2e3",
+  "base": "a902fdb36bb51e17a5c567787c6886b171ca50fe",
+  "records": [
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0065.yaml",
+      "git_blob": "055a2e1300679bd6490dd2cdbf33996eed02c9c0",
+      "sha256": "36510d2f3a7514a277a45262f4b2b1b6b96036a5dd8fd49daa671e5b3b85dc9c"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0065.md",
+      "git_blob": "b3e1882cac799f384a4075c7768556271832eb1f",
+      "sha256": "6e1b818893bcc057f3a5274d55469a0f5fef08f9d782935535a30009619e42d9"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0065.md",
+      "git_blob": "8974c6b80b9fe41d7adc9a4aa1b80ecaafb64deb",
+      "sha256": "d2a49ea5a4832e9e88a941c81593093a51efca9a77a7aa0b20e5955f2080a8ff"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0065/OWNER-AUTHORIZATION.json",
+      "git_blob": "c4b16c6470e122719d7e54fa285d92325eba82d8",
+      "sha256": "72307f914d2a1b6f28fb473267e200cef42d35598e81e4c419ef73e8c3144e47"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0065/SCOPE.md",
+      "git_blob": "c6277d8a7597cadd64838224940aeed1e6edf231",
+      "sha256": "1ac519b30b4e083e54e43866f47e49f910d03d7199e0e07ef85d430bf8b375a6"
+    }
+  ]
+}

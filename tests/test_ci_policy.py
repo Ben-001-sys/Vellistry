@@ -65,6 +65,29 @@ def check_pg17_manual_contract(workflow):
         raise ValueError('PG17 manual workflow security/execution contract changed')
 
 class RoutingTests(unittest.TestCase):
+    def test_nextjs_auth_sources_require_mfa_application_security_and_recovery(self):
+        for path in ('apps/web/src/app/login/page.tsx', 'apps/web/src/app/account/mfa/page.tsx',
+                     'apps/web/src/components/auth/auth-panel.tsx', 'apps/web/src/lib/auth/mfa-flow.ts',
+                     'apps/web/src/lib/auth/mfa-flow.test.ts', 'apps/web/src/lib/auth/auth-panel.test.tsx',
+                     'apps/web/src/lib/supabase/browser.ts', 'apps/web/src/lib/supabase/server.ts', 'package.json'):
+            with self.subTest(path=path):
+                self.assertEqual(policy.classify([path]),
+                                 dict(application='true', security='true', recovery='true', privileges='false'))
+
+    def test_mfa_application_failure_cannot_be_a_merge_eligible_gate(self):
+        # Synthetic Actions job results, not a claim of an intentionally failing live run.
+        for mode in ('ready', 'full'):
+            plan = {**policy.classify(['apps/web/src/lib/auth/mfa-flow.ts'], full=mode == 'full'), 'mode': mode}
+            needs = {'classify': {'result': 'success', 'outputs': plan},
+                     'governance': {'result': 'success', 'outputs': {'compliance': 'pass'}},
+                     **{job: {'result': 'success' if plan[job] == 'true' else 'skipped'}
+                        for job in ('application', 'recovery', 'privileges')}}
+            self.assertEqual(policy.check_gate(needs, expected_plan=plan), 'merge-eligible')
+            for result in ('failure', 'cancelled', 'skipped', None, 'timed_out'):
+                with self.subTest(mode=mode, application=result):
+                    failed = copy.deepcopy(needs); failed['application']['result'] = result
+                    with self.assertRaises(ValueError): policy.check_gate(failed, expected_plan=plan)
+
     def test_docs_and_governance_are_lightweight(self):
         for path in ('README.md','CURRENT-STATE.md','docs/reports/evidence/result.json','docs/reports/evidence/timings.csv','docs/decisions/ADR-0008-any.md','docs/agent-workflow/tasks/VEL-TASK-0006.yaml','docs/agent-workflow/context-packs/VEL-CP-0006.md','docs/agent-workflow/execution-bundles/VEL-EB-0006.md','scripts/agent_workflow.py','tests/test_handoff_recovery.py'):
             with self.subTest(path=path): self.assertEqual(set(policy.classify([path]).values()),{'false'})
@@ -384,6 +407,12 @@ class PersistenceCoverageTests(unittest.TestCase):
         import pr_compliance as pc
         expected={'name':'Principal adapter binding regressions',
                   'run':'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts'}
+        self.assertIn(expected, pc.PERSISTENCE_STEPS)
+        pc.persistence_coverage_contract(self.baseline())
+
+    def test_nextjs_mfa_is_a_mandatory_real_workflow_step(self):
+        import pr_compliance as pc
+        expected = {'name': 'Next.js authentication and MFA regressions', 'run': 'pnpm test:auth-mfa'}
         self.assertIn(expected, pc.PERSISTENCE_STEPS)
         pc.persistence_coverage_contract(self.baseline())
 

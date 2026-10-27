@@ -115,6 +115,8 @@ PERSISTENCE_STEPS = (
      'run': 'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts'},
     {'name': 'Principal adapter binding regressions',
      'run': 'pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts'},
+    {'name': 'Next.js authentication and MFA regressions',
+     'run': 'pnpm test:auth-mfa'},
     {'name': 'Disposable PostgreSQL17 protected workspace acceptance',
      'run': 'python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json'},
 )
@@ -142,8 +144,8 @@ def persistence_coverage_contract(workflow):
         return matches[0]
     security = [i for i,s in enumerate(steps) if s.get('name') == 'Pick free, temporary CI-only Supabase API/DB ports']
     require(len(security) == 1 and steps.index(python[0]) < positions[0]
-            and at('pnpm install --frozen-lockfile') < positions[0] < positions[1] < at('pnpm build')
-            < at('pnpm check') < positions[2] < security[0],
+            and at('pnpm install --frozen-lockfile') < positions[0] < positions[1] < positions[2] < at('pnpm build')
+            < at('pnpm check') < positions[3] < security[0],
             'Persistence regression/prerequisite/security ordering changed')
 
 
