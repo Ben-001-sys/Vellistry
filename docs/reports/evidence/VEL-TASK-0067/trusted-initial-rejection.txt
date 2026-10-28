@@ -1,0 +1,3 @@
+BLOCKED: PR compliance: Empty test evidence
+
+Cause: successful tsc emitted no diagnostics, leaving an empty output file. Corrected by retaining its actual command and exit0 in the evidence file; not by weakening the evaluator.
