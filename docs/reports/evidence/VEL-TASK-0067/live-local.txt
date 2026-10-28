@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3000/account/mfa",
+      "status": 200,
+      "expected": 200,
+      "body_recorded": false
+    },
+    {
+      "url": "http://127.0.0.1:4100/v1/health",
+      "status": 200,
+      "expected": 200,
+      "body_recorded": false
+    },
+    {
+      "url": "http://127.0.0.1:4100/v1/books",
+      "status": 401,
+      "expected": 401,
+      "body_recorded": false
+    },
+    {
+      "url": "http://127.0.0.1:3000/api/books",
+      "status": 503,
+      "expected": 503,
+      "body_recorded": false
+    }
+  ],
+  "browser": "Playwright actual DOM: heading Authenticator app; status Sign-in is unavailable. Please try again later.; sign-in/home links; no404 UI",
+  "prior_harness_error": "First smoke assertion wrongly expected BFF401 without configuration; actual503 is correct fail-closed behavior. Raw HTML contains embedded Next not-found template despite real route200; browser DOM confirms AuthPanel, not404."
+}

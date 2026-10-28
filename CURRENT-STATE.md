@@ -3,28 +3,32 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-26
+updated_at: 2026-10-28
 owner: project_owner
 version: 0.2.2
 ---
 
 # Vellistry — current verified state
 
-## Mandatory MFA CI coverage — 2026-10-26
+## Local Auth runtime repair � 2026-10-28
 
-FACT: PR126 merged main `a902fdb36bb51e17a5c567787c6886b171ca50fe` with full
-reviewed-tree equality; [post-main40410524744](https://github.com/Ben-001-sys/Vellistry/actions/runs/40410524744)
-SUCCESS. Task0064/CP0064/EB0064 and55MFA tests/23offline browser assertions retained.
-Task0065 history is preserved; Task0066/CP0066 reconciles its provenance and proposes mandatory `pnpm test:auth-mfa` in the
-existing application job, with source-routing/failure-gate and bypass regressions.
-[Report](docs/reports/VEL-MFA-CI-0066.md); review/actual CI/owner merge pending.
-No Auth application, dependency, SQL or backend-policy changes.
+FACT: PR127 merged main `5e3aeec95a34c0a9564067632655a0549a824c9d`;
+[post-main40476240880](https://github.com/Ben-001-sys/Vellistry/actions/runs/40476240880)
+SUCCESS;55MFA tests now mandatory alongside existing security/recovery gates.
+Task65/CP65/EB65 history and activeTask66/CP66/EB66 preserved.
 
-Frontend MFA is not backend authorization or hosted acceptance. PRINCIPAL target
-assurance and SESSION remain unresolved; other gates unchanged. R01-R08 NOT_RUN;
-N12/historical independent spawn EPERM BLOCKED. Hosted fixtures UNKNOWN/G1-G4
-unsatisfied; Issue108 OPEN; remediation delegation EXPIRED. Earlier paragraphs
-are dated historical records, not current hosted/merge permission.
+Task0067/CP0067 reproduces missing Nest constructor injection under tsx;
+explicit runtime tokens and offline HTTP regressions are proposed for review.
+Root78f80bb checkout was stale, missing MFA route and serving Next16.4.0.
+Isolated current worktree serves existing AuthPanel at /account/mfa on16.4.1.
+[Report](docs/reports/VEL-LOCAL-AUTH-RUNTIME-0067.md). No env files copied,
+Auth policy/SQL/dependency/CI changes or hosted requests. Configured real Auth,
+backend MFA enforcement and hosted Books persistence remain unverified.
+
+R01-R08 NOT_RUN; N12/historical independent spawn EPERM BLOCKED. PRINCIPAL/SESSION
+and other production gates unchanged; hosted fixtures UNKNOWN/G1-G4 unsatisfied.
+Issue108OPEN; remediation delegation EXPIRED; separate owner merge required.
+Earlier paragraphs are dated history, not new security or implementation authority.
 
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26
 

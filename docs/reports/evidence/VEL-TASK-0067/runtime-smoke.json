@@ -1,0 +1,55 @@
+[
+  {
+    "runtime": "owner-stale-next",
+    "url": "http://127.0.0.1:3000/account/mfa",
+    "status": 404
+  },
+  {
+    "runtime": "tsx-watch",
+    "checks": [
+      {
+        "path": "/v1/health",
+        "synthetic_bearer": false,
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "path": "/v1/books",
+        "synthetic_bearer": false,
+        "status": 401,
+        "expected": 401
+      },
+      {
+        "path": "/v1/books",
+        "synthetic_bearer": true,
+        "status": 503,
+        "expected": 503
+      }
+    ],
+    "auth_configuration": "deliberately absent; no SDK/Auth request permitted"
+  },
+  {
+    "runtime": "compiled",
+    "checks": [
+      {
+        "path": "/v1/health",
+        "synthetic_bearer": false,
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "path": "/v1/books",
+        "synthetic_bearer": false,
+        "status": 401,
+        "expected": 401
+      },
+      {
+        "path": "/v1/books",
+        "synthetic_bearer": true,
+        "status": 503,
+        "expected": 503
+      }
+    ],
+    "auth_configuration": "deliberately absent; no SDK/Auth request permitted"
+  }
+]

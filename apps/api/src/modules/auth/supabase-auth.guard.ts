@@ -1,11 +1,12 @@
-import {CanActivate,ExecutionContext,Injectable,UnauthorizedException} from "@nestjs/common";
+import {Inject,CanActivate,ExecutionContext,Injectable,UnauthorizedException} from "@nestjs/common";
 import {SupabaseAuthService} from "./supabase-auth.service";
 
 export type AuthenticatedRequest={headers:{authorization?:string};author:{id:string};accessToken:string};
 
 @Injectable()
 export class SupabaseAuthGuard implements CanActivate{
- constructor(private readonly auth:SupabaseAuthService){}
+ // tsx omits design:paramtypes; explicit runtime tokens also work with tsc output.
+ constructor(@Inject(SupabaseAuthService) private readonly auth:SupabaseAuthService){}
  async canActivate(context:ExecutionContext){
   const req=context.switchToHttp().getRequest<AuthenticatedRequest>();
   const header=req.headers.authorization??"";

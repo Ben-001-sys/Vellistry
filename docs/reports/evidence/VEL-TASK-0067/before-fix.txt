@@ -1,0 +1,199 @@
+✖ Nest injects the same registered Auth service into guard and Books service and injects Books controller (43.7976ms)
+✔ actual health route responds without authentication (41.4005ms)
+✔ GET books rejects missing/forged client identity without SDK or data access (5.8097ms)
+✔ GET books rejects malformed authorization without verification (2.6452ms)
+✖ GET books rejects failed synthetic Auth verification as401 without DB dispatch (2.7013ms)
+✖ GET books reports unavailable Auth configuration as503, not undefined.verify (3.8632ms)
+✖ GET books reaches the controller/service with the same verified synthetic token (4.4473ms)
+✖ GET books preserves sanitized database failure semantics (10.7164ms)
+✔ POST books rejects missing/forged client identity without SDK or data access (28.8691ms)
+✔ POST books rejects malformed authorization without verification (3.3161ms)
+✖ POST books rejects failed synthetic Auth verification as401 without DB dispatch (2.9415ms)
+✖ POST books reports unavailable Auth configuration as503, not undefined.verify (2.327ms)
+✖ POST books reaches the controller/service with the same verified synthetic token (2.1825ms)
+✖ POST books preserves sanitized database failure semantics (2.8096ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 5
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2180.8551
+
+✖ failing tests:
+
+test at src\modules\auth\auth-runtime.spec.ts:53:1
+✖ Nest injects the same registered Auth service into guard and Books service and injects Books controller (43.7976ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - SupabaseAuthService {
+  -   forUser: [Function (anonymous)],
+  -   publicClient: [Function (anonymous)],
+  -   publishableKey: undefined,
+  -   url: undefined
+  - }
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:54:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [SupabaseAuthService],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:72:3
+✖ GET books rejects failed synthetic Auth verification as401 without DB dispatch (2.7013ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:74:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:77:3
+✖ GET books reports unavailable Auth configuration as503, not undefined.verify (3.8632ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 503
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:83:3
+✖ GET books reaches the controller/service with the same verified synthetic token (4.4473ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 200
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:86:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:90:3
+✖ GET books preserves sanitized database failure semantics (10.7164ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(text.includes(method === 'POST' ? 'Unable to create book' : 'Unable to load books'))
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:95:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:72:3
+✖ POST books rejects failed synthetic Auth verification as401 without DB dispatch (2.9415ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:74:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:77:3
+✖ POST books reports unavailable Auth configuration as503, not undefined.verify (2.327ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 503
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:83:3
+✖ POST books reaches the controller/service with the same verified synthetic token (2.1825ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 201
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:86:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 201,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src\modules\auth\auth-runtime.spec.ts:90:3
+✖ POST books preserves sanitized database failure semantics (2.8096ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(text.includes(method === 'POST' ? 'Unable to create book' : 'Unable to load books'))
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api\src\modules\auth\auth-runtime.spec.ts:95:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
