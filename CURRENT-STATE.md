@@ -10,7 +10,7 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Local Auth runtime repair � 2026-10-28
+## Local Auth runtime repair — 2026-10-28
 
 FACT: PR127 merged main `5e3aeec95a34c0a9564067632655a0549a824c9d`;
 [post-main40476240880](https://github.com/Ben-001-sys/Vellistry/actions/runs/40476240880)

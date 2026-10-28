@@ -51,9 +51,9 @@ function request(path: string, method = 'GET', authorization?: string) {
     ...(method === 'POST' ? {body: JSON.stringify({title: book.title, owner_id: 'forged-client-owner'})} : {})});
 }
 test('Nest injects the same registered Auth service into guard and Books service and injects Books controller', () => {
-  assert.equal((app.get(SupabaseAuthGuard) as unknown as {auth: unknown}).auth, auth);
-  assert.equal((app.get(BooksService) as unknown as {auth: unknown}).auth, auth);
-  assert.equal((app.get(BooksController) as unknown as {books: unknown}).books, app.get(BooksService));
+  assert.ok((app.get(SupabaseAuthGuard) as unknown as {auth: unknown}).auth === auth, 'guard uses registered Auth service');
+  assert.ok((app.get(BooksService) as unknown as {auth: unknown}).auth === auth, 'Books service uses registered Auth service');
+  assert.ok((app.get(BooksController) as unknown as {books: unknown}).books === app.get(BooksService), 'controller uses registered Books service');
 });
 test('actual health route responds without authentication', async () => {
   assert.equal((await request('/v1/health')).status, 200);

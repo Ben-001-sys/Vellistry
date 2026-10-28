@@ -1,0 +1,2 @@
+Playwright navigate http://127.0.0.1:3000/account/mfa: HTTP200, page title Vellistry.
+Actual DOM/evaluate:3assertions PASS (Authenticator app heading, safe unavailable configuration status, no visible404). No Auth interaction or external request. Current console error query:0errors.
