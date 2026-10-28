@@ -1,0 +1,10 @@
+{
+  "source": "Direct owner chat 28 October 2026; Codex-attributed relay, not authenticated human GitHub authorship",
+  "url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6483283804",
+  "scope": "Local MFA route and NestJS DI debugging, offline tests, PR only",
+  "forbidden": [
+    "Hosted operations, enrollment, JWT/JWKS probes, SQL/settings/credentials/private data/deploy/merge",
+    "AuthService verification policy, guards bypass, grants/dependencies/CI changes",
+    "Owner dirty root checkout or environment file changes; historical Task/CP/EB rewriting"
+  ]
+}
