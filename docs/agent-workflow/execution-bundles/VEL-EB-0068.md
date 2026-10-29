@@ -43,115 +43,135 @@ evidence:
 - docs/reports/evidence/VEL-TASK-0068/traceability.txt
 - docs/reports/evidence/VEL-TASK-0068/entrypoints.txt
 - docs/reports/evidence/VEL-TASK-0068/preservation.json
+- docs/reports/evidence/VEL-TASK-0068/check-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/build-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/editor-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/workspace-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/browser-review-final.json
+- docs/reports/evidence/VEL-TASK-0068/browser-review-cleanup.txt
+- docs/reports/evidence/VEL-TASK-0068/metadata-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/readiness-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/traceability-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/entrypoints-review-final.txt
+- docs/reports/evidence/VEL-TASK-0068/review-first.txt
+- docs/reports/evidence/VEL-TASK-0068/search-scroll-before.txt
+- docs/reports/evidence/VEL-TASK-0068/browser-scroll-initial-failed.txt
+- docs/reports/evidence/VEL-TASK-0068/browser-review-final.txt
 review:
   status: pending
   approved_by: null
   evidence: null
 owner_disposition: pending
-implementation_source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
+implementation_source_commit: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
 execution:
   status: completed
   executor: Codex
   model: Codex runtime model not independently reported
   tests:
   - command: corepack pnpm check
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/check.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/check-review-final.txt
   - command: corepack pnpm build
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/build.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/build-review-final.txt
   - command: corepack pnpm test:manuscript-editor
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/editor.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/editor-review-final.txt
   - command: corepack pnpm test:workspace-contract
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/workspace.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/workspace-review-final.txt
   - command: corepack pnpm test:library-isolation
     source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: All files/dependencies executed by these existing Library/MFA/preflight
+      commands unchanged by editor-only search correction; actual final CI repeats
+      at final head
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0068/library.txt
   - command: corepack pnpm test:auth-mfa
     source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: All files/dependencies executed by these existing Library/MFA/preflight
+      commands unchanged by editor-only search correction; actual final CI repeats
+      at final head
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0068/mfa.txt
   - command: corepack pnpm test:hosted-preflight
     source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: All files/dependencies executed by these existing Library/MFA/preflight
+      commands unchanged by editor-only search correction; actual final CI repeats
+      at final head
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0068/preflight.txt
   - command: Playwright browser_run_code_unsafe filename=tests/editor/manuscript-editor.browser.mjs
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/browser-summary.json
+    evidence: docs/reports/evidence/VEL-TASK-0068/browser-review-final.json
   - command: Owned fixture shutdown, wrapper removal and production route verification
-    source_commit: e79db76e8469c55c8fa0a47de2c6b957d4583bfe
-    reused_for_source: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
-    reuse_basis: All runtime/editor/fixture/package/lock blobs identical; subsequent
-      source commit adds current-state/report/evidence only
+    source_commit: c291b729698160fb795ad11ede5673b1d7f478a4
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Exact runtime/editor/fixture/package/lock blobs identical between
+      correctedc291 and evidence-source481; actual final CI must rerun
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/browser-cleanup.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/browser-review-cleanup.txt
   - command: python scripts/check_knowledge_metadata.py
-    source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
+    source_commit: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/metadata.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/metadata-review-final.txt
   - command: python scripts/check_implementation_readiness.py
-    source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
+    source_commit: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/readiness.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/readiness-review-final.txt
   - command: python scripts/spec_traceability.py validate
-    source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
+    source_commit: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/traceability.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/traceability-review-final.txt
   - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
       -v
-    source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
+    source_commit: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0068/entrypoints.txt
+    evidence: docs/reports/evidence/VEL-TASK-0068/entrypoints-review-final.txt
   - command: Pinned base/direct-dependency/package and excluded-path assertions
     source_commit: 663886c8fc4fa855ccd7bb4d9fe6255c6e7157d9
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0068/preservation.json
+    reused_for_source: 481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4
+    reuse_basis: Excluded Auth/workspace/SQL/workflow/control paths and all original
+      dependency resolutions/package records remain unchanged by editor-only correction
 ---
 
 ## Work performed
@@ -179,3 +199,7 @@ No hosted operations, real Auth, enrollment/JWT/JWKS/credentials, SQL/grants/ses
 
 ## Reviewer disposition
 Pending genuine distinct completed-head source review and actual exact-head CI; owner disposition pending. The owner alone decides PR integration. No external review service is authorized.
+
+
+## Bounded review correction and current source
+First distinct review at895fd842 returned one P2: off-screen search results were selected but not revealed; runtime rerun BLOCKED by spawnEPERM. Regression357d33c fails before correction. Initial90f5d6d scroll-intent change passed30unit tests but actual browser failed after16prior checks because asynchronous focus left the selection off-screen. Full failed browser transcript retained. Correctedc291b729698160fb795ad11ede5673b1d7f478a4 requests reveal on explicit navigation and after focus; search input remains non-scrolling/history-neutral. Actual final30editor/71workspace/check/build exit0 and full33browser PASS at that immutable runtime source. All runtime blobs identical in evidence-source481eaf8a60ed12cc5edd70c601ceb1dc7dc52df4. Earlier e79 tests and895Draft427governance are historical, not evidence of corrected-head CI. Fresh completed-head review and actual fullCI pending. Same approved E07/path scope; immutableCP68 unchanged, no amendment required.
