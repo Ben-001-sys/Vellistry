@@ -1,0 +1,19 @@
+{
+  "kind": "Transcribed structured tool result summary; full invoked check names/code are in pinned script",
+  "source_commit": "e79db76e8469c55c8fa0a47de2c6b957d4583bfe",
+  "tool": "mcp__playwright_mcp__browser_run_code_unsafe",
+  "filename": "tests/editor/manuscript-editor.browser.mjs",
+  "script_sha256": "541004b3cb498a154123b6fb9dfcb90b69159ee8913e2bac9562fb1c06595438",
+  "result": {
+    "status": "PASS",
+    "browser": "156.0.8078.48",
+    "assertions": 32,
+    "external": []
+  },
+  "viewport_widths": [
+    1440,
+    900,
+    390
+  ],
+  "limits": "Synthetic only, some selection setup uses ProseMirror commands then actual keyboard/UI interactions. Not human AT/IME/performance or hosted acceptance."
+}

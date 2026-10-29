@@ -1,0 +1,53 @@
+
+> vellistry@ test:manuscript-editor H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/editor/manuscript-editor.test.mjs
+
+✔ AI-off manual writing accepts500invented words without network or key (42.7589ms)
+✔ leading, trailing, repeated whitespace and Unicode survive text transactions (5.8105ms)
+✔ first paragraph arbitrary selection replacement never trims or rewrites another paragraph (8.3677ms)
+✔ middle caret insertion uses exact model position and preserves surrounding spaces (4.0831ms)
+✔ bold applies only to model selection and retains it (7.7201ms)
+✔ italic applies only to model selection and retains it (4.7093ms)
+✔ underline applies only to model selection and retains it (4.3988ms)
+✔ paragraph/headings and basic lists use supported semantic nodes (11.8762ms)
+✔ Undo/Redo survives toolbar commands without creating fake revisions (4.9972ms)
+✔ literal case-insensitive search crosses inline marks, not textblock boundaries (19.1697ms)
+✔ search typing/highlights do not move manuscript selection or mutate content (4.5626ms)
+✔ explicit next/previous selects matches and edited matches are recomputed (4.5359ms)
+✔ search metadata/navigation does not pollute document Undo history (4.8971ms)
+✔ word count is defined by Unicode word-like segments, not spaces or HTML (2.8443ms)
+✔ chapter switching restores distinct text, selection and chapter-local Undo (6.1383ms)
+✔ stable chapter identity preserves prose/caret across rename/reorder metadata (2.7534ms)
+✔ same chapter ID in another book cannot share an editor (5.7555ms)
+✔ changed verified author clears old editor caches rather than exposing former drafts (7.6968ms)
+✔ unavailable workspace conceals and locks text: {"phase":"unverified"} (3.5484ms)
+✔ unavailable workspace conceals and locks text: {"pending":true} (3.1799ms)
+✔ unavailable workspace conceals and locks text: {"uncertain":true} (3.4786ms)
+✔ unavailable workspace conceals and locks text: {"conflict":true} (2.9232ms)
+✔ unavailable workspace conceals and locks text: {"selectedChapterId":"foreign"} (3.7131ms)
+✔ unavailable workspace conceals and locks text: {"document":null} (5.1684ms)
+✔ absent, throwing and contradictory post-async identity fail closed (0.4207ms)
+✔ late chapter verification cannot reactivate a former selection (2.305ms)
+✔ real IMP002 session notes/reordering never write accepted manuscript or draft text (5.2429ms)
+✖ dispose cancels pending verification and destroys all locally opened editors (39673.5995ms)
+✔ unmounted component renders safe SSR preparation without creating a DOM editor (1197.2771ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43419.7647
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-editor.test.mjs:139:1
+✖ dispose cancels pending verification and destroys all locally opened editors (39673.5995ms)
+  [RangeError: Array buffer allocation failed]
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.

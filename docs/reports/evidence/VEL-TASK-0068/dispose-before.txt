@@ -1,0 +1,30 @@
+✖ dispose cancels pending verification and destroys all locally opened editors (42.746ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2239.2589
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-editor.test.mjs:139:1
+✖ dispose cancels pending verification and destroys all locally opened editors (42.746ms)
+  AssertionError [ERR_ASSERTION]: dispose must hide editor
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\lib\editor\manuscript-editor.test.mjs:140:109)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

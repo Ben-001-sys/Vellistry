@@ -1,0 +1,16 @@
+[    9910ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[   10098ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[   10221ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:3106/favicon.ico:0
+[  166680ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  166712ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  168052ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  168071ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  168737ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  168761ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  169876ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  169912ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  172044ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  172065ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  172647ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+[  172672ms] [LOG] [HMR] connected @ http://127.0.0.1:3106/_next/static/chunks/14-d_next_dist_1oqd73r93d_og._.js:719
+Observed favicon404 in existing app. HMR connection refusals started only after owned fixture server shutdown; not editor runtime failures.

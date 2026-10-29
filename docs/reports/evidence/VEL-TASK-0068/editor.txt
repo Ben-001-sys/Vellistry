@@ -1,0 +1,41 @@
+
+> vellistry@ test:manuscript-editor H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/editor/manuscript-editor.test.mjs
+
+✔ AI-off manual writing accepts500invented words without network or key (57.9558ms)
+✔ leading, trailing, repeated whitespace and Unicode survive text transactions (7.9833ms)
+✔ first paragraph arbitrary selection replacement never trims or rewrites another paragraph (10.7046ms)
+✔ middle caret insertion uses exact model position and preserves surrounding spaces (7.8344ms)
+✔ bold applies only to model selection and retains it (9.8674ms)
+✔ italic applies only to model selection and retains it (7.5227ms)
+✔ underline applies only to model selection and retains it (5.9875ms)
+✔ paragraph/headings and basic lists use supported semantic nodes (15.0138ms)
+✔ Undo/Redo survives toolbar commands without creating fake revisions (7.1882ms)
+✔ literal case-insensitive search crosses inline marks, not textblock boundaries (28.5104ms)
+✔ search typing/highlights do not move manuscript selection or mutate content (5.9558ms)
+✔ explicit next/previous selects matches and edited matches are recomputed (5.8975ms)
+✔ search metadata/navigation does not pollute document Undo history (7.8017ms)
+✔ word count is defined by Unicode word-like segments, not spaces or HTML (3.321ms)
+✔ chapter switching restores distinct text, selection and chapter-local Undo (7.427ms)
+✔ stable chapter identity preserves prose/caret across rename/reorder metadata (3.5984ms)
+✔ same chapter ID in another book cannot share an editor (7.1532ms)
+✔ changed verified author clears old editor caches rather than exposing former drafts (8.3178ms)
+✔ unavailable workspace conceals and locks text: {"phase":"unverified"} (3.5135ms)
+✔ unavailable workspace conceals and locks text: {"pending":true} (3.6111ms)
+✔ unavailable workspace conceals and locks text: {"uncertain":true} (3.6077ms)
+✔ unavailable workspace conceals and locks text: {"conflict":true} (3.4097ms)
+✔ unavailable workspace conceals and locks text: {"selectedChapterId":"foreign"} (4.1819ms)
+✔ unavailable workspace conceals and locks text: {"document":null} (3.4396ms)
+✔ absent, throwing and contradictory post-async identity fail closed (0.5411ms)
+✔ late chapter verification cannot reactivate a former selection (2.489ms)
+✔ real IMP002 session notes/reordering never write accepted manuscript or draft text (6.6117ms)
+✔ dispose cancels pending verification and destroys all locally opened editors (3.2339ms)
+✔ unmounted component renders safe SSR preparation without creating a DOM editor (70.5465ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2130.9038

@@ -1,0 +1,67 @@
+
+> vellistry@ test:auth-mfa H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/auth/mfa-flow.test.ts ../web/src/lib/auth/auth-panel.test.tsx
+
+✔ login retains labeled email/password, sign-in, signup and home navigation (28.4182ms)
+✔ enrolled challenge exposes a labeled native six-digit OTP form and no continue control (2.1117ms)
+✔ pending challenge disables verification and announces progress (2.1724ms)
+✔ enrollment offers private QR image and manual setup without raw SVG insertion or continuation (2.1473ms)
+✔ unknown/blocked enrollment hides credentials, setup material and continuation (1.4573ms)
+✔ unenrolled choice offers explicit opt-in and existing library continuation (0.9831ms)
+✔ completed UI does not expose setup secret, OTP or a new enrollment action (0.9099ms)
+✔ status text is escaped rather than interpreted as HTML (1.287ms)
+✔ unenrolled password sign-in offers optional setup and rechecks before library (5.5112ms)
+✔ enrolled AAL1 cannot continue until challenge, verification and post-response checks (1.8939ms)
+✔ existing enrolled AAL2 does not enroll or challenge again (0.7781ms)
+✔ enrollment is explicit, stays incomplete until verified, and clears secret on success (1.351ms)
+✔ fail closed: missing factors (0.6411ms)
+✔ fail closed: malformed factor (0.3807ms)
+✔ fail closed: duplicate factor (0.389ms)
+✔ fail closed: unverified setup (0.4468ms)
+✔ fail closed: unsupported verified phone (0.4891ms)
+✔ fail closed: unsupported verified passkey (0.6542ms)
+✔ fail closed: contradictory AAL2 without factors (0.3931ms)
+✔ fail closed: contradictory next AAL (0.453ms)
+✔ fail closed: unavailable AAL (0.4497ms)
+✔ fail closed: unknown AAL (0.5767ms)
+✔ fail closed: expired session (0.2952ms)
+✔ fail closed: nonfinite expiry (0.2926ms)
+✔ fail closed: anonymous identity (0.3163ms)
+✔ fail closed: mismatched user (0.3084ms)
+✔ fail closed: missing session (0.2484ms)
+✔ SDK failure is sanitized: signInWithPassword (0.2811ms)
+✔ SDK failure is sanitized: getSession (0.1722ms)
+✔ SDK failure is sanitized: getUser (0.261ms)
+✔ incomplete password response cannot navigate (0.2968ms)
+✔ pending operation cannot duplicate login or enrollment (0.3719ms)
+✔ identity switch during factor response blocks stale completion (0.36ms)
+✔ token switch during AAL response blocks stale completion (0.2939ms)
+✔ factor added before Continue requires step-up (0.3235ms)
+✔ unknown enrollment cannot be blindly retried (0.4821ms)
+✔ partial enrollment and unsafe QR are rejected without displaying secrets (0.8104ms)
+✔ code format is validated before challenge (0.2996ms)
+✔ verification fails closed: challenge (0.2793ms)
+✔ verification fails closed: verify (0.2572ms)
+✔ verification fails closed: expired challenge (0.1868ms)
+✔ verification fails closed: incomplete verification (0.4439ms)
+✔ verification fails closed: wrong factor (0.4599ms)
+✔ verification fails closed: wrong identity (0.3819ms)
+✔ verification fails closed: expiry during verification (0.3961ms)
+✔ auth change erases secret and invalidates late enrollment (43.4418ms)
+✔ dispose erases setup material and ignores stale responses (0.6937ms)
+✔ local sign-out failure is not described as signed out (0.6877ms)
+✔ own SDK sign-out event completes correctly and erases setup (0.533ms)
+✔ signup stays at sign-in even if SDK supplies a session (0.304ms)
+✔ failed setup code can resume only its known same-author unverified factor without reenrollment (1.2442ms)
+✔ stale or future observation cannot complete UI verification (0.8495ms)
+✔ concurrent authors use independent immutable snapshots and token bindings (0.4984ms)
+✔ uncertainty is scoped to the initiating author across account switches (0.4499ms)
+✔ another author's successful enrollment cannot clear earlier uncertain setup (0.576ms)
+ℹ tests 55
+ℹ suites 0
+ℹ pass 55
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1060.9002

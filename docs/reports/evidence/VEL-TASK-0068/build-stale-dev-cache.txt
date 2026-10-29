@@ -1,0 +1,27 @@
+
+> vellistry@ build H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web
+> next build
+
+▲ Next.js 16.4.1 (Turbopack)
+✓ Running next.config.ts took 55ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.3s
+  Running TypeScript ...
+.next/dev/types/validator.ts(58,39): error TS2307: Cannot find module '../../../src/app/%5Feditor-synthetic/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(66,69): error TS2344: Type '__InvalidParamMatchingKeys' does not satisfy the constraint 'never'.
+  Type 'string' is not assignable to type 'never'.
+Failed to type check.
+
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @vellistry/web@0.0.1 build: `next build`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.
