@@ -1,7 +1,7 @@
-# Pinned relevant original excerpts
+# Relevant exact original excerpts
 
 ## Exact excerpt: LANGUAGE.md lines20-34
-Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob 1b8a700218c8f93bfb4ca7972b90c00d03c673c0. Original status/authorship retained; excerpt is not a new approval.
+Source 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob1b8a700218c8f93bfb4ca7972b90c00d03c673c0; original status preserved, not new approval.
 
 > **Adoption status:** Complete, implementation-ready **proposed language contract**, not an already approved owner decision. On explicit owner approval and repository integration, the `APPROVED_CONCEPT` terms below express already approved product meaning, and owner-approved `PROPOSED_LABEL` entries become the effective UI vocabulary. Before approval, do not retroactively relabel proposals as accepted or silently update application code. The file may guide reviews as a candidate immediately, but its presence alone does not change product scope, technical contracts, or owner authorization.
 
@@ -19,8 +19,8 @@ Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob 1b8a700218c8f93bfb4
 10. **Check the exact affected screen and state** before using an example from this document. Example copy is a template conditioned on the specified behavior, never evidence that a feature works.
 
 
-## Exact excerpt: LANGUAGE.md lines62-116
-Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob 1b8a700218c8f93bfb4ca7972b90c00d03c673c0. Original status/authorship retained; excerpt is not a new approval.
+## Exact excerpt: LANGUAGE.md lines62-100
+Source 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob1b8a700218c8f93bfb4ca7972b90c00d03c673c0; original status preserved, not new approval.
 
 | `FUTURE_RESERVED` | Useful name for an explicitly deferred feature, not an MVP menu item | No enabled UI, marketing claim, or new scope without separate approval |
 | `PENDING_DECISION` | Name or semantic mapping unresolved or dependent on unverified behavior | Do not enforce as final or show as enabled without review |
@@ -61,25 +61,9 @@ Use `status` **per term** and, for high-impact changes, **per specific UI label*
 
 | Primary UI term | Meaning and correct scope | Contextual alternative | Avoid / do not confuse with | Basis / status |
 |---|---|---|---|---|
-| **Vellistry** | Working product name used in current UI/repo | None | Generic “AI writer” as sole product name | `EXISTING_UI`; brand/trademark clearance unresolved |
-| **Your books** | Signed-in author's book collection, existing page heading `/books` | **Books** in compact navigation; **Book library** in help text | Projects or dashboard when no project/dashboard entity exists | `EXISTING_UI` |
-| **Book** | Author-owned manuscript container; an independently organized work | Novel in explanatory prose if genre appropriate | Project, series, document, chapter | `APPROVED_CONCEPT` |
-| **Book title** | Name of one book, currently required 1–120 characters | Title within its book form | New book title as permanent field label, document name | `APPROVED_CONCEPT`; `PROPOSED_LABEL` |
-| **Chapter** | Ordered component of a book; chapter identity independent of display order | Chapter number in contextual metadata | Scene; each may later be separate | `APPROVED_CONCEPT`; chapter UI not implemented |
-| **Chapter title** | Author's label for a chapter | Title inside clearly scoped chapter form | Heading style, book title | `PROPOSED_LABEL` |
-| **Manuscript** | Accepted prose organized into chapters; the text intended as the book | **Writing** as an action/short workspace heading | Outline, planning note, generated alternative, published edition | `APPROVED_CONCEPT` |
-| **Manuscript editor** | The place to write and format the book without AI | **Editor** when surrounding context is clear | AI Studio, chat, layout/print editor | `APPROVED_CONCEPT` |
-| **Writing workspace** | Work area combining manuscript and adjacent author tools | **Book workspace** for book-level shell | “Document management console” | `PROPOSED_LABEL`; route/layout proposed |
-| **Planning notes** | Non-manuscript notes supporting a chapter/book | **Notes** inside scoped view | Canon, scene prose, revisions | `APPROVED_CONCEPT`; exact nav `PROPOSED_LABEL` |
-| **Outline** | Planned structure or future events; can differ from what has happened | Story plan, only explanatory | Current story facts, manuscript | `FUTURE_RESERVED` as dedicated MVP module; concept distinct |
-| **Scene** | A bounded narrative event/passage inside a chapter | Scene summary as a planning record | Chapter; scene-level route/schema is not approved for MVP | `FUTURE_RESERVED` / `PENDING_DECISION` |
-| **Series** | Grouping of books and shared narrative continuity | Book series | Book or workspace; not a present first-MVP object | `FUTURE_RESERVED` |
-| **Word count** | Number of words using the implementation's defined counting behavior | `1,234 words` as displayed value | Estimated pages or reading time | `APPROVED_CONCEPT`; counting rules to test |
-| **Focus mode** | Reduced-distraction manual writing view | Distraction-free writing in help | Full-screen alone, read-only preview | `APPROVED_CONCEPT`; exact UI `PROPOSED_LABEL` |
-| **Revision** | Persisted accepted version of a chapter/manuscript | **Version** in simpler explanations, if clearly a saved snapshot | Unsaved browser draft; AI suggestion; backup | `APPROVED_CONCEPT` |
 
-## Exact excerpt: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md lines1-95
-Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob 7a25cf8ce88b3ddb221276c38203fc976cbeb3a9. Original status/authorship retained; excerpt is not a new approval.
+## Exact excerpt: docs/requirements/MVP-SCOPE-DECISION-2026-10-09.md lines1-42
+Source 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob7a25cf8ce88b3ddb221276c38203fc976cbeb3a9; original status preserved, not new approval.
 
 ---
 id: VEL-PRODUCT-SCOPE-20261009-001
@@ -123,90 +107,10 @@ related_features:
   - VEL-FEAT-02-001
   - VEL-FEAT-04-001
   - VEL-FEAT-08-021
-  - VEL-FEAT-08-022
-  - VEL-FEAT-09-027
-supersedes: []
-superseded_by: []
-implementation_refs: []
----
 
-# Accepted product-scope decision — Vellistry's first MVP
+## Exact excerpt: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md lines72-94
+Source 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blobb61aef6b9748382e1b173e52caf598178c389962; original status preserved, not new approval.
 
-## Approval, authority, and meaning
-
-On **2026-10-09**, the project owner answered **“I agree”** to the specific [eight-area MVP recommendation](../research/R04-SPECIFIC-MVP-RECOMMENDATION-2026-10-09.md). The recommendation ended by asking for explicit approval of **postponing the complete Cover Studio and professional EPUB/print publishing** until after the first writing-focused release. This reply is **explicit approval of the proposed product scope and that trade-off**.
-
-**This is an accepted product-target and sequencing decision, not an assertion that a release has been built, tested, launched, priced or scheduled.** The original approval remains in project conversation; a stable transcript URL has not been archived. The record must not invent one.
-
-## Accepted first MVP — one author-centered product with eight areas
-
-| Area | Approved product behavior and narrow first-release boundary |
-|---|---|
-| **M1 — Books and chapters** | Create, reopen, rename and organize books with a simple chapter list, chapter creation/reordering, simple planning notes and useful word counts. Solo author first; no shared-series management requirement. |
-| **M2 — Professional non-AI manuscript editor** | Tiptap 3/ProseMirror foundation (already separately approved under ADR-0003), headings, paragraphs, emphasis, basic lists, selection/clipboard, search, keyboard shortcuts, undo/redo, chapter navigation and distraction-free writing. Works with AI disabled. |
-| **M3 — Durable drafts and portability** | Account-protected manuscript storage, honest autosave state, recovery/revisions, export and deletion; basic TXT and ordinary DOCX interchange subject to genuine fidelity testing; portable backup of manuscript plus selected approved story profiles and active rule settings. Not a publishing/layout engine. |
-| **M4 — Live Story Profiles** | Character and Storyline/Thread profiles visible near the manuscript; manual create/edit without AI; candidate source-linked profile changes detected from human-written or AI-generated/accepted scenes at review boundaries; author can inspect, change, accept or dismiss; no silent promotion of uncertain AI-generated information into canon. |
-| **M5 — Simplified Rules Studio** | Genuine frozen historic fiction guidance remains unchanged and initially enabled **after a separately approved non-destructive R01 packaging decision**; domain-level browsing, rule enable/disable/restore, personal rules, simple workspace/book scope, artistic exceptions, preview of effective instructions and real exclusion of disabled creative instructions. |
-| **M6 — Optional bounded AI** | Familiar **Continue Writing** and **Rewrite Selection** actions using one evaluated BYOK provider initially. Which provider/model, API terms, secrets design, costs and UI are future decisions. AI connection is not needed to write manually. |
-| **M7 — Author approval and reversibility** | Show alternatives/diffs; author accepts, revises, rejects or undoes changes; stale suggestions cannot overwrite later writing. Generated proposals and candidate profile changes remain distinct from approved manuscript and canon. Keep a trace of relevant rules/context and the model used. |
-| **M8 — Trust and comfortable use** | Private account/book isolation, secure secrets, permission/consent for external text transfer, backup/export/deletion, keyboard/accessibility fundamentals, reliable error/save states and a desktop-primary writing experience with appropriately responsive presentation. |
-
-**Interpretation limit:** This approval is of *user-facing scope*. It is not carte blanche for every candidate row in each area; a linked feature-ID scope map specifies the narrow selected capabilities. Individual copy, toolbar design, data model and service boundaries still need prototype evidence.
-
-## Approved release sequence
-
-1. **A — Internal writing foundation:** book/chapter organization, usable editor, persistent/recoverable drafting, portable backup and manually editable visible profiles; assess non-AI writer value.
-2. **B+ — Integrated writer-facing pilot:** source-verified simplified Rules Studio, controlled one-provider BYOK Continue and Rewrite, review/accept/undo of text proposals, and proposed live profile changes from author or accepted generated prose.
-3. **Initial public MVP:** the coherent eight areas above **only after** real author usability, author-data protection, practical document portability, editor and model tests, accessibility and release-gate evidence. It is not ready for public release by virtue of this decision.
-
-These are **three validation/delivery stages of one product**, not three different public editions. No calendar targets are approved.
-
-## Specifically excluded from this MVP — preserved for later Vellistry work
-
-- **Full native layered Cover Studio**, editable multiple cover directions, AI cover-generation/asset tools and full print-wrap layout. The owner stressed covers in the original vision. This decision **postpones, does not delete**, the feature.
-- **Professional EPUB, print-ready PDF, publication page layout, detailed print profiles and book-production pipeline.** Basic DOCX/TXT manuscript interchange is retained as a different and narrower need.
-- Deep knowledge/causality graphs, comprehensive cross-book timeline and automated POV firewall; keep manual/current live profiles and author approvals first.
-- Broad AI provider routing, model comparisons, external assistant MCP/Canva integration, full-manuscript quality automation, complex collaboration and platform-billed AI credits/subscriptions.
-- Any purchased editor-extension suite or product architecture beyond the selected Tiptap 3/ProseMirror foundation.
-
-An **excluded-from-initial-MVP** item is **not canceled**: its eventual release order remains open to R02/R12/R13 research and later explicit owner decisions.
-
-## Research, product-safety and implementation gates (still open)
-
-- **R01:** Certify the authentic frozen guidance source and select a safe deployable packaging treatment for short/expanded AR disputes, without rewriting the source or fabricating authority.
-- **R02:** Observe real authors and validate that these functions are useful, discoverable and migration-ready.
-- **R05/R16:** Real-browser, long-writing keyboard, paste, focus, reading-comfort, IME and accessibility trials.
-
-## Exact excerpt: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md lines45-94
-Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob b61aef6b9748382e1b173e52caf598178c389962. Original status/authorship retained; excerpt is not a new approval.
-
-- **Owner**: approves changed product scope or high-impact trade-offs; individual test results and design proposals are not approval.
-
-### Distinguish the authorities
-
-1. **Accepted manuscript prose** can change through author editing and expressly accepted AI suggestions.
-2. **Proposed AI prose** is provisional and must not be inserted as accepted manuscript text without a deliberate accept action.
-3. **Candidate profile facts/state changes** can be extracted from accepted prose or proposed AI prose, but are not independently approved canon.
-4. **Approved profile state** is author-maintained, source-linked and appropriate to its story time.
-5. **Enabled creative guidance** is author-configured (frozen historical defaults, where source-pack provenance is certified, and author additions); disabled rules must be excluded from effective model instructions.
-
-## Required end-to-end author journeys
-
-| ID | Author journey | MVP areas | Inventory trace | Research gates |
-|---|---|---|---|---|
-| **VEL-JRN-001** | Start a book and move between chapters without losing writing | M1 M2 M3 M8 | 01-004, 01-006, 02-001, 02-015, 02-019 | R05 R15 R16 |
-| **VEL-JRN-002** | Write and format normally with no model/account key configured | M2 M3 M8 | 02-001, 02-002, 02-013, 02-017, 02-021 | R05 R16 |
-| **VEL-JRN-003** | Close, reopen, recover and export an author's manuscript | M3 M8 | 02-018, 02-019, 14-003, 14-015, 17-015 | R11 R15 R19 |
-| **VEL-JRN-004** | Manually create and revise a visible character/storyline profile | M4 M8 | 08-021, 08-022, 08-023, 08-024, 08-025 | R07 R15 |
-| **VEL-JRN-005** | After drafting, inspect and approve/revise/dismiss candidate profile changes | M2 M4 M7 | 08-026, 08-027, 09-025, 09-027, 09-030 | R07 R10 R19 |
-| **VEL-JRN-006** | Browse, disable, restore and add an author creative rule | M5 M8 | 04-001..009; 04-011, 04-023 | R01 R06 |
-| **VEL-JRN-007** | Connect an evaluated provider, preview context and request Continue | M5 M6 M7 M8 | 05-007, 06-001, 06-002, 11-001, 11-002 | R06 R08 R15 |
-| **VEL-JRN-008** | Select prose, obtain a Rewrite suggestion, reject or accept it, and undo | M2 M5 M6 M7 | 05-008, 11-001..011 (bounded) | R05 R06 R08 R10 |
-| **VEL-JRN-009** | Accept AI prose and review separate new profile candidates | M4 M6 M7 | 08-026, 09-026, 09-027, 09-029 | R07 R10 |
-| **VEL-JRN-010** | Make edits while an AI request is pending, then handle stale suggestions safely | M2 M3 M7 | 11-011, 11-012; 02-017..019 | R05 R10 R19 |
-| **VEL-JRN-011** | Verify two accounts/books remain isolated and author data can be retrieved/deleted | M3 M8 | 17-003, 17-004, 17-013..017 | R14 R15 R19 |
-
-The source inventory names above are shorthand `VEL-FEAT-XX-NNN` references, **not evidence that entire ranges are approved as full features**. Apply `MVP-LIMITED` definitions from the accepted-scope map. Some journeys share a capability by design.
 
 ## Functional acceptance specifications (Given / When / Then)
 
@@ -231,8 +135,8 @@ Tests are **proposed for future automation/manual verification**. `MUST` below e
 - **ACC-M3-02**: Given a simulated connection interruption during save, when service returns, then either the edits are recoverable or the app visibly identifies uncommitted edits and offers recovery; it must not silently acknowledge a write that was not durable.
 - **ACC-M3-03**: Given a book with chapters, manually approved profiles and writing-rule settings, when a portable project backup is exported and restored into an authorized clean account/test environment, then the supported accepted state is reconstructed without cross-book leakage.
 
-## Exact excerpt: apps/web/src/lib/workspace/book-workspace-session.ts lines1-35
-Source commit 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob 9264cceaea7341ed3eec7d642680025ba4c947b8. Original status/authorship retained; excerpt is not a new approval.
+## Exact excerpt: apps/web/src/lib/workspace/book-workspace-session.ts lines1-26
+Source 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f; blob9264cceaea7341ed3eec7d642680025ba4c947b8; original status preserved, not new approval.
 
 import {chapterTitle, matchingReceipt, parseCommand, parseDocument, validId, validNotes,
   type WorkspaceCommand, type WorkspaceDocument, type WorkspacePort, type WorkspaceRequest} from "./book-workspace-contract";
@@ -260,12 +164,3 @@ const blank = (phase: WorkspaceSnapshot["phase"], message: string): WorkspaceSna
   pending: false, uncertain: false, conflict: false, message,
 });
 const noteKey = (chapterId?: string) => chapterId === undefined ? "book" : JSON.stringify(["chapter", chapterId]);
-
-export function createWorkspaceSession(deps: {
-  /** Independently verified identity, following the existing Auth getUser semantics. */
-  readOwner: () => Promise<string | null>;
-  port: WorkspacePort;
-  operationId?: () => string;
-}) {
-  let model = freeze(blank("idle", "Open a book to begin this local preview."));
-  let generation = 0;
