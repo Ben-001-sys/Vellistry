@@ -1,0 +1,86 @@
+async (page) => {
+  const checks = [], external = [];
+  const assert = (value, message) => { if (!value) throw new Error(message); };
+  const check = async (name, run) => { await run(); checks.push({name, status: "PASS"}); };
+  await page.route("**/*", route => {
+    const url = new URL(route.request().url());
+    if (url.hostname !== "127.0.0.1" && !["data:", "blob:"].includes(url.protocol)) { external.push(url.origin); return route.abort(); }
+    return route.continue();
+  });
+  const area = () => page.getByRole("textbox", {name: "Chapter manuscript", exact: true});
+  const wait = () => area().waitFor({state: "visible"});
+  const text = () => area().evaluate(el => el.editor.state.doc.textContent);
+  const selection = () => area().evaluate(el => ({from: el.editor.state.selection.from, to: el.editor.state.selection.to}));
+  const caret = async (from, to = from) => { await area().evaluate((el, range) => { el.editor.commands.setTextSelection(range); el.editor.commands.focus(undefined, {scrollIntoView: false}); }, {from, to}); };
+  const reset = async () => { await page.goto("http://127.0.0.1:3106/_editor-synthetic"); await wait(); };
+  const replace = async value => { await area().click(); await page.keyboard.press("ControlOrMeta+A"); await page.keyboard.insertText(value); };
+  const click = name => page.getByRole("button", {name, exact: true}).click();
+  let current = "initialization";
+  try {
+    await page.setViewportSize({width: 1440, height: 1000}); await reset();
+    current = "render";
+    await check("labelled actual Tiptap editor and explicit AI-off/session-only notice", async () => {
+      assert(await area().getAttribute("contenteditable") === "true", "not editable");
+      assert(await page.getByText("AI off. Manual writing.", {exact: true}).isVisible(), "AI-off absent");
+      assert(await page.getByText("Local draft only. Not saved to a server or this device. Closing this preview loses its text.", {exact: true}).isVisible(), "local-only notice absent");
+    });
+    current = "500word writing";
+    await check("520words typed with native browser input and no AI connection", async () => {
+      const invented = Array.from({length: 520}, (_, i) => `word${i}`).join(" "); await replace(invented);
+      assert(await text() === invented, "typing changed text");
+      assert(await page.getByLabel("Word count", {exact: true}).textContent() === "520 words", "word count mismatch");
+    });
+    current = "whitespace";
+    await check("leading/trailing/repeated spaces and Unicode retained", async () => { const value = "  café  星 🌙  end  "; await replace(value); assert(await text() === value, "whitespace trimmed"); });
+    await check("keyboard middle-caret insertion at exact position", async () => {
+      await replace("  alpha  beta  "); await page.keyboard.press("Home"); for (let i = 0; i < 7; i++) await page.keyboard.press("ArrowRight");
+      await page.keyboard.insertText("X"); assert(await text() === "  alphaX  beta  ", "wrong middle insertion");
+    });
+    current = "first paragraph";
+    await check("native first-paragraph arbitrary selection replacement preserves second paragraph", async () => {
+      await replace("  first paragraph  "); await page.keyboard.press("Enter"); await page.keyboard.insertText("  second paragraph  ");
+      await caret(3, 8); await page.keyboard.insertText("FIRST");
+      const values = await area().evaluate(el => el.editor.getJSON().content.map(n => n.content?.map(t => t.text ?? "").join("") ?? ""));
+      assert(values[0] === "  FIRST paragraph  " && values[1] === "  second paragraph  ", "paragraph replacement corrupted content");
+    });
+    current = "formatting";
+    await check("toolbar Bold keeps first-paragraph selection", async () => { await caret(3, 8); await click("Bold"); assert(await area().locator("strong").textContent() === "FIRST", "bold selection mismatch"); const s = await selection(); assert(s.from === 3 && s.to === 8, "toolbar lost selection"); });
+    await check("Italic and Underline semantic marks", async () => { await click("Italic"); await click("Underline"); assert(await area().locator("em u, u em").count() > 0, "emphasis marks absent"); });
+    await check("heading and paragraph controls create semantic blocks", async () => { await page.getByLabel("Text style", {exact: true}).selectOption("heading2"); assert(await area().locator("h2").count() === 1, "heading absent"); await page.getByLabel("Text style", {exact: true}).selectOption("paragraph"); assert(await area().locator("h2").count() === 0, "paragraph restoration failed"); });
+    await check("bullet and numbered list commands", async () => { await click("Bullet list"); assert(await area().locator("ul").count() > 0, "bullet list absent"); await click("Numbered list"); assert(await area().locator("ol").count() > 0, "numbered list absent"); });
+    current = "keyboard history";
+    await reset();
+    await check("keyboard Undo/Redo supports manual text", async () => { await replace("History fixture"); await page.keyboard.press("ControlOrMeta+Z"); assert(await text() === "", "keyboard undo failed"); await page.keyboard.press("ControlOrMeta+Shift+Z"); assert(await text() === "History fixture", "keyboard redo failed"); });
+    await check("toolbar Undo/Redo uses same document history", async () => { await click("Undo"); assert(await text() === "", "toolbar undo failed"); await click("Redo"); assert(await text() === "History fixture", "toolbar redo failed"); });
+    current = "search";
+    await reset(); await replace("alpha alpha [a]"); await caret(1, 6); await click("Bold"); await caret(4);
+    await check("search input does not steal manuscript model selection or mutate prose", async () => { const before = await selection(); await page.getByRole("searchbox", {name: "Search this chapter"}).fill("alpha"); const after = await selection(); assert(JSON.stringify(before) === JSON.stringify(after), "search moved selection"); assert(await text() === "alpha alpha [a]", "search changed prose"); assert(await area().locator(".manuscript-search-match").count() === 2, "highlight count wrong"); });
+    await check("explicit next/previous match navigation", async () => { await click("Next match"); let s = await selection(); assert(s.from === 7 && s.to === 12, "next match wrong"); await click("Previous match"); s = await selection(); assert(s.from === 1 && s.to === 6, "previous match wrong"); });
+    await check("editing selected search result recomputes stale ranges", async () => { await page.keyboard.insertText("X"); assert(await text() === "X alpha [a]", "replacement wrong"); assert(await area().locator(".manuscript-search-match").count() === 1, "stale search highlight"); });
+    await check("search treats regex metacharacters literally", async () => { await page.getByRole("searchbox", {name: "Search this chapter"}).fill("[a]"); assert(await area().locator(".manuscript-search-match").count() === 1, "literal bracket search wrong"); });
+    await check("clearing search preserves selection and prose", async () => { const before = await selection(); await click("Clear search"); assert(JSON.stringify(await selection()) === JSON.stringify(before), "clear moved caret"); assert(await text() === "X alpha [a]", "clear changed prose"); });
+    current = "chapter state";
+    await reset(); await replace("Alpha chapter draft"); await caret(5);
+    await check("chapter switch opens distinct blank draft", async () => { await page.getByRole("button", {name: "Open chapter 2: The bridge", exact: true}).click(); await wait(); assert(await text() === "", "chapter content leaked"); await replace("Beta chapter draft"); });
+    await check("return restores stable chapter text and caret", async () => { await page.getByRole("button", {name: "Open chapter 1: Arrival", exact: true}).click(); await wait(); assert(await text() === "Alpha chapter draft", "draft lost"); assert((await selection()).from === 5, "chapter caret lost"); });
+    await check("planning notes cannot replace manuscript text", async () => { await page.getByLabel("Planning notes for the selected chapter", {exact: true}).fill("Separate planning note"); await click("Apply chapter notes locally"); await wait(); assert(await text() === "Alpha chapter draft", "notes replaced prose"); });
+    await check("chapter rename preserves manuscript and caret", async () => { await page.getByLabel("Selected chapter title", {exact: true}).fill("Renamed arrival"); await click("Rename chapter"); await page.getByRole("button", {name: "Open chapter 1: Renamed arrival", exact: true}).waitFor(); await wait(); assert(await text() === "Alpha chapter draft", "rename lost prose"); assert((await selection()).from === 5, "rename lost caret"); });
+    await check("reorder preserves stable selected chapter content", async () => { await page.getByRole("button", {name: "Move chapter 1 down: Renamed arrival", exact: true}).click(); await page.getByRole("button", {name: "Open chapter 2: Renamed arrival", exact: true}).waitFor(); await wait(); assert(await text() === "Alpha chapter draft", "reorder changed prose identity"); });
+    await check("Undo remains chapter-local after reorder", async () => { await click("Undo"); assert(await text() === "", "chapter undo failed"); await page.getByRole("button", {name: "Open chapter 1: The bridge", exact: true}).click(); await wait(); assert(await text() === "Beta chapter draft", "undo changed another chapter"); });
+    current = "identity isolation";
+    await check("failed identity conceals text and controls", async () => { await click("Fail identity verification"); await area().waitFor({state: "detached"}); assert(await page.locator(".tiptap").count() === 0, "unverified editor visible"); assert(!(await page.locator("body").innerText()).includes("Beta chapter draft"), "unverified prose visible"); });
+    await click("Use Author A"); await wait(); await replace("A-only fresh draft");
+    await check("changed author never sees former author draft", async () => { await click("Use Author B"); await wait(); assert(await text() === "", "author draft leaked"); assert(!(await page.locator("body").innerText()).includes("A-only fresh draft"), "A prose leaked"); });
+    await check("signed-out identity conceals editor", async () => { await click("Use signed-out identity"); await area().waitFor({state: "detached"}); assert(await page.locator(".tiptap").count() === 0, "signed-out editor visible"); });
+    current = "unknown outcomes";
+    await click("Use Author A"); await wait(); await replace("Unconfirmed local prose");
+    await check("unknown workspace outcome locks/conceals manuscript without ordinary write retry", async () => { await click("Make next result unknown"); await page.getByLabel("Planning notes for the selected chapter", {exact: true}).fill("Unknown fixture note"); await click("Apply chapter notes locally"); await area().waitFor({state: "detached"}); assert(await page.locator(".tiptap").count() === 0, "uncertain editor remained editable"); });
+    current = "responsive keyboard";
+    await reset(); await replace("Desktop fixture");
+    await check("keyboard focus reaches labelled formatting controls", async () => { await page.getByRole("button", {name: "Bold", exact: true}).focus(); await page.keyboard.press("Enter"); assert(await area().evaluate(el => el === document.activeElement), "keyboard toolbar did not return to editor"); });
+    for (const width of [1440, 900, 390]) await check(`no horizontal overflow at${width}px`, async () => { await page.setViewportSize({width, height: 1000}); assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "horizontal overflow"); });
+    await check("reload truthfully discards memory-only text", async () => { await reset(); assert(await text() === "", "unexpected durable save"); });
+    await check("fixture requested no external origin", async () => { assert(external.length === 0, "unexpected external request"); });
+    return {status: "PASS", browser: page.context().browser()?.version(), checks, assertions: checks.length, external};
+  } catch (error) { return {status: "FAIL", failedStage: current, message: String(error), checks, assertions: checks.length, external}; }
+}
