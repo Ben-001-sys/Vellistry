@@ -1,0 +1,18 @@
+{
+  "old_test_methods": 62,
+  "current_test_methods": 71,
+  "removed_tests": [],
+  "added_tests": [
+    "StackedMergeTests.test_push_loader_keeps_first_parent_trusted_not_candidate_checker",
+    "StackedMergeTests.test_stacked_merge_rejects_cherry_pick_substitution",
+    "StackedMergeTests.test_stacked_merge_rejects_extra_parents_and_resolution_changes",
+    "StackedMergeTests.test_stacked_merge_rejects_implementation_before_pack",
+    "StackedMergeTests.test_stacked_merge_rejects_reused_task_and_fabricated_base",
+    "StackedMergeTests.test_stacked_merge_rejects_wrong_first_parent_and_parent_order",
+    "StackedMergeTests.test_stacked_merge_retains_immutable_evidence_and_scope_negatives",
+    "StackedMergeTests.test_stacked_merge_uses_genuine_change_base_and_keeps_trusted_source",
+    "StackedMergeTests.test_unrelated_histories_and_malformed_events_fail_closed"
+  ],
+  "baseline": "6d9ce61fb560dd24e0646f6388ce38de3d87399d",
+  "candidate_test_sha256": "d593648c230ca87743868ddff8c4259db00e9616d356fcbffe4def91eba5e6a2"
+}

@@ -1,0 +1,15 @@
+{
+  "source_base": "6d9ce61fb560dd24e0646f6388ce38de3d87399d",
+  "unchanged_sha256": {
+    "scripts/run_pr_compliance.py": "138c22d62272515f7fdf43c41a870414f393189185ba92cee139be8011a1db25",
+    ".github/workflows/ci.yml": "3b0a7bffb530c11e04c81080fdcaee9ee43fec1a4422d067c58290f090caf968",
+    "scripts/ci_policy.py": "44ed7945b2e14e2fc2ee5d343553856d216e35f24dee383a15c4030c2609dc1c",
+    "docs/agent-workflow/tasks/VEL-TASK-0067.yaml": "ed7b9f02f3d4fa79e1b3d84664388650f6e7075ae4956aa423d5252b109a53a6",
+    "docs/agent-workflow/tasks/VEL-TASK-0068.yaml": "01410b203e79d8a47e7e5fbaebc3389ef18f1f6d47af3a397a961362c8d615ea",
+    "docs/agent-workflow/context-packs/VEL-CP-0067.md": "e7cebeb60516b8ad4455f7e3e4936ec4e0809691b50aea3eaa80fec5bd507321",
+    "docs/agent-workflow/context-packs/VEL-CP-0068.md": "d96233d1ec178cc934a0076814f1d46813aa068c6f7073a00fab18efe4d14dbe",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0067.md": "3b24ae439c50d696eee34e6c598e10f26adcc7a507f1b755b1769f41d8077bbb",
+    "docs/agent-workflow/execution-bundles/VEL-EB-0068.md": "98f39c665d6a0ece928e69bbcb3f4340932c74a50ec6ebb6f007a46adaf1027b"
+  },
+  "app_sql_historical_evidence_diff_empty": true
+}
