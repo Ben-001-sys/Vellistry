@@ -1,0 +1,29 @@
+{
+  "local_full_governance": {
+    "command": "python scripts/ci_governance.py",
+    "exit_code": 1,
+    "current_tests": 297,
+    "pass": 294,
+    "failures": 1,
+    "errors": 2,
+    "start_head": "8194b60fff777428d4405daa248b72082767de10",
+    "later_head": "b6d8bbe7e95ccea5cf5f1ce05a7e2a996a710684",
+    "cause": "HEAD advanced during run; untracked generated CP0002 pinned earlier8194, Stage4 exporter correctly rejects stale checkout pin. No candidate runtime changes.",
+    "raw_sha256": "875228b426a0b8554fd880a05a3c23588e458c8c19610d489d5d81b70095d8d9"
+  },
+  "affected_stage4_suite": {
+    "stable_head": "b6d8bbe7e95ccea5cf5f1ce05a7e2a996a710684",
+    "test_count": 6,
+    "pass": 6,
+    "exit_code": 0,
+    "evidence": "stage4-stable-head.txt"
+  },
+  "complete_fresh_ci_governance": {
+    "run": 40956270845,
+    "head": "b6d8bbe7e95ccea5cf5f1ce05a7e2a996a710684",
+    "count": 436,
+    "exit_code": 0,
+    "evidence": "ci-governance-b6d.txt"
+  },
+  "historical_pr129_ci": "40951100355 remains FAILURE; never relabelled"
+}

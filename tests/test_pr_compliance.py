@@ -18,12 +18,16 @@ import agent_workflow as aw
 
 
 class Fixture:
-    def __init__(self):
+    def __init__(self, stacked=False):
         self.tmp = tempfile.TemporaryDirectory(); self.root = Path(self.tmp.name)
         self.git('init'); self.git('config','user.email','synthetic@example.invalid'); self.git('config','user.name','Synthetic fixture')
         self.put('README.md','synthetic governing source\n')
         self.put('apps/api/book.py','before\n')
         self.base = self.commit('base')
+        if stacked:
+            self.git('branch','trusted-main',self.base)
+            self.put('docs/reports/prerequisite.md','synthetic reviewed prerequisite\n')
+            self.base = self.commit('prerequisite branch')
         self.tid = 'VEL-TASK-0099'
         self.task_path = 'docs/agent-workflow/tasks/'+self.tid+'.yaml'
         contract=dict(change_base=self.base,phase='phase-a',executor='Codex',allow_paths=['apps/api/book.py','docs/*'],
@@ -265,6 +269,161 @@ class EventAndTrustTests(unittest.TestCase):
         self.assertNotIn('import pr_compliance',source)
 
 
+
+
+class StackedMergeTests(unittest.TestCase):
+    """Real disposable Git topologies; all evidence validation stays enabled."""
+    def stacked(self, mutate=None, prerequisite=None):
+        f=Fixture(stacked=True);self.addCleanup(f.close)
+        if mutate:mutate(f)
+        implementation=f.head
+        f.git('checkout','trusted-main')
+        f.git('merge','--no-ff',prerequisite(f) if prerequisite else f.base,'-m','reviewed prerequisite integration')
+        trusted=f.git('rev-parse','HEAD')
+        f.git('merge','--no-ff',implementation,'-m','reviewed stacked integration')
+        return f,trusted,implementation,f.git('rev-parse','HEAD')
+
+    def evaluate(self,f,trusted,merged):
+        with patch.dict(os.environ,{'GITHUB_SHA':merged}):
+            return policy.evaluate_event(f.root,'push',dict(ref='refs/heads/main',before=trusted),merged,check_workflow=False)
+
+    def test_stacked_merge_uses_genuine_change_base_and_keeps_trusted_source(self):
+        f,trusted,implementation,merged=self.stacked()
+        self.assertFalse(policy.ancestor(f.root,trusted,implementation))
+        self.assertEqual(f.git('rev-parse',merged+'^{tree}'),f.git('rev-parse',implementation+'^{tree}'))
+        result=self.evaluate(f,trusted,merged)
+        self.assertEqual(result['status'],'pass')
+        self.assertEqual(result['base'],f.base)
+        self.assertEqual(result['verifier_base'],trusted)
+        self.assertEqual(result['implementation_head'],implementation)
+        self.assertEqual(result['head'],merged)
+        self.assertEqual(result['owner_disposition'],'pending')
+
+    def test_stacked_merge_rejects_wrong_first_parent_and_parent_order(self):
+        f,trusted,implementation,merged=self.stacked()
+        with self.assertRaisesRegex(ValueError,'integration base'):
+            self.evaluate(f,f.base,merged)
+        wrong_before=f.git('commit-tree',trusted+'^{tree}','-p',trusted,'-m','unrelated future main checkpoint')
+        # Its merge-base with merged is the correct first parent, but the actual
+        # declared trusted before is wrong and must not be normalized away.
+        with self.assertRaisesRegex(ValueError,'integration base'):
+            self.evaluate(f,wrong_before,merged)
+        reversed_merge=f.git('commit-tree',implementation+'^{tree}','-p',implementation,'-p',trusted,'-m','wrong parent order')
+        with self.assertRaisesRegex(ValueError,'integration base'):
+            self.evaluate(f,trusted,reversed_merge)
+
+    def test_stacked_merge_rejects_extra_parents_and_resolution_changes(self):
+        f,trusted,implementation,merged=self.stacked()
+        extra=f.git('commit-tree',implementation+'^{tree}','-p',trusted,'-p',implementation,'-p',f.base,'-m','unexpected third parent')
+        with self.assertRaisesRegex(ValueError,'multi-parent'):
+            self.evaluate(f,trusted,extra)
+        f.put('apps/api/book.py','unverified conflict resolution\n')
+        altered=f.commit('resolution data');tree=f.git('rev-parse',altered+'^{tree}')
+        changed=f.git('commit-tree',tree,'-p',trusted,'-p',implementation,'-m','unverified resolution merge')
+        with self.assertRaisesRegex(ValueError,'changed implementation tree'):
+            self.evaluate(f,trusted,changed)
+
+    def test_stacked_merge_retains_immutable_evidence_and_scope_negatives(self):
+        def missing(path):
+            def mutate(f):
+                (f.root/path(f)).unlink();f.head=f.commit('missing evidence')
+            return mutate
+        def late_pack(f):
+            f.manifest['pack_commit']=f.source;f.amend(policy.MANIFEST,yaml.safe_dump(f.manifest))
+        def wrong_source(f):
+            f.manifest['source_commit']=f.pack_commit;f.amend(policy.MANIFEST,yaml.safe_dump(f.manifest))
+        mutations={
+            'wrong task base':lambda f:(f.task['compliance'].__setitem__('change_base','a'*40),f.amend(f.task_path,yaml.safe_dump(f.task))),
+            'missing task':missing(lambda f:f.task_path),
+            'missing pack':missing(lambda f:f.pack_path),
+            'altered pack':lambda f:f.amend(f.pack_path,(f.root/f.pack_path).read_text(encoding='utf-8')+'unexpected append\n'),
+            'incorrect pack ordering':late_pack,
+            'missing bundle':missing(lambda f:f.eb_path),
+            'inconsistent bundle':lambda f:(f.eb.__setitem__('implementation_source_commit',f.pack_commit),f.finish()),
+            'wrong source':wrong_source,
+            'post-verification executable':lambda f:f.amend('apps/api/book.py','unverified later code\n'),
+            'unapproved path':lambda f:f.amend('apps/api/unapproved.py','synthetic\n'),
+            'unapproved SQL':lambda f:f.amend('supabase/migrations/unapproved.sql','-- synthetic only\n'),
+            'expired authorization':lambda f:(f.task['compliance']['authorization'].__setitem__('expires_on','2020-01-01'),f.amend(f.task_path,yaml.safe_dump(f.task))),
+            'missing authorization':lambda f:(f.task['compliance'].__setitem__('authorization',{}),f.amend(f.task_path,yaml.safe_dump(f.task))),
+            'invalid authorization':lambda f:(f.task['compliance']['authorization'].__setitem__('url','https://invalid.example/approval'),f.amend(f.task_path,yaml.safe_dump(f.task))),
+            'undeclared origin':lambda f:(f.manifest.__setitem__('commits',[]),f.amend(policy.MANIFEST,yaml.safe_dump(f.manifest))),
+        }
+        for name,mutate in mutations.items():
+            with self.subTest(case=name):
+                f,trusted,_,merged=self.stacked(mutate)
+                with self.assertRaises((ValueError,subprocess.CalledProcessError)):
+                    self.evaluate(f,trusted,merged)
+
+    def test_stacked_merge_rejects_reused_task_and_fabricated_base(self):
+        f,trusted,_,merged=self.stacked(prerequisite=lambda f:f.task_commit)
+        with self.assertRaisesRegex(ValueError,'Task reused'):
+            self.evaluate(f,trusted,merged)
+        f,trusted,implementation,merged=self.stacked()
+        real_git=policy.git
+        def fabricated(repo,*args):
+            if args==('merge-base',trusted,implementation):return (f.task_commit+'\n').encode()
+            return real_git(repo,*args)
+        with patch.object(policy,'git',side_effect=fabricated),self.assertRaisesRegex(ValueError,'Task reused|Wrong task/base'):
+            self.evaluate(f,trusted,merged)
+
+    def test_stacked_merge_rejects_implementation_before_pack(self):
+        def mutate(f):
+            f.git('checkout','-b','implementation-before-pack',f.task_commit)
+            f.put('apps/api/book.py','premature implementation\n');early=f.commit('code before handoff')
+            # The pack is valid but first committed only AFTER operative code.
+            oldroot=aw.ROOT
+            try:
+                aw.ROOT=f.root;f.put(f.pack_path,aw.render_pack(f.task,f.task_commit))
+            finally:aw.ROOT=oldroot
+            f.pack_commit=f.commit('late pack')
+            f.put('docs/reports/source-marker.txt','synthetic source after late pack\n')
+            f.source=f.commit('source after late pack')
+            f.eb['implementation_source_commit']=f.source
+            f.manifest.update(pack_commit=f.pack_commit,source_commit=f.source)
+            f.put(f.log,'synthetic command exit0\n')
+            f.finish()
+            self.assertTrue(policy.ancestor(f.root,early,f.pack_commit))
+        f,trusted,_,merged=self.stacked(mutate)
+        with self.assertRaisesRegex(ValueError,'Implementation preceded'):
+            self.evaluate(f,trusted,merged)
+
+    def test_stacked_merge_rejects_cherry_pick_substitution(self):
+        def mutate(f):
+            f.git('commit','--allow-empty','-m','substitution\n\n(cherry picked from commit '+('b'*40)+')');f.finish()
+        f,trusted,_,merged=self.stacked(mutate)
+        with self.assertRaisesRegex(ValueError,'cherry-pick'):
+            self.evaluate(f,trusted,merged)
+
+    def test_unrelated_histories_and_malformed_events_fail_closed(self):
+        f,trusted,implementation,merged=self.stacked()
+        unrelated=f.git('commit-tree',implementation+'^{tree}','-m','unrelated root')
+        counterfeit=f.git('commit-tree',implementation+'^{tree}','-p',trusted,'-p',unrelated,'-m','unrelated merge')
+        with self.assertRaises((ValueError,subprocess.CalledProcessError)):
+            self.evaluate(f,trusted,counterfeit)
+        for event in ({},dict(ref='refs/heads/main',before='a'*40),dict(ref='refs/heads/feature',before=trusted)):
+            with self.subTest(event=event),patch.dict(os.environ,{'GITHUB_SHA':merged}),self.assertRaises((ValueError,subprocess.CalledProcessError)):
+                policy.evaluate_event(f.root,'push',event,merged,check_workflow=False)
+        with patch.dict(os.environ,{'GITHUB_SHA':implementation}),self.assertRaisesRegex(ValueError,'Wrong event head'):
+            policy.evaluate_event(f.root,'push',dict(ref='refs/heads/main',before=trusted),merged,check_workflow=False)
+
+    def test_push_loader_keeps_first_parent_trusted_not_candidate_checker(self):
+        f,trusted,_,_=self.stacked()
+        # The actual unchanged loader must choose push.before, not candidate code.
+        f.git('checkout','-b','trusted-loader-fixture',trusted)
+        f.put('scripts/agent_workflow.py','# synthetic trusted helper\n')
+        f.put('scripts/pr_compliance.py','print("TRUSTED_PUSH_SENTINEL")\n')
+        before=f.commit('reviewed evaluator source')
+        f.git('checkout','-b','hostile-candidate',before)
+        f.put('scripts/pr_compliance.py','raise RuntimeError("CANDIDATE_MUST_NOT_EXECUTE")\n');candidate=f.commit('candidate replacement')
+        f.git('checkout','trusted-loader-fixture');f.git('merge','--no-ff',candidate,'-m','synthetic reviewed merge')
+        merged=f.git('rev-parse','HEAD');packet=f.root/'event.json'
+        packet.write_text(json.dumps(dict(ref='refs/heads/main',before=before)),encoding='utf-8')
+        env={**os.environ,'GITHUB_EVENT_NAME':'push','GITHUB_EVENT_PATH':str(packet),'GITHUB_SHA':merged}
+        result=subprocess.run([sys.executable,'-I',str(ROOT/'scripts/run_pr_compliance.py')],cwd=f.root,env=env,capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('TRUSTED_PUSH_SENTINEL',result.stdout)
+        self.assertNotIn('CANDIDATE_MUST_NOT_EXECUTE',result.stdout+result.stderr)
 
 
 class WorkflowExecutionContractTests(unittest.TestCase):

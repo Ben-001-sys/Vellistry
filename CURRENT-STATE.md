@@ -10,22 +10,24 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
-## Manual editor foundation — 2026-10-29
+## Stacked-merge compliance correction — 2026-10-29
 
-FACT: main5e3aeec95a34c0a9564067632655a0549a824c9d unchanged. Task0067/PR128
-repair remains Ready/unmerged at1ff3e91, CI40838205911 SUCCESS. Root78f80bb
-and owner changes preserved; current isolated local app uses Next16.4.1.
+FACT: main `6d9ce61fb560dd24e0646f6388ce38de3d87399d` integrates PR129,
+exact reviewed tree187c8538. PR128 post-main40948274512 passed. PR129
+post-main40951100355 FAILED: push compliance requires an invalid ancestry;
+application/security/32PG17/12recovery passed. Governance suite skipped;
+final gate FAILED. Historical failure remains FAIL, integration unverified.
 
-Owner defers interactive MFA acceptance, authorizes bounded local IMP003A only.
-Task0068/CP0068 adds unregistered Tiptap3 editor, reusing IMP002 organizer/session:
-manual formatting, history, caret, word count and chapter-local search;30offline
-and33browser checks PASS. [Report](docs/reports/VEL-IMP003A-MANUAL-EDITOR-0068.md).
-Drafts exist only in preview memory; no production route, writes, durable Saved
-or hosted acceptance. Editor PR depends on128; review/CI/owner merge pending.
+Task0070/CP0070 proposes the bounded evaluator/test correction, preserving
+trusted before, parent/tree checks and immutable implementation change-base.
+[Report](docs/reports/VEL-STACKED-MERGE-COMPLIANCE-0070.md). Review/CI/owner merge
+pending. Task0069 preparation is preserved undispatched, not rewritten.
 
-PRINCIPAL/SESSION/gateway and persistence remain gated. R01-R08 NOT_RUN;
-N12/historical independent EPERM BLOCKED. Issue108OPEN; remediation delegation
-EXPIRED. Owner-reported basic login is not agent-verified hosted acceptance.
+Task0068's unregistered Tiptap editor reuses IMP002;30editor/33browser checks
+are historical PASS. Memory-only drafts; no production route/durable save.
+MFA acceptance deferred, not security waived. PRINCIPAL/SESSION/gateway and
+persistence gated; R01-R08 NOT_RUN; N12/historical EPERM BLOCKED. Issue108OPEN;
+remediation delegation EXPIRED. No hosted acceptance or new feature authority.
 Earlier dated paragraphs remain historical records, not renewed authority.
 
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26

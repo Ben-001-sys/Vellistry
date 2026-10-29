@@ -346,9 +346,13 @@ def evaluate_event(repo, event_name, event, head, *, check_workflow=True):
     if event_name == 'push':
         parents = git(repo,'rev-list','--parents','-n','1',head).decode().split()
         if len(parents) > 2:
-            require(len(parents)==3 and parents[1]==base, 'Unreviewed multi-parent/main integration base')
+            require(len(parents)==3 and parents[1]==trust, 'Unreviewed multi-parent/main integration base')
             implementation = parents[2]
             require(not changes(repo,implementation,head), 'Main merge changed implementation tree; new evidence required')
+            # A reviewed stacked branch need not descend from the prerequisite's
+            # main merge commit. Keep push.before as the trusted evaluator source,
+            # but validate the immutable task against the genuine shared range.
+            base = git(repo,'merge-base',trust,implementation).decode().strip()
     result = evaluate(repo,base,implementation,check_workflow=check_workflow)
     result.update(head=head, implementation_head=implementation, verifier_base=trust)
     return result
