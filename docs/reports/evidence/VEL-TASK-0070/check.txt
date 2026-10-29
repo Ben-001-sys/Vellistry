@@ -1,0 +1,14 @@
+COMMAND: corepack pnpm check
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-stacked-merge-compliance-0070
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-stacked-merge-compliance-0070\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-stacked-merge-compliance-0070\apps\web
+> tsc --noEmit
+
+EXIT: 0

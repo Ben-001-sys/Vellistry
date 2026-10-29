@@ -1,0 +1,8 @@
+{
+  "source_main": "6d9ce61fb560dd24e0646f6388ce38de3d87399d",
+  "trusted_before": "1c54426189ae70d93d9da84bc4931d1c336dc13d",
+  "status": "Evaluation base is not ancestor",
+  "exit_code": 1,
+  "historical_ci": "40951100355 remains FAILURE",
+  "evaluator_sha256": "4e41e3d61fdc65c2ca6e0c48b1158c93eba92891ff505f8c651ca2ac7a23b143"
+}
