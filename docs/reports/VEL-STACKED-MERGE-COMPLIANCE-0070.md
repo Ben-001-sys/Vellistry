@@ -37,3 +37,8 @@ No hosted operations/Auth/MFA/JWT/JWKS/SQL/settings/credentials/private manuscri
 
 ## FACT — verification disposition at evidence cut
 Focused71PASS, frozen install/build/typecheck0; full historical re-evaluation0; before control1. Preservation JSON verifies loader/workflow/gate/Task67-68 and all app/SQL/history untouched. Full local current+archived governance is still running; applicable Draft/Ready CI must independently complete the entire suite and final gate before recommendation. Local browser33 remains historical unchanged-source evidence only. Actual source/head and final review/CI are appended externally to the PR ledger to avoid self-referential commit claims.
+
+## FACT — completed local fixture failure and fresh-checkout CI
+Local full governance completed exit1 at297tests (294PASS,1FAIL,2ERROR): generated untracked CP0002 pinned initial8194 while I advanced HEAD for evidence tob6d during that run. Stage4 exporter correctly rejected the stale pin. This failure is preserved in governance-first.txt and local-governance-disposition.json, not reported PASS. Regenerated only untracked scratch CP0002/0003 at stableb6d; all6Stage4 packet tests PASS, exit0. No immutable tracked pack or validator changed. No full local PASS claim.
+
+Actual fresh Draft40955880368 and Ready40956270845 each passed full436governance tests atb6d; Ready application/security/PG17/recovery/build/typecheck/final gate SUCCESS. Final evidence reconciliation returns PR to Draft; distinct final-head review and new Draft/Ready CI must pass before recommendation. Prior passing tests/runs and failed local/historical outcomes remain separate historical evidence.

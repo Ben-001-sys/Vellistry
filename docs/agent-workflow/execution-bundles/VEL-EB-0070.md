@@ -33,6 +33,10 @@ evidence:
 - docs/reports/evidence/VEL-TASK-0070/check.txt
 - docs/reports/evidence/VEL-TASK-0070/preservation.json
 - docs/reports/evidence/VEL-TASK-0070/test-preservation.json
+- docs/reports/evidence/VEL-TASK-0070/governance-first.txt
+- docs/reports/evidence/VEL-TASK-0070/stage4-stable-head.txt
+- docs/reports/evidence/VEL-TASK-0070/ci-governance-b6d.txt
+- docs/reports/evidence/VEL-TASK-0070/local-governance-disposition.json
 implementation_source_commit: 8c2b7dff9bfeed07b5a2dbed8404826852884a15
 execution:
   status: completed
@@ -66,6 +70,23 @@ execution:
     exit_code: 0
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0070/historical-after.json
+  - command: python scripts/ci_governance.py (actual GitHub Actions Ready40956270845)
+    source_commit: b6d8bbe7e95ccea5cf5f1ce05a7e2a996a710684
+    reuse_basis: Operative code/current-state/package/lock blobs unchanged from recorded
+      source; changed evidence metadata requires fresh final-head CI
+    test_count: 436
+    exit_code: 0
+    status: PASS
+    evidence: docs/reports/evidence/VEL-TASK-0070/ci-governance-b6d.txt
+  - command: python -m unittest discover -s tests -p test_stage4_independent_packet.py
+      -v
+    source_commit: b6d8bbe7e95ccea5cf5f1ce05a7e2a996a710684
+    reuse_basis: Operative code/current-state/package/lock blobs unchanged from recorded
+      source; changed evidence metadata requires fresh final-head CI
+    test_count: 6
+    exit_code: 0
+    status: PASS
+    evidence: docs/reports/evidence/VEL-TASK-0070/stage4-stable-head.txt
 review:
   status: pending
   approved_by: null
@@ -95,3 +116,8 @@ Historical failed40951100355 remains FAIL. Full local governance/actual CI pendi
 
 ## Reviewer disposition
 Pending distinct completed-head source review and actual CI; owner alone decides integration. Final evidence appended externally without rewriting historical Task67/68 or dispatched pack70.
+
+### Verification reconciliation after the original evidence cut
+FACT: original local full command completed exit1:297current tests,294PASS/1FAIL/2ERROR. The process began at8194b60; subsequent evidence commits advanced HEAD tob6d8bbe while generated untracked CP0002 still pinned8194. Exactly three Stage4 packet tests failed on stale pins, not evaluator regressions. Full raw failure and source transitions are preserved. I advanced HEAD during this local run; this is not represented as a code or security acceptance pass. Regenerated ONLY untracked scratch packs0002/0003 using the existing generator at stableb6d, then all6Stage4testsPASS exit0. Generated scratch files are removed/excluded; historical immutable packs untouched.
+
+Actual fresh-checkout Draft40955880368 and Ready40956270845 each completed436governance tests (297current+139archived) PASS atb6d; Ready application/security/32PG17/12recovery/build/typecheck/finalgate SUCCESS. Raw complete CI governance log committed. This does not relabel the local failure or historical40951100355. Primary71focused and stable-head6targeted passed; a fresh final evidence-head CI and distinct review are still required before recommending owner integration. First independent completed-head review atb6d was clean; its regression execution BLOCKED by read-only temp-directory restrictions, current-range compliance independentlyPASS. Historical spawnEPERM staysBLOCKED.
