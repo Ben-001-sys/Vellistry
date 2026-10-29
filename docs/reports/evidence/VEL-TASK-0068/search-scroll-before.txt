@@ -1,0 +1,30 @@
+✖ explicit search navigation requests reveal scrolling, search input does not (54.889ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1261.8897
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-editor.test.mjs:149:2
+✖ explicit search navigation requests reveal scrolling, search input does not (54.889ms)
+  AssertionError [ERR_ASSERTION]: explicit match navigation must reveal selection
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\lib\editor\manuscript-editor.test.mjs:153:47)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

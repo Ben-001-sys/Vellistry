@@ -145,3 +145,10 @@ test("unmounted component renders safe SSR preparation without creating a DOM ed
  const html = renderToStaticMarkup(React.createElement(ManuscriptWorkspace, {workspace, readOwner: async () => "author-a"}));
  assert.match(html, /Preparing the local manuscript editor/); assert.ok(!html.includes("contenteditable"));
 });
+
+ test("explicit search navigation requests reveal scrolling, search input does not", async () => {
+  const {session, editor} = await setup(); paragraphs(editor, ["opening", "far needle"]); editor.commands.setTextSelection(1);
+  const scrolls = []; editor.on("transaction", ({transaction}) => scrolls.push(transaction.scrolledIntoView));
+  session.search("needle"); assert.ok(scrolls.every(v => !v), "typing query must not scroll manuscript");
+  scrolls.length = 0; session.find(1); assert.ok(scrolls.some(Boolean), "explicit match navigation must reveal selection");
+ });

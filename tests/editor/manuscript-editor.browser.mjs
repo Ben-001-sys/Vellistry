@@ -59,6 +59,20 @@ async (page) => {
     await check("editing selected search result recomputes stale ranges", async () => { await page.keyboard.insertText("X"); assert(await text() === "X alpha [a]", "replacement wrong"); assert(await area().locator(".manuscript-search-match").count() === 1, "stale search highlight"); });
     await check("search treats regex metacharacters literally", async () => { await page.getByRole("searchbox", {name: "Search this chapter"}).fill("[a]"); assert(await area().locator(".manuscript-search-match").count() === 1, "literal bracket search wrong"); });
     await check("clearing search preserves selection and prose", async () => { const before = await selection(); await click("Clear search"); assert(JSON.stringify(await selection()) === JSON.stringify(before), "clear moved caret"); assert(await text() === "X alpha [a]", "clear changed prose"); });
+    current = "offscreen search";
+    await reset();
+    await check("explicit search navigation reveals off-screen selected occurrence", async () => {
+      await area().evaluate(el => el.editor.commands.setContent({type: "doc", content: Array.from({length: 80}, (_, i) =>
+        ({type: "paragraph", content: [{type: "text", text: i === 79 ? "distantneedle" : "Synthetic distant paragraph " + i}]}))}));
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.getByRole("searchbox", {name: "Search this chapter"}).fill("distantneedle");
+      await click("Next match");
+      await page.waitForFunction(() => {
+        const selection = window.getSelection(); if (!selection || !selection.rangeCount) return false;
+        const rectangle = selection.getRangeAt(0).getBoundingClientRect();
+        return selection.toString() === "distantneedle" && rectangle.top >= 0 && rectangle.bottom <= innerHeight;
+      }, null, {timeout: 3000});
+    });
     current = "chapter state";
     await reset(); await replace("Alpha chapter draft"); await caret(5);
     await check("chapter switch opens distinct blank draft", async () => { await page.getByRole("button", {name: "Open chapter 2: The bridge", exact: true}).click(); await wait(); assert(await text() === "", "chapter content leaked"); await replace("Beta chapter draft"); });
