@@ -1,0 +1,118 @@
+id: VEL-TASK-0068
+title: IMP-003A AI-off chapter-aware Tiptap3 editor foundation
+type: implementation-task
+status: in-progress
+created_at: '2026-10-29'
+updated_at: '2026-10-29'
+owner: project_owner
+context_pack_id: VEL-CP-0068
+objective: Implement and verify bounded reusable manual editor using existing workspace
+  interfaces, without production persistence or security gate promotion
+in_scope: &id001
+- apps/web/src/lib/editor/manuscript-search.ts
+- apps/web/src/lib/editor/manuscript-session.ts
+- apps/web/src/lib/editor/manuscript-editor.test.mjs
+- apps/web/src/components/editor/manuscript-editor.tsx
+- apps/web/package.json
+- package.json
+- pnpm-lock.yaml
+- tests/editor/manuscript-editor-fixture-page.tsx
+- tests/editor/manuscript-editor.browser.mjs
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0068.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0068.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0068.md
+- docs/agent-workflow/inputs/VEL-TASK-0068/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP003A-MANUAL-EDITOR-0068.md
+- docs/reports/evidence/VEL-TASK-0068/*
+out_of_scope:
+- Auth/backend/workspace persistence service or existing organizer/controller changes
+- Hosted Auth/SQL/settings/enrollment/JWT/JWKS/credentials/private manuscripts/AI/paid/deployment/merge
+- Production routes, simulated durable persistence, storage-schema approval, broad
+  gate promotion, historical evidence rewriting, unrelated dependencies/CI changes
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: apps/web/src/lib/workspace/book-workspace-contract.ts
+  role: governing-source
+- path: apps/web/src/components/workspace/book-workspace-organizer.tsx
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0068/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0068/SOURCE-EXCERPTS.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0068/IMPLEMENTATION-CONTRACT.md
+  role: governing-source
+- path: apps/web/package.json
+  role: governing-source
+- path: package.json
+  role: governing-source
+source_gaps:
+- id: LOCAL-PERSISTENCE-GATED
+  limitation: Memory-only editor preview, not durable chapter writes, real principal/session/gateway
+    acceptance, complete author journeys or hosted schema acceptance.
+- id: MFA-DEFERRED
+  limitation: Owner-reported basic login, not independent acceptance. R01-R08 NOT_RUN,
+    N12/historical EPERM BLOCKED; interactive MFA deferred without security-policy
+    change.
+deliverables:
+- Reusable Tiptap session/search/component, exact OSS deps and offline tests in mandatory
+  workspace suite
+- Synthetic-only organizer/editor browser fixture and executed browser regression
+  evidence
+- EB/per-commit provenance, distinct exact-head review, actual CI and stacked PR for
+  separate owner merge
+acceptance_criteria:
+- Implement E01-E12 in pinned implementation contract with actual tests, preserving
+  whitespace, first-paragraph/middle selections, search/caret/history and stable chapter
+  scope
+- Reuse existing organizer/workspace ownership/notes/unknown state contracts unchanged;
+  fail closed on invalid/stale/unverified identity and chapter membership
+- AIoff no key/network; honest session-only draft status; no production route or durable
+  persistence claim
+- Exact Tiptap3.32.1 OSS deps/jsdom26.1.0 dev-only; no unrelated upgrades, SQL, Auth
+  or workflow changes
+- Actual focused plus existing regressions/check/build/governance/security/recovery
+  CI, real-browser keyboard/responsive checks, distinct completed-head review and
+  owner merge boundary
+allowed_actions:
+- Commit Task/governing sources, validate/commit immutable pack before operative edits
+  in isolated worktree
+- Scoped editor/dependency/lock/test-command implementation; offline/synthetic/owned
+  loopback browser fixtures; temporary test-only Next wrapper removed before production
+  build/commit
+- Existing CI/disposable fixtures and distinct trusted read-only review; Draft then
+  Ready only after evidence; separate stacked PR, no merge
+approval_required_for:
+- Merge, new hosted/security-sensitive operations, production persistence/SQL/gateway/session/route
+  implementation, AI/paid/private/release or unrelated scope
+compliance:
+  change_base: 1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6491360882
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-06'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
