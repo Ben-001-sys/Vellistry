@@ -1,0 +1,125 @@
+id: VEL-TASK-0067
+title: Restore current local MFA route and explicit NestJS development-runtime injection
+type: implementation-task
+status: in-progress
+created_at: '2026-10-28'
+updated_at: '2026-10-28'
+owner: project_owner
+context_pack_id: VEL-CP-0067
+objective: Diagnose stale local route and reproduce/fix NestJS constructor injection
+  under tsx without changing authentication policy
+in_scope: &id001
+- apps/api/src/modules/auth/supabase-auth.guard.ts
+- apps/api/src/modules/books/books.service.ts
+- apps/api/src/modules/books/books.controller.ts
+- apps/api/src/modules/auth/auth-runtime.spec.ts
+- package.json
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0067.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0067.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0067.md
+- docs/agent-workflow/inputs/VEL-TASK-0067/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-LOCAL-AUTH-RUNTIME-0067.md
+- docs/reports/evidence/VEL-TASK-0067/*
+out_of_scope:
+- Hosted operations, enrollment, JWT/JWKS probes, SQL/settings/credentials/private
+  data/deploy/merge
+- AuthService verification policy, guards bypass, grants/dependencies/CI changes
+- Owner dirty root checkout or environment file changes; historical Task/CP/EB rewriting
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/README.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.guard.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/supabase-auth.service.ts
+  role: governing-source
+- path: apps/api/src/modules/auth/auth.module.ts
+  role: governing-source
+- path: apps/api/src/modules/app.module.ts
+  role: governing-source
+- path: apps/api/src/modules/books/books.service.ts
+  role: governing-source
+- path: apps/api/src/modules/books/books.controller.ts
+  role: governing-source
+- path: apps/api/src/main.ts
+  role: governing-source
+- path: apps/api/tsconfig.json
+  role: governing-source
+- path: apps/api/package.json
+  role: governing-source
+- path: apps/web/src/app/account/mfa/page.tsx
+  role: governing-source
+- path: package.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0067/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0067/DIAGNOSIS.md
+  role: governing-source
+source_gaps:
+- id: LOCAL-ONLY
+  limitation: No hosted schema/Auth acceptance. R01-R08 NOT_RUN; N12/historical independent
+    EPERM BLOCKED. Synthetic SDK responses never prove real session/MFA authorization.
+deliverables:
+- Narrow runtime correction and executable offline HTTP/DI regressions in existing
+  mandatory Library suite
+- Actual pre/post tsx and compiled evidence; current Next route render and local environment
+  handoff
+- EB, distinct exact-head review, Draft then applicable Ready CI and PR for separate
+  owner approval
+acceptance_criteria:
+- Prove root stale78f80bb lacks route and uses Next16.4.0; current main route exists
+  and frozen16.4.1 renders without redesign
+- Reproduce missing injected dependency under actual tsx transform and prove compiled
+  metadata behavior separately
+- Use explicit Nest injection tokens for guard, BooksService, BooksController only
+  if confirmed; existing module registration and Auth policy unchanged
+- Loopback offline health200, missing/invalid authentication401, missing config503,
+  synthetic same-token book GET/POST success and sanitized data errors; no hosted
+  network
+- Run focused regressions before fix to demonstrate failure, then tsx and compiled
+  PASS plus mandatory MFA55, Library/preflight, check/build/governance
+- No unsafe checkout reset/env overwrites; serve current local application on original
+  port safely after verifying instance ownership; report config limitations
+- Preserve all existing tests/security/recovery; no dependency/SQL/CI/backend MFA
+  policy changes; distinct source review and owner-controlled merge
+allowed_actions:
+- Isolated branch and unique committed validated immutable pack before operative edits
+- Bounded explicit injection tokens, tests, package test command, reports/current
+  state and provenance
+- Frozen install/offline synthetic and loopback runtime smoke; stop only verified
+  obsolete app processes when switching current local instance
+- Distinct trusted source review, Draft PR then Ready only after evidence and CI;
+  no merge
+approval_required_for:
+- Merge, hosted operations, enrollment, credentials, SQL/settings/deploy or feature/security-policy
+  scope expansion
+compliance:
+  change_base: 5e3aeec95a34c0a9564067632655a0549a824c9d
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6483283804
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-05'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

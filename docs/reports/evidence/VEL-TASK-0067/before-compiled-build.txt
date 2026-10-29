@@ -1,0 +1,5 @@
+src/modules/auth/auth-runtime.spec.ts(32,18): error TS2352: Conversion of type '(received: string) => { from: (table: string) => { select: () => { order: () => Promise<{ data: null; error: { message: string; }; } | { data: { id: string; title: string; }[]; error: null; }>; }; insert: (payload: unknown) => { ...; }; }; }' to type '(token: string) => SupabaseClient<any, "public", "public", any, any>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ from: (table: string) => { select: () => { order: () => Promise<{ data: null; error: { message: string; }; } | { data: { id: string; title: string; }[]; error: null; }>; }; insert: (payload: unknown) => { select: () => { ...; }; }; }; }' is missing the following properties from type 'SupabaseClient<any, "public", "public", any, any>': supabaseUrl, supabaseKey, auth, realtime, and 22 more.
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 2: tsc -p tsconfig.json --outDir .runtime-test

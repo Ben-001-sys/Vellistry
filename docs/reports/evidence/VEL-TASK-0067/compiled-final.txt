@@ -1,0 +1,22 @@
+✔ Nest injects the same registered Auth service into guard and Books service and injects Books controller (94.7924ms)
+✔ actual health route responds without authentication (85.8347ms)
+✔ GET books rejects missing/forged client identity without SDK or data access (8.1589ms)
+✔ GET books rejects malformed authorization without verification (6.5694ms)
+✔ GET books rejects failed synthetic Auth verification as401 without DB dispatch (4.1596ms)
+✔ GET books reports unavailable Auth configuration as503, not undefined.verify (9.2408ms)
+✔ GET books reaches the controller/service with the same verified synthetic token (6.3435ms)
+✔ GET books preserves sanitized database failure semantics (4.6384ms)
+✔ POST books rejects missing/forged client identity without SDK or data access (35.8063ms)
+✔ POST books rejects malformed authorization without verification (4.5618ms)
+✔ POST books rejects failed synthetic Auth verification as401 without DB dispatch (4.7347ms)
+✔ POST books reports unavailable Auth configuration as503, not undefined.verify (4.4027ms)
+✔ POST books reaches the controller/service with the same verified synthetic token (5.5166ms)
+✔ POST books preserves sanitized database failure semantics (4.7575ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3076.5339

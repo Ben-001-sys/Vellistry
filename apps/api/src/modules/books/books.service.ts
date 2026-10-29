@@ -1,9 +1,9 @@
-import {Injectable,InternalServerErrorException} from "@nestjs/common";
+import {Inject,Injectable,InternalServerErrorException} from "@nestjs/common";
 import {SupabaseAuthService} from "../auth/supabase-auth.service";
 import {bookInsertPayload} from "./book-create-input";
 @Injectable()
 export class BooksService{
- constructor(private readonly auth:SupabaseAuthService){}
+ constructor(@Inject(SupabaseAuthService) private readonly auth:SupabaseAuthService){}
  async list(token:string){
   const {data,error}=await this.auth.forUser(token).from("books")
     .select("id,title,created_at,updated_at").order("created_at",{ascending:false});

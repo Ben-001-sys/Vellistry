@@ -1,11 +1,11 @@
-import {BadRequestException,Body,Controller,Get,Header,Post,Req,UseGuards} from "@nestjs/common";
+import {Inject,BadRequestException,Body,Controller,Get,Header,Post,Req,UseGuards} from "@nestjs/common";
 import {AuthenticatedRequest,SupabaseAuthGuard} from "../auth/supabase-auth.guard";
 import {readBookTitle} from "./book-create-input";
 import {BooksService} from "./books.service";
 @Controller("books")
 @UseGuards(SupabaseAuthGuard)
 export class BooksController{
- constructor(private readonly books:BooksService){}
+ constructor(@Inject(BooksService) private readonly books:BooksService){}
  @Get()
  @Header("Cache-Control","no-store")
  list(@Req() req:AuthenticatedRequest){return this.books.list(req.accessToken);}

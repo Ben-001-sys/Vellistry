@@ -1,0 +1,2 @@
+COMMAND: corepack pnpm --filter @vellistry/api exec tsc -p tsconfig.json --outDir .runtime-test
+ACTUAL EXIT: 0 (captured by verification tool). Compiler emitted no diagnostics.

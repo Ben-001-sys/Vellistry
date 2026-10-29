@@ -1,0 +1,39 @@
+
+> vellistry@ build H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime
+> pnpm --filter @vellistry/api build && pnpm --filter @vellistry/web build
+
+
+> @vellistry/api@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\api
+> tsc -p tsconfig.build.json
+
+
+> @vellistry/web@0.0.1 build H:\cursor\cursor\Vellistry\.worktrees\vel-local-auth-runtime\apps\web
+> next build
+
+▲ Next.js 16.4.1 (Turbopack)
+✓ Running next.config.ts took 291ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 17.0s
+  Running TypeScript ...
+  Finished TypeScript in 8.1s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/6) ...
+  Generating static pages using 7 workers (1/6) 
+  Generating static pages using 7 workers (2/6) 
+  Generating static pages using 7 workers (4/6) 
+✓ Generating static pages using 7 workers (6/6) in 833ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /account/mfa
+├ ƒ /api/books
+├ ○ /books
+└ ○ /login
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
