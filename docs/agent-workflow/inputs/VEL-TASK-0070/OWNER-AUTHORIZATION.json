@@ -1,0 +1,23 @@
+{
+  "source": "Direct owner instruction in current ChatGPT Work conversation, 2026-10-29; Codex issue relay, not authenticated human comment authorship",
+  "authorization_url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6508092481",
+  "status": "authorized",
+  "scope": "Repository-only stacked-merge post-main compliance correction",
+  "approved_main": "6d9ce61fb560dd24e0646f6388ce38de3d87399d",
+  "executable_paths": [
+    "scripts/pr_compliance.py",
+    "tests/test_pr_compliance.py"
+  ],
+  "supporting_paths": "New Task/immutable CP/EB/governing inputs/manifest/report/evidence and necessary CURRENT-STATE correction",
+  "required": "Exact trusted pre-merge main source remains distinct from genuine shared change-base, reviewed implementation head and new two-parent merge. Preserve first-parent/two-parent/tree checks and all existing provenance/scope/security/authorization checks. Before/after historical and synthetic regressions; full governance; actual trusted-base Draft/Ready CI and distinct final review. No automatic merge.",
+  "forbidden": [
+    "Change scripts/run_pr_compliance.py, ci.yml, ci_policy.py, accepted governance or security rules",
+    "Rewrite Tasks67/68/immutable packs/evidence or historical failure",
+    "Revert PR129, forcepush, disable governance, warning-only gate, settings/permissions",
+    "Hosted Auth/MFA/SQL/credentials/manuscripts/production/deployment/IMP003B/new feature",
+    "Merge this or successor PR"
+  ],
+  "status_boundaries": "Issue108 OPEN; R01-R08 NOT_RUN; N12 and historical independent spawn EPERM BLOCKED; PRINCIPAL/SESSION unresolved; expired remediation delegation stays expired",
+  "historical_diagnosis": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6507914924",
+  "preparation_history": "Task69/CP69 preserved undispatched at584b778; unsupported provenance label caught before code; new Task70 same owner scope, supported existing enum. No policy or historical pack change."
+}

@@ -1,0 +1,92 @@
+id: VEL-TASK-0070
+title: Correct trusted post-main compliance for exact-tree stacked merge commits
+type: implementation-task
+status: in-progress
+created_at: '2026-10-29'
+updated_at: '2026-10-29'
+owner: project_owner
+context_pack_id: VEL-CP-0070
+objective: Separate trusted evaluator base from genuine implementation change-base
+  for legitimate stacked merges without weakening provenance
+in_scope: &id001
+- scripts/pr_compliance.py
+- tests/test_pr_compliance.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0070.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0070.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0070.md
+- docs/agent-workflow/inputs/VEL-TASK-0070/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-STACKED-MERGE-COMPLIANCE-0070.md
+- docs/reports/evidence/VEL-TASK-0070/*
+out_of_scope:
+- Change scripts/run_pr_compliance.py, ci.yml, ci_policy.py, accepted governance or
+  security rules
+- Rewrite Tasks67/68/immutable packs/evidence or historical failure
+- Revert PR129, forcepush, disable governance, warning-only gate, settings/permissions
+- Hosted Auth/MFA/SQL/credentials/manuscripts/production/deployment/IMP003B/new feature
+- Merge this or successor PR
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: scripts/pr_compliance.py
+  role: governing-source
+- path: scripts/run_pr_compliance.py
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0070/OWNER-AUTHORIZATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0070/SOURCE-EXCERPTS.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0070/IMPLEMENTATION-CONTRACT.md
+  role: governing-source
+source_gaps:
+- id: HISTORICAL-FAILURE
+  limitation: Actual40951100355 remainsFAIL. No hosted acceptance, R01-R08NOT_RUN,
+    N12/historicalEPERMBLOCKED.
+deliverables:
+- Minimal evaluator correction, unchanged loader/workflow/security/gate-policy
+- Synthetic positive/negative and exact historical before/after evidence
+- EB, distinct completed-head review, Draft and ReadyCI, PR for separate owner decision
+acceptance_criteria:
+- Preserve first-parent trusted evaluator source and actual event head, derive genuine
+  implementation merge-base only after exact parent/tree validation
+- Positive ordinary and stacked two-parent exact reviewed-tree histories, historicalPR129
+  fully evaluated after reproduced old failure
+- All mandatory negative provenance/scope/security/trust cases retained and topology-specific
+  regressions added
+- Full applicable checks actual exits/counts/source evidence, independent final source
+  review and exact ReadyCI
+- No immutable historical change, loader/workflow/gate-policy/dependency/app/SQL change
+  or merge
+allowed_actions:
+- Commit task/governing sources then generate/validate/commit immutable CP before
+  operative edits
+- Two-file evaluator/test correction and listed supporting evidence/current state
+- Disposable local Git/fixture tests, existing full governance/frozen builds/typechecks
+  and applicable automatic CI
+- Distinct trusted read-only source review; Draft then Ready only after evidence;
+  no merge
+approval_required_for:
+- Merge, accepted governance/loader/workflow/gate-policy scope expansion, new security-sensitive/hosted/settings/feature
+  operations
+compliance:
+  change_base: 6d9ce61fb560dd24e0646f6388ce38de3d87399d
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6508092481
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-07'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
