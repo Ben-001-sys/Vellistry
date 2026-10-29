@@ -1,0 +1,64 @@
+
+> vellistry@ test:manuscript-editor H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/editor/manuscript-editor.test.mjs
+
+✔ AI-off manual writing accepts500invented words without network or key (44.3103ms)
+✔ leading, trailing, repeated whitespace and Unicode survive text transactions (6.9031ms)
+✔ first paragraph arbitrary selection replacement never trims or rewrites another paragraph (8.5016ms)
+✔ middle caret insertion uses exact model position and preserves surrounding spaces (4.5369ms)
+✔ bold applies only to model selection and retains it (7.2287ms)
+✔ italic applies only to model selection and retains it (5.0598ms)
+✔ underline applies only to model selection and retains it (5.6493ms)
+✔ paragraph/headings and basic lists use supported semantic nodes (16.5965ms)
+✔ Undo/Redo survives toolbar commands without creating fake revisions (4.6735ms)
+✔ literal case-insensitive search crosses inline marks, not textblock boundaries (17.1916ms)
+✔ search typing/highlights do not move manuscript selection or mutate content (4.8289ms)
+✔ explicit next/previous selects matches and edited matches are recomputed (5.4802ms)
+✔ search metadata/navigation does not pollute document Undo history (6.3289ms)
+✔ word count is defined by Unicode word-like segments, not spaces or HTML (2.9724ms)
+✖ chapter switching restores distinct text, selection and chapter-local Undo (3.5754ms)
+✔ stable chapter identity preserves prose/caret across rename/reorder metadata (3.4054ms)
+✔ same chapter ID in another book cannot share an editor (5.4459ms)
+✔ changed verified author clears old editor caches rather than exposing former drafts (11.046ms)
+✔ unavailable workspace conceals and locks text: {"phase":"unverified"} (4.1264ms)
+✔ unavailable workspace conceals and locks text: {"pending":true} (3.6398ms)
+✔ unavailable workspace conceals and locks text: {"uncertain":true} (5.6812ms)
+✔ unavailable workspace conceals and locks text: {"conflict":true} (4.3616ms)
+✔ unavailable workspace conceals and locks text: {"selectedChapterId":"foreign"} (4.3747ms)
+✔ unavailable workspace conceals and locks text: {"document":null} (3.1084ms)
+✔ absent, throwing and contradictory post-async identity fail closed (0.77ms)
+✖ late chapter verification cannot reactivate a former selection (0.3511ms)
+✔ real IMP002 session notes/reordering never write accepted manuscript or draft text (7.0655ms)
+✔ dispose cancels pending verification and destroys all locally opened editors (2.5097ms)
+✔ unmounted component renders safe SSR preparation without creating a DOM editor (61.1385ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 27
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1885.4364
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-editor.test.mjs:95:1
+✖ chapter switching restores distinct text, selection and chapter-local Undo (3.5754ms)
+  TypeError: Cannot read properties of null (reading 'view')
+      at write (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\lib\editor\manuscript-editor.test.mjs:31:39)
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\lib\editor\manuscript-editor.test.mjs:97:93)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at ..\web\src\lib\editor\manuscript-editor.test.mjs:125:1
+✖ late chapter verification cannot reactivate a former selection (0.3511ms)
+  TypeError: Cannot read properties of null (reading 'chapterId')
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\lib\editor\manuscript-editor.test.mjs:128:33)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.

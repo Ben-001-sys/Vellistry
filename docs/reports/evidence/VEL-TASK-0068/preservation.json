@@ -1,0 +1,24 @@
+{
+  "base": "1ff3e91d49ab85cd3cd3f012fdf062bdd7dadc8f",
+  "unchanged_paths": [
+    "apps/api",
+    "apps/web/src/lib/workspace",
+    "apps/web/src/components/workspace",
+    "tests/fixtures/book-workspace-synthetic.ts",
+    ".github/workflows",
+    "supabase",
+    "scripts/pr_compliance.py",
+    "scripts/ci_policy.py"
+  ],
+  "existing_direct_dependencies": "identical",
+  "existing_package_records": "identical",
+  "new_dependencies": {
+    "@tiptap/core": "3.32.1",
+    "@tiptap/react": "3.32.1",
+    "@tiptap/pm": "3.32.1",
+    "@tiptap/starter-kit": "3.32.1",
+    "jsdom": "26.1.0 dev-only"
+  },
+  "production_routes": "only existing baseline routes; test wrapper removed",
+  "tests": "final corrected check/build exit0;29editor70workspace81Library55MFA23preflightPASS;32browserat e79"
+}

@@ -1,0 +1,144 @@
+{
+  "source_commit": "c291b729698160fb795ad11ede5673b1d7f478a4",
+  "invocation": "Playwright browser_run_code_unsafe filename=tests/editor/manuscript-editor.browser.mjs",
+  "result": {
+    "status": "PASS",
+    "browser": "156.0.8078.48",
+    "checks": [
+      {
+        "name": "labelled actual Tiptap editor and explicit AI-off/session-only notice",
+        "status": "PASS"
+      },
+      {
+        "name": "520words typed with native browser input and no AI connection",
+        "status": "PASS"
+      },
+      {
+        "name": "leading/trailing/repeated spaces and Unicode retained",
+        "status": "PASS"
+      },
+      {
+        "name": "keyboard middle-caret insertion at exact position",
+        "status": "PASS"
+      },
+      {
+        "name": "native first-paragraph arbitrary selection replacement preserves second paragraph",
+        "status": "PASS"
+      },
+      {
+        "name": "toolbar Bold keeps first-paragraph selection",
+        "status": "PASS"
+      },
+      {
+        "name": "Italic and Underline semantic marks",
+        "status": "PASS"
+      },
+      {
+        "name": "heading and paragraph controls create semantic blocks",
+        "status": "PASS"
+      },
+      {
+        "name": "bullet and numbered list commands",
+        "status": "PASS"
+      },
+      {
+        "name": "keyboard Undo/Redo supports manual text",
+        "status": "PASS"
+      },
+      {
+        "name": "toolbar Undo/Redo uses same document history",
+        "status": "PASS"
+      },
+      {
+        "name": "search input does not steal manuscript model selection or mutate prose",
+        "status": "PASS"
+      },
+      {
+        "name": "explicit next/previous match navigation",
+        "status": "PASS"
+      },
+      {
+        "name": "editing selected search result recomputes stale ranges",
+        "status": "PASS"
+      },
+      {
+        "name": "search treats regex metacharacters literally",
+        "status": "PASS"
+      },
+      {
+        "name": "clearing search preserves selection and prose",
+        "status": "PASS"
+      },
+      {
+        "name": "explicit search navigation reveals off-screen selected occurrence",
+        "status": "PASS"
+      },
+      {
+        "name": "chapter switch opens distinct blank draft",
+        "status": "PASS"
+      },
+      {
+        "name": "return restores stable chapter text and caret",
+        "status": "PASS"
+      },
+      {
+        "name": "planning notes cannot replace manuscript text",
+        "status": "PASS"
+      },
+      {
+        "name": "chapter rename preserves manuscript and caret",
+        "status": "PASS"
+      },
+      {
+        "name": "reorder preserves stable selected chapter content",
+        "status": "PASS"
+      },
+      {
+        "name": "Undo remains chapter-local after reorder",
+        "status": "PASS"
+      },
+      {
+        "name": "failed identity conceals text and controls",
+        "status": "PASS"
+      },
+      {
+        "name": "changed author never sees former author draft",
+        "status": "PASS"
+      },
+      {
+        "name": "signed-out identity conceals editor",
+        "status": "PASS"
+      },
+      {
+        "name": "unknown workspace outcome locks/conceals manuscript without ordinary write retry",
+        "status": "PASS"
+      },
+      {
+        "name": "keyboard focus reaches labelled formatting controls",
+        "status": "PASS"
+      },
+      {
+        "name": "no horizontal overflow at1440px",
+        "status": "PASS"
+      },
+      {
+        "name": "no horizontal overflow at900px",
+        "status": "PASS"
+      },
+      {
+        "name": "no horizontal overflow at390px",
+        "status": "PASS"
+      },
+      {
+        "name": "reload truthfully discards memory-only text",
+        "status": "PASS"
+      },
+      {
+        "name": "fixture requested no external origin",
+        "status": "PASS"
+      }
+    ],
+    "assertions": 33,
+    "external": []
+  }
+}

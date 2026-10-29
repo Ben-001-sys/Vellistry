@@ -1,0 +1,19 @@
+
+> vellistry@ check H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor
+> pnpm --filter @vellistry/api typecheck && pnpm --filter @vellistry/web typecheck
+
+
+> @vellistry/api@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\api
+> tsc --noEmit -p tsconfig.json
+
+
+> @vellistry/web@0.0.1 typecheck H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web
+> tsc --noEmit
+
+.next/dev/types/validator.ts(58,39): error TS2307: Cannot find module '../../../src/app/%5Feditor-synthetic/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(66,69): error TS2344: Type '__InvalidParamMatchingKeys' does not satisfy the constraint 'never'.
+  Type 'string' is not assignable to type 'never'.
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @vellistry/web@0.0.1 typecheck: `tsc --noEmit`
+Exit status 2
+ ELIFECYCLE  Command failed with exit code 2.

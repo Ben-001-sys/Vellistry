@@ -1,0 +1,7 @@
+Owned transient Next PID 34460 stopped, taskkill exit0.
+SUCCESS: The process with PID 848 (child process of PID 18564) has been terminated.
+SUCCESS: The process with PID 8564 (child process of PID 34460) has been terminated.
+SUCCESS: The process with PID 18564 (child process of PID 34460) has been terminated.
+SUCCESS: The process with PID 34460 (child process of PID 35676) has been terminated.
+Transient wrapper removed: H:\cursor\cursor\Vellistry\.worktrees\vel-imp003a-manual-editor\apps\web\src\app\%5Feditor-synthetic\page.tsx
+No owner app3000/4100 process or configuration touched.

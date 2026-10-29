@@ -3,32 +3,30 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-28
+updated_at: 2026-10-29
 owner: project_owner
 version: 0.2.2
 ---
 
 # Vellistry — current verified state
 
-## Local Auth runtime repair — 2026-10-28
+## Manual editor foundation — 2026-10-29
 
-FACT: PR127 merged main `5e3aeec95a34c0a9564067632655a0549a824c9d`;
-[post-main40476240880](https://github.com/Ben-001-sys/Vellistry/actions/runs/40476240880)
-SUCCESS;55MFA tests now mandatory alongside existing security/recovery gates.
-Task65/CP65/EB65 history and activeTask66/CP66/EB66 preserved.
+FACT: main5e3aeec95a34c0a9564067632655a0549a824c9d unchanged. Task0067/PR128
+repair remains Ready/unmerged at1ff3e91, CI40838205911 SUCCESS. Root78f80bb
+and owner changes preserved; current isolated local app uses Next16.4.1.
 
-Task0067/CP0067 reproduces missing Nest constructor injection under tsx;
-explicit runtime tokens and offline HTTP regressions are proposed for review.
-Root78f80bb checkout was stale, missing MFA route and serving Next16.4.0.
-Isolated current worktree serves existing AuthPanel at /account/mfa on16.4.1.
-[Report](docs/reports/VEL-LOCAL-AUTH-RUNTIME-0067.md). No env files copied,
-Auth policy/SQL/dependency/CI changes or hosted requests. Configured real Auth,
-backend MFA enforcement and hosted Books persistence remain unverified.
+Owner defers interactive MFA acceptance, authorizes bounded local IMP003A only.
+Task0068/CP0068 adds unregistered Tiptap3 editor, reusing IMP002 organizer/session:
+manual formatting, history, caret, word count and chapter-local search;30offline
+and33browser checks PASS. [Report](docs/reports/VEL-IMP003A-MANUAL-EDITOR-0068.md).
+Drafts exist only in preview memory; no production route, writes, durable Saved
+or hosted acceptance. Editor PR depends on128; review/CI/owner merge pending.
 
-R01-R08 NOT_RUN; N12/historical independent spawn EPERM BLOCKED. PRINCIPAL/SESSION
-and other production gates unchanged; hosted fixtures UNKNOWN/G1-G4 unsatisfied.
-Issue108OPEN; remediation delegation EXPIRED; separate owner merge required.
-Earlier paragraphs are dated history, not new security or implementation authority.
+PRINCIPAL/SESSION/gateway and persistence remain gated. R01-R08 NOT_RUN;
+N12/historical independent EPERM BLOCKED. Issue108OPEN; remediation delegation
+EXPIRED. Owner-reported basic login is not agent-verified hosted acceptance.
+Earlier dated paragraphs remain historical records, not renewed authority.
 
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26
 
