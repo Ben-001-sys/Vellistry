@@ -107,7 +107,7 @@ export function createManuscriptSession(readOwner: () => Promise<string | null>)
     if (index < 0) index = direction === 1 ? 0 : matches.length - 1;
     const match = matches[index];
     editor.view.dispatch(editor.state.tr.setSelection(TextSelection.create(editor.state.doc, match.from, match.to)).setMeta("addToHistory", false).scrollIntoView());
-    editor.commands.focus(undefined, {scrollIntoView: false}); return true;
+    editor.commands.focus(undefined, {scrollIntoView: true}); return true;
   }
   return {snapshot: () => model, subscribe(fn: () => void) { listeners.add(fn); return () => { listeners.delete(fn); }; },
     bind, format, search, find,
