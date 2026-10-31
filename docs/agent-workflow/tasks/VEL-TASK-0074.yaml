@@ -1,0 +1,120 @@
+id: VEL-TASK-0074
+title: IMP003C local editor save recovery composition and loopback interruption
+type: implementation-task
+status: in-progress
+created_at: '2026-10-31'
+updated_at: '2026-10-31'
+owner: project_owner
+context_pack_id: VEL-CP-0074
+objective: Compose existing editor/save/recovery through synthetic transport and real
+  loopback HTTP interruption against unchanged disposable PG17
+in_scope:
+- apps/web/src/lib/editor/manuscript-composition.ts
+- apps/web/src/components/editor/manuscript-composition-preview.tsx
+- apps/web/src/lib/editor/manuscript-composition.test.tsx
+- apps/web/src/lib/editor/manuscript-editor.test.mjs
+- tests/fixtures/manuscript-transport-synthetic.ts
+- tests/editor/persistence/manuscript-http.integration.mjs
+- tests/workspace/persistence/run_pg17.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0074.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0074.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0074.md
+- docs/agent-workflow/inputs/VEL-TASK-0074/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP003C-COMPOSITION-0074.md
+- docs/reports/evidence/VEL-TASK-0074/*
+out_of_scope:
+- Any SQL changes, dependencies, CI policy/workflows, Auth/session/production route/gateway
+  registration
+- Hosted, production, private manuscripts, paid APIs, persistent browser storage,
+  deployment, settings, merge and successor work
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/web/src/lib/editor/manuscript-session.ts
+  role: governing-source
+- path: apps/web/src/components/editor/manuscript-editor.tsx
+  role: governing-source
+- path: apps/web/src/lib/editor/manuscript-recovery.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/manuscript-contract.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/manuscript.service.ts
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0074/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0074/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0074/SOURCE-REFERENCES.json
+  role: governing-source
+source_gaps:
+- id: PRODUCTION
+  limitation: Synthetic principals/session rows/storage; no hosted or real-session
+    enforcement. R01-R08 NOT_RUN N12/EPERM BLOCKED.
+deliverables:
+- Reusable isolated composition controller and test-only preview with actual editor
+  interactions
+- Synthetic transport and actual loopback socket/response interruption, durable receipt/no-duplicate
+  and rollback/conflict evidence
+- EB, distinct final review, Draft then ReadyCI and unmerged PR
+acceptance_criteria:
+- Capture immutable operation/revision/document; preserve newer writing and uncertain
+  identity until authoritative receipt
+- Suppress delayed/aborted results after identity/chapter change; explicit isolated
+  recovery never automatic overwrite
+- Actual DOM editor/status/controls tests preserve Unicode, marks, selection, Undo
+  and listener cleanup
+- Real127.0.0.1 ephemeral HTTP disconnect after disposable PG commit; receipt resolves
+  without duplicate; missing receipt remains unknown; cleanup verified
+- Existing regressions/build/check/full governance/PG security/recovery and exact-head
+  ReadyCI; no SQL/CI/dependency/Auth changes
+allowed_actions:
+- Commit Task and governing sources then generate/validate/commit immutable CP before
+  code
+- Implement exact listed paths; frozen install, synthetic DOM/UI and owned loopback
+  Node HTTP harness
+- Execute unchanged SQL fixtures only through existing owned disposable PG17 runner;
+  extend its required test execution without changing CI policy
+- Distinct read-only final source review, Draft then ReadyCI; no merge
+approval_required_for:
+- Scope expansion, SQL/dependency/CI/security/hosted/production changes, persistent
+  device storage, merge or successor
+compliance:
+  change_base: e83022bf1f71746482bed832a894cdfac6dcc500
+  phase: repository-only
+  executor: Codex
+  allow_paths:
+  - apps/web/src/lib/editor/manuscript-composition.ts
+  - apps/web/src/components/editor/manuscript-composition-preview.tsx
+  - apps/web/src/lib/editor/manuscript-composition.test.tsx
+  - apps/web/src/lib/editor/manuscript-editor.test.mjs
+  - tests/fixtures/manuscript-transport-synthetic.ts
+  - tests/editor/persistence/manuscript-http.integration.mjs
+  - tests/workspace/persistence/run_pg17.py
+  - CURRENT-STATE.md
+  - docs/agent-workflow/tasks/VEL-TASK-0074.yaml
+  - docs/agent-workflow/context-packs/VEL-CP-0074.md
+  - docs/agent-workflow/execution-bundles/VEL-EB-0074.md
+  - docs/agent-workflow/inputs/VEL-TASK-0074/*
+  - docs/agent-workflow/PR-COMPLIANCE.yaml
+  - docs/reports/VEL-IMP003C-COMPOSITION-0074.md
+  - docs/reports/evidence/VEL-TASK-0074/*
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6542568102
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-14'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
