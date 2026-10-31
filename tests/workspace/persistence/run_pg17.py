@@ -51,7 +51,7 @@ def main():
     cases = json.loads((ROOT / args.cases).read_text())["cases"]
     extensions = json.loads((ROOT / "docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json").read_text())["extensions"]
     implementation = ["apps/api/src/modules/workspace/"+p for p in ["workspace-contract.ts","workspace-principal.ts","workspace-persistence-port.ts","workspace.service.ts","workspace-contract.spec.ts"]]+["tests/workspace/persistence/"+p for p in ["workspace-pg-adapter.ts","workspace-pg17.integration.mjs","run_pg17.py"]]
-    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation+["tests/editor/persistence/manuscript-pg17.integration.mjs","apps/api/src/modules/workspace/manuscript-contract.ts","apps/api/src/modules/workspace/manuscript.service.ts"]}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
+    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation+["tests/editor/persistence/manuscript-pg17.integration.mjs","apps/api/src/modules/workspace/manuscript-contract.ts","apps/api/src/modules/workspace/manuscript.service.ts","tests/editor/persistence/manuscript-http.integration.mjs"]}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
     exit_code = 1
     local_validated = False
     try:
@@ -67,6 +67,7 @@ def main():
         # Pin the validated local endpoint, even if the user's default context changes.
         env["DOCKER_HOST"]=endpoint
         local_validated = True
+        result["checkout_sha256"].update({p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ["apps/web/src/lib/editor/manuscript-composition.ts","apps/web/src/lib/editor/manuscript-recovery.ts","apps/web/src/lib/editor/manuscript-session.ts"]})
         command(["docker","version","--format","{{.Server.Version}}"],timeout=30)
         command(["docker","volume","create","--label",label+"="+run_id,volume])
         command(["docker","run","-d","--name",name,"--label",label+"="+run_id,"-e","POSTGRES_PASSWORD","-e","POSTGRES_DB=workspace","-p","127.0.0.1::5432","-v",volume+":/var/lib/postgresql/data",IMAGE])
@@ -109,6 +110,14 @@ def main():
             reopened=subprocess.run(manuscript_cmd+["--verify-restart"],capture_output=True,cwd=ROOT,env=env,timeout=60)
             result["manuscript_restart"]=dict(exit_code=reopened.returncode,output=(reopened.stdout+reopened.stderr).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]"))
             if reopened.returncode:raise RuntimeError("Manuscript restart verification failed")
+        http_cmd=["corepack.cmd" if os.name=="nt" else "corepack","pnpm","--filter","@vellistry/api","exec","tsx",str(ROOT/"tests/editor/persistence/manuscript-http.integration.mjs")]
+        http_run=subprocess.run(http_cmd,capture_output=True,cwd=ROOT,env=env,timeout=180)
+        commands.append(dict(argv=http_cmd,exit_code=http_run.returncode))
+        result["manuscript_http"]=dict(exit_code=http_run.returncode,output=(http_run.stdout+http_run.stderr).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-16000:])
+        if http_run.returncode==0:
+            http_records=[json.loads(line) for line in http_run.stdout.decode().splitlines() if line.startswith('{')]
+            if len([r for r in http_records if r.get("id") and r.get("status")=="PASS"])!=8 or not any(r.get("http_cleanup")=="PASS" and r.get("listening") is False and r.get("open_sockets")==0 for r in http_records):
+                raise RuntimeError("Incomplete HTTP interruption/cleanup proof")
         cmd=["corepack.cmd" if os.name=="nt" else "corepack","pnpm","--filter","@vellistry/api","exec","tsx",str(ROOT/"tests/workspace/persistence/workspace-pg17.integration.mjs")]
         # tsx runs in API cwd. The test adapter resolves pg from the frozen API installation.
         r=subprocess.run(cmd,capture_output=True,cwd=ROOT,env=env,timeout=600)
@@ -118,7 +127,7 @@ def main():
         else:result["harness_error"]=(r.stderr or r.stdout).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-2500:]
         expected={c["id"] for c in cases+extensions}
         assert {c["id"] for c in result["cases"]}==expected and len(result["cases"])==32
-        exit_code=0 if manuscript_run.returncode==0 and r.returncode==0 and all(c["status"]=="PASS" for c in result["cases"]) else 1
+        exit_code=0 if http_run.returncode==0 and manuscript_run.returncode==0 and r.returncode==0 and all(c["status"]=="PASS" for c in result["cases"]) else 1
     except (RuntimeError,AssertionError,subprocess.SubprocessError,OSError) as e:
         result["runtime_error"]=str(e).replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[:300]
     finally:

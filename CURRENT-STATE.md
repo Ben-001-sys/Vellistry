@@ -10,6 +10,11 @@ version: 0.2.2
 
 # Vellistry — current verified state
 
+## IMP003C — 2026-10-31
+
+PR133 main `e83022b` post-main41193526527 PASS. Task0074 composition/HTTP tests
+are in verification; no production registration. Dated snapshots below are historical.
+
 ## IMP003B disposable implementation — 2026-10-31
 
 FACT: main857b686 integrates PR132; exact reviewed tree and post-main41184485735
