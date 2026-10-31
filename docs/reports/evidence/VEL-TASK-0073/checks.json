@@ -1,0 +1,26 @@
+[
+  {
+    "command": "python docs/agent-workflow/inputs/VEL-TASK-0073/verify_record.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0073/record.txt"
+  },
+  {
+    "command": "python scripts/check_knowledge_metadata.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0073/metadata.txt"
+  },
+  {
+    "command": "python scripts/check_implementation_readiness.py",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0073/readiness.txt"
+  },
+  {
+    "command": "python scripts/spec_traceability.py validate",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "docs/reports/evidence/VEL-TASK-0073/traceability.txt"
+  }
+]
