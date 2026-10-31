@@ -1,0 +1,131 @@
+id: VEL-TASK-0071
+title: IMP003B disposable manuscript revisions and synthetic draft recovery
+type: implementation-task
+status: in-progress
+created_at: '2026-10-31'
+updated_at: '2026-10-31'
+owner: project_owner
+context_pack_id: VEL-CP-0071
+objective: Implement executable isolated revision save and recovery contracts without
+  production persistence
+in_scope:
+- apps/api/src/modules/workspace/manuscript-contract.ts
+- apps/api/src/modules/workspace/manuscript.service.ts
+- apps/api/src/modules/workspace/manuscript-contract.spec.ts
+- apps/api/src/modules/workspace/workspace-contract.spec.ts
+- apps/web/src/lib/editor/manuscript-recovery.ts
+- apps/web/src/lib/editor/manuscript-recovery.test.ts
+- apps/web/src/lib/editor/manuscript-editor.test.mjs
+- tests/editor/persistence/sql/10_manuscript_contract.sql
+- tests/editor/persistence/manuscript-pg17.integration.mjs
+- tests/workspace/persistence/run_pg17.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0071.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0071.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0071.md
+- docs/agent-workflow/inputs/VEL-TASK-0071/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP003B-CONTRACTS-0071.md
+- docs/reports/evidence/VEL-TASK-0071/*
+out_of_scope:
+- Hosted/production/Auth/MFA/JWT/private/paid/deployment/settings/merge
+- Other SQL paths, operative migrations/grants/RLS, production routes, CI/dependency
+  changes, historical evidence edits
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: SOURCE-OF-TRUTH.md
+  role: governing-source
+- path: LANGUAGE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/authorizations/VEL-TASK-0071.yaml
+  role: governing-source
+- path: docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md
+  role: governing-source
+- path: docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md
+  role: governing-source
+- path: docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json
+  role: governing-source
+- path: docs/requirements/MVP-USER-JOURNEYS-AND-ACCEPTANCE-2026-10-09.md
+  role: governing-source
+- path: docs/research/OPTION-B-WAVE06-R18-RELIABILITY-RECOVERY-2026-10-10.md
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace-principal.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/workspace.service.ts
+  role: governing-source
+- path: apps/web/src/lib/editor/manuscript-session.ts
+  role: governing-source
+- path: tests/workspace/persistence/run_pg17.py
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0071/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0071/HISTORICAL-PREPARATION.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0071/OWNER-SCOPE.md
+  role: governing-source
+source_gaps:
+- id: PRODUCTION-SECURITY
+  limitation: Synthetic principal/session/storage only; R01-R08NOT_RUN N12/EPERMBLOCKED;
+    hosted/gateway/session acceptance unresolved
+deliverables:
+- Executable bounded contracts, SQL fixture and20scenario positive/negative evidence
+- EB, actual tests, distinct completed-head review and Ready PR, no merge
+acceptance_criteria:
+- All20owner scenarios mapped to actual evidence; unknown writes never definite failures;
+  no false Saved
+- Atomic append-only revision/CAS/idempotency/ownership tests on disposable PG17;
+  rollback/restart/cleanup verified
+- Exact document preservation; recovery isolates identities and retains newer edits
+- Existing regressions/build/check/governance and exact-head CI; security limits explicit
+allowed_actions:
+- Commit governing inputs then validate/commit immutable CP before code
+- Implement listed paths, frozen dependencies, synthetic/unit tests and owned disposable
+  PG17 on loopback
+- Existing runner additionally executes manuscript cases and applies exactly authorized
+  fixture; preserve existing32cases
+- Distinct read-only review, Draft then Ready CI; no merge
+approval_required_for:
+- Any scope/SQL-path expansion, hosted/production/security gate change, dependencies/CI
+  or merge
+compliance:
+  change_base: 857b6862f7eba66a09f8fce2914f78cc4983683c
+  phase: repository-only
+  executor: Codex
+  allow_paths:
+  - apps/api/src/modules/workspace/manuscript-contract.ts
+  - apps/api/src/modules/workspace/manuscript.service.ts
+  - apps/api/src/modules/workspace/manuscript-contract.spec.ts
+  - apps/api/src/modules/workspace/workspace-contract.spec.ts
+  - apps/web/src/lib/editor/manuscript-recovery.ts
+  - apps/web/src/lib/editor/manuscript-recovery.test.ts
+  - apps/web/src/lib/editor/manuscript-editor.test.mjs
+  - tests/editor/persistence/sql/10_manuscript_contract.sql
+  - tests/editor/persistence/manuscript-pg17.integration.mjs
+  - tests/workspace/persistence/run_pg17.py
+  - CURRENT-STATE.md
+  - docs/agent-workflow/tasks/VEL-TASK-0071.yaml
+  - docs/agent-workflow/context-packs/VEL-CP-0071.md
+  - docs/agent-workflow/execution-bundles/VEL-EB-0071.md
+  - docs/agent-workflow/inputs/VEL-TASK-0071/*
+  - docs/agent-workflow/PR-COMPLIANCE.yaml
+  - docs/reports/VEL-IMP003B-CONTRACTS-0071.md
+  - docs/reports/evidence/VEL-TASK-0071/*
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6541216577
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-14'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

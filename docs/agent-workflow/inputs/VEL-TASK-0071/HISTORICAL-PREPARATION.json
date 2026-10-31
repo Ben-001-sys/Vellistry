@@ -1,0 +1,23 @@
+{
+  "commit": "0190a22bca8bb59b423be2f13223bc67c7227841",
+  "branch": "codex/vel-imp003b-contracts",
+  "status": "obsolete prerequisite preparation; never dispatched; no committed CP",
+  "files": [
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0071.yaml",
+      "sha256": "3aa7b9723dec456caa3ca422e80c2dfaed553e6a36973ec4b9066d00993156b1"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0071.md",
+      "sha256": "5eb561e8718d371a4b5c8c8f1ae12b4d87f6efae589dcdf634c042dc7f59f173"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0071/OWNER-AUTHORIZATION.json",
+      "sha256": "4fd94d25d413b9554497cb42416ee54928cdd64cdfc8f03ee70a008fcdb53fce"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0071/BOUNDARY.md",
+      "sha256": "497452c0fe378d34a587c792433fbedc496844e96e8a392f360564856c5ab44d"
+    }
+  ]
+}
