@@ -1,0 +1,68 @@
+✔ document preserves exact whitespace Unicode and marks without aliasing (1.7714ms)
+✔ reject malformed and unsupported documents (0.3284ms)
+✔ reject NUL surrogates oversized text and unsupported marks (1.2125ms)
+✔ bind exact operation target/revision and reject spoofed owner (0.4854ms)
+✔ service lost ACK remains unknown and original receipt reconciles (0.6855ms)
+✔ service suppresses results after account/session switch (0.2139ms)
+✔ service rejects malformed ACK and retains uncertain intent (0.2448ms)
+✔ service denies missing principal without persistence calls (0.211ms)
+✔ service suppresses foreign or stale readback (0.4705ms)
+✔ wire rejects forged ownership and unknown fields (0.4233ms)
+✔ Unicode preserves intent and enforces UTF16 (0.2402ms)
+✔ notes are separate, plain and untrimmed (0.2132ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.2998ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.2479ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.1556ms)
+✔ delayed rejection cannot release a newer unknown operation (13.2892ms)
+✔ an observed read establishes a monotonic minimum baseline (0.7022ms)
+✔ every runner subprocess uses the validated Docker environment (147.49ms)
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (217.9203ms)
+✔ nonstring receipt enums preserve unknown and prohibit a new-key dispatch (0.4472ms)
+✔ rejected apply and reconciliation receipts establish the observed version floor (0.3779ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1051.2513
+
+✖ failing tests:
+
+test at src\modules\workspace\workspace-contract.spec.ts:50:1
+✖ rejecting a remote Docker context makes no daemon calls, including cleanup (217.9203ms)
+  AssertionError [ERR_ASSERTION]: Traceback (most recent call last):
+    File "<string>", line 19, in <module>
+    File "H:\cursor\cursor\Vellistry\.worktrees\vel-imp003b-implementation\tests\workspace\persistence\run_pg17.py", line 54, in main
+      result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation+["tests/editor/persistence/manuscript-pg17.integration.mjs","apps/api/src/modules/workspace/manuscript-contract.ts","apps/api/src/modules/workspace/manuscript.service.ts"]}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
+    File "H:\cursor\cursor\Vellistry\.worktrees\vel-imp003b-implementation\tests\workspace\persistence\run_pg17.py", line 54, in <dictcomp>
+      result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation+["tests/editor/persistence/manuscript-pg17.integration.mjs","apps/api/src/modules/workspace/manuscript-contract.ts","apps/api/src/modules/workspace/manuscript.service.ts"]}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
+    File "C:\Program Files\Python310\lib\pathlib.py", line 1126, in read_bytes
+      with self.open(mode='rb') as f:
+    File "C:\Program Files\Python310\lib\pathlib.py", line 1119, in open
+      return self._accessor.open(self, mode, buffering, encoding, errors,
+  FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\admin\\AppData\\Local\\Temp\\vel-no-remote-probe-c1g0ukj5\\tests\\editor\\persistence\\manuscript-pg17.integration.mjs'
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003b-implementation\apps\api\src\modules\workspace\workspace-contract.spec.ts:72:155)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003b-implementation\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
