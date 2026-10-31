@@ -152,3 +152,7 @@ test("unmounted component renders safe SSR preparation without creating a DOM ed
   session.search("needle"); assert.ok(scrolls.every(v => !v), "typing query must not scroll manuscript");
   scrolls.length = 0; session.find(1); assert.ok(scrolls.some(Boolean), "explicit match navigation must reveal selection");
  });
+
+import "./manuscript-recovery.test.ts";
+
+test("actual Tiptap ordered-list JSON passes manuscript validation without rewriting",async()=>{const {editor}=await setup();write(editor,"  numbered café  ");editor.commands.toggleOrderedList();const value=editor.getJSON();const {document:validate}=await import("../../../../api/src/modules/workspace/manuscript-contract.ts");assert.deepEqual(validate(value),JSON.parse(JSON.stringify(value)));});

@@ -12,7 +12,7 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[3]
 IMAGE = "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb"
-SQL = ["tests/workspace/persistence/sql/00_fixture_auth.sql", "supabase/migrations/20261009000000_initial_author_books.sql", "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql", *["tests/workspace/persistence/sql/" + name for name in ["10_workspace_schema.sql", "20_workspace_roles.sql", "30_workspace_functions.sql"]]]
+SQL = ["tests/workspace/persistence/sql/00_fixture_auth.sql", "supabase/migrations/20261009000000_initial_author_books.sql", "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql", *["tests/workspace/persistence/sql/" + name for name in ["10_workspace_schema.sql", "20_workspace_roles.sql", "30_workspace_functions.sql"]]] + ["tests/editor/persistence/sql/10_manuscript_contract.sql"]
 
 def local_engine(endpoint):
     return isinstance(endpoint,str) and endpoint.startswith(("npipe://", "unix:///"))
@@ -51,7 +51,7 @@ def main():
     cases = json.loads((ROOT / args.cases).read_text())["cases"]
     extensions = json.loads((ROOT / "docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json").read_text())["extensions"]
     implementation = ["apps/api/src/modules/workspace/"+p for p in ["workspace-contract.ts","workspace-principal.ts","workspace-persistence-port.ts","workspace.service.ts","workspace-contract.spec.ts"]]+["tests/workspace/persistence/"+p for p in ["workspace-pg-adapter.ts","workspace-pg17.integration.mjs","run_pg17.py"]]
-    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
+    result = dict(run_id=run_id, source_commit=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip(), image=IMAGE, checkout_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SQL+[args.cases]+implementation+["tests/editor/persistence/manuscript-pg17.integration.mjs","apps/api/src/modules/workspace/manuscript-contract.ts","apps/api/src/modules/workspace/manuscript.service.ts"]}, applied_sql_sha256={p:hashlib.sha256((ROOT/p).read_text(encoding="utf-8").encode()).hexdigest() for p in SQL}, commands=commands, cases=[dict(id=c["id"],status="BLOCKED",reason="runtime not completed") for c in cases+extensions], cleanup={})
     exit_code = 1
     local_validated = False
     try:
@@ -88,9 +88,27 @@ def main():
             admin((ROOT/path).read_text(encoding="utf-8"))
             commands[-1]["sql_source"] = path
         # Only generated hexadecimal credentials enter this stdin; never command args/logs.
-        admin("create role workspace_test login password '"+fixture_password+"'; grant vellistry_workspace_gateway to workspace_test; create role workspace_author_test login password '"+fixture_password+"'; grant authenticated to workspace_author_test; create role workspace_anon_test login password '"+fixture_password+"'; grant anon to workspace_anon_test;")
+        admin("create role workspace_test login password '"+fixture_password+"'; grant vellistry_workspace_gateway,vellistry_manuscript_gateway to workspace_test; create role workspace_author_test login password '"+fixture_password+"'; grant authenticated to workspace_author_test; create role workspace_anon_test login password '"+fixture_password+"'; grant anon to workspace_anon_test;")
         admin("alter table fixture_probe.gateway owner to workspace_test; alter table fixture_probe.author owner to workspace_author_test; alter table fixture_probe.anonymous owner to workspace_anon_test; grant usage on schema fixture_probe to workspace_test,workspace_author_test,workspace_anon_test;")
         env.update(VEL_PG_HOST="127.0.0.1",VEL_PG_PORT=ports[0]["HostPort"],VEL_FIXTURE_PASSWORD=fixture_password,VEL_ADMIN_PASSWORD=password,VEL_PG_CONTAINER=name,VEL_PG_OWNER=run_id,VEL_CASE_RESULT=str(evidence/(run_id+"-cases.json")))
+        manuscript_cmd=["corepack.cmd" if os.name=="nt" else "corepack","pnpm","--filter","@vellistry/api","exec","tsx",str(ROOT/"tests/editor/persistence/manuscript-pg17.integration.mjs")]
+        manuscript_run=subprocess.run(manuscript_cmd,capture_output=True,cwd=ROOT,env=env,timeout=180)
+        commands.append(dict(argv=manuscript_cmd,exit_code=manuscript_run.returncode))
+        result["manuscript_output"]=(manuscript_run.stdout+manuscript_run.stderr).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-12000:]
+        if manuscript_run.returncode==0:
+            command(["docker","restart",name])
+            restart_deadline=time.monotonic()+60
+            while time.monotonic()<restart_deadline:
+                probe=subprocess.run(["docker","exec",name,"pg_isready","-h","127.0.0.1","-U","postgres","-d","workspace"],capture_output=True,env=env)
+                if probe.returncode==0:break
+                time.sleep(0.4)
+            else:raise RuntimeError("Owned manuscript restart timeout")
+            rebound=json.loads(command(["docker","inspect",name]))[0]["NetworkSettings"]["Ports"]["5432/tcp"]
+            if not loopback_binding(rebound):raise RuntimeError("Restart non-loopback rejected")
+            env["VEL_PG_PORT"]=rebound[0]["HostPort"]
+            reopened=subprocess.run(manuscript_cmd+["--verify-restart"],capture_output=True,cwd=ROOT,env=env,timeout=60)
+            result["manuscript_restart"]=dict(exit_code=reopened.returncode,output=(reopened.stdout+reopened.stderr).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]"))
+            if reopened.returncode:raise RuntimeError("Manuscript restart verification failed")
         cmd=["corepack.cmd" if os.name=="nt" else "corepack","pnpm","--filter","@vellistry/api","exec","tsx",str(ROOT/"tests/workspace/persistence/workspace-pg17.integration.mjs")]
         # tsx runs in API cwd. The test adapter resolves pg from the frozen API installation.
         r=subprocess.run(cmd,capture_output=True,cwd=ROOT,env=env,timeout=600)
@@ -100,7 +118,7 @@ def main():
         else:result["harness_error"]=(r.stderr or r.stdout).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-2500:]
         expected={c["id"] for c in cases+extensions}
         assert {c["id"] for c in result["cases"]}==expected and len(result["cases"])==32
-        exit_code=0 if r.returncode==0 and all(c["status"]=="PASS" for c in result["cases"]) else 1
+        exit_code=0 if manuscript_run.returncode==0 and r.returncode==0 and all(c["status"]=="PASS" for c in result["cases"]) else 1
     except (RuntimeError,AssertionError,subprocess.SubprocessError,OSError) as e:
         result["runtime_error"]=str(e).replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[:300]
     finally:

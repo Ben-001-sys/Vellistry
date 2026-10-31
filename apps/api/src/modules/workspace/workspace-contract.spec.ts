@@ -54,7 +54,7 @@ original=m.ROOT
 with tempfile.TemporaryDirectory(prefix='vel-no-remote-probe-') as directory:
  root=pathlib.Path(directory)
  files=set(m.SQL+['docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json','docs/agent-workflow/proposals/VEL-IMP002-PERSISTENCE-EXECUTION-PACKET.json'])
- for folder in ['apps/api/src/modules/workspace','tests/workspace/persistence']:
+ for folder in ['apps/api/src/modules/workspace','tests/workspace/persistence','tests/editor/persistence']:
   files.update(p.relative_to(original).as_posix() for p in (original/folder).iterdir() if p.suffix in {'.ts','.mjs','.py'})
  for name in files:
   destination=root/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original/name,destination)
@@ -85,3 +85,5 @@ test("rejected apply and reconciliation receipts establish the observed version 
   await s.apply(book,request);if(throughLookup)assert.equal((await s.reconcile(book,request.operationId)).status,"rejected");assert.equal((await s.read(book)).status,"unavailable");
  }
 });
+
+import "./manuscript-contract.spec";

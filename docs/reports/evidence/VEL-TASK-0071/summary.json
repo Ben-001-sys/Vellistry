@@ -1,0 +1,30 @@
+{
+  "source_commit": "daed575f6eb42eda5c09abff07e7e5e747e6dbeb",
+  "pg_source_commit": "b5fe318850dab53332636128f7a64f53c22ad481",
+  "pg_cases": 16,
+  "pg_restart": 1,
+  "existing_pg_cases": 32,
+  "postgres": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "cleanup": {
+    "container": {
+      "exit_code": 0,
+      "verified_absent": true
+    },
+    "volume": {
+      "exit_code": 0,
+      "verified_absent": true
+    }
+  },
+  "preserved_failures": [
+    "two pre-dispatch pack size errors",
+    "sandbox Corepack DNS denied",
+    "PowerShell integration command parser error before execution",
+    "workspace UTF8 re-encoding failure restored",
+    "first PG new-suite ECONNREFUSED after old restart;32oldPASS",
+    "initial independent review twoP2 now fixed",
+    "actual editor roundtrip prototype assertion failure corrected",
+    "remote-daemon fixture missing new module corrected",
+    "local full governance interrupted exit1 while source moved; NOT PASS"
+  ],
+  "boundaries": "Synthetic identity/session/storage; discarded response simulates lost ACK, not actual network kill. Real owned PG restart tested; no browser/device durability."
+}

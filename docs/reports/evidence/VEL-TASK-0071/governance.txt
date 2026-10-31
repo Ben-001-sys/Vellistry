@@ -1,0 +1,13 @@
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0002.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0002.md
+COMMAND: C:\Program Files\Python310\python.exe scripts/agent_workflow.py pack docs/agent-workflow/tasks/VEL-TASK-0003.yaml
+Created docs\agent-workflow\context-packs\VEL-CP-0003.md
+COMMAND: C:\Program Files\Python310\python.exe -m unittest discover -s tests -p test_*.py -v
+test_git_metadata_case_aliases_are_rejected (test_agent_workflow.GitMetadataCaseTests) ... ok
+test_bundle_approval_requires_owner_and_evidence (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_bundle_assessment_is_not_formal_approval (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_changed_current_task_does_not_invalidate_pinned_historical_pack (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_injected_instructions_outside_contract_are_rejected (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_missing_task_field_fails (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_pack_generation_is_valid_and_embeds_snapshots (test_agent_workflow.HandoffWorkflowTests) ... ok
+test_permission_scope_approval_and_criteria_mutations_fail (test_agent_workflow.HandoffWorkflowTests) ... ok

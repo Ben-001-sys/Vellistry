@@ -1,0 +1,2 @@
+Source30a97f1: pack exit1: LANGUAGE.md exceeds35000byte context limit. Removed oversized source from pack inputs before any pack creation or code; standing source remains unchanged and was inspected.
+Sourceac31db9: pack exit1 total selected sources exceeds90000bytes. Replaced large historical source bodies with exact Git source/hash references; implementation CONTRACT retains bounded operative acceptance.
