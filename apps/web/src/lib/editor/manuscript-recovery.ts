@@ -4,9 +4,10 @@ export type DraftPhase="unsaved"|"saving"|"confirmed"|"rejected"|"conflicted"|"u
 export type DraftStorage={get(key:string):unknown;set(key:string,value:unknown):void};
 type Pending={id:string;text:string;base:number};
 type Entry={scope:DraftScope;text:string;base:number;phase:DraftPhase;pending?:Pending};
-export function createDraftRecovery(storage:DraftStorage,validate:(value:unknown)=>unknown){
+export function createDraftRecovery(storage:DraftStorage,validate:(value:unknown)=>unknown,clientId:string){
+ if(typeof clientId!=="string"||!clientId||clientId.length>100)throw new Error("Explicit synthetic client identity required");
  let active:Entry|null=null;let epoch=0;
- const key=(s:DraftScope)=>JSON.stringify([s.author,s.book,s.chapter]);
+ const key=(s:DraftScope)=>JSON.stringify([s.author,s.book,s.chapter,clientId]);
  function checked(s:DraftScope){if(!s||Object.keys(s).sort().join()!=="author,book,chapter"||Object.values(s).some(v=>typeof v!=="string"||!v||v.length>100))throw new Error("Invalid scope");return Object.freeze({...s});}
  function persist(){if(active)storage.set(key(active.scope),JSON.parse(JSON.stringify(active)));}
  function snapshot(){return active?JSON.parse(JSON.stringify(active)) as Entry:null;}

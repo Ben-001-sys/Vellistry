@@ -15,7 +15,7 @@ create policy manuscript_chapter_read on public.chapters for select to vellistry
 create policy manuscript_chapter_write on public.chapters for update to vellistry_manuscript_owner using(exists(select 1 from public.books b where b.id=book_id)) with check(exists(select 1 from public.books b where b.id=book_id));
 create policy manuscript_revision_read on public.chapter_revisions for select to vellistry_manuscript_owner using(exists(select 1 from public.books b where b.id=book_id));
 create policy manuscript_revision_append on public.chapter_revisions for insert to vellistry_manuscript_owner with check(exists(select 1 from public.chapters c where c.id=chapter_id and c.book_id=chapter_revisions.book_id and c.current_revision=revision and c.accepted_document=document));
-create table vellistry_manuscript.operations(owner_id uuid not null,operation_id uuid not null,book_id uuid not null references public.books(id) on delete cascade,chapter_id uuid not null,request jsonb not null,receipt jsonb,primary key(owner_id,operation_id),foreign key(book_id,chapter_id) references public.chapters(book_id,id));
+create table vellistry_manuscript.operations(owner_id uuid not null,operation_id uuid not null,book_id uuid not null references public.books(id) on delete cascade,chapter_id uuid not null,request_hash text not null check(request_hash ~ '^[0-9a-f]{64}$'),receipt jsonb,primary key(owner_id,operation_id),foreign key(book_id,chapter_id) references public.chapters(book_id,id));
 alter table vellistry_manuscript.operations enable row level security;
 alter table vellistry_manuscript.operations force row level security;
 grant select,insert,update(receipt) on vellistry_manuscript.operations to vellistry_manuscript_owner;
@@ -50,17 +50,18 @@ begin
  end if;
 end$$;
 create function vellistry_manuscript.save(book uuid,chapter uuid,op uuid,expected integer,doc jsonb) returns jsonb language plpgsql security definer set search_path=pg_catalog as $$
-declare a uuid:=nullif(current_setting('vellistry.author_id',true),'')::uuid;prior vellistry_manuscript.operations;v integer;req jsonb;result jsonb;
+declare a uuid:=nullif(current_setting('vellistry.author_id',true),'')::uuid;prior vellistry_manuscript.operations;v integer;req jsonb;reqhash text;result jsonb;
 begin
  perform vellistry_workspace.lock_owned_context(book);
  perform 1 from public.chapters where id=chapter and book_id=book;if not found then raise exception 'Not available' using errcode='42501';end if;
  if op is null or expected is null or expected<1 or expected>=2147483647 or doc is null or octet_length(doc::text)>300000 then raise exception 'Invalid request' using errcode='22023';end if;
  perform vellistry_manuscript.validate_node(doc,'root',0);
  req:=jsonb_build_object('book',book,'chapter',chapter,'expected',expected,'document',doc);
+ reqhash:=encode(public.digest(convert_to(req::text,'UTF8'),'sha256'),'hex');
  -- Unique owner+operation key serializes duplicates even when they target different books.
- insert into vellistry_manuscript.operations values(a,op,book,chapter,req,null) on conflict do nothing;
+ insert into vellistry_manuscript.operations values(a,op,book,chapter,reqhash,null) on conflict do nothing;
  select * into prior from vellistry_manuscript.operations where owner_id=a and operation_id=op for update;
- if prior.request<>req then raise exception 'Operation reused' using errcode='22023';end if;
+ if prior.request_hash<>reqhash then raise exception 'Operation reused' using errcode='22023';end if;
  if prior.receipt is not null then return prior.receipt;end if;
  perform vellistry_workspace.test_fault('manuscript_journal');
  select current_revision into v from public.chapters where id=chapter and book_id=book;

@@ -3,32 +3,27 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-29
+updated_at: 2026-10-31
 owner: project_owner
 version: 0.2.2
 ---
 
 # Vellistry — current verified state
 
-## Stacked-merge compliance correction — 2026-10-29
+## IMP003B disposable implementation — 2026-10-31
 
-FACT: main `6d9ce61fb560dd24e0646f6388ce38de3d87399d` integrates PR129,
-exact reviewed tree187c8538. PR128 post-main40948274512 passed. PR129
-post-main40951100355 FAILED: push compliance requires an invalid ancestry;
-application/security/32PG17/12recovery passed. Governance suite skipped;
-final gate FAILED. Historical failure remains FAIL, integration unverified.
-
-Task0070/CP0070 proposes the bounded evaluator/test correction, preserving
-trusted before, parent/tree checks and immutable implementation change-base.
-[Report](docs/reports/VEL-STACKED-MERGE-COMPLIANCE-0070.md). Review/CI/owner merge
-pending. Task0069 preparation is preserved undispatched, not rewritten.
-
-Task0068's unregistered Tiptap editor reuses IMP002;30editor/33browser checks
-are historical PASS. Memory-only drafts; no production route/durable save.
-MFA acceptance deferred, not security waived. PRINCIPAL/SESSION/gateway and
-persistence gated; R01-R08 NOT_RUN; N12/historical EPERM BLOCKED. Issue108OPEN;
-remediation delegation EXPIRED. No hosted acceptance or new feature authority.
-Earlier dated paragraphs remain historical records, not renewed authority.
+FACT: main857b686 integrates PR132; exact reviewed tree and post-main41184485735
+PASS. Its Task0071 single SQL-path record is now reviewed-base input. PR130
+previously repaired stacked compliance; original PR129 run40951100355 remainsFAIL.
+Task0071 was reconstructed with a new committed validated CP, preserving original
+0190a22 preparation and never-committed pack/archive separately. Candidate revision
+CAS/idempotency/read contracts, synthetic recovery and one disposable PG17 fixture
+are under verification; EB/report and final PR evidence govern actual results.
+No production route, durable browser draft or hosted-save claim. Source review,
+exact-head CI and separate owner merge remain required. Task0068 editor stays
+local-only. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED; PRINCIPAL/SESSION/gateway
+and hosted/private-pilot acceptance pending. Issues108/131 OPEN; remediation
+delegation EXPIRED. Historical reports retain earlier failures and limitations.
 
 ## Owner-only PRINCIPAL probe preparation — 2026-10-26
 
