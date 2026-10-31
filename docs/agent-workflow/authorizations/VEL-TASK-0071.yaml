@@ -1,0 +1,15 @@
+task_id: VEL-TASK-0071
+kind: migration-path-approval
+status: owner-verified
+approved_by: project_owner
+evidence: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6540993396
+paths:
+- tests/editor/persistence/sql/10_manuscript_contract.sql
+boundary: Disposable owned PostgreSQL17 synthetic fixture only. Retain direct author
+  DML denial, trusted injected synthetic principal, owner/book/chapter isolation,
+  least-privilege NOLOGIN/NOBYPASSRLS functions, safe fixed search paths, immutable
+  revisions, exact prose, protected receipts and cleanup. No hosted, production, Auth,
+  deployment or merge permission. Ineffective until reviewed-base integration.
+provenance: Explicit owner exact-path authorization relayed from conversation; not
+  Codex self-approval. See linked relay and governing OWNER-SCOPE.
+created_at: '2026-10-31'

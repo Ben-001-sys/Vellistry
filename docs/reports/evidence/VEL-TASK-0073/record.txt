@@ -1,0 +1,1 @@
+{"source": "ee43e6d5968335e9e8549a7cb95b3aed6500783b", "actual_base_rejects_candidate": true, "synthetic_parser_positive": 1, "negative_rejections": 9, "original_files_unchanged": 4, "original_runtime_cases": "27 NOT_RUN", "runtime": "NOT_RUN", "claim": "Offline parser/source probes only; owner base adoption still required"}
