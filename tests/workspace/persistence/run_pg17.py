@@ -116,7 +116,7 @@ def main():
         result["manuscript_http"]=dict(exit_code=http_run.returncode,output=(http_run.stdout+http_run.stderr).decode(errors="replace").replace(password,"[REDACTED]").replace(fixture_password,"[REDACTED]")[-16000:])
         if http_run.returncode==0:
             http_records=[json.loads(line) for line in http_run.stdout.decode().splitlines() if line.startswith('{')]
-            if len([r for r in http_records if r.get("id") and r.get("status")=="PASS"])!=7 or not any(r.get("http_cleanup")=="PASS" and r.get("listening") is False and r.get("open_sockets")==0 for r in http_records):
+            if len([r for r in http_records if r.get("id") and r.get("status")=="PASS"])!=8 or not any(r.get("http_cleanup")=="PASS" and r.get("listening") is False and r.get("open_sockets")==0 for r in http_records):
                 raise RuntimeError("Incomplete HTTP interruption/cleanup proof")
         cmd=["corepack.cmd" if os.name=="nt" else "corepack","pnpm","--filter","@vellistry/api","exec","tsx",str(ROOT/"tests/workspace/persistence/workspace-pg17.integration.mjs")]
         # tsx runs in API cwd. The test adapter resolves pg from the frozen API installation.

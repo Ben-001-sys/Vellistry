@@ -70,7 +70,7 @@ export function createManuscriptComposition(options:{readOwner:()=>Promise<strin
   }catch{emit('rejected','The test save could not be prepared. No operation was dispatched.');return;}
   inFlight=true;emit(reconcile?'unknown':'saving',reconcile?'Checking the original test operation...':'Saving captured text in the test environment...');
   try{const raw=await (reconcile?options.transport.lookup(s,op):options.transport.save(s,op));if(!await still(epoch,s))return;const receipt=parseReceipt(raw,op);drafts.settle(ticket,receipt.outcome,receipt.revision);floors.set(key(s),Math.max(floors.get(key(s))??1,receipt.revision));}
-  catch{if(!disposed&&epoch===generation)drafts.settle(ticket,'unknown');}
+  catch{if(await still(epoch,s))drafts.settle(ticket,'unknown');}
   finally{if(!disposed&&epoch===generation){inFlight=false;publishDraft();}}
  }
  async function recover(){if(disposed||!scope||!needsRecovery)return;const epoch=generation,s=scope;if(!await still(epoch,s))return;try{drafts.recover(drafts.recovery());needsRecovery=false;install(JSON.parse(drafts.snapshot()!.text));editorSession.snapshot().editor!.setEditable(true,false);publishDraft();}catch{emit('rejected','The recovery candidate is invalid. Accepted text was not changed.');}}
