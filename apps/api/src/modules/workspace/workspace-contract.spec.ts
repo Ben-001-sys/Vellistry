@@ -85,3 +85,5 @@ test("rejected apply and reconciliation receipts establish the observed version 
   await s.apply(book,request);if(throughLookup)assert.equal((await s.reconcile(book,request.operationId)).status,"rejected");assert.equal((await s.read(book)).status,"unavailable");
  }
 });
+
+import "./manuscript-contract.spec";

@@ -152,3 +152,5 @@ test("unmounted component renders safe SSR preparation without creating a DOM ed
   session.search("needle"); assert.ok(scrolls.every(v => !v), "typing query must not scroll manuscript");
   scrolls.length = 0; session.find(1); assert.ok(scrolls.some(Boolean), "explicit match navigation must reveal selection");
  });
+
+import "./manuscript-recovery.test.ts";
