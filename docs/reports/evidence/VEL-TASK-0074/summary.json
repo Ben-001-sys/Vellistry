@@ -1,0 +1,52 @@
+{
+  "source_commit": "44fb62768cb1adc88087d83b69369bc7acb1ba1b",
+  "base": "e83022bf1f71746482bed832a894cdfac6dcc500",
+  "tests": {
+    "workspace_editor": 92,
+    "new_DOM_composition": 11,
+    "library": 81,
+    "mfa": 55,
+    "preflight": 23,
+    "principal": 52,
+    "persistence_units": 21,
+    "new_HTTP_PG": 8,
+    "existing_manuscript_PG": 16,
+    "existing_persistence_PG": 32,
+    "database_restart": "PASS"
+  },
+  "postgres": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "owned_cleanup": {
+    "container": {
+      "exit_code": 0,
+      "verified_absent": true
+    },
+    "volume": {
+      "exit_code": 0,
+      "verified_absent": true
+    }
+  },
+  "real_interruption": "res.destroy after SQL COMMIT; actual client request.destroy after commit fence; receipt does not resubmit",
+  "synthetic_only": "UI mock transport confirmations and storage are memory-only, not durable device or deployed persistence",
+  "failures": [
+    {
+      "command": "corepack pnpm check",
+      "status": "FAIL",
+      "exit_code": 1,
+      "note": "Initial web tsc exit2: synthetic WorkspaceSnapshot missing five fields; compiler tool output retained in conversation, fixed before committed source"
+    },
+    {
+      "command": "corepack pnpm test:workspace-contract",
+      "status": "FAIL",
+      "exit_code": 1,
+      "note": "Initial87/88PASS Undo baseline defect; corrected no-history accepted load"
+    },
+    {
+      "command": "corepack pnpm test:workspace-contract",
+      "status": "FAIL",
+      "exit_code": 1,
+      "note": "Review regression before fix90/92PASS; rejected save/lookup bypassed identity recheck. After correction92/92PASS"
+    }
+  ],
+  "review_runtime": "Initial independent rerun BLOCKED spawn EPERM, not PASS",
+  "governance": "Final full current+archived suite must execute in exact-head CI; no local full-suite result claimed"
+}
