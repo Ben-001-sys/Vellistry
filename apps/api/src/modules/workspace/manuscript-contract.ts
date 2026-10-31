@@ -34,5 +34,6 @@ export function document(value:unknown):ManuscriptNode {
 export function saveOperation(raw:unknown):SaveOperation {
  const r=object(raw);exact(r,["operationId","bookId","chapterId","expectedRevision","document"]);
  if(typeof r.expectedRevision!=="number"||!Number.isSafeInteger(r.expectedRevision)||r.expectedRevision<1||r.expectedRevision>=2147483647)throw new Error("Invalid revision");
- return Object.freeze({operationId:identifier(r.operationId),bookId:identifier(r.bookId),chapterId:identifier(r.chapterId),expectedRevision:r.expectedRevision,document:document(r.document)});
+ const frozen=document(r.document);const freeze=(node:unknown):void=>{if(node&&typeof node==="object"){Object.values(node).forEach(freeze);Object.freeze(node);}};freeze(frozen);
+ return Object.freeze({operationId:identifier(r.operationId),bookId:identifier(r.bookId),chapterId:identifier(r.chapterId),expectedRevision:r.expectedRevision,document:frozen});
 }

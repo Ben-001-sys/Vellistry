@@ -20,7 +20,7 @@ export function createDraftRecovery(storage:DraftStorage,validate:(value:unknown
   settle(ticket:{epoch:number;scope:DraftScope;id:string},outcome:"confirmed"|"rejected"|"conflicted"|"unknown",revision?:number){
    if(!active||ticket.epoch!==epoch||key(ticket.scope)!==key(active.scope)||active.pending?.id!==ticket.id)return false;
    const pending=active.pending;
-   if(outcome==="confirmed"&&revision===pending.base+1){active.base=revision;active.phase=active.text===pending.text?"confirmed":"unsaved";delete active.pending;}
+   if(outcome==="confirmed"&&revision===pending.base+1){const stale=revision<active.base;active.base=Math.max(active.base,revision);active.phase=stale?"conflicted":active.text===pending.text?"confirmed":"unsaved";delete active.pending;}
    else if(outcome==="rejected"||outcome==="conflicted"){active.phase=outcome;delete active.pending;}
    else active.phase="unknown";persist();return true;
   },
