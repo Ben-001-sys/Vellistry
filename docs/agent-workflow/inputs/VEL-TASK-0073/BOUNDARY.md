@@ -1,0 +1,1 @@
+FACT: PR114 precedent requires record in reviewed base. This prerequisite authorizes no SQL execution. Only tests/editor/persistence/sql/10_manuscript_contract.sql for future Task0071. Preserve original0190a22 and never-committed CP0071; reconstruct implementation on new reviewed main. No record integration/feature merge authority.

@@ -1,0 +1,95 @@
+id: VEL-TASK-0073
+title: Prepare exact IMP003B disposable SQL-path owner record
+type: implementation-task
+status: in-progress
+created_at: '2026-10-31'
+updated_at: '2026-10-31'
+owner: project_owner
+context_pack_id: VEL-CP-0073
+objective: Implement only the necessary approval-record prerequisite for reserved
+  future Task0071; no executable SQL or feature code; owner retains record integration
+  and feature merge.
+in_scope:
+- docs/agent-workflow/tasks/VEL-TASK-0073.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0073.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0073.md
+- docs/agent-workflow/inputs/VEL-TASK-0073/*
+- docs/agent-workflow/authorizations/VEL-TASK-0071.yaml
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-PERSISTENCE-SQL-PATH-0073.md
+- docs/reports/evidence/VEL-TASK-0073/*
+out_of_scope:
+- All application, executable SQL, Auth, dependencies, CI and standing control changes
+- Automatic merge; hosted, real credentials, migrations, live JWT, private manuscripts,
+  deployment, settings
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0073/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0073/BOUNDARY.md
+  role: governing-source
+- path: scripts/pr_compliance.py
+  role: governing-source
+source_gaps:
+- id: SQL-BASE
+  limitation: Current main lacks the required owner-reviewed Task0071 SQL-path record.
+    Candidate cannot confer its own SQL permission. Task0071/CP0071 must be established
+    after prerequisite integration.
+deliverables:
+- Committed Task and validated immutable CP before candidate authorization record
+- Exact single-path record relaying explicit owner scope, without self-approval of
+  its candidate integration
+- Positive/negative trusted gate probes, source integrity and metadata evidence, EB
+  and distinct review
+- Draft/Ready prerequisite PR for ordinary owner decision; no automatic merge
+acceptance_criteria:
+- Only exact tests/editor/persistence/sql/10_manuscript_contract.sql authorized for
+  Task0071
+- Trusted parser rejects incorrect task/kind/path/evidence/status/authority and absent/candidate-only
+  base
+- Unchanged evaluator, application, SQL, workflows, dependencies and historical evidence
+- Actual governance, distinct completed-head review, Draft/ReadyCI and no merge
+allowed_actions:
+- Prepare and commit sources, generate/validate/commit immutable CP
+- Create exact scoped candidate record relaying explicit owner dispatch; validate
+  against trusted base code without editing it
+- Read-only distinct review, submit prerequisite PR, record actual CI and request
+  owner adoption
+approval_required_for:
+- Prerequisite PR merge; subsequent feature merge
+- Task0071 executable code only after reviewed-base path record and separate immutable
+  CP
+- All hosted, credentials-real, live JWT, production, paid, private and settings actions
+  remain excluded
+compliance:
+  change_base: 568724c3d8bf8d13ebe5b6da909953ad23ecc05b
+  phase: repository-only
+  executor: Codex
+  allow_paths:
+  - docs/agent-workflow/tasks/VEL-TASK-0073.yaml
+  - docs/agent-workflow/context-packs/VEL-CP-0073.md
+  - docs/agent-workflow/execution-bundles/VEL-EB-0073.md
+  - docs/agent-workflow/inputs/VEL-TASK-0073/*
+  - docs/agent-workflow/authorizations/VEL-TASK-0071.yaml
+  - docs/agent-workflow/PR-COMPLIANCE.yaml
+  - docs/reports/VEL-PERSISTENCE-SQL-PATH-0073.md
+  - docs/reports/evidence/VEL-TASK-0073/*
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6540993396
+    provenance: direct-owner-dispatch-with-coordinator-relay
+    status: authorized
+    expires_on: '2026-11-14'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
