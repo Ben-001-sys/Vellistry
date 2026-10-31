@@ -34,37 +34,37 @@ execution:
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/check.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/check.txt
   - command: corepack.cmd pnpm build
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/build.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/build.txt
   - command: corepack.cmd pnpm test:workspace-contract
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/test-workspace-contract.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/test-workspace-contract.txt
   - command: corepack.cmd pnpm test:library-isolation
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/test-library-isolation.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/test-library-isolation.txt
   - command: corepack.cmd pnpm test:auth-mfa
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/test-auth-mfa.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/test-auth-mfa.txt
   - command: corepack.cmd pnpm test:hosted-preflight
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/test-hosted-preflight.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/test-hosted-preflight.txt
   - command: corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/persistence-units-corrected.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/persistence-units-corrected.txt
     note: Final daed575 changes only the existing remote-context test copy list; corrected21unit
       test ran with that working-tree edit before its commit. Database/application
       executable code and fixtures unchanged.
@@ -72,7 +72,7 @@ execution:
     source_commit: b5fe318850dab53332636128f7a64f53c22ad481
     exit_code: 0
     status: PASS
-    evidence: docs/reports/evidence/VEL-TASK-0071/principal.log
+    evidence: docs/reports/evidence/VEL-TASK-0071/principal.txt
     note: Final daed575 changes only the existing remote-context test copy list; corrected21unit
       test ran with that working-tree edit before its commit. Database/application
       executable code and fixtures unchanged.
