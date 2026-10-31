@@ -3,7 +3,7 @@ import {randomUUID} from 'node:crypto';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {connection,context} from '../../workspace/persistence/workspace-pg-adapter';
 const [a,b,s,t,book,other,chapter,foreign]=Array.from({length:8},()=>randomUUID());
-const doc={type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'  café\n🦊  ',marks:[{type:'bold'}]}]}]};
+const doc={type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'  café\n🦊  ',marks:[{type:'bold'}]}]},{type:'orderedList',attrs:{start:1,type:null},content:[{type:'listItem',content:[{type:'paragraph',content:[{type:'text',text:'list item'}]}]}]}]};
 const restartFile=process.env.VEL_CASE_RESULT+'.manuscript.json';
 if(process.argv.includes('--verify-restart')){
  const state=JSON.parse(readFileSync(restartFile,'utf8'));const c=await connection();

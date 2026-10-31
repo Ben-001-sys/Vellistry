@@ -154,3 +154,5 @@ test("unmounted component renders safe SSR preparation without creating a DOM ed
  });
 
 import "./manuscript-recovery.test.ts";
+
+test("actual Tiptap ordered-list JSON passes manuscript validation without rewriting",async()=>{const {editor}=await setup();write(editor,"  numbered café  ");editor.commands.toggleOrderedList();const value=editor.getJSON();const {document:validate}=await import("../../../../api/src/modules/workspace/manuscript-contract.ts");assert.deepEqual(validate(value),JSON.parse(JSON.stringify(value)));});

@@ -4,7 +4,7 @@ export type SaveOperation = Readonly<{operationId:string;bookId:string;chapterId
 export function identifier(v:unknown):string {
  if(typeof v!=="string"||! /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(v))throw new Error("Invalid identifier");return v.toLowerCase();
 }
-function object(v:unknown):Record<string,unknown>{if(!v||typeof v!=="object"||Array.isArray(v)||Object.getPrototypeOf(v)!==Object.prototype)throw new Error("Invalid object");return v as Record<string,unknown>;}
+function object(v:unknown):Record<string,unknown>{if(!v||typeof v!=="object"||Array.isArray(v)||![Object.prototype,null].includes(Object.getPrototypeOf(v)))throw new Error("Invalid object");return v as Record<string,unknown>;}
 function exact(v:Record<string,unknown>,keys:string[]){if(Object.keys(v).sort().join()!==keys.sort().join())throw new Error("Unexpected fields");}
 export function document(value:unknown):ManuscriptNode {
  let count=0;
@@ -20,7 +20,7 @@ export function document(value:unknown):ManuscriptNode {
   }else{
    if(n.text!==undefined||n.marks!==undefined)throw new Error("Invalid block");
    if(type==="heading"){const a=object(n.attrs);exact(a,["level"]);if(![1,2,3].includes(Number(a.level))||typeof a.level!=="number")throw new Error("Invalid heading");}
-   else if(type==="orderedList"&&n.attrs!==undefined){const a=object(n.attrs);exact(a,["start"]);if(!Number.isSafeInteger(a.start)||Number(a.start)<1||Number(a.start)>2147483647)throw new Error("Invalid list start");}
+   else if(type==="orderedList"&&n.attrs!==undefined){const a=object(n.attrs);exact(a,a.type===undefined?["start"]:["start","type"]);if(a.type!==undefined&&a.type!==null)throw new Error("Unsupported list type");if(!Number.isSafeInteger(a.start)||Number(a.start)<1||Number(a.start)>2147483647)throw new Error("Invalid list start");}
    else if(n.attrs!==undefined)throw new Error("Unexpected attributes");
    if(type==="hardBreak"){if(n.content!==undefined)throw new Error("Invalid break");}
    else if(n.content!==undefined){if(!Array.isArray(n.content))throw new Error("Invalid children");n.content.forEach(x=>visit(x,type,depth+1));}

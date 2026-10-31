@@ -38,7 +38,7 @@ begin
   if t='heading' then
    if n->'attrs' not in ('{"level":1}'::jsonb,'{"level":2}'::jsonb,'{"level":3}'::jsonb) or not(n?'attrs') then raise exception 'Invalid heading' using errcode='22023';end if;
   elsif t='orderedList' and n?'attrs' then
-   if jsonb_typeof(n->'attrs'->'start')<>'number' or n->'attrs'<>jsonb_build_object('start',n->'attrs'->'start') or (n->'attrs'->>'start')::numeric not between 1 and 2147483647 or trunc((n->'attrs'->>'start')::numeric)<>(n->'attrs'->>'start')::numeric then raise exception 'Invalid list' using errcode='22023';end if;
+   if jsonb_typeof(n->'attrs'->'start')<>'number' or (n->'attrs'<>jsonb_build_object('start',n->'attrs'->'start') and n->'attrs'<>jsonb_build_object('start',n->'attrs'->'start','type',null)) or (n->'attrs'->>'start')::numeric not between 1 and 2147483647 or trunc((n->'attrs'->>'start')::numeric)<>(n->'attrs'->>'start')::numeric then raise exception 'Invalid list' using errcode='22023';end if;
   elsif n?'attrs' then raise exception 'Invalid attrs' using errcode='22023';end if;
   if t='hardBreak' then if n?'content' then raise exception 'Invalid break' using errcode='22023';end if;
   else
