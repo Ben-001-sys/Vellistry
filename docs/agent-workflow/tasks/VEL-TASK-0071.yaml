@@ -40,8 +40,6 @@ inputs:
   role: governing-source
 - path: SOURCE-OF-TRUTH.md
   role: governing-source
-- path: LANGUAGE.md
-  role: governing-source
 - path: docs/agent-workflow/PR-COMPLIANCE.md
   role: governing-source
 - path: docs/agent-workflow/authorizations/VEL-TASK-0071.yaml
