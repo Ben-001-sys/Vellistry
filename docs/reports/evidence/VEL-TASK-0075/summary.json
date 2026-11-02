@@ -68,6 +68,10 @@
     {
       "status": "FAIL",
       "cause": "Round4 reviewP2: memory-only recovery incorrectly required healthy storage. Historical1FAIL/current1PASS. Additional self-check clean tombstone fallback historicalFAIL/currentPASS; 9reviewP2+2self defects total11before/after negatives."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Evidence assembly cp1252 decode error; partial0d724c1 commit preserved; corrected UTF8 EB/manifest followup. No executable source changed."
     }
   ],
   "limits": [
