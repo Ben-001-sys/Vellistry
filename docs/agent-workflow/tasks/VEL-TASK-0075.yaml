@@ -35,8 +35,6 @@ inputs:
   role: governing-source
 - path: CURRENT-STATE.md
   role: governing-source
-- path: LANGUAGE.md
-  role: governing-source
 - path: docs/agent-workflow/PR-COMPLIANCE.md
   role: governing-source
 - path: apps/web/src/lib/editor/manuscript-recovery.ts
