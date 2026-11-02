@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "path": "tests/editor/durable-draft-browser.mjs",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "bebae8f0406c5b4ad7b77143eddd6296274120d62e22daae45339e520713bc94",
+      "bytes": 31842
+    },
+    {
+      "path": "tests/test_ci_policy.py",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "a833c779a3cce92b2427cc21386820e1c48f011db6e6771d76047dc19aa2c6eb",
+      "bytes": 31226
+    },
+    {
+      "path": "package.json",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "f7babe4ff35f0cfda692a7fe2870faa8737f2eb39c8ec6b7b1d9f5feef34838c",
+      "bytes": 1509
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "b2baacc150872cdcc65ba08838fdd5c84c73abf1979ecc6af939dcce4ca37da1",
+      "bytes": 109685
+    },
+    {
+      "path": "scripts/ci_policy.py",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "44ed7945b2e14e2fc2ee5d343553856d216e35f24dee383a15c4030c2609dc1c",
+      "bytes": 10162
+    },
+    {
+      "path": "scripts/pr_compliance.py",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "117eb9982c2935dbbcf2c42856c42c6eaec780fe6f2bb7bb1951a29d49d30452",
+      "bytes": 23233
+    },
+    {
+      "path": "scripts/run_pr_compliance.py",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "138c22d62272515f7fdf43c41a870414f393189185ba92cee139be8011a1db25",
+      "bytes": 3357
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0075/native-final-browser-results.json",
+      "commit": "20f4b5a4ab357dc0757678d689b79a67af687518",
+      "sha256": "e2d4f3affcd8d10137f06a301c385d1c6aa41630cfb574847614dc779ce0aed9",
+      "bytes": 5246
+    }
+  ],
+  "playwright": {
+    "version": "1.64.0",
+    "node": ">=20",
+    "registry_integrity": "sha512-kVzTnYFYEyQ9RGzBjNCd2+yEqWmVbxl3AHPynv3qQ6JTjv4a+kwRcnqQwIpuP3NnrnIrE/Q6wWAIAvMfIE2/Yg=="
+  }
+}

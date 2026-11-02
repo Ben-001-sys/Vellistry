@@ -1,0 +1,81 @@
+id: VEL-TASK-0076
+title: IMP003E mandatory native Chromium CI acceptance
+type: implementation-task
+status: in-progress
+created_at: '2026-11-02'
+updated_at: '2026-11-02'
+owner: project_owner
+context_pack_id: VEL-CP-0076
+objective: Make all41 native durable-draft browser cases reproducible and mandatory
+  in existing applicable application CI with complete source-bound evidence and cleanup
+in_scope: &id001
+- .github/workflows/ci.yml
+- package.json
+- pnpm-lock.yaml
+- tests/editor/durable-draft-browser.mjs
+- tests/test_ci_policy.py
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0076.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0076.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0076.md
+- docs/agent-workflow/inputs/VEL-TASK-0076/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP003E-CHROMIUM-CI-0076.md
+- docs/reports/evidence/VEL-TASK-0076/*
+out_of_scope:
+- Application/SQL/Auth/production/hosted/private manuscripts/paid services/deployment/merge;
+  protected evaluator/loader/ci_policy.py and other operative paths
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: .github/workflows/ci.yml
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0076/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0076/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0076/SOURCE-REFERENCES.json
+  role: governing-source
+source_gaps:
+- id: PRODUCTION
+  limitation: Synthetic principals/session rows/storage; no hosted or real-session
+    enforcement. R01-R08 NOT_RUN N12/EPERM BLOCKED.
+deliverables:
+- Pinned test-only Playwright, matching native Chromium, mandatory workflow steps,
+  complete evidence validator and negative tests
+- Actual tests/EB/distinct final review/fresh-runner full and Ready CI/unmerged PR
+acceptance_criteria:
+- All41 original cases execute once and PASS; native browser source/version/bundle
+  and cleanup evidence validates
+- Mandatory steps cannot be skipped/masked/replaced and failures block existing gate;
+  Draft remains advisory
+- Fresh owned CI execution needs no developer cache; synthetic-only bounded artifacts;
+  preserve all existing controls
+allowed_actions:
+- Implement exact paths after validated committed CP; install exact playwright1.64.0
+  dev dependency and matching Chromium
+- Execute synthetic tests/owned browsers/unchanged disposable PG fixtures and existing
+  CI; unmerged PR
+approval_required_for:
+- Any scope expansion/protected control/dependency beyond exact Playwright/SQL/hosted/security/merge
+compliance:
+  change_base: 20f4b5a4ab357dc0757678d689b79a67af687518
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6580279431
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-16'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
