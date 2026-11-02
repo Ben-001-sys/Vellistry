@@ -16,9 +16,12 @@
     "test:auth-mfa": "pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/auth/mfa-flow.test.ts ../web/src/lib/auth/auth-panel.test.tsx",
     "check:hosted-config": "node scripts/hosted_supabase_preflight.mjs",
     "test:workspace-contract": "pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/workspace/book-workspace-session.test.ts ../web/src/lib/editor/manuscript-editor.test.mjs",
-    "test:manuscript-editor": "pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/editor/manuscript-editor.test.mjs"
+    "test:manuscript-editor": "pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/editor/manuscript-editor.test.mjs",
+    "test:durable-drafts": "node tests/editor/durable-draft-browser.mjs",
+    "validate:durable-drafts": "node tests/editor/durable-draft-browser.mjs --validate .submission/durable-browser-results.json"
   },
   "devDependencies": {
+    "playwright": "1.64.0",
     "supabase": "^2.0.0",
     "typescript": "^5.8.0"
   }

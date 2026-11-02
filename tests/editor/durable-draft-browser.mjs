@@ -1,35 +1,73 @@
-/** Owned loopback-only Chromium acceptance. No production route or new dependency. */
+/** Owned loopback-only Chromium acceptance. No production route. Pinned development-only Playwright. */
 import {createRequire} from 'node:module';
 import {pathToFileURL,fileURLToPath} from 'node:url';
-import {readdir,mkdir,mkdtemp,rm,writeFile} from 'node:fs/promises';
+import {readdir,mkdir,mkdtemp,rm,writeFile,readFile,access} from 'node:fs/promises';
 import path from 'node:path';
 import http from 'node:http';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const require=createRequire(import.meta.url);
+const sha256=value=>createHash('sha256').update(value).digest('hex');
+const baselinePath='docs/reports/evidence/VEL-TASK-0075/native-final-browser-results.json';
+const baselineBytes=execFileSync('git',['show','HEAD:'+baselinePath],{cwd:root});
+assert.equal(sha256(baselineBytes),'e2d4f3affcd8d10137f06a301c385d1c6aa41630cfb574847614dc779ce0aed9','Historical case inventory changed');
+const requiredNames=JSON.parse(baselineBytes).cases.map(c=>c.name);
+assert.equal(requiredNames.length,41);assert.equal(new Set(requiredNames).size,41);
+const source=()=>execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+export function validateEvidence(e, expectedSource=source()) {
+ assert.equal(e.schema_version,1);assert.equal(e.result,'PASS');
+ assert.equal(e.source_commit,expectedSource,'Evidence source mismatch');
+ assert.match(expectedSource,/^[a-f0-9]{40}$/);
+ assert.deepEqual(e.execution,{real_chromium:true,persistent_profile:true,historical_override:null,case_filter:null,review_negatives:null,external_runtime:null,external_executable:null});
+ assert.equal(e.playwright_version,'1.64.0');assert.match(e.browser_version,/^(Chrome|Chromium)\/[0-9.]+$/);
+ assert.ok(e.chromium_build.revision && e.chromium_build.version);
+ assert.equal(e.browser_version.split('/')[1],e.chromium_build.version);
+ for(const field of ['bundle_sha256','chromium_executable_sha256'])assert.match(e[field],/^[a-f0-9]{64}$/);
+ assert.equal(e.required_cases,41);assert.equal(e.executed_cases,e.cases.length);
+ assert.equal(e.cases.length,41);assert.equal(new Set(e.cases.map(c=>c.name)).size,41,'Duplicate case');
+ assert.deepEqual(e.cases.map(c=>c.name).sort(),[...requiredNames].sort(),'Incomplete case inventory');
+ assert.ok(e.cases.every(c=>c.status==='PASS'),'Failed browser case');
+ assert.deepEqual(e.failures,[]);
+ assert.deepEqual(e.cleanup,{context_closed:true,profile_removed:true,http_closed:true,open_sockets:0});
+ return e;
+}
+const args=process.argv.slice(2);
+if(args[0]==='--validate') {
+ assert.equal(args.length,2,'Use --validate <evidence.json>');
+ const evidence=JSON.parse(await readFile(path.resolve(args[1]),'utf8'));
+ validateEvidence(evidence);console.log('PASS complete41 source-bound native Chromium evidence and cleanup');
+} else {
+ assert.equal(args.length,0,'Required acceptance does not support selective modes');
+ for(const key of ['VEL_CASE_PREFIX','VEL_REVIEW_NEGATIVES','VEL_REVIEW_BEFORE','VEL_PLAYWRIGHT_PATH','VEL_CHROMIUM_PATH'])
+   assert.equal(process.env[key],undefined,'Disallowed acceptance override: '+key);
 const output=path.join(root,'.submission');await mkdir(output,{recursive:true});
+// Remove stale success before dependency, bundling or launch failures.
+await rm(path.join(output,'durable-browser-results.json'),{force:true});
 const esbuildDir=(await readdir(path.join(root,'node_modules/.pnpm'))).find(x=>x.startsWith('esbuild@'));
 const esbuild=await import(pathToFileURL(path.join(root,'node_modules/.pnpm',esbuildDir,'node_modules/esbuild/lib/main.js')).href);
-const playwrightPath=process.env.VEL_PLAYWRIGHT_PATH;
-if(!playwrightPath)throw Error('BLOCKED: provide existing Playwright module path; no dependencies installed by harness');
-const {chromium}=createRequire(import.meta.url)(playwrightPath);
-const historical=!!process.env.VEL_REVIEW_BEFORE;
-const plugins=historical?[{name:'fixed-reviewed-regression-source',setup(build){build.onLoad({filter:/manuscript-(durable-composition\.ts|durable-preview\.tsx)$/},args=>({contents:execFileSync('git',['show',(process.env.VEL_REVIEW_BEFORE==='6'?'f4d337d655fd5e9bdf3b4fb152d63854bc68d5af':process.env.VEL_REVIEW_BEFORE==='5'?'32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56':process.env.VEL_REVIEW_BEFORE==='4'?'3e639170314e989ecec600d80f6c55cd3cc71657':process.env.VEL_REVIEW_BEFORE==='3'?'a718424f702ec69038fcf96f15ded2e0503ce2c4':process.env.VEL_REVIEW_BEFORE==='2'?'9bb43d622ec181f5bdd09c2395bb0b7d090f4a93':'b4782c022ae8b8dbe56adb4fb06e2a9a09754134')+':'+path.relative(root,args.path).replaceAll('\\','/')],{cwd:root,encoding:'utf8'}),loader:args.path.endsWith('tsx')?'tsx':'ts'}));}}]:[];
+const {chromium}=require('playwright');
+const playwrightVersion=require('playwright/package.json').version;
+assert.equal(playwrightVersion,'1.64.0');
+const builds=JSON.parse(await readFile(path.join(path.dirname(require.resolve('playwright-core/package.json')),'browsers.json'),'utf8'));
+const chromiumBuild=builds.browsers.find(b=>b.name==='chromium');
+const executableHash=sha256(await readFile(chromium.executablePath()));
+const plugins=[];
 const bundle=await esbuild.build({plugins,entryPoints:[path.join(root,'tests/editor/durable-draft-fixture.tsx')],bundle:true,write:false,platform:'browser',format:'iife',define:{'process.env.NODE_ENV':'"test"'},jsx:'automatic',nodePaths:[path.join(root,'apps/web/node_modules')]});
 const sockets=new Set();const server=http.createServer((req,res)=>{if(req.url==='/bundle.js'){res.setHeader('content-type','text/javascript');res.end(bundle.outputFiles[0].text);}else{res.setHeader('content-type','text/html');res.end('<!doctype html><html><body><div id="root"></div><script src="/bundle.js"></script></body></html>');}});
 server.on('connection',s=>{sockets.add(s);s.on('close',()=>sockets.delete(s));});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;
 const profile=await mkdtemp(path.join(output,'chromium-drafts-'));let context;const cases=[];
-const run=async(name,fn)=>{if(process.env.VEL_CASE_PREFIX&&!name.startsWith(process.env.VEL_CASE_PREFIX))return;if(process.env.VEL_REVIEW_NEGATIVES&&!name.startsWith('review:')&&!name.startsWith('race:')&&!name.startsWith('round3:')&&!name.startsWith('round4:')&&!name.startsWith('pending:'))return;try{await fn();cases.push({name,status:'PASS'});}catch(error){cases.push({name,status:'FAIL',error:String(error)});if(!process.env.VEL_REVIEW_NEGATIVES)throw error;}console.log(JSON.stringify(cases.at(-1)));};
+const run=async(name,fn)=>{assert.ok(requiredNames.includes(name),'Unexpected case');assert.ok(!cases.some(c=>c.name===name),'Duplicate case');try{await fn();cases.push({name,status:'PASS'});}catch(error){cases.push({name,status:'FAIL'});throw error;}console.log(JSON.stringify(cases.at(-1)));};
 const status=p=>p.getByRole('status',{name:'Local recovery status'});
 const ready=async p=>{await p.evaluate(()=>window.fixture.ready);await p.waitForSelector('[aria-label="Local recovery status"]');};
 const flush=async p=>p.evaluate(()=>window.fixture.flush());
 const text=async p=>p.evaluate(()=>window.fixture.editor()?.getJSON());
 const clear=async p=>{await p.evaluate(async()=>{window.fixture.release();await window.fixture.flush();await window.fixture.close();await new Promise((resolve,reject)=>{const r=indexedDB.deleteDatabase(window.fixture.dbName);r.onsuccess=resolve;r.onerror=reject;r.onblocked=()=>reject(Error('delete blocked'));});});};
-let result='FAIL',browserVersion=null;const executionSource=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+const failures=[];let result='FAIL',browserVersion=null,contextClosed=false;const executionSource=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
 try{
- context=await chromium.launchPersistentContext(profile,{headless:true,...(process.env.VEL_CHROMIUM_PATH?{executablePath:process.env.VEL_CHROMIUM_PATH}:{}),args:['--disable-background-networking','--disable-component-update','--disable-sync','--no-first-run']});
+ context=await chromium.launchPersistentContext(profile,{headless:true,executablePath:chromium.executablePath(),args:['--disable-background-networking','--disable-component-update','--disable-sync','--no-first-run']});
  await context.route('**/*',route=>route.request().url().startsWith(origin+'/')?route.continue():route.abort());
  const page=await context.newPage();const cdp=await context.newCDPSession(page);browserVersion=(await cdp.send('Browser.getVersion')).product;await cdp.detach();await page.goto(origin);await ready(page);
  let exact;
@@ -86,9 +124,25 @@ try{
  await run('pending: account switch suppresses detached lookup completion',async()=>{await clear(p);await p.reload();await ready(p);await p.locator('[contenteditable="true"]').click();await p.keyboard.insertText('private pending copy');await flush(p);await p.evaluate(()=>window.fixture.transportFault('drop-after'));await p.getByRole('button',{name:'Save test revision',exact:true}).click();await p.waitForFunction(()=>window.fixture.draft.controller.snapshot().phase==='unknown');await flush(p);await p.evaluate(async()=>{await window.fixture.advanceAccepted();await window.fixture.rebind();window.fixture.lookupMode('delay');});await p.getByRole('button',{name:'Check test save result',exact:true}).click();await p.waitForFunction(()=>window.fixture.lookupWaiting());await p.evaluate(async()=>{await window.fixture.owner(null);window.fixture.lookupRelease();});await p.waitForTimeout(30);assert.equal(await p.locator('[contenteditable="true"]').count(),0);assert.doesNotMatch(await status(p).textContent(),/Original operation resolved/);const record=await p.evaluate(()=>window.fixture.native.read(window.fixture.localScope()));assert.ok(record.pending);});
  for(const mode of ['error','blocked'])await run(`native open ${mode} can recover in the same adapter and then persist`,async()=>{await clear(p);await p.goto(origin+'/?openFailure='+mode);await ready(p);assert.match(await status(p).textContent(),/Unable to store/);await p.locator('[contenteditable="true"]').click();await p.keyboard.insertText('recover after open '+mode);await flush(p);const expected=await text(p);await p.evaluate(async()=>{await window.fixture.chapter(true);await window.fixture.chapter(false);});await p.getByRole('button',{name:'Recover local draft',exact:true}).click();await flush(p);assert.match(await status(p).textContent(),/Saved on this device/);assert.equal(await p.evaluate(()=>window.fixture.openAttempts()),2);await p.goto(origin);await ready(p);await p.getByRole('button',{name:'Recover local draft',exact:true}).click();await flush(p);assert.deepEqual(await text(p),expected);});
  await clear(p);result=cases.some(c=>c.status==='FAIL')?'FAIL':'PASS';if(result==='FAIL')process.exitCode=1;
+}catch(error){
+ failures.push({kind:'browser-execution',message:'Native browser acceptance failed; see bounded case outcomes'});
+ process.exitCode=1;
+ console.error('FAIL native Chromium acceptance: '+(cases.at(-1)?.name??'setup'));
 }finally{
- await context?.close();for(const s of sockets)s.destroy();await new Promise(r=>server.close(r));
- assert.ok(profile.startsWith(output+path.sep));await rm(profile,{recursive:true,force:true});
- await writeFile(path.join(output,'durable-browser-results.json'),JSON.stringify({result,source_commit:executionSource,browser_version:browserVersion,bundle_sha256:createHash('sha256').update(bundle.outputFiles[0].text).digest('hex'),historical_override:process.env.VEL_REVIEW_BEFORE??null,cases,chromium:'actual persistent context',claims:'Native transaction/reload only; injected failure probes are synthetic. No eviction, power-loss, encryption or hosted acceptance.',cleanup:{profile_removed:true,http_closed:!server.listening,open_sockets:sockets.size}},null,2));
- console.log(JSON.stringify({result,cases:cases.length,cleanup:'owned profile and HTTP server removed'}));
+ try{await context?.close();contextClosed=true;}catch{failures.push({kind:'cleanup',message:'Context close failed'});}
+ try{for(const socket of sockets)socket.destroy();await new Promise((resolve,reject)=>server.close(error=>error?reject(error):resolve()));}catch{failures.push({kind:'cleanup',message:'HTTP close failed'});}
+ let profileRemoved=false;
+ try{assert.ok(profile.startsWith(output+path.sep));await rm(profile,{recursive:true,force:true});try{await access(profile);}catch(error){if(error.code==='ENOENT')profileRemoved=true;else throw error;}}catch{failures.push({kind:'cleanup',message:'Profile removal failed'});}
+ const evidence={schema_version:1,result,source_commit:executionSource,playwright_version:playwrightVersion,
+ browser_version:browserVersion,chromium_build:{revision:chromiumBuild.revision,version:chromiumBuild.browserVersion},
+ chromium_executable_sha256:executableHash,bundle_sha256:sha256(bundle.outputFiles[0].text),
+ required_cases:41,executed_cases:cases.length,cases,failures,
+ execution:{real_chromium:!!browserVersion,persistent_profile:true,historical_override:null,case_filter:null,review_negatives:null,external_runtime:null,external_executable:null},
+ cleanup:{context_closed:contextClosed,profile_removed:profileRemoved,http_closed:!server.listening,open_sockets:sockets.size}};
+ try{validateEvidence(evidence);}catch{evidence.result='FAIL';process.exitCode=1;evidence.failures.push({kind:'acceptance-validation',message:'Incomplete or invalid evidence or cleanup'});}
+ await writeFile(path.join(output,'durable-browser-results.json'),JSON.stringify(evidence,null,2));
+ // No arbitrary browser errors, page content, filesystem paths or profiles are uploaded.
+ await writeFile(path.join(output,'durable-browser-diagnostics.txt'),JSON.stringify({result:evidence.result,executed:cases.length,failures:evidence.failures,cleanup:evidence.cleanup},null,2));
+ console.log(JSON.stringify({result:evidence.result,cases:cases.length,cleanup:evidence.cleanup}));
+}
 }

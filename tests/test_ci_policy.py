@@ -454,4 +454,142 @@ class PersistenceCoverageTests(unittest.TestCase):
                 with self.assertRaises(ValueError): pc.persistence_coverage_contract(w)
 
 
+
+# Task0076: fail-closed Chromium contract, executed by existing governance discovery.
+CHROMIUM_STEPS = [
+    {'name':'Install matching native Chromium and Linux dependencies','run':'pnpm exec playwright install --with-deps chromium'},
+    {'name':'Complete native Chromium durable draft acceptance','run':'pnpm test:durable-drafts'},
+    {'name':'Validate complete source-bound Chromium evidence','run':'pnpm validate:durable-drafts'},
+    {'name':'Attach bounded synthetic Chromium evidence','if':'${{ always() }}','uses':'actions/upload-artifact@v4',
+     'with':{'name':'durable-draft-chromium-results','path':'.submission/durable-browser-results.json\n.submission/durable-browser-diagnostics.txt\n','if-no-files-found':'error','retention-days':'7'}}
+]
+
+def check_chromium_contract(workflow, package):
+    job=workflow['jobs']['application']; steps=job['steps']
+    if job.get('if')!="${{ needs.classify.outputs.application == 'true' }}" or job.get('needs')!=['classify']:
+        raise ValueError('Chromium application guard changed')
+    if any(k in workflow for k in ('env','defaults')) or any(k in job for k in ('env','defaults','continue-on-error','strategy','permissions')):
+        raise ValueError('Chromium execution override')
+    positions=[]
+    for expected in CHROMIUM_STEPS:
+        matches=[(i,s) for i,s in enumerate(steps) if s.get('name')==expected['name'] or ('run' in expected and s.get('run')==expected['run'])]
+        if len(matches)!=1 or matches[0][1]!=expected: raise ValueError('Missing/altered Chromium prerequisite: '+expected['name'])
+        positions.append(matches[0][0])
+    install=[i for i,s in enumerate(steps) if s.get('run')=='pnpm install --frozen-lockfile']
+    build=[i for i,s in enumerate(steps) if s.get('run')=='pnpm build']
+    if len(install)!=1 or len(build)!=1 or not install[0]<positions[0]<positions[1]<positions[2]<positions[3]<build[0]:
+        raise ValueError('Chromium prerequisite order')
+    if package['devDependencies'].get('playwright')!='1.64.0' or 'playwright' in package.get('dependencies',{}):
+        raise ValueError('Unpinned/non-test Playwright')
+    if package['scripts'].get('test:durable-drafts')!='node tests/editor/durable-draft-browser.mjs' or package['scripts'].get('validate:durable-drafts')!='node tests/editor/durable-draft-browser.mjs --validate .submission/durable-browser-results.json':
+        raise ValueError('Chromium script bypass')
+    # No earlier workflow step may write runner-control variables into later steps.
+    for step in steps:
+        if any(key in json.dumps(step) for key in ('VEL_CASE_PREFIX','VEL_REVIEW_NEGATIVES','VEL_REVIEW_BEFORE','VEL_PLAYWRIGHT_PATH','VEL_CHROMIUM_PATH')):
+            raise ValueError('Selective/historical/external browser override')
+
+class ChromiumCoverageTests(unittest.TestCase):
+    def baseline(self):
+        return yaml.load((ROOT/'.github/workflows/ci.yml').read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
+
+    def package(self): return json.loads((ROOT/'package.json').read_text(encoding='utf-8'))
+
+    def test_real_chromium_workflow_contract(self):
+        check_chromium_contract(self.baseline(),self.package())
+
+    def test_browser_install_execution_validation_and_upload_cannot_be_bypassed(self):
+        for expected in CHROMIUM_STEPS:
+            for mode in ('remove','echo','duplicate','if','continue-on-error','mask','shell','working-directory','env'):
+                with self.subTest(step=expected['name'],mode=mode):
+                    w=self.baseline();steps=w['jobs']['application']['steps'];step=next(s for s in steps if s.get('name')==expected['name'])
+                    if mode=='remove': steps.remove(step)
+                    elif mode=='echo': step['run']='echo PASS'
+                    elif mode=='duplicate': steps.append(copy.deepcopy(step))
+                    elif mode=='mask': step['run']=step.get('run','echo upload')+' || true'
+                    else: step[mode]={'if':'false','continue-on-error':'true','shell':'sh','working-directory':'elsewhere','env':{'VEL_CASE_PREFIX':'one'}}[mode]
+                    with self.assertRaises(ValueError): check_chromium_contract(w,self.package())
+
+    def test_browser_order_environment_runtime_and_artifact_bypasses(self):
+        for mode in ('before-install','after-build','historical','filter','negative','external','job-env','global-env','artifact-profile','artifact-missing-ok','artifact-unbounded','script-mask','script-filter','floating','production'):
+            with self.subTest(mode=mode):
+                w=self.baseline();p=self.package();job=w['jobs']['application'];steps=job['steps'];step=next(s for s in steps if s.get('run')=='pnpm test:durable-drafts');artifact=next(s for s in steps if s.get('name')==CHROMIUM_STEPS[3]['name'])
+                if mode=='before-install': steps.remove(step);steps.insert(0,step)
+                elif mode=='after-build': steps.remove(step);steps.append(step)
+                elif mode in ('historical','filter','negative','external'):
+                    key={'historical':'VEL_REVIEW_BEFORE','filter':'VEL_CASE_PREFIX','negative':'VEL_REVIEW_NEGATIVES','external':'VEL_PLAYWRIGHT_PATH'}[mode]
+                    steps.insert(0,{'run':f'echo "{key}=1" >> "$GITHUB_ENV"'})
+                elif mode=='job-env': job['env']={'NODE_OPTIONS':'--require bypass.js'}
+                elif mode=='global-env': w['env']={'NODE_OPTIONS':'--require bypass.js'}
+                elif mode=='artifact-profile': artifact['with']['path']='.submission/**'
+                elif mode=='artifact-missing-ok': artifact['with']['if-no-files-found']='ignore'
+                elif mode=='artifact-unbounded': artifact['with']['retention-days']='90'
+                elif mode=='script-mask': p['scripts']['test:durable-drafts']+=' || true'
+                elif mode=='script-filter': p['scripts']['test:durable-drafts']='VEL_CASE_PREFIX=one node tests/editor/durable-draft-browser.mjs'
+                elif mode=='floating': p['devDependencies']['playwright']='^1.64.0'
+                elif mode=='production': p['dependencies']={'playwright':'1.64.0'}
+                with self.assertRaises(ValueError): check_chromium_contract(w,p)
+
+    def valid_evidence(self):
+        old=json.loads((ROOT/'docs/reports/evidence/VEL-TASK-0075/native-final-browser-results.json').read_text(encoding='utf-8'))
+        return dict(schema_version=1,result='PASS',source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+                    playwright_version='1.64.0',browser_version='Chromium/156.0.0.0',chromium_build={'revision':'123','version':'156.0.0.0'},
+                    chromium_executable_sha256='a'*64,bundle_sha256='b'*64,required_cases=41,executed_cases=41,cases=old['cases'],failures=[],
+                    execution=dict(real_chromium=True,persistent_profile=True,historical_override=None,case_filter=None,review_negatives=None,external_runtime=None,external_executable=None),
+                    cleanup=dict(context_closed=True,profile_removed=True,http_closed=True,open_sockets=0))
+
+    def validate(self,e,missing=False,env=None):
+        with tempfile.TemporaryDirectory() as directory:
+            file=Path(directory)/'result.json'
+            if not missing: file.write_text(json.dumps(e),encoding='utf-8')
+            return subprocess.run(['node',str(ROOT/'tests/editor/durable-draft-browser.mjs'),'--validate',str(file)],cwd=ROOT,capture_output=True,text=True,env=env).returncode
+
+    def test_real_runner_evidence_validator_accepts_complete_synthetic_schema(self):
+        # Schema fixture only; this does not claim browser execution.
+        self.assertEqual(self.validate(self.valid_evidence()),0)
+
+    def test_real_runner_rejects_incomplete_or_dishonest_evidence(self):
+        for mode in ('missing-file','missing-case','duplicate','failed-case','source','no-browser','nonpersistent','filtered','historical','review-negatives','external-runtime','external-executable','quota-cleanup','sockets','listener','context','missing-build','wrong-version','bad-bundle','fail-result','unclassified-failure','count'):
+            with self.subTest(mode=mode):
+                e=self.valid_evidence()
+                if mode=='missing-case': e['cases'].pop();e['executed_cases']=40
+                elif mode=='duplicate': e['cases'][-1]=copy.deepcopy(e['cases'][0])
+                elif mode=='failed-case': e['cases'][0]['status']='FAIL'
+                elif mode=='source': e['source_commit']='0'*40
+                elif mode=='no-browser': e['execution']['real_chromium']=False
+                elif mode=='nonpersistent': e['execution']['persistent_profile']=False
+                elif mode in ('filtered','historical','review-negatives','external-runtime','external-executable'):
+                    e['execution'][{'filtered':'case_filter','historical':'historical_override','review-negatives':'review_negatives','external-runtime':'external_runtime','external-executable':'external_executable'}[mode]]='enabled'
+                elif mode=='quota-cleanup': e['cleanup']['profile_removed']=False
+                elif mode=='sockets': e['cleanup']['open_sockets']=1
+                elif mode=='listener': e['cleanup']['http_closed']=False
+                elif mode=='context': e['cleanup']['context_closed']=False
+                elif mode=='missing-build': e['chromium_build']={}
+                elif mode=='wrong-version': e['playwright_version']='1.0.0'
+                elif mode=='bad-bundle': e['bundle_sha256']='unknown'
+                elif mode=='fail-result': e['result']='FAIL'
+                elif mode=='unclassified-failure': e['failures']=[{'kind':'cleanup'}]
+                elif mode=='count': e['executed_cases']=40
+                self.assertNotEqual(self.validate(e,missing=mode=='missing-file'),0)
+
+    def test_required_runner_rejects_all_historical_or_selective_modes_before_launch(self):
+        for key in ('VEL_REVIEW_BEFORE','VEL_CASE_PREFIX','VEL_REVIEW_NEGATIVES','VEL_PLAYWRIGHT_PATH','VEL_CHROMIUM_PATH'):
+            with self.subTest(key=key):
+                env={**os.environ,key:'1'}
+                result=subprocess.run(['node',str(ROOT/'tests/editor/durable-draft-browser.mjs')],cwd=ROOT,capture_output=True,text=True,env=env)
+                self.assertNotEqual(result.returncode,0)
+                self.assertIn('Disallowed acceptance override',result.stderr)
+
+    def test_chromium_failure_blocks_ready_and_full_and_draft_remains_advisory(self):
+        for mode in ('ready','full','draft'):
+            plan={**policy.classify(['tests/editor/durable-draft-browser.mjs']), 'mode':mode}
+            if mode=='draft': plan={key:('draft' if key=='mode' else 'false') for key in plan}
+            needs={'classify':{'result':'success','outputs':plan},'governance':{'result':'success','outputs':{'compliance':'pass'}},**{job:{'result':'success' if plan[job]=='true' else 'skipped'} for job in ('application','recovery','privileges')}}
+            if mode=='draft': self.assertEqual(policy.check_gate(needs,expected_plan=plan),'draft-advisory')
+            else:
+                self.assertEqual(policy.check_gate(needs,expected_plan=plan),'merge-eligible')
+                for result in ('failure','skipped','cancelled',None):
+                    with self.subTest(mode=mode,result=result):
+                        failed=copy.deepcopy(needs);failed['application']['result']=result
+                        with self.assertRaises(ValueError): policy.check_gate(failed,expected_plan=plan)
+
 if __name__=='__main__': unittest.main()
