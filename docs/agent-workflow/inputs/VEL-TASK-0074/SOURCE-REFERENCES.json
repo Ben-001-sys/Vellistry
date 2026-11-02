@@ -1,0 +1,37 @@
+[
+  {
+    "path": "LANGUAGE.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "1cd6e00e64ed923cfd596c9b50cc50b77ef9e4712a687ca90fad8465742b81b3"
+  },
+  {
+    "path": "docs/decisions/ADR-0003-use-tiptap-3-prosemirror-for-manuscript-editor.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "213dcbe80b371b210ca9a80132d3afea3b11d7eebc03f4b7c8aef0480de9c7af"
+  },
+  {
+    "path": "docs/decisions/ADR-0006-next-nest-supabase-implementation-foundation.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "68b0e836960ec73b1d7a239f53633b1df96814909b6e4475b5d3969a6bab4ca0"
+  },
+  {
+    "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "fdd3d879dbef08e2e8f37b84859e29cdfa8e98467cf295085245ed417c0b2b16"
+  },
+  {
+    "path": "docs/contracts/VEL-IMP002-PERSISTENCE-CONTRACT.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "154ca1697a4cda5d8efbb71a0662efdf1ab7d11ef9c25313cf867229062ac90b"
+  },
+  {
+    "path": "docs/specs/VEL-SPEC-001-CHAPTER-SAVE-CONTRACT.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "2a4c62eaf29ff4a084d24d081b3bd35132735421016613c6a621dc6f06e7296d"
+  },
+  {
+    "path": "docs/reports/VEL-IMP003B-CONTRACTS-0071.md",
+    "commit": "e83022bf1f71746482bed832a894cdfac6dcc500",
+    "sha256": "5ff99966b0c716f706a964ae4d777c17ffacf6719619e1e96aa2910701910177"
+  }
+]

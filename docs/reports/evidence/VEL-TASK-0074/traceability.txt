@@ -1,0 +1,1 @@
+VALID: VEL-SPEC-001 — 8 source-traced proposed acceptance scenarios

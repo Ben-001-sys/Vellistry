@@ -1,0 +1,152 @@
+
+> vellistry@ test:workspace-contract H:\cursor\cursor\Vellistry\.worktrees\vel-imp003c-composition
+> pnpm --filter @vellistry/api exec tsx --test ../web/src/lib/workspace/book-workspace-session.test.ts ../web/src/lib/editor/manuscript-editor.test.mjs
+
+✔ delayed ACK retains newer writing (3.6428ms)
+✔ unknown outcome retains operation and blocks ordinary retry (0.8419ms)
+✔ account switch ignores stale response and partitions recovery (25.4424ms)
+✔ recovery remains explicit and never overwrites accepted baseline automatically (0.508ms)
+✔ conflict failure corruption and uncertainty never Saved (0.5715ms)
+✔ recovered unknown operation can reconcile original identity (0.6968ms)
+✔ old recovered receipt cannot downgrade newer accepted revision or claim Saved (1.9375ms)
+✔ separate editing clients preserve separate recovery candidates (2.1901ms)
+✔ unknown operation survives repeated reopen at newer accepted revision (1.7166ms)
+✔ composition renders actual Tiptap and confirms test-only revision through save controls (131.5535ms)
+✔ typing during pending save preserves text, caret, formatting and Undo (34.2227ms)
+✔ unknown transport outcome retains original ID and lookup does not duplicate (26.0312ms)
+✔ missing receipt and before-commit transport failure remain unknown (62.5418ms)
+✔ conflict and definite rejection retain local prose without false confirmation (36.3657ms)
+✔ chapter switch requires explicit recovery and ignores delayed previous-chapter ACK (41.6844ms)
+✔ account switch conceals pending results and cleanup detaches asynchronous listeners (19.5265ms)
+✔ repeated visible recovery requires explicit action and preserves exact text (31.9136ms)
+✔ dispose during pending response suppresses notifications and stale editor publication (15.2459ms)
+✖ rejected pending save conceals a silently changed owner (15.249ms)
+✖ rejected receipt lookup conceals unavailable identity (19.3334ms)
+✔ AI-off manual writing accepts500invented words without network or key (3.3668ms)
+✔ leading, trailing, repeated whitespace and Unicode survive text transactions (2.3643ms)
+✔ first paragraph arbitrary selection replacement never trims or rewrites another paragraph (3.0604ms)
+✔ middle caret insertion uses exact model position and preserves surrounding spaces (2.6286ms)
+✔ bold applies only to model selection and retains it (5.5149ms)
+✔ italic applies only to model selection and retains it (2.8674ms)
+✔ underline applies only to model selection and retains it (2.8721ms)
+✔ paragraph/headings and basic lists use supported semantic nodes (9.4644ms)
+✔ Undo/Redo survives toolbar commands without creating fake revisions (3.4823ms)
+✔ literal case-insensitive search crosses inline marks, not textblock boundaries (16.2296ms)
+✔ search typing/highlights do not move manuscript selection or mutate content (3.421ms)
+✔ explicit next/previous selects matches and edited matches are recomputed (4.3918ms)
+✔ search metadata/navigation does not pollute document Undo history (4.8021ms)
+✔ word count is defined by Unicode word-like segments, not spaces or HTML (2.4775ms)
+✔ chapter switching restores distinct text, selection and chapter-local Undo (12.8469ms)
+✔ stable chapter identity preserves prose/caret across rename/reorder metadata (2.939ms)
+✔ same chapter ID in another book cannot share an editor (4.3341ms)
+✔ changed verified author clears old editor caches rather than exposing former drafts (5.3607ms)
+✔ unavailable workspace conceals and locks text: {"phase":"unverified"} (2.5448ms)
+✔ unavailable workspace conceals and locks text: {"pending":true} (5.6726ms)
+✔ unavailable workspace conceals and locks text: {"uncertain":true} (3.1095ms)
+✔ unavailable workspace conceals and locks text: {"conflict":true} (4.7168ms)
+✔ unavailable workspace conceals and locks text: {"selectedChapterId":"foreign"} (5.3459ms)
+✔ unavailable workspace conceals and locks text: {"document":null} (3.4552ms)
+✔ absent, throwing and contradictory post-async identity fail closed (0.3679ms)
+✔ late chapter verification cannot reactivate a former selection (2.6354ms)
+✔ real IMP002 session notes/reordering never write accepted manuscript or draft text (5.5552ms)
+✔ dispose cancels pending verification and destroys all locally opened editors (2.571ms)
+✔ unmounted component renders safe SSR preparation without creating a DOM editor (45.4255ms)
+✔ explicit search navigation requests reveal scrolling, search input does not (3.911ms)
+✔ actual Tiptap ordered-list JSON passes manuscript validation without rewriting (6.413ms)
+✔ owned book opens with selected chapter and separately scoped notes (3.7457ms)
+✔ empty book is a valid ready result, never a read error (1.0066ms)
+✔ signed-out and unverified identities expose no book, title or drafts (0.6261ms)
+✔ cross-author and guessed book reads are denied without foreign data (0.4358ms)
+✔ invalid identifiers and malformed documents fail closed (0.4164ms)
+✔ duplicate chapter IDs and wrong nested book IDs are rejected on read (0.2984ms)
+✔ snapshot references are stable and nested document data is frozen (0.4627ms)
+✔ same-title creates get distinct stable IDs and clear only the confirmed title (1.5737ms)
+✔ title and notes validators reject invalid values and forged ownership fields (0.4067ms)
+✔ rename retains stable ID, notes and accepted prose/revision markers (1.2247ms)
+✔ reorder moves stable chapter records without moving notes or prose to another ID (0.8683ms)
+✔ adapter independently denies foreign rename (0.2606ms)
+✔ adapter independently denies wrong-book rename (0.1528ms)
+✔ adapter independently denies foreign chapter notes (0.1659ms)
+✔ forged owner and cross-author mutations cannot grant access (0.1752ms)
+✔ invalid reorder a-one/a-two does not mutate any book (0.2133ms)
+✔ invalid reorder a-one/a-one/a-two does not mutate any book (0.1776ms)
+✔ invalid reorder a-one/a-two/b-one does not mutate any book (0.1245ms)
+✔ book/chapter notes remain separate and drafts survive chapter navigation (0.6443ms)
+✔ typing newer notes during pending confirmation is not erased by its older acknowledgement (17.6186ms)
+✔ known version conflict never reorders or resends and retains drafts for explicit reload (0.7387ms)
+✔ duplicate submission while identity checks/pending overlap sends one create (1.3537ms)
+✔ lost reply after commit stays unknown; ordinary retries and refresh never create duplicates (0.9877ms)
+✔ missing receipt cannot convert an unknown-before-commit result to definite failure or safe retry (0.3494ms)
+✔ wrong receipt scope cannot unlock an uncertain create (0.4594ms)
+✔ idempotency replay returns its first receipt; changed payload with same operation ID rejects (0.3154ms)
+✔ A→B→A hides private drafts and retains the old pending-write uncertainty lock (2.3093ms)
+✔ late successful read cannot publish after switching books (0.7712ms)
+✔ late failed read cannot publish after switching books (0.4421ms)
+✔ post-read silent identity change conceals successful response before publication (0.2872ms)
+✔ post-write failed verification conceals response and preserves uncertainty for the same owner (0.9547ms)
+✔ failed pre-write identity verification dispatches nothing (0.4049ms)
+✔ dispose conceals state and ignores pending replies (1.4269ms)
+✔ opaque chapter ID cannot collide with the book-notes draft slot (0.5301ms)
+✔ denied receipt check hides the previously visible book without making retry safe (0.6881ms)
+✔ confirmed change refresh retains the verified form while newer notes are being typed (1.3873ms)
+✔ rename drafts are chapter-scoped and never appear under a different author/book (0.3226ms)
+✔ acknowledged rename cannot be reseeded from the old document during delayed readback (0.8025ms)
+✔ confirmed receipt version rejects stale readback and later reloads across owner switches (0.6098ms)
+✔ create at the readable chapter limit is rejected without changing version or accepted data (8.4995ms)
+✔ null chapter title from an adapter is rejected before any ready view is published (0.3117ms)
+ℹ tests 92
+ℹ suites 0
+ℹ pass 90
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1989.6975
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-composition.test.tsx:33:1
+✖ rejected pending save conceals a silently changed owner (15.249ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'unknown'
+  - 'unverified'
+       ^
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003c-composition\apps\web\src\lib\editor\manuscript-composition.test.tsx:33:329)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'unknown',
+    expected: 'unverified',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\web\src\lib\editor\manuscript-composition.test.tsx:34:1
+✖ rejected receipt lookup conceals unavailable identity (19.3334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'unknown'
+  - 'unverified'
+       ^
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003c-composition\apps\web\src\lib\editor\manuscript-composition.test.tsx:34:553)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'unknown',
+    expected: 'unverified',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003c-composition\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+ ELIFECYCLE  Command failed with exit code 1.
