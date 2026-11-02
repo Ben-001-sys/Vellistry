@@ -7,7 +7,15 @@ owner: project_owner
 ---
 
 
-## Current correction round — source a718424
+
+## Current final source — 3e639170314e989ecec600d80f6c55cd3cc71657
+
+FACT: round3 completed-head review ofb950303 identified2P2: recovery left persistence blocked and blocked edits did not advance the discard generation. Additional self-review identified stale memory-baseline overwrite risk. Historical sourcea718424 reproduces3FAIL; corrected3PASS. Explicit recovery now revalidates scope and observed sequence before unblocking the selected memory copy; every edit advances generation even when no write can be scheduled. Revision-mismatched recovery pauses editing until an explicit discard; it cannot replace accepted text or overwrite the sole memory copy. Queue draining includes writes enqueued by asynchronous recovery.
+
+Application fixes committed2b988ad52b9277a07f8ebc7827347b577ce519d2: check/build98workspace-editor,81Library,55MFA,23preflight,52principal,21persistenceunits all PASS exit0. Only the browser assertion-await correction changed afterward at3e63917; executable application/test sources for those suites are byte-identical, so their authentic2b988ad evidence is retained with that exact execution SHA. Actual Chromium31case suite PASS exit0 at3e63917. Its first premature assertion failure is retained separately; this was an async test-await correction, not a fabricated pass. Prior25/28case and review records below remain historical.
+
+Current native/browser evidence: real completed writes/reload/cross-tab/explicit recovery, native transaction abort, queued-discard races and all9before/after negative cases. The interrupted-persistence probe reloads while the test adapter delays before native dispatch; no browser-process-kill or power-loss acceptance is claimed. Quota/unavailable/blocked conditions are injected. Explicit local discard retains a content-free sequence tombstone to prevent resurrection. HTTP/profile cleanup PASS. Draft41430365271 and41431386378 remain genuineFAILURE at their deliberate final gates; governance PASS. ReadyCI and completed-final-head review remain external evidence after this commit.
+## Current correction round â€” source a718424
 
 FACT: the completed-head review of3a3060d found3additionalP2 races, preserved in review-round2.txt. Native Chromium negative regressions against source9bb43d6 produce3FAIL; corrected3PASS. Discard now shares the write queue, checks newer edits after asynchronous ACK, and preserves their memory entries. Clean cache entries are cleared on absent/tombstoned durable records; genuinely dirty memory remains separate. Transport reads capture and revalidate wrapper epoch/owner before any recovery-state mutation. No scope expansion, new Task/pack, SQL/CI/dependency/Auth change.
 
@@ -35,7 +43,7 @@ Native completed transactions and actual reload prove this browser-profile recov
 Separate owner decision after completed-head review and actual ReadyCI. No merge or successor authority. Production PRINCIPAL/SESSION/GATEWAY/TRANSPORT/PACKAGING and hosted/private-pilot remain gated.
 
 ## Tests and historical failures
-Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01â€“R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
+Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01Ã¢â‚¬â€œR08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
 
 ## Artifacts
 Task0075/immutable CP0075/EB0075,8operative paths, bounded report and raw command/browser/review/negative evidence. Per-commit manifest declares every original commit, pending owner disposition. Local scratch packets/caches are excluded.

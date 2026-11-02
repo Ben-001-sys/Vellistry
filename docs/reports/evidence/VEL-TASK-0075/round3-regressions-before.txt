@@ -1,0 +1,4 @@
+{"name":"round3: explicit memory recovery resumes healthy storage","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Saved on this device/. Input:\n\n'A newer in-memory recovery copy is available. It has not been stored.'\n"}
+{"name":"round3: blocked edits during discard keep their generation","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n"}
+{"name":"round3: stale memory-only baseline cannot be overwritten by fresh typing","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"}
+{"result":"FAIL","cases":3,"cleanup":"owned profile and HTTP server removed"}

@@ -1,0 +1,4 @@
+{"name":"round3: explicit memory recovery resumes healthy storage","status":"PASS"}
+{"name":"round3: blocked edits during discard keep their generation","status":"PASS"}
+{"name":"round3: stale memory-only baseline cannot be overwritten by fresh typing","status":"PASS"}
+{"result":"PASS","cases":3,"cleanup":"owned profile and HTTP server removed"}

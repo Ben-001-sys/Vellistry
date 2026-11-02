@@ -23,61 +23,70 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+implementation_source_commit: 3e639170314e989ecec600d80f6c55cd3cc71657
 execution:
   status: completed
   executor: Codex
   model: Codex runtime model not independently reported
   tests:
   - command: corepack.cmd pnpm check
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-check.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-check.txt
   - command: corepack.cmd pnpm build
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-build.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-build.txt
   - command: corepack.cmd pnpm test:workspace-contract
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-workspace.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-workspace.txt
   - command: corepack.cmd pnpm test:library-isolation
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-library.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-library.txt
   - command: corepack.cmd pnpm test:auth-mfa
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-mfa.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-mfa.txt
   - command: corepack.cmd pnpm test:hosted-preflight
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-preflight.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-preflight.txt
   - command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-principal.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-principal.txt
   - command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 2b988ad52b9277a07f8ebc7827347b577ce519d2
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-units.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-units.txt
   - command: node tests/editor/durable-draft-browser.mjs (existing Playwright module
       and Chrome executable injected through VEL_PLAYWRIGHT_PATH/VEL_CHROMIUM_PATH)
-    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
+    source_commit: 3e639170314e989ecec600d80f6c55cd3cc71657
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/round2-browser.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round3-browser-corrected.txt
 ---
 
-## Current correction round — source a718424
+## Current final source — 3e639170314e989ecec600d80f6c55cd3cc71657
+
+FACT: round3 completed-head review ofb950303 identified2P2: recovery left persistence blocked and blocked edits did not advance the discard generation. Additional self-review identified stale memory-baseline overwrite risk. Historical sourcea718424 reproduces3FAIL; corrected3PASS. Explicit recovery now revalidates scope and observed sequence before unblocking the selected memory copy; every edit advances generation even when no write can be scheduled. Revision-mismatched recovery pauses editing until an explicit discard; it cannot replace accepted text or overwrite the sole memory copy. Queue draining includes writes enqueued by asynchronous recovery.
+
+Application fixes committed2b988ad52b9277a07f8ebc7827347b577ce519d2: check/build98workspace-editor,81Library,55MFA,23preflight,52principal,21persistenceunits all PASS exit0. Only the browser assertion-await correction changed afterward at3e63917; executable application/test sources for those suites are byte-identical, so their authentic2b988ad evidence is retained with that exact execution SHA. Actual Chromium31case suite PASS exit0 at3e63917. Its first premature assertion failure is retained separately; this was an async test-await correction, not a fabricated pass. Prior25/28case and review records below remain historical.
+
+Current native/browser evidence: real completed writes/reload/cross-tab/explicit recovery, native transaction abort, queued-discard races and all9before/after negative cases. The interrupted-persistence probe reloads while the test adapter delays before native dispatch; no browser-process-kill or power-loss acceptance is claimed. Quota/unavailable/blocked conditions are injected. Explicit local discard retains a content-free sequence tombstone to prevent resurrection. HTTP/profile cleanup PASS. Draft41430365271 and41431386378 remain genuineFAILURE at their deliberate final gates; governance PASS. ReadyCI and completed-final-head review remain external evidence after this commit.
+
+
+## Current correction round â€” source a718424
 
 FACT: the completed-head review of3a3060d found3additionalP2 races, preserved in review-round2.txt. Native Chromium negative regressions against source9bb43d6 produce3FAIL; corrected3PASS. Discard now shares the write queue, checks newer edits after asynchronous ACK, and preserves their memory entries. Clean cache entries are cleared on absent/tombstoned durable records; genuinely dirty memory remains separate. Transport reads capture and revalidate wrapper epoch/owner before any recovery-state mutation. No scope expansion, new Task/pack, SQL/CI/dependency/Auth change.
 
@@ -107,7 +116,7 @@ Native completed transactions and actual reload prove this browser-profile recov
 Separate owner decision after completed-head review and actual ReadyCI. No merge or successor authority. Production PRINCIPAL/SESSION/GATEWAY/TRANSPORT/PACKAGING and hosted/private-pilot remain gated.
 
 ## Tests and historical failures
-Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01â€“R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
+Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01Ã¢â‚¬â€œR08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
 
 ## Artifacts
 Task0075/immutable CP0075/EB0075,8operative paths, bounded report and raw command/browser/review/negative evidence. Per-commit manifest declares every original commit, pending owner disposition. Local scratch packets/caches are excluded.
