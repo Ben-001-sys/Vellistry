@@ -10,11 +10,10 @@ version: 0.2.2
 
 # Vellistry â€” current verified state
 
-## IMP003E — 2026-11-02
+## IMP003E - 2026-11-02
 
-PR135 merged20f4b5a; exact tree172ee885 and post-main41450155695 PASS.
-Task0076 mandatory Chromium CI is in verification, synthetic-only. Task75's41
-local browser cases remain historical evidence. Production/security gates unchanged.
+PR135 merged20f4b5a; post-main41450155695 PASS. Task0076 Chromium CI is
+in verification, synthetic-only. Earlier snapshots are historical.
 
 ## IMP003B disposable implementation â€” 2026-10-31
 

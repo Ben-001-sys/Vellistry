@@ -45,6 +45,7 @@ if(args[0]==='--validate') {
 const output=path.join(root,'.submission');await mkdir(output,{recursive:true});
 // Remove stale success before dependency, bundling or launch failures.
 await rm(path.join(output,'durable-browser-results.json'),{force:true});
+execFileSync('git',['diff','--quiet','HEAD','--','apps','tests/editor','package.json','pnpm-lock.yaml'],{cwd:root});
 const esbuildDir=(await readdir(path.join(root,'node_modules/.pnpm'))).find(x=>x.startsWith('esbuild@'));
 const esbuild=await import(pathToFileURL(path.join(root,'node_modules/.pnpm',esbuildDir,'node_modules/esbuild/lib/main.js')).href);
 const {chromium}=require('playwright');
