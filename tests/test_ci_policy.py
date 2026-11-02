@@ -532,7 +532,7 @@ class ChromiumCoverageTests(unittest.TestCase):
     def valid_evidence(self):
         old=json.loads((ROOT/'docs/reports/evidence/VEL-TASK-0075/native-final-browser-results.json').read_text(encoding='utf-8'))
         return dict(schema_version=1,result='PASS',source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-                    playwright_version='1.64.0',browser_version='Chromium/156.0.0.0',chromium_build={'revision':'123','version':'156.0.0.0'},
+                    playwright_version='1.64.0',browser_version='Chromium/156.0.8078.4',chromium_build={'revision':'1248','version':'156.0.8078.4'},
                     chromium_executable_sha256='a'*64,bundle_sha256='b'*64,required_cases=41,executed_cases=41,cases=old['cases'],failures=[],
                     execution=dict(real_chromium=True,persistent_profile=True,historical_override=None,case_filter=None,review_negatives=None,external_runtime=None,external_executable=None),
                     cleanup=dict(context_closed=True,profile_removed=True,http_closed=True,open_sockets=0))

@@ -22,7 +22,7 @@ export function validateEvidence(e, expectedSource=source()) {
  assert.match(expectedSource,/^[a-f0-9]{40}$/);
  assert.deepEqual(e.execution,{real_chromium:true,persistent_profile:true,historical_override:null,case_filter:null,review_negatives:null,external_runtime:null,external_executable:null});
  assert.equal(e.playwright_version,'1.64.0');assert.match(e.browser_version,/^(Chrome|Chromium)\/[0-9.]+$/);
- assert.ok(e.chromium_build.revision && e.chromium_build.version);
+ assert.deepEqual(e.chromium_build,{revision:'1248',version:'156.0.8078.4'});
  assert.equal(e.browser_version.split('/')[1],e.chromium_build.version);
  for(const field of ['bundle_sha256','chromium_executable_sha256'])assert.match(e[field],/^[a-f0-9]{64}$/);
  assert.equal(e.required_cases,41);assert.equal(e.executed_cases,e.cases.length);
@@ -50,7 +50,7 @@ const esbuild=await import(pathToFileURL(path.join(root,'node_modules/.pnpm',esb
 const {chromium}=require('playwright');
 const playwrightVersion=require('playwright/package.json').version;
 assert.equal(playwrightVersion,'1.64.0');
-const builds=JSON.parse(await readFile(path.join(path.dirname(require.resolve('playwright-core/package.json')),'browsers.json'),'utf8'));
+const builds=JSON.parse(await readFile(path.join(path.dirname(createRequire(require.resolve('playwright/package.json')).resolve('playwright-core/package.json')),'browsers.json'),'utf8'));
 const chromiumBuild=builds.browsers.find(b=>b.name==='chromium');
 const executableHash=sha256(await readFile(chromium.executablePath()));
 const plugins=[];
