@@ -28,8 +28,9 @@ export function createDurableManuscriptComposition(options:{readOwner:()=>Promis
   });
  }
  const transport:ManuscriptTransport={...options.transport,async save(s,operation){const e=epoch,scope=active;if(!scope||!await current(e,scope))throw Error('Identity unavailable');await queue;if(!await current(e,scope)||blocked)throw Error('Pending operation not stored');const durable=await options.store.read(scope);if(!await current(e,scope)||!durable?.pending||JSON.stringify(durable.pending)!==JSON.stringify(operation))throw Error('Pending operation not stored');return options.transport.save(s,operation);},async read(s){
+  const readEpoch=epoch,readScope=active;
   const result=await options.transport.read(s) as {status:string;value?:{revision:number;document:unknown}};
-  if(active&&s.author===active.author&&s.bookId===active.book&&s.chapterId===active.chapter){
+  if(readScope&&await current(readEpoch,readScope)&&active&&s.author===active.author&&s.bookId===active.book&&s.chapterId===active.chapter){
    const k=localKey(active),entry=memory.get(k) as {base:number;text:string;pending?:{base:number;text:string}}|undefined;
    if(entry&&result.status==='ready'&&result.value){
     const accepted=result.value;
@@ -52,16 +53,26 @@ export function createDurableManuscriptComposition(options:{readOwner:()=>Promis
   active=s;sequence=0;write=0;blocked=false;hidden.delete(localKey(s));
   try{
    const candidate=await options.store.read(s);if(!await current(e,s))return;
-   sequence=candidate?.sequence??0;const k=localKey(s);if(!known.has(k))known.set(k,sequence);if(memory.has(k)&&dirty.has(k)){if(known.has(k)&&known.get(k)!==sequence){failure(new DraftStorageError('conflict'));}else{blocked=true;publish('not-stored','A newer in-memory recovery copy is available. It has not been stored.');}}else if(candidate){known.set(k,sequence);if(!candidate.discarded)memory.set(localKey(s),{scope:{author:s.author,book:s.book,chapter:s.chapter},text:JSON.stringify(candidate.document),base:candidate.base,phase:'recoverable',...(candidate.pending?{pending:{id:candidate.pending.operationId,text:JSON.stringify(candidate.pending.document),base:candidate.pending.expectedRevision}}:{})});}
+   sequence=candidate?.sequence??0;const k=localKey(s);if(!known.has(k))known.set(k,sequence);if(memory.has(k)&&dirty.has(k)){if(known.has(k)&&known.get(k)!==sequence){failure(new DraftStorageError('conflict'));}else{blocked=true;publish('not-stored','A newer in-memory recovery copy is available. It has not been stored.');}}else{known.set(k,sequence);memory.delete(k);if(candidate&&!candidate.discarded)memory.set(localKey(s),{scope:{author:s.author,book:s.book,chapter:s.chapter},text:JSON.stringify(candidate.document),base:candidate.base,phase:'recoverable',...(candidate.pending?{pending:{id:candidate.pending.operationId,text:JSON.stringify(candidate.pending.document),base:candidate.pending.expectedRevision}}:{})});}
   }catch(error){if(!await current(e,s))return;failure(error);}
   if(!await current(e,s))return;await controller.bind(workspace);if(!await current(e,s))return;
   if(!blocked)publish(controller.snapshot().canRecover?'recovery':'not-stored',controller.snapshot().canRecover?'Recovery copy available. Choose explicitly; accepted text is unchanged.':'Local changes not yet stored.');
  }
  async function discard(){
   if(!active||disposed)return;const s=active,e=epoch,n=write;
-  await queue;if(!await current(e,s))return;
-  if(controller.snapshot().operationId||n!==write){publish('conflict','An unresolved save or newer edit prevents discarding this recovery copy.');return;}
-  try{await options.store.discard(s,sequence);if(!await current(e,s))return;sequence++;known.set(localKey(s),sequence);memory.delete(localKey(s));dirty.delete(localKey(s));blocked=false;if(controller.snapshot().canRecover&&lastWorkspace)await controller.bind(lastWorkspace);if(!await current(e,s))return;publish('not-stored','Local recovery copy discarded. Current in-memory writing is unchanged.');}catch(error){if(await current(e,s))failure(error);}
+  const operation=queue.then(async()=>{
+   if(!await current(e,s))return;
+   if(controller.snapshot().operationId||n!==write){publish('conflict','An unresolved save or newer edit prevents discarding this recovery copy.');return;}
+   try{
+    const expected=sequence;await options.store.discard(s,expected);if(!await current(e,s))return;
+    sequence=expected+1;known.set(localKey(s),sequence);blocked=false;
+    if(n!==write){publish('not-stored','Newer writing remains in memory while its recovery copy is stored.');return;}
+    memory.delete(localKey(s));dirty.delete(localKey(s));
+    if(controller.snapshot().canRecover&&lastWorkspace)await controller.bind(lastWorkspace);
+    if(await current(e,s))publish('not-stored','Local recovery copy discarded. Current in-memory writing is unchanged.');
+   }catch(error){if(await current(e,s))failure(error);}
+  });
+  queue=operation;await operation;
  }
  return {controller,bind,pause,discard,flush:()=>queue,snapshot:()=>state,subscribe(fn:()=>void){listeners.add(fn);return()=>{listeners.delete(fn);};},
   dispose(){if(disposed)return;epoch++;active=null;controller.dispose();options.store.close();listeners.clear();memory.clear();disposed=true;}};
