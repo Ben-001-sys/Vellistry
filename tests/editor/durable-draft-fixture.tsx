@@ -1,0 +1,21 @@
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {createIndexedDraftStore,DraftStorageError,type StorageFailure} from '../../apps/web/src/lib/editor/manuscript-indexeddb';
+import {createDurableManuscriptComposition} from '../../apps/web/src/lib/editor/manuscript-durable-composition';
+import {ManuscriptDurablePreview} from '../../apps/web/src/components/editor/manuscript-durable-preview';
+import {createSyntheticManuscriptTransport} from '../fixtures/manuscript-transport-synthetic';
+const book='00000000-0000-0000-0000-000000000010',chapter='00000000-0000-0000-0000-000000000011',two='00000000-0000-0000-0000-000000000012';
+const document=(text:string)=>({type:'doc',content:[{type:'paragraph',content:[{type:'text',text}]}]});
+let owner:string|null='author-A',selected=chapter,op=100;
+const snapshot=()=>({phase:'ready',document:{bookId:book,bookTitle:'Synthetic',version:0,notes:'',chapters:[{id:chapter,bookId:book,title:'One',notes:''},{id:two,bookId:book,title:'Two',notes:''}]},selectedChapterId:selected,pending:false,uncertain:false,conflict:false,createTitle:'',renameTitle:'',bookNoteDraft:'',chapterNoteDraft:'',message:''} as const);
+const dbName='vel-imp003d-browser-only',native=createIndexedDraftStore(indexedDB,dbName);
+let failure:StorageFailure|null=null,release:(()=>void)|null=null,delay=false;
+const store={...native,async write(...args:Parameters<typeof native.write>){if(delay)await new Promise<void>(r=>{release=r;});if(failure==='aborted'){const original=IDBDatabase.prototype.transaction;IDBDatabase.prototype.transaction=function(...parameters:Parameters<IDBDatabase['transaction']>){const tx=original.apply(this,parameters);queueMicrotask(()=>tx.abort());return tx;};try{return await native.write(...args);}finally{IDBDatabase.prototype.transaction=original;}}if(failure)throw new DraftStorageError(failure);return native.write(...args);}};
+const transport=createSyntheticManuscriptTransport(['author-A','author-B'].flatMap((author,i)=>[chapter,two].map((_,j)=>({author,bookId:book,chapterId:i?'00000000-0000-0000-0000-000000000013':j?two:chapter,revision:1,document:document('Accepted synthetic text')}))));
+// The transport is deliberately per-page synthetic; IndexedDB alone survives reload.
+const draft=createDurableManuscriptComposition({readOwner:async()=>owner,transport:transport.port,store,clientId:'synthetic-device',nextOperationId:()=>`00000000-0000-0000-0000-${String(op++).padStart(12,'0')}`});
+const root=createRoot(window.document.getElementById('root')!);root.render(<ManuscriptDurablePreview draft={draft}/>);
+const ready=draft.bind(snapshot());
+async function raw(value:unknown){const db=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open(dbName,1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});try{await new Promise<void>((resolve,reject)=>{const tx=db.transaction('drafts','readwrite');tx.objectStore('drafts').put(value,JSON.stringify(['author-A',book,chapter,'synthetic-device']));tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error);});}finally{db.close();}}
+Object.assign(window,{fixture:{draft,ready,editor:()=>draft.controller.editorSession.snapshot().editor,flush:()=>draft.flush(),setFailure:(v:StorageFailure|null)=>{failure=v;},delay:(v:boolean)=>{delay=v;},release:()=>{delay=false;release?.();release=null;},async owner(v:string|null){draft.pause();owner=v;await draft.bind(snapshot());},async chapter(v:boolean){selected=v?two:chapter;await draft.bind(snapshot());},raw,dbName,native,localScope:()=>({author:'author-A',book,chapter,client:'synthetic-device'}),remoteRelease:()=>transport.release(),transportFault:(v:Parameters<typeof transport.fault>[0])=>transport.fault(v),async close(){root.unmount();draft.dispose();}}});
+window.addEventListener('pagehide',()=>{draft.dispose();},{once:true});
