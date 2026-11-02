@@ -1,0 +1,73 @@
+{
+  "base": "e6242df9fc2fdb14817c2f6f58387e2844184664",
+  "source_commit": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+  "pack_commit": "0c5c60732338570403564954ed060d00d9e2a9f6",
+  "browser": "Google Chrome (Chromium)156.0.8078.76, actual isolated persistent profile",
+  "browser_cases": 25,
+  "browser_exit": 0,
+  "storage": "native IndexedDB transaction completion; no eviction/powerloss/encryption claim",
+  "tests": {
+    "workspace_editor": 98,
+    "new_schema_units": 6,
+    "library": 81,
+    "mfa": 55,
+    "preflight": 23,
+    "principal": 52,
+    "persistence_units": 21
+  },
+  "history": [
+    {
+      "status": "FAIL",
+      "cause": "Initial pack generation rejects LANGUAGE.md >35000bytes; before CP existed; fixed source reference"
+    },
+    {
+      "status": "INTERRUPTED",
+      "cause": "Initial full historical pack validation not completed; targeted full-render CP validation PASS before commit"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Initial inferred literal status type, corrected; browser esbuild module-resolution failure corrected"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Sandbox corepack ENOTFOUND registry; permitted frozen install/test commands passed"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Independent source review found3P2; fixed. Actual historical source regression3FAIL, corrected3PASS"
+    },
+    {
+      "status": "FAIL",
+      "cause": "First negative harness delete blocked, fixed cleanup; second remote negative timedout; fixed historical regression asserts1dispatch versus0"
+    },
+    {
+      "status": "BLOCKED",
+      "exit_code": 1,
+      "cause": "Local Docker daemon missing; no PG/container/volume created. Actual unchanged PG/HTTP required in ReadyCI"
+    },
+    {
+      "status": "INTERRUPTED",
+      "cause": "Local full governance stopped for review corrections; not a full PASS. Actual final-head CI required"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Independent runtime rerun spawn EPERM; source review findings retained"
+    }
+  ],
+  "limits": [
+    "No hosted/security/Auth/SQL/CI/dependency changes",
+    "No production registration, real prose, keys, deployment, merge",
+    "R01-R08 NOT_RUN;N12 and historical EPERM BLOCKED;legacy SQL privilege SKIPPED;prior DraftFAIL unchanged",
+    "Native failure abort executed;quota/unavailable/blocked fault cases injected, not genuine disk exhaustion",
+    "25Chromium cases run locally; existing mandatory workspace CI gains6schema units; no browser CI-policy change"
+  ],
+  "operative_sha256": {
+    "apps/web/src/components/editor/manuscript-durable-preview.tsx": "9111062a143a9e53501154c47d84f5d2477f70b2ad26a434c09ae7eb45454cd3",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "fa028d3966263063abe3dd2105379ff53a81fd528670aad72159f5b5a308c970",
+    "apps/web/src/lib/editor/manuscript-editor.test.mjs": "728d14013576f843cc6728cd91cb3f2b5b5a34d1d61f81b8b51c2615c98fe27e",
+    "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "e8fa428b55d186f13637c699b8307666cf78d11801df516abd5fc5f77d6b1682",
+    "apps/web/src/lib/editor/manuscript-indexeddb.ts": "2919b1962bba5452bbeed3b3fb71eb4d3629748aeef0080e9e285bcc8bc23958",
+    "tests/editor/durable-draft-browser.mjs": "4783c73029d86bc53d6adb9d4f7f913bdf8709a24e948568753b1cbe04c5b607",
+    "tests/editor/durable-draft-fixture.tsx": "1931b0aa55a4ed93dc85fa737cc257450359af5b97416f37ea847040e84c8a06"
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm check",
+    "name": "check"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm build",
+    "name": "build"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm test:workspace-contract",
+    "name": "workspace"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "name": "library"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm test:auth-mfa",
+    "name": "mfa"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm test:hosted-preflight",
+    "name": "preflight"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "name": "principal"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 0,
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "name": "units"
+  },
+  {
+    "source": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+    "exit_code": 1,
+    "command": "python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+    "name": "pg"
+  }
+]

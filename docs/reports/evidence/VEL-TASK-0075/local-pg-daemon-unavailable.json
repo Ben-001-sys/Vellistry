@@ -1,0 +1,247 @@
+{
+  "run_id": "a9e180bb812d448fb662cddbfbd1eaf0",
+  "source_commit": "b4782c022ae8b8dbe56adb4fb06e2a9a09754134",
+  "image": "postgres@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb",
+  "checkout_sha256": {
+    "tests/workspace/persistence/sql/00_fixture_auth.sql": "7693d380208bc3772f3b4505c0fffaf735718c38e66eacb56b9ce34490f8045b",
+    "supabase/migrations/20261009000000_initial_author_books.sql": "17d544949d81b937eb4d21287c7fbfb6bbaa9c220ac2f4d33a04119616fb4c39",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "cae63e488455928a41bb4e2882a7273efa133f6b7af30a2d75ca22ad70f9635c",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql": "79a5101b59ae777f3de469628fcbd70d379831586ebc55e38ac61897f0c97d3e",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql": "efa6f48df0757f87bcad5cc9d74bc7613c40e0d340bfe9b825cfbaa830d20bad",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql": "54e0115f1babd9279259260c027ee2b28b7c526f43649c868729770f5b5a48ae",
+    "tests/editor/persistence/sql/10_manuscript_contract.sql": "5ef6a0e8974d53be0b90e3e71fca8381e99699c244c9e9d4dac279bff4676303",
+    "docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json": "d4cab1940eaa7b546a3b379997814b5f5a51d72d9ab5c7416be1f317833c0edb",
+    "apps/api/src/modules/workspace/workspace-contract.ts": "f396789b6ba9ee4097c3cf259d927f6a13df3bd27b354ee2037a11e403b310c4",
+    "apps/api/src/modules/workspace/workspace-principal.ts": "4c529ea13c614e07b0bee8b3b3e408388718f61540609208503b5cb6d6e56b89",
+    "apps/api/src/modules/workspace/workspace-persistence-port.ts": "b9eff811bcd80c53319663fc4032c55fc7cd6edf3ff38801c72b7950bc4619da",
+    "apps/api/src/modules/workspace/workspace.service.ts": "8adca8186532156e36cb794e1164a18a18e02439b0ea4b18d8f20815ebeb0bfa",
+    "apps/api/src/modules/workspace/workspace-contract.spec.ts": "3a3e251f4323ece7e55bb948da76227bf02d93bd200eb6da7486f37d3c27e583",
+    "tests/workspace/persistence/workspace-pg-adapter.ts": "6d5de91b7c660a06b92bbe6d04731ab3433d1e0f72fb4ddb6e5b87ef676578ae",
+    "tests/workspace/persistence/workspace-pg17.integration.mjs": "e2e246322098729cb4dcaae7f18b44ecea155f151b2b34615507f95983662362",
+    "tests/workspace/persistence/run_pg17.py": "19af24d57ada5c7ae4748cd3882b85d6380e81ed3dde27c5aafd1dcfe8d3b3ba",
+    "tests/editor/persistence/manuscript-pg17.integration.mjs": "21682d0723c803819d869502307c1b6974532850f19a359f732375f41c664ccf",
+    "apps/api/src/modules/workspace/manuscript-contract.ts": "1dd37dbb816895d95d3a5c3812f4c4cf36233009b9f4dbf91d47dcc2a7a6dcb5",
+    "apps/api/src/modules/workspace/manuscript.service.ts": "d0b9d8e1020b8a52aee12f9342a5400b3fedb597f4f97e7657f95ffdb9eba385",
+    "tests/editor/persistence/manuscript-http.integration.mjs": "816c1e8e772550bf067cd26e4d9c6697adaebcf214f9853ff1c34899b4c63faf",
+    "apps/web/src/lib/editor/manuscript-composition.ts": "0180924293a238f188255c33a614727358948eb22002106b4663edf819868e05",
+    "apps/web/src/lib/editor/manuscript-recovery.ts": "98ff6c20e81851ee4d8c123717f296cdd1d0d62b9361460d971d77e16f5d9372",
+    "apps/web/src/lib/editor/manuscript-session.ts": "e359993938d647eac70fc1048d406ecec0071ddca27d19fb9eef8bc8a1a7dde5"
+  },
+  "applied_sql_sha256": {
+    "tests/workspace/persistence/sql/00_fixture_auth.sql": "f81f39d36c2dc79a5e75f9c6db9bb2adf7eefa20c5561714c0a5cfaf28f8fd37",
+    "supabase/migrations/20261009000000_initial_author_books.sql": "315e6a29f8072d4f556729784c07d4bf121666ef385b9cea4dfda36fded5ff74",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "6786561dcb325e14adbadec7b3bf879b8ab769841c86bf790dfbd2f19c222a65",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql": "1f4bb80e1a3d79638c788cc18bb6be18deadd86a3fdb633a536e7b7f8e564d06",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql": "f9de63258603f4f9bcfb9131d4d3f1b198688d66976161be715c4af3ddaa06cd",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql": "a91bfd56718a487d947c38e15563ca892100ea10df4739bfc1ddfcbea5416078",
+    "tests/editor/persistence/sql/10_manuscript_contract.sql": "5a8094ad40d7adacb32b5837216ce59005bd1999205f2346d20be2e437ba8e2a"
+  },
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "context",
+        "inspect",
+        "--format",
+        "{{json .Endpoints.docker.Host}}"
+      ],
+      "exit_code": 0,
+      "seconds": 0.719,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Server.Version}}"
+      ],
+      "exit_code": 1,
+      "seconds": 0.094,
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+    }
+  ],
+  "cases": [
+    {
+      "id": "IMP002-PERSIST-01",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-02",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-03",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-04",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-05",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-06",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-07",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-08",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-09",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-10",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-11",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-12",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-13",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-14",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-15",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-16",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-17",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-18",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-19",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-20",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-21",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-22",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-23",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-24",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-25",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-26",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "IMP002-PERSIST-27",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "EXEC-SESSION-LOCK-EXPIRY",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "EXEC-RESTRICTED-LOGIN-PRIVILEGES",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "EXEC-CANONICAL-DIGEST-VECTORS",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "EXEC-PROCESS-RESTART-RESTORE",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    },
+    {
+      "id": "EXEC-ROW-LOCK-PRIVILEGE-NEGATIVE",
+      "status": "BLOCKED",
+      "reason": "runtime not completed"
+    }
+  ],
+  "cleanup": {
+    "container": {
+      "created": false,
+      "verified_absent": false
+    },
+    "volume": {
+      "created": false,
+      "verified_absent": false
+    }
+  },
+  "guard_probes": {
+    "positive": 3,
+    "negative": 8
+  },
+  "docker_endpoint": "npipe:////./pipe/dockerDesktopLinuxEngine",
+  "inherited_docker_overrides_removed": {
+    "host_present": false,
+    "context_present": false
+  },
+  "runtime_error": "Disposable command failed: docker",
+  "exit_code": 1
+}
