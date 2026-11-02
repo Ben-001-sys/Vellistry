@@ -86,7 +86,8 @@ export function createDurableManuscriptComposition(options:{readOwner:()=>Promis
     if(!await current(e,s))return;failure(error);
     // Device failure does not revoke access to a verified memory copy. It must
     // remain explicitly recoverable without authorizing any persistence.
-    if(memory.has(localKey(s))&&!mismatched.has(localKey(s))&&controller.snapshot().canRecover){
+    const changedCopy=error instanceof DraftStorageError&&error.kind==='conflict';
+    if(memory.has(localKey(s))&&(!changedCopy||dirty.has(localKey(s)))&&!mismatched.has(localKey(s))&&controller.snapshot().canRecover){
      await controller.recover();if(await current(e,s))failure(error);
     }
    }
