@@ -11,7 +11,7 @@ base_commit: 0750adea43d765b4718e496a31f08711f8483c46
 agent:
   name: Codex
   model: Codex runtime model not independently reported
-  runner: Windows isolated Task0076 worktree; GitHub full/Ready verification pending
+  runner: Windows isolated worktree and fresh GitHub-hosted ubuntu-latest full execution
   role: primary bounded implementer
 sources:
 - docs/agent-workflow/inputs/VEL-TASK-0076/OWNER-SCOPE.md
@@ -106,6 +106,13 @@ execution:
     status: PASS
     tests: 53
     evidence: docs/reports/evidence/VEL-TASK-0076/policy-final.txt
+  - command: Existing Vellistry CI full dispatch at exact6e1f5f5 (frozen install,
+      native Chromium41, governance443, application/security, PG/recovery, build/check,
+      final gate)
+    source_commit: 6e1f5f5aa27a91e95e26af7053e85f710a70b564
+    status: PASS
+    exit_code: 0
+    evidence: docs/reports/evidence/VEL-TASK-0076/fresh-full-summary.json
 ---
 
 # IMP003E execution evidence
@@ -118,7 +125,7 @@ Existing application job now installs matching native Chromium/Linux dependencie
 ## Facts and evidence
 Local source-bound results, commands, counts/exits and historical failures are in local-summary.json and logs. Existing application tests ran at54c727b; later changes affect only browser source-binding check and compact current-state text. Application, dependency and unit-test blobs remain identical. All41 case bodies remain byte-identical (hash recorded). 53 CI-policy tests PASS at current implementation source, with46 prior tests and7 new tests (counts corrected by actual discovery; no production browser execution is inferred from schema fixtures).
 
-Initial clean distinct source review found no actionable defect; independent runtime blocked by read-only fixtures/subprocess EPERM. It preceded the final completed evidence head; a distinct final-head review remains required. Local Chromium launch is BLOCKED (spawn UNKNOWN), zero cases executed, underlying command exit1 and FAIL result retained. Frozen install/matching browser download succeeded. Docker unavailable: local PG is BLOCKED, no resources created. Fresh Linux runner execution remains mandatory before Ready.
+Initial clean distinct source review found no actionable defect; independent runtime blocked by read-only fixtures/subprocess EPERM. It preceded the final completed evidence head; a distinct review of the completed evidence head was subsequently CLEAN (see completed-head-review.txt). Local Chromium launch is BLOCKED (spawn UNKNOWN), zero cases executed, underlying command exit1 and FAIL result retained. Frozen install/matching browser download succeeded. Docker unavailable: local PG is BLOCKED, no resources created. Fresh Linux full execution41468644234 subsequently PASS, including real native41, complete source/cleanup validation, application/security/PG/recovery/build/check and final gate. Raw synthetic artifacts and source-hash verification are retained.
 
 ## Interpretations
 New coverage is enforced by tests/test_ci_policy.py discovered by unchanged governance. Trusted-main evaluator/loader and gate policy remain unchanged. This detects the enumerated accidental/static bypasses; owner source review remains required and no claim of malicious-contributor-proof workflow enforcement is made. Native browser results are synthetic application evidence, not hosted security acceptance.
@@ -127,7 +134,7 @@ New coverage is enforced by tests/test_ci_policy.py discovered by unchanged gove
 Owner review and separate merge decision only after fresh full execution, final-head source review and Ready CI. No automatic merge or successor scope.
 
 ## Tests
-Actual local PASS: frozen install;53 policy tests (multiple synthetic negatives per test);101 workspace/editor;81 Library;55 MFA;23 preflight;52 principal;21 persistence units; build and typecheck. Logs preserve actual command/source/exit. Complete local governance is running, not yet counted PASS. Full GitHub browser41, PostgreSQL32+16+8HTTP/restart,12CAS/restore, security and governance must be observed at the final head. Legacy integrated privileges remain SKIPPED unless separately executed. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED.
+Actual local PASS: frozen install;53 policy tests (multiple synthetic negatives per test);101 workspace/editor;81 Library;55 MFA;23 preflight;52 principal;21 persistence units; build and typecheck. Logs preserve actual command/source/exit. Complete local governance is still running and is not counted as final-source PASS. Fresh exact6e1f5f5 GitHub full verification PASS:443governance (304current/139archived), browser41, PostgreSQL32+16+8HTTP/restart and cleanup,12CAS/restore, security, builds/typechecks and final gate. Final Ready CI remains required at the delivered head. Legacy integrated privileges remain SKIPPED unless separately executed. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED.
 
 ## Artifacts
 Task/CP/EB0076, report and bounded evidence directory. Automatic browser artifact contains only durable-browser-results.json and durable-browser-diagnostics.txt, never profiles/IndexedDB/cookies/credentials. No raw arbitrary browser errors in uploaded diagnostics. The browser profile and loopback sockets/listener are owned and removed; cleanup failure prevents PASS.
@@ -136,4 +143,4 @@ Task/CP/EB0076, report and bounded evidence directory. Automatic browser artifac
 Current Windows host cannot launch downloaded matching Chromium; independent runtime EPERM and local Docker unavailable. These do not count as acceptance. Prior Task0075 local41 evidence remains historical, not this CI milestone. No hosted or production security, privacy, encryption, eviction/power-loss/cross-device durability assurance. All production gates remain pending; Issues108/131 OPEN and remediation delegation EXPIRED.
 
 ## Reviewer disposition
-Owner disposition pending. Initial advisory source review clean, runtime BLOCKED. Final completed-head review/actual Draft/full/Ready CI evidence will be appended without rewriting historical classifications. No merge authorization.
+Owner disposition pending. Initial advisory source review clean, runtime BLOCKED. Completed-head6e1f5f5 source review CLEAN; its runtime test attempt had5failures/27errors due read-only temporary fixtures and subprocess EPERM, remains BLOCKED. Original Draft41468645918 governance PASS and expected final gateFAIL (application/recovery/privileges SKIPPED). Full41468644234 PASS. A fresh distinct final-head review and actual Ready CI will be appended after the completed evidence commit. No merge authorization.

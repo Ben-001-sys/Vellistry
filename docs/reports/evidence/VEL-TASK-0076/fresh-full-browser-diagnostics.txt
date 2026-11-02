@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "executed": 41,
+  "failures": [],
+  "cleanup": {
+    "context_closed": true,
+    "profile_removed": true,
+    "http_closed": true,
+    "open_sockets": 0
+  }
+}

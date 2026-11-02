@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "source_commit": "6e1f5f5aa27a91e95e26af7053e85f710a70b564",
+  "playwright_version": "1.64.0",
+  "browser_version": "Chrome/156.0.8078.4",
+  "chromium_build": {
+    "revision": "1248",
+    "version": "156.0.8078.4"
+  },
+  "chromium_executable_sha256": "377a9fc07b495c3b8d0ab8ec1fdfd153641759f9756fea34d8dfce4de82f5025",
+  "bundle_sha256": "cf1a8f6c5ee0e66e3c263848aa9424786a337a4370b286a8d26aa2efeeda3252",
+  "required_cases": 41,
+  "executed_cases": 41,
+  "cases": [
+    {
+      "name": "actual Tiptap keyboard edit and native transaction completion",
+      "status": "PASS"
+    },
+    {
+      "name": "actual reload discovers copy and explicit recovery preserves exact JSON",
+      "status": "PASS"
+    },
+    {
+      "name": "repeated reload and explicit recovery retain the same document",
+      "status": "PASS"
+    },
+    {
+      "name": "same-profile new tab discovers matching committed draft",
+      "status": "PASS"
+    },
+    {
+      "name": "competing tab CAS refuses silent last-write-wins",
+      "status": "PASS"
+    },
+    {
+      "name": "account switch conceals another author recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "explicit discard deletes committed copy without automatic recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "delayed local ACK never claims newer typing stored",
+      "status": "PASS"
+    },
+    {
+      "name": "old remote ACK preserves newer locally committed writing",
+      "status": "PASS"
+    },
+    {
+      "name": "unknown remote operation survives reload with original ID",
+      "status": "PASS"
+    },
+    {
+      "name": "injected quota retains prose without false success",
+      "status": "PASS"
+    },
+    {
+      "name": "actual native transaction abort retains prose without false success",
+      "status": "PASS"
+    },
+    {
+      "name": "injected unavailable retains prose without false success",
+      "status": "PASS"
+    },
+    {
+      "name": "injected blocked retains prose without false success",
+      "status": "PASS"
+    },
+    {
+      "name": "account change during delayed persistence prevents stale publication",
+      "status": "PASS"
+    },
+    {
+      "name": "interrupted pending persistence does not claim a committed copy",
+      "status": "PASS"
+    },
+    {
+      "name": "oversized native record cannot replace accepted content",
+      "status": "PASS"
+    },
+    {
+      "name": "incompatible accepted revision never auto replaces accepted prose",
+      "status": "PASS"
+    },
+    {
+      "name": "malformed native stored record fails safely",
+      "status": "PASS"
+    },
+    {
+      "name": "incompatible schema fails safely",
+      "status": "PASS"
+    },
+    {
+      "name": "chapter switch during delayed persistence cannot publish old copy",
+      "status": "PASS"
+    },
+    {
+      "name": "discard tombstone prevents stale-tab ABA resurrection",
+      "status": "PASS"
+    },
+    {
+      "name": "review: failed-storage memory survives chapter rebind",
+      "status": "PASS"
+    },
+    {
+      "name": "review: remote dispatch waits for committed pending identity",
+      "status": "PASS"
+    },
+    {
+      "name": "review: durable preview never contradicts completed local storage",
+      "status": "PASS"
+    },
+    {
+      "name": "race: typing during delayed discard ACK remains recoverable",
+      "status": "PASS"
+    },
+    {
+      "name": "race: another tab discard cannot resurrect a clean cached copy",
+      "status": "PASS"
+    },
+    {
+      "name": "race: stale accepted read cannot poison newer same-chapter bind",
+      "status": "PASS"
+    },
+    {
+      "name": "round3: explicit memory recovery resumes healthy storage",
+      "status": "PASS"
+    },
+    {
+      "name": "round3: blocked edits during discard keep their generation",
+      "status": "PASS"
+    },
+    {
+      "name": "round3: stale memory-only baseline cannot be overwritten by fresh typing",
+      "status": "PASS"
+    },
+    {
+      "name": "round4: unavailable IndexedDB does not lock retained memory writing",
+      "status": "PASS"
+    },
+    {
+      "name": "round4: observed tombstone does not restore a clean old memory copy",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: local pre-dispatch failure explicitly retries original ID after storage recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: stale baseline retains original receipt lookup without restoring old document",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: invoked transport rejection never regains undispatched authority",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: reload never fabricates no-dispatch proof",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: mismatched detached receipt cannot clear original identity",
+      "status": "PASS"
+    },
+    {
+      "name": "pending: account switch suppresses detached lookup completion",
+      "status": "PASS"
+    },
+    {
+      "name": "native open error can recover in the same adapter and then persist",
+      "status": "PASS"
+    },
+    {
+      "name": "native open blocked can recover in the same adapter and then persist",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "execution": {
+    "real_chromium": true,
+    "persistent_profile": true,
+    "historical_override": null,
+    "case_filter": null,
+    "review_negatives": null,
+    "external_runtime": null,
+    "external_executable": null
+  },
+  "cleanup": {
+    "context_closed": true,
+    "profile_removed": true,
+    "http_closed": true,
+    "open_sockets": 0
+  }
+}
