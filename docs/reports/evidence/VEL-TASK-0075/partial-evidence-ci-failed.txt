@@ -1,0 +1,26 @@
+Draft advisory governance	Base-anchored PR compliance evidence	﻿2026-11-02T11:16:47.4455708Z ##[group]Run python -I scripts/run_pr_compliance.py
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4455995Z ^[[36;1mpython -I scripts/run_pr_compliance.py^[[0m
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4473007Z shell: /usr/bin/bash -e {0}
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4473175Z env:
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4473354Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4473619Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4473909Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4474183Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4474430Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4474673Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.4474881Z ##[endgroup]
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.9697947Z BLOCKED: PR compliance: Head changed after source evidence: apps/web/src/lib/editor/manuscript-durable-composition.ts
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:16:47.9818666Z ##[error]Process completed with exit code 1.
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	﻿2026-11-02T11:17:13.4363037Z ##[group]Run python -I scripts/run_pr_compliance.py
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4363501Z ^[[36;1mpython -I scripts/run_pr_compliance.py^[[0m
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4386625Z shell: /usr/bin/bash -e {0}
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4386901Z env:
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4387180Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4387639Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4388090Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4388837Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4389251Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4389953Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:13.4390292Z ##[endgroup]
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:14.1860394Z BLOCKED: PR compliance: Head changed after source evidence: apps/web/src/lib/editor/manuscript-durable-composition.ts
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:17:14.1977395Z ##[error]Process completed with exit code 1.

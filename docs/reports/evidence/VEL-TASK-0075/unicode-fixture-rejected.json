@@ -1,0 +1,21 @@
+{
+  "result": "FAIL",
+  "source_commit": "377991dd59ea12f61a595edaa81ddf00eddffb0b",
+  "browser_version": "Chrome/156.0.8078.76",
+  "bundle_sha256": "61b1089225182c22793d67cbc659881c0e5488e0fdf22f9ccb2025a7275b3d9e",
+  "historical_override": null,
+  "cases": [
+    {
+      "name": "actual Tiptap keyboard edit and native transaction completion",
+      "status": "FAIL",
+      "error": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('status', { name: 'Local recovery status' }).filter({ hasText: 'Saved on this device, not synced.' }) to be visible\u001b[22m\n"
+    }
+  ],
+  "chromium": "actual persistent context",
+  "claims": "Native transaction/reload only; injected failure probes are synthetic. No eviction, power-loss, encryption or hosted acceptance.",
+  "cleanup": {
+    "profile_removed": true,
+    "http_closed": true,
+    "open_sockets": 0
+  }
+}

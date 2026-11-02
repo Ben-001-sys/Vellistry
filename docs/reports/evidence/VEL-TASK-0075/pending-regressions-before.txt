@@ -1,0 +1,3 @@
+{"name":"pending: local pre-dispatch failure explicitly retries original ID after storage recovery","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n"}
+{"name":"pending: stale baseline retains original receipt lookup without restoring old document","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n"}
+{"result":"FAIL","cases":2,"cleanup":"owned profile and HTTP server removed"}

@@ -1,0 +1,35 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (1.905ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.2583ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.1936ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.2133ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.2174ms)
+✔ rejects mismatched Web/API project publishable keys (0.2561ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.2315ms)
+✔ rejects invalid or omitted expected project reference (0.1357ms)
+✔ missing local files are reported without consulting environment or network (1.8661ms)
+✔ reads ignored local files, never emits key values in success output (13.0121ms)
+✔ invalid local config never leaks the offending key in diagnostics (4.9645ms)
+✔ does not pass file validation when inherited runtime settings override those files (12.6017ms)
+✔ rejects competing Next env files that the actual runtime would also read (24.6793ms)
+✔ rejects test mode because Next does not load the required .env.local there (4.1542ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (142.1428ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (170.8815ms)
+✔ actual CLI fails safely with absent env files (78.1729ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.3136ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (5.7872ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (82.6747ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (131.5034ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (86.9712ms)
+✔ missing-file guidance links to existing canonical placeholder instructions (6.9912ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 948.0645

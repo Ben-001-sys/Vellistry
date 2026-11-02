@@ -1,9 +1,9 @@
 {
   "base": "e6242df9fc2fdb14817c2f6f58387e2844184664",
-  "source_commit": "f4d337d655fd5e9bdf3b4fb152d63854bc68d5af",
+  "source_commit": "77024b478fa0f8ce176adf98af1fe7a56eafd1b9",
   "pack_commit": "0c5c60732338570403564954ed060d00d9e2a9f6",
   "browser": "Google Chrome (Chromium)156.0.8078.76, actual isolated persistent profile",
-  "browser_cases": 33,
+  "browser_cases": 39,
   "browser_exit": 0,
   "storage": "native IndexedDB transaction completion; no eviction/powerloss/encryption claim",
   "tests": {
@@ -72,6 +72,18 @@
     {
       "status": "FAIL",
       "cause": "Evidence assembly cp1252 decode error; partial0d724c1 commit preserved; corrected UTF8 EB/manifest followup. No executable source changed."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round5 review2P2: undispatched pending retry dead end and stale baseline pending receipt hidden. Historical2FAIL/current2PASS plus4new protocol negatives PASS."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Evidence schema headings rejected by trusted loader and Draft41435762887. Restored exact required sections; validator unchanged."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Repeated Windows default decoding inflated browser Unicode fixture to2.46MB, correctly rejected by manuscript size guard; primaryrun at377 failed. Corrected stable Unicode escapes/exact codepoint+whitespace assertions. Only final770 browser run proves intended input39PASS."
     }
   ],
   "limits": [
@@ -82,15 +94,15 @@
     "25Chromium cases run locally; existing mandatory workspace CI gains6schema units; no browser CI-policy change"
   ],
   "operative_sha256": {
-    "apps/web/src/components/editor/manuscript-durable-preview.tsx": "b4094a0d9570b81f05ef13fc323fb932d4efbf9c4d247e99a09b2bdec2cb440b",
-    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "219922185dc6dd3dadd5d4ad16e6d6687bb3c0a52e497b33b49c5a0eebd3cacd",
+    "apps/web/src/components/editor/manuscript-durable-preview.tsx": "06fd8ab24e9b73f52d835a16ed1ac491ec4034f263ce929cbed319d127c24efd",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "a37655a04e871456461c4187ee163f0c61a0ec29f959212d6a9b07888c2a3f5c",
     "apps/web/src/lib/editor/manuscript-editor.test.mjs": "728d14013576f843cc6728cd91cb3f2b5b5a34d1d61f81b8b51c2615c98fe27e",
     "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "e8fa428b55d186f13637c699b8307666cf78d11801df516abd5fc5f77d6b1682",
     "apps/web/src/lib/editor/manuscript-indexeddb.ts": "2919b1962bba5452bbeed3b3fb71eb4d3629748aeef0080e9e285bcc8bc23958",
-    "tests/editor/durable-draft-browser.mjs": "ffb2a13c12997291d81be7d3c39dfbbf3eac2a97f039ef0505368f95ce50740a",
-    "tests/editor/durable-draft-fixture.tsx": "1ee66f9bfe2b7fe4badbc30899aac5252835f9502492c36f649639781b7ed710"
+    "tests/editor/durable-draft-browser.mjs": "80673f698ca9548307bb0e31c9bc4fb21e96290e45f88caadaa61b51a5f3bb95",
+    "tests/editor/durable-draft-fixture.tsx": "cbcf214eb2d9ecae46607c470aa8f79af4470a391cd08d917289acd50e052241"
   },
-  "previous_source": "3e639170314e989ecec600d80f6c55cd3cc71657",
+  "previous_source": "f4d337d655fd5e9bdf3b4fb152d63854bc68d5af",
   "draft_run": {
     "id": 41430365271,
     "conclusion": "FAILURE",
@@ -98,7 +110,7 @@
     "final_gate": "FAIL deliberate Draft boundary",
     "expensive_jobs": "SKIPPED"
   },
-  "application_execution_commit": "f4d337d655fd5e9bdf3b4fb152d63854bc68d5af",
+  "application_execution_commit": "377991dd59ea12f61a595edaa81ddf00eddffb0b",
   "draft_runs": [
     {
       "id": 41430365271,
@@ -116,5 +128,13 @@
       "id": 41433101082,
       "status": "FAILURE"
     }
-  ]
+  ],
+  "reuse_basis": {
+    "execution_commit": "377991dd59ea12f61a595edaa81ddf00eddffb0b",
+    "source_commit": "77024b478fa0f8ce176adf98af1fe7a56eafd1b9",
+    "changed_operative_since_application_execution": [
+      "tests/editor/durable-draft-browser.mjs"
+    ],
+    "browser_reexecuted": true
+  }
 }

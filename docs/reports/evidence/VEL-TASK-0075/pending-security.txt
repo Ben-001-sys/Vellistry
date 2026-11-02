@@ -1,0 +1,7 @@
+{"name":"pending: local pre-dispatch failure explicitly retries original ID after storage recovery","status":"PASS"}
+{"name":"pending: stale baseline retains original receipt lookup without restoring old document","status":"PASS"}
+{"name":"pending: invoked transport rejection never regains undispatched authority","status":"PASS"}
+{"name":"pending: reload never fabricates no-dispatch proof","status":"PASS"}
+{"name":"pending: mismatched detached receipt cannot clear original identity","status":"PASS"}
+{"name":"pending: account switch suppresses detached lookup completion","status":"PASS"}
+{"result":"PASS","cases":6,"cleanup":"owned profile and HTTP server removed"}
