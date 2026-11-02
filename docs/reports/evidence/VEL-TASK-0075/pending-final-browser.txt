@@ -1,0 +1,19 @@
+{"result":"FAIL","cases":1,"cleanup":"owned profile and HTTP server removed"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+  - waiting for getByRole('status', { name: 'Local recovery status' }).filter({ hasText: 'Saved on this device, not synced.' }) to be visible
+
+    at H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\tests\editor\durable-draft-browser.mjs:37:1092404
+    at async run (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\tests\editor\durable-draft-browser.mjs:24:304)
+    at async file:///H:/cursor/cursor/Vellistry/.worktrees/vel-imp003d-durable-drafts/tests/editor/durable-draft-browser.mjs:36:2 {
+  log: [
+    "  - waiting for getByRole('status', { name: 'Local recovery status' }).filter({ hasText: 'Saved on this device, not synced.' }) to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.13.0

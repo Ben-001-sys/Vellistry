@@ -1,0 +1,3 @@
+{"name":"round4: unavailable IndexedDB does not lock retained memory writing","status":"PASS"}
+{"name":"round4: observed tombstone does not restore a clean old memory copy","status":"PASS"}
+{"result":"PASS","cases":2,"cleanup":"owned profile and HTTP server removed"}

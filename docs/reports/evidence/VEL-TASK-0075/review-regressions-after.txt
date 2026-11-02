@@ -1,0 +1,4 @@
+{"name":"review: failed-storage memory survives chapter rebind","status":"PASS"}
+{"name":"review: remote dispatch waits for committed pending identity","status":"PASS"}
+{"name":"review: durable preview never contradicts completed local storage","status":"PASS"}
+{"result":"PASS","cases":3,"cleanup":"owned profile and HTTP server removed"}

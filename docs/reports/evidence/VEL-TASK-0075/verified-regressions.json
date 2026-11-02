@@ -1,0 +1,32 @@
+[
+  {
+    "name": "library",
+    "source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+    "command": "corepack.cmd pnpm test:library-isolation",
+    "exit_code": 0
+  },
+  {
+    "name": "mfa",
+    "source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+    "command": "corepack.cmd pnpm test:auth-mfa",
+    "exit_code": 0
+  },
+  {
+    "name": "preflight",
+    "source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+    "command": "corepack.cmd pnpm test:hosted-preflight",
+    "exit_code": 0
+  },
+  {
+    "name": "principal",
+    "source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "exit_code": 0
+  },
+  {
+    "name": "units",
+    "source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "exit_code": 0
+  }
+]

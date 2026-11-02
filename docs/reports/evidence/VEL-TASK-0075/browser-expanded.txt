@@ -1,0 +1,20 @@
+{"name":"actual Tiptap keyboard edit and native transaction completion","status":"PASS"}
+{"name":"actual reload discovers copy and explicit recovery preserves exact JSON","status":"PASS"}
+{"name":"same-profile new tab discovers matching committed draft","status":"PASS"}
+{"name":"competing tab CAS refuses silent last-write-wins","status":"PASS"}
+{"name":"account switch conceals another author recovery","status":"PASS"}
+{"name":"explicit discard deletes committed copy without automatic recovery","status":"PASS"}
+{"name":"delayed local ACK never claims newer typing stored","status":"PASS"}
+{"name":"old remote ACK preserves newer locally committed writing","status":"PASS"}
+{"name":"unknown remote operation survives reload with original ID","status":"PASS"}
+{"name":"injected quota retains prose without false success","status":"PASS"}
+{"name":"actual native transaction abort retains prose without false success","status":"PASS"}
+{"name":"injected unavailable retains prose without false success","status":"PASS"}
+{"name":"injected blocked retains prose without false success","status":"PASS"}
+{"name":"account change during delayed persistence prevents stale publication","status":"PASS"}
+{"name":"interrupted pending persistence does not claim a committed copy","status":"PASS"}
+{"name":"oversized native record cannot replace accepted content","status":"PASS"}
+{"name":"malformed native stored record fails safely","status":"PASS"}
+{"name":"incompatible schema fails safely","status":"PASS"}
+{"name":"chapter switch during delayed persistence cannot publish old copy","status":"PASS"}
+{"result":"PASS","cases":19,"cleanup":"owned profile and HTTP server removed"}

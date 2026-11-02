@@ -1,0 +1,26 @@
+Draft advisory governance	Base-anchored PR compliance evidence	﻿2026-11-02T11:18:48.5133450Z ##[group]Run python -I scripts/run_pr_compliance.py
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5133975Z ^[[36;1mpython -I scripts/run_pr_compliance.py^[[0m
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5155430Z shell: /usr/bin/bash -e {0}
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5155748Z env:
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5156070Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5156574Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5157088Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5157560Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5158010Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5158456Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:48.5158830Z ##[endgroup]
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:49.1858971Z BLOCKED: PR compliance: /home/runner/work/Vellistry/Vellistry/docs/agent-workflow/execution-bundles/VEL-EB-0075.md: missing section ## Facts and evidence
+Draft advisory governance	Base-anchored PR compliance evidence	2026-11-02T11:18:49.1973782Z ##[error]Process completed with exit code 1.
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	﻿2026-11-02T11:19:20.0604646Z ##[group]Run python -I scripts/run_pr_compliance.py
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0605148Z ^[[36;1mpython -I scripts/run_pr_compliance.py^[[0m
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0628251Z shell: /usr/bin/bash -e {0}
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0628523Z env:
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0628801Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0629263Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0629716Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0630113Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0630503Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0631195Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.0631528Z ##[endgroup]
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.7272165Z BLOCKED: PR compliance: /home/runner/work/Vellistry/Vellistry/docs/agent-workflow/execution-bundles/VEL-EB-0075.md: missing section ## Facts and evidence
+Vellistry CI gate	Recompute base-anchored PR compliance evidence	2026-11-02T11:19:20.7388941Z ##[error]Process completed with exit code 1.

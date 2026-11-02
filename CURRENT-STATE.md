@@ -3,19 +3,19 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-10-31
+updated_at: 2026-11-02
 owner: project_owner
 version: 0.2.2
 ---
 
-# Vellistry — current verified state
+# Vellistry â€” current verified state
 
-## IMP003C — 2026-10-31
+## IMP003D — 2026-11-02
 
-PR133 main `e83022b` post-main41193526527 PASS. Task0074 composition/HTTP tests
-are in verification; no production registration. Dated snapshots below are historical.
+PR134 main `e6242df` post-main41411204986 PASS. Task0075 IndexedDB recovery
+is in verification, test-only. Dated snapshots below remain historical.
 
-## IMP003B disposable implementation — 2026-10-31
+## IMP003B disposable implementation â€” 2026-10-31
 
 FACT: main857b686 integrates PR132; exact reviewed tree and post-main41184485735
 PASS. Its Task0071 single SQL-path record is now reviewed-base input. PR130
@@ -30,7 +30,7 @@ local-only. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED; PRINCIPAL/SESSION/gat
 and hosted/private-pilot acceptance pending. Issues108/131 OPEN; remediation
 delegation EXPIRED. Historical reports retain earlier failures and limitations.
 
-## Owner-only PRINCIPAL probe preparation — 2026-10-26
+## Owner-only PRINCIPAL probe preparation â€” 2026-10-26
 
 FACT: PR124 merged17adbf96ae0a9187732ad3a7837ec0d2d9b62d03; tree match and
 [post-main40289823029](https://github.com/Ben-001-sys/Vellistry/actions/runs/40289823029) SUCCESS. Task59-62 history preserved.
@@ -43,7 +43,7 @@ Conditional PRINCIPAL design remains separate from target/implementation trust;
 other production gates pending; R01-R08 NOT_RUN; N12/independent EPERM BLOCKED.
 Docs review/CI/owner merge pending; Issue108 OPEN; delegation EXPIRED.
 
-## Historical query preparation — 2026-10-24
+## Historical query preparation â€” 2026-10-24
 
 FACT: PR109 merged under explicit ordinary owner approval. Main
 `d13deca2d6762d44f80035c6d89d2cb61d1ab1e8` exactly matches its reviewed tree;
@@ -65,7 +65,7 @@ Ordinary owner merge rules apply. The remediation delegation remains EXPIRED.
 No credentials, hosted SQL, migration/source adoption, Auth fixtures, settings,
 private data or IMP002 implementation is authorized by this preparation.
 
-## Historical Phase A dispatch — 2026-10-23
+## Historical Phase A dispatch â€” 2026-10-23
 
 FACT: main `be69e5b249f57253e726bfcca00f5e81c0c60623` integrates PR107;
 [post-main39961186197](https://github.com/Ben-001-sys/Vellistry/actions/runs/39961186197)
@@ -117,7 +117,7 @@ zero-step infrastructure failures remain historical evidence. No billing repair
 mechanism or savings is inferred. PR104 merged with post-main39661737567 SUCCESS.
 
 [Source preservation](docs/reports/VEL-SOURCE-PRESERVATION-0038.md) retains the exact
-original transport ZIP and SRC-001–SRC-003 hashes. SRC-004 remains missing; summaries
+original transport ZIP and SRC-001â€“SRC-003 hashes. SRC-004 remains missing; summaries
 are not its original. [Source register](docs/research/SOURCE-REGISTER.md) is canonical.
 [Level B evaluation](docs/agent-workflow/handoff-evaluations/VEL-HO-0004.md) has ten
 technical PASS results and unset owner acceptance. Task0038 fresh code generation
@@ -149,7 +149,7 @@ BLOCKED/NOT_RUN. An unexpired signed-out JWT remains a private-pilot security bl
 
 ## Next permitted work and readiness
 
-Finish only Task0044’s final exact-head review/integration/CI attestation. No new
+Finish only Task0044â€™s final exact-head review/integration/CI attestation. No new
 feature implementation is dispatched. The [conditional closure record](docs/agent-workflow/authorizations/VEL-REM-INTEGRATION-20261019-CLOSURE.md)
 ends the one-time delegation automatically after final post-main PASS and the exact
 PR/Issue71 attestation. Thereafter ordinary owner-authorized Task/ContextPack,
@@ -163,7 +163,7 @@ SQL adoption/hosted security and unavailable cost comparison remain explicit blo
 
 ## Retained product decision references
 
-[Owner waves01–03 selections](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
+[Owner waves01â€“03 selections](docs/history/2026-10-10-owner-waves-01-03-recommendations-accepted.md),
 [HIS-20261010-003 writer-owned free-or-paid BYOK clarification](docs/history/2026-10-10-owner-byok-free-or-paid-clarification.md)
 and [bounded design-entry delegation](docs/history/2026-10-10-owner-delegated-mvp-design-entry.md)
 retain their original scopes. They do not authorize paid calls, feature execution,

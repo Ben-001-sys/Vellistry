@@ -1,0 +1,13 @@
+{"result":"FAIL","cases":0,"cleanup":"owned profile and HTTP server removed"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Error: delete blocked
+    at r.onblocked (eval at evaluate (:370:30), <anonymous>:1:193)
+    at clear (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\tests\editor\durable-draft-browser.mjs:25:31)
+    at H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\tests\editor\durable-draft-browser.mjs:54:8 {
+  log: []
+}
+
+Node.js v24.13.0

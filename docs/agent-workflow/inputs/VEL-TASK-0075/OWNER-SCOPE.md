@@ -1,0 +1,9 @@
+Owner instruction relayed from this conversation, 2 November 2026.
+
+Owner explicitly approved and dispatched IMP-003D as written after the earlier DRAFT/NOT DISPATCHED packet. Implement bounded native IndexedDB durable local drafts with async transaction completion, existing editor/composition/recovery/contracts, synthetic identities and actual Chromium reload/cross-tab testing. Base e6242df9fc2fdb14817c2f6f58387e2844184664. Task0075 candidate verified unused; preserve Task0072 reservation and all historical evidence.
+
+Records bind author/book/chapter/client/schema/accepted revision/document/pending operation/write sequence/time. Validate before exposure. Conceal on logout or uncertain identity; do not delete on logout. Explicit recovery only, accepted revision check, original unknown operation retained; never overwrite accepted/newer writing. No silent last-write-wins across tabs. Handle unavailable/blocked/quota/abort/corrupt/oversize/schema mismatch/stale async/competing tabs/reload/discard/cleanup. In-memory prose survives failures.
+
+Only show Saved on this device after transaction completion; separate remote acceptance. Device storage may be lost, not cross-device backup/encryption/privacy against shared profile. Real Chromium/Tiptap edit/transaction/reload/recover/Unicode/marks/cross-tab/author denial/corruption/no false success; isolated disposable profiles removed. If unavailable classify BLOCKED, no mock durability claims.
+
+Unique task, committed governing sources, validated immutable committed CP before code; isolated branch; tests/build/typecheck/governance, EB, distinct review, Draft then ReadyCI, unmerged PR. No dependencies, CI-policy, SQL, hosted/Auth/MFA/JWT/credentials, production route/security/write privileges, real manuscripts, paid APIs, deployments, successor work or merge. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED. Issues108/131 OPEN, remediation delegation EXPIRED.

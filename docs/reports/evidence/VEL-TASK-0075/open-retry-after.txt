@@ -1,0 +1,16 @@
+✔ local schema preserves exact Unicode whitespace and marks and clones evidence (1.858ms)
+✔ local schema rejects cross-author/book/chapter/client records (0.3523ms)
+✔ local schema rejects unsupported version and damaged/oversized content (1.5425ms)
+✔ pending operation validates payload binding and preserves original identity (0.8742ms)
+✔ unavailable native IndexedDB fails closed asynchronously (0.589ms)
+✔ closed adapter cannot reopen (0.1624ms)
+✔ native opening retries after a temporary synchronous failure (0.4095ms)
+✔ blocked opening can retry and closes a late successful connection (0.3504ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 318.5562

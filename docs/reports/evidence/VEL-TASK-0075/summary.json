@@ -1,0 +1,139 @@
+{
+  "base": "e6242df9fc2fdb14817c2f6f58387e2844184664",
+  "source_commit": "105b140d288a2ca1fb9fe105e3fd8106f44ab0b1",
+  "pack_commit": "0c5c60732338570403564954ed060d00d9e2a9f6",
+  "browser": "Google Chrome (Chromium)156.0.8078.76, actual isolated persistent profile",
+  "browser_cases": 41,
+  "browser_exit": 0,
+  "storage": "native IndexedDB transaction completion; no eviction/powerloss/encryption claim",
+  "tests": {
+    "workspace_editor": 101,
+    "new_schema_units": 9,
+    "library": 81,
+    "mfa": 55,
+    "preflight": 23,
+    "principal": 52,
+    "persistence_units": 21
+  },
+  "history": [
+    {
+      "status": "FAIL",
+      "cause": "Initial pack generation rejects LANGUAGE.md >35000bytes; before CP existed; fixed source reference"
+    },
+    {
+      "status": "INTERRUPTED",
+      "cause": "Initial full historical pack validation not completed; targeted full-render CP validation PASS before commit"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Initial inferred literal status type, corrected; browser esbuild module-resolution failure corrected"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Sandbox corepack ENOTFOUND registry; permitted frozen install/test commands passed"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Independent source review found3P2; fixed. Actual historical source regression3FAIL, corrected3PASS"
+    },
+    {
+      "status": "FAIL",
+      "cause": "First negative harness delete blocked, fixed cleanup; second remote negative timedout; fixed historical regression asserts1dispatch versus0"
+    },
+    {
+      "status": "BLOCKED",
+      "exit_code": 1,
+      "cause": "Local Docker daemon missing; no PG/container/volume created. Actual unchanged PG/HTTP required in ReadyCI"
+    },
+    {
+      "status": "INTERRUPTED",
+      "cause": "Local full governance stopped for review corrections; not a full PASS. Actual final-head CI required"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Independent runtime rerun spawn EPERM; source review findings retained"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Completed-head review round2 found3P2: discard/new-edit race, clean cache tombstone resurrection, stale read wrapper mutations. New Chromium historical3FAIL / corrected3PASS."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round3 review2P2: explicit memory recovery did not resume storage; blocked edit counter missed discard-time edits. Additional self-check stale memory baseline required readonly protection. Historical3FAIL/corrected3PASS."
+    },
+    {
+      "status": "FAIL",
+      "cause": "First full31case run premature editor assertion after async recovery; fixed test await only. App suites at2b988ad remain authentic same-code evidence; finalbrowser31PASS at3e63917."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round4 reviewP2: memory-only recovery incorrectly required healthy storage. Historical1FAIL/current1PASS. Additional self-check clean tombstone fallback historicalFAIL/currentPASS; 9reviewP2+2self defects total11before/after negatives."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Evidence assembly cp1252 decode error; partial0d724c1 commit preserved; corrected UTF8 EB/manifest followup. No executable source changed."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round5 review2P2: undispatched pending retry dead end and stale baseline pending receipt hidden. Historical2FAIL/current2PASS plus4new protocol negatives PASS."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Evidence schema headings rejected by trusted loader and Draft41435762887. Restored exact required sections; validator unchanged."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Repeated Windows default decoding inflated browser Unicode fixture to2.46MB, correctly rejected by manuscript size guard; primaryrun at377 failed. Corrected stable Unicode escapes/exact codepoint+whitespace assertions. Only final770 browser run proves intended input39PASS."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round6 reviewP2 cached failed IndexedDB open forever. Focused old6/8PASS2FAIL, corrected9/9PASS includingclosecancel;2actualChromium injected-open-failure->realnative-success cases PASS. Opening timeout bounded5seconds;lateconnectionsclosed."
+    }
+  ],
+  "limits": [
+    "No hosted/security/Auth/SQL/CI/dependency changes",
+    "No production registration, real prose, keys, deployment, merge",
+    "R01-R08 NOT_RUN;N12 and historical EPERM BLOCKED;legacy SQL privilege SKIPPED;prior DraftFAIL unchanged",
+    "Native failure abort executed;quota/unavailable/blocked fault cases injected, not genuine disk exhaustion",
+    "25Chromium cases run locally; existing mandatory workspace CI gains6schema units; no browser CI-policy change"
+  ],
+  "operative_sha256": {
+    "apps/web/src/components/editor/manuscript-durable-preview.tsx": "06fd8ab24e9b73f52d835a16ed1ac491ec4034f263ce929cbed319d127c24efd",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "a37655a04e871456461c4187ee163f0c61a0ec29f959212d6a9b07888c2a3f5c",
+    "apps/web/src/lib/editor/manuscript-editor.test.mjs": "728d14013576f843cc6728cd91cb3f2b5b5a34d1d61f81b8b51c2615c98fe27e",
+    "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "de38ed49be68ad654638823974cce5d7bf7d36db23f5c36ea4ab838fb570d120",
+    "apps/web/src/lib/editor/manuscript-indexeddb.ts": "e4b8686061d6b4f6658f16fc793c380d500d73656e92746c46b7e3e0349ed637",
+    "tests/editor/durable-draft-browser.mjs": "bebae8f0406c5b4ad7b77143eddd6296274120d62e22daae45339e520713bc94",
+    "tests/editor/durable-draft-fixture.tsx": "f9a53aa117560621322604abc9dcdc6c9f4309a9be9e0cb3edc006531eb240a1"
+  },
+  "previous_source": "77024b478fa0f8ce176adf98af1fe7a56eafd1b9",
+  "draft_run": {
+    "id": 41430365271,
+    "conclusion": "FAILURE",
+    "governance": "PASS",
+    "final_gate": "FAIL deliberate Draft boundary",
+    "expensive_jobs": "SKIPPED"
+  },
+  "application_execution_commit": "105b140d288a2ca1fb9fe105e3fd8106f44ab0b1",
+  "draft_runs": [
+    {
+      "id": 41430365271,
+      "status": "FAILURE"
+    },
+    {
+      "id": 41431386378,
+      "status": "FAILURE"
+    },
+    {
+      "id": 41432971719,
+      "status": "CANCELLED"
+    },
+    {
+      "id": 41433101082,
+      "status": "FAILURE"
+    }
+  ],
+  "reuse_basis": {
+    "all_current_tests_executed_at": "105b140d288a2ca1fb9fe105e3fd8106f44ab0b1"
+  }
+}

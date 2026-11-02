@@ -1,0 +1,66 @@
+✔ local schema preserves exact Unicode whitespace and marks and clones evidence (2.0162ms)
+✔ local schema rejects cross-author/book/chapter/client records (0.444ms)
+✔ local schema rejects unsupported version and damaged/oversized content (1.6389ms)
+✔ pending operation validates payload binding and preserves original identity (0.852ms)
+✔ unavailable native IndexedDB fails closed asynchronously (0.5934ms)
+✔ closed adapter cannot reopen (0.1628ms)
+✖ native opening retries after a temporary synchronous failure (1.1777ms)
+✖ blocked opening can retry and closes a late successful connection (0.8334ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 532.6468
+
+✖ failing tests:
+
+test at ..\web\src\lib\editor\manuscript-indexeddb.test.ts:13:1
+✖ native opening retries after a temporary synchronous failure (1.1777ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\apps\web\src\lib\editor\manuscript-indexeddb.test.ts:13:323)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ..\web\src\lib\editor\manuscript-indexeddb.test.ts:14:1
+✖ blocked opening can retry and closes a late successful connection (0.8334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    Comparison {
+  +   kind: 'blocked'
+  -   kind: 'unavailable'
+    }
+  
+      at async TestContext.<anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\apps\web\src\lib\editor\manuscript-indexeddb.test.ts:14:522)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: blocked
+        at request.onblocked (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\apps\web\src\lib\editor\manuscript-indexeddb.ts:43:47)
+        at <anonymous> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\apps\web\src\lib\editor\manuscript-indexeddb.test.ts:14:364)
+        at node:internal/process/task_queues:149:7
+        at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+        at AsyncResource.runMicrotask (node:internal/process/task_queues:146:8),
+    expected: { kind: 'unavailable' },
+    operator: 'rejects',
+    diff: 'simple'
+  }
+undefined
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\apps\api:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?

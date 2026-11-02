@@ -1,0 +1,38 @@
+X [ERROR] Could not resolve "react-dom/client"
+
+    tests/editor/durable-draft-fixture.tsx:2:25:
+      2 │ import {createRoot} from 'react-dom/client';
+        ╵                          ~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "react-dom/client" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+X [ERROR] Could not resolve "react/jsx-runtime"
+
+    tests/editor/durable-draft-fixture.tsx:17:75:
+      17 │ ...ementById('root')!);root.render(<ManuscriptDurablePreview draft...
+         ╵                                    ^
+
+  You can mark the path "react/jsx-runtime" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1752
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 2 errors:
+tests/editor/durable-draft-fixture.tsx:2:25: ERROR: Could not resolve "react-dom/client"
+tests/editor/durable-draft-fixture.tsx:17:75: ERROR: Could not resolve "react/jsx-runtime"
+    at failureErrorWithLog (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1752:15)
+    at H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1211:25
+    at H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1163:52
+    at buildResponseToResult (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1209:7)
+    at H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:1236:16
+    at responseCallbacks.<computed> (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:886:9)
+    at handleIncomingPacket (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:941:12)
+    at Socket.readFromStdout (H:\cursor\cursor\Vellistry\.worktrees\vel-imp003d-durable-drafts\node_modules\.pnpm\esbuild@0.28.2\node_modules\esbuild\lib\main.js:864:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v24.13.0

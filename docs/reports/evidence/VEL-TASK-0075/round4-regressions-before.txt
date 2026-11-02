@@ -1,0 +1,2 @@
+{"name":"round4: unavailable IndexedDB does not lock retained memory writing","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    content: [\n      {\n        content: [\n          {\n+           text: 'Accepted synthetic text',\n-           text: 'Accepted synthetic textretained with unavailable reads',\n            type: 'text'\n          }\n        ],\n        type: 'paragraph'\n      }\n"}
+{"result":"FAIL","cases":1,"cleanup":"owned profile and HTTP server removed"}
