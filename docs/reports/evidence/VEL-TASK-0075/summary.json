@@ -1,9 +1,9 @@
 {
   "base": "e6242df9fc2fdb14817c2f6f58387e2844184664",
-  "source_commit": "3e639170314e989ecec600d80f6c55cd3cc71657",
+  "source_commit": "f4d337d655fd5e9bdf3b4fb152d63854bc68d5af",
   "pack_commit": "0c5c60732338570403564954ed060d00d9e2a9f6",
   "browser": "Google Chrome (Chromium)156.0.8078.76, actual isolated persistent profile",
-  "browser_cases": 31,
+  "browser_cases": 33,
   "browser_exit": 0,
   "storage": "native IndexedDB transaction completion; no eviction/powerloss/encryption claim",
   "tests": {
@@ -64,6 +64,10 @@
     {
       "status": "FAIL",
       "cause": "First full31case run premature editor assertion after async recovery; fixed test await only. App suites at2b988ad remain authentic same-code evidence; finalbrowser31PASS at3e63917."
+    },
+    {
+      "status": "FAIL",
+      "cause": "Round4 reviewP2: memory-only recovery incorrectly required healthy storage. Historical1FAIL/current1PASS. Additional self-check clean tombstone fallback historicalFAIL/currentPASS; 9reviewP2+2self defects total11before/after negatives."
     }
   ],
   "limits": [
@@ -75,14 +79,14 @@
   ],
   "operative_sha256": {
     "apps/web/src/components/editor/manuscript-durable-preview.tsx": "b4094a0d9570b81f05ef13fc323fb932d4efbf9c4d247e99a09b2bdec2cb440b",
-    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "5f956d40ae3c1c7f21c9c937c0e106e40183c0148b89c34c54d83c3a9783ba27",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "219922185dc6dd3dadd5d4ad16e6d6687bb3c0a52e497b33b49c5a0eebd3cacd",
     "apps/web/src/lib/editor/manuscript-editor.test.mjs": "728d14013576f843cc6728cd91cb3f2b5b5a34d1d61f81b8b51c2615c98fe27e",
     "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "e8fa428b55d186f13637c699b8307666cf78d11801df516abd5fc5f77d6b1682",
     "apps/web/src/lib/editor/manuscript-indexeddb.ts": "2919b1962bba5452bbeed3b3fb71eb4d3629748aeef0080e9e285bcc8bc23958",
-    "tests/editor/durable-draft-browser.mjs": "910c8985e5ff1c12b01824de8c5d1cb95a540b2b0c02f87451bbd6269d9fef49",
-    "tests/editor/durable-draft-fixture.tsx": "563cfcb4ded317d23aa05905aab0b0a8dc94489f95bc5cdc589b34cd747e5778"
+    "tests/editor/durable-draft-browser.mjs": "ffb2a13c12997291d81be7d3c39dfbbf3eac2a97f039ef0505368f95ce50740a",
+    "tests/editor/durable-draft-fixture.tsx": "1ee66f9bfe2b7fe4badbc30899aac5252835f9502492c36f649639781b7ed710"
   },
-  "previous_source": "a718424f702ec69038fcf96f15ded2e0503ce2c4",
+  "previous_source": "3e639170314e989ecec600d80f6c55cd3cc71657",
   "draft_run": {
     "id": 41430365271,
     "conclusion": "FAILURE",
@@ -90,9 +94,23 @@
     "final_gate": "FAIL deliberate Draft boundary",
     "expensive_jobs": "SKIPPED"
   },
-  "application_execution_commit": "2b988ad52b9277a07f8ebc7827347b577ce519d2",
+  "application_execution_commit": "f4d337d655fd5e9bdf3b4fb152d63854bc68d5af",
   "draft_runs": [
-    41430365271,
-    41431386378
+    {
+      "id": 41430365271,
+      "status": "FAILURE"
+    },
+    {
+      "id": 41431386378,
+      "status": "FAILURE"
+    },
+    {
+      "id": 41432971719,
+      "status": "CANCELLED"
+    },
+    {
+      "id": 41433101082,
+      "status": "FAILURE"
+    }
   ]
 }

@@ -1,0 +1,2 @@
+{"name":"round4: unavailable IndexedDB does not lock retained memory writing","status":"PASS"}
+{"result":"PASS","cases":1,"cleanup":"owned profile and HTTP server removed"}

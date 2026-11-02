@@ -1,0 +1,50 @@
+[
+  {
+    "name": "check",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm check"
+  },
+  {
+    "name": "build",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm build"
+  },
+  {
+    "name": "workspace",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm test:workspace-contract"
+  },
+  {
+    "name": "library",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm test:library-isolation"
+  },
+  {
+    "name": "mfa",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm test:auth-mfa"
+  },
+  {
+    "name": "preflight",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm test:hosted-preflight"
+  },
+  {
+    "name": "principal",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts"
+  },
+  {
+    "name": "units",
+    "exit_code": 0,
+    "source": "32ea5ce7c86fc2f14fed5d448ad2ee55c6045a56",
+    "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts"
+  }
+]
