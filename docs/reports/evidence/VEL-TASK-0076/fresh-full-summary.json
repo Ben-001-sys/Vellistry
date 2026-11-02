@@ -1,0 +1,81 @@
+{
+  "head": "6e1f5f5aa27a91e95e26af7053e85f710a70b564",
+  "tree": "4b39c7931ac43b15e0993a2f31ae0ca2188c5a2f",
+  "full_ci": {
+    "run": 41468644234,
+    "status": "PASS",
+    "url": "https://github.com/Ben-001-sys/Vellistry/actions/runs/41468644234"
+  },
+  "draft_ci": {
+    "run": 41468645918,
+    "status": "FAIL",
+    "cause": "Expected Draft advisory final gate blocks merge eligibility; governance PASS, expensive jobs SKIPPED"
+  },
+  "governance": {
+    "current": 304,
+    "archived": 139,
+    "total": 443,
+    "status": "PASS"
+  },
+  "browser": {
+    "cases": 41,
+    "status": "PASS",
+    "playwright": "1.64.0",
+    "chromium": "156.0.8078.4",
+    "revision": "1248",
+    "bundle_sha256": "cf1a8f6c5ee0e66e3c263848aa9424786a337a4370b286a8d26aa2efeeda3252",
+    "executable_sha256": "377a9fc07b495c3b8d0ab8ec1fdfd153641759f9756fea34d8dfce4de82f5025",
+    "evidence_sha256": "0eaf1c74b831fd4a223df8711131fb9cf411fe987489c5b98525ac077e3cb2eb",
+    "artifact_id": 13154866584,
+    "artifact_digest": "sha256:00a9eae15cf6c06d0066d0c83e3aafe08ccea540b5fb225c0e8ec4f6ae4186e7",
+    "cleanup": {
+      "context_closed": true,
+      "profile_removed": true,
+      "http_closed": true,
+      "open_sockets": 0
+    },
+    "fresh_install_verified": "Download shown in fresh-full-log-extract.txt; no browser cache configured"
+  },
+  "postgres": {
+    "version": "PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+    "cases": 32,
+    "manuscript_cases": 16,
+    "http_cases": 8,
+    "cas_restore": 12,
+    "all_source_pins_match": 23,
+    "cleanup": {
+      "container": {
+        "exit_code": 0,
+        "verified_absent": true
+      },
+      "volume": {
+        "exit_code": 0,
+        "verified_absent": true
+      }
+    },
+    "restart": {
+      "exit_code": 0,
+      "output": "{\"id\":\"real-owned-database-restart-reopen\",\"status\":\"PASS\"}\n"
+    },
+    "http": {
+      "exit_code": 0,
+      "output": "{\"id\":\"real-socket-loss-after-PG-commit-reconciles-original-ID-without-duplicate\",\"status\":\"PASS\"}\n{\"id\":\"real-before-commit-failure-remains-unknown-despite-server-observed-rollback\",\"status\":\"PASS\"}\n{\"id\":\"competing-committed-edit-is-explicit-HTTP-conflict\",\"status\":\"PASS\"}\n{\"id\":\"delayed-HTTP-response-cannot-resurrect-old-chapter\",\"status\":\"PASS\"}\n{\"id\":\"actual-client-abort-after-commit-cannot-resurrect-old-author\",\"status\":\"PASS\"}\n{\"id\":\"HTTP-forged-owner-field-is-denied-before-dispatch\",\"status\":\"PASS\"}\n{\"id\":\"HTTP-foreign-book-read-is-concealed\",\"status\":\"PASS\"}\n{\"id\":\"HTTP-split-UTF8-bytes-and-large-response-preserve-exact-prose\",\"status\":\"PASS\"}\n{\"http_cases\":8,\"actual_socket_interruption\":true,\"actual_client_abort\":true,\"backing_store\":\"disposable PostgreSQL17\",\"listen_address\":\"127.0.0.1\",\"claims\":\"No hosted/session or device durability acceptance.\"}\n{\"http_cleanup\":\"PASS\",\"listening\":false,\"open_sockets\":0}\n"
+    }
+  },
+  "review": {
+    "head": "6e1f5f5aa27a91e95e26af7053e85f710a70b564",
+    "status": "CLEAN_SOURCE",
+    "runtime": "BLOCKED read-only fixtures/subprocess EPERM",
+    "sha256": "86a1fc6d2d1fd08b3824bf23779fa0f456a55013d1833a68ef0828af740398c8"
+  },
+  "limitations": [
+    "Local Chromium spawn UNKNOWN remains BLOCKED",
+    "Local Docker unavailable remains BLOCKED",
+    "Independent reviewer runtime EPERM remains BLOCKED",
+    "N12 BLOCKED",
+    "R01-R08 NOT_RUN",
+    "Legacy privileges SKIPPED",
+    "Production and hosted gates unresolved",
+    "Owner merge decision pending"
+  ]
+}

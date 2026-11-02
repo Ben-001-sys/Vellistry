@@ -1,0 +1,7 @@
+
+> vellistry@ test:durable-drafts H:\cursor\cursor\Vellistry\.worktrees\vel-imp003e-chromium-ci
+> node tests/editor/durable-draft-browser.mjs
+
+FAIL native Chromium acceptance: setup
+{"result":"FAIL","cases":0,"cleanup":{"context_closed":true,"profile_removed":true,"http_closed":true,"open_sockets":0}}
+ ELIFECYCLE  Command failed with exit code 1.

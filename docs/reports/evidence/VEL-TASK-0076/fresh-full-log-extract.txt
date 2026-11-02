@@ -1,0 +1,23 @@
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:28.2778316Z Ran 304 tests in 24.748s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.3181522Z Ran 18 tests in 0.032s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.3542389Z Ran 20 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.3925718Z Ran 14 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.4265566Z Ran 12 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.4602330Z Ran 8 tests in 0.000s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.5035704Z Ran 18 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.5415140Z Ran 12 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.5769755Z Ran 20 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:33.6594594Z Ran 17 tests in 0.001s
+Governance and provenance	Run all current governance and negative contracts once	2026-11-02T15:09:38.6701339Z PASS: current governance and archived provenance checks
+Merged PostgreSQL CAS and restore contract	Rerun disposable Pair 06 atomicity and independent restore	2026-11-02T15:09:12.0689679Z Ran 12 tests in 2.903s
+Application and applicable security	Install matching native Chromium and Linux dependencies	2026-11-02T15:09:10.0302874Z Downloading Chrome for Testing 156.0.8078.4 (playwright chromium v1248) from https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip
+Application and applicable security	Install matching native Chromium and Linux dependencies	2026-11-02T15:09:14.8768492Z Chrome for Testing 156.0.8078.4 (playwright chromium v1248) downloaded to /home/runner/.cache/ms-playwright/chromium-1248
+Application and applicable security	Complete native Chromium durable draft acceptance	2026-11-02T15:09:32.5306064Z {"result":"PASS","cases":41,"cleanup":{"context_closed":true,"profile_removed":true,"http_closed":true,"open_sockets":0}}
+Application and applicable security	Validate complete source-bound Chromium evidence	2026-11-02T15:09:32.9883135Z PASS complete41 source-bound native Chromium evidence and cleanup
+Application and applicable security	Library isolation and unknown-save negative tests	2026-11-02T15:09:36.5197192Z ℹ tests 81
+Application and applicable security	Workspace controller and organizer contract regressions	2026-11-02T15:09:39.3439284Z ℹ tests 101
+Application and applicable security	Protected workspace persistence unit regressions	2026-11-02T15:09:40.4590795Z ℹ tests 21
+Application and applicable security	Principal adapter binding regressions	2026-11-02T15:09:41.2516355Z ℹ tests 52
+Application and applicable security	Next.js authentication and MFA regressions	2026-11-02T15:09:42.5004826Z ℹ tests 55
+Application and applicable security	Hosted preflight regressions when source is integrated	2026-11-02T15:09:42.9754037Z ℹ tests 23
+Vellistry CI gate	Reject failed, cancelled, missing or skipped applicable checks	2026-11-02T15:12:34.5417389Z PASS: merge-eligible applicable required CI jobs succeeded at 6e1f5f5aa27a91e95e26af7053e85f710a70b564

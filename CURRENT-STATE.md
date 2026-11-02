@@ -10,10 +10,10 @@ version: 0.2.2
 
 # Vellistry â€” current verified state
 
-## IMP003D — 2026-11-02
+## IMP003E - 2026-11-02
 
-PR134 main `e6242df` post-main41411204986 PASS. Task0075 IndexedDB recovery
-is in verification, test-only. Dated snapshots below remain historical.
+PR135 merged20f4b5a; post-main41450155695 PASS. Task0076 Chromium CI is
+in verification, synthetic-only. Earlier snapshots are historical.
 
 ## IMP003B disposable implementation â€” 2026-10-31
 

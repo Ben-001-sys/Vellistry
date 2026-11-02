@@ -103,6 +103,22 @@ jobs:
         python-version: '3.12'
     - name: Install one frozen workspace
       run: pnpm install --frozen-lockfile
+    - name: Install matching native Chromium and Linux dependencies
+      run: pnpm exec playwright install --with-deps chromium
+    - name: Complete native Chromium durable draft acceptance
+      run: pnpm test:durable-drafts
+    - name: Validate complete source-bound Chromium evidence
+      run: pnpm validate:durable-drafts
+    - name: Attach bounded synthetic Chromium evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: durable-draft-chromium-results
+        path: |
+          .submission/durable-browser-results.json
+          .submission/durable-browser-diagnostics.txt
+        if-no-files-found: error
+        retention-days: '7'
     - name: Library isolation and unknown-save negative tests
       run: pnpm test:library-isolation
     - name: Workspace controller and organizer contract regressions
