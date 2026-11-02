@@ -82,7 +82,14 @@ export function createDurableManuscriptComposition(options:{readOwner:()=>Promis
     const observed=await options.store.read(s);if(!await current(e,s))return;
     if((observed?.sequence??0)!==(known.get(localKey(s))??0))throw new DraftStorageError('conflict');
     sequence=observed?.sequence??0;blocked=false;await controller.recover();
-   }catch(error){if(await current(e,s))failure(error);}
+   }catch(error){
+    if(!await current(e,s))return;failure(error);
+    // Device failure does not revoke access to a verified memory copy. It must
+    // remain explicitly recoverable without authorizing any persistence.
+    if(memory.has(localKey(s))&&!mismatched.has(localKey(s))&&controller.snapshot().canRecover){
+     await controller.recover();if(await current(e,s))failure(error);
+    }
+   }
   });
   queue=operation;await operation;
  }
