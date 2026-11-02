@@ -1,0 +1,4 @@
+{"name":"race: typing during delayed discard ACK remains recoverable","status":"PASS"}
+{"name":"race: another tab discard cannot resurrect a clean cached copy","status":"PASS"}
+{"name":"race: stale accepted read cannot poison newer same-chapter bind","status":"PASS"}
+{"result":"PASS","cases":3,"cleanup":"owned profile and HTTP server removed"}

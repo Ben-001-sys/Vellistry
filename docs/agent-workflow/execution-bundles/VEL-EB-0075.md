@@ -23,64 +23,71 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+implementation_source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
 execution:
   status: completed
   executor: Codex
   model: Codex runtime model not independently reported
   tests:
   - command: corepack.cmd pnpm check
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-check.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-check.txt
   - command: corepack.cmd pnpm build
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-build.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-build.txt
   - command: corepack.cmd pnpm test:workspace-contract
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-workspace.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-workspace.txt
   - command: corepack.cmd pnpm test:library-isolation
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-library.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-library.txt
   - command: corepack.cmd pnpm test:auth-mfa
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-mfa.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-mfa.txt
   - command: corepack.cmd pnpm test:hosted-preflight
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-preflight.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-preflight.txt
   - command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-principal.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-principal.txt
   - command: corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-units.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-units.txt
   - command: node tests/editor/durable-draft-browser.mjs (existing Playwright module
       and Chrome executable injected through VEL_PLAYWRIGHT_PATH/VEL_CHROMIUM_PATH)
-    source_commit: 9bb43d622ec181f5bdd09c2395bb0b7d090f4a93
+    source_commit: a718424f702ec69038fcf96f15ded2e0503ce2c4
     status: PASS
     exit_code: 0
-    evidence: docs/reports/evidence/VEL-TASK-0075/verified-browser.txt
+    evidence: docs/reports/evidence/VEL-TASK-0075/round2-browser.txt
 ---
+
+## Current correction round — source a718424
+
+FACT: the completed-head review of3a3060d found3additionalP2 races, preserved in review-round2.txt. Native Chromium negative regressions against source9bb43d6 produce3FAIL; corrected3PASS. Discard now shares the write queue, checks newer edits after asynchronous ACK, and preserves their memory entries. Clean cache entries are cleared on absent/tombstoned durable records; genuinely dirty memory remains separate. Transport reads capture and revalidate wrapper epoch/owner before any recovery-state mutation. No scope expansion, new Task/pack, SQL/CI/dependency/Auth change.
+
+At committed operative sourcea718424f702ec69038fcf96f15ded2e0503ce2c4:28actualChromium cases,98workspace/editor,81Library,55MFA,23preflight,52principal,21persistenceunits,check/build all PASS exit0. See round2-* raw evidence, round2-results.json and round2-browser-results.json. Profile/HTTP cleanup verified. Earlier9bb43d6/25case evidence below remains historical. Draft CI41430365271 governance PASS; final gate FAILURE by Draft design; expensive jobs SKIPPED. Do not call Draft run success. Updated completed-head review and actual ReadyCI remain external gates.
+
 
 # IMP003D execution evidence
 
 ## Work performed
-FACT: owner dispatched IMP003D in this conversation; relay https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6574506056 . Task0075 unused in reviewed main; committed sources348dbfa/f46ca16; targeted whole-render CP validated and committed0c5c607 before codeb4782c0. Corrected operative source9bb43d6. Owner root checkout changes and all older evidence preserved. No Task0072 consumption.
+FACT: owner dispatched IMP003D in this conversation; relay https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6574506056 . Task0075 unused in reviewed main; committed sources348dbfa/f46ca16; targeted whole-render CP validated and committed0c5c607 before codeb4782c0. Earlier corrected source9bb43d6; see current correction round above. Owner root checkout changes and all older evidence preserved. No Task0072 consumption.
 
 Native IndexedDB database version1/store drafts, schema1 exact records scoped author/book/chapter/client with accepted baseline, validated exact document, original pending SaveOperation, monotonic sequence and timestamp. Completion resolves only transaction.oncomplete; readwrite CAS serializes competing tabs. Explicit discard removes prose/pending-free draft via a content-free version tombstone to prevent ABA/stale-tab resurrection. No automatic logout deletion or retention policy.
 
@@ -100,7 +107,7 @@ Native completed transactions and actual reload prove this browser-profile recov
 Separate owner decision after completed-head review and actual ReadyCI. No merge or successor authority. Production PRINCIPAL/SESSION/GATEWAY/TRANSPORT/PACKAGING and hosted/private-pilot remain gated.
 
 ## Tests and historical failures
-Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01–R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
+Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01â€“R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
 
 ## Artifacts
 Task0075/immutable CP0075/EB0075,8operative paths, bounded report and raw command/browser/review/negative evidence. Per-commit manifest declares every original commit, pending owner disposition. Local scratch packets/caches are excluded.

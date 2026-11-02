@@ -6,6 +6,12 @@ created_at: 2026-11-02
 owner: project_owner
 ---
 
+
+## Current correction round — source a718424
+
+FACT: the completed-head review of3a3060d found3additionalP2 races, preserved in review-round2.txt. Native Chromium negative regressions against source9bb43d6 produce3FAIL; corrected3PASS. Discard now shares the write queue, checks newer edits after asynchronous ACK, and preserves their memory entries. Clean cache entries are cleared on absent/tombstoned durable records; genuinely dirty memory remains separate. Transport reads capture and revalidate wrapper epoch/owner before any recovery-state mutation. No scope expansion, new Task/pack, SQL/CI/dependency/Auth change.
+
+At committed operative sourcea718424f702ec69038fcf96f15ded2e0503ce2c4:28actualChromium cases,98workspace/editor,81Library,55MFA,23preflight,52principal,21persistenceunits,check/build all PASS exit0. See round2-* raw evidence, round2-results.json and round2-browser-results.json. Profile/HTTP cleanup verified. Earlier9bb43d6/25case evidence below remains historical. Draft CI41430365271 governance PASS; final gate FAILURE by Draft design; expensive jobs SKIPPED. Do not call Draft run success. Updated completed-head review and actual ReadyCI remain external gates.
 # IMP003D execution evidence
 
 ## Work performed
@@ -29,7 +35,7 @@ Native completed transactions and actual reload prove this browser-profile recov
 Separate owner decision after completed-head review and actual ReadyCI. No merge or successor authority. Production PRINCIPAL/SESSION/GATEWAY/TRANSPORT/PACKAGING and hosted/private-pilot remain gated.
 
 ## Tests and historical failures
-Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01–R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
+Raw logs/summary preserve initial oversized pack-source failure; interrupted all-history validation; initial TypeScript literal mismatch and browser module-resolution failure; sandbox corepack registry restriction; initial negative-harness cleanup race/timeout;3independent P2 findings and real historical3FAIL/current3PASS regressions. The source-review runtime was independently BLOCKED EPERM. No historical FAIL/SKIPPED/BLOCKED/NOT_RUN relabeled PASS. Earlier Task0074 Draft41196908733 remains FAILURE; legacy SQL privilege remains SKIPPED. R01â€“R08 NOT_RUN;N-12/historical EPERM BLOCKED. Full governance/security/PG ReadyCI is external exact-head evidence, not a fabricated local result.
 
 ## Artifacts
 Task0075/immutable CP0075/EB0075,8operative paths, bounded report and raw command/browser/review/negative evidence. Per-commit manifest declares every original commit, pending owner disposition. Local scratch packets/caches are excluded.

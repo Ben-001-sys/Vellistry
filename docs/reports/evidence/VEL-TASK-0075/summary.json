@@ -1,9 +1,9 @@
 {
   "base": "e6242df9fc2fdb14817c2f6f58387e2844184664",
-  "source_commit": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+  "source_commit": "a718424f702ec69038fcf96f15ded2e0503ce2c4",
   "pack_commit": "0c5c60732338570403564954ed060d00d9e2a9f6",
   "browser": "Google Chrome (Chromium)156.0.8078.76, actual isolated persistent profile",
-  "browser_cases": 25,
+  "browser_cases": 28,
   "browser_exit": 0,
   "storage": "native IndexedDB transaction completion; no eviction/powerloss/encryption claim",
   "tests": {
@@ -52,6 +52,10 @@
     {
       "status": "BLOCKED",
       "cause": "Independent runtime rerun spawn EPERM; source review findings retained"
+    },
+    {
+      "status": "FAIL",
+      "cause": "Completed-head review round2 found3P2: discard/new-edit race, clean cache tombstone resurrection, stale read wrapper mutations. New Chromium historical3FAIL / corrected3PASS."
     }
   ],
   "limits": [
@@ -63,11 +67,19 @@
   ],
   "operative_sha256": {
     "apps/web/src/components/editor/manuscript-durable-preview.tsx": "9111062a143a9e53501154c47d84f5d2477f70b2ad26a434c09ae7eb45454cd3",
-    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "fa028d3966263063abe3dd2105379ff53a81fd528670aad72159f5b5a308c970",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "25b0a0a6c6adc273867d0c18883b59f864995897f9da20011d0b0bb82d337d2b",
     "apps/web/src/lib/editor/manuscript-editor.test.mjs": "728d14013576f843cc6728cd91cb3f2b5b5a34d1d61f81b8b51c2615c98fe27e",
     "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "e8fa428b55d186f13637c699b8307666cf78d11801df516abd5fc5f77d6b1682",
     "apps/web/src/lib/editor/manuscript-indexeddb.ts": "2919b1962bba5452bbeed3b3fb71eb4d3629748aeef0080e9e285bcc8bc23958",
-    "tests/editor/durable-draft-browser.mjs": "4783c73029d86bc53d6adb9d4f7f913bdf8709a24e948568753b1cbe04c5b607",
-    "tests/editor/durable-draft-fixture.tsx": "1931b0aa55a4ed93dc85fa737cc257450359af5b97416f37ea847040e84c8a06"
+    "tests/editor/durable-draft-browser.mjs": "e5d670593f7d1581692dda4e97b6a09dbac631fcd08e15ce5322e1cb28f84187",
+    "tests/editor/durable-draft-fixture.tsx": "563cfcb4ded317d23aa05905aab0b0a8dc94489f95bc5cdc589b34cd747e5778"
+  },
+  "previous_source": "9bb43d622ec181f5bdd09c2395bb0b7d090f4a93",
+  "draft_run": {
+    "id": 41430365271,
+    "conclusion": "FAILURE",
+    "governance": "PASS",
+    "final_gate": "FAIL deliberate Draft boundary",
+    "expensive_jobs": "SKIPPED"
   }
 }

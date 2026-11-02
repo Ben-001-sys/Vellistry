@@ -1,0 +1,4 @@
+{"name":"race: typing during delayed discard ACK remains recoverable","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n"}
+{"name":"race: another tab discard cannot resurrect a clean cached copy","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"}
+{"name":"race: stale accepted read cannot poison newer same-chapter bind","status":"FAIL","error":"AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Recovery copy available/. Input:\n\n'A recovery copy has a different accepted revision. It was retained without replacing accepted text.'\n"}
+{"result":"FAIL","cases":3,"cleanup":"owned profile and HTTP server removed"}
