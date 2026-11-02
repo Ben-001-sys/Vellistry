@@ -1,0 +1,97 @@
+id: VEL-TASK-0075
+title: IMP003D native IndexedDB local draft recovery
+type: implementation-task
+status: in-progress
+created_at: '2026-11-02'
+updated_at: '2026-11-02'
+owner: project_owner
+context_pack_id: VEL-CP-0075
+objective: Compose native asynchronous IndexedDB draft storage with isolated editor
+  preview; prove real Chromium reload, explicit recovery, account isolation and transactional
+  multi-tab conflicts
+in_scope: &id001
+- apps/web/src/lib/editor/manuscript-indexeddb.ts
+- apps/web/src/lib/editor/manuscript-durable-composition.ts
+- apps/web/src/lib/editor/manuscript-indexeddb.test.ts
+- apps/web/src/components/editor/manuscript-durable-preview.tsx
+- apps/web/src/lib/editor/manuscript-editor.test.mjs
+- tests/editor/durable-draft-fixture.tsx
+- tests/editor/durable-draft-browser.mjs
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0075.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0075.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0075.md
+- docs/agent-workflow/inputs/VEL-TASK-0075/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-IMP003D-DURABLE-DRAFTS-0075.md
+- docs/reports/evidence/VEL-TASK-0075/*
+out_of_scope:
+- SQL/dependencies/CI-policy/Auth/production routes/hosted/private manuscripts/paid
+  services/deployment/merge/successor work
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: CURRENT-STATE.md
+  role: governing-source
+- path: LANGUAGE.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: apps/web/src/lib/editor/manuscript-recovery.ts
+  role: governing-source
+- path: apps/web/src/lib/editor/manuscript-composition.ts
+  role: governing-source
+- path: apps/api/src/modules/workspace/manuscript-contract.ts
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0075/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0075/CONTRACT.md
+  role: governing-source
+source_gaps:
+- id: PRODUCTION
+  limitation: Synthetic principals/session rows/storage; no hosted or real-session
+    enforcement. R01-R08 NOT_RUN N12/EPERM BLOCKED.
+deliverables:
+- Native async adapter, isolated composition/preview, synthetic unit and real Chromium
+  durable profile tests
+- Actual regressions/build/check/PG/governance, EB, distinct final review, Draft/Ready
+  CI and unmerged PR
+acceptance_criteria:
+- Await transaction completion; versioned validated scope-bound records; CAS rejects
+  multi-tab stale writes
+- Explicit recovery only; revision baseline safety; immutable unknown operation; stale
+  author/chapter results hidden
+- Keep memory edits after unavailable/quota/abort; no false success; explicit local
+  discard; listener/database/profile cleanup
+- Actual Chromium Tiptap edit/Unicode/whitespace/format write-complete/reload/recover,
+  cross-tab, author isolation, corruption and failures
+- No production registration, no encryption/eviction/powerloss/crossdevice claims;
+  preserve all historical classifications
+allowed_actions:
+- Implement listed paths after committed validated immutable CP; native browser IndexedDB
+  only
+- Use existing dependencies and owned loopback/browser profiles; execute unchanged
+  PG fixtures
+- Review/CI/unmerged PR only
+approval_required_for:
+- Scope expansion, dependencies/CI-policy/SQL/security/hosted/production/privacy-retention
+  policy/merge/successor work
+compliance:
+  change_base: e6242df9fc2fdb14817c2f6f58387e2844184664
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/131#issuecomment-6574506056
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-16'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
