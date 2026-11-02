@@ -1,0 +1,22 @@
+
+> vellistry@ test:durable-drafts H:\cursor\cursor\Vellistry\.worktrees\vel-imp003e-chromium-ci
+> node tests/editor/durable-draft-browser.mjs
+
+node:internal/modules/cjs/loader:1421
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module 'playwright-core/package.json'
+Require stack:
+- H:\cursor\cursor\Vellistry\.worktrees\vel-imp003e-chromium-ci\tests\editor\durable-draft-browser.mjs
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at require.resolve (node:internal/modules/helpers:163:19)
+    at file:///H:/cursor/cursor/Vellistry/.worktrees/vel-imp003e-chromium-ci/tests/editor/durable-draft-browser.mjs:53:71 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'H:\\cursor\\cursor\\Vellistry\\.worktrees\\vel-imp003e-chromium-ci\\tests\\editor\\durable-draft-browser.mjs'
+  ]
+}
+
+Node.js v24.13.0
+ ELIFECYCLE  Command failed with exit code 1.

@@ -1,0 +1,147 @@
+{
+  "source_commit": "e8a3b39b3e61b3e37e111c33c45ffd701d0d002c",
+  "base": "20f4b5a4ab357dc0757678d689b79a67af687518",
+  "results": [
+    {
+      "name": "frozen",
+      "command": "corepack.cmd pnpm install --frozen-lockfile",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 3.3,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/frozen.txt"
+    },
+    {
+      "name": "policy",
+      "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 35.62,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/policy.txt"
+    },
+    {
+      "name": "workspace",
+      "command": "corepack.cmd pnpm test:workspace-contract",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 18.18,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/workspace.txt"
+    },
+    {
+      "name": "library",
+      "command": "corepack.cmd pnpm test:library-isolation",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 9.48,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/library.txt"
+    },
+    {
+      "name": "mfa",
+      "command": "corepack.cmd pnpm test:auth-mfa",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 3.45,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/mfa.txt"
+    },
+    {
+      "name": "preflight",
+      "command": "corepack.cmd pnpm test:hosted-preflight",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 3.37,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/preflight.txt"
+    },
+    {
+      "name": "principal",
+      "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 2.14,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/principal.txt"
+    },
+    {
+      "name": "units",
+      "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 2.19,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/units.txt"
+    },
+    {
+      "name": "check",
+      "command": "corepack.cmd pnpm check",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 15.27,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/check.txt"
+    },
+    {
+      "name": "build",
+      "command": "corepack.cmd pnpm build",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 0,
+      "seconds": 36.55,
+      "status": "PASS",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/build.txt"
+    },
+    {
+      "name": "pg",
+      "command": "python tests/workspace/persistence/run_pg17.py --disposable --cases docs/contracts/VEL-IMP002-PERSISTENCE-CASES.json",
+      "source_commit": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "exit_code": 1,
+      "seconds": 1.0,
+      "status": "BLOCKED",
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/pg.txt"
+    },
+    {
+      "name": "policy-final",
+      "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+      "source_commit": "e8a3b39b3e61b3e37e111c33c45ffd701d0d002c",
+      "exit_code": 0,
+      "status": "PASS",
+      "tests": 53,
+      "evidence": "docs/reports/evidence/VEL-TASK-0076/policy-final.txt"
+    }
+  ],
+  "browser_case_bodies_preserved_sha256": "d5602008b90042d56641acf396912e15da63d723fc221cbe878ed24a7289980a",
+  "historical": [
+    {
+      "source": "2638693",
+      "status": "FAIL",
+      "exit_code": 1,
+      "cause": "Root cannot resolve undeclared transitive playwright-core; corrected through pinned playwright module boundary"
+    },
+    {
+      "source": "54c727b6bf99e1f9821275c02fa5faf1e385151f",
+      "status": "BLOCKED",
+      "exit_code": 1,
+      "cause": "Downloaded matching Chromium cannot launch on this Windows host: spawn UNKNOWN; cleanup PASS and zero cases, not browser acceptance"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Local Docker Linux daemon unavailable; no disposable resources created"
+    },
+    {
+      "status": "BLOCKED",
+      "cause": "Distinct read-only reviewer filesystem/subprocess EPERM; source review clean, runtime not independently verified"
+    }
+  ],
+  "pending": [
+    "Fresh GitHub full browser/PG/security/governance execution",
+    "Final exact-head review and Ready CI"
+  ],
+  "classifications": {
+    "R01-R08": "NOT_RUN",
+    "N12": "BLOCKED",
+    "historical EPERM": "BLOCKED",
+    "legacy privilege fixture": "SKIPPED"
+  }
+}
