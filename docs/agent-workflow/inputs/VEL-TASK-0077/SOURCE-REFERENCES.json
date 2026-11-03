@@ -1,0 +1,151 @@
+{
+  "reference_kind": "Exact read-only source pins; not hosted observations or permission",
+  "sources": [
+    {
+      "path": "PROJECT.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "530c02ddede4a2904b97a44790a398b3de64020798dcbd728367d77feeaec3d7",
+      "bytes": 3595
+    },
+    {
+      "path": "SOURCE-OF-TRUTH.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "530a26f2ccbcdbfa37614a79684ecbbf4788506af5936a0c25ad7d74efe5bacb",
+      "bytes": 5516
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "243a9cc338ab369712bf53062dc916eb35abb14cdd8734a813cff4f84bdd4f26",
+      "bytes": 10978
+    },
+    {
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "fdd3d879dbef08e2e8f37b84859e29cdfa8e98467cf295085245ed417c0b2b16",
+      "bytes": 13806
+    },
+    {
+      "path": "docs/reports/VEL-REAL-AUTH-HANDOFF-0061.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "ea9a17a559fcfb6c46152f4a3957ba0dc4f75b9a93febe99a68019e397c9223b",
+      "bytes": 13905
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-SUPABASE-PRINCIPAL-BOUNDARY-0059.json",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "8125d19b78ca9ad19bb58e39c80957eec8ac4db5236da42c60ff6b7317618634",
+      "bytes": 15582
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0059/SDK-BOUNDARY-SOURCES.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "38fa3e412dac40b57c5596fab07577d8413222e7f635f5798d5b256c9cf6bf3a",
+      "bytes": 9559
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0062/FACTOR-SOURCE.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "f87438a7f5fcad95f2e8064e93d50dfe971c51e5274fe522e18b085487849170",
+      "bytes": 3872
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0062/OWNER-AUTHORIZATION.json",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "de25d5392aca052e29caead6fdcfd253bfa14e722d5292915621ba925db271cf",
+      "bytes": 9101
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0063/OWNER-AUTHORIZATION.json",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "88f777d3817d86c93c326ead2fc6a14ea38e151f3675985754df4a3047af8483",
+      "bytes": 5392
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0063/SDK-PROTOCOL-SOURCE.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "f2ff0fd2064591fbd562e6db187d31bf92cd9aa6e6aaf00d53041255ca82c3d1",
+      "bytes": 5349
+    },
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.service.ts",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "e2ddcdf05608019b3d5aa22e94113a9816731bbf5f870c62071f4f831e0097e5",
+      "bytes": 1411
+    },
+    {
+      "path": "apps/api/src/modules/auth/supabase-auth.guard.ts",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "0bf90359488a5d76d6869f26fb525b1ad6db7b961f589aab7844fb346076ae0f",
+      "bytes": 896
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-principal-adapter.ts",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "386a763ef30939c25149ed6e96845699f6a3158f733af86f12bbbdd22a2aa8c9",
+      "bytes": 3903
+    },
+    {
+      "path": "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "042dd68dc6ab02f89428f43c2a28be9bde8681b779245b53179f1d2b92c5f951",
+      "bytes": 29407
+    },
+    {
+      "path": "apps/api/tests/supabase-auth-rls.integration.mjs",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "58ee3a375131f957712def75c3a590fb837ea98af5ed338573b83ddee7da8219",
+      "bytes": 11661
+    },
+    {
+      "path": "apps/api/tests/k2b-session-exposure.integration.mjs",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "0746004a589f5a6b9d3abfe0490753d429a0fe2db9c864a90d1810f364361c13",
+      "bytes": 7693
+    },
+    {
+      "path": "apps/api/tests/k2b-active-session-row.integration.mjs",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "87ba30beed733cc67de4c14b75a6adeb811dc43c2d6e61220482c8d22f4ece73",
+      "bytes": 6930
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "ad3730e993677d80ba01f8abf053a7999845076cf0c4af6b1291c16995fff638",
+      "bytes": 14242
+    },
+    {
+      "path": "tests/editor/durable-draft-browser.mjs",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "c8df2743910b7f0e53f352dd23c717c810c2b4d80e7bd38d8f35d4a3a2fbd305",
+      "bytes": 35303
+    },
+    {
+      "path": "package.json",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "b28791926b38d5cb421bb58dcfc7dabf86994c9cbdee46f8b33d4f06c376cab3",
+      "bytes": 1741
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "dd7935789540de5c850f9980fb6c546e2289a5b5da0579198494aa8476d2a77f",
+      "bytes": 110242
+    }
+  ],
+  "owner_decisions": [
+    {
+      "url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6404172728",
+      "body_sha256": "8432cbef2dc0ca563d8d5516472e47116b00975ce7d046069f1f9befc189a630"
+    },
+    {
+      "url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6411355004",
+      "body_sha256": "f082ca6b0e88545ea63239e6ee9aa0ddbe56a09ecbb43fa92fc2d56c6c86ab5e"
+    },
+    {
+      "url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6411406349",
+      "body_sha256": "207d57a9b7aa3cde68e7870bc9c88b16c9fbb308e1c43172d36bfb27b1c243f1"
+    }
+  ]
+}
