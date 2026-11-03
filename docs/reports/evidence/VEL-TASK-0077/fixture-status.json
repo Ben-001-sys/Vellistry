@@ -1,0 +1,13 @@
+{
+  "record_date": "2026-11-03",
+  "owner_confirmation_date": null,
+  "source": "New owner confirmation requested; no response received. Historical owner response26October2026 is the latest known fixture evidence, not fresh confirmation.",
+  "historical_source": "docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json",
+  "historical_source_commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+  "historical_confirmation_date": "2026-10-26",
+  "unenrolled_fixture_exists_and_owner_controlled": "UNKNOWN",
+  "verified_totp_fixture_exists_and_owner_controlled": "UNKNOWN",
+  "enrolled_fixture_aal1_aal2_obtainable": "UNKNOWN",
+  "hosted_probe": "BLOCKED",
+  "new_observations": false
+}

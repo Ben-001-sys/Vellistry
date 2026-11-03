@@ -10,10 +10,10 @@ version: 0.2.2
 
 # Vellistry â€” current verified state
 
-## IMP003E - 2026-11-02
+## PRINCIPAL/SESSION - 2026-11-03
 
-PR135 merged20f4b5a; post-main41450155695 PASS. Task0076 Chromium CI is
-in verification, synthetic-only. Earlier snapshots are historical.
+PR136 mainad5e723, post-main41534118617 PASS. Task0077 offline readiness
+in verification; fixtures UNKNOWN, G1-G4 BLOCKED. No hosted/Auth work.
 
 ## IMP003B disposable implementation â€” 2026-10-31
 
