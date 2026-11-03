@@ -1,0 +1,100 @@
+id: VEL-TASK-0077
+title: PRINCIPAL SESSION offline evidence-readiness reconciliation
+type: implementation-task
+status: in-progress
+created_at: '2026-11-03'
+updated_at: '2026-11-03'
+owner: project_owner
+context_pack_id: VEL-CP-0077
+objective: Reconcile fixture andG1-G4 blockers, frozen PRINCIPAL case schema and separate
+  SESSION authority evidence into the smallest non-executable owner decision packet
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0077.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0077.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0077.md
+- docs/agent-workflow/inputs/VEL-TASK-0077/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0077.json
+- docs/reports/VEL-PRINCIPAL-SESSION-EVIDENCE-READINESS-0077.md
+- docs/reports/evidence/VEL-TASK-0077/*
+out_of_scope:
+- All application/test/runner/CI/dependency/evaluator/Auth/SQL implementations and
+  production choices
+- Hosted/Auth/JWT/JWKS/private account/factor/session/credential/manuscript inspection
+  or changes, creation/enrollment/deployment/paid/merge
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/reports/VEL-PRINCIPAL-READINESS-0062.md
+  role: governing-source
+- path: docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md
+  role: governing-source
+- path: docs/research/K2B-SESSION-AND-MANUSCRIPT-EXPOSURE-2026-10-09.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0077/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0077/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0077/SOURCE-REFERENCES.json
+  role: governing-source
+source_gaps:
+- id: FIXTURES-UNKNOWN
+  limitation: Historical3UNKNOWN26October2026; new owner fixture confirmation pending.
+    Record no invented fresh confirmation.
+- id: NO-EXECUTABLE
+  limitation: No owner-only runner/endpoint guard/sanitizer/environment review or
+    execution; G2-G4 and hosted execution not established.
+- id: PRODUCTION-AUTHORITY
+  limitation: Conditional principal design and historical disposable session evidence
+    do not establish production/session/hosted write acceptance. N12 and historicalEPERM
+    BLOCKED;R01-R08 NOT_RUN.
+deliverables:
+- Dated non-secret fixture record;G1-G4 and case-specific PRINCIPAL/SESSION matrices
+  with exact source pins
+- Offline runner/sanitizer requirements and smallest separate owner-only decisions;
+  no executable tooling
+- Actual permitted regressions, inherited source-identity proof, EB, distinct final-head
+  review, Draft/Ready CI and unmerged PR
+acceptance_criteria:
+- No historical source/pack mutation or invented fixture confirmation/target observation
+- Canonical0063 labels/endpoints/closed schema/limits preserved; unknown factor visibility
+  never authorizes absence
+- Explicit identity-vs-session-vs-transaction separation and preserved historical
+  PostgREST/Nest residual bearer finding
+- New runtime runner/realAuth tests NOT_RUN;G1-G4 not promoted without evidence; all
+  security/CI boundaries unchanged
+- Actual tests/provenance/review/CI and owner merge pending
+allowed_actions:
+- Read fixed repository/GitHub source records and author new readiness documents after
+  committed validated CP
+- Execute existing offline synthetic tests and source/schema/document assertions;
+  preserve earlier exact-main CI evidence with explicit unchanged blob proof
+- Distinct trusted review, Draft/Ready CI and unmerged PR only
+approval_required_for:
+- Any live/owner-only runner/sanitizer or Auth/security implementation, hosted/account/MFA/JWT/JWKS/SQL/credential
+  operation
+- Any operative code/test/CI/dependency/policy change or merge
+compliance:
+  change_base: ad5e723aa746f695da547a1feefd950801e324ab
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6591664009
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-17'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
