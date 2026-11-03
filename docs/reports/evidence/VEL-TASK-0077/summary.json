@@ -1,0 +1,129 @@
+{
+  "source_commit": "809f6034b52a983d3273b42c7a042b1791a9cce3",
+  "base": "ad5e723aa746f695da547a1feefd950801e324ab",
+  "results": [
+    {
+      "name": "principal",
+      "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 1.52,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/principal.txt"
+    },
+    {
+      "name": "mfa",
+      "command": "corepack.cmd pnpm test:auth-mfa",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 3.03,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/mfa.txt"
+    },
+    {
+      "name": "library",
+      "command": "corepack.cmd pnpm test:library-isolation",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 3.95,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/library.txt"
+    },
+    {
+      "name": "preflight",
+      "command": "corepack.cmd pnpm test:hosted-preflight",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 1.31,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/preflight.txt"
+    },
+    {
+      "name": "workspace",
+      "command": "corepack.cmd pnpm test:workspace-contract",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 4.37,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/workspace.txt"
+    },
+    {
+      "name": "units",
+      "command": "corepack.cmd pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 1.98,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/units.txt"
+    },
+    {
+      "name": "check",
+      "command": "corepack.cmd pnpm check",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 7.6,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/check.txt"
+    },
+    {
+      "name": "build",
+      "command": "corepack.cmd pnpm build",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 19.56,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/build.txt"
+    },
+    {
+      "name": "metadata",
+      "command": "python scripts/check_knowledge_metadata.py",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.2,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/metadata.txt"
+    },
+    {
+      "name": "readiness",
+      "command": "python scripts/check_implementation_readiness.py",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.12,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/readiness.txt"
+    },
+    {
+      "name": "traceability",
+      "command": "python scripts/spec_traceability.py validate",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.11,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/traceability.txt"
+    },
+    {
+      "command": "corepack.cmd pnpm install --frozen-lockfile",
+      "source_commit": "eac5e58c165025af846c7e7627a8e8cdb5a2cf79",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/frozen.txt"
+    },
+    {
+      "command": "python .submission/validate-readiness77.py",
+      "source_commit": "809f6034b52a983d3273b42c7a042b1791a9cce3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0077/document-assertions.json"
+    }
+  ],
+  "gates": {
+    "G1": "BLOCKED",
+    "G2": "BLOCKED",
+    "G3": "BLOCKED",
+    "G4": "BLOCKED"
+  },
+  "new_runtime_tests": "NOT_RUN",
+  "no_application_or_test_changes": true,
+  "fixture_confirmation": "New owner reply absent;3UNKNOWN, historical26October preserved;3November is reconciliation date",
+  "owner_dispatch": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6591664009"
+}

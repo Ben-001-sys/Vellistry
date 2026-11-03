@@ -1,0 +1,68 @@
+{
+  "source_commit": "809f6034b52a983d3273b42c7a042b1791a9cce3",
+  "status": "PASS",
+  "assertions": [
+    {
+      "assertion": "Canonical0063 full source hash unchanged",
+      "status": "PASS"
+    },
+    {
+      "assertion": "All historical0062/0063 and app/test/CI/dependency/SQL sources unchanged",
+      "status": "PASS"
+    },
+    {
+      "assertion": "No invented fixture confirmation",
+      "status": "PASS"
+    },
+    {
+      "assertion": "All four gates blocked without evidence",
+      "status": "PASS"
+    },
+    {
+      "assertion": "All3canonical labels andNOT_RUN observations",
+      "status": "PASS"
+    },
+    {
+      "assertion": "27canonical closed field names retained",
+      "status": "PASS"
+    },
+    {
+      "assertion": "No completeness/verification-path/writable promotion",
+      "status": "PASS"
+    },
+    {
+      "assertion": "Only fixed E1-E5 and originalrequesttimecaps",
+      "status": "PASS"
+    },
+    {
+      "assertion": "All9SESSION rows unresolved andtargetNOT_RUN",
+      "status": "PASS"
+    },
+    {
+      "assertion": "No runner or sanitizer claim;all10futureoffline requirementsNOT_RUN",
+      "status": "PASS"
+    },
+    {
+      "assertion": "R01-R08NOT_RUN,N12/EPERMBLOCKED,legacySKIPPED",
+      "status": "PASS"
+    },
+    {
+      "assertion": "Closed non-executable readiness type andno observations",
+      "status": "PASS"
+    },
+    {
+      "assertion": "Frozen SDK2.117.3 source pin remains",
+      "status": "PASS"
+    },
+    {
+      "assertion": "Frozen GoTrueClient source hash matches original59/62/63",
+      "status": "PASS"
+    },
+    {
+      "assertion": "Current state remains compact",
+      "status": "PASS"
+    }
+  ],
+  "count": 15,
+  "limitations": "Document/source assertions only, not executable endpoint guard/sanitizer or hosted acceptance"
+}

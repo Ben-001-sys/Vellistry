@@ -1,0 +1,25 @@
+from pathlib import Path
+import json,subprocess,hashlib,yaml
+base='ad5e723aa746f695da547a1feefd950801e324ab';packet_path=Path('docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0077.json');d=json.loads(packet_path.read_text(encoding='utf-8'));checks=[]
+def check(label,condition):
+ assert condition,label
+ checks.append({'assertion':label,'status':'PASS'})
+protocol=subprocess.check_output(['git','show',base+':'+d['protocol_reference']['path']]);text=protocol.decode('utf-8')
+check('Canonical0063 full source hash unchanged',hashlib.sha256(protocol).hexdigest()==d['protocol_reference']['sha256'])
+check('All historical0062/0063 and app/test/CI/dependency/SQL sources unchanged',not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','apps','tests','scripts','.github','supabase','package.json','pnpm-lock.yaml','docs/agent-workflow/inputs/VEL-TASK-0063','docs/agent-workflow/context-packs/VEL-CP-0063.md','docs/agent-workflow/context-packs/VEL-CP-0062.md','docs/reports/VEL-PRINCIPAL-READINESS-0062.md','docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md']))
+check('No invented fixture confirmation',d['fixtures']['owner_confirmation_date'] is None and all(d['fixtures'][k]=='UNKNOWN' for k in ['unenrolled_fixture_exists_and_owner_controlled','verified_totp_fixture_exists_and_owner_controlled','enrolled_fixture_aal1_aal2_obtainable']))
+check('All four gates blocked without evidence',[g['id'] for g in d['gates']]==['G1','G2','G3','G4'] and all(g['status']=='BLOCKED' for g in d['gates']))
+labels=['UNENROLLED_AAL1','ENROLLED_AAL1','ENROLLED_AAL2'];check('All3canonical labels andNOT_RUN observations',[c['label'] for c in d['principal_cases']]==labels and all(c['observation_status']=='NOT_RUN' and c['readiness']=='BLOCKED' for c in d['principal_cases']))
+check('27canonical closed field names retained',len(d['protocol_reference']['export_case_fields'])==27 and all(k in text for k in d['protocol_reference']['export_case_fields']))
+check('No completeness/verification-path/writable promotion',d['protocol_reference']['export_case_fields']['factor_completeness']==['NOT_ESTABLISHED'] and d['protocol_reference']['export_case_fields']['sdk_claim_path']==['UNKNOWN'] and not any('writable' in k for k in d['protocol_reference']['export_case_fields']))
+check('Only fixed E1-E5 and originalrequesttimecaps',[e['id'] for e in d['protocol_reference']['endpoints']]==['E1','E2','E3','E4','E5'] and d['protocol_reference']['request_bounds']=={'total_max_including_internal_calls_and_cleanup':32,'per_request_seconds':15,'run_seconds_including_cleanup':300})
+check('All9SESSION rows unresolved andtargetNOT_RUN',len(d['session'])==9 and all(x['production_status']=='BLOCKED' and x['target_observation']=='NOT_RUN' for x in d['session']))
+check('No runner or sanitizer claim;all10futureoffline requirementsNOT_RUN',not d['runner_implemented'] and not d['sanitizer_implemented'] and len(d['future_runner_offline_requirements'])==10 and all(x['status']=='NOT_RUN' for x in d['future_runner_offline_requirements']))
+check('R01-R08NOT_RUN,N12/EPERMBLOCKED,legacySKIPPED',all(d['runtime_acceptance'][f'R{i:02d}']=='NOT_RUN' for i in range(1,9)) and d['runtime_acceptance']['N12']=='BLOCKED' and d['runtime_acceptance']['historical_spawn_EPERM']=='BLOCKED' and d['runtime_acceptance']['legacy_SQL_privileges']=='SKIPPED')
+check('Closed non-executable readiness type andno observations',d['kind']=='NON_EXECUTABLE_READINESS_MATRIX_NOT_FINDINGS' and not d['new_target_observations'] and not d['merge_authority'] and d['hosted_execution']=='BLOCKED')
+lock=yaml.safe_load(Path('pnpm-lock.yaml').read_text(encoding='utf-8'));check('Frozen SDK2.117.3 source pin remains',lock['importers']['apps/api']['dependencies']['@supabase/supabase-js']['version']=='2.117.3')
+sdk=next(Path('node_modules/.pnpm').glob('@supabase+auth-js@2.117.3*/node_modules/@supabase/auth-js/src/GoTrueClient.ts'))
+check('Frozen GoTrueClient source hash matches original59/62/63',hashlib.sha256(sdk.read_bytes()).hexdigest()=='7552500e375665e28acf23fb552ccbf1ef11379afab15859b2f670f1ae9aee9f')
+check('Current state remains compact',len(Path('CURRENT-STATE.md').read_text(encoding='utf-8').encode())<11000)
+Path('.submission/document-assertions.json').write_text(json.dumps({'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'status':'PASS','assertions':checks,'count':len(checks),'limitations':'Document/source assertions only, not executable endpoint guard/sanitizer or hosted acceptance'},indent=2),encoding='utf-8')
+print('PASS',len(checks),'document/source assertions; no probe runtime executed')
