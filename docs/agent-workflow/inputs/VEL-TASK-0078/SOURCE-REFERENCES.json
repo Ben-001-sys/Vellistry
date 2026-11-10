@@ -65,6 +65,12 @@
       "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
       "sha256": "dd7935789540de5c850f9980fb6c546e2289a5b5da0579198494aa8476d2a77f",
       "bytes": 110242
+    },
+    {
+      "path": "tests/test_ci_policy.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "5acae09cec81fd33b6a22ec36187c867844305fcad16f9979e03bbcec0f3abec",
+      "bytes": 42759
     }
   ],
   "public_primary_sources": [

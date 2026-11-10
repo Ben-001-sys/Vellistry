@@ -32,7 +32,7 @@ inputs:
   role: governing-source
 - path: .github/workflows/ci.yml
   role: governing-source
-- path: tests/test_ci_policy.py
+- path: docs/agent-workflow/inputs/VEL-TASK-0078/POLICY-TEST-SOURCE.md
   role: governing-source
 - path: docs/agent-workflow/inputs/VEL-TASK-0078/OWNER-SCOPE.md
   role: governing-source
