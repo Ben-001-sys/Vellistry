@@ -1,0 +1,17 @@
+{
+  "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+  "status": "PASS",
+  "unchanged_nonrecovery_jobs": [
+    "classify",
+    "governance",
+    "application",
+    "privileges",
+    "gate"
+  ],
+  "events_permissions_concurrency_identical": true,
+  "PG16_service_env_identical": true,
+  "all12_original_recovery_test_bodies_identical": true,
+  "all53_existing_policy_tests_identical": true,
+  "no_app_SQL_dependency_or_protectedcontrol_changes": true,
+  "old_recovery_test_sha256": "bdddf163d1268e0d2216413fed56aed417e0e15083ca21c1a73447c528364357"
+}

@@ -1,0 +1,14 @@
+from pathlib import Path
+import json,subprocess,yaml,hashlib
+base='ad5e723aa746f695da547a1feefd950801e324ab';head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+old=yaml.load(subprocess.check_output(['git','show',base+':.github/workflows/ci.yml']),Loader=yaml.BaseLoader);new=yaml.load(Path('.github/workflows/ci.yml').read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
+assert {k:v for k,v in old.items() if k!='jobs'}=={k:v for k,v in new.items() if k!='jobs'}
+for k in old['jobs']:
+ if k!='recovery':assert old['jobs'][k]==new['jobs'][k],k
+assert old['jobs']['recovery']['services']==new['jobs']['recovery']['services']
+assert old['jobs']['recovery']['env']==new['jobs']['recovery']['env']
+assert subprocess.check_output(['git','show',base+':docs/research/experiments/test_pair06_postgres_operations.py'])==Path('docs/research/experiments/test_pair06_postgres_operations.py').read_bytes().replace(b'\r\n',b'\n')
+oldtests=subprocess.check_output(['git','show',base+':tests/test_ci_policy.py']).decode();newtests=Path('tests/test_ci_policy.py').read_text(encoding='utf-8');assert newtests.startswith(oldtests[:oldtests.index("if __name__=='__main__':")])
+assert not subprocess.check_output(['git','diff','--name-only',base,head,'--','apps','supabase','scripts','package.json','pnpm-lock.yaml','docs/research/experiments'])
+result={'source_commit':head,'status':'PASS','unchanged_nonrecovery_jobs':list(k for k in old['jobs'] if k!='recovery'),'events_permissions_concurrency_identical':True,'PG16_service_env_identical':True,'all12_original_recovery_test_bodies_identical':True,'all53_existing_policy_tests_identical':True,'no_app_SQL_dependency_or_protectedcontrol_changes':True,'old_recovery_test_sha256':hashlib.sha256(subprocess.check_output(['git','show',base+':docs/research/experiments/test_pair06_postgres_operations.py'])).hexdigest()}
+Path('.submission/audit78.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print('PASS only recovery toolchain changed; all original tests/jobs/control sources preserved')
