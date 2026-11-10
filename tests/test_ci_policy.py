@@ -592,4 +592,96 @@ class ChromiumCoverageTests(unittest.TestCase):
                         failed=copy.deepcopy(needs);failed['application']['result']=result
                         with self.assertRaises(ValueError): policy.check_gate(failed,expected_plan=plan)
 
+
+# Task0078: one compatible recovery major, preserving every original CAS/restore case.
+RECOVERY_INSTALL = {'name': 'Install PostgreSQL16 recovery client binaries', 'run': 'sudo apt-get update -qq\nsudo apt-get install -y postgresql-client-16\necho "/usr/lib/postgresql/16/bin" >> "$GITHUB_PATH"\n'}
+RECOVERY_GUARD = 'import json, os, re, shutil, subprocess\n\nexpected = "/usr/lib/postgresql/16/bin"\ntools = {}\ntry:\n    for name in ("psql", "pg_dump", "pg_restore"):\n        selected = shutil.which(name)\n        if selected != expected + "/" + name:\n            raise SystemExit("Recovery client path mismatch: " + name)\n        version = subprocess.check_output([selected, "--version"], text=True, stderr=subprocess.PIPE).strip()\n        if not re.fullmatch(re.escape(name) + r" \\(PostgreSQL\\) 16\\.[0-9]+(?: .*)?", version):\n            raise SystemExit("Recovery client major mismatch: " + name)\n        tools[name] = {"path": selected, "version": version}\n    server = subprocess.check_output(\n        [expected + "/psql", os.environ["PAIR06_DATABASE_URL"], "-Atqc", "SHOW server_version_num"],\n        text=True, stderr=subprocess.PIPE).strip()\n    if not re.fullmatch(r"16[0-9]{4}", server):\n        raise SystemExit("Recovery server major mismatch")\nexcept (OSError, KeyError, subprocess.CalledProcessError):\n    raise SystemExit("Recovery toolchain verification unavailable") from None\nprint(json.dumps({"client_major": 16, "server_major": 16, "server_version_num": int(server), "tools": tools}, sort_keys=True))\n'
+RECOVERY_VERIFY = {'name': 'Verify PostgreSQL16 recovery client and server', 'run': 'python - <<\'PY\'\nimport json, os, re, shutil, subprocess\n\nexpected = "/usr/lib/postgresql/16/bin"\ntools = {}\ntry:\n    for name in ("psql", "pg_dump", "pg_restore"):\n        selected = shutil.which(name)\n        if selected != expected + "/" + name:\n            raise SystemExit("Recovery client path mismatch: " + name)\n        version = subprocess.check_output([selected, "--version"], text=True, stderr=subprocess.PIPE).strip()\n        if not re.fullmatch(re.escape(name) + r" \\(PostgreSQL\\) 16\\.[0-9]+(?: .*)?", version):\n            raise SystemExit("Recovery client major mismatch: " + name)\n        tools[name] = {"path": selected, "version": version}\n    server = subprocess.check_output(\n        [expected + "/psql", os.environ["PAIR06_DATABASE_URL"], "-Atqc", "SHOW server_version_num"],\n        text=True, stderr=subprocess.PIPE).strip()\n    if not re.fullmatch(r"16[0-9]{4}", server):\n        raise SystemExit("Recovery server major mismatch")\nexcept (OSError, KeyError, subprocess.CalledProcessError):\n    raise SystemExit("Recovery toolchain verification unavailable") from None\nprint(json.dumps({"client_major": 16, "server_major": 16, "server_version_num": int(server), "tools": tools}, sort_keys=True))\nPY\n'}
+RECOVERY_TEST = {'name':'Rerun disposable Pair 06 atomicity and independent restore',
+                 'run':"python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v"}
+
+def check_recovery_toolchain(workflow):
+    job=workflow['jobs']['recovery'];steps=job['steps']
+    if job.get('runs-on')!='ubuntu-24.04' or job.get('services',{}).get('postgres',{}).get('image')!='postgres:16':
+        raise ValueError('Recovery runner/server major changed')
+    if job.get('needs')!=['classify'] or job.get('if')!="${{ needs.classify.outputs.recovery == 'true' }}":
+        raise ValueError('Recovery execution guard changed')
+    if any(k in job for k in ('continue-on-error','defaults','strategy','permissions')):
+        raise ValueError('Recovery job bypass')
+    if job.get('env')!={'PGPASSWORD':'pair06synthetic','PAIR06_DATABASE_URL':'postgresql://postgres:pair06synthetic@127.0.0.1:5432/pair06db'}:
+        raise ValueError('Recovery environment override')
+    positions=[]
+    for expected in (RECOVERY_INSTALL,RECOVERY_VERIFY,RECOVERY_TEST):
+        matches=[(i,s) for i,s in enumerate(steps) if s.get('name')==expected['name'] or s.get('run')==expected['run']]
+        if len(matches)!=1 or matches[0][1]!=expected: raise ValueError('Required unconditional recovery step altered: '+expected['name'])
+        positions.append(matches[0][0])
+    py=[(i,s) for i,s in enumerate(steps) if str(s.get('uses','')).startswith('actions/setup-python@')]
+    if len(py)!=1 or py[0][1]!={'uses':'actions/setup-python@v5','with':{'python-version':'3.12'}} or not py[0][0]<positions[0]<positions[1]<positions[2]:
+        raise ValueError('Recovery runtime/prerequisite order changed')
+
+class RecoveryToolchainTests(unittest.TestCase):
+    def workflow(self):return yaml.load((ROOT/'.github/workflows/ci.yml').read_text(encoding='utf-8'),Loader=yaml.BaseLoader)
+
+    def test_actual_recovery_toolchain_contract(self):
+        check_recovery_toolchain(self.workflow())
+
+    def test_recovery_steps_cannot_be_removed_replaced_skipped_or_masked(self):
+        for expected in (RECOVERY_INSTALL,RECOVERY_VERIFY,RECOVERY_TEST):
+            for mode in ('remove','replace','duplicate','if','continue-on-error','shell','working-directory','env','mask','before-python','reorder'):
+                with self.subTest(step=expected['name'],mode=mode):
+                    w=self.workflow();steps=w['jobs']['recovery']['steps'];step=next(s for s in steps if s.get('name')==expected['name'])
+                    if mode=='remove': steps.remove(step)
+                    elif mode=='replace':step['run']='echo PASS'
+                    elif mode=='duplicate':steps.append(dict(step,name='Other toolchain step'))
+                    elif mode=='mask':step['run']+=' || true'
+                    elif mode=='before-python':steps.remove(step);steps.insert(0,step)
+                    elif mode=='reorder':steps.remove(step);steps.insert(next(i for i,s in enumerate(steps) if s.get('uses')=='actions/setup-python@v5')+1,step) if expected!=RECOVERY_INSTALL else steps.append(step)
+                    else:step[mode]={'if':'false','continue-on-error':'true','shell':'sh','working-directory':'elsewhere','env':{'PATH':'/usr/bin'}}[mode]
+                    with self.assertRaises(ValueError):check_recovery_toolchain(w)
+
+    def test_recovery_major_path_and_guard_bypasses_fail(self):
+        for mode in ('runner-latest','server17','unversioned-package','client18','path-missing','path18','verify-echo','major-check-missing','server-check-missing','job-if','job-env','job-continue','python-conditional'):
+            with self.subTest(mode=mode):
+                w=self.workflow();job=w['jobs']['recovery'];steps=job['steps'];install=next(s for s in steps if s.get('name')==RECOVERY_INSTALL['name']);verify=next(s for s in steps if s.get('name')==RECOVERY_VERIFY['name'])
+                if mode=='runner-latest':job['runs-on']='ubuntu-latest'
+                elif mode=='server17':job['services']['postgres']['image']='postgres:17'
+                elif mode=='unversioned-package':install['run']=install['run'].replace('postgresql-client-16','postgresql-client')
+                elif mode=='client18':install['run']=install['run'].replace('postgresql-client-16','postgresql-client-18')
+                elif mode=='path-missing':install['run']='\n'.join(install['run'].splitlines()[:2])+'\n'
+                elif mode=='path18':install['run']=install['run'].replace('/16/bin','/18/bin')
+                elif mode=='verify-echo':verify['run']='echo major16'
+                elif mode=='major-check-missing':verify['run']=verify['run'].replace('if not re.fullmatch','if False and not re.fullmatch')
+                elif mode=='server-check-missing':verify['run']=verify['run'].replace('SHOW server_version_num','SELECT 160000')
+                elif mode=='job-if':job['if']='false'
+                elif mode=='job-env':job['env']['PATH']='/usr/bin'
+                elif mode=='job-continue':job['continue-on-error']='true'
+                else:next(s for s in steps if s.get('uses')=='actions/setup-python@v5')['if']='false'
+                with self.assertRaises(ValueError):check_recovery_toolchain(w)
+
+    def run_guard(self,mode):
+        import io,contextlib,shutil
+        calls=[]
+        def which(name):return None if mode=='missing' else ('/usr/bin/'+name if mode=='wrapper' else '/usr/lib/postgresql/16/bin/'+name)
+        def output(args,**kwargs):
+            calls.append(args)
+            if mode=='unavailable':raise subprocess.CalledProcessError(1,args)
+            if '--version' in args:
+                name=Path(args[0]).name
+                return name+' (PostgreSQL) '+('18.0' if mode=='client18' and name=='pg_dump' else '16.15')+' (synthetic fixture)\n'
+            return {'server18':'180000','server17':'170000','invalid-server':'garbage'}.get(mode,'160015')+'\n'
+        capture=io.StringIO()
+        with patch.object(shutil,'which',side_effect=which),patch.object(subprocess,'check_output',side_effect=output),patch.dict(os.environ,{'PAIR06_DATABASE_URL':'synthetic-unused'}),contextlib.redirect_stdout(capture):
+            exec(compile(RECOVERY_GUARD,'reviewed-inline-recovery-guard','exec'),{})
+        return json.loads(capture.getvalue()),calls
+
+    def test_inline_guard_accepts_only_matching_selected_clients_and_server(self):
+        result,calls=self.run_guard('valid')
+        self.assertEqual(result['client_major'],16);self.assertEqual(result['server_major'],16)
+        self.assertEqual(len(result['tools']),3);self.assertEqual(len(calls),4)
+        self.assertEqual(calls[-1],['/usr/lib/postgresql/16/bin/psql','synthetic-unused','-Atqc','SHOW server_version_num'])
+
+    def test_inline_guard_rejects_wrong_missing_unavailable_clients_and_servers(self):
+        for mode in ('missing','wrapper','unavailable','client18','server18','server17','invalid-server'):
+            with self.subTest(mode=mode),self.assertRaises(SystemExit):self.run_guard(mode)
+
 if __name__=='__main__': unittest.main()
