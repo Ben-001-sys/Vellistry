@@ -26,7 +26,7 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
+implementation_source_commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
 execution:
   status: completed
   executor: Codex
@@ -73,7 +73,7 @@ execution:
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0079/build79.txt
   - command: python .submission/document-assertions79.py
-    source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
+    source_commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
     status: PASS
     exit_code: 0
     evidence: docs/reports/evidence/VEL-TASK-0079/document-assertions79.json
@@ -94,10 +94,16 @@ execution:
     evidence: docs/reports/evidence/VEL-TASK-0079/trace79.txt
   - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
       -v
-    source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
+    source_commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
     status: PASS
     exit_code: 0
     evidence: docs/reports/evidence/VEL-TASK-0079/entrypoints79.txt
+  - command: python -m unittest discover -s tests -p test_research_design_gate.py
+      -v
+    source_commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
+    status: PASS
+    exit_code: 0
+    evidence: docs/reports/evidence/VEL-TASK-0079/research79.txt
 ---
 
 # New-main readiness adoption
@@ -132,3 +138,5 @@ Owner pending; distinct exact-head source review and full actual Draft/ReadyCI r
 
 ## Draft correction evidence
 Actual Draft43403382571 failed the unchanged current-state11000byte contract; final gateFAIL and expensivejobsSKIPPED. Earlier local base+600 assertion was insufficient and the interpretation that the limit was not standing was wrong. PRE-ADOPTION-CURRENT-STATE.txt preserves exact base bytes; compact current-state retains governing checkpoint/security holds. Strict<11000and exact archive equality assertions plus8unchanged entrypoint tests PASS. First P2 historical-log-link finding corrected; all old failed outcomes retained. Fresh source review and Draft/Ready required.
+
+Second Draft43403959491 remainsFAIL: compact rewrite omitted required research-design reference text. Current correction preserves all original state except two stale leading snapshots, archived byte-exactly; restores standing research text. Strict10637bytes,18source assertions,8entrypoint and16research-design testsPASS at updated source. No standing checks weakened; exact-head review/CI must repeat.

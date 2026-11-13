@@ -8,6 +8,6 @@ test_original_owner_event_is_not_reauthored (test_governance_entrypoints.Governa
 test_relative_links_in_active_entrypoints_resolve (test_governance_entrypoints.GovernanceEntrypoints) ... ok
 
 ----------------------------------------------------------------------
-Ran 8 tests in 0.163s
+Ran 8 tests in 0.095s
 
 OK

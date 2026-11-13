@@ -1,5 +1,5 @@
 {
-  "implementation_source": "f7ede2e1526aa2ba752a906924fc471fa2ba0cf0",
+  "implementation_source": "1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1",
   "tested_unchanged_application_base": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
   "test_head_notes": "Regression harness recorded HEAD after each command; preparation/pack commits advanced concurrently but all application/test/script/CI/SQL/lock blobs were unchanged throughout. Those observations are not document verification at those older commits. New document assertions explicitly bind final operative source.",
   "source_identity": {
@@ -242,7 +242,7 @@
     }
   ],
   "document_assertions": {
-    "source_commit": "f7ede2e1526aa2ba752a906924fc471fa2ba0cf0",
+    "source_commit": "1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1",
     "status": "PASS",
     "count": 18,
     "assertions": [
@@ -335,6 +335,11 @@
       "run": 43403382571,
       "head": "b40427187550b55105bd0d16fb59c6d23623f2a5",
       "cause": "Actual unchanged standing entrypoint test requires current-state<11000 bytes;11502 failed. Earlier interpretation was wrong. Preserved full historical base snapshot and compacted current state without changing standing validator;8entrypoint tests and18source assertions nowPASS."
+    },
+    {
+      "status": "FAIL",
+      "run": 43403959491,
+      "cause": "Compact rewrite omitted standing research-design references. All original state sections restored except two stale leading snapshots retained in exact archive. Unchanged8entrypoint and16research-design tests PASS; compact state10637bytes."
     }
   ],
   "full_local_governance": "IN_PROGRESS; actual result must be captured separately. Generated0002/0003scratch packs must not be committed.",
