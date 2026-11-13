@@ -1,0 +1,337 @@
+{
+  "implementation_source": "cc8868cc515ce93c83e8161e5ab1ddef0e3e479f",
+  "tested_unchanged_application_base": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+  "test_head_notes": "Regression harness recorded HEAD after each command; preparation/pack commits advanced concurrently but all application/test/script/CI/SQL/lock blobs were unchanged throughout. Those observations are not document verification at those older commits. New document assertions explicitly bind final operative source.",
+  "source_identity": {
+    ".github/workflows/agent-workflow.yml": "d53f9e9716e7b31a3f3885594dbd61d52ad53658",
+    ".github/workflows/ci.yml": "57c827ddd6ac801d70aff66596d0d24f1163b7aa",
+    ".github/workflows/combined-main-baseline.yml": "6988b8ad334d885c9ae61d6e9b1ba15f97bfbc8f",
+    ".github/workflows/implementation-foundation.yml": "1d5433554ca09c27bc1c18cc2bdd9316d91a433d",
+    ".github/workflows/implementation-readiness.yml": "a1fd8d6e955dad156e4770181bb1790d938436c3",
+    ".github/workflows/k2-supabase-auth-rls.yml": "52d7550171af740f020a2a4f1c38c67d923edb5e",
+    ".github/workflows/knowledge-metadata.yml": "0ae4625209c7f46c9fa3699cc9eaa208746709e5",
+    ".github/workflows/option-b-wave02-docx-fidelity.yml": "9ae29aecb151b6ac8c06a741be5d7d6e3e70ecf8",
+    ".github/workflows/option-b-wave03-privacy-story-profiles.yml": "1b721185f70b6ee6b75735743c06e8e505b15d1a",
+    ".github/workflows/option-b-wave06-recovery.yml": "75dfc7a0c5b1b78575ac3dc799efd0b5da38f559",
+    ".github/workflows/pair03-r11-r07-research.yml": "ef0fc44b5a57c15c4565c49d1a2d23fc30228523",
+    ".github/workflows/pair04-offline-provider-corpus.yml": "a6fb5b67c1cae1271661bd62f75ea145f1459af0",
+    ".github/workflows/pair05-synthetic-rules-tiptap.yml": "9ac6d670fc6175c25af4255704405e2556ac04a1",
+    ".github/workflows/pair06-legal-postgres-recovery.yml": "f554982ee96689fbd0d0863ebd076681213d23c1",
+    ".github/workflows/r01-manifest.yml": "8507f13b9ffc9d5cf4d2e599ace22f8a9810daf2",
+    ".github/workflows/r01-review-packet.yml": "8db4ab8e5b833c402af4c6e9f4b2ff7f5ff4a5cf",
+    ".github/workflows/r05-tiptap3-spike.yml": "9f9afc1088ac726969ff2a9c0625f904074321e7",
+    ".github/workflows/r06-synthetic-research.yml": "c71f7094e70d5eb94bd7e5a791018103fa6b92ba",
+    ".github/workflows/r07-story-state-contract.yml": "58f377246c4bfca33c57d96032323992c5a406e4",
+    ".github/workflows/r18-browser-recovery.yml": "4dbbcae26913959648c4592d145b9f15b162bfb5",
+    ".github/workflows/r18-framework-comparison.yml": "9b1812faa7637fd6e0af17e89f093b0fd9733074",
+    ".github/workflows/r18-postgres-memory.yml": "70f73f3e840a47ebebd45432deee736eac7dd765",
+    ".github/workflows/r18-retrieval-benchmark.yml": "8ef0aba6f0bfcaa3380017012b4d4868aef16809",
+    ".github/workflows/r18-story-memory.yml": "5c46d5cba5308448c6342aa7ca31511c03c53845",
+    ".github/workflows/stage4-independent-cursor-evidence.yml": "6ed9c81eae3f4523b3d996630fb3e8f2dd20fbcb",
+    ".github/workflows/stage4-synthetic-chapter-contract.yml": "0a4ad9127af35f94307e60395048e201ade59148",
+    ".github/workflows/vel-sec-001-pg17-manual.yml": "dfa752834962ef9503cd9c7636b4eddb6ac8c35e",
+    "apps/api/package.json": "fc07a6cc2702d47fa352e2a484651fcea28f3fd0",
+    "apps/api/src/main.ts": "3e8c19d54f2f98941828a6d18c3017c3091eea3a",
+    "apps/api/src/modules/app.module.ts": "2d8e8fd75d078a747fc736533da05ff2b2241036",
+    "apps/api/src/modules/auth/auth-runtime.spec.ts": "320accaa6348f14abba23850693734b0bba06662",
+    "apps/api/src/modules/auth/auth.module.ts": "dd51829118f8c7387ca9a8a5253e0b6b80a97931",
+    "apps/api/src/modules/auth/supabase-auth.guard.ts": "c5b4a492afb835011eea23825625bd4709447f72",
+    "apps/api/src/modules/auth/supabase-auth.service.ts": "77bbb0b76943a6a67cbb52beb7b074430753c655",
+    "apps/api/src/modules/books/book-create-input.spec.ts": "4489040449db2c741fc243e25d006bda75552d3b",
+    "apps/api/src/modules/books/book-create-input.ts": "230a807317f1ebd26d7c3380991159bbfdee9462",
+    "apps/api/src/modules/books/books.controller.ts": "52757f10a7b913d10c4565fb419a03ac5ceef2e1",
+    "apps/api/src/modules/books/books.service.ts": "25ff25502eaefdc268813bff46dd1b92cf43fb7d",
+    "apps/api/src/modules/health.controller.ts": "854f44fb129b17b2aad54509f08c0be4cd7fb1c5",
+    "apps/api/src/modules/workspace/manuscript-contract.spec.ts": "99f094cf97d63fb61d4cf8ab5f5590469267c18d",
+    "apps/api/src/modules/workspace/manuscript-contract.ts": "64f2889bfdac4f8af6546c3a206a9b91e0c5b1a4",
+    "apps/api/src/modules/workspace/manuscript.service.ts": "7b98a05ecfa2d786c852c9ab440435cb047efb45",
+    "apps/api/src/modules/workspace/workspace-contract.spec.ts": "6332e6ab24f5f22baae287dd8340b1db577913fc",
+    "apps/api/src/modules/workspace/workspace-contract.ts": "346aa008fab312ded99998a28db43ca2e0854f94",
+    "apps/api/src/modules/workspace/workspace-persistence-port.ts": "45cdc4e0dc57d08d213f21b529a13a52f65418cd",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.spec.ts": "72573caf1a14276746150a3af28fdcbd33e0fc7e",
+    "apps/api/src/modules/workspace/workspace-principal-adapter.ts": "5084cc167b9f69865aee58aa9ea212c6f4f08ac0",
+    "apps/api/src/modules/workspace/workspace-principal-verification-policy.ts": "5e44dd97eb5ea6c3aa499abfceb012f05ffa6817",
+    "apps/api/src/modules/workspace/workspace-principal.ts": "56b41b1a61599624569d4bb32f164fbb066f2cff",
+    "apps/api/src/modules/workspace/workspace-supabase-response-bridge.ts": "c114fa51328b965b8daa4022066a6d6d61b1e9f5",
+    "apps/api/src/modules/workspace/workspace.service.ts": "5c76937699f1c1318b76ea503c91fe6f8ba3b8ac",
+    "apps/api/tests/README.md": "09b185e3fbfd2c971587991917cd0a5ca7b7fd3c",
+    "apps/api/tests/k2b-active-session-row.integration.mjs": "857b10ce7bf5a756ca994d115e5330857e9dacb9",
+    "apps/api/tests/k2b-data-api-lockdown.integration.mjs": "b7c2e4619c5b7e576d4f79409b38d3320618dea6",
+    "apps/api/tests/k2b-private-nest-gateway.integration.mjs": "9fa9df593f906e8144dfdda181ed2c007588d758",
+    "apps/api/tests/k2b-session-exposure.integration.mjs": "a4c7049768bed288e95efe82affb5d380ed81668",
+    "apps/api/tests/supabase-auth-rls.integration.mjs": "f594065c7b955bc466ab7c16340bc63c8d151832",
+    "apps/api/tsconfig.build.json": "7957ecce19a93f851666ca25898c3cef25561913",
+    "apps/api/tsconfig.json": "a3f85b82d25eafd312ca2e3836911262108136ef",
+    "apps/web/next-env.d.ts": "ce4e94a6b10f160ee021fe18939af160d2927dcf",
+    "apps/web/next.config.ts": "c1f4abde7f2bbe6bc33cf2ee47380942cbc7a18a",
+    "apps/web/package.json": "6082a774f622415b0b43a07d012f9a18b6b6bbf4",
+    "apps/web/postcss.config.mjs": "dd65ee76f7e11da60a9185672ae02da9102e4db8",
+    "apps/web/public/brand/README.md": "6a0e6e3cb40819f1942751a5228048bd09bce4d6",
+    "apps/web/public/brand/app-icon.svg": "81ee8200d31f6daf79afcbe5e3a6111420e90704",
+    "apps/web/public/brand/logo-horizontal.svg": "6f04e7e997a9788f7c4b2a71d5b3bf274d848933",
+    "apps/web/public/brand/logo-monochrome.svg": "e994a8b6d6b4cb2e5dd728059f251bd794268e8e",
+    "apps/web/public/brand/logo-stacked-dark.svg": "d19067d537ac4eca58e1481132fbdcac3da66195",
+    "apps/web/public/brand/logo-stacked-light.svg": "c95cdd99c0577b96a63b28f0c1c3922d75feba1c",
+    "apps/web/public/brand/mark.svg": "b915180f4b114e88d4263429d90a6dc00a15413d",
+    "apps/web/public/brand/pwa-maskable.svg": "819518b1dc35b4706e03f03a4312fa852470a6bd",
+    "apps/web/src/app/account/mfa/page.tsx": "a769cb746e88bd51faa28d8402d22e704003b717",
+    "apps/web/src/app/api/books/route.ts": "34b70aed9ae8fd5a4033c9a1db615e03a3902231",
+    "apps/web/src/app/books/page.tsx": "1bada32dd1b1d38d9d07577d4a11e672e3fb9f74",
+    "apps/web/src/app/globals.css": "7b9c2e0f91668f83821f70d4c7c0ac9c3055e21e",
+    "apps/web/src/app/layout.tsx": "6d3eb6048dfdbdcdb668fdb8f26ee7bf15cf09be",
+    "apps/web/src/app/login/page.tsx": "841c2c39bbf8636c62c57ce9f7b1a5b421d39d58",
+    "apps/web/src/app/page.tsx": "e8bf24a82dae7794f0ad06adc89b81226d8ca7cf",
+    "apps/web/src/components/auth/auth-panel.tsx": "6e8c67b6d55549cc8aeaca4dc318bf31d452d674",
+    "apps/web/src/components/editor/manuscript-composition-preview.tsx": "39de77ff17ea4c8996412ff6a3bf3789aaa0b3c6",
+    "apps/web/src/components/editor/manuscript-durable-preview.tsx": "6943b7651da333895f1d9317ad6e1e1c90ded017",
+    "apps/web/src/components/editor/manuscript-editor.tsx": "c869ff164d96407fb8320aa03f292291746e5f1a",
+    "apps/web/src/components/workspace/book-workspace-organizer.tsx": "48904cb78a581c00fd6f61b0db8f8aed447b35b0",
+    "apps/web/src/lib/auth/auth-panel.test.tsx": "8c106b9b497e390d6e55495bb7c83f2a1b7babca",
+    "apps/web/src/lib/auth/mfa-flow.test.ts": "41af8d26f56162bc50f8f7fb3985ecdcbbc932a5",
+    "apps/web/src/lib/auth/mfa-flow.ts": "d00fef3e135b0538bc6c75390ac43d4bb8145601",
+    "apps/web/src/lib/editor/manuscript-composition.test.tsx": "3bf208d06929eb6886e8b2db92f22341923e6d56",
+    "apps/web/src/lib/editor/manuscript-composition.ts": "e17f8cf1382d3b97f9abf208ef850669da77a069",
+    "apps/web/src/lib/editor/manuscript-durable-composition.ts": "3969fb61e43318aa482c2e72e3dfc70909edaf87",
+    "apps/web/src/lib/editor/manuscript-editor.test.mjs": "cc8931163ca159d6484c4b17ce7ccb4a98ce8e5b",
+    "apps/web/src/lib/editor/manuscript-indexeddb.test.ts": "0a3495c4f2fe5faff85bec1c84f0c1486e286dcc",
+    "apps/web/src/lib/editor/manuscript-indexeddb.ts": "a47e223e24b13fd160c88d981fd7c6c9c9409b34",
+    "apps/web/src/lib/editor/manuscript-recovery.test.ts": "df64139179a1d108ce87629bf6317a1a65eaf1f1",
+    "apps/web/src/lib/editor/manuscript-recovery.ts": "eb653fe3ec0963d22a08df27fc6e1d0f6fed7d2b",
+    "apps/web/src/lib/editor/manuscript-search.ts": "b43614899b29fbf01b1b6b8df5e8ea98ab08d5c8",
+    "apps/web/src/lib/editor/manuscript-session.ts": "25583e9fbaf8826901cc85ea66cd4aed21418da5",
+    "apps/web/src/lib/library/book-create-document.ts": "dc094926f3f1237d784f71645c635fe41c54102a",
+    "apps/web/src/lib/library/book-library-session.test.ts": "b3cbe7eea3393a6440c8cbc2c074ef51eb9f27c2",
+    "apps/web/src/lib/library/book-library-session.ts": "1aff020ffa9db807abf41cdd34de138dd07af294",
+    "apps/web/src/lib/library/book-library-state.test.ts": "2315129fa18c1adb005283844971b8fcff33bad9",
+    "apps/web/src/lib/library/book-library-state.ts": "c4a1c16e145b05ed03a31e2942475adb985479ad",
+    "apps/web/src/lib/library/owner-from-auth.ts": "7a9c3f6f41df9b6544419f2ed0281ced459f2dd5",
+    "apps/web/src/lib/supabase/browser.ts": "4f84f7605f66e3e0dad5f686a6687c4a90a1b507",
+    "apps/web/src/lib/supabase/server.ts": "861257950cf82fed2cacd4f1d24e24574fe8ea72",
+    "apps/web/src/lib/workspace/book-workspace-contract.ts": "63b6a79d36cbfb253ba2fbd1e2ea5984b16c4734",
+    "apps/web/src/lib/workspace/book-workspace-session.test.ts": "37249b6ff20f876a2662532f4e8651c74ddff195",
+    "apps/web/src/lib/workspace/book-workspace-session.ts": "9264cceaea7341ed3eec7d642680025ba4c947b8",
+    "apps/web/tsconfig.json": "953f140d698ed058ce94570bf51a96ea54c0b1f7",
+    "package.json": "1244f8cfaf74651f87525647adcdca259307d47c",
+    "pnpm-lock.yaml": "a0d0f9fc09ee6b2e099639b672c505a27e02421c",
+    "scripts/agent_workflow.py": "9023855a13afb26641232267cc1c8481ab46be91",
+    "scripts/check_implementation_readiness.py": "3a9100e70dff36a3f73b2ce4f45052491e2fbe08",
+    "scripts/check_knowledge_metadata.py": "4c1cad2e3fc2503b72f5a3731dedda3cfdf54ca7",
+    "scripts/ci_governance.py": "7075832b171e71188c295541e07729da6684f90b",
+    "scripts/ci_policy.py": "2a70169a607819b64d70d2a37871b09fe76709f8",
+    "scripts/export_level_b_handoff.py": "f5e604516636aff48a467b82c14b24a208209c2f",
+    "scripts/export_stage4_independent_packet.py": "1a00dee20e9b126ce61c62a11d9825efe0861b66",
+    "scripts/handoff_recovery.py": "f1d255067ec98aab41089509d39184b69c696092",
+    "scripts/hosted_supabase_preflight.mjs": "8684ab3458e6a0c77ca895249ac3858b5d0d35db",
+    "scripts/pg17_book_privilege_evidence.py": "9a9ed277e2603c622bea0d50d7ada77e8eb63a54",
+    "scripts/pr_compliance.py": "d6112a087c4616c59774239e381132e8ea33af8e",
+    "scripts/r01_manifest.py": "0e2a1638a5da8f276c31abe06d6c2b172481d465",
+    "scripts/r01_mapping_gate.py": "6bfc6212f980c1680b932c6974205a54764a4ba0",
+    "scripts/r01_mapping_proposal.py": "4b0c5454ad4493adc9efafd8b235544903d0c348",
+    "scripts/r01_review_packet.py": "61b79927354ff9298eeb279710f258bdf18c96fa",
+    "scripts/run_pr_compliance.py": "2a12144f225803e32f7dc0b62ff3999555e6f956",
+    "scripts/spec_traceability.py": "ef6296ba729ed974c6905c19ee64d4ad59d08c4e",
+    "scripts/verify_research_archive.py": "fc40425d0cf55727583bf7803ac560b1edc8972e",
+    "supabase/config.toml": "bab9335a74948352c9d4633d1c981c89ae2ba0e3",
+    "supabase/migrations/20261009000000_initial_author_books.sql": "192a736d1a5d6ffc6f239c74ed61e7b8d2528b3b",
+    "supabase/migrations/20261009010000_restrict_accepted_manuscript_dml.sql": "0670a60f1c2e299e9771b9af1c677d97712174d9",
+    "tests/editor/durable-draft-browser.mjs": "854d748126db7158a7e3e0f4eefbd3a21bae8708",
+    "tests/editor/durable-draft-fixture.tsx": "14407905eec736d2ba6bd59bdb29a5a21f2dfde7",
+    "tests/editor/manuscript-editor-fixture-page.tsx": "2e5d4f8e021dfc3efaa4f152001dea56c7e7c3d2",
+    "tests/editor/manuscript-editor.browser.mjs": "aa34df0d2a14ac535437b714a791612358f0782e",
+    "tests/editor/persistence/manuscript-http.integration.mjs": "be6384f63f9c410285ac582a9e839f6f3996344b",
+    "tests/editor/persistence/manuscript-pg17.integration.mjs": "6e2ffba109a4845be58c1412050a3892ff3ff320",
+    "tests/editor/persistence/sql/10_manuscript_contract.sql": "9b9f492de3e899635fa3f6c11ff8ba7ee3bfd895",
+    "tests/fixtures/book-workspace-synthetic.ts": "bff647b99035fb4b4f5fa5a5579557d87ad6e152",
+    "tests/fixtures/manuscript-transport-synthetic.ts": "e59411611141790bd34fab0b9fe7e736ed07cfb2",
+    "tests/hosted_supabase_preflight.test.mjs": "fce467371568a22a0974a56dd11a186451c4db3f",
+    "tests/test_agent_workflow.py": "94e52ffa4e92aee80b2f43e7f532eff94eeea9ac",
+    "tests/test_ci_policy.py": "d5e938af576ebba151dfaf1c53ada355945ff278",
+    "tests/test_governance_entrypoints.py": "752a9fba153d24a4f506ec86eaa0c5985b6177d2",
+    "tests/test_handoff_recovery.py": "b321290687dadfa325331edd2abb3e8b03f305af",
+    "tests/test_implementation_readiness.py": "e957ce5c56975d301cede6494f977b17138233b5",
+    "tests/test_knowledge_metadata.py": "22287f405419e16d3e6089f3d099371564ec9c2e",
+    "tests/test_level_b_export.py": "58345477e394bfb21684647b0aea5183bff562ef",
+    "tests/test_pg17_action_harness.py": "b604850c54711a2e4f670020fa671a40f4b7b6f6",
+    "tests/test_pr_compliance.py": "fd367595d03c56c31e663f77198402e8454bedaf",
+    "tests/test_r01_manifest.py": "d707332f385d1b54c45a70d85650295052c05201",
+    "tests/test_r01_mapping_gate.py": "80e6483a8e8bc7268734e9017eee75ca7190bb71",
+    "tests/test_r01_mapping_proposal.py": "e31281a03f0baed848a515a7dfa1c961fc140412",
+    "tests/test_r01_review_packet.py": "a6dd31077e769c69c1fc8af2d94a101740b5cfcf",
+    "tests/test_remediation_ledger.py": "feecef8de96923477acd20abe81376282abe919b",
+    "tests/test_research_archive.py": "61ed3b30db1f4fc5c391ec447bbfd274bf99ad7e",
+    "tests/test_research_design_gate.py": "110bac3ca6b498976447535f5f7b458658643f22",
+    "tests/test_spec_traceability.py": "1268243b517700ce6279ad072a696fb8fc247695",
+    "tests/test_stage4_chapter_contract.py": "3ab8bcbcc3159d9bb6421f23be05e9030261fa4f",
+    "tests/test_stage4_independent_packet.py": "3356160d1a63913cca15502fb20e07e6e691b353",
+    "tests/workspace/book-workspace-browser-checks.md": "4c4fd83118a9ed68b0191c1d44129064f8f52bdd",
+    "tests/workspace/book-workspace-fixture-page.tsx": "45f1031f6e2895f3c31e4c2836f1274ec1a41e71",
+    "tests/workspace/persistence/run_pg17.py": "9a383b89e9b46a7bb453452fd071daa36fce138e",
+    "tests/workspace/persistence/sql/00_fixture_auth.sql": "d255bec72d71b4495c8f641cbf11668b0f521142",
+    "tests/workspace/persistence/sql/10_workspace_schema.sql": "5863f0ac2dbe5b6249cac37ac7c0e07f600b8c5c",
+    "tests/workspace/persistence/sql/20_workspace_roles.sql": "9956b5235fb4b40e97ffc2a19263ba2164ef14f2",
+    "tests/workspace/persistence/sql/30_workspace_functions.sql": "73ae723135a2e1ee634a8d482fbbc30f0e315919",
+    "tests/workspace/persistence/workspace-pg-adapter.ts": "08a758ce5efd08acb6e90d59a7e239ccb06aaade",
+    "tests/workspace/persistence/workspace-pg17.integration.mjs": "b476d2a52a80bdb2f141ed76a561dcc99a71299a"
+  },
+  "frozen_exit": 0,
+  "frozen_mode": "unchanged lockfile; offline cache; pinned10.18.0",
+  "results": [
+    {
+      "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "principal79.txt",
+      "seconds": 1.79
+    },
+    {
+      "command": "corepack pnpm test:auth-mfa",
+      "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "mfa79.txt",
+      "seconds": 5.15
+    },
+    {
+      "command": "corepack pnpm test:library-isolation",
+      "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "library79.txt",
+      "seconds": 8.62
+    },
+    {
+      "command": "corepack pnpm test:hosted-preflight",
+      "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "preflight79.txt",
+      "seconds": 2.54
+    },
+    {
+      "command": "corepack pnpm test:workspace-contract",
+      "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "workspace79.txt",
+      "seconds": 9.54
+    },
+    {
+      "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+      "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "units79.txt",
+      "seconds": 3.8
+    },
+    {
+      "command": "corepack pnpm check",
+      "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "check79.txt",
+      "seconds": 15.73
+    },
+    {
+      "command": "corepack pnpm build",
+      "source_commit": "e0d2865f5625385ab7e9f3badb01d3d85abd4f0d",
+      "exit_code": 0,
+      "status": "PASS",
+      "evidence": "build79.txt",
+      "seconds": 35.55
+    }
+  ],
+  "document_assertions": {
+    "source_commit": "cc8868cc515ce93c83e8161e5ab1ddef0e3e479f",
+    "status": "PASS",
+    "count": 18,
+    "assertions": [
+      {
+        "name": "Only declared metadata changed from original matrix",
+        "status": "PASS"
+      },
+      {
+        "name": "Exact original snapshot SOURCE-REPORT.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Exact original snapshot SOURCE-MATRIX.json",
+        "status": "PASS"
+      },
+      {
+        "name": "Original reviewed tree pinned",
+        "status": "PASS"
+      },
+      {
+        "name": "All28original source hashes and blobs verified",
+        "status": "PASS"
+      },
+      {
+        "name": "Fixture record unchanged, no new owner confirmation",
+        "status": "PASS"
+      },
+      {
+        "name": "All G1-G4 blocked",
+        "status": "PASS"
+      },
+      {
+        "name": "Three canonical hosted observations NOT_RUN",
+        "status": "PASS"
+      },
+      {
+        "name": "Canonical0063 exact hash",
+        "status": "PASS"
+      },
+      {
+        "name": "Protocol endpoints closed schema bounds unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "SESSION9 unresolved",
+        "status": "PASS"
+      },
+      {
+        "name": "OR01-10 future only",
+        "status": "PASS"
+      },
+      {
+        "name": "R01-R08 NOT_RUN N12 EPERM blocked",
+        "status": "PASS"
+      },
+      {
+        "name": "No application SQL CI dependency protected-control change",
+        "status": "PASS"
+      },
+      {
+        "name": "Task78 records unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "CP full rendering and pinned task validated",
+        "status": "PASS"
+      },
+      {
+        "name": "Bounded current-state addition preserves full history",
+        "status": "PASS"
+      },
+      {
+        "name": "No target findings or merge authority",
+        "status": "PASS"
+      }
+    ],
+    "limitation": "Document/source assertions only; no actual endpoint guard/sanitizer/hosted verification"
+  },
+  "history": [
+    {
+      "status": "FAIL",
+      "cause": "Initial nested pnpm picked globally installed11.5.3 rather than pinned10.18.0; commands failed before test execution. Logs retained."
+    },
+    {
+      "status": "FAIL",
+      "cause": "First document check assumed CURRENT-STATE had room below11000bytes, but baseline already10978. Snapshot compacted; check now allows only bounded600byte addition preserving full historical content. Not a standing validator change."
+    }
+  ],
+  "full_local_governance": "IN_PROGRESS; actual result must be captured separately. Generated0002/0003scratch packs must not be committed.",
+  "required_actual_ci": "New Draft and Ready with full governance/application/security/Chromium41/PG16 recovery12/PG17 32+16+8 restart cleanup/final gate; not yet run.",
+  "hosted": "NOT_RUN; all existing blockers preserved"
+}

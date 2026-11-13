@@ -1,0 +1,80 @@
+{
+  "source_commit": "cc8868cc515ce93c83e8161e5ab1ddef0e3e479f",
+  "status": "PASS",
+  "count": 18,
+  "assertions": [
+    {
+      "name": "Only declared metadata changed from original matrix",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact original snapshot SOURCE-REPORT.md",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact original snapshot SOURCE-MATRIX.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Original reviewed tree pinned",
+      "status": "PASS"
+    },
+    {
+      "name": "All28original source hashes and blobs verified",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture record unchanged, no new owner confirmation",
+      "status": "PASS"
+    },
+    {
+      "name": "All G1-G4 blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "Three canonical hosted observations NOT_RUN",
+      "status": "PASS"
+    },
+    {
+      "name": "Canonical0063 exact hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Protocol endpoints closed schema bounds unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "SESSION9 unresolved",
+      "status": "PASS"
+    },
+    {
+      "name": "OR01-10 future only",
+      "status": "PASS"
+    },
+    {
+      "name": "R01-R08 NOT_RUN N12 EPERM blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "No application SQL CI dependency protected-control change",
+      "status": "PASS"
+    },
+    {
+      "name": "Task78 records unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "CP full rendering and pinned task validated",
+      "status": "PASS"
+    },
+    {
+      "name": "Bounded current-state addition preserves full history",
+      "status": "PASS"
+    },
+    {
+      "name": "No target findings or merge authority",
+      "status": "PASS"
+    }
+  ],
+  "limitation": "Document/source assertions only; no actual endpoint guard/sanitizer/hosted verification"
+}
