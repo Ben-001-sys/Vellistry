@@ -1,0 +1,1 @@
+P2 from distinct supplied-source review at c0ea7c: first-attempt index incorrectly referenced later successful logs. Corrected all8evidence paths to preserved first-* logs; exit/source/status and original log bytes unchanged. Original index retained in Git c0ea7c. No Task/CP/operative source or acceptance status change. Final exact-head review required.
