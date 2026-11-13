@@ -254,7 +254,7 @@ jobs:
       run: pnpm exec supabase stop --no-backup || true
   recovery:
     name: Merged PostgreSQL CAS and restore contract
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 16
     services:
       postgres:
@@ -277,10 +277,36 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: '3.12'
-    - name: Install PostgreSQL client binaries
+    - name: Install PostgreSQL16 recovery client binaries
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y postgresql-client
+        sudo apt-get install -y postgresql-client-16
+        echo "/usr/lib/postgresql/16/bin" >> "$GITHUB_PATH"
+    - name: Verify PostgreSQL16 recovery client and server
+      run: |
+        python - <<'PY'
+        import json, os, re, shutil, subprocess
+
+        expected = "/usr/lib/postgresql/16/bin"
+        tools = {}
+        try:
+            for name in ("psql", "pg_dump", "pg_restore"):
+                selected = shutil.which(name)
+                if selected != expected + "/" + name:
+                    raise SystemExit("Recovery client path mismatch: " + name)
+                version = subprocess.check_output([selected, "--version"], text=True, stderr=subprocess.PIPE).strip()
+                if not re.fullmatch(re.escape(name) + r" \(PostgreSQL\) 16\.[0-9]+(?: .*)?", version):
+                    raise SystemExit("Recovery client major mismatch: " + name)
+                tools[name] = {"path": selected, "version": version}
+            server = subprocess.check_output(
+                [expected + "/psql", os.environ["PAIR06_DATABASE_URL"], "-Atqc", "SHOW server_version_num"],
+                text=True, stderr=subprocess.PIPE).strip()
+            if not re.fullmatch(r"16[0-9]{4}", server):
+                raise SystemExit("Recovery server major mismatch")
+        except (OSError, KeyError, subprocess.CalledProcessError):
+            raise SystemExit("Recovery toolchain verification unavailable") from None
+        print(json.dumps({"client_major": 16, "server_major": 16, "server_version_num": int(server), "tools": tools}, sort_keys=True))
+        PY
     - name: Rerun disposable Pair 06 atomicity and independent restore
       run: python -m unittest discover -s docs/research/experiments -p 'test_pair06_postgres_operations.py' -v
     needs:

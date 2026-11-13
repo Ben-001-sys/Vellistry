@@ -1,0 +1,67 @@
+{
+  "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+  "local_policy_tests": 58,
+  "new_test_functions": 5,
+  "new_negative_scenarios": 53,
+  "all_original_tests_unchanged": true,
+  "real_postgresql": "NOT_RUN locally; actualGitHubCI required",
+  "historical_failure": {
+    "run": 42777271966,
+    "source": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+    "status": "FAIL",
+    "recovery_passed": 11,
+    "recovery_errors": 1,
+    "cause": "PostgreSQL16.15 rejected transaction_timeout emitted by newer client tooling; package18+ installed"
+  },
+  "preparation_failure": {
+    "source": "80d4a0b",
+    "status": "FAIL",
+    "cause": "ContextPack source exceeds35000bytes; no generated/committed pack or operative edit. Corrected context only before valid immutableCP"
+  },
+  "tests": [
+    {
+      "command": "python -m unittest discover -s tests -p test_ci_policy.py -v",
+      "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0078/policy78-final.txt"
+    },
+    {
+      "command": "python .submission/audit78.py",
+      "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0078/audit78.json"
+    },
+    {
+      "command": "python scripts/check_knowledge_metadata.py",
+      "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0078/metadata78.txt"
+    },
+    {
+      "command": "python scripts/check_implementation_readiness.py",
+      "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0078/readiness78.txt"
+    },
+    {
+      "command": "python scripts/spec_traceability.py validate",
+      "source_commit": "a81683b9130a9fa937a01565c97f47468d4dcd7a",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "docs/reports/evidence/VEL-TASK-0078/trace78.txt"
+    }
+  ],
+  "limitations": {
+    "production_principal_session": "PENDING",
+    "R01-R08": "NOT_RUN",
+    "N12": "BLOCKED",
+    "historical_EPERM": "BLOCKED",
+    "legacy_privileges": "SKIPPED",
+    "merge": "NOT_AUTHORIZED",
+    "Task0077": "Separate Draft PR137; requires owner integration and governednew-base reconciliation later"
+  }
+}

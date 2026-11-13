@@ -1,0 +1,7 @@
+# Owner-scoped CI repair
+
+Owner CI-repair authorization relayed by Codex,10November2026. The owner explicitly answered “Authorize separate bounded CI repair” to the exact proposal https://github.com/Ben-001-sys/Vellistry/pull/137#issuecomment-6761994297 . Scope: one new unique Task/immutable ContextPack, only .github/workflows/ci.yml and tests/test_ci_policy.py plus task-specific governance/reports/evidence/provenance. Align the existing recovery client's PostgreSQL major with the existing PostgreSQL16 service; preserve all12test bodies, every security/governance/browser/application/PG gate and owner-controlled merge.
+
+Use the bounded proposed approach: recovery-only Ubuntu24.04, explicit postgresql-client-16 and explicit16binary PATH with client/server runtime verification. Public Ubuntu package records confirm the package exists; actual CI must prove it. No CI-policy/evaluator/loader changes, SQL fixture/test body changes, production/Auth/app/dependency changes, hosted operations, private data, deployments or merge. Existing disposable CI fixtures remain permitted by the earlier narrow clarification, with no hosted project or agent token/credential access. No new probe runner or target fixture creation. Task0077/CP0077/EB0077 and PR137 remain separate and unchanged; its failed Ready42777271966 is preserved as FAIL. Later new-base reconciliation requires its governed process after owner integration; no merge authority is inferred.
+
+Evidence: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6762155945

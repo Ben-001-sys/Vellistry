@@ -1,0 +1,93 @@
+{
+  "sources": [
+    {
+      "path": "PROJECT.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "530c02ddede4a2904b97a44790a398b3de64020798dcbd728367d77feeaec3d7",
+      "bytes": 3595
+    },
+    {
+      "path": "SOURCE-OF-TRUTH.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "530a26f2ccbcdbfa37614a79684ecbbf4788506af5936a0c25ad7d74efe5bacb",
+      "bytes": 5516
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "243a9cc338ab369712bf53062dc916eb35abb14cdd8734a813cff4f84bdd4f26",
+      "bytes": 10978
+    },
+    {
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "fdd3d879dbef08e2e8f37b84859e29cdfa8e98467cf295085245ed417c0b2b16",
+      "bytes": 13806
+    },
+    {
+      "path": "scripts/pr_compliance.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "117eb9982c2935dbbcf2c42856c42c6eaec780fe6f2bb7bb1951a29d49d30452",
+      "bytes": 23233
+    },
+    {
+      "path": "scripts/run_pr_compliance.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "138c22d62272515f7fdf43c41a870414f393189185ba92cee139be8011a1db25",
+      "bytes": 3357
+    },
+    {
+      "path": "scripts/ci_policy.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "44ed7945b2e14e2fc2ee5d343553856d216e35f24dee383a15c4030c2609dc1c",
+      "bytes": 10162
+    },
+    {
+      "path": "scripts/ci_governance.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "1791eb8ceaa6ae8985e027ec50b18d79bbc963fd58cc700dea35b9c52b0babdd",
+      "bytes": 3521
+    },
+    {
+      "path": "docs/research/experiments/test_pair06_postgres_operations.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "bdddf163d1268e0d2216413fed56aed417e0e15083ca21c1a73447c528364357",
+      "bytes": 7076
+    },
+    {
+      "path": "package.json",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "b28791926b38d5cb421bb58dcfc7dabf86994c9cbdee46f8b33d4f06c376cab3",
+      "bytes": 1741
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "dd7935789540de5c850f9980fb6c546e2289a5b5da0579198494aa8476d2a77f",
+      "bytes": 110242
+    },
+    {
+      "path": "tests/test_ci_policy.py",
+      "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+      "sha256": "5acae09cec81fd33b6a22ec36187c867844305fcad16f9979e03bbcec0f3abec",
+      "bytes": 42759
+    }
+  ],
+  "public_primary_sources": [
+    {
+      "url": "https://packages.ubuntu.com/noble/postgresql-client-16",
+      "checked": "2026-11-10",
+      "fact": "Ubuntu24.04 provides postgresql-client-16, observed16.15securitypackage; actualCI required"
+    },
+    {
+      "url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md",
+      "checked": "2026-11-10",
+      "fact": "GitHub Ubuntu24.04 runner image exists"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/18/app-pgdump.html",
+      "checked": "2026-11-10",
+      "fact": "Major-version dump/restore compatibility must be respected; matchclient16withserver16"
+    }
+  ]
+}
