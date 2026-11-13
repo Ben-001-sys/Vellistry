@@ -1,0 +1,125 @@
+{
+  "base": "62be53c401b8c7405590c307559f921ec7d71a83",
+  "tree": "33c401e9b9f17e4d4a03879082bca2bf0492ae8e",
+  "record_date": "2026-11-13",
+  "owner_relay": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794",
+  "prior_integration": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6861310422",
+  "prior_closure": "https://github.com/Ben-001-sys/Vellistry/pull/137#issuecomment-6865222300",
+  "sources": [
+    {
+      "path": "PROJECT-CONSTITUTION.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "61f79c4dcb47bd99291c16490e8c00692e2ab23b",
+      "sha256": "ea17eba04dc5027dcca3e6f696260e3837248bbfb14bb3a2a87e7df1c479ec9e"
+    },
+    {
+      "path": "AGENTS.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "3058d51c0e15db54d6271ecbcffcfeb0aaf54e6f",
+      "sha256": "619a9989a8d7d4d50c087ecb903308c57119f295671480d3cb6e23b5cac0f2c8"
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "f3b465b95b4731debd25e670bd5b54005a7f9a78",
+      "sha256": "d47908c2dca01331497abda14be76b66044ef216f909d8f8fce48f9247bc68df"
+    },
+    {
+      "path": "SOURCE-OF-TRUTH.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "50a3034f72727b141ae2c897b1c1424efcc332d5",
+      "sha256": "530a26f2ccbcdbfa37614a79684ecbbf4788506af5936a0c25ad7d74efe5bacb"
+    },
+    {
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "08b9a563fb79ebb91f20d0f84e0d752c1bb6709d",
+      "sha256": "fdd3d879dbef08e2e8f37b84859e29cdfa8e98467cf295085245ed417c0b2b16"
+    },
+    {
+      "path": "docs/agent-workflow/README.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "ac8ece613b6ca4bb977af4cedcf2bd6f7c16cbf3",
+      "sha256": "3b31721a0403877534afcd8d4a5e95c8b43675ebd0ae325f6a9781561200652f"
+    },
+    {
+      "path": "docs/agent-workflow/PR-COMPLIANCE.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "5f4845623aef3abb15fba7fbe8e78474902cca00",
+      "sha256": "3ce6deae856b0d272b199bf8cc48ed2ad198f64293c05bb14715c013e3da0b1e"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "8d103b65708c4527b2d9751e9e5582cd9833480a",
+      "sha256": "13d8d1bd035eab3c6bfccd3109206570e7f70ed3265fffd78ebb289ec1ddb18c"
+    },
+    {
+      "path": "docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "5eeda3b80818c0d5c0e0e2a0d2ba200fc0e74492",
+      "sha256": "d8c4ef3d011476884c15f218dcdf538fb6198aefb63a3ac4b745eddfd92cfd67"
+    },
+    {
+      "path": "docs/reports/VEL-PRINCIPAL-READINESS-0062.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "83c522e7c44326e2ed72185b98f8d0627f4b4fb8",
+      "sha256": "77af1cf68858acd8b861fb783dfe4b6015ff32f95fe66aea5bee329f6f986cd1"
+    },
+    {
+      "path": "docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "3c5995d9ee56299f26beace38e2b609b5f5397fc",
+      "sha256": "f195e1b8ec19557940461c6c8277ec084bfc4adc88cb967fd03b2a6f9043b189"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "041db848fe2551f0bf3d49e4ac69d20b3b4f731e",
+      "sha256": "baa55212f5c543d35c37f2badb883df92b905da4e6fbcd5b26f4f119de4127cc"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0079.yaml",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "6566e0e20b6799b1e89a2d25db7ddf5677d8d679",
+      "sha256": "47cdacfc6e3728e2b28911065029988855ff6bcae29d25f59bfa62394aeadaf5"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0079.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "c7980b6bf49feaf031795fc605327f0c26e0a171",
+      "sha256": "0ba1af27fc3861e0e3eb3343df55aaf66a79eb7978ff24c7441a3b91d3407b83"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0079.md",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "e5f5e718d3d3d116061dbc1cf4aa001e22ab80d8",
+      "sha256": "542d0cc878ef972d5668cf1502a12639e8391816b38e00543896a995c131d04a"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-REFERENCES.json",
+      "commit": "62be53c401b8c7405590c307559f921ec7d71a83",
+      "blob": "a9065b237435e8b0482cf076a11a5dd51020f407",
+      "sha256": "61886047a99c9df13f52231569a117187887763bcecc7dcdb9f6ac51376a61e7"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0077.yaml",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "62a0ab35875c443a91916d5654f0b6cb3af13eb0",
+      "sha256": "3a55708f4713071cc13018e75f631d0ccfec8e25bace9585ade7435324054203"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0077.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "6ae5fb48c0aaa4d3c85a2492a62f7269b112e4a0",
+      "sha256": "a0219052e2c93afce1a5cd766fb755666c9c9ad8a85fa481c796c4e8f84aaf9f"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0077.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "72cfd80ce790086a449aaa53334c230fa9174a82",
+      "sha256": "aa55c8709edbc7ddf7aff5762621e4d35f5d01930b5d0747965d4a93cc0fd9b7"
+    }
+  ],
+  "authority_note": "Hashes authenticate repository bytes, not factual truth or owner identity. All prior statuses remain historical; current owner statement is separate self-attestation."
+}

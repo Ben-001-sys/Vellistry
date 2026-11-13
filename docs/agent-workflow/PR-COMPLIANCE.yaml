@@ -1,40 +1,19 @@
 version: 1
-task_id: VEL-TASK-0079
+task_id: VEL-TASK-0080
 phase: repository-only
 executor: Codex
-pack_commit: e0d2865f5625385ab7e9f3badb01d3d85abd4f0d
-source_commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
-bundle_id: VEL-EB-0079
+pack_commit: 45ecb0894264746a945c19fc63847a189a236d9c
+source_commit: a8848b6b738ed564060321fb2abae902fc66178e
+bundle_id: VEL-EB-0080
 owner_disposition: pending
 commits:
-- commit: 2b5931b51f64da76870b89ac4e711d960c427594
+- commit: 0003b26319d53fc2004af292e4bb2269894b3651
   executor: Codex
   origin: original
-- commit: e0d2865f5625385ab7e9f3badb01d3d85abd4f0d
+- commit: 45ecb0894264746a945c19fc63847a189a236d9c
   executor: Codex
   origin: original
-- commit: 1811a996e2629af7c62ed8476d5880f28184ea88
-  executor: Codex
-  origin: original
-- commit: cc8868cc515ce93c83e8161e5ab1ddef0e3e479f
-  executor: Codex
-  origin: original
-- commit: c0ea7c86408810e5d55ba1d5151243e51d5be4cb
-  executor: Codex
-  origin: original
-- commit: b40427187550b55105bd0d16fb59c6d23623f2a5
-  executor: Codex
-  origin: original
-- commit: 9e2c7ea441147c1e5ab5d296c497b5b84006284e
-  executor: Codex
-  origin: original
-- commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
-  executor: Codex
-  origin: original
-- commit: 2df1772d55a3fea58a42134c5fa3ff554c1d19cd
-  executor: Codex
-  origin: original
-- commit: 1cfcb3ed80b57c409ad8f4d68e1aeefeb38aa9f1
+- commit: a8848b6b738ed564060321fb2abae902fc66178e
   executor: Codex
   origin: original
 current_head:

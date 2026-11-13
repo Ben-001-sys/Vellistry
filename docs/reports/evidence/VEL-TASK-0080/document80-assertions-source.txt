@@ -1,0 +1,45 @@
+from pathlib import Path
+import json,hashlib,subprocess,copy,sys
+sys.path.insert(0,str(Path('scripts').resolve()));import agent_workflow as aw
+p=Path('.submission');file=Path('docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json');d=json.loads(file.read_text(encoding='utf-8'));base='62be53c401b8c7405590c307559f921ec7d71a83';source=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();old=json.loads(Path('docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json').read_text(encoding='utf-8'));checks=[]
+def check(name,ok):
+ assert ok,name
+ checks.append({'name':name,'status':'PASS'})
+rootkeys=set(['id', 'schema_version', 'record_date', 'kind', 'evidence_type', 'source', 'authorization_url', 'owner_identity_independently_verified', 'hosted_account_state_independently_verified', 'prerequisites', 'g1_owner_confirmation_requirements', 'g1_formal_acceptance', 'actual_hosted_fixture_verification', 'g2', 'g3', 'g4', 'hosted_probe_executed', 'hosted_probe_authorized', 'principal_observations', 'principal_cases', 'production_security_accepted', 'owner_statement', 'historical_timeline', 'protocol_reference', 'remaining_gates', 'production_decisions', 'runtime_acceptance', 'future_runner_offline_requirements', 'session_authority', 'new_target_observations', 'runner_implemented', 'sanitizer_implemented', 'merge_authority', 'source_base', 'source_inventory']);prerequisites={'unenrolled_fixture_exists_and_owner_controlled':'YES','verified_totp_fixture_exists_and_owner_controlled':'YES','enrolled_fixture_aal1_aal2_obtainable':'YES'}
+def validate(x):
+ assert set(x)==rootkeys
+ assert x['id']=='VEL-G1-FIXTURE-ATTESTATION-0080' and type(x['schema_version']) is int and x['schema_version']==1
+ assert x['record_date']=='2026-11-13' and x['evidence_type']=='OWNER_SELF_ATTESTATION' and x['source']=='Explicit owner declaration in current ChatGPT conversation'
+ assert x['authorization_url']=='https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794'
+ assert x['prerequisites']==prerequisites and x['g1_owner_confirmation_requirements']=='SATISFIED_BY_ATTESTATION' and x['g1_formal_acceptance']=='PENDING_OWNER_REVIEW'
+ for k in ['owner_identity_independently_verified','hosted_account_state_independently_verified','hosted_probe_executed','hosted_probe_authorized','production_security_accepted','new_target_observations','runner_implemented','sanitizer_implemented','merge_authority']:assert x[k] is False
+ assert x['actual_hosted_fixture_verification']=='NOT_PERFORMED' and all(x[k]=='BLOCKED' for k in ['g2','g3','g4'])
+ assert x['principal_observations']=='NOT_RUN' and x['principal_cases']==dict.fromkeys(['UNENROLLED_AAL1','ENROLLED_AAL1','ENROLLED_AAL2'],'NOT_RUN')
+ assert x['protocol_reference']==old['protocol_reference'] and x['runtime_acceptance']==old['runtime_acceptance'] and x['production_decisions']==old['production_decisions']
+ assert x['future_runner_offline_requirements']=='OR01-OR10 NOT_RUN'
+ assert [r['date'] for r in x['historical_timeline']]==['2026-10-26','2026-11-03','2026-11-13']
+ assert [r['status'] for r in x['historical_timeline']]==['UNKNOWN / UNKNOWN / UNKNOWN','UNKNOWN / UNKNOWN / UNKNOWN','YES / YES / YES']
+ assert x['owner_statement']==['Existing owner-controlled synthetic author without verified MFA enrollment: YES','Existing owner-controlled synthetic author with verified TOTP enrollment: YES','Ability to obtain AAL1 and AAL2 observations from the enrolled synthetic author: YES']
+validate(d);check('Complete closed attestation schema and exact non-independent meaning',True)
+negatives=[]
+for k,val in [('owner_identity_independently_verified',True),('hosted_account_state_independently_verified',True),('hosted_probe_authorized',True),('hosted_probe_executed',True),('production_security_accepted',True),('g1_formal_acceptance','ACCEPTED'),('g2','PASS'),('g3','PASS'),('g4','PASS'),('principal_observations','PASS'),('record_date','2026-10-26')]:
+ x=copy.deepcopy(d);x[k]=val;negatives.append((k,x))
+x=copy.deepcopy(d);x['prerequisites']['unenrolled_fixture_exists_and_owner_controlled']='UNKNOWN';negatives.append(('Wrong declared answer',x))
+x=copy.deepcopy(d);x['private_user_id']='synthetic-forbidden-field';negatives.append(('Unexpected private-data field',x))
+x=copy.deepcopy(d);x['protocol_reference']['request_bounds']['total_max_including_internal_calls_and_cleanup']=33;negatives.append(('Expanded request budget',x))
+x=copy.deepcopy(d);x['runtime_acceptance']['N12']='PASS';negatives.append(('Premature session promotion',x))
+for name,x in negatives:
+ try:validate(x)
+ except AssertionError:check('Negative rejected: '+name,True)
+ else:raise AssertionError('Accepted invalid document '+name)
+refs=json.loads(Path('docs/agent-workflow/inputs/VEL-TASK-0080/SOURCE-REFERENCES.json').read_text())
+for r in refs['sources']:
+ raw=subprocess.check_output(['git','show',r['commit']+':'+r['path']]);assert hashlib.sha256(raw).hexdigest()==r['sha256'] and subprocess.check_output(['git','rev-parse',r['commit']+':'+r['path']],text=True).strip()==r['blob']
+check('All19historical/governing source pins verified',len(refs['sources'])==19)
+for f in ['docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json','docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md','docs/reports/VEL-PRINCIPAL-READINESS-0062.md','docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md','docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json','docs/agent-workflow/context-packs/VEL-CP-0079.md','docs/agent-workflow/execution-bundles/VEL-EB-0079.md']:
+ check('Historical record unchanged: '+f,not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--',f]))
+protocol=subprocess.check_output(['git','show',base+':'+d['protocol_reference']['path']]);check('Protocol hash and closed export schema unchanged',hashlib.sha256(protocol).hexdigest()==d['protocol_reference']['sha256'] and len(d['protocol_reference']['export_case_fields'])==27)
+check('No operative application/test/CI/SQL/control change',not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','apps','scripts','tests','.github','supabase','package.json','pnpm-lock.yaml']))
+state=Path('CURRENT-STATE.md').read_text(encoding='utf-8');oldstate=subprocess.check_output(['git','show',base+':CURRENT-STATE.md']).decode();check('Standing state references and historical sections preserved',state.split('\nHistorical leading',1)[1]==oldstate.split('\nHistorical leading',1)[1] and len(state.encode())<11000)
+t=aw.check_task(Path('docs/agent-workflow/tasks/VEL-TASK-0080.yaml'));aw.check_pack(Path('docs/agent-workflow/context-packs/VEL-CP-0080.md'),{t['id']:t});check('Immutable pack full render and task validated',True)
+(p/'document80-results.json').write_text(json.dumps({'source_commit':source,'status':'PASS','assertions':checks,'count':len(checks),'negative_count':len(negatives),'limit':'Offline document/source validation only; no probe/runner/sanitizer or hosted test executed'},indent=2),encoding='utf-8');print('PASS',len(checks),'document/source assertions including',len(negatives),'negative mutations')

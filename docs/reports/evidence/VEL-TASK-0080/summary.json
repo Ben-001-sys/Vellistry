@@ -1,0 +1,216 @@
+{
+  "implementation_source": "a8848b6b738ed564060321fb2abae902fc66178e",
+  "pack_commit": "45ecb0894264746a945c19fc63847a189a236d9c",
+  "preparation_commit": "0003b26319d53fc2004af292e4bb2269894b3651",
+  "owner_relay": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794",
+  "attestation_date": "2026-11-13",
+  "evidence_type": "OWNER_SELF_ATTESTATION",
+  "owner_identity_independently_verified": false,
+  "hosted_account_state_independently_verified": false,
+  "formal_acceptance": "PENDING_OWNER_REVIEW",
+  "results": [
+    {
+      "command": "corepack pnpm install --frozen-lockfile --offline",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "frozen80.txt",
+      "seconds": 19.61
+    },
+    {
+      "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "principal80.txt",
+      "seconds": 1.41
+    },
+    {
+      "command": "corepack pnpm test:auth-mfa",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "mfa80.txt",
+      "seconds": 1.73
+    },
+    {
+      "command": "corepack pnpm test:library-isolation",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "library80.txt",
+      "seconds": 3.02
+    },
+    {
+      "command": "corepack pnpm test:hosted-preflight",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "preflight80.txt",
+      "seconds": 1.26
+    },
+    {
+      "command": "corepack pnpm test:workspace-contract",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "workspace80.txt",
+      "seconds": 3.43
+    },
+    {
+      "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "units80.txt",
+      "seconds": 1.68
+    },
+    {
+      "command": "corepack pnpm check",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "check80.txt",
+      "seconds": 6.51
+    },
+    {
+      "command": "corepack pnpm build",
+      "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "build80.txt",
+      "seconds": 18.51
+    }
+  ],
+  "document": {
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "assertions": [
+      {
+        "name": "Complete closed attestation schema and exact non-independent meaning",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: owner_identity_independently_verified",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: hosted_account_state_independently_verified",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: hosted_probe_authorized",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: hosted_probe_executed",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: production_security_accepted",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: g1_formal_acceptance",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: g2",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: g3",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: g4",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: principal_observations",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: record_date",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: Wrong declared answer",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: Unexpected private-data field",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: Expanded request budget",
+        "status": "PASS"
+      },
+      {
+        "name": "Negative rejected: Premature session promotion",
+        "status": "PASS"
+      },
+      {
+        "name": "All19historical/governing source pins verified",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/reports/VEL-PRINCIPAL-READINESS-0062.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/agent-workflow/context-packs/VEL-CP-0079.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical record unchanged: docs/agent-workflow/execution-bundles/VEL-EB-0079.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Protocol hash and closed export schema unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "No operative application/test/CI/SQL/control change",
+        "status": "PASS"
+      },
+      {
+        "name": "Standing state references and historical sections preserved",
+        "status": "PASS"
+      },
+      {
+        "name": "Immutable pack full render and task validated",
+        "status": "PASS"
+      }
+    ],
+    "count": 28,
+    "negative_count": 15,
+    "limit": "Offline document/source validation only; no probe/runner/sanitizer or hosted test executed"
+  },
+  "local_additional_tests": {
+    "entrypoints": 8,
+    "research_design": 16,
+    "metadata": "PASS",
+    "readiness": "PASS",
+    "traceability": "PASS"
+  },
+  "pending_at_creation": "Distinct exact-head review, full governance, actual Draft/ReadyCI, Chromium41, PG16recovery12, PG17 32+16+8HTTP/restart/cleanup; no result assumed. Append actual final outcomes to PR ledger.",
+  "historical_classifications": "Original Task77Ready42777271966FAIL;Task79failures/DraftFAIL/CANCELLED and runtimeBLOCKED preserved unchanged. N12BLOCKED;R01-R08/OR01-10/3hostedcasesNOT_RUN;legacySKIPPED.",
+  "new_local_failures": []
+}
