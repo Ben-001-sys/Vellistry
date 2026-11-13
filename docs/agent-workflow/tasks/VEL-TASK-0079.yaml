@@ -1,0 +1,91 @@
+id: VEL-TASK-0079
+title: Adopt PRINCIPAL SESSION readiness on verified new main
+type: implementation-task
+status: in-progress
+created_at: '2026-11-13'
+updated_at: '2026-11-13'
+owner: project_owner
+context_pack_id: VEL-CP-0079
+objective: Reconstruct separately named non-executable Task0077 readiness artifacts
+  against PR138 main, preserving immutable historical sources and all security blockers
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0079.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0079.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0079.md
+- docs/agent-workflow/inputs/VEL-TASK-0079/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json
+- docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md
+- docs/reports/evidence/VEL-TASK-0079/*
+out_of_scope:
+- Application/Auth/SQL/test/CI/dependency/evaluator/loader/policy changes
+- Hosted/private accounts/credentials/JWT/JWKS/manuscripts, deployments, merges, PR137
+  edits or successor work
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0079/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0079/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-REFERENCES.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-REPORT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-MATRIX.json
+  role: governing-source
+source_gaps:
+- id: FIXTURES-UNKNOWN
+  limitation: Three fixture conditions remain UNKNOWN; no fresh owner fixture confirmation
+    or target evidence.
+- id: SECURITY-BLOCKED
+  limitation: G1-G4 N12 independent runtime restrictions BLOCKED; hosted cases R01-R08
+    OR01-OR10 NOT_RUN; legacy privileges SKIPPED.
+- id: SOURCE-ATTRIBUTION
+  limitation: Renamed reconstruction is not a patch-identical original commit adoption.
+    Preserve exact source blobs/author and old evidence; no invented original execution.
+deliverables:
+- New 0079 report/matrix, full original-source hash inventory and preserved historical
+  snapshots
+- Full-render CP, EB, source-bound manifest, actual regressions, distinct review,
+  Draft/Ready CI and unmerged new PR
+acceptance_criteria:
+- Original PR137/head Task77/CP77/EB77 and Task78 repair unchanged
+- New matrix equal to original substantive protocol/security/session/runner conclusions;
+  metadata changes explicitly attributed
+- No operative changes; trusted-base compliance PASS; original FAIL/BLOCKED/NOT_RUN/SKIPPED
+  preserved
+- Actual required new-main Ready CI including recovery12 Chromium41 PG17 32+16+8 restart
+  cleanup and final gate; distinct exact-head review; owner merge pending
+allowed_actions:
+- Author bounded docs/governance after committed validated CP
+- Run existing offline suites and existing disposable GitHub CI fixtures; source/hash/schema
+  assertions
+- New Draft then Ready PR with independent review; no merges or original PR137 alteration
+approval_required_for:
+- Any code/test/CI/SQL/Auth/dependency/policy/security/hosted/tooling change, merge,
+  PR137 disposition or successor work
+compliance:
+  change_base: c5f324e78d05f2f9afde91e6f58970de021fffb6
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6849146195
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-27'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge

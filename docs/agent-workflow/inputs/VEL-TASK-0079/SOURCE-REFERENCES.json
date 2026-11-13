@@ -1,0 +1,182 @@
+{
+  "record_date": "2026-11-13",
+  "base": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+  "original_pr": 137,
+  "original_head": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+  "original_tree": "0594e860a2ff98b237ac36d0f6ec5d0dcdfc1b86",
+  "original_source": "809f6034b52a983d3273b42c7a042b1791a9cce3",
+  "original_pack_commit": "f86ec72f309c290aa6669a7b4521ee4890201d5c",
+  "original_failed_ready": 42777271966,
+  "pr138_post_main": 43397610863,
+  "sources": [
+    {
+      "path": "CURRENT-STATE.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "ea273732f31b749d20e43994d68eb85ecbcf9cc4",
+      "sha256": "61c2ecdcbf2e73ad636f589d99e5b41ae6c49fd2e9b40330c16c25d08a2eb4cd"
+    },
+    {
+      "path": "docs/agent-workflow/PR-COMPLIANCE.yaml",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "7433994c588dbb679582b88d68fc24503e3598f7",
+      "sha256": "2bffcdb879ffe5426ad4d78d84201169a4beef03c29fdc147454ea1a938212d7"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0077.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "6ae5fb48c0aaa4d3c85a2492a62f7269b112e4a0",
+      "sha256": "a0219052e2c93afce1a5cd766fb755666c9c9ad8a85fa481c796c4e8f84aaf9f"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0077.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "72cfd80ce790086a449aaa53334c230fa9174a82",
+      "sha256": "aa55c8709edbc7ddf7aff5762621e4d35f5d01930b5d0747965d4a93cc0fd9b7"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0077/CONTRACT.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "13249081981edcd00a85282213fc3a73387c7079",
+      "sha256": "b01db546d4f52f929cff8d4f402922b713ffb78f81bfb98fc396002bdb7f42d9"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0077/OWNER-SCOPE.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "2ebee8bf37fcc69c2e063ef0b728e0c101d9c4de",
+      "sha256": "07c86883a55d8ff282406a41c9eb7ffa2731397dc7e3afb5dd6906c1fb54d0bf"
+    },
+    {
+      "path": "docs/agent-workflow/inputs/VEL-TASK-0077/SOURCE-REFERENCES.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "a59ed5b55c0dfbb8772a79f954b13d16bd8f8f9f",
+      "sha256": "70099d322f7e0eced0d55bb33b1ebad4a433af227ffea8375a83865b77b78fc4"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0077.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "464faf9df721fcb05c7a275f6f4b72b04bc47ce2",
+      "sha256": "7bfda907f7a6601c4ff48acc3d687d523aeedda5d5a06365a7ec1519b4bd7e3e"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0077.yaml",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "62a0ab35875c443a91916d5654f0b6cb3af13eb0",
+      "sha256": "3a55708f4713071cc13018e75f631d0ccfec8e25bace9585ade7435324054203"
+    },
+    {
+      "path": "docs/reports/VEL-PRINCIPAL-SESSION-EVIDENCE-READINESS-0077.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "aa825ea7b3da1140f3fa8e394af7249c4e5b0bcd",
+      "sha256": "bffdbe637eb1945161120f207fc14f8f55d5cd12d9efed6febcd857c69e0d1de"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/CI-EXECUTION-CLARIFICATION.md",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "698bd94a00e3d7b4e63259a9ce8e9e7521374e25",
+      "sha256": "7c6ecbe69afc593c51371d4586565818c4a9e61712baf4b9046fe3c68a35504a"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/build.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "c8d285442b1df03807ec8004b15dcffb2a17331b",
+      "sha256": "28f2c4fd7fad425289a85467af19af258a5514988cc6595f054aadc64f361ca5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/check.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "7d076e24c11e71e953a1949dfccdef698026ecb2",
+      "sha256": "f8b4846a0dc61d439d422d9e1e7a846a1d65fb13ff7f8f8d0fb3b48a9fe7b278"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/document-assertions-source.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "0047f5a83775d97f09d050be11f8586898232992",
+      "sha256": "712ea9946101eb89cfa072b5e1728ec9f6e459decbaa2ad08ebce14deecb6a6f"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/document-assertions.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "9b69f545c535d3a361e434e98ded1a28967050d0",
+      "sha256": "83f59bce27e30bdefbce10163fc291bf075114cf6396831f1b88c4ed82bc0961"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/fixture-status.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "fb0711704859d75ff6caad16826e37cc31cb7f7c",
+      "sha256": "900c625a1c8fa0968dd2c70900bce47034f5f0661cfe3d51fd104324d80bff18"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/frozen.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "dcf45c3fd7bcc9336cdaa027b12c55fac2544f40",
+      "sha256": "9a7b27d9e034b65f2b246dde2e046183687c61fd36ba202bc20b6d2b1132749d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/inherited-main-evidence.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "3c99ea1b125211316b141003519e093f1a6da614",
+      "sha256": "b78d84b283b98d93ba1da785771263e94762f22f9c3790cbe075e9ca8982d921"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/library.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "8b93413a76e0941d90add3ec65b02bd2ec8633ee",
+      "sha256": "ccc75d4b36b05e3cad7ec6fcce84fbf0cbefe3f0d1fa80be106d350692ae54e6"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/metadata.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "940063efd38b84b7a3e5cfb25516a95a215b732c",
+      "sha256": "4423d0179232fe933d37cd2f42bc585e490f89273e3f9054d82879f81e4b06a5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/mfa.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "f5e2b6aa2af33ef80d516a2bdff50132505a5542",
+      "sha256": "d1f9009548534263a7663381739c891805dab3e9bea52313ddf08d3df0676b0d"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/preflight.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "6c78f0ff6b4ad53dc2c1a6bd52998c21f442a33d",
+      "sha256": "dd2a6913e6d8d993c3e50167840228b6afacd52902db5f296faa4e7de190c124"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/principal.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "450ef409d7901f688a127a2a1cc3559fe2447748",
+      "sha256": "8205ee5c9d45f2fef5698d7d94c554ead441fdf548b57d8398bad73d7ad9913a"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/readiness.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "e4080f22adfe2b711527a9c6187331802f24d4db",
+      "sha256": "77a2897bb7f252e76ff34c9ea2686332d0fd6623eb4a8dfcef4fc4ef4ca5b6e2"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/summary.json",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "8c7c2bd8447f9e4f709a5ad245e4ac947ff2287c",
+      "sha256": "2486a16463294791995abdf19c660aa4a00ac9692f38bb1cf9dafcf38768caf5"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/traceability.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "77d029c339ddf26d849bc2fed09fcf59c7c96748",
+      "sha256": "cc4bade326da114c0dcbc372071e1040f9d04129a29c864413316c7bf31218d8"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/units.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "50e05627f62d72120f9231928e139bee63fbb0f2",
+      "sha256": "b9b429fd3d41746b1419c44708b703161d0327e22267799542557c2cb86cb42b"
+    },
+    {
+      "path": "docs/reports/evidence/VEL-TASK-0077/workspace.txt",
+      "commit": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+      "blob": "525d6cb2362437152538b9ed9a03578f6a73e92e",
+      "sha256": "0fc8ccc3e72a13f51e4dcd6d999b02de93689420fc7b62f4d97c7b0a816469e0"
+    }
+  ],
+  "lineage": "New Codex reconstruction from explicitly attributed source blobs. No original commit replay/cherry-pick; no adopted-origin declaration because renamed/reconciled patch cannot equal original patch. Original snapshots are byte-exact task inputs, not new observations."
+}
