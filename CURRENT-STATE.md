@@ -21,3 +21,9 @@ PRINCIPAL target assurance and SESSION/GATEWAY/PACKAGING/TRANSPORT/RECONCILIATIO
 ## Historical state preserved
 
 The complete pre-adoption CURRENT-STATE at main `c5f324e78d05f2f9afde91e6f58970de021fffb6` is preserved byte-for-byte in [the dated Task0079 evidence snapshot](docs/reports/evidence/VEL-TASK-0079/PRE-ADOPTION-CURRENT-STATE.txt). Its older in-verification statements are historical. [PR138 integration](https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6848773429) supplies actual main/recovery verification. [Original Task0077 source report](docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-REPORT.md) preserves its original framing and historical failed Ready run42777271966. No original Task/ContextPack/ExecutionBundle is rewritten.
+
+## Standing governance and historical source references
+
+G_DESIGN and G_CODE remain pending broad gates; bounded owner exceptions do not promote them. G_PRIVATE_PILOT and G_RELEASE remain unapproved. Third SQL definition is planning-only, not an operative migration approval. An unexpired signed-out JWT remains a private-pilot security blocker. SRC-004's original archive remains missing; historical Level B owner acceptance and independent end-to-end handoff remain unmet.
+
+Historical base `23fd8488df060e1591be70232abd70f4255e814d`, CI39868833625; VEL-CP-0041; PR #83, PR #65, PR #68, PR #59 were IN_VERIFICATION/superseded. Earlier snapshot: docs/reports/CURRENT-STATE-ARCHIVE-2026-10-22.md. These are dated historical references, not active remediation authority. The delegation is EXPIRED and ordinary owner governance applies.
