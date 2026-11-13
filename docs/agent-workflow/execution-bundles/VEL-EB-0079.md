@@ -26,7 +26,7 @@ review:
   status: pending
   approved_by: null
   evidence: null
-implementation_source_commit: cc8868cc515ce93c83e8161e5ab1ddef0e3e479f
+implementation_source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
 execution:
   status: completed
   executor: Codex
@@ -73,7 +73,7 @@ execution:
     status: PASS
     evidence: docs/reports/evidence/VEL-TASK-0079/build79.txt
   - command: python .submission/document-assertions79.py
-    source_commit: cc8868cc515ce93c83e8161e5ab1ddef0e3e479f
+    source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
     status: PASS
     exit_code: 0
     evidence: docs/reports/evidence/VEL-TASK-0079/document-assertions79.json
@@ -92,6 +92,12 @@ execution:
     status: PASS
     exit_code: 0
     evidence: docs/reports/evidence/VEL-TASK-0079/trace79.txt
+  - command: python -m unittest discover -s tests -p test_governance_entrypoints.py
+      -v
+    source_commit: f7ede2e1526aa2ba752a906924fc471fa2ba0cf0
+    status: PASS
+    exit_code: 0
+    evidence: docs/reports/evidence/VEL-TASK-0079/entrypoints79.txt
 ---
 
 # New-main readiness adoption
@@ -123,3 +129,6 @@ All3fixturesUNKNOWN;G1-G4/N12/historical independent runtime restrictions BLOCKE
 
 ## Reviewer disposition
 Owner pending; distinct exact-head source review and full actual Draft/ReadyCI required before recommendation. AI review is advisory, not human approval or independent runtime acceptance. No automatic merge. Final head/tree/diff inventory, reviews and CI outcomes are PR-ledger appendices.
+
+## Draft correction evidence
+Actual Draft43403382571 failed the unchanged current-state11000byte contract; final gateFAIL and expensivejobsSKIPPED. Earlier local base+600 assertion was insufficient and the interpretation that the limit was not standing was wrong. PRE-ADOPTION-CURRENT-STATE.txt preserves exact base bytes; compact current-state retains governing checkpoint/security holds. Strict<11000and exact archive equality assertions plus8unchanged entrypoint tests PASS. First P2 historical-log-link finding corrected; all old failed outcomes retained. Fresh source review and Draft/Ready required.

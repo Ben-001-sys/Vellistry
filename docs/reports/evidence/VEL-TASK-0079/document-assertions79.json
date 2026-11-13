@@ -1,5 +1,5 @@
 {
-  "source_commit": "cc8868cc515ce93c83e8161e5ab1ddef0e3e479f",
+  "source_commit": "f7ede2e1526aa2ba752a906924fc471fa2ba0cf0",
   "status": "PASS",
   "count": 18,
   "assertions": [
@@ -68,7 +68,7 @@
       "status": "PASS"
     },
     {
-      "name": "Bounded current-state addition preserves full history",
+      "name": "Standing compactness limit and exact historical state archive",
       "status": "PASS"
     },
     {
