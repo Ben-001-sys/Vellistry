@@ -1,0 +1,617 @@
+{
+  "id": "VEL-PRINCIPAL-SESSION-READINESS-0079",
+  "kind": "NON_EXECUTABLE_READINESS_MATRIX_NOT_FINDINGS",
+  "date": "2026-11-13",
+  "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+  "authorization": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6849146195",
+  "protocol_reference": {
+    "id": "VEL-OWNER-PRINCIPAL-PROBE-0063",
+    "path": "docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+    "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+    "sha256": "d8c4ef3d011476884c15f218dcdf538fb6198aefb63a3ac4b745eddfd92cfd67",
+    "byte_identical_to_PR125_reviewed_head": "7713c01c253fb892688c1b3b265e7e34f22ad79b",
+    "target_origin": "https://lflkcrnriitrbclangyr.supabase.co",
+    "project_ref": "lflkcrnriitrbclangyr",
+    "endpoints": [
+      {
+        "id": "E1",
+        "method": "POST",
+        "path": "/auth/v1/token",
+        "query": "grant_type=password",
+        "limit": "2owner fixture logins maximum; no retries or other grants"
+      },
+      {
+        "id": "E2",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "query": "none",
+        "limit": "3explicit case calls plus bounded SDK-required internal fallback calls, all counted"
+      },
+      {
+        "id": "E3",
+        "method": "GET",
+        "path": "/auth/v1/.well-known/jwks.json",
+        "query": "none",
+        "limit": "SDK-required only; no manual key fetch, raw key export or path inference"
+      },
+      {
+        "id": "E4",
+        "method": "POST",
+        "path": "/auth/v1/factors/{existing_private_factor_id}/challenge and /auth/v1/factors/{same_existing_private_factor_id}/verify",
+        "query": "none",
+        "limit": "1challenge+1verify, existing privately known verified own TOTP only"
+      },
+      {
+        "id": "E5",
+        "method": "POST",
+        "path": "/auth/v1/logout",
+        "query": "scope=local",
+        "limit": "Cleanup only; at most2newly created probe sessions; no default/global/others scope"
+      }
+    ],
+    "request_bounds": {
+      "total_max_including_internal_calls_and_cleanup": 32,
+      "per_request_seconds": 15,
+      "run_seconds_including_cleanup": 300
+    },
+    "export_run_keys": [
+      "protocol_id",
+      "protocol_reviewed_commit",
+      "run_date",
+      "project_ref",
+      "fixtures_confirmed",
+      "execution",
+      "cleanup"
+    ],
+    "export_case_fields": {
+      "status": [
+        "NOT_RUN",
+        "OBSERVED",
+        "UNKNOWN",
+        "BLOCKED"
+      ],
+      "error_class": [
+        "NONE",
+        "AUTH_DENIED",
+        "UNAVAILABLE",
+        "EXPIRED",
+        "MALFORMED",
+        "MISMATCH",
+        "UNEXPECTED_ALGORITHM",
+        "ENDPOINT_DENIED",
+        "LIMIT_REACHED",
+        "UNKNOWN"
+      ],
+      "same_token_calls": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "auth_user_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "sdk_claims_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "user_subject_match": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "temporal_shape_valid": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "freshness_within_30000ms": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "session_claim_shape": [
+        "UUID",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "issuer_value": [
+        "https://lflkcrnriitrbclangyr.supabase.co/auth/v1",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_value": [
+        "authenticated",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_shape": [
+        "STRING",
+        "SINGLETON_ARRAY",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "role": [
+        "authenticated",
+        "anon",
+        "service_role",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "anonymous": [
+        "FALSE",
+        "TRUE",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "aal": [
+        "aal1",
+        "aal2",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "alg": [
+        "ES256",
+        "HS256",
+        "RS256",
+        "OTHER_REDACTED",
+        "MISSING",
+        "UNKNOWN"
+      ],
+      "kid_present": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "kid_matches_owner_confirmed_current": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "observed_lifetime_seconds": [
+        "safe integer1..86400",
+        "OUT_OF_RANGE_REDACTED",
+        "UNKNOWN"
+      ],
+      "optional_nbf": [
+        "ABSENT",
+        "VALID_PAST",
+        "FUTURE",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "factors_field": [
+        "ARRAY",
+        "MISSING",
+        "NULL",
+        "MALFORMED",
+        "UNAVAILABLE",
+        "UNKNOWN"
+      ],
+      "factor_schema": [
+        "RECOGNIZED",
+        "UNRECOGNIZED",
+        "UNKNOWN"
+      ],
+      "verified_factor_bucket": [
+        "ZERO",
+        "AT_LEAST_ONE",
+        "UNKNOWN"
+      ],
+      "matches_owner_fixture_ground_truth": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "factor_completeness": [
+        "NOT_ESTABLISHED"
+      ],
+      "assurance_minimum": [
+        "AUTH_SERVER_BACKED",
+        "NOT_ESTABLISHED"
+      ],
+      "sdk_claim_path": [
+        "UNKNOWN"
+      ]
+    },
+    "case_labels": [
+      "UNENROLLED_AAL1",
+      "ENROLLED_AAL1",
+      "ENROLLED_AAL2"
+    ],
+    "schema_extension_authorized": false
+  },
+  "fixtures": {
+    "record_date": "2026-11-03",
+    "owner_confirmation_date": null,
+    "source": "New owner confirmation requested; no response received. Historical owner response26October2026 is the latest known fixture evidence, not fresh confirmation.",
+    "historical_source": "docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json",
+    "historical_source_commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+    "historical_confirmation_date": "2026-10-26",
+    "unenrolled_fixture_exists_and_owner_controlled": "UNKNOWN",
+    "verified_totp_fixture_exists_and_owner_controlled": "UNKNOWN",
+    "enrolled_fixture_aal1_aal2_obtainable": "UNKNOWN",
+    "hosted_probe": "BLOCKED",
+    "new_observations": false
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "status": "BLOCKED",
+      "evidence": "All3fixture conditions UNKNOWN; no new owner answer or hosted lookup",
+      "required": "Owner gives3dated YES/NO/UNKNOWN from existing trustworthy non-secret records; no identifiers. All3YES needed. NO/UNKNOWN keeps probe blocked; absent fixture needs new separate owner decision, not creation/enrollment."
+    },
+    {
+      "id": "G2",
+      "status": "BLOCKED",
+      "evidence": "Protocol document reviewed/integrated PR125; exact bytes match historical7713c01 and currentbase. This is not executable pre-execution approval.",
+      "required": "Distinct exact protocol/runner/sanitizer commit+hash review; owner acknowledgement of fixed endpoints/limits/redaction/stop/local cleanup, frozen SDK and environment. No executable exists here."
+    },
+    {
+      "id": "G3",
+      "status": "BLOCKED",
+      "evidence": "Owner-controlled isolated execution environment not attested",
+      "required": "Owner attests private memory-only credentials/case tokens, no agent access/logging/history/clipboard/screenshots/persistence/telemetry/crash or network traces; no public application session, privileged key or global logout."
+    },
+    {
+      "id": "G4",
+      "status": "BLOCKED",
+      "evidence": "No exact runner/endpoint guard/sanitizer/cleanup implementation; runner-specific offline tests NOT_RUN",
+      "required": "Future separately pinned tooling task and all specified offline positives/negatives pass, reviewed owner-local signout cleanup and manual sanitized-output audit. Document review or existing principal units cannot substitute."
+    }
+  ],
+  "principal_cases": [
+    {
+      "label": "UNENROLLED_AAL1",
+      "readiness": "BLOCKED",
+      "observation_status": "NOT_RUN",
+      "fixture_required": "Existing owner-controlled unenrolled synthetic fixture",
+      "expected_aal_not_observed": "aal1",
+      "factor_bucket_not_observed": "ZERO observation only",
+      "required_observations": [
+        "same_token_calls",
+        "auth_user_ok",
+        "sdk_claims_ok",
+        "user_subject_match",
+        "session_claim_shape",
+        "issuer_value",
+        "audience_value",
+        "audience_shape",
+        "role",
+        "anonymous",
+        "aal",
+        "temporal_shape_valid",
+        "observed_lifetime_seconds",
+        "optional_nbf",
+        "freshness_within_30000ms",
+        "factors_field",
+        "factor_schema",
+        "verified_factor_bucket",
+        "matches_owner_fixture_ground_truth",
+        "factor_completeness",
+        "alg",
+        "kid_present",
+        "kid_matches_owner_confirmed_current",
+        "assurance_minimum",
+        "sdk_claim_path",
+        "error_class"
+      ],
+      "non_inferences": [
+        "No empty factors=>authoritative NONE",
+        "No AAL=>factor enrollment proof",
+        "No getUser/getClaims=>active writable session",
+        "No header/fetch=>SDK cryptographic path",
+        "No observed exp-iat=>configured lifetime",
+        "No candidate issuer/audience/role=>approved production value"
+      ],
+      "stop": "Missing fixture, unsupported state, provider denial, mismatched/expired/unavailable evidence or unexpected algorithm/endpoint stops measurement; only previously reviewed scoped cleanup may follow. Never enroll, weaken15minute restriction or probe legacy."
+    },
+    {
+      "label": "ENROLLED_AAL1",
+      "readiness": "BLOCKED",
+      "observation_status": "NOT_RUN",
+      "fixture_required": "Existing owner-controlled verified-TOTP fixture before step-up",
+      "expected_aal_not_observed": "aal1",
+      "factor_bucket_not_observed": "AT_LEAST_ONE expected only from owner ground truth",
+      "required_observations": [
+        "same_token_calls",
+        "auth_user_ok",
+        "sdk_claims_ok",
+        "user_subject_match",
+        "session_claim_shape",
+        "issuer_value",
+        "audience_value",
+        "audience_shape",
+        "role",
+        "anonymous",
+        "aal",
+        "temporal_shape_valid",
+        "observed_lifetime_seconds",
+        "optional_nbf",
+        "freshness_within_30000ms",
+        "factors_field",
+        "factor_schema",
+        "verified_factor_bucket",
+        "matches_owner_fixture_ground_truth",
+        "factor_completeness",
+        "alg",
+        "kid_present",
+        "kid_matches_owner_confirmed_current",
+        "assurance_minimum",
+        "sdk_claim_path",
+        "error_class"
+      ],
+      "non_inferences": [
+        "No empty factors=>authoritative NONE",
+        "No AAL=>factor enrollment proof",
+        "No getUser/getClaims=>active writable session",
+        "No header/fetch=>SDK cryptographic path",
+        "No observed exp-iat=>configured lifetime",
+        "No candidate issuer/audience/role=>approved production value"
+      ],
+      "stop": "Missing fixture, unsupported state, provider denial, mismatched/expired/unavailable evidence or unexpected algorithm/endpoint stops measurement; only previously reviewed scoped cleanup may follow. Never enroll, weaken15minute restriction or probe legacy."
+    },
+    {
+      "label": "ENROLLED_AAL2",
+      "readiness": "BLOCKED",
+      "observation_status": "NOT_RUN",
+      "fixture_required": "Same existing enrolled fixture after one owner-operated TOTP challenge/verify; new captured immutable case token",
+      "expected_aal_not_observed": "aal2",
+      "factor_bucket_not_observed": "AT_LEAST_ONE expected only from owner ground truth",
+      "required_observations": [
+        "same_token_calls",
+        "auth_user_ok",
+        "sdk_claims_ok",
+        "user_subject_match",
+        "session_claim_shape",
+        "issuer_value",
+        "audience_value",
+        "audience_shape",
+        "role",
+        "anonymous",
+        "aal",
+        "temporal_shape_valid",
+        "observed_lifetime_seconds",
+        "optional_nbf",
+        "freshness_within_30000ms",
+        "factors_field",
+        "factor_schema",
+        "verified_factor_bucket",
+        "matches_owner_fixture_ground_truth",
+        "factor_completeness",
+        "alg",
+        "kid_present",
+        "kid_matches_owner_confirmed_current",
+        "assurance_minimum",
+        "sdk_claim_path",
+        "error_class"
+      ],
+      "non_inferences": [
+        "No empty factors=>authoritative NONE",
+        "No AAL=>factor enrollment proof",
+        "No getUser/getClaims=>active writable session",
+        "No header/fetch=>SDK cryptographic path",
+        "No observed exp-iat=>configured lifetime",
+        "No candidate issuer/audience/role=>approved production value"
+      ],
+      "stop": "Missing fixture, unsupported state, provider denial, mismatched/expired/unavailable evidence or unexpected algorithm/endpoint stops measurement; only previously reviewed scoped cleanup may follow. Never enroll, weaken15minute restriction or probe legacy."
+    }
+  ],
+  "session": [
+    {
+      "id": "S01",
+      "topic": "JWT validity versus session authority",
+      "historical_or_synthetic_fact": "K2B historical oldJWT directPostgREST retained1synthetic own-book row after local signout while Nest401",
+      "unresolved": "Cannot infer general target behavior or transaction-held session authority from either identity API",
+      "separate_owner_action": "Owner chooses desired logout guarantee, not implemented here",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S02",
+      "topic": "Session/user ownership linkage",
+      "historical_or_synthetic_fact": "Synthetic adapters bind author/session/expiry; disposable fixtures deny mismatches",
+      "unresolved": "Target authoritative row schema, same-user linkage, effective privileges and caller visibility UNKNOWN",
+      "separate_owner_action": "Separately authorized sanitized target metadata/access-channel evidence; no query here",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S03",
+      "topic": "Local and global signout",
+      "historical_or_synthetic_fact": "Historical local signout revoked primary refresh; other synthetic same-user session and unrelated author remained usable. Global then-current refresh revoked",
+      "unresolved": "No proof every previously issued token/global private-data route immediately denies; cleanup uses LOCAL only",
+      "separate_owner_action": "Owner specifies session scope/guarantee before targeted separately authorized acceptance; global probe excluded from0063",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S04",
+      "topic": "Previously issued tokens/directPostgREST/Nest",
+      "historical_or_synthetic_fact": "Historical exposure is retained same-user bearer access, not cross-author leakage; direct API and gateway differ",
+      "unresolved": "Nest guard cannot close independently granted direct API path; existing manuscript DML restrictions are not read-revocation acceptance",
+      "separate_owner_action": "Owner selects API exposure/gateway/RLS policy in separate security scope",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S05",
+      "topic": "Current session-row authority",
+      "historical_or_synthetic_fact": "Existing local active-session-row research observes own row removal; disposable SQL fixture can serialize synthetic revocation",
+      "unresolved": "Target auth.sessions existence/ownership/deadlines/role privileges and authoritative provider behavior not verified",
+      "separate_owner_action": "Do not expose auth.sessions or transplant NOLOGIN/UPDATE(id) helper grants; require least-privilege review",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S06",
+      "topic": "Refresh/revocation races",
+      "historical_or_synthetic_fact": "Disposable workspace sessions and locking tests are actual experiments; no real provider writable-session guarantee",
+      "unresolved": "A pretransaction Auth call leavesTOCTOU; refresh/MFA/user/session changes may race expiry or logout",
+      "separate_owner_action": "Owner defines linearization boundary/lock ordering/timeouts/rollback/retry and allowable concurrent revocation semantics",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S07",
+      "topic": "Expiry/inactivity/session deadlines",
+      "historical_or_synthetic_fact": "Current proof freshness30000ms is tested; historical JWT expiry/inactivity target acceptance incomplete",
+      "unresolved": "Tokenexp, evidence freshness, inactivity and maximum session lifetime are separate;3600s only recommendation",
+      "separate_owner_action": "Owner supplies non-secret confirmed target/deadline policy under separate evidence scope",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S08",
+      "topic": "Missing/revoked/unavailable/mismatched sessions",
+      "historical_or_synthetic_fact": "Synthetic tests fail closed on unverified/mismatched/expired principals",
+      "unresolved": "Real provider outage/session absence is not proven by mocks; writable authority UNKNOWN must deny",
+      "separate_owner_action": "Separate SESSION mechanism and failure contract; no service-role/offline fallback",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    },
+    {
+      "id": "S09",
+      "topic": "Protected transaction boundary",
+      "historical_or_synthetic_fact": "Disposable atomic CAS/journal/manuscript fixtures preserve author ownership, receipts and rollback",
+      "unresolved": "Not production session enforcement or shipping gateway/role/migration packaging",
+      "separate_owner_action": "N12 remains BLOCKED; actual separately authorized gateway/session race/recovery acceptance required",
+      "production_status": "BLOCKED",
+      "target_observation": "NOT_RUN"
+    }
+  ],
+  "owner_environment_attestation": [
+    {
+      "condition": "Isolated owner-controlled environment, no agent/screen/credential access",
+      "owner_confirmation": "UNKNOWN"
+    },
+    {
+      "condition": "Existing fixtures only, no enrollment/account/settings changes",
+      "owner_confirmation": "UNKNOWN"
+    },
+    {
+      "condition": "Private in-memory inputs, frozen SDK2.117.3, no privileged credentials",
+      "owner_confirmation": "UNKNOWN"
+    },
+    {
+      "condition": "No persistence/auto-refresh/telemetry/history/clipboard/capture",
+      "owner_confirmation": "UNKNOWN"
+    },
+    {
+      "condition": "Reviewed default-deny transport, timers, total+cleanup budget",
+      "owner_confirmation": "UNKNOWN"
+    },
+    {
+      "condition": "Reviewed local-only new-owned-session cleanup and owner manual sanitized audit",
+      "owner_confirmation": "UNKNOWN"
+    }
+  ],
+  "future_runner_offline_requirements": [
+    {
+      "id": "OR01",
+      "area": "Endpoint guard",
+      "requirement": "Exact fixed HTTPSorigin and E1-E5 method/path/query; reject unknown origin/custom domain/port/userinfo/redirect/dot segments/encoded path/query duplicates/admin/list/PostgREST/storage/refresh/enroll/global logout before dispatch",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR02",
+      "area": "Hidden SDK traffic",
+      "requirement": "Inject transport only; initialization/retries/fallback counts bounded, no unapproved refresh/session/list endpoints; no real client or network in offline acceptance",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR03",
+      "area": "Same-token snapshots",
+      "requirement": "Immutable explicit case token to user/claims, canonical subject matching, out-of-order/concurrent responses; new AAL2 token starts new case, never switches prior case",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR04",
+      "area": "Output schema",
+      "requirement": "Exactly7run keys/3case labels/27case fields with listed closed scalar values; unknown/nested/free-text/accessor/inherited keys rejected, no raw object copy or implicit observed values",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR05",
+      "area": "Forbidden material",
+      "requirement": "Synthetic canaries in arbitrary SDK/user/factor/header/URL/error/stack/metadata nested paths cannot escape; no raw token/password/OTP/key/IDs/fingerprints/body, even from synthetic fixtures; fixed error categories",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR06",
+      "area": "Temporal and assurance",
+      "requirement": "Timeout/expiry/clock reversal/stale30000ms evidence denies; no claim that decoded header/fetch means crypto path; unknown path remains UNKNOWN; missing factors never inferred NONE",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR07",
+      "area": "Budgets and stop",
+      "requirement": "2logins/3user/3claims/1challenge/1verify/2local-cleanup,32total outbound including retries and cleanup;15s/request/5minrun; reserve cleanup budget within bounds, exact owner review required",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR08",
+      "area": "Owned cleanup",
+      "requirement": "Only newly created own probe sessions, local signout scope, idempotent disposal/timeout cleanup; never global/others/admin/escalated retry; failed/unconfirmable cleanup BLOCKED and no further measurement",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR09",
+      "area": "No persistence/telemetry",
+      "requirement": "No shell arguments/history/.env/clipboard/storage/HAR/trace/screenshots/log/crash/telemetry payload retention; process exit and reference disposal are not guaranteed cryptographic zeroization",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "OR10",
+      "area": "No premature gating",
+      "requirement": "AnyG1-G4unsatisfied,missing fixture/schema/sanitizer failure denies before network; NOT_RUN template not findings; no production writable/accepted flag; owner manual sanitized audit before sharing",
+      "status": "NOT_RUN"
+    }
+  ],
+  "production_decisions": {
+    "PRINCIPAL": "DESIGN_APPROVED_CONDITIONAL; TARGET_TRUST_AND_IMPLEMENTATION_PENDING",
+    "SESSION": "OWNER_DECISION_PENDING",
+    "GATEWAY": "OWNER_DECISION_PENDING",
+    "PACKAGING": "OWNER_DECISION_PENDING",
+    "RECONCILIATION": "OWNER_DECISION_PENDING",
+    "TRANSPORT": "OWNER_DECISION_PENDING"
+  },
+  "runtime_acceptance": {
+    "R01": "NOT_RUN",
+    "R02": "NOT_RUN",
+    "R03": "NOT_RUN",
+    "R04": "NOT_RUN",
+    "R05": "NOT_RUN",
+    "R06": "NOT_RUN",
+    "R07": "NOT_RUN",
+    "R08": "NOT_RUN",
+    "N12": "BLOCKED",
+    "historical_spawn_EPERM": "BLOCKED",
+    "legacy_SQL_privileges": "SKIPPED"
+  },
+  "hosted_execution": "BLOCKED",
+  "runner_implemented": false,
+  "sanitizer_implemented": false,
+  "new_target_observations": false,
+  "merge_authority": false,
+  "adoption": {
+    "method": "Attributed reconstruction; no original commit replay or patch-identical adopted-origin claim",
+    "original_head": "34048b22473ae0b39dcfbefdedfc19b6f3c102e4",
+    "original_source_commit": "809f6034b52a983d3273b42c7a042b1791a9cce3",
+    "original_pack_commit": "f86ec72f309c290aa6669a7b4521ee4890201d5c",
+    "original_pr": "https://github.com/Ben-001-sys/Vellistry/pull/137",
+    "original_matrix_date": "2026-11-03",
+    "original_fixture_record_unchanged": true,
+    "new_owner_fixture_confirmation": false,
+    "source_inventory": "docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-REFERENCES.json",
+    "pr138_post_main_run": 43397610863,
+    "historical_failed_ready": 42777271966,
+    "historical_failed_ready_result": "FAILURE: 11 recovery PASS, 1 ERROR; final gate FAILURE",
+    "original_pr_disposition": "OPEN Draft; unchanged; separate owner disposition required"
+  }
+}

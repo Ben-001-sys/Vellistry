@@ -3,32 +3,18 @@ id: VEL-STATE-001
 type: current-state
 status: active
 created_at: 2026-10-08
-updated_at: 2026-11-02
+updated_at: 2026-11-13
 owner: project_owner
-version: 0.2.2
+version: 0.2.3
 ---
 
 # Vellistry â€” current verified state
 
-## IMP003E - 2026-11-02
+## 2026-11-13 — Task0079 readiness adoption (verification pending)
 
-PR135 merged20f4b5a; post-main41450155695 PASS. Task0076 Chromium CI is
-in verification, synthetic-only. Earlier snapshots are historical.
+PR138/main `c5f324e` post-main43397610863 PASS; repair and all CI unchanged. [Task0079 report](docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md) adopts attributed readiness; review/Ready CI/owner merge pending. PR137 stays Draft34048b2; Task77/CP77/EB77 and failed42777271966 unchanged. Fixtures UNKNOWN; G1–G4/N12/runtime BLOCKED; hosted/R01–R08/OR01–10 NOT_RUN; legacy SQL SKIPPED. No gate promotion. Issues108/131 OPEN; remediation EXPIRED.
 
-## IMP003B disposable implementation â€” 2026-10-31
-
-FACT: main857b686 integrates PR132; exact reviewed tree and post-main41184485735
-PASS. Its Task0071 single SQL-path record is now reviewed-base input. PR130
-previously repaired stacked compliance; original PR129 run40951100355 remainsFAIL.
-Task0071 was reconstructed with a new committed validated CP, preserving original
-0190a22 preparation and never-committed pack/archive separately. Candidate revision
-CAS/idempotency/read contracts, synthetic recovery and one disposable PG17 fixture
-are under verification; EB/report and final PR evidence govern actual results.
-No production route, durable browser draft or hosted-save claim. Source review,
-exact-head CI and separate owner merge remain required. Task0068 editor stays
-local-only. R01-R08 NOT_RUN; N12/historical EPERM BLOCKED; PRINCIPAL/SESSION/gateway
-and hosted/private-pilot acceptance pending. Issues108/131 OPEN; remediation
-delegation EXPIRED. Historical reports retain earlier failures and limitations.
+Historical leading IMP003E/IMP003B snapshots remain byte-exact in [the pre-adoption state archive](docs/reports/evidence/VEL-TASK-0079/PRE-ADOPTION-CURRENT-STATE.txt).
 
 ## Owner-only PRINCIPAL probe preparation â€” 2026-10-26
 

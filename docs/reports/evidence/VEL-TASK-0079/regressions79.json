@@ -1,0 +1,66 @@
+[
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "principal79.txt",
+    "seconds": 1.79
+  },
+  {
+    "command": "corepack pnpm test:auth-mfa",
+    "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "mfa79.txt",
+    "seconds": 5.15
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "library79.txt",
+    "seconds": 8.62
+  },
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "source_commit": "c5f324e78d05f2f9afde91e6f58970de021fffb6",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "preflight79.txt",
+    "seconds": 2.54
+  },
+  {
+    "command": "corepack pnpm test:workspace-contract",
+    "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "workspace79.txt",
+    "seconds": 9.54
+  },
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "units79.txt",
+    "seconds": 3.8
+  },
+  {
+    "command": "corepack pnpm check",
+    "source_commit": "2b5931b51f64da76870b89ac4e711d960c427594",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "check79.txt",
+    "seconds": 15.73
+  },
+  {
+    "command": "corepack pnpm build",
+    "source_commit": "e0d2865f5625385ab7e9f3badb01d3d85abd4f0d",
+    "exit_code": 0,
+    "status": "PASS",
+    "evidence": "build79.txt",
+    "seconds": 35.55
+  }
+]

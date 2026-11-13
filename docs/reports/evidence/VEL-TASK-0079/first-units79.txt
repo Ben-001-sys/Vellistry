@@ -1,0 +1,29 @@
+✔ document preserves exact whitespace Unicode and marks without aliasing (4.5201ms)
+✔ reject malformed and unsupported documents (0.8662ms)
+✔ reject NUL surrogates oversized text and unsupported marks (3.9911ms)
+✔ bind exact operation target/revision and reject spoofed owner (1.7327ms)
+✔ service lost ACK remains unknown and original receipt reconciles (2.9174ms)
+✔ service suppresses results after account/session switch (3.3976ms)
+✔ service rejects malformed ACK and retains uncertain intent (1.1392ms)
+✔ service denies missing principal without persistence calls (0.844ms)
+✔ service suppresses foreign or stale readback (3.0704ms)
+✔ wire rejects forged ownership and unknown fields (1.3157ms)
+✔ Unicode preserves intent and enforces UTF16 (0.486ms)
+✔ notes are separate, plain and untrimmed (0.72ms)
+✔ reorder rejects duplicate IDs and invalid versions (0.5263ms)
+✔ canonical digest ignores object key order but preserves Unicode (0.505ms)
+✔ synthetic principal expiry and verification freshness fail closed (0.4909ms)
+✔ delayed rejection cannot release a newer unknown operation (30.6222ms)
+✔ an observed read establishes a monotonic minimum baseline (6.6719ms)
+✔ every runner subprocess uses the validated Docker environment (273.1523ms)
+✔ rejecting a remote Docker context makes no daemon calls, including cleanup (453.0071ms)
+✔ nonstring receipt enums preserve unknown and prohibit a new-key dispatch (1.2117ms)
+✔ rejected apply and reconciliation receipts establish the observed version floor (0.8899ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2413.4151

@@ -1,0 +1,9 @@
+# Task0079 bounded new-main adoption
+
+FACT: dispatched by owner on 2026-11-13. Scope is non-executable documentation/governance only. Base c5f324e78d05f2f9afde91e6f58970de021fffb6 contains PR138 repair. Source snapshots SOURCE-REPORT.md and SOURCE-MATRIX.json are exact original PR137 bytes; references inventory all original paths. Never reinterpret original evidence as new execution.
+
+Create separately named 0079 report/matrix plus evidence, preserving full original matrix semantics and protocol0063 hash, endpoints, closed export fields, request/time/sanitization/cleanup restrictions. Update reconciliation metadata only, retaining original record date and null owner confirmation. Any new CI evidence must be labelled by exact new source/head. Historical42777271966 remains FAIL and Draft remains advisory. All3fixturesUNKNOWN; G1-G4/N12/EPERM BLOCKED; hosted3cases/R01-R08/OR01-10 NOT_RUN; legacy privilege SKIPPED. No runtime/runner/sanitizer or production gate acceptance.
+
+No whole commit is adopted: renamed artifacts have different patches. All new commits truthfully declare original Codex reconstruction with exact content/source attribution. Do not declare adopted origin unless original patch identity and ancestry requirements actually hold. Preserve old Task77/CP77/EB77/PR137 untouched; no untracked owner work touched. Per-commit manifest binds this task and source. No SQL/code/CI/dependency/protected policy/Auth change.
+
+Required evidence: full-render CP validation, source/blob/semantic/document assertions, principal/MFA/Library/preflight/workspace/persistence units, build/typecheck, full governance, trusted-base evaluator, distinct final-head review and actual Draft/Ready full existing CI. Existing disposable runner-owned fixtures may run; no new hosted permission. Ready must prove12recovery/41Chromium/32PG17+16manuscript+8HTTP/restartcleanup and final gate. No merge/closure/successor authority. Issues108/131 OPEN.

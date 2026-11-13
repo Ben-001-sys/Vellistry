@@ -1,0 +1,29 @@
+from pathlib import Path
+import json,subprocess,hashlib,sys
+sys.path.insert(0,str(Path('scripts').resolve()));import agent_workflow as aw
+p=Path('.submission');src=Path('docs/agent-workflow/inputs/VEL-TASK-0079');d=json.loads(Path('docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json').read_text(encoding='utf-8'));o=json.loads((src/'SOURCE-MATRIX.json').read_text(encoding='utf-8'));refs=json.loads((src/'SOURCE-REFERENCES.json').read_text(encoding='utf-8'));checks=[]
+def check(name,ok):
+ assert ok,name
+ checks.append({'name':name,'status':'PASS'})
+def git(*a):return subprocess.check_output(['git',*a])
+base=refs['base'];head=git('rev-parse','HEAD').decode().strip()
+check('Only declared metadata changed from original matrix',{k:v for k,v in d.items() if k not in {'id','date','source_commit','authorization','adoption'}}=={k:v for k,v in o.items() if k not in {'id','date','source_commit','authorization'}})
+for name,path in [('SOURCE-REPORT.md','docs/reports/VEL-PRINCIPAL-SESSION-EVIDENCE-READINESS-0077.md'),('SOURCE-MATRIX.json','docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0077.json')]:check('Exact original snapshot '+name,(src/name).read_bytes()==git('show',refs['original_head']+':'+path))
+check('Original reviewed tree pinned',git('rev-parse',refs['original_head']+'^{tree}').decode().strip()==refs['original_tree'])
+for row in refs['sources']:
+ raw=git('show',row['commit']+':'+row['path']);assert hashlib.sha256(raw).hexdigest()==row['sha256'] and git('rev-parse',row['commit']+':'+row['path']).decode().strip()==row['blob']
+check('All28original source hashes and blobs verified',len(refs['sources'])==28)
+check('Fixture record unchanged, no new owner confirmation',d['fixtures']==o['fixtures'] and d['fixtures']['owner_confirmation_date'] is None)
+check('All G1-G4 blocked',all(g['status']=='BLOCKED' for g in d['gates']) and [g['id'] for g in d['gates']]==['G1','G2','G3','G4'])
+check('Three canonical hosted observations NOT_RUN',[c['label'] for c in d['principal_cases']]==['UNENROLLED_AAL1','ENROLLED_AAL1','ENROLLED_AAL2'] and all(c['observation_status']=='NOT_RUN' for c in d['principal_cases']))
+protocol=git('show',base+':'+d['protocol_reference']['path']);check('Canonical0063 exact hash',hashlib.sha256(protocol).hexdigest()==d['protocol_reference']['sha256'])
+check('Protocol endpoints closed schema bounds unchanged',d['protocol_reference']==o['protocol_reference'])
+check('SESSION9 unresolved',len(d['session'])==9 and all(x['production_status']=='BLOCKED' and x['target_observation']=='NOT_RUN' for x in d['session']))
+check('OR01-10 future only',len(d['future_runner_offline_requirements'])==10 and all(x['status']=='NOT_RUN' for x in d['future_runner_offline_requirements']) and not d['runner_implemented'] and not d['sanitizer_implemented'])
+check('R01-R08 NOT_RUN N12 EPERM blocked',all(d['runtime_acceptance'][f'R{i:02}']=='NOT_RUN' for i in range(1,9)) and d['runtime_acceptance']['N12']==d['runtime_acceptance']['historical_spawn_EPERM']=='BLOCKED')
+check('No application SQL CI dependency protected-control change',not git('diff','--name-only',base,'HEAD','--','apps','tests','scripts','.github','supabase','package.json','pnpm-lock.yaml'))
+check('Task78 records unchanged',not git('diff','--name-only',base,'HEAD','--','docs/agent-workflow/tasks/VEL-TASK-0078.yaml','docs/agent-workflow/context-packs/VEL-CP-0078.md','docs/agent-workflow/execution-bundles/VEL-EB-0078.md'))
+t=aw.check_task(Path('docs/agent-workflow/tasks/VEL-TASK-0079.yaml'));aw.check_pack(Path('docs/agent-workflow/context-packs/VEL-CP-0079.md'),{t['id']:t});check('CP full rendering and pinned task validated',True)
+check('Standing compactness limit and exact historical state archive',len(Path('CURRENT-STATE.md').read_text(encoding='utf-8').encode())<11000 and Path('docs/reports/evidence/VEL-TASK-0079/PRE-ADOPTION-CURRENT-STATE.txt').read_bytes()==git('show',base+':CURRENT-STATE.md'))
+check('No target findings or merge authority',not d['new_target_observations'] and not d['merge_authority'] and d['hosted_execution']=='BLOCKED')
+(p/'document-assertions79.json').write_text(json.dumps({'source_commit':head,'status':'PASS','count':len(checks),'assertions':checks,'limitation':'Document/source assertions only; no actual endpoint guard/sanitizer/hosted verification'},indent=2),encoding='utf-8');print('PASS',len(checks),'source and document assertions')

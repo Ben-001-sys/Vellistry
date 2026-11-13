@@ -1,0 +1,35 @@
+
+> vellistry@ test:hosted-preflight H:\cursor\cursor\Vellistry\.worktrees\vel-readiness-new-main
+> node --test tests/hosted_supabase_preflight.test.mjs
+
+✔ accepts coherent hosted project URL, modern publishable key and loopback Nest (5.038ms)
+✔ rejects another cloud project, even if Web and API agree on that project (0.4547ms)
+✔ rejects localhost Supabase URL; local containers are not the selected backend (0.4318ms)
+✔ rejects secret/service-role key in browser and backend publishable slot (0.7026ms)
+✔ rejects legacy JWT key in the modern publishable-key slot (0.3674ms)
+✔ rejects mismatched Web/API project publishable keys (0.2838ms)
+✔ rejects externally exposed API host and wrong BFF upstream (0.485ms)
+✔ rejects invalid or omitted expected project reference (0.2635ms)
+✔ missing local files are reported without consulting environment or network (2.2798ms)
+✔ reads ignored local files, never emits key values in success output (34.1251ms)
+✔ invalid local config never leaks the offending key in diagnostics (9.1862ms)
+✔ does not pass file validation when inherited runtime settings override those files (18.8705ms)
+✔ rejects competing Next env files that the actual runtime would also read (33.1262ms)
+✔ rejects test mode because Next does not load the required .env.local there (19.9344ms)
+✔ actual Next runtime precedence demonstrates why competing env files must block preflight (221.095ms)
+✔ actual CLI succeeds and rejects unsafe config without printing synthetic key values (325.9357ms)
+✔ actual CLI fails safely with absent env files (106.4498ms)
+✔ cloud URL rejects credentials, ports, lookalike hosts, path and query additions (0.6387ms)
+✔ unreadable env paths fail without reflecting filesystem or parser errors (7.6213ms)
+✔ rejects colon-style API host override observed by actual dotenv runtime (219.3569ms)
+✔ rejects colon-style upstream override observed by actual Next runtime (164.4558ms)
+✔ rejects colon-style unsafe key without leaking its synthetic value (153.6892ms)
+✔ missing-file guidance links to existing canonical placeholder instructions (3.0332ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1636.7969
