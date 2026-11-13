@@ -10,6 +10,12 @@ version: 0.2.2
 
 # Vellistry â€” current verified state
 
+## 2026-11-13 — Task0079 new-main readiness adoption (verification pending)
+
+FACT: PR138 merged `c5f324e78d05f2f9afde91e6f58970de021fffb6`; exact reviewed tree and post-main43397610863 PASS. PostgreSQL16 repair and mandatory Chromium/PG17/security gates remain unchanged. Task0079 reconstructs the attributed Task0077 readiness packet on this main; [report](docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md) records source hashes and limitations. Original PR137 remains Draft at34048b2; Task77/CP77/EB77 and failed Ready42777271966 remain historical and unchanged. New review, full Ready CI and owner merge decision are pending.
+
+All3fixtures UNKNOWN; G1–G4/N12/runtime restrictions BLOCKED; hosted3cases/R01–R08/OR01–OR10 NOT_RUN; legacy SQL privileges SKIPPED. No hosted execution, runner, production security implementation or gate promotion. Issues108/131 OPEN; remediation delegation EXPIRED.
+
 ## IMP003E - 2026-11-02
 
 PR135 merged20f4b5a; post-main41450155695 PASS. Task0076 Chromium CI is
