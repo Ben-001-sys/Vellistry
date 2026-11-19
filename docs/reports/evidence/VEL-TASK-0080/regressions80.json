@@ -1,0 +1,74 @@
+[
+  {
+    "command": "corepack pnpm install --frozen-lockfile --offline",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "frozen80.txt",
+    "seconds": 19.61
+  },
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "principal80.txt",
+    "seconds": 1.41
+  },
+  {
+    "command": "corepack pnpm test:auth-mfa",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "mfa80.txt",
+    "seconds": 1.73
+  },
+  {
+    "command": "corepack pnpm test:library-isolation",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "library80.txt",
+    "seconds": 3.02
+  },
+  {
+    "command": "corepack pnpm test:hosted-preflight",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "preflight80.txt",
+    "seconds": 1.26
+  },
+  {
+    "command": "corepack pnpm test:workspace-contract",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "workspace80.txt",
+    "seconds": 3.43
+  },
+  {
+    "command": "corepack pnpm --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "units80.txt",
+    "seconds": 1.68
+  },
+  {
+    "command": "corepack pnpm check",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "check80.txt",
+    "seconds": 6.51
+  },
+  {
+    "command": "corepack pnpm build",
+    "source_commit": "a8848b6b738ed564060321fb2abae902fc66178e",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "build80.txt",
+    "seconds": 18.51
+  }
+]

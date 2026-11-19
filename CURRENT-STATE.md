@@ -10,9 +10,9 @@ version: 0.2.3
 
 # Vellistry â€” current verified state
 
-## 2026-11-13 — Task0079 readiness adoption (verification pending)
+## 2026-11-13 — Task0080 owner G1 attestation (review pending)
 
-PR138/main `c5f324e` post-main43397610863 PASS; repair and all CI unchanged. [Task0079 report](docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md) adopts attributed readiness; review/Ready CI/owner merge pending. PR137 stays Draft34048b2; Task77/CP77/EB77 and failed42777271966 unchanged. Fixtures UNKNOWN; G1–G4/N12/runtime BLOCKED; hosted/R01–R08/OR01–10 NOT_RUN; legacy SQL SKIPPED. No gate promotion. Issues108/131 OPEN; remediation EXPIRED.
+Main `62be53c401b8c7405590c307559f921ec7d71a83` integrates PR139; post-main43480503038 PASS. PR137 closed superseded, not merged. [New Task0080 addendum](docs/reports/VEL-G1-OWNER-FIXTURE-ATTESTATION-0080.md): owner declaration13November YES/YES/YES; G1 answers satisfied by self-attestation, formal acceptance pending. No independent hosted verification. G2–G4/N12/runtime BLOCKED; hosted/OR01–10/R01–08 NOT_RUN; legacySQL SKIPPED. Historical UNKNOWN evidence unchanged. No production security promotion; Issues108/131 OPEN; remediation EXPIRED.
 
 Historical leading IMP003E/IMP003B snapshots remain byte-exact in [the pre-adoption state archive](docs/reports/evidence/VEL-TASK-0079/PRE-ADOPTION-CURRENT-STATE.txt).
 

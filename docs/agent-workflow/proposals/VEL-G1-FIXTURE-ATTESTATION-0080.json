@@ -1,0 +1,312 @@
+{
+  "id": "VEL-G1-FIXTURE-ATTESTATION-0080",
+  "schema_version": 1,
+  "record_date": "2026-11-13",
+  "kind": "NON_EXECUTABLE_OWNER_ATTESTATION_ADDENDUM_NOT_HOSTED_FINDINGS",
+  "evidence_type": "OWNER_SELF_ATTESTATION",
+  "source": "Explicit owner declaration in current ChatGPT conversation",
+  "authorization_url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794",
+  "owner_identity_independently_verified": false,
+  "hosted_account_state_independently_verified": false,
+  "prerequisites": {
+    "unenrolled_fixture_exists_and_owner_controlled": "YES",
+    "verified_totp_fixture_exists_and_owner_controlled": "YES",
+    "enrolled_fixture_aal1_aal2_obtainable": "YES"
+  },
+  "g1_owner_confirmation_requirements": "SATISFIED_BY_ATTESTATION",
+  "g1_formal_acceptance": "PENDING_OWNER_REVIEW",
+  "actual_hosted_fixture_verification": "NOT_PERFORMED",
+  "g2": "BLOCKED",
+  "g3": "BLOCKED",
+  "g4": "BLOCKED",
+  "hosted_probe_executed": false,
+  "hosted_probe_authorized": false,
+  "principal_observations": "NOT_RUN",
+  "principal_cases": {
+    "UNENROLLED_AAL1": "NOT_RUN",
+    "ENROLLED_AAL1": "NOT_RUN",
+    "ENROLLED_AAL2": "NOT_RUN"
+  },
+  "production_security_accepted": false,
+  "owner_statement": [
+    "Existing owner-controlled synthetic author without verified MFA enrollment: YES",
+    "Existing owner-controlled synthetic author with verified TOTP enrollment: YES",
+    "Ability to obtain AAL1 and AAL2 observations from the enrolled synthetic author: YES"
+  ],
+  "historical_timeline": [
+    {
+      "date": "2026-10-26",
+      "status": "UNKNOWN / UNKNOWN / UNKNOWN",
+      "nature": "Historical owner response, not account inspection",
+      "source": "docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json"
+    },
+    {
+      "date": "2026-11-03",
+      "status": "UNKNOWN / UNKNOWN / UNKNOWN",
+      "nature": "Historical reconciliation with no new owner confirmation",
+      "source": "docs/agent-workflow/inputs/VEL-TASK-0079/SOURCE-MATRIX.json"
+    },
+    {
+      "date": "2026-11-13",
+      "status": "YES / YES / YES",
+      "nature": "New direct owner declaration only; formal governance acceptance pending",
+      "source": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794"
+    }
+  ],
+  "protocol_reference": {
+    "id": "VEL-OWNER-PRINCIPAL-PROBE-0063",
+    "path": "docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+    "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+    "sha256": "d8c4ef3d011476884c15f218dcdf538fb6198aefb63a3ac4b745eddfd92cfd67",
+    "byte_identical_to_PR125_reviewed_head": "7713c01c253fb892688c1b3b265e7e34f22ad79b",
+    "target_origin": "https://lflkcrnriitrbclangyr.supabase.co",
+    "project_ref": "lflkcrnriitrbclangyr",
+    "endpoints": [
+      {
+        "id": "E1",
+        "method": "POST",
+        "path": "/auth/v1/token",
+        "query": "grant_type=password",
+        "limit": "2owner fixture logins maximum; no retries or other grants"
+      },
+      {
+        "id": "E2",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "query": "none",
+        "limit": "3explicit case calls plus bounded SDK-required internal fallback calls, all counted"
+      },
+      {
+        "id": "E3",
+        "method": "GET",
+        "path": "/auth/v1/.well-known/jwks.json",
+        "query": "none",
+        "limit": "SDK-required only; no manual key fetch, raw key export or path inference"
+      },
+      {
+        "id": "E4",
+        "method": "POST",
+        "path": "/auth/v1/factors/{existing_private_factor_id}/challenge and /auth/v1/factors/{same_existing_private_factor_id}/verify",
+        "query": "none",
+        "limit": "1challenge+1verify, existing privately known verified own TOTP only"
+      },
+      {
+        "id": "E5",
+        "method": "POST",
+        "path": "/auth/v1/logout",
+        "query": "scope=local",
+        "limit": "Cleanup only; at most2newly created probe sessions; no default/global/others scope"
+      }
+    ],
+    "request_bounds": {
+      "total_max_including_internal_calls_and_cleanup": 32,
+      "per_request_seconds": 15,
+      "run_seconds_including_cleanup": 300
+    },
+    "export_run_keys": [
+      "protocol_id",
+      "protocol_reviewed_commit",
+      "run_date",
+      "project_ref",
+      "fixtures_confirmed",
+      "execution",
+      "cleanup"
+    ],
+    "export_case_fields": {
+      "status": [
+        "NOT_RUN",
+        "OBSERVED",
+        "UNKNOWN",
+        "BLOCKED"
+      ],
+      "error_class": [
+        "NONE",
+        "AUTH_DENIED",
+        "UNAVAILABLE",
+        "EXPIRED",
+        "MALFORMED",
+        "MISMATCH",
+        "UNEXPECTED_ALGORITHM",
+        "ENDPOINT_DENIED",
+        "LIMIT_REACHED",
+        "UNKNOWN"
+      ],
+      "same_token_calls": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "auth_user_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "sdk_claims_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "user_subject_match": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "temporal_shape_valid": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "freshness_within_30000ms": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "session_claim_shape": [
+        "UUID",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "issuer_value": [
+        "https://lflkcrnriitrbclangyr.supabase.co/auth/v1",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_value": [
+        "authenticated",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_shape": [
+        "STRING",
+        "SINGLETON_ARRAY",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "role": [
+        "authenticated",
+        "anon",
+        "service_role",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "anonymous": [
+        "FALSE",
+        "TRUE",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "aal": [
+        "aal1",
+        "aal2",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "alg": [
+        "ES256",
+        "HS256",
+        "RS256",
+        "OTHER_REDACTED",
+        "MISSING",
+        "UNKNOWN"
+      ],
+      "kid_present": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "kid_matches_owner_confirmed_current": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "observed_lifetime_seconds": [
+        "safe integer1..86400",
+        "OUT_OF_RANGE_REDACTED",
+        "UNKNOWN"
+      ],
+      "optional_nbf": [
+        "ABSENT",
+        "VALID_PAST",
+        "FUTURE",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "factors_field": [
+        "ARRAY",
+        "MISSING",
+        "NULL",
+        "MALFORMED",
+        "UNAVAILABLE",
+        "UNKNOWN"
+      ],
+      "factor_schema": [
+        "RECOGNIZED",
+        "UNRECOGNIZED",
+        "UNKNOWN"
+      ],
+      "verified_factor_bucket": [
+        "ZERO",
+        "AT_LEAST_ONE",
+        "UNKNOWN"
+      ],
+      "matches_owner_fixture_ground_truth": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "factor_completeness": [
+        "NOT_ESTABLISHED"
+      ],
+      "assurance_minimum": [
+        "AUTH_SERVER_BACKED",
+        "NOT_ESTABLISHED"
+      ],
+      "sdk_claim_path": [
+        "UNKNOWN"
+      ]
+    },
+    "case_labels": [
+      "UNENROLLED_AAL1",
+      "ENROLLED_AAL1",
+      "ENROLLED_AAL2"
+    ],
+    "schema_extension_authorized": false
+  },
+  "remaining_gates": {
+    "g2": "Exact executable, frozen SDK behavior, endpoint guard, source pins, sanitizer, cleanup and pre-execution permission have not been reviewed and approved together",
+    "g3": "Owner isolated-environment attestation not completed",
+    "g4": "Future runner/default-deny network guard/sanitizer/cleanup offline tests have not executed"
+  },
+  "production_decisions": {
+    "PRINCIPAL": "DESIGN_APPROVED_CONDITIONAL; TARGET_TRUST_AND_IMPLEMENTATION_PENDING",
+    "SESSION": "OWNER_DECISION_PENDING",
+    "GATEWAY": "OWNER_DECISION_PENDING",
+    "PACKAGING": "OWNER_DECISION_PENDING",
+    "RECONCILIATION": "OWNER_DECISION_PENDING",
+    "TRANSPORT": "OWNER_DECISION_PENDING"
+  },
+  "runtime_acceptance": {
+    "R01": "NOT_RUN",
+    "R02": "NOT_RUN",
+    "R03": "NOT_RUN",
+    "R04": "NOT_RUN",
+    "R05": "NOT_RUN",
+    "R06": "NOT_RUN",
+    "R07": "NOT_RUN",
+    "R08": "NOT_RUN",
+    "N12": "BLOCKED",
+    "historical_spawn_EPERM": "BLOCKED",
+    "legacy_SQL_privileges": "SKIPPED"
+  },
+  "future_runner_offline_requirements": "OR01-OR10 NOT_RUN",
+  "session_authority": "UNRESOLVED: JWT validity, Auth-server identity, live session/revocation and transaction-time write authority remain distinct",
+  "new_target_observations": false,
+  "runner_implemented": false,
+  "sanitizer_implemented": false,
+  "merge_authority": false,
+  "source_base": "62be53c401b8c7405590c307559f921ec7d71a83",
+  "source_inventory": "docs/agent-workflow/inputs/VEL-TASK-0080/SOURCE-REFERENCES.json"
+}

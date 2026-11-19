@@ -1,0 +1,101 @@
+id: VEL-TASK-0080
+title: Record dated owner G1 synthetic fixture attestation addendum
+type: implementation-task
+status: in-progress
+created_at: '2026-11-13'
+updated_at: '2026-11-13'
+owner: project_owner
+context_pack_id: VEL-CP-0080
+objective: Record13November owner YES declarations as self-attestation with formal
+  acceptance pending, preserve historical UNKNOWN sources, and keep all hosted/security
+  execution gated
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/agent-workflow/tasks/VEL-TASK-0080.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0080.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0080.md
+- docs/agent-workflow/inputs/VEL-TASK-0080/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+- docs/reports/VEL-G1-OWNER-FIXTURE-ATTESTATION-0080.md
+- docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json
+- docs/reports/evidence/VEL-TASK-0080/*
+out_of_scope:
+- Application/Auth/SQL/test/CI/dependency/evaluator/security policy modifications
+- Hosted/Auth/JWT/JWKS/credentials/private-account or manuscript access, executable
+  probe/runner/sanitizer, deployment, merges, branch deletion and successor work
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0063/FIXTURE-STATUS.json
+  role: governing-source
+- path: docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md
+  role: governing-source
+- path: docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0080/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0080/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0080/SOURCE-REFERENCES.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0080/UNIQUENESS.json
+  role: governing-source
+source_gaps:
+- id: SELF-ATTESTATION-ONLY
+  limitation: Owner identity and actual hosted fixture state are not independently
+    verified; no private identifiers or credentials supplied.
+- id: FORMAL-ACCEPTANCE-PENDING
+  limitation: G1 confirmation answers satisfied by owner declaration; formal governance
+    acceptance pending separate owner review. G2-G4 remainBLOCKED; hosted probe not
+    authorized/executed.
+- id: NO-PRODUCTION-ACCEPTANCE
+  limitation: N12/runtimeBLOCKED; hosted cases/R01-R08/OR01-10NOT_RUN; legacySQLprivilegesSKIPPED;
+    all production session/principal/gateway/hosted gates pending.
+deliverables:
+- Dated human report and separate closed-schema owner self-attestation JSON; concise
+  additive state checkpoint
+- Historical source/hash preservation, full-render CP, EB, real assertions/regressions,
+  distinct review and actual Draft/Ready CI; unmerged PR
+acceptance_criteria:
+- Exact13November YES/YES/YES declaration and non-independent provenance; formal acceptance
+  pending; no hosted execution authority
+- Historical26October UNKNOWN,3November reconciliation and Task79 sources unchanged;
+  original protocol endpoints/schema/limits unchanged
+- G2-G4BLOCKED, cases/R01-R08/OR01-10NOT_RUN, N12BLOCKED, legacySKIPPED; no security
+  promotion
+- No operative changes; standing current-state references and<11000byte limit preserved;
+  source bindings/trusted-base compliance, exact-head review and fullReady CI PASS;
+  owner merge pending
+allowed_actions:
+- Author approved documentation/governance paths only after committed validated immutable
+  pack
+- Run source/schema/document assertions and existing approved offline/disposable CI
+  fixtures without hosted access
+- Publish new Draft PR, obtain distinct review, promote after checks to Ready, verify
+  full CI; no merge
+approval_required_for:
+- Any additional material permission, executable Auth tooling, code/test/CI/SQL/dependency/security
+  change, hosted access, merge or successor task
+compliance:
+  change_base: 62be53c401b8c7405590c307559f921ec7d71a83
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-6865763794
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-11-27'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
