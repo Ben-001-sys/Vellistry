@@ -1,0 +1,149 @@
+{
+  "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+  "status": "PASS",
+  "assertions": [
+    {
+      "name": "Complete design schema and eight bounded interfaces",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: runner_implemented",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: or_acceptance_executed",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: hosted_execution_authorized",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: production_security_accepted",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Specification mislabeled executed",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Missing OR row",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Duplicate OR row",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Expanded total limit",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Changed canonical protocol",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Invented G3 attestation",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Premature G4 acceptance",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid specification rejected: Attestation promoted to hosted proof",
+      "status": "PASS"
+    },
+    {
+      "name": "All17governing/historical source hashes verified",
+      "status": "PASS"
+    },
+    {
+      "name": "Canonical0063 protocol hash unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/reports/VEL-PRINCIPAL-READINESS-0062.md",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/agent-workflow/context-packs/VEL-CP-0080.md",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical source unchanged docs/agent-workflow/execution-bundles/VEL-EB-0080.md",
+      "status": "PASS"
+    },
+    {
+      "name": "No operativecode/test/CI/SQL/dependency/evaluator modification",
+      "status": "PASS"
+    },
+    {
+      "name": "All9proposedfuture executablepaths absent",
+      "status": "PASS"
+    },
+    {
+      "name": "Currentstate compact and historicalsections byte-text preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "Full-render immutable ContextPack validates",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR01",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR02",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR03",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR04",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR05",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR06",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR07",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR08",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR09",
+      "status": "PASS"
+    },
+    {
+      "name": "Human matrix includes NOT_RUN spec OR10",
+      "status": "PASS"
+    }
+  ],
+  "count": 35,
+  "negative_count": 12,
+  "scope": "Documentation/schema/source consistency ONLY. OR01-OR10 executable acceptance NOT_RUN; no runner/sanitizer/network/SDK code executed."
+}

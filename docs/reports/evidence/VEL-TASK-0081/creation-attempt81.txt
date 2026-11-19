@@ -1,0 +1,1 @@
+Initial CP validationFAIL preserved in committed governing failure record. First combined operative-doc shell command was NOT_EXECUTED: WindowsCreateProcess os206 command length limit. No file/code mutation occurred. Subsequent bounded writes implement same authorized scope; no permission/evaluator change.

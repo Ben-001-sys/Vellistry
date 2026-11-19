@@ -1,0 +1,248 @@
+{
+  "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+  "pack_commit": "1eec3c9fbf5bc22bfea368094d21b80eb4f27f72",
+  "preparation_commit": "30eadae5b41a271390ac21ecec0a43ec9f3b268f",
+  "owner_dispatch": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7005227966",
+  "results": [
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs install --frozen-lockfile --offline",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "frozen81.txt",
+      "seconds": 20.61
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "principal81.txt",
+      "seconds": 1.7
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:auth-mfa",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "mfa81.txt",
+      "seconds": 1.97
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:library-isolation",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "library81.txt",
+      "seconds": 3.72
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:hosted-preflight",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "preflight81.txt",
+      "seconds": 1.31
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:workspace-contract",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "workspace81.txt",
+      "seconds": 4.17
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "units81.txt",
+      "seconds": 1.73
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs check",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "check81.txt",
+      "seconds": 8.23
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs build",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "FAIL",
+      "exit_code": 1,
+      "evidence": "build81.txt",
+      "seconds": 19.34
+    },
+    {
+      "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs build",
+      "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "build81-retry.txt",
+      "note": "Unchanged retryPASS; prior known-security-noticeFAIL preserved; no dependency remediation performed."
+    }
+  ],
+  "specification_assertions": {
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "assertions": [
+      {
+        "name": "Complete design schema and eight bounded interfaces",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: runner_implemented",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: or_acceptance_executed",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: hosted_execution_authorized",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: production_security_accepted",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Specification mislabeled executed",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Missing OR row",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Duplicate OR row",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Expanded total limit",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Changed canonical protocol",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Invented G3 attestation",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Premature G4 acceptance",
+        "status": "PASS"
+      },
+      {
+        "name": "Invalid specification rejected: Attestation promoted to hosted proof",
+        "status": "PASS"
+      },
+      {
+        "name": "All17governing/historical source hashes verified",
+        "status": "PASS"
+      },
+      {
+        "name": "Canonical0063 protocol hash unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/reports/VEL-PRINCIPAL-READINESS-0062.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/agent-workflow/context-packs/VEL-CP-0080.md",
+        "status": "PASS"
+      },
+      {
+        "name": "Historical source unchanged docs/agent-workflow/execution-bundles/VEL-EB-0080.md",
+        "status": "PASS"
+      },
+      {
+        "name": "No operativecode/test/CI/SQL/dependency/evaluator modification",
+        "status": "PASS"
+      },
+      {
+        "name": "All9proposedfuture executablepaths absent",
+        "status": "PASS"
+      },
+      {
+        "name": "Currentstate compact and historicalsections byte-text preserved",
+        "status": "PASS"
+      },
+      {
+        "name": "Full-render immutable ContextPack validates",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR01",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR02",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR03",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR04",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR05",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR06",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR07",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR08",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR09",
+        "status": "PASS"
+      },
+      {
+        "name": "Human matrix includes NOT_RUN spec OR10",
+        "status": "PASS"
+      }
+    ],
+    "count": 35,
+    "negative_count": 12,
+    "scope": "Documentation/schema/source consistency ONLY. OR01-OR10 executable acceptance NOT_RUN; no runner/sanitizer/network/SDK code executed."
+  },
+  "additional_checks": {
+    "entrypoints": 8,
+    "research_design": 16,
+    "metadata": "PASS",
+    "readiness": "PASS",
+    "traceability": "PASS"
+  },
+  "security_notice": "Known Next.js vulnerability notice caused initial local buildFAIL; unchanged retryPASS is not remediation. No dependency change authorized/performed.",
+  "actual_OR_execution": "NOT_RUN forOR01-OR10;no newAuthrunner/sanitizer/SDK code",
+  "actual_hosted_execution": "NOT_AUTHORIZED/NOT_PERFORMED",
+  "pending_at_creation": "Distinct final-head review, full governance and actualDraft/ReadyCI; source-bound browser41/PG16 12/PG17 32+16+8/restartcleanup not yet asserted. Final evidence appendedPRledger."
+}

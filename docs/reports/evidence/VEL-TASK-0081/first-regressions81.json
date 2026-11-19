@@ -1,0 +1,10 @@
+[
+  {
+    "command": "corepack pnpm install --frozen-lockfile --offline",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "FAIL",
+    "exit_code": 1,
+    "evidence": "frozen81.txt",
+    "seconds": 0.31
+  }
+]

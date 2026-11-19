@@ -1,0 +1,6 @@
+{
+  "version": "10.18.0",
+  "existing_cache": "C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs",
+  "launcher_sha256": "b276da51dc8ca5b0d3ee3371695b50fc8b3244b281b091c63a3f082a88dadeb9",
+  "reason": "Broken earlier globalCorepack shim;task-local invocation only; no dependency/lock/systemtool mutation"
+}

@@ -1,0 +1,56 @@
+from pathlib import Path
+import json,copy,hashlib,subprocess,sys
+sys.path.insert(0,str(Path('scripts').resolve()));import agent_workflow as aw
+p=Path('.submission');d=json.loads(Path('docs/agent-workflow/proposals/VEL-AUTH-RUNNER-DESIGN-0081.json').read_text(encoding='utf-8'));c=json.loads(Path('docs/agent-workflow/inputs/VEL-TASK-0081/CANONICAL-CONTRACT.json').read_text());base='e0468ed756d4910ddee71a822f36945f91d99704';source=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();checks=[]
+def check(n,v):
+ assert v,n
+ checks.append({'name':n,'status':'PASS'})
+def valid(x):
+ assert x['kind']=='DESIGN_ONLY_NOT_EXECUTABLE_OR_AUTH_FINDINGS' and x['source_base']==base
+ assert x['gates']==dict.fromkeys(['G2','G3','G4'],'BLOCKED')
+ for k in ['runner_implemented','sanitizer_implemented','or_acceptance_executed','hosted_execution_authorized','hosted_execution_performed','production_security_accepted','merge_authority']:assert x[k] is False
+ assert x['g1']['status']=='DECLARATION_ACCEPTED_EXTERNALLY_BY_ATTESTATION_ONLY' and x['g1']['historical_source_pending_field_unchanged'] is True and x['g1']['owner_identity_independently_verified'] is False and x['g1']['hosted_state_independently_verified'] is False
+ assert x['protocol_reference']==c['protocol_reference']
+ assert x['operation_limits']=={'fixture_password_logins':2,'explicit_user_calls':3,'claims_operations':3,'totp_challenges':1,'totp_verifications':1,'local_cleanup_signouts':2}
+ assert x['request_limits']=={'total_outbound_including_internals_retries_cleanup':32,'measurement_outbound_max':30,'reserved_cleanup_slots':2,'per_request_seconds':15,'overall_seconds':300,'measurement_cutoff_seconds':240,'reserved_cleanup_and_teardown_seconds':60}
+ assert [i['id'] for i in x['components']]==[f'B{i}' for i in range(1,9)]
+ assert all(all(i.get(k) for k in ['inputs','outputs','decision_owner','errors_and_stop','cleanup','trust','proposed_file']) for i in x['components'])
+ assert [i['id'] for i in x['or_tests']]==[f'OR{i:02d}' for i in range(1,11)] and len({i['test_name'] for i in x['or_tests']})==10
+ for i in x['or_tests']:
+  assert i['execution_status']=='NOT_RUN' and all(i.get(k) for k in ['components','synthetic_fixtures','expected_behavior','negative_variants','required_evidence','pass_rule','fail_rule'])
+  assert i['source_requirement']==next(r['requirement'] for r in c['future_runner_offline_requirements'] if r['id']==i['id'])
+ assert x['g3']['owner_attestation_date'] is None and len(x['g3']['questions'])==6 and all(i['owner_confirmation']=='UNKNOWN' for i in x['g3']['questions'])
+ assert all(i['status']=='NOT_REVIEWED' for i in x['g2_review_checklist']) and len(x['g2_review_checklist'])==10
+ assert x['principal_cases']==dict.fromkeys(c['protocol_reference']['case_labels'],'NOT_RUN') and all(x['runtime_acceptance'][f'R{i:02d}']=='NOT_RUN' for i in range(1,9))
+ assert x['runtime_acceptance']['N12']==x['runtime_acceptance']['historical_spawn_EPERM']=='BLOCKED' and x['runtime_acceptance']['legacy_SQL_privileges']=='SKIPPED'
+ assert x['future_offline_implementation']['status']=='PROPOSAL_NOT_AUTHORIZATION' and len(x['future_offline_implementation']['exact_paths'])==9 and len(set(x['future_offline_implementation']['exact_paths']))==9
+valid(d);check('Complete design schema and eight bounded interfaces',True)
+mutations=[]
+for key in ['runner_implemented','or_acceptance_executed','hosted_execution_authorized','production_security_accepted']:
+ x=copy.deepcopy(d);x[key]=True;mutations.append((key,x))
+x=copy.deepcopy(d);x['or_tests'][0]['execution_status']='PASS';mutations.append(('Specification mislabeled executed',x))
+x=copy.deepcopy(d);x['or_tests'].pop();mutations.append(('Missing OR row',x))
+x=copy.deepcopy(d);x['or_tests'][1]['id']='OR01';mutations.append(('Duplicate OR row',x))
+x=copy.deepcopy(d);x['request_limits']['total_outbound_including_internals_retries_cleanup']=33;mutations.append(('Expanded total limit',x))
+x=copy.deepcopy(d);x['protocol_reference']['request_bounds']['per_request_seconds']=16;mutations.append(('Changed canonical protocol',x))
+x=copy.deepcopy(d);x['g3']['questions'][0]['owner_confirmation']='YES';mutations.append(('Invented G3 attestation',x))
+x=copy.deepcopy(d);x['gates']['G4']='PASS';mutations.append(('Premature G4 acceptance',x))
+x=copy.deepcopy(d);x['g1']['hosted_state_independently_verified']=True;mutations.append(('Attestation promoted to hosted proof',x))
+for name,x in mutations:
+ try:valid(x)
+ except AssertionError:check('Invalid specification rejected: '+name,True)
+ else:raise AssertionError('Acceptedinvaliddesign '+name)
+refs=json.loads(Path('docs/agent-workflow/inputs/VEL-TASK-0081/SOURCE-REFERENCES.json').read_text())
+for r in refs['sources']:
+ raw=subprocess.check_output(['git','show',r['commit']+':'+r['path']]);assert hashlib.sha256(raw).hexdigest()==r['sha256'] and subprocess.check_output(['git','rev-parse',r['commit']+':'+r['path']],text=True).strip()==r['blob']
+check('All17governing/historical source hashes verified',len(refs['sources'])==17)
+protocol=subprocess.check_output(['git','show',base+':'+d['protocol_reference']['path']]);check('Canonical0063 protocol hash unchanged',hashlib.sha256(protocol).hexdigest()==d['protocol_reference']['sha256'])
+for f in ['docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md','docs/reports/VEL-PRINCIPAL-READINESS-0062.md','docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json','docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json','docs/agent-workflow/context-packs/VEL-CP-0080.md','docs/agent-workflow/execution-bundles/VEL-EB-0080.md']:
+ check('Historical source unchanged '+f,not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--',f]))
+check('No operativecode/test/CI/SQL/dependency/evaluator modification',not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','apps','scripts','tests','.github','supabase','package.json','pnpm-lock.yaml']))
+for f in d['future_offline_implementation']['exact_paths']:assert subprocess.run(['git','cat-file','-e','HEAD:'+f],capture_output=True).returncode!=0
+check('All9proposedfuture executablepaths absent',True)
+state=Path('CURRENT-STATE.md').read_text(encoding='utf-8');oldstate=subprocess.check_output(['git','show',base+':CURRENT-STATE.md']).decode();check('Currentstate compact and historicalsections byte-text preserved',len(state.encode())<11000 and state.split('\nHistorical leading',1)[1]==oldstate.split('\nHistorical leading',1)[1])
+t=aw.check_task(Path('docs/agent-workflow/tasks/VEL-TASK-0081.yaml'));aw.check_pack(Path('docs/agent-workflow/context-packs/VEL-CP-0081.md'),{t['id']:t});check('Full-render immutable ContextPack validates',True)
+for r in d['or_tests']:check('Human matrix includes NOT_RUN spec '+r['id'],r['test_name'] in Path('docs/reports/VEL-AUTH-RUNNER-OFFLINE-TEST-MATRIX-0081.md').read_text(encoding='utf-8'))
+(p/'spec81-results.json').write_text(json.dumps({'source_commit':source,'status':'PASS','assertions':checks,'count':len(checks),'negative_count':len(mutations),'scope':'Documentation/schema/source consistency ONLY. OR01-OR10 executable acceptance NOT_RUN; no runner/sanitizer/network/SDK code executed.'},indent=2),encoding='utf-8');print('PASS',len(checks),'specification/source assertions including',len(mutations),'negative documentmutations;allORexecutionsNOT_RUN')
