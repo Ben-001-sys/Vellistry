@@ -1,0 +1,112 @@
+{
+  "base": "e0468ed756d4910ddee71a822f36945f91d99704",
+  "tree": "6fd632cc8b6bccb614ac9b8de505964711183761",
+  "owner_dispatch": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7005227966",
+  "g1_acceptance": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7004764509",
+  "g1_acceptance_body_sha256": "450dff517939aaba8fda884012a3d045dba5050bd4cb718bcd0f388499fcbe4b",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "3058d51c0e15db54d6271ecbcffcfeb0aaf54e6f",
+      "sha256": "619a9989a8d7d4d50c087ecb903308c57119f295671480d3cb6e23b5cac0f2c8"
+    },
+    {
+      "path": "PROJECT-CONSTITUTION.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "61f79c4dcb47bd99291c16490e8c00692e2ab23b",
+      "sha256": "ea17eba04dc5027dcca3e6f696260e3837248bbfb14bb3a2a87e7df1c479ec9e"
+    },
+    {
+      "path": "CURRENT-STATE.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "1511ddf5ea29a789850930cdab2d9936d465348d",
+      "sha256": "be913f36722612892ee998e170648ac76c11925ee91107c2910a991383b756dd"
+    },
+    {
+      "path": "SOURCE-OF-TRUTH.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "50a3034f72727b141ae2c897b1c1424efcc332d5",
+      "sha256": "530a26f2ccbcdbfa37614a79684ecbbf4788506af5936a0c25ad7d74efe5bacb"
+    },
+    {
+      "path": "docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "08b9a563fb79ebb91f20d0f84e0d752c1bb6709d",
+      "sha256": "fdd3d879dbef08e2e8f37b84859e29cdfa8e98467cf295085245ed417c0b2b16"
+    },
+    {
+      "path": "docs/agent-workflow/README.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "ac8ece613b6ca4bb977af4cedcf2bd6f7c16cbf3",
+      "sha256": "3b31721a0403877534afcd8d4a5e95c8b43675ebd0ae325f6a9781561200652f"
+    },
+    {
+      "path": "docs/agent-workflow/PR-COMPLIANCE.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "5f4845623aef3abb15fba7fbe8e78474902cca00",
+      "sha256": "3ce6deae856b0d272b199bf8cc48ed2ad198f64293c05bb14715c013e3da0b1e"
+    },
+    {
+      "path": "docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "5eeda3b80818c0d5c0e0e2a0d2ba200fc0e74492",
+      "sha256": "d8c4ef3d011476884c15f218dcdf538fb6198aefb63a3ac4b745eddfd92cfd67"
+    },
+    {
+      "path": "docs/reports/VEL-PRINCIPAL-READINESS-0062.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "83c522e7c44326e2ed72185b98f8d0627f4b4fb8",
+      "sha256": "77af1cf68858acd8b861fb783dfe4b6015ff32f95fe66aea5bee329f6f986cd1"
+    },
+    {
+      "path": "docs/reports/VEL-PRINCIPAL-SESSION-NEW-MAIN-0079.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "3c5995d9ee56299f26beace38e2b609b5f5397fc",
+      "sha256": "f195e1b8ec19557940461c6c8277ec084bfc4adc88cb967fd03b2a6f9043b189"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-PRINCIPAL-SESSION-READINESS-0079.json",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "041db848fe2551f0bf3d49e4ac69d20b3b4f731e",
+      "sha256": "baa55212f5c543d35c37f2badb883df92b905da4e6fbcd5b26f4f119de4127cc"
+    },
+    {
+      "path": "docs/reports/VEL-G1-OWNER-FIXTURE-ATTESTATION-0080.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "c4c3bbd4526b69f902b30460ad0dfb7de215cdf3",
+      "sha256": "efed873010d6bd35bbb54b7632a24f1be004c29a50b500ea04e9407cc77eaa35"
+    },
+    {
+      "path": "docs/agent-workflow/proposals/VEL-G1-FIXTURE-ATTESTATION-0080.json",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "4886dab1af817d70db3f7bf30f5aacf8ff4a7500",
+      "sha256": "8429d4e685601b7a65b499defe507a63fa69161e2d9cef270a000038eb315e43"
+    },
+    {
+      "path": "docs/agent-workflow/tasks/VEL-TASK-0080.yaml",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "a93a9966e8448278b2dae752334fd385fd61b6f3",
+      "sha256": "6163ad7ca17c58c512e17110c4503989adc8c2a432012ac5bf14018ba6b97a2e"
+    },
+    {
+      "path": "docs/agent-workflow/context-packs/VEL-CP-0080.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "afe83425dcb4a14a76e5d2c0d6e0d87d91c6b4dd",
+      "sha256": "acb2fedbae33c1d2a140e860a150ad5a78afe6638d1f0ffef2a49c95bece8c6b"
+    },
+    {
+      "path": "docs/agent-workflow/execution-bundles/VEL-EB-0080.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "c0aacf20052ed7d40fd70eaf2021967f82494edf",
+      "sha256": "e8b2897ba5efaed7be5fa334e1dbf31dc6b1e35958b9ea0fffbe247a8db82bf6"
+    },
+    {
+      "path": "docs/research/K2B-SESSION-AND-MANUSCRIPT-EXPOSURE-2026-10-09.md",
+      "commit": "e0468ed756d4910ddee71a822f36945f91d99704",
+      "blob": "fde534dd517cc398a124621bfb2b6df75781bda7",
+      "sha256": "48411c90df753e5162871ab25d96114c7db503b619df6be94147763faf144ac7"
+    }
+  ],
+  "authority": "Git hashes prove source bytes, not source truth or independent identity. New owner decisions supersede datedhistoricalstatuswithout rewritingoldrecords."
+}
