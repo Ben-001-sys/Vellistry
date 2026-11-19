@@ -1,0 +1,82 @@
+[
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs install --frozen-lockfile --offline",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "frozen81.txt",
+    "seconds": 20.61
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-principal-adapter.spec.ts",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "principal81.txt",
+    "seconds": 1.7
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:auth-mfa",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "mfa81.txt",
+    "seconds": 1.97
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:library-isolation",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "library81.txt",
+    "seconds": 3.72
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:hosted-preflight",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "preflight81.txt",
+    "seconds": 1.31
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs test:workspace-contract",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "workspace81.txt",
+    "seconds": 4.17
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs --filter @vellistry/api exec tsx --test src/modules/workspace/workspace-contract.spec.ts",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "units81.txt",
+    "seconds": 1.73
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs check",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "check81.txt",
+    "seconds": 8.23
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs build",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "FAIL",
+    "exit_code": 1,
+    "evidence": "build81.txt",
+    "seconds": 19.34
+  },
+  {
+    "command": "node C:/Users/admin/AppData/Local/node/corepack/v1/pnpm/10.18.0/bin/pnpm.cjs build",
+    "source_commit": "4aa118ec0cfd38020de12ffa033f6719967401e3",
+    "status": "PASS",
+    "exit_code": 0,
+    "evidence": "build81-retry.txt",
+    "note": "Unchanged retryPASS; prior known-security-noticeFAIL preserved; no dependency remediation performed."
+  }
+]

@@ -1,0 +1,23 @@
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +265
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 265, reused 153, downloaded 0, added 0
+Progress: resolved 265, reused 263, downloaded 0, added 68
+Progress: resolved 265, reused 263, downloaded 0, added 69
+Progress: resolved 265, reused 263, downloaded 0, added 132
+Progress: resolved 265, reused 264, downloaded 0, added 215
+Progress: resolved 265, reused 264, downloaded 0, added 260
+Progress: resolved 265, reused 264, downloaded 0, added 263
+Progress: resolved 265, reused 264, downloaded 0, added 264
+Progress: resolved 265, reused 265, downloaded 0, added 264
+Progress: resolved 265, reused 265, downloaded 0, added 265
+Progress: resolved 265, reused 265, downloaded 0, added 265, done
+
+devDependencies:
++ playwright 1.64.0
++ supabase 2.120.0
++ typescript 5.9.3
+
+Done in 20.5s using pnpm v10.18.0

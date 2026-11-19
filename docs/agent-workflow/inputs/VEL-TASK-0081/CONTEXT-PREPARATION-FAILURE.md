@@ -1,0 +1,3 @@
+# Historical initial preparation failure
+
+Initial preparation2db8130 committed before any pack/implementation. Pack generation succeeded but full-render validation FAILED on OWNER-G1-ACCEPTANCE.md embedded snapshot: imported GitHub CRLF body produced noncanonical line endings. No pack was committed/dispatched and no operative edits began. Initial generated pack archived uncommitted under owned .submission with SHA256 recorded; original quoted source and preparation remain in Git2db8130. Normalize only line endings in the issue snapshot to canonicalLF while retaining original API bodySHA256 and source URL; no authority/scope/content change. New committed inputs and newly validated pack precede implementation. Historical failure must not be relabeledPASS.

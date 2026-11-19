@@ -10,9 +10,9 @@ version: 0.2.3
 
 # Vellistry â€” current verified state
 
-## 2026-11-13 — Task0080 owner G1 attestation (review pending)
+## 2026-11-19 — Task0081 offline tooling design (review pending)
 
-Main `62be53c401b8c7405590c307559f921ec7d71a83` integrates PR139; post-main43480503038 PASS. PR137 closed superseded, not merged. [New Task0080 addendum](docs/reports/VEL-G1-OWNER-FIXTURE-ATTESTATION-0080.md): owner declaration13November YES/YES/YES; G1 answers satisfied by self-attestation, formal acceptance pending. No independent hosted verification. G2–G4/N12/runtime BLOCKED; hosted/OR01–10/R01–08 NOT_RUN; legacySQL SKIPPED. Historical UNKNOWN evidence unchanged. No production security promotion; Issues108/131 OPEN; remediation EXPIRED.
+Main `e0468ed756d4910ddee71a822f36945f91d99704` integrates PR140; post-main44492467128 PASS. [G1decision](https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7004764509) accepts13November self-attestation only; sourcependingJSON unchanged, hostedstate unverified. [Task0081contract](docs/reports/VEL-OWNER-AUTH-RUNNER-CONTRACT-0081.md) specifies future tooling; no runner/sanitizer implemented. G2-G4/N12/runtimeBLOCKED;OR01-10/R01-08/hostedcasesNOT_RUN;legacySQLSKIPPED. PR137 supersededclosed. No securitypromotion;Issues108/131OPEN;remediationEXPIRED.
 
 Historical leading IMP003E/IMP003B snapshots remain byte-exact in [the pre-adoption state archive](docs/reports/evidence/VEL-TASK-0079/PRE-ADOPTION-CURRENT-STATE.txt).
 

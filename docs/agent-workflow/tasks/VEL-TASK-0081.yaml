@@ -1,0 +1,110 @@
+id: VEL-TASK-0081
+title: Prepare offline owner Auth tooling implementation contract without executable
+  work
+type: implementation-task
+status: in-progress
+created_at: '2026-11-19'
+updated_at: '2026-11-19'
+owner: project_owner
+context_pack_id: VEL-CP-0081
+objective: Specify eight owner-only boundaries, fixed transport/output/cleanup and
+  one-to-one future OR acceptance with G2/G3checklists and exact proposed offline
+  paths; no runner implementation or hosted access
+in_scope: &id001
+- CURRENT-STATE.md
+- docs/reports/VEL-OWNER-AUTH-RUNNER-CONTRACT-0081.md
+- docs/agent-workflow/proposals/VEL-AUTH-RUNNER-DESIGN-0081.json
+- docs/reports/VEL-OWNER-AUTH-ENVIRONMENT-CHECKLIST-0081.md
+- docs/reports/VEL-AUTH-RUNNER-OFFLINE-TEST-MATRIX-0081.md
+- docs/agent-workflow/tasks/VEL-TASK-0081.yaml
+- docs/agent-workflow/context-packs/VEL-CP-0081.md
+- docs/agent-workflow/execution-bundles/VEL-EB-0081.md
+- docs/agent-workflow/inputs/VEL-TASK-0081/*
+- docs/reports/evidence/VEL-TASK-0081/*
+- docs/agent-workflow/PR-COMPLIANCE.yaml
+out_of_scope:
+- Any executable runner/sanitizer/SDKadapter/transport/CLI or OR01-OR10 execution
+- Application/Auth/SQL/test/CI/dependency/protected evaluator or production/security
+  modifications
+- Hosted/Auth/JWKS/private data/credentials/manuscripts, deployment, merges, branch
+  deletion or successor task
+inputs:
+- path: PROJECT-CONSTITUTION.md
+  role: governing-source
+- path: AGENTS.md
+  role: governing-source
+- path: docs/decisions/ADR-0008-codex-primary-agentic-implementation-workflow.md
+  role: governing-source
+- path: docs/agent-workflow/PR-COMPLIANCE.md
+  role: governing-source
+- path: docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/OWNER-SCOPE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/CONTRACT.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/CANONICAL-CONTRACT.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/OWNER-G1-ACCEPTANCE.md
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/SOURCE-REFERENCES.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/UNIQUENESS.json
+  role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/CONTEXT-PREPARATION-FAILURE.md
+  role: governing-source
+source_gaps:
+- id: NO-LIVE-READINESS
+  limitation: G1declaration acceptedexternally byattestation only. G2-G4BLOCKED and
+    no livepermission,environmentattestation,runner/sanitizer acceptance.
+- id: SPECIFICATION-NOT-EXECUTION
+  limitation: All OR01-10/R01-08/3hostedcasesNOT_RUN. N12/historicalruntimeBLOCKED;legacyprivilegesSKIPPED.
+    Documenttests cannot promoteG4.
+- id: FUTURE-REVIEW-REQUIRED
+  limitation: Future exact executable/dependencies/transportcall inventory/output
+    packaging and ownerprivateenvironment must be pinned/reviewed; no implementation
+    approval inferred from proposed futurepaths.
+deliverables:
+- Owner-runner architecture/component interfaces with fixed default-deny transport/output/cleanup
+  and explicit trust/error/stop ownership
+- One-to-one OR01-OR10 futuretest design;G2 exactsource review andG3 six nonsecret
+  ownerchecklists; exact proposed offlineimplementation pathallowlist
+- Actual source/doc/governance checks, immutableCP/EB/manifest, distinctreview, Draft/ReadyCI
+  and unmergedPR; historicalsources/statuses preserved
+acceptance_criteria:
+- Eight distinct boundaries each specify decisions,inputs,outputs,errors,stop,cleanup,trust;
+  no executable/newAuthcode
+- Exact0063origin/endpoints/output/counters/time retained; cleanup reserved inside
+  caps; no silent packaging,network or authority expansion
+- All10ORspec rows include testname/component/fixtures/expected/negatives/evidence/PASS-FAILrules,
+  executionNOT_RUN; G2/G3checklistsnotaccepted
+- G1externalacceptance distinguished from historical pendingJSON; G2-G4/productiongates
+  remainblocked; standingstatehistory and<11000bytes retained
+- Trustedbase/sourcepackEBprovenance and actualDraftReadyfullCI/reviewPASS before
+  recommendation; no merge
+allowed_actions:
+- Prepare approved design/specification documentation only after committedvalidated
+  immutableCP
+- Execute source/document consistency checks and unchanged approved offline/disposableCI
+  regressions; never OR01-OR10runtime acceptance
+- New DraftPR, distinct completedheadreview, authorizedReadypromotion/fullCI; leaveunmerged
+approval_required_for:
+- Any executable implementation/ORruntime test, hosted/private data, changed endpoints/schema/limits/cleanup,
+  operative source/dependency/CI/policy change, merge or successor task
+compliance:
+  change_base: e0468ed756d4910ddee71a822f36945f91d99704
+  phase: repository-only
+  executor: Codex
+  allow_paths: *id001
+  authorization:
+    url: https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7005227966
+    provenance: owner-linked-dispatch
+    status: authorized
+    expires_on: '2026-12-03'
+  forbidden_actions:
+  - hosted
+  - production
+  - private-manuscripts
+  - paid-services
+  - admin
+  - merge
