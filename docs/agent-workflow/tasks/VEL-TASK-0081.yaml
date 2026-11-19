@@ -51,6 +51,8 @@ inputs:
   role: governing-source
 - path: docs/agent-workflow/inputs/VEL-TASK-0081/UNIQUENESS.json
   role: governing-source
+- path: docs/agent-workflow/inputs/VEL-TASK-0081/CONTEXT-PREPARATION-FAILURE.md
+  role: governing-source
 source_gaps:
 - id: NO-LIVE-READINESS
   limitation: G1declaration acceptedexternally byattestation only. G2-G4BLOCKED and
