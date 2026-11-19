@@ -1,0 +1,745 @@
+{
+  "id": "VEL-AUTH-RUNNER-DESIGN-0081",
+  "record_date": "2026-11-19",
+  "kind": "DESIGN_ONLY_NOT_EXECUTABLE_OR_AUTH_FINDINGS",
+  "source_base": "e0468ed756d4910ddee71a822f36945f91d99704",
+  "owner_dispatch": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7005227966",
+  "g1": {
+    "status": "DECLARATION_ACCEPTED_EXTERNALLY_BY_ATTESTATION_ONLY",
+    "record_date": "2026-11-13",
+    "acceptance_date": "2026-11-19",
+    "acceptance_url": "https://github.com/Ben-001-sys/Vellistry/issues/108#issuecomment-7004764509",
+    "owner_identity_independently_verified": false,
+    "hosted_state_independently_verified": false,
+    "historical_source_pending_field_unchanged": true
+  },
+  "gates": {
+    "G2": "BLOCKED",
+    "G3": "BLOCKED",
+    "G4": "BLOCKED"
+  },
+  "components": [
+    {
+      "id": "B1",
+      "name": "Readiness gate",
+      "proposed_file": "tools/owner-auth-probe/readiness.ts",
+      "inputs": "Source hashes, external G1 decision, exact G2approval, G3attestation and exact-source G4results; no secrets",
+      "outputs": "Non-exportable capability bound to target/source/deadline/cleanup, or denial",
+      "decision_owner": "Own sole live-execution admission; reject incomplete G1-G4 before ANY network including SDK initialization",
+      "errors_and_stop": "Missing/stale/contradictory source or approval denies before dispatch; only fixed allowed error category",
+      "cleanup": "No pre-login cleanup; invalidate capability on terminal stop",
+      "trust": "Owner controls reviewed code/environment; gate cannot independently authenticate owner or prove production policy"
+    },
+    {
+      "id": "B2",
+      "name": "Private inputs",
+      "proposed_file": "tools/owner-auth-probe/private-input.ts",
+      "inputs": "Owner-only credential/public-client-key/factor/TOTP provider after readiness; synthetic provider offline",
+      "outputs": "Ephemeral fixture-scoped private handles, never public raw strings",
+      "decision_owner": "Bind two existing fixtures and enrolled verified TOTP; no discovery/enrollment/app-session reuse",
+      "errors_and_stop": "Cancelled/unavailable/mismatched context stops without echo",
+      "cleanup": "Dispose references in finally, no file/history/clipboard; no cryptographic zeroization claim",
+      "trust": "Private owner process, no agent/remote desktop/recorded terminal access; trusted input code"
+    },
+    {
+      "id": "B3",
+      "name": "Frozen SDK adapter",
+      "proposed_file": "tools/owner-auth-probe/sdk-adapter.ts",
+      "inputs": "Pinned2.117.3 factory, guarded fetch, private handles and immutable explicit token",
+      "outputs": "Private user/claims snapshots and bounded errors; no raw public output",
+      "decision_owner": "Explicit same-token getUser/getClaims; persistence/refresh/URL-session discovery disabled; no keys/JWKS/allowExpired override",
+      "errors_and_stop": "Initialization or hidden unapproved traffic/error/partial proof stops; no verifier downgrade or guessed path",
+      "cleanup": "Separate in-memory client per fixture; dispose timers/subscriptions; retain proved owned cleanup handles only",
+      "trust": "Exact frozen-SDK transport call inventory and branch evidence required; mocked SDK sequences alone do not establish actual behavior"
+    },
+    {
+      "id": "B4",
+      "name": "Default-deny transport",
+      "proposed_file": "tools/owner-auth-probe/guarded-transport.ts",
+      "inputs": "Operation descriptor, SDK request and immutable run/case/cleanup capability",
+      "outputs": "Private allowed response or pre-dispatch denial; bounded atomic counters",
+      "decision_owner": "Own rawURL/method/query/phase/factor binding, redirect denial and every operation/request/time budget",
+      "errors_and_stop": "Noncanonical/unclassified request, missing permit, limit or deadline denies before DNS/socket/delegate",
+      "cleanup": "Abort measurement and invalidate late epochs; only owned E5 within reserved original budget remains",
+      "trust": "Guarded delegate sole I/O path; offline process-level deny tripwires supplement injection; abort is not server rollback"
+    },
+    {
+      "id": "B5",
+      "name": "Three-case state machine",
+      "proposed_file": "tools/owner-auth-probe/case-state.ts",
+      "inputs": "Private fixture/case handles and explicit-token evidence, monotonic clock",
+      "outputs": "Derived case scalars and owned-session cleanup handles only",
+      "decision_owner": "Exactly three canonical cases, immutable token each; ES256 rejection-only header routing; subject/session/expiry/freshness rechecked after await",
+      "errors_and_stop": "Unexpected role/anonymous/mismatch/expiry/algorithm/endpoint/provider restriction stops; no refresh/legacy workaround",
+      "cleanup": "Finally retain known new sessions for cleanup; uncertain login cannot invent ownership; suppress stale callbacks",
+      "trust": "Empty factors never prove completeness; header/JWKS fetch never proves crypto path; identity is not writable-session authority"
+    },
+    {
+      "id": "B6",
+      "name": "Closed sanitizer",
+      "proposed_file": "tools/owner-auth-probe/sanitize-output.ts",
+      "inputs": "Bounded own-data evidence snapshots and canonical schema, not arbitrary executable objects",
+      "outputs": "RunRecord exact7fields plus CaseRecordSet exact3labels/27fields",
+      "decision_owner": "Construct fresh whitelist aggregates before rendering; reject unknown/accessor/inherited/nested raw values",
+      "errors_and_stop": "No raw object/error/stack/header/URL/canary diagnostic; sanitizer failure withholds findings",
+      "cleanup": "Release raw references on all exits; no persistent diagnostic artifacts",
+      "trust": "Trusted SDK; parse network data as boundedJSON. Proxies/executable inputs unsupported; inspection can invoke Proxy traps, cannot claim arbitrary code neutralization"
+    },
+    {
+      "id": "B7",
+      "name": "Owned-session cleanup",
+      "proposed_file": "tools/owner-auth-probe/owned-cleanup.ts",
+      "inputs": "Ledger of at most2proved newly created probe sessions and their own credentials, reserved budget",
+      "outputs": "Only cleanup NOT_STARTED/DONE/UNKNOWN/BLOCKED and disposal result",
+      "decision_owner": "E5local only, once per owned handle; never global/others/admin/session-row/service-role",
+      "errors_and_stop": "Missing/unknown ownership, timeout/provider failure or unconfirmed scope stops and withholds release",
+      "cleanup": "Duplicate invocation locally idempotent; uncertain attempted request consumes slot; dispose all clients/timers; no JWT-revocation guarantee",
+      "trust": "AAL2 replacement credential must prove same enrolled session; unexpected new session never grants third logout"
+    },
+    {
+      "id": "B8",
+      "name": "Owner output review",
+      "proposed_file": "tools/owner-auth-probe/owner-review.ts",
+      "inputs": "Closed aggregate pair, confirmed cleanup and future exact approved render schema",
+      "outputs": "Manual owner-approved release decision only; no upload/write/CLI",
+      "decision_owner": "Owner inspection before sharing; no raw dump or automatic publication",
+      "errors_and_stop": "Missing approval/cleanup/serializer/sanitizer failure withholds release; NOT_RUN template not findings",
+      "cleanup": "Raw handles disposed; post-run sanitized review cannot resume Auth or extend deadlines",
+      "trust": "Owner-private display; outer serialization is a proposed G2decision, not specified/approved by0063"
+    }
+  ],
+  "protocol_reference": {
+    "id": "VEL-OWNER-PRINCIPAL-PROBE-0063",
+    "path": "docs/reports/VEL-OWNER-PRINCIPAL-PROBE-PROTOCOL-0063.md",
+    "commit": "ad5e723aa746f695da547a1feefd950801e324ab",
+    "sha256": "d8c4ef3d011476884c15f218dcdf538fb6198aefb63a3ac4b745eddfd92cfd67",
+    "byte_identical_to_PR125_reviewed_head": "7713c01c253fb892688c1b3b265e7e34f22ad79b",
+    "target_origin": "https://lflkcrnriitrbclangyr.supabase.co",
+    "project_ref": "lflkcrnriitrbclangyr",
+    "endpoints": [
+      {
+        "id": "E1",
+        "method": "POST",
+        "path": "/auth/v1/token",
+        "query": "grant_type=password",
+        "limit": "2owner fixture logins maximum; no retries or other grants"
+      },
+      {
+        "id": "E2",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "query": "none",
+        "limit": "3explicit case calls plus bounded SDK-required internal fallback calls, all counted"
+      },
+      {
+        "id": "E3",
+        "method": "GET",
+        "path": "/auth/v1/.well-known/jwks.json",
+        "query": "none",
+        "limit": "SDK-required only; no manual key fetch, raw key export or path inference"
+      },
+      {
+        "id": "E4",
+        "method": "POST",
+        "path": "/auth/v1/factors/{existing_private_factor_id}/challenge and /auth/v1/factors/{same_existing_private_factor_id}/verify",
+        "query": "none",
+        "limit": "1challenge+1verify, existing privately known verified own TOTP only"
+      },
+      {
+        "id": "E5",
+        "method": "POST",
+        "path": "/auth/v1/logout",
+        "query": "scope=local",
+        "limit": "Cleanup only; at most2newly created probe sessions; no default/global/others scope"
+      }
+    ],
+    "request_bounds": {
+      "total_max_including_internal_calls_and_cleanup": 32,
+      "per_request_seconds": 15,
+      "run_seconds_including_cleanup": 300
+    },
+    "export_run_keys": [
+      "protocol_id",
+      "protocol_reviewed_commit",
+      "run_date",
+      "project_ref",
+      "fixtures_confirmed",
+      "execution",
+      "cleanup"
+    ],
+    "export_case_fields": {
+      "status": [
+        "NOT_RUN",
+        "OBSERVED",
+        "UNKNOWN",
+        "BLOCKED"
+      ],
+      "error_class": [
+        "NONE",
+        "AUTH_DENIED",
+        "UNAVAILABLE",
+        "EXPIRED",
+        "MALFORMED",
+        "MISMATCH",
+        "UNEXPECTED_ALGORITHM",
+        "ENDPOINT_DENIED",
+        "LIMIT_REACHED",
+        "UNKNOWN"
+      ],
+      "same_token_calls": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "auth_user_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "sdk_claims_ok": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "user_subject_match": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "temporal_shape_valid": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "freshness_within_30000ms": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN"
+      ],
+      "session_claim_shape": [
+        "UUID",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "issuer_value": [
+        "https://lflkcrnriitrbclangyr.supabase.co/auth/v1",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_value": [
+        "authenticated",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "audience_shape": [
+        "STRING",
+        "SINGLETON_ARRAY",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "role": [
+        "authenticated",
+        "anon",
+        "service_role",
+        "UNEXPECTED_REDACTED",
+        "UNKNOWN"
+      ],
+      "anonymous": [
+        "FALSE",
+        "TRUE",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "aal": [
+        "aal1",
+        "aal2",
+        "MISSING",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "alg": [
+        "ES256",
+        "HS256",
+        "RS256",
+        "OTHER_REDACTED",
+        "MISSING",
+        "UNKNOWN"
+      ],
+      "kid_present": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "kid_matches_owner_confirmed_current": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "observed_lifetime_seconds": [
+        "safe integer1..86400",
+        "OUT_OF_RANGE_REDACTED",
+        "UNKNOWN"
+      ],
+      "optional_nbf": [
+        "ABSENT",
+        "VALID_PAST",
+        "FUTURE",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "factors_field": [
+        "ARRAY",
+        "MISSING",
+        "NULL",
+        "MALFORMED",
+        "UNAVAILABLE",
+        "UNKNOWN"
+      ],
+      "factor_schema": [
+        "RECOGNIZED",
+        "UNRECOGNIZED",
+        "UNKNOWN"
+      ],
+      "verified_factor_bucket": [
+        "ZERO",
+        "AT_LEAST_ONE",
+        "UNKNOWN"
+      ],
+      "matches_owner_fixture_ground_truth": [
+        "YES",
+        "NO",
+        "UNKNOWN"
+      ],
+      "factor_completeness": [
+        "NOT_ESTABLISHED"
+      ],
+      "assurance_minimum": [
+        "AUTH_SERVER_BACKED",
+        "NOT_ESTABLISHED"
+      ],
+      "sdk_claim_path": [
+        "UNKNOWN"
+      ]
+    },
+    "case_labels": [
+      "UNENROLLED_AAL1",
+      "ENROLLED_AAL1",
+      "ENROLLED_AAL2"
+    ],
+    "schema_extension_authorized": false
+  },
+  "operation_limits": {
+    "fixture_password_logins": 2,
+    "explicit_user_calls": 3,
+    "claims_operations": 3,
+    "totp_challenges": 1,
+    "totp_verifications": 1,
+    "local_cleanup_signouts": 2
+  },
+  "request_limits": {
+    "total_outbound_including_internals_retries_cleanup": 32,
+    "measurement_outbound_max": 30,
+    "reserved_cleanup_slots": 2,
+    "per_request_seconds": 15,
+    "overall_seconds": 300,
+    "measurement_cutoff_seconds": 240,
+    "reserved_cleanup_and_teardown_seconds": 60
+  },
+  "transport_contract": {
+    "origin": "https://lflkcrnriitrbclangyr.supabase.co",
+    "redirects": "DENY including same-origin beforefollowing",
+    "raw_url": "Buildcanonicaloperationdescriptor;rejectnoncanonical rawURL beforeparsernormalization. No userinfo/explicitport/fragment/backslash/dot/encodedsegment/duplicatequery, customdomain/claim-derived URL.",
+    "query": "E1exactgrant_type=password;E5exactscope=local;E2/E3/E4noquery;rejectextra/encoded/duplicatepairs",
+    "factor_binding": "Canonical private owner-known verifiedTOTP handle boundtoenrolledfixture, same factorchallenge/verify; neveremit",
+    "counter_rules": "Atomicdebitbeforeeveryattempt includingSDKinternals/retries/failures. Explicitoperationcounts separate even localclaims. No applicationretry/refresh.",
+    "cleanup": "E5onlyaftermeasurementstop, provednewownedhandles withinreserved2slotsandoriginal300sdeadline; noextraallowance",
+    "private_body_headers": "Pinexact frozenSDKrequestshape/body/headerpolicy atG2; no arbitrarymetadata/callerverificationkeys orrawlogging",
+    "io_coverage": "GuardfetchbeforeSDKcreation;offlineharness deniesambient/nativeI/O andinventoriesfrozenSDKcall sites. Mock-onlysequences insufficient;unreachable requiredbranchBLOCKED."
+  },
+  "output_contract": {
+    "run_field_count": 7,
+    "case_label_count": 3,
+    "case_field_count": 27,
+    "canonical_values_unchanged": true,
+    "logical_output": "Pair:RunRecordexact7keys,CaseRecordSetexact3labelswith27fieldseach. No newcases/session/writablekey addedtoRunRecord.",
+    "serialization_status": "PROPOSED_NOT_APPROVED:0063doesnotspecifyouterwire/envelopepackaging. FutureexactG2ownerreviewmustapprove render/serialization beforeliveexport. No livewriter/CLIpathauthorized.",
+    "construction": "Freshown-datawhitelistfromboundedparsedJSON;rejectunknown/accessor/inherited/nestedraw/invalidscalar. Neverrawstringify/copy/arbitraryerrors. Executableobjects/Proxyunsupported;inspectioncanexecuteProxytraps,notaclaimofsafe arbitrarycode handling.",
+    "failure": "Withholdfinding/release;no sensitivediagnostics;onlyfixedprotocolcategory ifclosed-outputvalidationpermits",
+    "owner_review": "Manualprivatereviewbefore sharing;sanitized-onlypostrunreviewcannotretainrawhandles/resumeAuth/extenddeadline"
+  },
+  "case_states": [
+    "BLOCKED_PRECHECK",
+    "PRIVATE_INPUTS",
+    "UNENROLLED_AAL1",
+    "ENROLLED_AAL1",
+    "ENROLLED_AAL2",
+    "MEASUREMENT_STOPPED",
+    "OWNED_CLEANUP",
+    "SANITIZE",
+    "OWNER_REVIEW",
+    "DISPOSED"
+  ],
+  "or_tests": [
+    {
+      "id": "OR01",
+      "test_name": "or01_default_deny_endpoint_guard",
+      "components": [
+        "B1",
+        "B4"
+      ],
+      "synthetic_fixtures": "Fake delegate counter0, canonical operation descriptors and private synthetic factor handles",
+      "expected_behavior": "Only exact E1-E5 and phase-bound capability accepted; denial before delegate/DNS",
+      "negative_variants": [
+        "http/relative/custom/trailing-dot/IDNA/userinfo/explicit-port origins",
+        "redirect including same-origin, encoded slash/dot/backslash/double-encoding",
+        "duplicate/extra/encoded query, wrong grant/scope",
+        "admin/PostgREST/storage/refresh/signup/enroll/delete/global/others logout",
+        "wrong-fixture E4factor or different challenge/verify handle"
+      ],
+      "required_evidence": "Per-variant denial/category and delegate_calls=0; no raw private URL",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Exact fixed HTTPSorigin and E1-E5 method/path/query; reject unknown origin/custom domain/port/userinfo/redirect/dot segments/encoded path/query duplicates/admin/list/PostgREST/storage/refresh/enroll/global logout before dispatch"
+    },
+    {
+      "id": "OR02",
+      "test_name": "or02_frozen_sdk_cannot_escape_guard",
+      "components": [
+        "B3",
+        "B4"
+      ],
+      "synthetic_fixtures": "Actual pinned2.117.3 factory, injected fakefetch, ambient-I/O deny tripwires, deterministic response queues",
+      "expected_behavior": "No initialization traffic; every internal request/retry/fallback guarded and counted",
+      "negative_variants": [
+        "fetch omitted/replaced, constructor traffic or native I/O escape",
+        "refresh/persistence/URL-session discovery enabled",
+        "internal retry/fallback/JWKS sequence exhausting budget",
+        "unapproved endpoint/redirect/alternate origin"
+      ],
+      "required_evidence": "SDK source/lock/call-site/branch coverage hashes and sanitized operation counters; mock-only sequences insufficient",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Inject transport only; initialization/retries/fallback counts bounded, no unapproved refresh/session/list endpoints; no real client or network in offline acceptance"
+    },
+    {
+      "id": "OR03",
+      "test_name": "or03_immutable_same_token_cases",
+      "components": [
+        "B3",
+        "B5"
+      ],
+      "synthetic_fixtures": "Two synthetic author contexts, token-label sentinels, epochs and deferred results",
+      "expected_behavior": "Explicit user/claims use same immutable token; canonical matching subject; distinct new AAL2token",
+      "negative_variants": [
+        "omitted token/client cached-state substitution",
+        "concurrent authors, out-of-order results, account switch",
+        "mutated inputs/proofs after capture or await",
+        "AAL2changes priorAAL1 or unexpected session binding"
+      ],
+      "required_evidence": "Case labels/matching booleans only; no tokens,subject/sessionIDs or hashes",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Immutable explicit case token to user/claims, canonical subject matching, out-of-order/concurrent responses; new AAL2 token starts new case, never switches prior case"
+    },
+    {
+      "id": "OR04",
+      "test_name": "or04_closed_run_and_case_schema",
+      "components": [
+        "B6",
+        "B8"
+      ],
+      "synthetic_fixtures": "Exact7run keys,3case labels,27fields and canonical enum/range table",
+      "expected_behavior": "Fresh own-data records match exact keys and scalar values before output",
+      "negative_variants": [
+        "missing/extra/duplicate keys/labels/fields",
+        "unknown scalars, unsafe integer or nestedrawpayload",
+        "accessor/inherited/prototype properties and hostile Proxy inspection failure",
+        "new envelope/cases/writable/session/production flag"
+      ],
+      "required_evidence": "Schema variant counts/rejection booleans, never raw object dumps",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Exactly7run keys/3case labels/27case fields with listed closed scalar values; unknown/nested/free-text/accessor/inherited keys rejected, no raw object copy or implicit observed values"
+    },
+    {
+      "id": "OR05",
+      "test_name": "or05_forbidden_material_never_emitted",
+      "components": [
+        "B2",
+        "B3",
+        "B6",
+        "B8"
+      ],
+      "synthetic_fixtures": "Deep synthetic canaries and output/exception/reporter capture spies",
+      "expected_behavior": "No secret/private material escapes any channel, including failure formatting",
+      "negative_variants": [
+        "password/access-refresh token/OTP/email and user/session/factor/challenge data",
+        "nested/cyclic SDKobjects/error/stack/metadata",
+        "private URL/header/body/rawclaims/JWKS/keymaterial",
+        "hash/fingerprint transform or log-then-redact"
+      ],
+      "required_evidence": "Leak boolean/fixedcategory only; no expected/actual canary values or raw traces",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Synthetic canaries in arbitrary SDK/user/factor/header/URL/error/stack/metadata nested paths cannot escape; no raw token/password/OTP/key/IDs/fingerprints/body, even from synthetic fixtures; fixed error categories"
+    },
+    {
+      "id": "OR06",
+      "test_name": "or06_temporal_assurance_fail_closed",
+      "components": [
+        "B3",
+        "B5",
+        "B6"
+      ],
+      "synthetic_fixtures": "Fake monotonic/wallclock, expiry, delayed/partial/injected verifier outcomes",
+      "expected_behavior": "Revalidate after await; stale>30000ms, expiry/future/reversal/malformed proof denies",
+      "negative_variants": [
+        "request timeout or expiry during verification",
+        "future/stale/reversedclock and invalid NumericDate",
+        "nonES256routing stops; injected signature/keyfailure only, no realJWTcrypto",
+        "empty/missing factors or header/JWKSfetch misread as completeness/crypto path"
+      ],
+      "required_evidence": "Fixed errorcategories; factor_completeness NOT_ESTABLISHED and sdk_claim_path UNKNOWN",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Timeout/expiry/clock reversal/stale30000ms evidence denies; no claim that decoded header/fetch means crypto path; unknown path remains UNKNOWN; missing factors never inferred NONE"
+    },
+    {
+      "id": "OR07",
+      "test_name": "or07_operation_network_time_budgets",
+      "components": [
+        "B1",
+        "B4",
+        "B5",
+        "B7"
+      ],
+      "synthetic_fixtures": "Fake clock/delegate and atomic operation/network counters,2cleanup slots",
+      "expected_behavior": "2login/3explicituser/3claims/1challenge/1verify/2localcleanup maxima;32inclusive total,15srequest,300srun",
+      "negative_variants": [
+        "each cap N/N+1;localclaims0network still operationcount",
+        "SDKinternals/retries/failures/timeouts debit requests",
+        "31stmeasurement denied with2reservedslots;33rdglobal denied",
+        "measurement240s,request15s,run300s boundaries and counterrace",
+        "unusedcleanup reserve neverdonated; no deadlineextension"
+      ],
+      "required_evidence": "Exact bounded operation/request/time evidence; no live timing assertion",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "2logins/3user/3claims/1challenge/1verify/2local-cleanup,32total outbound including retries and cleanup;15s/request/5minrun; reserve cleanup budget within bounds, exact owner review required"
+    },
+    {
+      "id": "OR08",
+      "test_name": "or08_owned_local_cleanup_only",
+      "components": [
+        "B1",
+        "B4",
+        "B5",
+        "B7"
+      ],
+      "synthetic_fixtures": "Synthetic ownership ledger,2new-session handles, delayed/interrupted cleanup",
+      "expected_behavior": "Only proved new own sessions E5local once; duplicates locally idempotent; unknown cleanup withholds export",
+      "negative_variants": [
+        "pre-existing/app/foreign/unknown handle or substituted token",
+        "default/global/others scope, admin/service credential",
+        "duplicate retry after uncertainacknowledgment",
+        "unknown logincommit/timeout/interruption/AAL2new session",
+        "providerdenial or unconfirmed targeted scope"
+      ],
+      "required_evidence": "Aggregate cleanup and attemptedcount<=2; DONE never means JWTrevocation acceptance",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "Only newly created own probe sessions, local signout scope, idempotent disposal/timeout cleanup; never global/others/admin/escalated retry; failed/unconfirmable cleanup BLOCKED and no further measurement"
+    },
+    {
+      "id": "OR09",
+      "test_name": "or09_no_persistence_or_telemetry",
+      "components": [
+        "B2",
+        "B3",
+        "B6",
+        "B7",
+        "B8"
+      ],
+      "synthetic_fixtures": "Synthetic inputproviders and spies forfile/env/argv/history/storage/telemetry/crash/debug hooks",
+      "expected_behavior": "No private inputs/rawresponses persisted or logged; persistence/refresh off; dispose references/timers/listeners",
+      "negative_variants": [
+        "argv/history/.env/clipboard/screenshot/HAR/trace",
+        "browser/session storage, auto-refresh or diskcache",
+        "debug/telemetry/crash/reporter forwarding",
+        "cleanup exception or process exit claimed cryptographiczeroization"
+      ],
+      "required_evidence": "Zero-callspycounts/disposal booleans only; no profiles/dumps/payloadcapture artifacts",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "No shell arguments/history/.env/clipboard/storage/HAR/trace/screenshots/log/crash/telemetry payload retention; process exit and reference disposal are not guaranteed cryptographic zeroization"
+    },
+    {
+      "id": "OR10",
+      "test_name": "or10_no_premature_readiness_or_findings",
+      "components": [
+        "B1",
+        "B5",
+        "B6",
+        "B7",
+        "B8"
+      ],
+      "synthetic_fixtures": "Readiness combinations, sourcepins and missingG3/cleanup/schema/templates",
+      "expected_behavior": "Missing G1-G4/source/cleanup/schema/manualrelease deniesnetwork/release; NOT_RUNnotfindings",
+      "negative_variants": [
+        "JSONpending substituted forexternalG1decision or attestation called independentproof",
+        "missing/staleG2/G3/G4 orwrongSDK/sourcehash",
+        "sanitizerfailure/unavailablecleanup/unexpectedstate",
+        "documentPASS/mockresultcalledORacceptance orwritable/productionflag",
+        "ownerreviewskipped/unapprovedserializer envelope"
+      ],
+      "required_evidence": "Before-network/release rejection and unchangedNOT_RUN; no production acceptance",
+      "pass_rule": "Future exact-source no-network execution covers every positive/negative variant with required counters/schema evidence and no forbidden dispatch/output.",
+      "fail_rule": "Unauthorized dispatch/output, wrong acceptance, failed cleanup or missing/duplicate required variant/evidence is FAIL. Inability to execute/cover branch is BLOCKED, never PASS.",
+      "execution_status": "NOT_RUN",
+      "source_requirement": "AnyG1-G4unsatisfied,missing fixture/schema/sanitizer failure denies before network; NOT_RUN template not findings; no production writable/accepted flag; owner manual sanitized audit before sharing"
+    }
+  ],
+  "g2_review_checklist": [
+    {
+      "id": "G2-01",
+      "requirement": "Pin exact Task/CP/source/dirty-tree hashes and external G1decision; no mutable approval boolean",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-02",
+      "requirement": "Verify frozenSDK2.117.3lock/integrity/source, alltransport call sites, test-onlymodule resolution and dependency review",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-03",
+      "requirement": "Review rawURL/descriptor/method/query/private body/header/redirect and every I/Opath",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-04",
+      "requirement": "Review same-token subject/session/expiry/post-async freshness; no factor/crypto/sessionoverclaim",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-05",
+      "requirement": "Review7/3/27schema/enums/error mapping; owner approves exact outer outputpackaging before liveexport",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-06",
+      "requirement": "Review cleanup ownership/idempotency/unknownoutcomes/reservation; no global orprivileged fallback",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-07",
+      "requirement": "Review operation/network/timecounters includinginternals/retries/cleanup and allboundary evidence",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-08",
+      "requirement": "Review privateinput/no-persistence/telemetry/runtime restrictions and actual ownerG3attestation",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-09",
+      "requirement": "Require exact-source actual OR01-10evidence and distinct reviewer/source/runtime limitations; documents/mocksnotacceptance",
+      "status": "NOT_REVIEWED"
+    },
+    {
+      "id": "G2-10",
+      "requirement": "Owner explicitly approves exact executable/environment/protocol/redaction/stop/cleanup and targetexecution permission;Task81grantsnone",
+      "status": "NOT_REVIEWED"
+    }
+  ],
+  "g3": {
+    "status": "BLOCKED",
+    "owner_attestation_date": null,
+    "questions": [
+      {
+        "id": "OE01",
+        "condition": "Isolated owner-controlled environment, no agent/screen/credential access",
+        "owner_confirmation": "UNKNOWN"
+      },
+      {
+        "id": "OE02",
+        "condition": "Existing fixtures only, no enrollment/account/settings changes",
+        "owner_confirmation": "UNKNOWN"
+      },
+      {
+        "id": "OE03",
+        "condition": "Private in-memory inputs, frozen SDK2.117.3, no privileged credentials",
+        "owner_confirmation": "UNKNOWN"
+      },
+      {
+        "id": "OE04",
+        "condition": "No persistence/auto-refresh/telemetry/history/clipboard/capture",
+        "owner_confirmation": "UNKNOWN"
+      },
+      {
+        "id": "OE05",
+        "condition": "Reviewed default-deny transport, timers, total+cleanup budget",
+        "owner_confirmation": "UNKNOWN"
+      },
+      {
+        "id": "OE06",
+        "condition": "Reviewed local-only new-owned-session cleanup and owner manual sanitized audit",
+        "owner_confirmation": "UNKNOWN"
+      }
+    ],
+    "response_format": "YES/NO/UNKNOWNperitemplusdateonly. No passwords/OTP/tokens/IDs/factorcontext/screenshots/privateconfiguration."
+  },
+  "future_offline_implementation": {
+    "status": "PROPOSAL_NOT_AUTHORIZATION",
+    "exact_paths": [
+      "tools/owner-auth-probe/readiness.ts",
+      "tools/owner-auth-probe/private-input.ts",
+      "tools/owner-auth-probe/sdk-adapter.ts",
+      "tools/owner-auth-probe/guarded-transport.ts",
+      "tools/owner-auth-probe/case-state.ts",
+      "tools/owner-auth-probe/sanitize-output.ts",
+      "tools/owner-auth-probe/owned-cleanup.ts",
+      "tools/owner-auth-probe/owner-review.ts",
+      "apps/api/test/owner-auth-probe-offline.spec.ts"
+    ],
+    "exclusions": "No livebootstrap/CLI/privateprompt/globalnetworkcapability/productionroute/dependency/CI/SQL/existingAuthchange. New Task/immutablepackand explicitownerpathapprovalrequired beforefilecreation.",
+    "sdk_resolution": "Future apps/api/test spec imports existingfrozenSDKfromAPIworkspace and injectsfactory/guardedfakefetchintotoolsmodules. No secondSDK orcaller-controlled module/executablepath.",
+    "network": "SyntheticdataanddeniedambientI/Oonly. Actual frozenSDKbranchcoverage required. Ifunreachableunderauthorizedno-token/no-cryptoscope,markBLOCKEDandseekexplicitoffline amendment;neverfabricate."
+  },
+  "principal_cases": {
+    "UNENROLLED_AAL1": "NOT_RUN",
+    "ENROLLED_AAL1": "NOT_RUN",
+    "ENROLLED_AAL2": "NOT_RUN"
+  },
+  "runtime_acceptance": {
+    "R01": "NOT_RUN",
+    "R02": "NOT_RUN",
+    "R03": "NOT_RUN",
+    "R04": "NOT_RUN",
+    "R05": "NOT_RUN",
+    "R06": "NOT_RUN",
+    "R07": "NOT_RUN",
+    "R08": "NOT_RUN",
+    "N12": "BLOCKED",
+    "historical_spawn_EPERM": "BLOCKED",
+    "legacy_SQL_privileges": "SKIPPED"
+  },
+  "production_decisions": "PRINCIPALtargettrust,SESSION/revocation/protectedtransaction,GATEWAY,TRANSPORT,PACKAGING,RECONCILIATION,hosted,pilot,releaseunresolved",
+  "runner_implemented": false,
+  "sanitizer_implemented": false,
+  "or_acceptance_executed": false,
+  "hosted_execution_authorized": false,
+  "hosted_execution_performed": false,
+  "production_security_accepted": false,
+  "merge_authority": false
+}
